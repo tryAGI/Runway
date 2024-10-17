@@ -1,8 +1,8 @@
 dotnet tool install --global autosdk.cli --prerelease
 
 autosdk init \
-  SolutionName \
-  SomeClient \
+  Runway \
+  RunwayClient \
   https://raw.githubusercontent.com/api/openapi.json \
-  CompanyName \
+  tryAGI \
   --output .
