@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Runway API
   version: 1.0.0
-  description: API for generating videos from images and managing tasks.
+  description: API for generating videos from images and managing tasks. Generated from https://docs.dev.runwayml.com/api/
 
 servers:
   - url: https://api.dev.runwayml.com
