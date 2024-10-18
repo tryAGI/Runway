@@ -15,7 +15,7 @@ public partial class Tests
             watermark: false,
             duration: 5,
             ratio: CreateVideoFromImageRequestRatio.x16_9);
-        response.Id.Should().NotBe(default(Guid));
+        response.Id.Should().NotBe(default(Guid)); 
 
         GetTaskDetailResponse taskDetail;
         do
