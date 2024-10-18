@@ -8,6 +8,7 @@ public partial class Tests
         using var client = GetAuthenticatedClient();
         
         var response = await client.CreateVideoFromImageAsync(
+            xRunwayVersion: CreateVideoFromImageXRunwayVersion.x20240913,
             promptImage: "https://img.freepik.com/free-photo/beautiful-woman-with-long-blond-hair-looking-camera-outdoors-generated-by-artificial-intelligence_188544-240170.jpg",
             seed: 999999999,
             model: CreateVideoFromImageRequestModel.Gen3aTurbo,
@@ -20,7 +21,7 @@ public partial class Tests
         GetTaskDetailResponse taskDetail;
         do
         {
-            taskDetail = await client.GetTaskDetailAsync(response.Id);
+            taskDetail = await client.GetTaskDetailAsync(GetTaskDetailXRunwayVersion.x20240913, response.Id);
             
             Console.WriteLine($"Progress: {taskDetail.Progress}");
             
