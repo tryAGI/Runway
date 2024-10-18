@@ -69,7 +69,10 @@ namespace Runway
                 }
             }
 
-            httpRequest.Headers.TryAddWithoutValidation("X-Runway-Version", xRunwayVersion.ToValueString());
+            if (xRunwayVersion != default)
+            {
+                httpRequest.Headers.TryAddWithoutValidation("X-Runway-Version", xRunwayVersion?.ToValueString() ?? string.Empty);
+            }
 
             var __httpRequestContentBody = request.ToJson(JsonSerializerContext);
             var __httpRequestContent = new global::System.Net.Http.StringContent(
