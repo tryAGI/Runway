@@ -27,8 +27,8 @@ namespace Runway
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task CancelOrDeleteTaskAsync(
+            global::Runway.CancelOrDeleteTaskXRunwayVersion xRunwayVersion,
             global::System.Guid id,
-            global::Runway.CancelOrDeleteTaskXRunwayVersion xRunwayVersion = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
@@ -62,10 +62,7 @@ namespace Runway
                 }
             }
 
-            if (xRunwayVersion != default)
-            {
-                httpRequest.Headers.TryAddWithoutValidation("X-Runway-Version", xRunwayVersion?.ToValueString() ?? string.Empty);
-            }
+            httpRequest.Headers.TryAddWithoutValidation("X-Runway-Version", xRunwayVersion.ToValueString());
 
 
             PrepareRequest(

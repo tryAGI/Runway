@@ -32,8 +32,8 @@ namespace Runway
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Runway.CreateVideoFromImageResponse> CreateVideoFromImageAsync(
+            global::Runway.CreateVideoFromImageXRunwayVersion xRunwayVersion,
             global::Runway.CreateVideoFromImageRequest request,
-            global::Runway.CreateVideoFromImageXRunwayVersion xRunwayVersion = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             request = request ?? throw new global::System.ArgumentNullException(nameof(request));
@@ -69,10 +69,7 @@ namespace Runway
                 }
             }
 
-            if (xRunwayVersion != default)
-            {
-                httpRequest.Headers.TryAddWithoutValidation("X-Runway-Version", xRunwayVersion?.ToValueString() ?? string.Empty);
-            }
+            httpRequest.Headers.TryAddWithoutValidation("X-Runway-Version", xRunwayVersion.ToValueString());
 
             var __httpRequestContentBody = request.ToJson(JsonSerializerContext);
             var __httpRequestContent = new global::System.Net.Http.StringContent(
@@ -159,8 +156,8 @@ namespace Runway
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Runway.CreateVideoFromImageResponse> CreateVideoFromImageAsync(
+            global::Runway.CreateVideoFromImageXRunwayVersion xRunwayVersion,
             string promptImage,
-            global::Runway.CreateVideoFromImageXRunwayVersion xRunwayVersion = default,
             global::Runway.CreateVideoFromImageRequestModel model = default,
             int? seed = default,
             string? promptText = default,

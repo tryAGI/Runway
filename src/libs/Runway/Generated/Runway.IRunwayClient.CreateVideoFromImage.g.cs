@@ -13,8 +13,8 @@ namespace Runway
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Runway.CreateVideoFromImageResponse> CreateVideoFromImageAsync(
+            global::Runway.CreateVideoFromImageXRunwayVersion xRunwayVersion,
             global::Runway.CreateVideoFromImageRequest request,
-            global::Runway.CreateVideoFromImageXRunwayVersion xRunwayVersion = default,
             global::System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
@@ -49,8 +49,8 @@ namespace Runway
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Runway.CreateVideoFromImageResponse> CreateVideoFromImageAsync(
+            global::Runway.CreateVideoFromImageXRunwayVersion xRunwayVersion,
             string promptImage,
-            global::Runway.CreateVideoFromImageXRunwayVersion xRunwayVersion = default,
             global::Runway.CreateVideoFromImageRequestModel model = default,
             int? seed = default,
             string? promptText = default,
