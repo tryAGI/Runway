@@ -161,9 +161,9 @@ namespace Runway
             global::Runway.CreateVideoFromImageRequestModel model = default,
             int? seed = default,
             string? promptText = default,
-            bool? watermark = false,
-            int? duration = 10,
-            global::Runway.CreateVideoFromImageRequestRatio? ratio = global::Runway.CreateVideoFromImageRequestRatio.x16_9,
+            bool? watermark = default,
+            int? duration = default,
+            global::Runway.CreateVideoFromImageRequestRatio? ratio = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Runway.CreateVideoFromImageRequest
