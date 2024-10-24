@@ -39,14 +39,14 @@ namespace Runway
         /// Default Value: false
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("watermark")]
-        public bool? Watermark { get; set; } = false;
+        public bool? Watermark { get; set; }
 
         /// <summary>
         /// Duration of the video in seconds.<br/>
         /// Default Value: 10
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("duration")]
-        public int? Duration { get; set; } = 10;
+        public int? Duration { get; set; }
 
         /// <summary>
         /// Aspect ratio of the video.<br/>
@@ -54,7 +54,7 @@ namespace Runway
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ratio")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.CreateVideoFromImageRequestRatioJsonConverter))]
-        public global::Runway.CreateVideoFromImageRequestRatio? Ratio { get; set; } = global::Runway.CreateVideoFromImageRequestRatio.x16_9;
+        public global::Runway.CreateVideoFromImageRequestRatio? Ratio { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
