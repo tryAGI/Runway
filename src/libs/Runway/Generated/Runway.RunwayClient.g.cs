@@ -26,6 +26,11 @@ namespace Runway
         /// <inheritdoc/>
         public global::System.Collections.Generic.List<global::Runway.EndPointAuthorization> Authorizations { get; }
 
+        /// <inheritdoc/>
+        public bool ReadResponseAsString { get; set; }
+#if DEBUG
+            = true;
+#endif
         /// <summary>
         /// 
         /// </summary>
