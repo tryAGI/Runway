@@ -25,7 +25,7 @@ namespace Runway
         /// <param name="xRunwayVersion"></param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
-        /// <exception cref="global::System.InvalidOperationException"></exception>
+        /// <exception cref="global::Runway.ApiException"></exception>
         public async global::System.Threading.Tasks.Task CancelOrDeleteTaskAsync(
             global::Runway.CancelOrDeleteTaskXRunwayVersion xRunwayVersion,
             global::System.Guid id,
@@ -85,7 +85,23 @@ namespace Runway
             ProcessCancelOrDeleteTaskResponse(
                 httpClient: HttpClient,
                 httpResponseMessage: __response);
-            __response.EnsureSuccessStatusCode();
+            try
+            {
+                __response.EnsureSuccessStatusCode();
+            }
+            catch (global::System.Net.Http.HttpRequestException __ex)
+            {
+                throw new global::Runway.ApiException(
+                    message: __response.ReasonPhrase ?? string.Empty,
+                    innerException: __ex,
+                    statusCode: __response.StatusCode)
+                {
+                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                        __response.Headers,
+                        h => h.Key,
+                        h => h.Value),
+                };
+            }
         }
     }
 }
