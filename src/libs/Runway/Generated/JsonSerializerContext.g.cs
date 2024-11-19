@@ -25,6 +25,7 @@ namespace Runway
             typeof(global::Runway.JsonConverters.CancelOrDeleteTaskXRunwayVersionNullableJsonConverter),
             typeof(global::Runway.JsonConverters.GetTaskDetailResponseStatusJsonConverter),
             typeof(global::Runway.JsonConverters.GetTaskDetailResponseStatusNullableJsonConverter),
+            typeof(global::Runway.JsonConverters.UnixTimestampJsonConverter),
         })]
 
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.JsonSerializerContextTypes))]
