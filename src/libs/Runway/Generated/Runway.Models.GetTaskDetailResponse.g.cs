@@ -96,7 +96,9 @@ namespace Runway
         /// <param name="failureCode">
         /// Machine-readable error code for the failure. Only present when the task is in **FAILED** state. The code follows a dot-separated structure, with the most generic part on the left and the most specific part on the right (e.g., `SAFETY.INPUT.IMAGE`).
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public GetTaskDetailResponse(
             global::System.Guid id,
             global::Runway.GetTaskDetailResponseStatus status,
