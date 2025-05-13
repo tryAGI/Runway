@@ -28,6 +28,10 @@ namespace Runway.JsonConverters
                     var numValue = reader.GetInt32();
                     return (global::Runway.CancelOrDeleteTaskXRunwayVersion)numValue;
                 }
+                case global::System.Text.Json.JsonTokenType.Null:
+                {
+                    return default(global::Runway.CancelOrDeleteTaskXRunwayVersion);
+                }
                 default:
                     throw new global::System.ArgumentOutOfRangeException(nameof(reader));
             }

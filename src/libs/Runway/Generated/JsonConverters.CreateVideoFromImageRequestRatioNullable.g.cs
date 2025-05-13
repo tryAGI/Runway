@@ -28,6 +28,10 @@ namespace Runway.JsonConverters
                     var numValue = reader.GetInt32();
                     return (global::Runway.CreateVideoFromImageRequestRatio)numValue;
                 }
+                case global::System.Text.Json.JsonTokenType.Null:
+                {
+                    return default(global::Runway.CreateVideoFromImageRequestRatio?);
+                }
                 default:
                     throw new global::System.ArgumentOutOfRangeException(nameof(reader));
             }
