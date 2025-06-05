@@ -43,7 +43,7 @@ namespace Runway
                 xRunwayVersion: ref xRunwayVersion,
                 id: ref id);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Runway.PathBuilder(
                 path: $"/v1/tasks/{id}",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();
