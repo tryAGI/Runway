@@ -45,7 +45,7 @@ namespace Runway
                 xRunwayVersion: ref xRunwayVersion,
                 request: request);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Runway.PathBuilder(
                 path: "/v1/image_to_video",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();
