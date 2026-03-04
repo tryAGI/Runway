@@ -13,48 +13,48 @@ namespace Runway
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Runway.RequestVariant110? Value1 { get; init; }
+        public global::Runway.RequestElevenVoiceIsolation? ElevenVoiceIsolation { get; init; }
 #else
-        public global::Runway.RequestVariant110? Value1 { get; }
+        public global::Runway.RequestElevenVoiceIsolation? ElevenVoiceIsolation { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value1))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ElevenVoiceIsolation))]
 #endif
-        public bool IsValue1 => Value1 != null;
+        public bool IsElevenVoiceIsolation => ElevenVoiceIsolation != null;
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator Request10(global::Runway.RequestVariant110 value) => new Request10((global::Runway.RequestVariant110?)value);
+        public static implicit operator Request10(global::Runway.RequestElevenVoiceIsolation value) => new Request10((global::Runway.RequestElevenVoiceIsolation?)value);
 
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::Runway.RequestVariant110?(Request10 @this) => @this.Value1;
+        public static implicit operator global::Runway.RequestElevenVoiceIsolation?(Request10 @this) => @this.ElevenVoiceIsolation;
 
         /// <summary>
         /// 
         /// </summary>
-        public Request10(global::Runway.RequestVariant110? value)
+        public Request10(global::Runway.RequestElevenVoiceIsolation? value)
         {
-            Value1 = value;
+            ElevenVoiceIsolation = value;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public object? Object =>
-            Value1 as object 
+            ElevenVoiceIsolation as object 
             ;
 
         /// <summary>
         /// 
         /// </summary>
         public override string? ToString() =>
-            Value1?.ToString() 
+            ElevenVoiceIsolation?.ToString() 
             ;
 
         /// <summary>
@@ -62,14 +62,14 @@ namespace Runway
         /// </summary>
         public bool Validate()
         {
-            return IsValue1;
+            return IsElevenVoiceIsolation;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Runway.RequestVariant110?, TResult>? value1 = null,
+            global::System.Func<global::Runway.RequestElevenVoiceIsolation?, TResult>? elevenVoiceIsolation = null,
             bool validate = true)
         {
             if (validate)
@@ -77,9 +77,9 @@ namespace Runway
                 Validate();
             }
 
-            if (IsValue1 && value1 != null)
+            if (IsElevenVoiceIsolation && elevenVoiceIsolation != null)
             {
-                return value1(Value1!);
+                return elevenVoiceIsolation(ElevenVoiceIsolation!);
             }
 
             return default(TResult);
@@ -89,7 +89,7 @@ namespace Runway
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Runway.RequestVariant110?>? value1 = null,
+            global::System.Action<global::Runway.RequestElevenVoiceIsolation?>? elevenVoiceIsolation = null,
             bool validate = true)
         {
             if (validate)
@@ -97,9 +97,9 @@ namespace Runway
                 Validate();
             }
 
-            if (IsValue1)
+            if (IsElevenVoiceIsolation)
             {
-                value1?.Invoke(Value1!);
+                elevenVoiceIsolation?.Invoke(ElevenVoiceIsolation!);
             }
         }
 
@@ -110,8 +110,8 @@ namespace Runway
         {
             var fields = new object?[]
             {
-                Value1,
-                typeof(global::Runway.RequestVariant110),
+                ElevenVoiceIsolation,
+                typeof(global::Runway.RequestElevenVoiceIsolation),
             };
             const int offset = unchecked((int)2166136261);
             const int prime = 16777619;
@@ -128,7 +128,7 @@ namespace Runway
         public bool Equals(Request10 other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::Runway.RequestVariant110?>.Default.Equals(Value1, other.Value1) 
+                global::System.Collections.Generic.EqualityComparer<global::Runway.RequestElevenVoiceIsolation?>.Default.Equals(ElevenVoiceIsolation, other.ElevenVoiceIsolation) 
                 ;
         }
 

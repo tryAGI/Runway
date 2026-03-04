@@ -13,48 +13,48 @@ namespace Runway
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Runway.RequestVariant15? Value1 { get; init; }
+        public global::Runway.RequestActTwo? ActTwo { get; init; }
 #else
-        public global::Runway.RequestVariant15? Value1 { get; }
+        public global::Runway.RequestActTwo? ActTwo { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value1))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ActTwo))]
 #endif
-        public bool IsValue1 => Value1 != null;
+        public bool IsActTwo => ActTwo != null;
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator Request5(global::Runway.RequestVariant15 value) => new Request5((global::Runway.RequestVariant15?)value);
+        public static implicit operator Request5(global::Runway.RequestActTwo value) => new Request5((global::Runway.RequestActTwo?)value);
 
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::Runway.RequestVariant15?(Request5 @this) => @this.Value1;
+        public static implicit operator global::Runway.RequestActTwo?(Request5 @this) => @this.ActTwo;
 
         /// <summary>
         /// 
         /// </summary>
-        public Request5(global::Runway.RequestVariant15? value)
+        public Request5(global::Runway.RequestActTwo? value)
         {
-            Value1 = value;
+            ActTwo = value;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public object? Object =>
-            Value1 as object 
+            ActTwo as object 
             ;
 
         /// <summary>
         /// 
         /// </summary>
         public override string? ToString() =>
-            Value1?.ToString() 
+            ActTwo?.ToString() 
             ;
 
         /// <summary>
@@ -62,14 +62,14 @@ namespace Runway
         /// </summary>
         public bool Validate()
         {
-            return IsValue1;
+            return IsActTwo;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Runway.RequestVariant15?, TResult>? value1 = null,
+            global::System.Func<global::Runway.RequestActTwo?, TResult>? actTwo = null,
             bool validate = true)
         {
             if (validate)
@@ -77,9 +77,9 @@ namespace Runway
                 Validate();
             }
 
-            if (IsValue1 && value1 != null)
+            if (IsActTwo && actTwo != null)
             {
-                return value1(Value1!);
+                return actTwo(ActTwo!);
             }
 
             return default(TResult);
@@ -89,7 +89,7 @@ namespace Runway
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Runway.RequestVariant15?>? value1 = null,
+            global::System.Action<global::Runway.RequestActTwo?>? actTwo = null,
             bool validate = true)
         {
             if (validate)
@@ -97,9 +97,9 @@ namespace Runway
                 Validate();
             }
 
-            if (IsValue1)
+            if (IsActTwo)
             {
-                value1?.Invoke(Value1!);
+                actTwo?.Invoke(ActTwo!);
             }
         }
 
@@ -110,8 +110,8 @@ namespace Runway
         {
             var fields = new object?[]
             {
-                Value1,
-                typeof(global::Runway.RequestVariant15),
+                ActTwo,
+                typeof(global::Runway.RequestActTwo),
             };
             const int offset = unchecked((int)2166136261);
             const int prime = 16777619;
@@ -128,7 +128,7 @@ namespace Runway
         public bool Equals(Request5 other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::Runway.RequestVariant15?>.Default.Equals(Value1, other.Value1) 
+                global::System.Collections.Generic.EqualityComparer<global::Runway.RequestActTwo?>.Default.Equals(ActTwo, other.ActTwo) 
                 ;
         }
 

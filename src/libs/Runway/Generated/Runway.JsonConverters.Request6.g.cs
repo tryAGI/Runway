@@ -17,25 +17,25 @@ namespace Runway.JsonConverters
 
             var
             readerCopy = reader;
-            global::Runway.RequestVariant16? value1 = default;
+            global::Runway.RequestElevenTextToSoundV2? elevenTextToSoundV2 = default;
             try
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.RequestVariant16), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.RequestVariant16> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.RequestVariant16).Name}");
-                value1 = global::System.Text.Json.JsonSerializer.Deserialize(ref readerCopy, typeInfo);
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.RequestElevenTextToSoundV2), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.RequestElevenTextToSoundV2> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.RequestElevenTextToSoundV2).Name}");
+                elevenTextToSoundV2 = global::System.Text.Json.JsonSerializer.Deserialize(ref readerCopy, typeInfo);
             }
             catch (global::System.Text.Json.JsonException)
             {
             }
 
             var result = new global::Runway.Request6(
-                value1
+                elevenTextToSoundV2
                 );
 
-            if (value1 != null)
+            if (elevenTextToSoundV2 != null)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.RequestVariant16), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.RequestVariant16> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.RequestVariant16).Name}");
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.RequestElevenTextToSoundV2), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.RequestElevenTextToSoundV2> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.RequestElevenTextToSoundV2).Name}");
                 _ = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
 
@@ -51,11 +51,11 @@ namespace Runway.JsonConverters
             options = options ?? throw new global::System.ArgumentNullException(nameof(options));
             var typeInfoResolver = options.TypeInfoResolver ?? throw new global::System.InvalidOperationException("TypeInfoResolver is not set.");
 
-            if (value.IsValue1)
+            if (value.IsElevenTextToSoundV2)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.RequestVariant16), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.RequestVariant16?> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.RequestVariant16).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Value1, typeInfo);
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.RequestElevenTextToSoundV2), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.RequestElevenTextToSoundV2?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.RequestElevenTextToSoundV2).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ElevenTextToSoundV2, typeInfo);
             }
         }
     }

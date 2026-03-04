@@ -17,25 +17,25 @@ namespace Runway.JsonConverters
 
             var
             readerCopy = reader;
-            global::Runway.RequestVariant1ReferenceVariant1? value1 = default;
+            global::Runway.RequestGen4AlephReferenceImageReference? image = default;
             try
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.RequestVariant1ReferenceVariant1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.RequestVariant1ReferenceVariant1> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.RequestVariant1ReferenceVariant1).Name}");
-                value1 = global::System.Text.Json.JsonSerializer.Deserialize(ref readerCopy, typeInfo);
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.RequestGen4AlephReferenceImageReference), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.RequestGen4AlephReferenceImageReference> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.RequestGen4AlephReferenceImageReference).Name}");
+                image = global::System.Text.Json.JsonSerializer.Deserialize(ref readerCopy, typeInfo);
             }
             catch (global::System.Text.Json.JsonException)
             {
             }
 
             var result = new global::Runway.ReferencesItem(
-                value1
+                image
                 );
 
-            if (value1 != null)
+            if (image != null)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.RequestVariant1ReferenceVariant1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.RequestVariant1ReferenceVariant1> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.RequestVariant1ReferenceVariant1).Name}");
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.RequestGen4AlephReferenceImageReference), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.RequestGen4AlephReferenceImageReference> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.RequestGen4AlephReferenceImageReference).Name}");
                 _ = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
 
@@ -51,11 +51,11 @@ namespace Runway.JsonConverters
             options = options ?? throw new global::System.ArgumentNullException(nameof(options));
             var typeInfoResolver = options.TypeInfoResolver ?? throw new global::System.InvalidOperationException("TypeInfoResolver is not set.");
 
-            if (value.IsValue1)
+            if (value.IsImage)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.RequestVariant1ReferenceVariant1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.RequestVariant1ReferenceVariant1?> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.RequestVariant1ReferenceVariant1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Value1, typeInfo);
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.RequestGen4AlephReferenceImageReference), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.RequestGen4AlephReferenceImageReference?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.RequestGen4AlephReferenceImageReference).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Image, typeInfo);
             }
         }
     }

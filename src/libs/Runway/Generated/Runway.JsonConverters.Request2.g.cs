@@ -17,63 +17,63 @@ namespace Runway.JsonConverters
 
             var
             readerCopy = reader;
-            global::Runway.RequestVariant12? value1 = default;
+            global::Runway.RequestVeo312? veo31 = default;
             try
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.RequestVariant12), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.RequestVariant12> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.RequestVariant12).Name}");
-                value1 = global::System.Text.Json.JsonSerializer.Deserialize(ref readerCopy, typeInfo);
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.RequestVeo312), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.RequestVeo312> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.RequestVeo312).Name}");
+                veo31 = global::System.Text.Json.JsonSerializer.Deserialize(ref readerCopy, typeInfo);
             }
             catch (global::System.Text.Json.JsonException)
             {
             }
 
             readerCopy = reader;
-            global::Runway.RequestVariant22? value2 = default;
+            global::Runway.RequestVeo31Fast2? veo31Fast = default;
             try
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.RequestVariant22), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.RequestVariant22> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.RequestVariant22).Name}");
-                value2 = global::System.Text.Json.JsonSerializer.Deserialize(ref readerCopy, typeInfo);
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.RequestVeo31Fast2), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.RequestVeo31Fast2> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.RequestVeo31Fast2).Name}");
+                veo31Fast = global::System.Text.Json.JsonSerializer.Deserialize(ref readerCopy, typeInfo);
             }
             catch (global::System.Text.Json.JsonException)
             {
             }
 
             readerCopy = reader;
-            global::Runway.RequestVariant32? value3 = default;
+            global::Runway.RequestVeo32? veo3 = default;
             try
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.RequestVariant32), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.RequestVariant32> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.RequestVariant32).Name}");
-                value3 = global::System.Text.Json.JsonSerializer.Deserialize(ref readerCopy, typeInfo);
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.RequestVeo32), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.RequestVeo32> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.RequestVeo32).Name}");
+                veo3 = global::System.Text.Json.JsonSerializer.Deserialize(ref readerCopy, typeInfo);
             }
             catch (global::System.Text.Json.JsonException)
             {
             }
 
             var result = new global::Runway.Request2(
-                value1,
-                value2,
-                value3
+                veo31,
+                veo31Fast,
+                veo3
                 );
 
-            if (value1 != null)
+            if (veo31 != null)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.RequestVariant12), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.RequestVariant12> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.RequestVariant12).Name}");
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.RequestVeo312), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.RequestVeo312> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.RequestVeo312).Name}");
                 _ = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
-            else if (value2 != null)
+            else if (veo31Fast != null)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.RequestVariant22), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.RequestVariant22> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.RequestVariant22).Name}");
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.RequestVeo31Fast2), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.RequestVeo31Fast2> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.RequestVeo31Fast2).Name}");
                 _ = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
-            else if (value3 != null)
+            else if (veo3 != null)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.RequestVariant32), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.RequestVariant32> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.RequestVariant32).Name}");
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.RequestVeo32), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.RequestVeo32> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.RequestVeo32).Name}");
                 _ = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
 
@@ -89,23 +89,23 @@ namespace Runway.JsonConverters
             options = options ?? throw new global::System.ArgumentNullException(nameof(options));
             var typeInfoResolver = options.TypeInfoResolver ?? throw new global::System.InvalidOperationException("TypeInfoResolver is not set.");
 
-            if (value.IsValue1)
+            if (value.IsVeo31)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.RequestVariant12), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.RequestVariant12?> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.RequestVariant12).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Value1, typeInfo);
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.RequestVeo312), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.RequestVeo312?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.RequestVeo312).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Veo31, typeInfo);
             }
-            else if (value.IsValue2)
+            else if (value.IsVeo31Fast)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.RequestVariant22), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.RequestVariant22?> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.RequestVariant22).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Value2, typeInfo);
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.RequestVeo31Fast2), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.RequestVeo31Fast2?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.RequestVeo31Fast2).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Veo31Fast, typeInfo);
             }
-            else if (value.IsValue3)
+            else if (value.IsVeo3)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.RequestVariant32), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.RequestVariant32?> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.RequestVariant32).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Value3, typeInfo);
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.RequestVeo32), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.RequestVeo32?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.RequestVeo32).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Veo3, typeInfo);
             }
         }
     }

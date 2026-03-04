@@ -13,48 +13,48 @@ namespace Runway
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Runway.RequestVariant16? Value1 { get; init; }
+        public global::Runway.RequestElevenTextToSoundV2? ElevenTextToSoundV2 { get; init; }
 #else
-        public global::Runway.RequestVariant16? Value1 { get; }
+        public global::Runway.RequestElevenTextToSoundV2? ElevenTextToSoundV2 { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value1))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ElevenTextToSoundV2))]
 #endif
-        public bool IsValue1 => Value1 != null;
+        public bool IsElevenTextToSoundV2 => ElevenTextToSoundV2 != null;
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator Request6(global::Runway.RequestVariant16 value) => new Request6((global::Runway.RequestVariant16?)value);
+        public static implicit operator Request6(global::Runway.RequestElevenTextToSoundV2 value) => new Request6((global::Runway.RequestElevenTextToSoundV2?)value);
 
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::Runway.RequestVariant16?(Request6 @this) => @this.Value1;
+        public static implicit operator global::Runway.RequestElevenTextToSoundV2?(Request6 @this) => @this.ElevenTextToSoundV2;
 
         /// <summary>
         /// 
         /// </summary>
-        public Request6(global::Runway.RequestVariant16? value)
+        public Request6(global::Runway.RequestElevenTextToSoundV2? value)
         {
-            Value1 = value;
+            ElevenTextToSoundV2 = value;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public object? Object =>
-            Value1 as object 
+            ElevenTextToSoundV2 as object 
             ;
 
         /// <summary>
         /// 
         /// </summary>
         public override string? ToString() =>
-            Value1?.ToString() 
+            ElevenTextToSoundV2?.ToString() 
             ;
 
         /// <summary>
@@ -62,14 +62,14 @@ namespace Runway
         /// </summary>
         public bool Validate()
         {
-            return IsValue1;
+            return IsElevenTextToSoundV2;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Runway.RequestVariant16?, TResult>? value1 = null,
+            global::System.Func<global::Runway.RequestElevenTextToSoundV2?, TResult>? elevenTextToSoundV2 = null,
             bool validate = true)
         {
             if (validate)
@@ -77,9 +77,9 @@ namespace Runway
                 Validate();
             }
 
-            if (IsValue1 && value1 != null)
+            if (IsElevenTextToSoundV2 && elevenTextToSoundV2 != null)
             {
-                return value1(Value1!);
+                return elevenTextToSoundV2(ElevenTextToSoundV2!);
             }
 
             return default(TResult);
@@ -89,7 +89,7 @@ namespace Runway
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Runway.RequestVariant16?>? value1 = null,
+            global::System.Action<global::Runway.RequestElevenTextToSoundV2?>? elevenTextToSoundV2 = null,
             bool validate = true)
         {
             if (validate)
@@ -97,9 +97,9 @@ namespace Runway
                 Validate();
             }
 
-            if (IsValue1)
+            if (IsElevenTextToSoundV2)
             {
-                value1?.Invoke(Value1!);
+                elevenTextToSoundV2?.Invoke(ElevenTextToSoundV2!);
             }
         }
 
@@ -110,8 +110,8 @@ namespace Runway
         {
             var fields = new object?[]
             {
-                Value1,
-                typeof(global::Runway.RequestVariant16),
+                ElevenTextToSoundV2,
+                typeof(global::Runway.RequestElevenTextToSoundV2),
             };
             const int offset = unchecked((int)2166136261);
             const int prime = 16777619;
@@ -128,7 +128,7 @@ namespace Runway
         public bool Equals(Request6 other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::Runway.RequestVariant16?>.Default.Equals(Value1, other.Value1) 
+                global::System.Collections.Generic.EqualityComparer<global::Runway.RequestElevenTextToSoundV2?>.Default.Equals(ElevenTextToSoundV2, other.ElevenTextToSoundV2) 
                 ;
         }
 

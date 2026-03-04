@@ -13,48 +13,48 @@ namespace Runway
         /// Passing an image reference allows the model to emulate the style or content of the reference in the output.
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Runway.RequestVariant1ReferenceVariant1? Value1 { get; init; }
+        public global::Runway.RequestGen4AlephReferenceImageReference? Image { get; init; }
 #else
-        public global::Runway.RequestVariant1ReferenceVariant1? Value1 { get; }
+        public global::Runway.RequestGen4AlephReferenceImageReference? Image { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value1))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Image))]
 #endif
-        public bool IsValue1 => Value1 != null;
+        public bool IsImage => Image != null;
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator ReferencesItem(global::Runway.RequestVariant1ReferenceVariant1 value) => new ReferencesItem((global::Runway.RequestVariant1ReferenceVariant1?)value);
+        public static implicit operator ReferencesItem(global::Runway.RequestGen4AlephReferenceImageReference value) => new ReferencesItem((global::Runway.RequestGen4AlephReferenceImageReference?)value);
 
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::Runway.RequestVariant1ReferenceVariant1?(ReferencesItem @this) => @this.Value1;
+        public static implicit operator global::Runway.RequestGen4AlephReferenceImageReference?(ReferencesItem @this) => @this.Image;
 
         /// <summary>
         /// 
         /// </summary>
-        public ReferencesItem(global::Runway.RequestVariant1ReferenceVariant1? value)
+        public ReferencesItem(global::Runway.RequestGen4AlephReferenceImageReference? value)
         {
-            Value1 = value;
+            Image = value;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public object? Object =>
-            Value1 as object 
+            Image as object 
             ;
 
         /// <summary>
         /// 
         /// </summary>
         public override string? ToString() =>
-            Value1?.ToString() 
+            Image?.ToString() 
             ;
 
         /// <summary>
@@ -62,14 +62,14 @@ namespace Runway
         /// </summary>
         public bool Validate()
         {
-            return IsValue1;
+            return IsImage;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Runway.RequestVariant1ReferenceVariant1?, TResult>? value1 = null,
+            global::System.Func<global::Runway.RequestGen4AlephReferenceImageReference?, TResult>? image = null,
             bool validate = true)
         {
             if (validate)
@@ -77,9 +77,9 @@ namespace Runway
                 Validate();
             }
 
-            if (IsValue1 && value1 != null)
+            if (IsImage && image != null)
             {
-                return value1(Value1!);
+                return image(Image!);
             }
 
             return default(TResult);
@@ -89,7 +89,7 @@ namespace Runway
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Runway.RequestVariant1ReferenceVariant1?>? value1 = null,
+            global::System.Action<global::Runway.RequestGen4AlephReferenceImageReference?>? image = null,
             bool validate = true)
         {
             if (validate)
@@ -97,9 +97,9 @@ namespace Runway
                 Validate();
             }
 
-            if (IsValue1)
+            if (IsImage)
             {
-                value1?.Invoke(Value1!);
+                image?.Invoke(Image!);
             }
         }
 
@@ -110,8 +110,8 @@ namespace Runway
         {
             var fields = new object?[]
             {
-                Value1,
-                typeof(global::Runway.RequestVariant1ReferenceVariant1),
+                Image,
+                typeof(global::Runway.RequestGen4AlephReferenceImageReference),
             };
             const int offset = unchecked((int)2166136261);
             const int prime = 16777619;
@@ -128,7 +128,7 @@ namespace Runway
         public bool Equals(ReferencesItem other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::Runway.RequestVariant1ReferenceVariant1?>.Default.Equals(Value1, other.Value1) 
+                global::System.Collections.Generic.EqualityComparer<global::Runway.RequestGen4AlephReferenceImageReference?>.Default.Equals(Image, other.Image) 
                 ;
         }
 

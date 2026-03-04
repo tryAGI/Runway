@@ -13,97 +13,97 @@ namespace Runway
         /// An image of your character. In the output, the character will use the reference video performance in its original static environment.
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Runway.RequestVariant1CharacterVariant1? Value1 { get; init; }
+        public global::Runway.RequestActTwoCharacterCharacterImage? Image { get; init; }
 #else
-        public global::Runway.RequestVariant1CharacterVariant1? Value1 { get; }
+        public global::Runway.RequestActTwoCharacterCharacterImage? Image { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value1))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Image))]
 #endif
-        public bool IsValue1 => Value1 != null;
+        public bool IsImage => Image != null;
 
         /// <summary>
         /// A video of your character. In the output, the character will use the reference video performance in its original animated environment and some of the character's own movements.
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Runway.RequestVariant1CharacterVariant2? Value2 { get; init; }
+        public global::Runway.RequestActTwoCharacterCharacterVideo? Video { get; init; }
 #else
-        public global::Runway.RequestVariant1CharacterVariant2? Value2 { get; }
+        public global::Runway.RequestActTwoCharacterCharacterVideo? Video { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value2))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Video))]
 #endif
-        public bool IsValue2 => Value2 != null;
+        public bool IsVideo => Video != null;
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator Character(global::Runway.RequestVariant1CharacterVariant1 value) => new Character((global::Runway.RequestVariant1CharacterVariant1?)value);
+        public static implicit operator Character(global::Runway.RequestActTwoCharacterCharacterImage value) => new Character((global::Runway.RequestActTwoCharacterCharacterImage?)value);
 
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::Runway.RequestVariant1CharacterVariant1?(Character @this) => @this.Value1;
+        public static implicit operator global::Runway.RequestActTwoCharacterCharacterImage?(Character @this) => @this.Image;
 
         /// <summary>
         /// 
         /// </summary>
-        public Character(global::Runway.RequestVariant1CharacterVariant1? value)
+        public Character(global::Runway.RequestActTwoCharacterCharacterImage? value)
         {
-            Value1 = value;
+            Image = value;
         }
 
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator Character(global::Runway.RequestVariant1CharacterVariant2 value) => new Character((global::Runway.RequestVariant1CharacterVariant2?)value);
+        public static implicit operator Character(global::Runway.RequestActTwoCharacterCharacterVideo value) => new Character((global::Runway.RequestActTwoCharacterCharacterVideo?)value);
 
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::Runway.RequestVariant1CharacterVariant2?(Character @this) => @this.Value2;
+        public static implicit operator global::Runway.RequestActTwoCharacterCharacterVideo?(Character @this) => @this.Video;
 
         /// <summary>
         /// 
         /// </summary>
-        public Character(global::Runway.RequestVariant1CharacterVariant2? value)
+        public Character(global::Runway.RequestActTwoCharacterCharacterVideo? value)
         {
-            Value2 = value;
+            Video = value;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public Character(
-            global::Runway.RequestVariant1CharacterVariant1? value1,
-            global::Runway.RequestVariant1CharacterVariant2? value2
+            global::Runway.RequestActTwoCharacterCharacterImage? image,
+            global::Runway.RequestActTwoCharacterCharacterVideo? video
             )
         {
-            Value1 = value1;
-            Value2 = value2;
+            Image = image;
+            Video = video;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public object? Object =>
-            Value2 as object ??
-            Value1 as object 
+            Video as object ??
+            Image as object 
             ;
 
         /// <summary>
         /// 
         /// </summary>
         public override string? ToString() =>
-            Value1?.ToString() ??
-            Value2?.ToString() 
+            Image?.ToString() ??
+            Video?.ToString() 
             ;
 
         /// <summary>
@@ -111,15 +111,15 @@ namespace Runway
         /// </summary>
         public bool Validate()
         {
-            return IsValue1 && !IsValue2 || !IsValue1 && IsValue2;
+            return IsImage && !IsVideo || !IsImage && IsVideo;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Runway.RequestVariant1CharacterVariant1?, TResult>? value1 = null,
-            global::System.Func<global::Runway.RequestVariant1CharacterVariant2?, TResult>? value2 = null,
+            global::System.Func<global::Runway.RequestActTwoCharacterCharacterImage?, TResult>? image = null,
+            global::System.Func<global::Runway.RequestActTwoCharacterCharacterVideo?, TResult>? video = null,
             bool validate = true)
         {
             if (validate)
@@ -127,13 +127,13 @@ namespace Runway
                 Validate();
             }
 
-            if (IsValue1 && value1 != null)
+            if (IsImage && image != null)
             {
-                return value1(Value1!);
+                return image(Image!);
             }
-            else if (IsValue2 && value2 != null)
+            else if (IsVideo && video != null)
             {
-                return value2(Value2!);
+                return video(Video!);
             }
 
             return default(TResult);
@@ -143,8 +143,8 @@ namespace Runway
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Runway.RequestVariant1CharacterVariant1?>? value1 = null,
-            global::System.Action<global::Runway.RequestVariant1CharacterVariant2?>? value2 = null,
+            global::System.Action<global::Runway.RequestActTwoCharacterCharacterImage?>? image = null,
+            global::System.Action<global::Runway.RequestActTwoCharacterCharacterVideo?>? video = null,
             bool validate = true)
         {
             if (validate)
@@ -152,13 +152,13 @@ namespace Runway
                 Validate();
             }
 
-            if (IsValue1)
+            if (IsImage)
             {
-                value1?.Invoke(Value1!);
+                image?.Invoke(Image!);
             }
-            else if (IsValue2)
+            else if (IsVideo)
             {
-                value2?.Invoke(Value2!);
+                video?.Invoke(Video!);
             }
         }
 
@@ -169,10 +169,10 @@ namespace Runway
         {
             var fields = new object?[]
             {
-                Value1,
-                typeof(global::Runway.RequestVariant1CharacterVariant1),
-                Value2,
-                typeof(global::Runway.RequestVariant1CharacterVariant2),
+                Image,
+                typeof(global::Runway.RequestActTwoCharacterCharacterImage),
+                Video,
+                typeof(global::Runway.RequestActTwoCharacterCharacterVideo),
             };
             const int offset = unchecked((int)2166136261);
             const int prime = 16777619;
@@ -189,8 +189,8 @@ namespace Runway
         public bool Equals(Character other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::Runway.RequestVariant1CharacterVariant1?>.Default.Equals(Value1, other.Value1) &&
-                global::System.Collections.Generic.EqualityComparer<global::Runway.RequestVariant1CharacterVariant2?>.Default.Equals(Value2, other.Value2) 
+                global::System.Collections.Generic.EqualityComparer<global::Runway.RequestActTwoCharacterCharacterImage?>.Default.Equals(Image, other.Image) &&
+                global::System.Collections.Generic.EqualityComparer<global::Runway.RequestActTwoCharacterCharacterVideo?>.Default.Equals(Video, other.Video) 
                 ;
         }
 
