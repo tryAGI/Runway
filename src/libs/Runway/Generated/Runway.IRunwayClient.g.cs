@@ -4,7 +4,7 @@
 namespace Runway
 {
     /// <summary>
-    /// API for generating videos from images and managing tasks. Generated from https://docs.dev.runwayml.com/api/<br/>
+    /// The API makes generative AI models available, at the same credits prices listed here ($0.01 per credit): https://help.runwayml.com/hc/en-us/articles/15124877443219-How-do-credits-work<br/>
     /// If no httpClient is provided, a new one will be created.<br/>
     /// If no baseUri is provided, the default baseUri from OpenAPI spec will be used.
     /// </summary>
@@ -36,6 +36,26 @@ namespace Runway
         /// </summary>
         global::System.Text.Json.Serialization.JsonSerializerContext JsonSerializerContext { get; set; }
 
+
+        /// <summary>
+        /// These endpoints all kick off tasks to create generations.
+        /// </summary>
+        public StartGeneratingClient StartGenerating { get; }
+
+        /// <summary>
+        /// Endpoints for managing tasks that have been submitted.
+        /// </summary>
+        public TaskManagementClient TaskManagement { get; }
+
+        /// <summary>
+        /// Endpoints for uploading media files.
+        /// </summary>
+        public UploadsClient Uploads { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public OrganizationClient Organization { get; }
 
     }
 }

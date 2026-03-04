@@ -6,7 +6,7 @@
 [![Discord](https://img.shields.io/discord/1115206893015662663?label=Discord&logo=discord&logoColor=white&color=d82679)](https://discord.gg/Ca2xhfBf3v)
 
 ## Features 🔥
-- Fully generated C# SDK based on [official Runway OpenAPI specification](https://raw.githubusercontent.com/Runway/assemblyai-api-spec/main/openapi.yml) using [AutoSDK](https://github.com/HavenDV/AutoSDK)
+- Fully generated C# SDK based on [official Runway OpenAPI specification](https://raw.githubusercontent.com/runwayml/openapi/refs/heads/main/openapi.json) using [AutoSDK](https://github.com/HavenDV/AutoSDK)
 - Same day update to support new features
 - Updated and supported automatically if there are no breaking changes
 - All modern .NET features - nullability, trimming, NativeAOT, etc.
@@ -18,40 +18,51 @@ using Runway;
 
 using var client = new RunwayClient(apiKey);
 
-var response = await client.CreateVideoFromImageAsync(
-    xRunwayVersion: CreateVideoFromImageXRunwayVersion.x20240913,
-    promptImage: "https://img.freepik.com/free-photo/beautiful-woman-with-long-blond-hair-looking-camera-outdoors-generated-by-artificial-intelligence_188544-240170.jpg",
-    seed: 999999999,
-    model: CreateVideoFromImageRequestModel.Gen3aTurbo,
-    promptText: "The girl smiles a little",
-    watermark: false,
-    duration: 5,
-    ratio: CreateVideoFromImageRequestRatio.x16_9);
+var response = await client.StartGenerating.CreateImageToVideoAsync(
+    xRunwayVersion: "2024-11-06",
+    request: new RequestVariant3
+    {
+        PromptImage = new AnyOf<AnyOf<string, string, string>?, IList<RequestVariant3PromptImageVariant2Item>>
+        {
+            Value1 = new AnyOf<string, string, string>
+            {
+                Value1 = "https://img.freepik.com/free-photo/beautiful-woman-with-long-blond-hair-looking-camera-outdoors-generated-by-artificial-intelligence_188544-240170.jpg",
+            },
+        },
+        PromptText = "The girl smiles a little",
+        Seed = 999999999,
+        Model = "gen3a_turbo",
+        Duration = 5,
+        Ratio = RequestVariant3Ratio.x1280_768,
+    });
 response.Id.Should().NotBe(default(Guid));
 
-GetTaskDetailResponse taskDetail;
+Response taskDetail;
 do
 {
-    taskDetail = await client.GetTaskDetailAsync(GetTaskDetailXRunwayVersion.x20240913, response.Id);
-    
-    Console.WriteLine($"Progress: {taskDetail.Progress}");
-    
+    taskDetail = await client.TaskManagement.GetTasksByIdAsync(
+        id: response.Id,
+        xRunwayVersion: "2024-11-06");
+
+    if (taskDetail.IsValue4)
+    {
+        Console.WriteLine($"Progress: {taskDetail.Value4!.Progress}");
+    }
+
     await Task.Delay(TimeSpan.FromSeconds(10));
 }
-while (taskDetail.Status != GetTaskDetailResponseStatus.FAILED &&
-       taskDetail.Status != GetTaskDetailResponseStatus.SUCCEEDED &&
-       taskDetail.Status != GetTaskDetailResponseStatus.CANCELLED);
+while (!taskDetail.IsValue5 && !taskDetail.IsValue6 && !taskDetail.IsValue3);
 
-Console.WriteLine($"Task ID: {taskDetail.Id}");
-Console.WriteLine($"Task Status: {taskDetail.Status}");
-Console.WriteLine($"CreatedAt: {taskDetail.CreatedAt}");
-Console.WriteLine($"Failure: {taskDetail.Failure}");
-Console.WriteLine($"FailureCode: {taskDetail.FailureCode}");
-Console.WriteLine($"Progress: {taskDetail.Progress}");
-
-foreach (var output in taskDetail.Output ?? [])
+if (taskDetail.IsValue6)
 {
-    Console.WriteLine($"Video URL: {output}");
+    Console.WriteLine($"Task ID: {taskDetail.Value6!.Id}");
+    Console.WriteLine($"Task Status: {taskDetail.Value6.Status}");
+    Console.WriteLine($"CreatedAt: {taskDetail.Value6.CreatedAt}");
+
+    foreach (var output in taskDetail.Value6.Output)
+    {
+        Console.WriteLine($"Video URL: {output}");
+    }
 }
 ```
 

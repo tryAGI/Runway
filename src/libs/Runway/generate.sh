@@ -1,6 +1,6 @@
 dotnet tool install --global autosdk.cli --prerelease
 rm -rf Generated
-# curl -o openapi.yaml https://raw.githubusercontent.com/api/openapi.json
+curl -o openapi.yaml https://raw.githubusercontent.com/runwayml/openapi/refs/heads/main/openapi.json
 # dotnet run --project ../../helpers/FixOpenApiSpec openapi.yaml
 # if [ $? -ne 0 ]; then
 # echo "Failed, exiting..."

@@ -1,0 +1,20 @@
+#nullable enable
+
+namespace Runway
+{
+    public partial interface IOrganizationClient
+    {
+        /// <summary>
+        /// Get organization information<br/>
+        /// Get usage tier and credit balance information about the organization associated with the API key used to make the request.
+        /// </summary>
+        /// <param name="xRunwayVersion">
+        /// Default Value: 2024-11-06
+        /// </param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Runway.ApiException"></exception>
+        global::System.Threading.Tasks.Task<global::Runway.Response23> GetOrganizationAsync(
+            string xRunwayVersion,
+            global::System.Threading.CancellationToken cancellationToken = default);
+    }
+}

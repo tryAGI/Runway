@@ -1,189 +1,3670 @@
-openapi: 3.0.3
-info:
-  title: Runway API
-  version: 1.0.0
-  description: API for generating videos from images and managing tasks. Generated from https://docs.dev.runwayml.com/api/
-
-servers:
-  - url: https://api.dev.runwayml.com
-
-components:
-  securitySchemes:
-    bearerAuth:
-      type: http
-      scheme: bearer
-  parameters:
-    X-Runway-Version:
-      in: header
-      name: X-Runway-Version
-      required: true
-      schema:
-        type: string
-        enum: ["2024-09-13"]
-      description: API version header.
-    TaskId:
-      in: path
-      name: id
-      required: true
-      schema:
-        type: string
-        format: uuid
-      description: The ID of the task.
-
-paths:
-  /v1/image_to_video:
-    post:
-      summary: Generate a video from an image.
-      description: Start a new task to generate a video from an image prompt.
-      operationId: createVideoFromImage
-      security:
-        - bearerAuth: []
-      parameters:
-        - $ref: '#/components/parameters/X-Runway-Version'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              required:
-                - promptImage
-                - model
-              properties:
-                promptImage:
-                  type: string
-                  format: uri
-                  description: HTTPS URL of an image (JPEG, PNG, WebP, max 16MB).
-                model:
-                  type: string
-                  enum: ["gen3a_turbo"]
-                  description: The model variant to use.
-                seed:
-                  type: integer
-                  minimum: 0
-                  maximum: 999999999
-                  description: Seed value for generating consistent results.
-                promptText:
-                  type: string
-                  maxLength: 512
-                  description: A detailed description of the output.
-                watermark:
-                  type: boolean
-                  default: false
-                  description: Add a Runway watermark to the output.
-                duration:
-                  type: integer
-                  enum: [5, 10]
-                  default: 10
-                  description: Duration of the video in seconds.
-                ratio:
-                  type: string
-                  enum: ["16:9", "9:16"]
-                  default: "16:9"
-                  description: Aspect ratio of the video.
-      responses:
-        '200':
-          description: Task successfully created.
-          content:
-            application/json:
-              schema:
-                type: object
-                required:
-                  - id
-                properties:
-                  id:
-                    type: string
-                    format: uuid
-        '429':
-          description: Rate limit exceeded.
-
-  /v1/tasks/{id}:
-    get:
-      summary: Get task detail.
-      description: Return details about a task. Updates every 5 seconds.
-      operationId: getTaskDetail
-      security:
-        - bearerAuth: []
-      parameters:
-        - $ref: '#/components/parameters/X-Runway-Version'
-        - $ref: '#/components/parameters/TaskId'
-      responses:
-        '200':
-          description: Task status.
-          content:
-            application/json:
-              schema:
-                type: object
-                required:
-                  - id
-                  - status
-                  - createdAt
-                properties:
-                  id:
-                    type: string
-                    format: uuid
-                    description: Unique identifier of the task.
-                  status:
-                    type: string
-                    enum:
-                      - PENDING
-                      - THROTTLED
-                      - RUNNING
-                      - SUCCEEDED
-                      - FAILED
-                      - CANCELLED
-                    description: |
-                      Current status of the task:
-                      - **PENDING**: The task is waiting in the queue.
-                      - **THROTTLED**: The task is waiting to be enqueued due to other running jobs.
-                      - **RUNNING**: The task is currently being processed.
-                      - **SUCCEEDED**: The task completed successfully.
-                      - **FAILED**: The task failed.
-                      - **CANCELLED**: The task was aborted.
-                  createdAt:
-                    type: string
-                    format: date-time
-                    description: Timestamp when the task was submitted.
-                  progress:
-                    type: number
-                    format: float
-                    minimum: 0
-                    maximum: 1
-                    description: |
-                      Progress of the task. Only present when the task is in **RUNNING** state.
-                  output:
-                    type: array
-                    items:
-                      type: string
-                      format: uri
-                    description: |
-                      URLs to the task's output. Only present when the task is in **SUCCEEDED** state. These URLs expire within 24-48 hours; fetch the task again to get fresh URLs.
-                  failure:
-                    type: string
-                    description: |
-                      Reason for the task's failure. Only present when the task is in **FAILED** state.
-                  failureCode:
-                    type: string
-                    description: |
-                      Machine-readable error code for the failure. Only present when the task is in **FAILED** state. The code follows a dot-separated structure, with the most generic part on the left and the most specific part on the right (e.g., `SAFETY.INPUT.IMAGE`).
-        
-        '404':
-          description: Task not found or deleted.
-
-    delete:
-      summary: Cancel or delete a task.
-      description: Cancel a running task or delete a completed one.
-      operationId: cancelOrDeleteTask
-      security:
-        - bearerAuth: []
-      parameters:
-        - $ref: '#/components/parameters/X-Runway-Version'
-        - $ref: '#/components/parameters/TaskId'
-      responses:
-        '204':
-          description: Task canceled or deleted successfully.
-        '404':
-          description: Task not found or already deleted.
-
-security:
-  - bearerAuth: []
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "RunwayML API",
+    "version": "2024-11-06",
+    "description": "The API makes generative AI models available, at the same credits prices listed here ($0.01 per credit): https://help.runwayml.com/hc/en-us/articles/15124877443219-How-do-credits-work"
+  },
+  "paths": {
+    "/v1/tasks/{id}": {
+      "get": {
+        "tags": [
+          "Task management"
+        ],
+        "summary": "Get task detail",
+        "description": "Return details about a task. Consumers of this API should not expect updates more frequent than once every five seconds for a given task.",
+        "x-codeSamples": [
+          {
+            "lang": "TypeScript",
+            "label": "Node SDK",
+            "source": "// npm install --save @runwayml/sdk\nimport RunwayML from '@runwayml/sdk';\n\n// The env var RUNWAYML_API_SECRET is expected to contain your API key.\nconst client = new RunwayML();\n\n// Fetch the current state of the task:\nconst task = await client.tasks.retrieve(\n  '17f20503-6c24-4c16-946b-35dbbce2af2f'\n);\n\n// Or, wait for the task to succeed or fail:\nconst task = await client.tasks\n  .retrieve('17f20503-6c24-4c16-946b-35dbbce2af2f')\n  .waitForTaskOutput();"
+          },
+          {
+            "lang": "Python",
+            "label": "Python SDK",
+            "source": "# pip install runwayml\nfrom runwayml import RunwayML\n\n# The env var RUNWAYML_API_SECRET is expected to contain your API key.\nclient = RunwayML()\n\ntask_id = '17f20503-6c24-4c16-946b-35dbbce2af2f'\n\n# Fetch the current state of the task:\ntask = client.tasks.retrieve(id=task_id)\nprint(task)\n\n# Or, wait for the task to succeed or fail:\ntask = client.tasks.retrieve(id=task_id).wait_for_task_output()\nprint(task)"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12})$"
+            },
+            "description": "The ID of a previously-submitted task that has not been canceled or deleted."
+          },
+          {
+            "$ref": "#/components/parameters/X-Runway-Version"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "description": "A pending task",
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "description": "The ID of the task being returned.",
+                          "type": "string",
+                          "format": "uuid",
+                          "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12})$"
+                        },
+                        "createdAt": {
+                          "description": "The timestamp that the task was submitted at.",
+                          "type": "string",
+                          "format": "date-time",
+                          "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+                        },
+                        "status": {
+                          "type": "string",
+                          "const": "PENDING"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "createdAt",
+                        "status"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "description": "A throttled task",
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "description": "The ID of the task being returned.",
+                          "type": "string",
+                          "format": "uuid",
+                          "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12})$"
+                        },
+                        "createdAt": {
+                          "description": "The timestamp that the task was submitted at.",
+                          "type": "string",
+                          "format": "date-time",
+                          "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+                        },
+                        "status": {
+                          "type": "string",
+                          "const": "THROTTLED"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "createdAt",
+                        "status"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "description": "A cancelled or deleted task",
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "description": "The ID of the task being returned.",
+                          "type": "string",
+                          "format": "uuid",
+                          "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12})$"
+                        },
+                        "createdAt": {
+                          "description": "The timestamp that the task was submitted at.",
+                          "type": "string",
+                          "format": "date-time",
+                          "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+                        },
+                        "status": {
+                          "type": "string",
+                          "const": "CANCELLED"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "createdAt",
+                        "status"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "description": "A running task",
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "description": "The ID of the task being returned.",
+                          "type": "string",
+                          "format": "uuid",
+                          "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12})$"
+                        },
+                        "createdAt": {
+                          "description": "The timestamp that the task was submitted at.",
+                          "type": "string",
+                          "format": "date-time",
+                          "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+                        },
+                        "status": {
+                          "type": "string",
+                          "const": "RUNNING"
+                        },
+                        "progress": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 1
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "createdAt",
+                        "status",
+                        "progress"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "description": "A failed task",
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "description": "The ID of the task being returned.",
+                          "type": "string",
+                          "format": "uuid",
+                          "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12})$"
+                        },
+                        "createdAt": {
+                          "description": "The timestamp that the task was submitted at.",
+                          "type": "string",
+                          "format": "date-time",
+                          "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+                        },
+                        "status": {
+                          "type": "string",
+                          "const": "FAILED"
+                        },
+                        "failure": {
+                          "description": "A human-friendly reason for the failure. We do not recommend returning this to users directly without adding context.",
+                          "type": "string"
+                        },
+                        "failureCode": {
+                          "description": "A machine-readable error code for the failure. See https://docs.dev.runwayml.com/errors/task-failures/ for more information.",
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "createdAt",
+                        "status",
+                        "failure"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "description": "A succeeded task",
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "description": "The ID of the task being returned.",
+                          "type": "string",
+                          "format": "uuid",
+                          "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12})$"
+                        },
+                        "createdAt": {
+                          "description": "The timestamp that the task was submitted at.",
+                          "type": "string",
+                          "format": "date-time",
+                          "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+                        },
+                        "status": {
+                          "type": "string",
+                          "const": "SUCCEEDED"
+                        },
+                        "output": {
+                          "description": "An array of URLs that return the output of the task. These URLs will expire within 24-48 hours; fetch the task again to get fresh URLs. It is expected that you download the assets at these URLs and store them in your own storage system.",
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "format": "uri"
+                          }
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "createdAt",
+                        "status",
+                        "output"
+                      ],
+                      "additionalProperties": false
+                    }
+                  ],
+                  "discriminator": {
+                    "propertyName": "status"
+                  }
+                },
+                "examples": {
+                  "pending": {
+                    "title": "Pending task",
+                    "summary": "An example of a pending task",
+                    "value": {
+                      "id": "17f20503-6c24-4c16-946b-35dbbce2af2f",
+                      "status": "PENDING",
+                      "createdAt": "2024-06-27T19:49:32.334Z"
+                    }
+                  },
+                  "throttled": {
+                    "title": "Throttled task",
+                    "summary": "An example of a throttled task",
+                    "value": {
+                      "id": "355e42da-b3f9-4b65-9be2-fb10bda026fc",
+                      "status": "THROTTLED",
+                      "createdAt": "2024-06-27T19:49:32.335Z"
+                    }
+                  },
+                  "running": {
+                    "title": "Running task",
+                    "summary": "An example of a running task",
+                    "value": {
+                      "id": "08388106-1b46-4f5c-bd46-1c1d7ee86892",
+                      "status": "RUNNING",
+                      "createdAt": "2024-06-27T19:49:32.335Z",
+                      "progress": 0.2
+                    }
+                  },
+                  "succeeded": {
+                    "title": "Succeeded task",
+                    "summary": "An example of a succeeded task",
+                    "value": {
+                      "id": "d2e3d1f4-1b3c-4b5c-8d46-1c1d7ee86892",
+                      "status": "SUCCEEDED",
+                      "createdAt": "2024-06-27T19:49:32.335Z",
+                      "output": [
+                        "https://example.com/output1.jpg",
+                        "https://example.com/output2.jpg"
+                      ]
+                    }
+                  },
+                  "failed": {
+                    "title": "Failed task",
+                    "summary": "An example of a failed task",
+                    "value": {
+                      "id": "6da960dd-ef88-40fc-9628-02e9b6a6a008",
+                      "status": "FAILED",
+                      "createdAt": "2024-06-27T19:49:32.335Z",
+                      "failure": "The provided image was flagged by content moderation.",
+                      "failureCode": "SAFETY.INPUT.IMAGE"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "The task does not exist, or was deleted or canceled.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Task management"
+        ],
+        "summary": "Cancel or delete a task",
+        "description": "Tasks that are running, pending, or throttled can be canceled by invoking this method. Invoking this method for other tasks will delete them.\n\nThe output data associated with a deleted task will be deleted from persistent storage in accordance with our data retention policy. Aborted and deleted tasks will not be able to be fetched again in the future.",
+        "x-codeSamples": [
+          {
+            "lang": "TypeScript",
+            "label": "Node SDK",
+            "source": "// npm install --save @runwayml/sdk\nimport RunwayML from '@runwayml/sdk';\n\n// The env var RUNWAYML_API_SECRET is expected to contain your API key.\nconst client = new RunwayML();\n\nawait client.tasks.delete('17f20503-6c24-4c16-946b-35dbbce2af2f');"
+          },
+          {
+            "lang": "Python",
+            "label": "Python SDK",
+            "source": "# pip install runwayml\nfrom runwayml import RunwayML\n\n# The env var RUNWAYML_API_SECRET is expected to contain your API key.\nclient = RunwayML()\n\nclient.tasks.delete(id='17f20503-6c24-4c16-946b-35dbbce2af2f')"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12})$"
+            },
+            "description": "The ID of a previously-submitted task that has not been canceled or deleted."
+          },
+          {
+            "$ref": "#/components/parameters/X-Runway-Version"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "This endpoint will produce a 204 No Content response indicating successful cancellation or deletion. Calling this endpoint for tasks which have already been deleted or aborted will result in a 404: for idempotency purposes, it is safe to ignore these 404 errors."
+          }
+        }
+      }
+    },
+    "/v1/image_to_video": {
+      "post": {
+        "tags": [
+          "Start generating"
+        ],
+        "summary": "Image to video",
+        "description": "This endpoint will start a new task to generate a video from an image.",
+        "x-codeSamples": [
+          {
+            "lang": "TypeScript",
+            "label": "Node SDK",
+            "source": "// npm install --save @runwayml/sdk\nimport RunwayML from '@runwayml/sdk';\n\n// The env var RUNWAYML_API_SECRET is expected to contain your API key.\nconst client = new RunwayML();\n\nconst task = await client.imageToVideo\n  .create({\n    model: 'gen4_turbo',\n    promptImage: 'https://example.com/bunny.jpg',\n    promptText: 'A cute bunny hopping in a meadow',\n    duration: 10,\n  })\n  .waitForTaskOutput();\n\nconsole.log(task);"
+          },
+          {
+            "lang": "Python",
+            "label": "Python SDK",
+            "source": "# pip install runwayml\nfrom runwayml import RunwayML\n\n# The env var RUNWAYML_API_SECRET is expected to contain your API key.\nclient = RunwayML()\n\ntask = client.image_to_video.create(\n  model='gen4_turbo',\n  prompt_image='https://example.com/bunny.jpg',\n  prompt_text='A cute bunny hopping in a meadow',\n  duration=10,\n).wait_for_task_output()\n\nprint(task)"
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/X-Runway-Version"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "oneOf": [
+                  {
+                    "title": "gen4_turbo",
+                    "type": "object",
+                    "properties": {
+                      "promptText": {
+                        "description": "A non-empty string up to 1000 characters (measured in UTF-16 code units). This should describe in detail what should appear in the output.",
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 1000
+                      },
+                      "promptImage": {
+                        "anyOf": [
+                          {
+                            "description": "A HTTPS URL, Runway or data URI containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                            "example": "https://example.com/image.jpg",
+                            "anyOf": [
+                              {
+                                "description": "A HTTPS URL.",
+                                "example": "https://example.com/file",
+                                "type": "string",
+                                "minLength": 13,
+                                "maxLength": 2048,
+                                "pattern": "^https:\\/\\/.*"
+                              },
+                              {
+                                "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                                "example": "runway://<token>",
+                                "type": "string",
+                                "minLength": 13,
+                                "maxLength": 5000,
+                                "pattern": "^runway:\\/\\/.*"
+                              },
+                              {
+                                "description": "A data URI containing encoded media.",
+                                "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                                "type": "string",
+                                "minLength": 13,
+                                "maxLength": 5242880,
+                                "pattern": "^data:image\\/.*"
+                              }
+                            ]
+                          },
+                          {
+                            "title": "PromptImages",
+                            "description": "An array of objects representing images to be used in the output video. Only a `first` frame is supported.",
+                            "minItems": 1,
+                            "maxItems": 1,
+                            "type": "array",
+                            "items": {
+                              "title": "PromptImage",
+                              "x-stainless-variantName": "PromptImage",
+                              "type": "object",
+                              "properties": {
+                                "uri": {
+                                  "description": "A HTTPS URL, Runway or data URI containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                                  "example": "https://example.com/image.jpg",
+                                  "anyOf": [
+                                    {
+                                      "description": "A HTTPS URL.",
+                                      "example": "https://example.com/file",
+                                      "type": "string",
+                                      "minLength": 13,
+                                      "maxLength": 2048,
+                                      "pattern": "^https:\\/\\/.*"
+                                    },
+                                    {
+                                      "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                                      "example": "runway://<token>",
+                                      "type": "string",
+                                      "minLength": 13,
+                                      "maxLength": 5000,
+                                      "pattern": "^runway:\\/\\/.*"
+                                    },
+                                    {
+                                      "description": "A data URI containing encoded media.",
+                                      "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                                      "type": "string",
+                                      "minLength": 13,
+                                      "maxLength": 5242880,
+                                      "pattern": "^data:image\\/.*"
+                                    }
+                                  ]
+                                },
+                                "position": {
+                                  "description": "The position of the image in the output video. \"first\" will use the image as the first frame of the video.",
+                                  "type": "string",
+                                  "const": "first"
+                                }
+                              },
+                              "required": [
+                                "uri",
+                                "position"
+                              ]
+                            }
+                          }
+                        ]
+                      },
+                      "seed": {
+                        "description": "If unspecified, a random number is chosen. Varying the seed integer is a way to get different results for the same other request parameters. Using the same seed integer for an identical request will produce similar results.",
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 4294967295
+                      },
+                      "ratio": {
+                        "description": "The resolution of the output video.",
+                        "type": "string",
+                        "enum": [
+                          "1280:720",
+                          "720:1280",
+                          "1104:832",
+                          "832:1104",
+                          "960:960",
+                          "1584:672"
+                        ]
+                      },
+                      "duration": {
+                        "description": "The number of seconds of duration for the output video.",
+                        "type": "integer",
+                        "minimum": 2,
+                        "maximum": 10
+                      },
+                      "contentModeration": {
+                        "description": "Settings that affect the behavior of the content moderation system.",
+                        "type": "object",
+                        "properties": {
+                          "publicFigureThreshold": {
+                            "description": "When set to `low`, the content moderation system will be less strict about preventing generations that include recognizable public figures.",
+                            "type": "string",
+                            "enum": [
+                              "auto",
+                              "low"
+                            ]
+                          }
+                        }
+                      },
+                      "model": {
+                        "type": "string",
+                        "const": "gen4_turbo"
+                      }
+                    },
+                    "required": [
+                      "promptImage",
+                      "ratio",
+                      "model"
+                    ]
+                  },
+                  {
+                    "title": "veo3.1",
+                    "type": "object",
+                    "properties": {
+                      "promptText": {
+                        "description": "A non-empty string up to 1000 characters (measured in UTF-16 code units). This should describe in detail what should appear in the output.",
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 1000
+                      },
+                      "promptImage": {
+                        "description": "You may specify an image to use as the first frame of the output video, or an array with a first frame and optionally a last frame. This model does not support generating with only a last frame.",
+                        "anyOf": [
+                          {
+                            "description": "A HTTPS URL, Runway or data URI containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                            "example": "https://example.com/image.jpg",
+                            "anyOf": [
+                              {
+                                "description": "A HTTPS URL.",
+                                "example": "https://example.com/file",
+                                "type": "string",
+                                "minLength": 13,
+                                "maxLength": 2048,
+                                "pattern": "^https:\\/\\/.*"
+                              },
+                              {
+                                "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                                "example": "runway://<token>",
+                                "type": "string",
+                                "minLength": 13,
+                                "maxLength": 5000,
+                                "pattern": "^runway:\\/\\/.*"
+                              },
+                              {
+                                "description": "A data URI containing encoded media.",
+                                "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                                "type": "string",
+                                "minLength": 13,
+                                "maxLength": 5242880,
+                                "pattern": "^data:image\\/.*"
+                              }
+                            ]
+                          },
+                          {
+                            "title": "PromptImages",
+                            "description": "An array of objects representing images to be used in the output video. No two provided images may have the same `position` value.",
+                            "example": [
+                              {
+                                "uri": "https://example.com/firstFrame.jpg",
+                                "position": "first"
+                              },
+                              {
+                                "uri": "https://example.com/lastFrame.jpg",
+                                "position": "last"
+                              }
+                            ],
+                            "minItems": 1,
+                            "maxItems": 2,
+                            "type": "array",
+                            "items": {
+                              "title": "PromptImage",
+                              "x-stainless-variantName": "PromptImage",
+                              "type": "object",
+                              "properties": {
+                                "uri": {
+                                  "description": "A HTTPS URL, Runway or data URI containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                                  "example": "https://example.com/image.jpg",
+                                  "anyOf": [
+                                    {
+                                      "description": "A HTTPS URL.",
+                                      "example": "https://example.com/file",
+                                      "type": "string",
+                                      "minLength": 13,
+                                      "maxLength": 2048,
+                                      "pattern": "^https:\\/\\/.*"
+                                    },
+                                    {
+                                      "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                                      "example": "runway://<token>",
+                                      "type": "string",
+                                      "minLength": 13,
+                                      "maxLength": 5000,
+                                      "pattern": "^runway:\\/\\/.*"
+                                    },
+                                    {
+                                      "description": "A data URI containing encoded media.",
+                                      "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                                      "type": "string",
+                                      "minLength": 13,
+                                      "maxLength": 5242880,
+                                      "pattern": "^data:image\\/.*"
+                                    }
+                                  ]
+                                },
+                                "position": {
+                                  "description": "The position of the image in the output video. \"first\" will use the image as the first frame of the video, \"last\" will use the image as the last frame of the video.",
+                                  "type": "string",
+                                  "enum": [
+                                    "first",
+                                    "last"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "uri",
+                                "position"
+                              ]
+                            }
+                          }
+                        ]
+                      },
+                      "ratio": {
+                        "description": "The resolution of the output video.",
+                        "type": "string",
+                        "enum": [
+                          "1280:720",
+                          "720:1280",
+                          "1080:1920",
+                          "1920:1080"
+                        ]
+                      },
+                      "audio": {
+                        "description": "Whether to generate audio for the video. Audio inclusion affects pricing.",
+                        "default": true,
+                        "type": "boolean"
+                      },
+                      "duration": {
+                        "description": "The number of seconds of duration for the output video.",
+                        "type": "number",
+                        "enum": [
+                          4,
+                          6,
+                          8
+                        ]
+                      },
+                      "model": {
+                        "type": "string",
+                        "const": "veo3.1"
+                      }
+                    },
+                    "required": [
+                      "promptImage",
+                      "ratio",
+                      "model"
+                    ]
+                  },
+                  {
+                    "title": "gen3a_turbo",
+                    "type": "object",
+                    "properties": {
+                      "promptText": {
+                        "description": "A non-empty string up to 1000 characters (measured in UTF-16 code units). This should describe in detail what should appear in the output.",
+                        "example": "A beautiful sunset over a calm ocean.",
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 1000
+                      },
+                      "promptImage": {
+                        "anyOf": [
+                          {
+                            "description": "A HTTPS URL, Runway or data URI containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                            "example": "https://example.com/image.jpg",
+                            "anyOf": [
+                              {
+                                "description": "A HTTPS URL.",
+                                "example": "https://example.com/file",
+                                "type": "string",
+                                "minLength": 13,
+                                "maxLength": 2048,
+                                "pattern": "^https:\\/\\/.*"
+                              },
+                              {
+                                "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                                "example": "runway://<token>",
+                                "type": "string",
+                                "minLength": 13,
+                                "maxLength": 5000,
+                                "pattern": "^runway:\\/\\/.*"
+                              },
+                              {
+                                "description": "A data URI containing encoded media.",
+                                "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                                "type": "string",
+                                "minLength": 13,
+                                "maxLength": 5242880,
+                                "pattern": "^data:image\\/.*"
+                              }
+                            ]
+                          },
+                          {
+                            "title": "PromptImages",
+                            "description": "An array of objects representing images to be used in the output video. No two provided images may have the same `position` value.",
+                            "example": [
+                              {
+                                "uri": "https://example.com/firstFrame.jpg",
+                                "position": "first"
+                              },
+                              {
+                                "uri": "https://example.com/lastFrame.jpg",
+                                "position": "last"
+                              }
+                            ],
+                            "minItems": 1,
+                            "maxItems": 2,
+                            "type": "array",
+                            "items": {
+                              "title": "PromptImage",
+                              "x-stainless-variantName": "PromptImage",
+                              "type": "object",
+                              "properties": {
+                                "uri": {
+                                  "description": "A HTTPS URL, Runway or data URI containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                                  "example": "https://example.com/image.jpg",
+                                  "anyOf": [
+                                    {
+                                      "description": "A HTTPS URL.",
+                                      "example": "https://example.com/file",
+                                      "type": "string",
+                                      "minLength": 13,
+                                      "maxLength": 2048,
+                                      "pattern": "^https:\\/\\/.*"
+                                    },
+                                    {
+                                      "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                                      "example": "runway://<token>",
+                                      "type": "string",
+                                      "minLength": 13,
+                                      "maxLength": 5000,
+                                      "pattern": "^runway:\\/\\/.*"
+                                    },
+                                    {
+                                      "description": "A data URI containing encoded media.",
+                                      "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                                      "type": "string",
+                                      "minLength": 13,
+                                      "maxLength": 5242880,
+                                      "pattern": "^data:image\\/.*"
+                                    }
+                                  ]
+                                },
+                                "position": {
+                                  "description": "The position of the image in the output video. \"first\" will use the image as the first frame of the video, \"last\" will use the image as the last frame of the video.",
+                                  "type": "string",
+                                  "enum": [
+                                    "first",
+                                    "last"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "uri",
+                                "position"
+                              ]
+                            }
+                          }
+                        ]
+                      },
+                      "seed": {
+                        "description": "If unspecified, a random number is chosen. Varying the seed integer is a way to get different results for the same other request parameters. Using the same seed integer for an identical request will produce similar results.",
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 4294967295
+                      },
+                      "duration": {
+                        "description": "The duration of the output video in seconds.",
+                        "example": 5,
+                        "default": 10,
+                        "type": "number",
+                        "enum": [
+                          5,
+                          10
+                        ]
+                      },
+                      "ratio": {
+                        "description": "The resolution of the output video.",
+                        "example": "1280:768",
+                        "type": "string",
+                        "enum": [
+                          "768:1280",
+                          "1280:768"
+                        ]
+                      },
+                      "contentModeration": {
+                        "description": "Settings that affect the behavior of the content moderation system.",
+                        "example": {
+                          "publicFigureThreshold": "auto"
+                        },
+                        "type": "object",
+                        "properties": {
+                          "publicFigureThreshold": {
+                            "description": "When set to `low`, the content moderation system will be less strict about preventing generations that include recognizable public figures.",
+                            "type": "string",
+                            "enum": [
+                              "auto",
+                              "low"
+                            ]
+                          }
+                        }
+                      },
+                      "model": {
+                        "type": "string",
+                        "const": "gen3a_turbo"
+                      }
+                    },
+                    "required": [
+                      "promptText",
+                      "promptImage",
+                      "model"
+                    ]
+                  },
+                  {
+                    "title": "veo3.1_fast",
+                    "type": "object",
+                    "properties": {
+                      "promptText": {
+                        "description": "A non-empty string up to 1000 characters (measured in UTF-16 code units). This should describe in detail what should appear in the output.",
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 1000
+                      },
+                      "promptImage": {
+                        "description": "You may specify an image to use as the first frame of the output video, or an array with a first frame and optionally a last frame. This model does not support generating with only a last frame.",
+                        "anyOf": [
+                          {
+                            "description": "A HTTPS URL, Runway or data URI containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                            "example": "https://example.com/image.jpg",
+                            "anyOf": [
+                              {
+                                "description": "A HTTPS URL.",
+                                "example": "https://example.com/file",
+                                "type": "string",
+                                "minLength": 13,
+                                "maxLength": 2048,
+                                "pattern": "^https:\\/\\/.*"
+                              },
+                              {
+                                "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                                "example": "runway://<token>",
+                                "type": "string",
+                                "minLength": 13,
+                                "maxLength": 5000,
+                                "pattern": "^runway:\\/\\/.*"
+                              },
+                              {
+                                "description": "A data URI containing encoded media.",
+                                "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                                "type": "string",
+                                "minLength": 13,
+                                "maxLength": 5242880,
+                                "pattern": "^data:image\\/.*"
+                              }
+                            ]
+                          },
+                          {
+                            "title": "PromptImages",
+                            "description": "An array of objects representing images to be used in the output video. No two provided images may have the same `position` value.",
+                            "example": [
+                              {
+                                "uri": "https://example.com/firstFrame.jpg",
+                                "position": "first"
+                              },
+                              {
+                                "uri": "https://example.com/lastFrame.jpg",
+                                "position": "last"
+                              }
+                            ],
+                            "minItems": 1,
+                            "maxItems": 2,
+                            "type": "array",
+                            "items": {
+                              "title": "PromptImage",
+                              "x-stainless-variantName": "PromptImage",
+                              "type": "object",
+                              "properties": {
+                                "uri": {
+                                  "description": "A HTTPS URL, Runway or data URI containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                                  "example": "https://example.com/image.jpg",
+                                  "anyOf": [
+                                    {
+                                      "description": "A HTTPS URL.",
+                                      "example": "https://example.com/file",
+                                      "type": "string",
+                                      "minLength": 13,
+                                      "maxLength": 2048,
+                                      "pattern": "^https:\\/\\/.*"
+                                    },
+                                    {
+                                      "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                                      "example": "runway://<token>",
+                                      "type": "string",
+                                      "minLength": 13,
+                                      "maxLength": 5000,
+                                      "pattern": "^runway:\\/\\/.*"
+                                    },
+                                    {
+                                      "description": "A data URI containing encoded media.",
+                                      "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                                      "type": "string",
+                                      "minLength": 13,
+                                      "maxLength": 5242880,
+                                      "pattern": "^data:image\\/.*"
+                                    }
+                                  ]
+                                },
+                                "position": {
+                                  "description": "The position of the image in the output video. \"first\" will use the image as the first frame of the video, \"last\" will use the image as the last frame of the video.",
+                                  "type": "string",
+                                  "enum": [
+                                    "first",
+                                    "last"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "uri",
+                                "position"
+                              ]
+                            }
+                          }
+                        ]
+                      },
+                      "ratio": {
+                        "description": "The resolution of the output video.",
+                        "type": "string",
+                        "enum": [
+                          "1280:720",
+                          "720:1280",
+                          "1080:1920",
+                          "1920:1080"
+                        ]
+                      },
+                      "audio": {
+                        "description": "Whether to generate audio for the video. Audio inclusion affects pricing.",
+                        "default": true,
+                        "type": "boolean"
+                      },
+                      "duration": {
+                        "description": "The number of seconds of duration for the output video.",
+                        "type": "number",
+                        "enum": [
+                          4,
+                          6,
+                          8
+                        ]
+                      },
+                      "model": {
+                        "type": "string",
+                        "const": "veo3.1_fast"
+                      }
+                    },
+                    "required": [
+                      "promptImage",
+                      "ratio",
+                      "model"
+                    ]
+                  },
+                  {
+                    "title": "veo3",
+                    "type": "object",
+                    "properties": {
+                      "promptText": {
+                        "description": "A non-empty string up to 1000 characters (measured in UTF-16 code units). This should describe in detail what should appear in the output.",
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 1000
+                      },
+                      "promptImage": {
+                        "anyOf": [
+                          {
+                            "description": "A HTTPS URL, Runway or data URI containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                            "example": "https://example.com/image.jpg",
+                            "anyOf": [
+                              {
+                                "description": "A HTTPS URL.",
+                                "example": "https://example.com/file",
+                                "type": "string",
+                                "minLength": 13,
+                                "maxLength": 2048,
+                                "pattern": "^https:\\/\\/.*"
+                              },
+                              {
+                                "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                                "example": "runway://<token>",
+                                "type": "string",
+                                "minLength": 13,
+                                "maxLength": 5000,
+                                "pattern": "^runway:\\/\\/.*"
+                              },
+                              {
+                                "description": "A data URI containing encoded media.",
+                                "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                                "type": "string",
+                                "minLength": 13,
+                                "maxLength": 5242880,
+                                "pattern": "^data:image\\/.*"
+                              }
+                            ]
+                          },
+                          {
+                            "title": "PromptImages",
+                            "description": "An array of objects representing images to be used in the output video. Only a `first` frame is supported.",
+                            "minItems": 1,
+                            "maxItems": 1,
+                            "type": "array",
+                            "items": {
+                              "title": "PromptImage",
+                              "x-stainless-variantName": "PromptImage",
+                              "type": "object",
+                              "properties": {
+                                "uri": {
+                                  "description": "A HTTPS URL, Runway or data URI containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                                  "example": "https://example.com/image.jpg",
+                                  "anyOf": [
+                                    {
+                                      "description": "A HTTPS URL.",
+                                      "example": "https://example.com/file",
+                                      "type": "string",
+                                      "minLength": 13,
+                                      "maxLength": 2048,
+                                      "pattern": "^https:\\/\\/.*"
+                                    },
+                                    {
+                                      "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                                      "example": "runway://<token>",
+                                      "type": "string",
+                                      "minLength": 13,
+                                      "maxLength": 5000,
+                                      "pattern": "^runway:\\/\\/.*"
+                                    },
+                                    {
+                                      "description": "A data URI containing encoded media.",
+                                      "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                                      "type": "string",
+                                      "minLength": 13,
+                                      "maxLength": 5242880,
+                                      "pattern": "^data:image\\/.*"
+                                    }
+                                  ]
+                                },
+                                "position": {
+                                  "description": "The position of the image in the output video. \"first\" will use the image as the first frame of the video.",
+                                  "type": "string",
+                                  "const": "first"
+                                }
+                              },
+                              "required": [
+                                "uri",
+                                "position"
+                              ]
+                            }
+                          }
+                        ]
+                      },
+                      "duration": {
+                        "description": "The number of seconds of duration for the output video.",
+                        "type": "number",
+                        "const": 8
+                      },
+                      "ratio": {
+                        "description": "The resolution of the output video.",
+                        "type": "string",
+                        "enum": [
+                          "1280:720",
+                          "720:1280",
+                          "1080:1920",
+                          "1920:1080"
+                        ]
+                      },
+                      "model": {
+                        "type": "string",
+                        "const": "veo3"
+                      }
+                    },
+                    "required": [
+                      "promptImage",
+                      "duration",
+                      "ratio",
+                      "model"
+                    ]
+                  }
+                ],
+                "discriminator": {
+                  "propertyName": "model"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The task that was created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "description": "The ID of the task that was created. Use this to retrieve the task later.",
+                      "type": "string",
+                      "format": "uuid",
+                      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12})$"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "You have exceeded the rate limit for this endpoint.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/text_to_video": {
+      "post": {
+        "tags": [
+          "Start generating"
+        ],
+        "summary": "Text to video",
+        "description": "This endpoint will start a new task to generate a video from a text prompt.",
+        "x-codeSamples": [
+          {
+            "lang": "TypeScript",
+            "label": "Node SDK",
+            "source": "// npm install --save @runwayml/sdk\nimport RunwayML from '@runwayml/sdk';\n\n// The env var RUNWAYML_API_SECRET is expected to contain your API key.\nconst client = new RunwayML();\n\nconst task = await client.textToVideo\n  .create({\n    model: 'veo3.1',\n    promptText: 'A cute bunny hopping in a meadow',\n    ratio: '1280:720',\n    duration: 8,\n  })\n  .waitForTaskOutput();\n\nconsole.log(task);"
+          },
+          {
+            "lang": "Python",
+            "label": "Python SDK",
+            "source": "# pip install runwayml\nfrom runwayml import RunwayML\n\n# The env var RUNWAYML_API_SECRET is expected to contain your API key.\nclient = RunwayML()\n\ntask = client.text_to_video.create(\n  model='veo3.1',\n  prompt_text='A cute bunny hopping in a meadow',\n  ratio='1280:720',\n  duration=8,\n).wait_for_task_output()\n\nprint(task)"
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/X-Runway-Version"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "oneOf": [
+                  {
+                    "title": "veo3.1",
+                    "type": "object",
+                    "properties": {
+                      "promptText": {
+                        "description": "A non-empty string up to 1000 characters (measured in UTF-16 code units). This should describe in detail what should appear in the output.",
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 1000
+                      },
+                      "ratio": {
+                        "description": "The resolution of the output video.",
+                        "type": "string",
+                        "enum": [
+                          "1280:720",
+                          "720:1280",
+                          "1080:1920",
+                          "1920:1080"
+                        ]
+                      },
+                      "audio": {
+                        "description": "Whether to generate audio for the video. Audio inclusion affects pricing.",
+                        "default": true,
+                        "type": "boolean"
+                      },
+                      "duration": {
+                        "description": "The number of seconds of duration for the output video.",
+                        "type": "number",
+                        "enum": [
+                          4,
+                          6,
+                          8
+                        ]
+                      },
+                      "model": {
+                        "type": "string",
+                        "const": "veo3.1"
+                      }
+                    },
+                    "required": [
+                      "promptText",
+                      "ratio",
+                      "model"
+                    ]
+                  },
+                  {
+                    "title": "veo3.1_fast",
+                    "type": "object",
+                    "properties": {
+                      "promptText": {
+                        "description": "A non-empty string up to 1000 characters (measured in UTF-16 code units). This should describe in detail what should appear in the output.",
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 1000
+                      },
+                      "ratio": {
+                        "description": "The resolution of the output video.",
+                        "type": "string",
+                        "enum": [
+                          "1280:720",
+                          "720:1280",
+                          "1080:1920",
+                          "1920:1080"
+                        ]
+                      },
+                      "audio": {
+                        "description": "Whether to generate audio for the video. Audio inclusion affects pricing.",
+                        "default": true,
+                        "type": "boolean"
+                      },
+                      "duration": {
+                        "description": "The number of seconds of duration for the output video.",
+                        "type": "number",
+                        "enum": [
+                          4,
+                          6,
+                          8
+                        ]
+                      },
+                      "model": {
+                        "type": "string",
+                        "const": "veo3.1_fast"
+                      }
+                    },
+                    "required": [
+                      "promptText",
+                      "ratio",
+                      "model"
+                    ]
+                  },
+                  {
+                    "title": "veo3",
+                    "type": "object",
+                    "properties": {
+                      "promptText": {
+                        "description": "A non-empty string up to 1000 characters (measured in UTF-16 code units). This should describe in detail what should appear in the output.",
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 1000
+                      },
+                      "duration": {
+                        "description": "The number of seconds of duration for the output video.",
+                        "type": "number",
+                        "const": 8
+                      },
+                      "ratio": {
+                        "description": "The resolution of the output video.",
+                        "type": "string",
+                        "enum": [
+                          "1280:720",
+                          "720:1280",
+                          "1080:1920",
+                          "1920:1080"
+                        ]
+                      },
+                      "model": {
+                        "type": "string",
+                        "const": "veo3"
+                      }
+                    },
+                    "required": [
+                      "promptText",
+                      "duration",
+                      "ratio",
+                      "model"
+                    ]
+                  }
+                ],
+                "discriminator": {
+                  "propertyName": "model"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The task that was created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "description": "The ID of the task that was created. Use this to retrieve the task later.",
+                      "type": "string",
+                      "format": "uuid",
+                      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12})$"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "You have exceeded the rate limit for this endpoint.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/video_to_video": {
+      "post": {
+        "tags": [
+          "Start generating"
+        ],
+        "summary": "Video to video",
+        "description": "This endpoint will start a new task to generate a video from a video.",
+        "x-codeSamples": [
+          {
+            "lang": "TypeScript",
+            "label": "Node SDK",
+            "source": "// npm install --save @runwayml/sdk\nimport RunwayML from '@runwayml/sdk';\n\n// The env var RUNWAYML_API_SECRET is expected to contain your API key.\nconst client = new RunwayML();\n\nconst task = await client.videoToVideo\n  .create({\n    model: 'gen4_aleph',\n    videoUri: 'https://example.com/bunny.mp4',\n    promptText: 'string',\n    references: [\n      {\n        type: 'image',\n        uri: 'https://example.com/easter-scene.jpg',\n      },\n    ],\n    ratio: '1280:720',\n  })\n  .waitForTaskOutput();\n\nconsole.log(task);"
+          },
+          {
+            "lang": "Python",
+            "label": "Python SDK",
+            "source": "# pip install runwayml\nfrom runwayml import RunwayML\n\n# The env var RUNWAYML_API_SECRET is expected to contain your API key.\nclient = RunwayML()\n\ntask = client.video_to_video.create(\n  model='gen4_aleph',\n  video_uri='https://example.com/bunny.mp4',\n  prompt_text='string',\n  references=[\n    {\n      'type': 'image',\n      'uri': 'https://example.com/easter-scene.jpg',\n    },\n  ],\n  ratio='1280:720',\n).wait_for_task_output()\n\nprint(task)"
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/X-Runway-Version"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "oneOf": [
+                  {
+                    "title": "gen4_aleph",
+                    "type": "object",
+                    "properties": {
+                      "videoUri": {
+                        "description": "A HTTPS URL, Runway or data URI containing an encoded video. See [our docs](/assets/inputs#videos) on video inputs for more information.",
+                        "example": "https://example.com/video.mp4",
+                        "anyOf": [
+                          {
+                            "description": "A HTTPS URL.",
+                            "example": "https://example.com/file",
+                            "type": "string",
+                            "minLength": 13,
+                            "maxLength": 2048,
+                            "pattern": "^https:\\/\\/.*"
+                          },
+                          {
+                            "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                            "example": "runway://<token>",
+                            "type": "string",
+                            "minLength": 13,
+                            "maxLength": 5000,
+                            "pattern": "^runway:\\/\\/.*"
+                          },
+                          {
+                            "description": "A data URI containing encoded media.",
+                            "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                            "type": "string",
+                            "minLength": 13,
+                            "maxLength": 16777216,
+                            "pattern": "^data:video\\/.*"
+                          }
+                        ]
+                      },
+                      "promptText": {
+                        "description": "A non-empty string up to 1000 characters (measured in UTF-16 code units). This should describe in detail what should appear in the output.",
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 1000
+                      },
+                      "ratio": {
+                        "description": "The resolution of the output video.",
+                        "type": "string",
+                        "enum": [
+                          "1280:720",
+                          "720:1280",
+                          "1104:832",
+                          "960:960",
+                          "832:1104",
+                          "1584:672",
+                          "848:480",
+                          "640:480"
+                        ]
+                      },
+                      "seed": {
+                        "description": "If unspecified, a random number is chosen. Varying the seed integer is a way to get different results for the same other request parameters. Using the same seed integer for an identical request will produce similar results.",
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 4294967295
+                      },
+                      "references": {
+                        "description": "An array of references. Currently up to one reference is supported. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                        "type": "array",
+                        "items": {
+                          "oneOf": [
+                            {
+                              "title": "ImageReference",
+                              "description": "Passing an image reference allows the model to emulate the style or content of the reference in the output.",
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "const": "image"
+                                },
+                                "uri": {
+                                  "description": "A HTTPS URL, Runway or data URI containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                                  "example": "https://example.com/image.jpg",
+                                  "anyOf": [
+                                    {
+                                      "description": "A HTTPS URL.",
+                                      "example": "https://example.com/file",
+                                      "type": "string",
+                                      "minLength": 13,
+                                      "maxLength": 2048,
+                                      "pattern": "^https:\\/\\/.*"
+                                    },
+                                    {
+                                      "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                                      "example": "runway://<token>",
+                                      "type": "string",
+                                      "minLength": 13,
+                                      "maxLength": 5000,
+                                      "pattern": "^runway:\\/\\/.*"
+                                    },
+                                    {
+                                      "description": "A data URI containing encoded media.",
+                                      "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                                      "type": "string",
+                                      "minLength": 13,
+                                      "maxLength": 5242880,
+                                      "pattern": "^data:image\\/.*"
+                                    }
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "uri"
+                              ]
+                            }
+                          ],
+                          "discriminator": {
+                            "propertyName": "type"
+                          }
+                        }
+                      },
+                      "contentModeration": {
+                        "description": "Settings that affect the behavior of the content moderation system.",
+                        "type": "object",
+                        "properties": {
+                          "publicFigureThreshold": {
+                            "description": "When set to `low`, the content moderation system will be less strict about preventing generations that include recognizable public figures.",
+                            "type": "string",
+                            "enum": [
+                              "auto",
+                              "low"
+                            ]
+                          }
+                        }
+                      },
+                      "model": {
+                        "type": "string",
+                        "const": "gen4_aleph"
+                      }
+                    },
+                    "required": [
+                      "videoUri",
+                      "promptText",
+                      "ratio",
+                      "model"
+                    ]
+                  }
+                ],
+                "discriminator": {
+                  "propertyName": "model"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The task that was created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "description": "The ID of the task that was created. Use this to retrieve the task later.",
+                      "type": "string",
+                      "format": "uuid",
+                      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12})$"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "You have exceeded the rate limit for this endpoint.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/text_to_image": {
+      "post": {
+        "tags": [
+          "Start generating"
+        ],
+        "summary": "Text/Image to Image",
+        "description": "This endpoint will start a new task to generate images from text and/or image(s)",
+        "x-codeSamples": [
+          {
+            "lang": "TypeScript",
+            "label": "Node SDK",
+            "source": "// npm install --save @runwayml/sdk\nimport RunwayML from '@runwayml/sdk';\n\n// The env var RUNWAYML_API_SECRET is expected to contain your API key.\nconst client = new RunwayML();\n\nconst task = await client.textToImage\n  .create({\n    model: 'gen4_image',\n    promptText: 'A serene landscape with mountains',\n    ratio: '1360:768',\n  })\n  .waitForTaskOutput();\n\nconsole.log(task);"
+          },
+          {
+            "lang": "Python",
+            "label": "Python SDK",
+            "source": "# pip install runwayml\nfrom runwayml import RunwayML\n\n# The env var RUNWAYML_API_SECRET is expected to contain your API key.\nclient = RunwayML()\n\ntask = client.text_to_image.create(\n  model='gen4_image',\n  prompt_text='A serene landscape with mountains',\n  ratio='1360:768',\n).wait_for_task_output()\n\nprint(task)"
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/X-Runway-Version"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "oneOf": [
+                  {
+                    "title": "gen4_image_turbo",
+                    "type": "object",
+                    "properties": {
+                      "promptText": {
+                        "description": "A non-empty string up to 1000 characters (measured in UTF-16 code units). This should describe in detail what should appear in the output.",
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 1000
+                      },
+                      "seed": {
+                        "description": "If unspecified, a random number is chosen. Varying the seed integer is a way to get different results for the same other request parameters. Using the same seed integer for an identical request will produce similar results.",
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 4294967295
+                      },
+                      "ratio": {
+                        "description": "The resolution of the output image.",
+                        "type": "string",
+                        "enum": [
+                          "1024:1024",
+                          "1080:1080",
+                          "1168:880",
+                          "1360:768",
+                          "1440:1080",
+                          "1080:1440",
+                          "1808:768",
+                          "1920:1080",
+                          "1080:1920",
+                          "2112:912",
+                          "1280:720",
+                          "720:1280",
+                          "720:720",
+                          "960:720",
+                          "720:960",
+                          "1680:720"
+                        ]
+                      },
+                      "referenceImages": {
+                        "description": "An array of one to three images to be used as references for the generated image output.",
+                        "minItems": 1,
+                        "maxItems": 3,
+                        "type": "array",
+                        "items": {
+                          "title": "ReferenceImage",
+                          "type": "object",
+                          "properties": {
+                            "uri": {
+                              "description": "A HTTPS URL, Runway or data URI containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                              "example": "https://example.com/image.jpg",
+                              "anyOf": [
+                                {
+                                  "description": "A HTTPS URL.",
+                                  "example": "https://example.com/file",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 2048,
+                                  "pattern": "^https:\\/\\/.*"
+                                },
+                                {
+                                  "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                                  "example": "runway://<token>",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 5000,
+                                  "pattern": "^runway:\\/\\/.*"
+                                },
+                                {
+                                  "description": "A data URI containing encoded media.",
+                                  "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 5242880,
+                                  "pattern": "^data:image\\/.*"
+                                }
+                              ]
+                            },
+                            "tag": {
+                              "description": "A tag to identify the reference image. This is used to reference the image in prompt text.",
+                              "type": "string",
+                              "minLength": 3,
+                              "maxLength": 16,
+                              "pattern": "^[a-z][a-z0-9_]+$"
+                            }
+                          },
+                          "required": [
+                            "uri"
+                          ]
+                        }
+                      },
+                      "contentModeration": {
+                        "description": "Settings that affect the behavior of the content moderation system.",
+                        "type": "object",
+                        "properties": {
+                          "publicFigureThreshold": {
+                            "description": "When set to `low`, the content moderation system will be less strict about preventing generations that include recognizable public figures.",
+                            "type": "string",
+                            "enum": [
+                              "auto",
+                              "low"
+                            ]
+                          }
+                        }
+                      },
+                      "model": {
+                        "type": "string",
+                        "const": "gen4_image_turbo"
+                      }
+                    },
+                    "required": [
+                      "promptText",
+                      "ratio",
+                      "referenceImages",
+                      "model"
+                    ]
+                  },
+                  {
+                    "title": "gen4_image",
+                    "type": "object",
+                    "properties": {
+                      "promptText": {
+                        "description": "A non-empty string up to 1000 characters (measured in UTF-16 code units). This should describe in detail what should appear in the output.",
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 1000
+                      },
+                      "seed": {
+                        "description": "If unspecified, a random number is chosen. Varying the seed integer is a way to get different results for the same other request parameters. Using the same seed integer for an identical request will produce similar results.",
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 4294967295
+                      },
+                      "ratio": {
+                        "description": "The resolution of the output image.",
+                        "type": "string",
+                        "enum": [
+                          "1024:1024",
+                          "1080:1080",
+                          "1168:880",
+                          "1360:768",
+                          "1440:1080",
+                          "1080:1440",
+                          "1808:768",
+                          "1920:1080",
+                          "1080:1920",
+                          "2112:912",
+                          "1280:720",
+                          "720:1280",
+                          "720:720",
+                          "960:720",
+                          "720:960",
+                          "1680:720"
+                        ]
+                      },
+                      "referenceImages": {
+                        "description": "An array of up to three images to be used as references for the generated image output.",
+                        "maxItems": 3,
+                        "type": "array",
+                        "items": {
+                          "title": "ReferenceImage",
+                          "type": "object",
+                          "properties": {
+                            "uri": {
+                              "description": "A HTTPS URL, Runway or data URI containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                              "example": "https://example.com/image.jpg",
+                              "anyOf": [
+                                {
+                                  "description": "A HTTPS URL.",
+                                  "example": "https://example.com/file",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 2048,
+                                  "pattern": "^https:\\/\\/.*"
+                                },
+                                {
+                                  "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                                  "example": "runway://<token>",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 5000,
+                                  "pattern": "^runway:\\/\\/.*"
+                                },
+                                {
+                                  "description": "A data URI containing encoded media.",
+                                  "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 5242880,
+                                  "pattern": "^data:image\\/.*"
+                                }
+                              ]
+                            },
+                            "tag": {
+                              "description": "A tag to identify the reference image. This is used to reference the image in prompt text.",
+                              "type": "string",
+                              "minLength": 3,
+                              "maxLength": 16,
+                              "pattern": "^[a-z][a-z0-9_]+$"
+                            }
+                          },
+                          "required": [
+                            "uri"
+                          ]
+                        }
+                      },
+                      "contentModeration": {
+                        "description": "Settings that affect the behavior of the content moderation system.",
+                        "type": "object",
+                        "properties": {
+                          "publicFigureThreshold": {
+                            "description": "When set to `low`, the content moderation system will be less strict about preventing generations that include recognizable public figures.",
+                            "type": "string",
+                            "enum": [
+                              "auto",
+                              "low"
+                            ]
+                          }
+                        }
+                      },
+                      "model": {
+                        "type": "string",
+                        "const": "gen4_image"
+                      }
+                    },
+                    "required": [
+                      "promptText",
+                      "ratio",
+                      "model"
+                    ]
+                  },
+                  {
+                    "title": "gemini_2.5_flash",
+                    "type": "object",
+                    "properties": {
+                      "promptText": {
+                        "description": "A non-empty string up to 1000 characters (measured in UTF-16 code units). This should describe in detail what should appear in the output.",
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 1000
+                      },
+                      "ratio": {
+                        "description": "The resolution of the output image.",
+                        "type": "string",
+                        "enum": [
+                          "1344:768",
+                          "768:1344",
+                          "1024:1024",
+                          "1184:864",
+                          "864:1184",
+                          "1536:672",
+                          "832:1248",
+                          "1248:832",
+                          "896:1152",
+                          "1152:896"
+                        ]
+                      },
+                      "referenceImages": {
+                        "description": "An array of up to three images to be used as references for the generated image output.",
+                        "maxItems": 3,
+                        "type": "array",
+                        "items": {
+                          "title": "ReferenceImage",
+                          "type": "object",
+                          "properties": {
+                            "uri": {
+                              "description": "A HTTPS URL, Runway or data URI containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                              "example": "https://example.com/image.jpg",
+                              "anyOf": [
+                                {
+                                  "description": "A HTTPS URL.",
+                                  "example": "https://example.com/file",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 2048,
+                                  "pattern": "^https:\\/\\/.*"
+                                },
+                                {
+                                  "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                                  "example": "runway://<token>",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 5000,
+                                  "pattern": "^runway:\\/\\/.*"
+                                },
+                                {
+                                  "description": "A data URI containing encoded media.",
+                                  "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 5242880,
+                                  "pattern": "^data:image\\/.*"
+                                }
+                              ]
+                            },
+                            "tag": {
+                              "description": "A tag to identify the reference image. This is used to reference the image in prompt text.",
+                              "type": "string",
+                              "minLength": 3,
+                              "maxLength": 16,
+                              "pattern": "^[a-z][a-z0-9_]+$"
+                            }
+                          },
+                          "required": [
+                            "uri"
+                          ]
+                        }
+                      },
+                      "model": {
+                        "type": "string",
+                        "const": "gemini_2.5_flash"
+                      }
+                    },
+                    "required": [
+                      "promptText",
+                      "ratio",
+                      "model"
+                    ]
+                  }
+                ],
+                "discriminator": {
+                  "propertyName": "model"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The task that was created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "description": "The ID of the task that was created. Use this to retrieve the task later.",
+                      "type": "string",
+                      "format": "uuid",
+                      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12})$"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "You have exceeded the rate limit for this endpoint.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/character_performance": {
+      "post": {
+        "tags": [
+          "Start generating"
+        ],
+        "summary": "Control a character",
+        "description": "This endpoint will start a new task to control a character's facial expressions and body movements using a reference video.",
+        "x-codeSamples": [
+          {
+            "lang": "TypeScript",
+            "label": "Node SDK",
+            "source": "// npm install --save @runwayml/sdk\nimport RunwayML from '@runwayml/sdk';\n\n// The env var RUNWAYML_API_SECRET is expected to contain your API key.\nconst client = new RunwayML();\n\nconst task = await client.characterPerformance\n  .create({\n    model: 'act_two',\n    character: {\n      type: 'video',\n      uri: 'https://example.com/posedCharacter.mp4',\n    },\n    reference: {\n      type: 'video',\n      uri: 'https://example.com/actorPerformance.mp4',\n    },\n    ratio: '1280:720',\n  })\n  .waitForTaskOutput();\nconsole.log(task);"
+          },
+          {
+            "lang": "Python",
+            "label": "Python SDK",
+            "source": "# pip install runwayml\nfrom runwayml import RunwayML\n\n# The env var RUNWAYML_API_SECRET is expected to contain your API key.\nclient = RunwayML()\n\ntask = client.character_performance.create(\n  model='act_two',\n  character={\n    'type': 'video',\n    'uri': 'https://example.com/posedCharacter.mp4',\n  },\n  reference={\n    'type': 'video',\n    'uri': 'https://example.com/actorPerformance.mp4',\n  },\n  ratio='1280:720',\n).wait_for_task_output()\n\nprint(task)"
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/X-Runway-Version"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "oneOf": [
+                  {
+                    "title": "act_two",
+                    "type": "object",
+                    "properties": {
+                      "seed": {
+                        "description": "If unspecified, a random number is chosen. Varying the seed integer is a way to get different results for the same other request parameters. Using the same seed integer for an identical request will produce similar results.",
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 4294967295
+                      },
+                      "character": {
+                        "description": "The character to control. You can either provide a video or an image. A visually recognizable face must be visible and stay within the frame.",
+                        "oneOf": [
+                          {
+                            "title": "CharacterImage",
+                            "description": "An image of your character. In the output, the character will use the reference video performance in its original static environment.",
+                            "type": "object",
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "const": "image"
+                              },
+                              "uri": {
+                                "description": "A HTTPS URL, Runway or data URI containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                                "example": "https://example.com/image.jpg",
+                                "anyOf": [
+                                  {
+                                    "description": "A HTTPS URL.",
+                                    "example": "https://example.com/file",
+                                    "type": "string",
+                                    "minLength": 13,
+                                    "maxLength": 2048,
+                                    "pattern": "^https:\\/\\/.*"
+                                  },
+                                  {
+                                    "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                                    "example": "runway://<token>",
+                                    "type": "string",
+                                    "minLength": 13,
+                                    "maxLength": 5000,
+                                    "pattern": "^runway:\\/\\/.*"
+                                  },
+                                  {
+                                    "description": "A data URI containing encoded media.",
+                                    "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                                    "type": "string",
+                                    "minLength": 13,
+                                    "maxLength": 5242880,
+                                    "pattern": "^data:image\\/.*"
+                                  }
+                                ]
+                              }
+                            },
+                            "required": [
+                              "type",
+                              "uri"
+                            ]
+                          },
+                          {
+                            "title": "CharacterVideo",
+                            "description": "A video of your character. In the output, the character will use the reference video performance in its original animated environment and some of the character's own movements.",
+                            "type": "object",
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "const": "video"
+                              },
+                              "uri": {
+                                "description": "A HTTPS URL, Runway or data URI containing an encoded video. See [our docs](/assets/inputs#videos) on video inputs for more information.",
+                                "example": "https://example.com/video.mp4",
+                                "anyOf": [
+                                  {
+                                    "description": "A HTTPS URL.",
+                                    "example": "https://example.com/file",
+                                    "type": "string",
+                                    "minLength": 13,
+                                    "maxLength": 2048,
+                                    "pattern": "^https:\\/\\/.*"
+                                  },
+                                  {
+                                    "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                                    "example": "runway://<token>",
+                                    "type": "string",
+                                    "minLength": 13,
+                                    "maxLength": 5000,
+                                    "pattern": "^runway:\\/\\/.*"
+                                  },
+                                  {
+                                    "description": "A data URI containing encoded media.",
+                                    "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                                    "type": "string",
+                                    "minLength": 13,
+                                    "maxLength": 16777216,
+                                    "pattern": "^data:video\\/.*"
+                                  }
+                                ]
+                              }
+                            },
+                            "required": [
+                              "type",
+                              "uri"
+                            ]
+                          }
+                        ],
+                        "discriminator": {
+                          "propertyName": "type"
+                        }
+                      },
+                      "reference": {
+                        "description": "The reference video containing the performance to apply to the character.",
+                        "example": {
+                          "type": "video",
+                          "uri": "https://example.com/reference-performance.mp4"
+                        },
+                        "oneOf": [
+                          {
+                            "title": "CharacterReferenceVideo",
+                            "description": "A video of a person performing in the manner that you would like your character to perform. The video must be between 3 and 30 seconds in duration.",
+                            "type": "object",
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "const": "video"
+                              },
+                              "uri": {
+                                "description": "A video of a person performing in the manner that you would like your character to perform. The video must be between 3 and 30 seconds in duration. See [our docs](/assets/inputs#videos) on video inputs for more information.",
+                                "example": "https://example.com/reference-performance.mp4",
+                                "anyOf": [
+                                  {
+                                    "description": "A HTTPS URL.",
+                                    "example": "https://example.com/file",
+                                    "type": "string",
+                                    "minLength": 13,
+                                    "maxLength": 2048,
+                                    "pattern": "^https:\\/\\/.*"
+                                  },
+                                  {
+                                    "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                                    "example": "runway://<token>",
+                                    "type": "string",
+                                    "minLength": 13,
+                                    "maxLength": 5000,
+                                    "pattern": "^runway:\\/\\/.*"
+                                  },
+                                  {
+                                    "description": "A data URI containing encoded media.",
+                                    "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                                    "type": "string",
+                                    "minLength": 13,
+                                    "maxLength": 16777216,
+                                    "pattern": "^data:video\\/.*"
+                                  }
+                                ]
+                              }
+                            },
+                            "required": [
+                              "type",
+                              "uri"
+                            ]
+                          }
+                        ],
+                        "discriminator": {
+                          "propertyName": "type"
+                        }
+                      },
+                      "bodyControl": {
+                        "description": "A boolean indicating whether to enable body control. When enabled, non-facial movements and gestures will be applied to the character in addition to facial expressions.",
+                        "example": true,
+                        "type": "boolean"
+                      },
+                      "expressionIntensity": {
+                        "description": "An integer between 1 and 5 (inclusive). A larger value increases the intensity of the character's expression.",
+                        "example": 3,
+                        "default": 3,
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 5
+                      },
+                      "ratio": {
+                        "description": "The resolution of the output video.",
+                        "example": "1280:720",
+                        "type": "string",
+                        "enum": [
+                          "1280:720",
+                          "720:1280",
+                          "960:960",
+                          "1104:832",
+                          "832:1104",
+                          "1584:672"
+                        ]
+                      },
+                      "contentModeration": {
+                        "description": "Settings that affect the behavior of the content moderation system.",
+                        "example": {
+                          "publicFigureThreshold": "auto"
+                        },
+                        "type": "object",
+                        "properties": {
+                          "publicFigureThreshold": {
+                            "description": "When set to `low`, the content moderation system will be less strict about preventing generations that include recognizable public figures.",
+                            "type": "string",
+                            "enum": [
+                              "auto",
+                              "low"
+                            ]
+                          }
+                        }
+                      },
+                      "model": {
+                        "type": "string",
+                        "const": "act_two"
+                      }
+                    },
+                    "required": [
+                      "character",
+                      "reference",
+                      "model"
+                    ]
+                  }
+                ],
+                "discriminator": {
+                  "propertyName": "model"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The task that was created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "description": "The ID of the task that was created. Use this to retrieve the task later.",
+                      "type": "string",
+                      "format": "uuid",
+                      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12})$"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "You have exceeded the rate limit for this endpoint.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/sound_effect": {
+      "post": {
+        "tags": [
+          "Start generating"
+        ],
+        "summary": "Generate sound effects",
+        "description": "This endpoint will start a new task to generate sound effects from a text description.",
+        "x-codeSamples": [
+          {
+            "lang": "TypeScript",
+            "label": "Node SDK",
+            "source": "// npm install --save @runwayml/sdk\nimport RunwayML from '@runwayml/sdk';\n\n// The env var RUNWAYML_API_SECRET is expected to contain your API key.\nconst client = new RunwayML();\n\nconst task = await client.soundEffect\n  .create({\n    model: 'eleven_text_to_sound_v2',\n    promptText: 'A thunderstorm with heavy rain',\n    duration: 10,\n    loop: true,\n  })\n  .waitForTaskOutput();\nconsole.log(task);"
+          },
+          {
+            "lang": "Python",
+            "label": "Python SDK",
+            "source": "# pip install runwayml\nfrom runwayml import RunwayML\n\n# The env var RUNWAYML_API_SECRET is expected to contain your API key.\nclient = RunwayML()\n\ntask = client.sound_effect.create(\n  model='eleven_text_to_sound_v2',\n  promptText='A thunderstorm with heavy rain',\n  duration=10,\n  loop=True,\n).wait_for_task_output()\n\nprint(task)"
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/X-Runway-Version"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "oneOf": [
+                  {
+                    "title": "eleven_text_to_sound_v2",
+                    "type": "object",
+                    "properties": {
+                      "promptText": {
+                        "description": "A text description of the sound effect to generate.",
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 3000
+                      },
+                      "duration": {
+                        "description": "The duration of the sound effect in seconds, between 0.5 and 30 seconds. If not provided, the duration will be determined automatically based on the text description.",
+                        "type": "number",
+                        "minimum": 0.5,
+                        "maximum": 30
+                      },
+                      "loop": {
+                        "description": "Whether the output sound effect should be designed to loop seamlessly.",
+                        "default": false,
+                        "type": "boolean"
+                      },
+                      "model": {
+                        "type": "string",
+                        "const": "eleven_text_to_sound_v2"
+                      }
+                    },
+                    "required": [
+                      "promptText",
+                      "model"
+                    ]
+                  }
+                ],
+                "discriminator": {
+                  "propertyName": "model"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The task that was created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "description": "The ID of the task that was created. Use this to retrieve the task later.",
+                      "type": "string",
+                      "format": "uuid",
+                      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12})$"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "You have exceeded the rate limit for this endpoint.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/speech_to_speech": {
+      "post": {
+        "tags": [
+          "Start generating"
+        ],
+        "summary": "Speech to speech",
+        "description": "This endpoint will start a new task to convert speech from one voice to another in audio or video.",
+        "x-codeSamples": [
+          {
+            "lang": "TypeScript",
+            "label": "Node SDK",
+            "source": "// npm install --save @runwayml/sdk\nimport RunwayML from '@runwayml/sdk';\n\n// The env var RUNWAYML_API_SECRET is expected to contain your API key.\nconst client = new RunwayML();\n\nconst audioTask = await client.speechToSpeech\n  .create({\n    model: 'eleven_multilingual_sts_v2',\n    media: {\n      type: 'audio',\n      uri: 'https://example.com/audio.mp3',\n    },\n    voice: {\n      type: 'runway-preset',\n      presetId: 'Maggie',\n    },\n  })\n  .waitForTaskOutput();\nconsole.log(audioTask);\n\nconst videoTask = await client.speechToSpeech\n  .create({\n    model: 'eleven_multilingual_sts_v2',\n    media: {\n      type: 'video',\n      uri: 'https://example.com/video.mp4',\n    },\n    voice: {\n      type: 'runway-preset',\n      presetId: 'Noah',\n    },\n  })\n  .waitForTaskOutput();\nconsole.log(videoTask);"
+          },
+          {
+            "lang": "Python",
+            "label": "Python SDK",
+            "source": "# pip install runwayml\nfrom runwayml import RunwayML\n\n# The env var RUNWAYML_API_SECRET is expected to contain your API key.\nclient = RunwayML()\n\naudioTask = client.speech_to_speech.create(\n  model='eleven_multilingual_sts_v2',\n  media={\n    'type': 'audio',\n    'uri': 'https://example.com/audio.mp3',\n  },\n  voice={\n    'type': 'runway-preset',\n    'presetId': 'Maggie',\n  },\n).wait_for_task_output()\n\nprint(audioTask)\n\nvideoTask = client.speech_to_speech.create(\n  model='eleven_multilingual_sts_v2',\n  media={\n    'type': 'video',\n    'uri': 'https://example.com/video.mp4',\n  },\n  voice={\n    'type': 'runway-preset',\n    'presetId': 'Noah',\n  },\n).wait_for_task_output()\n\nprint(videoTask)"
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/X-Runway-Version"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "oneOf": [
+                  {
+                    "title": "eleven_multilingual_sts_v2",
+                    "type": "object",
+                    "properties": {
+                      "removeBackgroundNoise": {
+                        "description": "Whether to remove background noise from the generated speech.",
+                        "type": "boolean"
+                      },
+                      "media": {
+                        "oneOf": [
+                          {
+                            "title": "SpeechToSpeechAudio",
+                            "description": "An audio file containing dialogue to be processed.",
+                            "type": "object",
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "const": "audio"
+                              },
+                              "uri": {
+                                "description": "A HTTPS URL, Runway or data URI containing an encoded audio. See [our docs](/assets/inputs#audio) on audio inputs for more information.",
+                                "example": "https://example.com/audio.mp3",
+                                "anyOf": [
+                                  {
+                                    "description": "A HTTPS URL.",
+                                    "example": "https://example.com/file",
+                                    "type": "string",
+                                    "minLength": 13,
+                                    "maxLength": 2048,
+                                    "pattern": "^https:\\/\\/.*"
+                                  },
+                                  {
+                                    "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                                    "example": "runway://<token>",
+                                    "type": "string",
+                                    "minLength": 13,
+                                    "maxLength": 5000,
+                                    "pattern": "^runway:\\/\\/.*"
+                                  },
+                                  {
+                                    "description": "A data URI containing encoded media.",
+                                    "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                                    "type": "string",
+                                    "minLength": 13,
+                                    "maxLength": 16777216,
+                                    "pattern": "^data:audio\\/.*"
+                                  }
+                                ]
+                              }
+                            },
+                            "required": [
+                              "type",
+                              "uri"
+                            ]
+                          },
+                          {
+                            "title": "SpeechToSpeechVideo",
+                            "description": "A video file containing dialogue to be processed.",
+                            "type": "object",
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "const": "video"
+                              },
+                              "uri": {
+                                "description": "A HTTPS URL, Runway or data URI containing an encoded video. See [our docs](/assets/inputs#videos) on video inputs for more information.",
+                                "example": "https://example.com/video.mp4",
+                                "anyOf": [
+                                  {
+                                    "description": "A HTTPS URL.",
+                                    "example": "https://example.com/file",
+                                    "type": "string",
+                                    "minLength": 13,
+                                    "maxLength": 2048,
+                                    "pattern": "^https:\\/\\/.*"
+                                  },
+                                  {
+                                    "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                                    "example": "runway://<token>",
+                                    "type": "string",
+                                    "minLength": 13,
+                                    "maxLength": 5000,
+                                    "pattern": "^runway:\\/\\/.*"
+                                  },
+                                  {
+                                    "description": "A data URI containing encoded media.",
+                                    "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                                    "type": "string",
+                                    "minLength": 13,
+                                    "maxLength": 16777216,
+                                    "pattern": "^data:video\\/.*"
+                                  }
+                                ]
+                              }
+                            },
+                            "required": [
+                              "type",
+                              "uri"
+                            ]
+                          }
+                        ],
+                        "discriminator": {
+                          "propertyName": "type"
+                        }
+                      },
+                      "voice": {
+                        "description": "The voice to use for the generated speech.",
+                        "oneOf": [
+                          {
+                            "title": "RunwayPresetVoice",
+                            "description": "A voice preset from the RunwayML API.",
+                            "type": "object",
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "const": "runway-preset"
+                              },
+                              "presetId": {
+                                "description": "The preset voice ID to use for the generated speech.",
+                                "type": "string",
+                                "enum": [
+                                  "Maya",
+                                  "Arjun",
+                                  "Serene",
+                                  "Bernard",
+                                  "Billy",
+                                  "Mark",
+                                  "Clint",
+                                  "Mabel",
+                                  "Chad",
+                                  "Leslie",
+                                  "Eleanor",
+                                  "Elias",
+                                  "Elliot",
+                                  "Grungle",
+                                  "Brodie",
+                                  "Sandra",
+                                  "Kirk",
+                                  "Kylie",
+                                  "Lara",
+                                  "Lisa",
+                                  "Malachi",
+                                  "Marlene",
+                                  "Martin",
+                                  "Miriam",
+                                  "Monster",
+                                  "Paula",
+                                  "Pip",
+                                  "Rusty",
+                                  "Ragnar",
+                                  "Xylar",
+                                  "Maggie",
+                                  "Jack",
+                                  "Katie",
+                                  "Noah",
+                                  "James",
+                                  "Rina",
+                                  "Ella",
+                                  "Mariah",
+                                  "Frank",
+                                  "Claudia",
+                                  "Niki",
+                                  "Vincent",
+                                  "Kendrick",
+                                  "Myrna",
+                                  "Tom",
+                                  "Wanda",
+                                  "Benjamin",
+                                  "Kiana",
+                                  "Rachel"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "type",
+                              "presetId"
+                            ]
+                          }
+                        ],
+                        "discriminator": {
+                          "propertyName": "type"
+                        }
+                      },
+                      "model": {
+                        "type": "string",
+                        "const": "eleven_multilingual_sts_v2"
+                      }
+                    },
+                    "required": [
+                      "media",
+                      "voice",
+                      "model"
+                    ]
+                  }
+                ],
+                "discriminator": {
+                  "propertyName": "model"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The task that was created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "description": "The ID of the task that was created. Use this to retrieve the task later.",
+                      "type": "string",
+                      "format": "uuid",
+                      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12})$"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "You have exceeded the rate limit for this endpoint.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/text_to_speech": {
+      "post": {
+        "tags": [
+          "Start generating"
+        ],
+        "summary": "Text to speech",
+        "description": "This endpoint will start a new task to generate speech from text.",
+        "x-codeSamples": [
+          {
+            "lang": "TypeScript",
+            "label": "Node SDK",
+            "source": "// npm install --save @runwayml/sdk\nimport RunwayML from '@runwayml/sdk';\n\n// The env var RUNWAYML_API_SECRET is expected to contain your API key.\nconst client = new RunwayML();\n\nconst task = await client.textToSpeech\n  .create({\n    model: 'eleven_multilingual_v2',\n    promptText: 'The quick brown fox jumps over the lazy dog',\n    voice: {\n      type: 'runway-preset',\n      presetId: 'Leslie',\n    },\n  })\n  .waitForTaskOutput();\nconsole.log(task);"
+          },
+          {
+            "lang": "Python",
+            "label": "Python SDK",
+            "source": "# pip install runwayml\nfrom runwayml import RunwayML\n\n# The env var RUNWAYML_API_SECRET is expected to contain your API key.\nclient = RunwayML()\n\ntask = client.text_to_speech.create(\n  model='eleven_multilingual_v2',\n  prompt_text='The quick brown fox jumps over the lazy dog',\n  voice={\n    'type': 'runway-preset',\n    'presetId': 'Leslie',\n  },\n).wait_for_task_output()\n\nprint(task)"
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/X-Runway-Version"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "oneOf": [
+                  {
+                    "title": "eleven_multilingual_v2",
+                    "type": "object",
+                    "properties": {
+                      "promptText": {
+                        "description": "A non-empty string up to 1000 characters (measured in UTF-16 code units). This should describe in detail what should appear in the output.",
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 1000
+                      },
+                      "voice": {
+                        "description": "The voice to use for the generated speech.",
+                        "oneOf": [
+                          {
+                            "title": "RunwayPresetVoice",
+                            "description": "A voice preset from the RunwayML API.",
+                            "type": "object",
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "const": "runway-preset"
+                              },
+                              "presetId": {
+                                "description": "The preset voice ID to use for the generated speech.",
+                                "type": "string",
+                                "enum": [
+                                  "Maya",
+                                  "Arjun",
+                                  "Serene",
+                                  "Bernard",
+                                  "Billy",
+                                  "Mark",
+                                  "Clint",
+                                  "Mabel",
+                                  "Chad",
+                                  "Leslie",
+                                  "Eleanor",
+                                  "Elias",
+                                  "Elliot",
+                                  "Grungle",
+                                  "Brodie",
+                                  "Sandra",
+                                  "Kirk",
+                                  "Kylie",
+                                  "Lara",
+                                  "Lisa",
+                                  "Malachi",
+                                  "Marlene",
+                                  "Martin",
+                                  "Miriam",
+                                  "Monster",
+                                  "Paula",
+                                  "Pip",
+                                  "Rusty",
+                                  "Ragnar",
+                                  "Xylar",
+                                  "Maggie",
+                                  "Jack",
+                                  "Katie",
+                                  "Noah",
+                                  "James",
+                                  "Rina",
+                                  "Ella",
+                                  "Mariah",
+                                  "Frank",
+                                  "Claudia",
+                                  "Niki",
+                                  "Vincent",
+                                  "Kendrick",
+                                  "Myrna",
+                                  "Tom",
+                                  "Wanda",
+                                  "Benjamin",
+                                  "Kiana",
+                                  "Rachel"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "type",
+                              "presetId"
+                            ]
+                          }
+                        ],
+                        "discriminator": {
+                          "propertyName": "type"
+                        }
+                      },
+                      "model": {
+                        "type": "string",
+                        "const": "eleven_multilingual_v2"
+                      }
+                    },
+                    "required": [
+                      "promptText",
+                      "voice",
+                      "model"
+                    ]
+                  }
+                ],
+                "discriminator": {
+                  "propertyName": "model"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The task that was created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "description": "The ID of the task that was created. Use this to retrieve the task later.",
+                      "type": "string",
+                      "format": "uuid",
+                      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12})$"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "You have exceeded the rate limit for this endpoint.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/voice_dubbing": {
+      "post": {
+        "tags": [
+          "Start generating"
+        ],
+        "summary": "Voice dubbing",
+        "description": "This endpoint will start a new task to dub audio content to a target language.",
+        "x-codeSamples": [
+          {
+            "lang": "TypeScript",
+            "label": "Node SDK",
+            "source": "// npm install --save @runwayml/sdk\nimport RunwayML from '@runwayml/sdk';\n\n// The env var RUNWAYML_API_SECRET is expected to contain your API key.\nconst client = new RunwayML();\n\nconst task = await client.voiceDubbing\n  .create({\n    model: 'eleven_voice_dubbing',\n    audioUri: 'https://example.com/audio.mp3',\n    targetLang: 'es',\n  })\n  .waitForTaskOutput();\nconsole.log(task);"
+          },
+          {
+            "lang": "Python",
+            "label": "Python SDK",
+            "source": "# pip install runwayml\nfrom runwayml import RunwayML\n\n# The env var RUNWAYML_API_SECRET is expected to contain your API key.\nclient = RunwayML()\n\ntask = client.voice_dubbing.create(\n  model='eleven_voice_dubbing',\n  audio_uri='https://example.com/audio.mp3',\n  target_lang='es',\n).wait_for_task_output()\n\nprint(task)"
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/X-Runway-Version"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "oneOf": [
+                  {
+                    "title": "eleven_voice_dubbing",
+                    "type": "object",
+                    "properties": {
+                      "audioUri": {
+                        "description": "A HTTPS URL, Runway or data URI containing an encoded audio. See [our docs](/assets/inputs#audio) on audio inputs for more information.",
+                        "example": "https://example.com/audio.mp3",
+                        "anyOf": [
+                          {
+                            "description": "A HTTPS URL.",
+                            "example": "https://example.com/file",
+                            "type": "string",
+                            "minLength": 13,
+                            "maxLength": 2048,
+                            "pattern": "^https:\\/\\/.*"
+                          },
+                          {
+                            "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                            "example": "runway://<token>",
+                            "type": "string",
+                            "minLength": 13,
+                            "maxLength": 5000,
+                            "pattern": "^runway:\\/\\/.*"
+                          },
+                          {
+                            "description": "A data URI containing encoded media.",
+                            "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                            "type": "string",
+                            "minLength": 13,
+                            "maxLength": 16777216,
+                            "pattern": "^data:audio\\/.*"
+                          }
+                        ]
+                      },
+                      "targetLang": {
+                        "description": "The target language code to dub the audio to (e.g., \"es\" for Spanish, \"fr\" for French).",
+                        "type": "string",
+                        "enum": [
+                          "en",
+                          "hi",
+                          "pt",
+                          "zh",
+                          "es",
+                          "fr",
+                          "de",
+                          "ja",
+                          "ar",
+                          "ru",
+                          "ko",
+                          "id",
+                          "it",
+                          "nl",
+                          "tr",
+                          "pl",
+                          "sv",
+                          "fil",
+                          "ms",
+                          "ro",
+                          "uk",
+                          "el",
+                          "cs",
+                          "da",
+                          "fi",
+                          "bg",
+                          "hr",
+                          "sk",
+                          "ta"
+                        ]
+                      },
+                      "disableVoiceCloning": {
+                        "description": "Whether to disable voice cloning and use a generic voice instead.",
+                        "type": "boolean"
+                      },
+                      "dropBackgroundAudio": {
+                        "description": "Whether to remove background audio from the dubbed output.",
+                        "type": "boolean"
+                      },
+                      "numSpeakers": {
+                        "description": "The number of speakers in the audio. If not provided, it will be detected automatically.",
+                        "type": "integer",
+                        "exclusiveMinimum": 0,
+                        "maximum": 9007199254740991
+                      },
+                      "model": {
+                        "type": "string",
+                        "const": "eleven_voice_dubbing"
+                      }
+                    },
+                    "required": [
+                      "audioUri",
+                      "targetLang",
+                      "model"
+                    ]
+                  }
+                ],
+                "discriminator": {
+                  "propertyName": "model"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The task that was created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "description": "The ID of the task that was created. Use this to retrieve the task later.",
+                      "type": "string",
+                      "format": "uuid",
+                      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12})$"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "You have exceeded the rate limit for this endpoint.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/voice_isolation": {
+      "post": {
+        "tags": [
+          "Start generating"
+        ],
+        "summary": "Voice isolation",
+        "description": "This endpoint will start a new task to isolate the voice from the background audio. Audio duration must be greater than 4.6 seconds and less than 3600 seconds.",
+        "x-codeSamples": [
+          {
+            "lang": "TypeScript",
+            "label": "Node SDK",
+            "source": "// npm install --save @runwayml/sdk\nimport RunwayML from '@runwayml/sdk';\n\n// The env var RUNWAYML_API_SECRET is expected to contain your API key.\nconst client = new RunwayML();\n\nconst task = await client.voiceIsolation\n  .create({\n    model: 'eleven_voice_isolation',\n    audioUrl: 'https://example.com/audio.mp3',\n  })\n  .waitForTaskOutput();\nconsole.log(task);"
+          },
+          {
+            "lang": "Python",
+            "label": "Python SDK",
+            "source": "# pip install runwayml\nfrom runwayml import RunwayML\n\n# The env var RUNWAYML_API_SECRET is expected to contain your API key.\nclient = RunwayML()\n\ntask = client.voice_isolation.create(\n  model='eleven_voice_isolation',\n  audio_url='https://example.com/audio.mp3',\n).wait_for_task_output()\n\nprint(task)"
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/X-Runway-Version"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "oneOf": [
+                  {
+                    "title": "eleven_voice_isolation",
+                    "type": "object",
+                    "properties": {
+                      "audioUri": {
+                        "description": "A HTTPS URL, Runway or data URI containing an encoded audio. See [our docs](/assets/inputs#audio) on audio inputs for more information.",
+                        "example": "https://example.com/audio.mp3",
+                        "anyOf": [
+                          {
+                            "description": "A HTTPS URL.",
+                            "example": "https://example.com/file",
+                            "type": "string",
+                            "minLength": 13,
+                            "maxLength": 2048,
+                            "pattern": "^https:\\/\\/.*"
+                          },
+                          {
+                            "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                            "example": "runway://<token>",
+                            "type": "string",
+                            "minLength": 13,
+                            "maxLength": 5000,
+                            "pattern": "^runway:\\/\\/.*"
+                          },
+                          {
+                            "description": "A data URI containing encoded media.",
+                            "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                            "type": "string",
+                            "minLength": 13,
+                            "maxLength": 16777216,
+                            "pattern": "^data:audio\\/.*"
+                          }
+                        ]
+                      },
+                      "model": {
+                        "type": "string",
+                        "const": "eleven_voice_isolation"
+                      }
+                    },
+                    "required": [
+                      "audioUri",
+                      "model"
+                    ]
+                  }
+                ],
+                "discriminator": {
+                  "propertyName": "model"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The task that was created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "description": "The ID of the task that was created. Use this to retrieve the task later.",
+                      "type": "string",
+                      "format": "uuid",
+                      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12})$"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "You have exceeded the rate limit for this endpoint.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/organization": {
+      "get": {
+        "tags": [
+          "Organization"
+        ],
+        "summary": "Get organization information",
+        "description": "Get usage tier and credit balance information about the organization associated with the API key used to make the request.",
+        "x-codeSamples": [
+          {
+            "lang": "TypeScript",
+            "label": "Node SDK",
+            "source": "// npm install --save @runwayml/sdk\nimport RunwayML from '@runwayml/sdk';\n\n// The env var RUNWAYML_API_SECRET is expected to contain your API key.\nconst client = new RunwayML();\n\nconst details = await client.organization.retrieve();\nconsole.log(details.creditBalance);"
+          },
+          {
+            "lang": "Python",
+            "label": "Python SDK",
+            "source": "# pip install runwayml\nfrom runwayml import RunwayML\n\n# The env var RUNWAYML_API_SECRET is expected to contain your API key.\nclient = RunwayML()\n\ndetails = client.organization.retrieve()\nprint(details.creditBalance)"
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/X-Runway-Version"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "tier": {
+                      "title": "OrganizationTierDetails",
+                      "description": "Limits associated with the organization's tier.",
+                      "type": "object",
+                      "properties": {
+                        "maxMonthlyCreditSpend": {
+                          "description": "The maximum number of credits that can be purchased in a month.",
+                          "type": "integer",
+                          "minimum": 0,
+                          "maximum": 9007199254740991
+                        },
+                        "models": {
+                          "description": "An object containing model-specific limits. Each key represents a model.",
+                          "type": "object",
+                          "propertyNames": {
+                            "title": "ModelVariant",
+                            "type": "string",
+                            "enum": [
+                              "gen3a_turbo",
+                              "gen4_turbo",
+                              "gen4_image",
+                              "gen4_image_turbo",
+                              "act_two",
+                              "gen4_aleph",
+                              "veo3",
+                              "veo3.1",
+                              "veo3.1_fast",
+                              "gemini_2.5_flash",
+                              "eleven_multilingual_v2",
+                              "eleven_text_to_sound_v2",
+                              "eleven_voice_isolation",
+                              "eleven_voice_dubbing",
+                              "eleven_multilingual_sts_v2"
+                            ]
+                          },
+                          "additionalProperties": {
+                            "title": "ModelTierLimits",
+                            "description": "Limits associated with the model.",
+                            "type": "object",
+                            "properties": {
+                              "maxConcurrentGenerations": {
+                                "description": "The maximum number of generations that can be run concurrently for this model.",
+                                "type": "integer",
+                                "minimum": 0,
+                                "maximum": 9007199254740991
+                              },
+                              "maxDailyGenerations": {
+                                "description": "The maximum number of generations that can be created each day for this model.",
+                                "type": "integer",
+                                "minimum": 0,
+                                "maximum": 9007199254740991
+                              }
+                            },
+                            "required": [
+                              "maxConcurrentGenerations",
+                              "maxDailyGenerations"
+                            ],
+                            "additionalProperties": false
+                          }
+                        }
+                      },
+                      "required": [
+                        "maxMonthlyCreditSpend",
+                        "models"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "creditBalance": {
+                      "description": "The number of credits remaining in the organization account.",
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 9007199254740991
+                    },
+                    "usage": {
+                      "title": "OrganizationUsageDetails",
+                      "description": "Usage data for the organization.",
+                      "type": "object",
+                      "properties": {
+                        "models": {
+                          "type": "object",
+                          "propertyNames": {
+                            "title": "ModelVariant",
+                            "type": "string",
+                            "enum": [
+                              "gen3a_turbo",
+                              "gen4_turbo",
+                              "gen4_image",
+                              "gen4_image_turbo",
+                              "act_two",
+                              "gen4_aleph",
+                              "veo3",
+                              "veo3.1",
+                              "veo3.1_fast",
+                              "gemini_2.5_flash",
+                              "eleven_multilingual_v2",
+                              "eleven_text_to_sound_v2",
+                              "eleven_voice_isolation",
+                              "eleven_voice_dubbing",
+                              "eleven_multilingual_sts_v2"
+                            ]
+                          },
+                          "additionalProperties": {
+                            "title": "ModelUsage",
+                            "description": "Usage data for the model.",
+                            "type": "object",
+                            "properties": {
+                              "dailyGenerations": {
+                                "description": "The number of generations that have been run for this model in the past day.",
+                                "type": "integer",
+                                "minimum": 0,
+                                "maximum": 9007199254740991
+                              }
+                            },
+                            "required": [
+                              "dailyGenerations"
+                            ],
+                            "additionalProperties": false
+                          }
+                        }
+                      },
+                      "required": [
+                        "models"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "tier",
+                    "creditBalance",
+                    "usage"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/organization/usage": {
+      "post": {
+        "tags": [
+          "Organization"
+        ],
+        "summary": "Query credit usage",
+        "description": "Fetch credit usage data broken down by model and day for the organization associated with the API key used to make the request. Up to 90 days of data can be queried at a time.",
+        "x-codeSamples": [
+          {
+            "lang": "TypeScript",
+            "label": "Node SDK",
+            "source": "// npm install --save @runwayml/sdk\nimport RunwayML from '@runwayml/sdk';\n\n// The env var RUNWAYML_API_SECRET is expected to contain your API key.\nconst client = new RunwayML();\n\nconst usage = await client.organization.retrieveUsage();\nconsole.log(usage);"
+          },
+          {
+            "lang": "Python",
+            "label": "Python SDK",
+            "source": "# pip install runwayml\nfrom runwayml import RunwayML\n\n# The env var RUNWAYML_API_SECRET is expected to contain your API key.\nclient = RunwayML()\n\nusage = client.organization.retrieve_usage()\nprint(usage)"
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/X-Runway-Version"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "properties": {
+                  "startDate": {
+                    "description": "The start date of the usage data in ISO-8601 format (YYYY-MM-DD). If unspecified, it will default to 30 days before the current date. All dates are in UTC.",
+                    "type": "string",
+                    "format": "date",
+                    "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))$"
+                  },
+                  "beforeDate": {
+                    "description": "The end date of the usage data in ISO-8601 format (YYYY-MM-DD), not inclusive. If unspecified, it will default to thirty days after the start date. Must be less than or equal to 90 days after the start date. All dates are in UTC.",
+                    "type": "string",
+                    "format": "date",
+                    "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))$"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "results": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "date": {
+                            "description": "The date of the usage data in ISO-8601 format (YYYY-MM-DD). All dates are in UTC.",
+                            "type": "string",
+                            "format": "date",
+                            "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))$"
+                          },
+                          "usedCredits": {
+                            "description": "The credits used per model for the given date.",
+                            "type": "array",
+                            "items": {
+                              "title": "CreditUsageForModelForDate",
+                              "type": "object",
+                              "properties": {
+                                "model": {
+                                  "title": "ModelVariant",
+                                  "description": "The model that credits were spent on.",
+                                  "type": "string",
+                                  "enum": [
+                                    "gen3a_turbo",
+                                    "gen4_turbo",
+                                    "gen4_image",
+                                    "gen4_image_turbo",
+                                    "act_two",
+                                    "gen4_aleph",
+                                    "veo3",
+                                    "veo3.1",
+                                    "veo3.1_fast",
+                                    "gemini_2.5_flash",
+                                    "eleven_multilingual_v2",
+                                    "eleven_text_to_sound_v2",
+                                    "eleven_voice_isolation",
+                                    "eleven_voice_dubbing",
+                                    "eleven_multilingual_sts_v2"
+                                  ]
+                                },
+                                "amount": {
+                                  "description": "The number of credits spent on the model.",
+                                  "type": "integer",
+                                  "minimum": 0,
+                                  "maximum": 9007199254740991
+                                }
+                              },
+                              "required": [
+                                "model",
+                                "amount"
+                              ],
+                              "additionalProperties": false
+                            }
+                          }
+                        },
+                        "required": [
+                          "date",
+                          "usedCredits"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "models": {
+                      "description": "The list of models with usage during the queried time range.",
+                      "type": "array",
+                      "items": {
+                        "title": "ModelVariant",
+                        "description": "A model that was used during the queried time range.",
+                        "type": "string",
+                        "enum": [
+                          "gen3a_turbo",
+                          "gen4_turbo",
+                          "gen4_image",
+                          "gen4_image_turbo",
+                          "act_two",
+                          "gen4_aleph",
+                          "veo3",
+                          "veo3.1",
+                          "veo3.1_fast",
+                          "gemini_2.5_flash",
+                          "eleven_multilingual_v2",
+                          "eleven_text_to_sound_v2",
+                          "eleven_voice_isolation",
+                          "eleven_voice_dubbing",
+                          "eleven_multilingual_sts_v2"
+                        ]
+                      }
+                    }
+                  },
+                  "required": [
+                    "results",
+                    "models"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/uploads": {
+      "post": {
+        "tags": [
+          "Uploads"
+        ],
+        "summary": "Upload a file",
+        "description": "Uploads a temporary media file that can be referenced in API generation requests. The uploaded files will be automatically expired and deleted after a period of time. It is strongly recommended to use our SDKs for this which have a simplified interface that directly accepts file objects.",
+        "x-codeSamples": [
+          {
+            "lang": "TypeScript",
+            "label": "Node SDK",
+            "source": "// npm install --save @runwayml/sdk\nimport RunwayML from '@runwayml/sdk';\nimport fs from 'node:fs';\n\n// The env var RUNWAYML_API_SECRET is expected to contain your API key.\nconst client = new RunwayML();\n\nfilename = './funny-cats.mp4';\nconst uploadUri = await client.uploads.createEphemeral(\n  fs.createReadStream(filename),\n);\n\n// Use the runwayUri in generation requests\nconst task = await client.videoToVideo\n  .create({\n    model: 'gen4_aleph',\n    videoUri: uploadUri,\n    promptText: 'Add the easter elements to the cat video',\n    references: [\n      {\n        type: 'image',\n        uri: 'https://example.com/easter-scene.jpg',\n      },\n    ],\n    ratio: '1280:720',\n  })\n  .waitForTaskOutput();\n\nconsole.log(task);"
+          },
+          {
+            "lang": "Python",
+            "label": "Python SDK",
+            "source": "# pip install runwayml\nfrom runwayml import RunwayML\nfrom pathlib import Path\n\n# The env var RUNWAYML_API_SECRET is expected to contain your API key.\nclient = RunwayML()\n\nfile = Path('./funny-cats.mp4');\nupload_uri = client.uploads.create_ephemeral(\n  file=file,\n)\n\n# Use the upload_uri in generation requests\ntask = client.video_to_video.create(\n  model='gen4_aleph',\n  video_uri=upload_uri,\n  prompt_text='Add the easter elements to the cat video',\n  references=[\n    {\n      'type': 'image',\n      'uri': 'https://example.com/easter-scene.jpg',\n    },\n  ],\n  ratio='1280:720',\n).wait_for_task_output()\n\nprint(task)"
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/X-Runway-Version"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "properties": {
+                  "filename": {
+                    "description": "The filename of the file to upload. Must have a valid extension and be a supported media type (image, video, or audio).",
+                    "type": "string",
+                    "minLength": 3,
+                    "maxLength": 255
+                  },
+                  "type": {
+                    "description": "The type of upload to create",
+                    "type": "string",
+                    "enum": [
+                      "ephemeral"
+                    ]
+                  }
+                },
+                "required": [
+                  "filename",
+                  "type"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The upload URL and Runway URI have been successfully created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "uploadUrl": {
+                      "description": "The URL to upload your media file to with a POST request.",
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "fields": {
+                      "description": "Fields that must be included in the file upload request as form data.",
+                      "type": "object",
+                      "propertyNames": {
+                        "type": "string"
+                      },
+                      "additionalProperties": {
+                        "type": "string"
+                      }
+                    },
+                    "runwayUri": {
+                      "description": "The Runway upload URI to use in other API generation requests",
+                      "type": "string",
+                      "pattern": "^runway:\\/\\/.*"
+                    }
+                  },
+                  "required": [
+                    "uploadUrl",
+                    "fields",
+                    "runwayUri"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "You have exceeded the rate limit for this endpoint."
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {},
+    "responses": {},
+    "parameters": {
+      "X-Runway-Version": {
+        "name": "X-Runway-Version",
+        "in": "header",
+        "required": true,
+        "description": "The version of the RunwayML API being used. You can read more about versioning [here](/api-details/versioning).",
+        "schema": {
+          "type": "string",
+          "const": "2024-11-06",
+          "default": "2024-11-06"
+        }
+      }
+    },
+    "examples": {},
+    "requestBodies": {},
+    "headers": {},
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    },
+    "links": {},
+    "callbacks": {}
+  },
+  "security": [
+    {
+      "ApiKeyAuth": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "Start generating",
+      "description": "These endpoints all kick off tasks to create generations."
+    },
+    {
+      "name": "Task management",
+      "description": "Endpoints for managing tasks that have been submitted."
+    },
+    {
+      "name": "Uploads",
+      "description": "Endpoints for uploading media files."
+    }
+  ],
+  "servers": [
+    {
+      "url": "https://api.dev.runwayml.com"
+    }
+  ]
+}
