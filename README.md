@@ -20,20 +20,14 @@ using var client = new RunwayClient(apiKey);
 
 var response = await client.StartGenerating.CreateImageToVideoAsync(
     xRunwayVersion: "2024-11-06",
-    request: new RequestVariant3
+    request: new RequestGen3aTurbo
     {
-        PromptImage = new AnyOf<AnyOf<string, string, string>?, IList<RequestVariant3PromptImageVariant2Item>>
-        {
-            Value1 = new AnyOf<string, string, string>
-            {
-                Value1 = "https://img.freepik.com/free-photo/beautiful-woman-with-long-blond-hair-looking-camera-outdoors-generated-by-artificial-intelligence_188544-240170.jpg",
-            },
-        },
+        PromptImage = "https://img.freepik.com/free-photo/beautiful-woman-with-long-blond-hair-looking-camera-outdoors-generated-by-artificial-intelligence_188544-240170.jpg",
         PromptText = "The girl smiles a little",
         Seed = 999999999,
         Model = "gen3a_turbo",
         Duration = 5,
-        Ratio = RequestVariant3Ratio.x1280_768,
+        Ratio = RequestGen3aTurboRatio.x1280_768,
     });
 response.Id.Should().NotBe(default(Guid));
 
@@ -44,22 +38,22 @@ do
         id: response.Id,
         xRunwayVersion: "2024-11-06");
 
-    if (taskDetail.IsValue4)
+    if (taskDetail.IsRunning)
     {
-        Console.WriteLine($"Progress: {taskDetail.Value4!.Progress}");
+        Console.WriteLine($"Progress: {taskDetail.Running!.Progress}");
     }
 
     await Task.Delay(TimeSpan.FromSeconds(10));
 }
-while (!taskDetail.IsValue5 && !taskDetail.IsValue6 && !taskDetail.IsValue3);
+while (!taskDetail.IsFailed && !taskDetail.IsSucceeded && !taskDetail.IsCancelled);
 
-if (taskDetail.IsValue6)
+if (taskDetail.IsSucceeded)
 {
-    Console.WriteLine($"Task ID: {taskDetail.Value6!.Id}");
-    Console.WriteLine($"Task Status: {taskDetail.Value6.Status}");
-    Console.WriteLine($"CreatedAt: {taskDetail.Value6.CreatedAt}");
+    Console.WriteLine($"Task ID: {taskDetail.Succeeded!.Id}");
+    Console.WriteLine($"Task Status: {taskDetail.Succeeded.Status}");
+    Console.WriteLine($"CreatedAt: {taskDetail.Succeeded.CreatedAt}");
 
-    foreach (var output in taskDetail.Value6.Output)
+    foreach (var output in taskDetail.Succeeded.Output)
     {
         Console.WriteLine($"Video URL: {output}");
     }
