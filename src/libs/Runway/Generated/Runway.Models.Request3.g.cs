@@ -13,48 +13,48 @@ namespace Runway
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Runway.RequestVariant13? Value1 { get; init; }
+        public global::Runway.RequestGen4Aleph? Gen4Aleph { get; init; }
 #else
-        public global::Runway.RequestVariant13? Value1 { get; }
+        public global::Runway.RequestGen4Aleph? Gen4Aleph { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value1))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Gen4Aleph))]
 #endif
-        public bool IsValue1 => Value1 != null;
+        public bool IsGen4Aleph => Gen4Aleph != null;
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator Request3(global::Runway.RequestVariant13 value) => new Request3((global::Runway.RequestVariant13?)value);
+        public static implicit operator Request3(global::Runway.RequestGen4Aleph value) => new Request3((global::Runway.RequestGen4Aleph?)value);
 
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::Runway.RequestVariant13?(Request3 @this) => @this.Value1;
+        public static implicit operator global::Runway.RequestGen4Aleph?(Request3 @this) => @this.Gen4Aleph;
 
         /// <summary>
         /// 
         /// </summary>
-        public Request3(global::Runway.RequestVariant13? value)
+        public Request3(global::Runway.RequestGen4Aleph? value)
         {
-            Value1 = value;
+            Gen4Aleph = value;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public object? Object =>
-            Value1 as object 
+            Gen4Aleph as object 
             ;
 
         /// <summary>
         /// 
         /// </summary>
         public override string? ToString() =>
-            Value1?.ToString() 
+            Gen4Aleph?.ToString() 
             ;
 
         /// <summary>
@@ -62,14 +62,14 @@ namespace Runway
         /// </summary>
         public bool Validate()
         {
-            return IsValue1;
+            return IsGen4Aleph;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Runway.RequestVariant13?, TResult>? value1 = null,
+            global::System.Func<global::Runway.RequestGen4Aleph?, TResult>? gen4Aleph = null,
             bool validate = true)
         {
             if (validate)
@@ -77,9 +77,9 @@ namespace Runway
                 Validate();
             }
 
-            if (IsValue1 && value1 != null)
+            if (IsGen4Aleph && gen4Aleph != null)
             {
-                return value1(Value1!);
+                return gen4Aleph(Gen4Aleph!);
             }
 
             return default(TResult);
@@ -89,7 +89,7 @@ namespace Runway
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Runway.RequestVariant13?>? value1 = null,
+            global::System.Action<global::Runway.RequestGen4Aleph?>? gen4Aleph = null,
             bool validate = true)
         {
             if (validate)
@@ -97,9 +97,9 @@ namespace Runway
                 Validate();
             }
 
-            if (IsValue1)
+            if (IsGen4Aleph)
             {
-                value1?.Invoke(Value1!);
+                gen4Aleph?.Invoke(Gen4Aleph!);
             }
         }
 
@@ -110,8 +110,8 @@ namespace Runway
         {
             var fields = new object?[]
             {
-                Value1,
-                typeof(global::Runway.RequestVariant13),
+                Gen4Aleph,
+                typeof(global::Runway.RequestGen4Aleph),
             };
             const int offset = unchecked((int)2166136261);
             const int prime = 16777619;
@@ -128,7 +128,7 @@ namespace Runway
         public bool Equals(Request3 other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::Runway.RequestVariant13?>.Default.Equals(Value1, other.Value1) 
+                global::System.Collections.Generic.EqualityComparer<global::Runway.RequestGen4Aleph?>.Default.Equals(Gen4Aleph, other.Gen4Aleph) 
                 ;
         }
 

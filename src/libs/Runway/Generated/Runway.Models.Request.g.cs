@@ -13,214 +13,214 @@ namespace Runway
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Runway.RequestVariant1? Value1 { get; init; }
+        public global::Runway.RequestGen4Turbo? Gen4Turbo { get; init; }
 #else
-        public global::Runway.RequestVariant1? Value1 { get; }
+        public global::Runway.RequestGen4Turbo? Gen4Turbo { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value1))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Gen4Turbo))]
 #endif
-        public bool IsValue1 => Value1 != null;
+        public bool IsGen4Turbo => Gen4Turbo != null;
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Runway.RequestVariant2? Value2 { get; init; }
+        public global::Runway.RequestVeo31? Veo31 { get; init; }
 #else
-        public global::Runway.RequestVariant2? Value2 { get; }
+        public global::Runway.RequestVeo31? Veo31 { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value2))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Veo31))]
 #endif
-        public bool IsValue2 => Value2 != null;
+        public bool IsVeo31 => Veo31 != null;
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Runway.RequestVariant3? Value3 { get; init; }
+        public global::Runway.RequestGen3aTurbo? Gen3aTurbo { get; init; }
 #else
-        public global::Runway.RequestVariant3? Value3 { get; }
+        public global::Runway.RequestGen3aTurbo? Gen3aTurbo { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value3))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Gen3aTurbo))]
 #endif
-        public bool IsValue3 => Value3 != null;
+        public bool IsGen3aTurbo => Gen3aTurbo != null;
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Runway.RequestVariant4? Value4 { get; init; }
+        public global::Runway.RequestVeo31Fast? Veo31Fast { get; init; }
 #else
-        public global::Runway.RequestVariant4? Value4 { get; }
+        public global::Runway.RequestVeo31Fast? Veo31Fast { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value4))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Veo31Fast))]
 #endif
-        public bool IsValue4 => Value4 != null;
+        public bool IsVeo31Fast => Veo31Fast != null;
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Runway.RequestVariant5? Value5 { get; init; }
+        public global::Runway.RequestVeo3? Veo3 { get; init; }
 #else
-        public global::Runway.RequestVariant5? Value5 { get; }
+        public global::Runway.RequestVeo3? Veo3 { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value5))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Veo3))]
 #endif
-        public bool IsValue5 => Value5 != null;
+        public bool IsVeo3 => Veo3 != null;
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator Request(global::Runway.RequestVariant1 value) => new Request((global::Runway.RequestVariant1?)value);
+        public static implicit operator Request(global::Runway.RequestGen4Turbo value) => new Request((global::Runway.RequestGen4Turbo?)value);
 
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::Runway.RequestVariant1?(Request @this) => @this.Value1;
+        public static implicit operator global::Runway.RequestGen4Turbo?(Request @this) => @this.Gen4Turbo;
 
         /// <summary>
         /// 
         /// </summary>
-        public Request(global::Runway.RequestVariant1? value)
+        public Request(global::Runway.RequestGen4Turbo? value)
         {
-            Value1 = value;
+            Gen4Turbo = value;
         }
 
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator Request(global::Runway.RequestVariant2 value) => new Request((global::Runway.RequestVariant2?)value);
+        public static implicit operator Request(global::Runway.RequestVeo31 value) => new Request((global::Runway.RequestVeo31?)value);
 
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::Runway.RequestVariant2?(Request @this) => @this.Value2;
+        public static implicit operator global::Runway.RequestVeo31?(Request @this) => @this.Veo31;
 
         /// <summary>
         /// 
         /// </summary>
-        public Request(global::Runway.RequestVariant2? value)
+        public Request(global::Runway.RequestVeo31? value)
         {
-            Value2 = value;
+            Veo31 = value;
         }
 
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator Request(global::Runway.RequestVariant3 value) => new Request((global::Runway.RequestVariant3?)value);
+        public static implicit operator Request(global::Runway.RequestGen3aTurbo value) => new Request((global::Runway.RequestGen3aTurbo?)value);
 
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::Runway.RequestVariant3?(Request @this) => @this.Value3;
+        public static implicit operator global::Runway.RequestGen3aTurbo?(Request @this) => @this.Gen3aTurbo;
 
         /// <summary>
         /// 
         /// </summary>
-        public Request(global::Runway.RequestVariant3? value)
+        public Request(global::Runway.RequestGen3aTurbo? value)
         {
-            Value3 = value;
+            Gen3aTurbo = value;
         }
 
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator Request(global::Runway.RequestVariant4 value) => new Request((global::Runway.RequestVariant4?)value);
+        public static implicit operator Request(global::Runway.RequestVeo31Fast value) => new Request((global::Runway.RequestVeo31Fast?)value);
 
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::Runway.RequestVariant4?(Request @this) => @this.Value4;
+        public static implicit operator global::Runway.RequestVeo31Fast?(Request @this) => @this.Veo31Fast;
 
         /// <summary>
         /// 
         /// </summary>
-        public Request(global::Runway.RequestVariant4? value)
+        public Request(global::Runway.RequestVeo31Fast? value)
         {
-            Value4 = value;
+            Veo31Fast = value;
         }
 
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator Request(global::Runway.RequestVariant5 value) => new Request((global::Runway.RequestVariant5?)value);
+        public static implicit operator Request(global::Runway.RequestVeo3 value) => new Request((global::Runway.RequestVeo3?)value);
 
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::Runway.RequestVariant5?(Request @this) => @this.Value5;
+        public static implicit operator global::Runway.RequestVeo3?(Request @this) => @this.Veo3;
 
         /// <summary>
         /// 
         /// </summary>
-        public Request(global::Runway.RequestVariant5? value)
+        public Request(global::Runway.RequestVeo3? value)
         {
-            Value5 = value;
+            Veo3 = value;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public Request(
-            global::Runway.RequestVariant1? value1,
-            global::Runway.RequestVariant2? value2,
-            global::Runway.RequestVariant3? value3,
-            global::Runway.RequestVariant4? value4,
-            global::Runway.RequestVariant5? value5
+            global::Runway.RequestGen4Turbo? gen4Turbo,
+            global::Runway.RequestVeo31? veo31,
+            global::Runway.RequestGen3aTurbo? gen3aTurbo,
+            global::Runway.RequestVeo31Fast? veo31Fast,
+            global::Runway.RequestVeo3? veo3
             )
         {
-            Value1 = value1;
-            Value2 = value2;
-            Value3 = value3;
-            Value4 = value4;
-            Value5 = value5;
+            Gen4Turbo = gen4Turbo;
+            Veo31 = veo31;
+            Gen3aTurbo = gen3aTurbo;
+            Veo31Fast = veo31Fast;
+            Veo3 = veo3;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public object? Object =>
-            Value5 as object ??
-            Value4 as object ??
-            Value3 as object ??
-            Value2 as object ??
-            Value1 as object 
+            Veo3 as object ??
+            Veo31Fast as object ??
+            Gen3aTurbo as object ??
+            Veo31 as object ??
+            Gen4Turbo as object 
             ;
 
         /// <summary>
         /// 
         /// </summary>
         public override string? ToString() =>
-            Value1?.ToString() ??
-            Value2?.ToString() ??
-            Value3?.ToString() ??
-            Value4?.ToString() ??
-            Value5?.ToString() 
+            Gen4Turbo?.ToString() ??
+            Veo31?.ToString() ??
+            Gen3aTurbo?.ToString() ??
+            Veo31Fast?.ToString() ??
+            Veo3?.ToString() 
             ;
 
         /// <summary>
@@ -228,18 +228,18 @@ namespace Runway
         /// </summary>
         public bool Validate()
         {
-            return IsValue1 && !IsValue2 && !IsValue3 && !IsValue4 && !IsValue5 || !IsValue1 && IsValue2 && !IsValue3 && !IsValue4 && !IsValue5 || !IsValue1 && !IsValue2 && IsValue3 && !IsValue4 && !IsValue5 || !IsValue1 && !IsValue2 && !IsValue3 && IsValue4 && !IsValue5 || !IsValue1 && !IsValue2 && !IsValue3 && !IsValue4 && IsValue5;
+            return IsGen4Turbo && !IsVeo31 && !IsGen3aTurbo && !IsVeo31Fast && !IsVeo3 || !IsGen4Turbo && IsVeo31 && !IsGen3aTurbo && !IsVeo31Fast && !IsVeo3 || !IsGen4Turbo && !IsVeo31 && IsGen3aTurbo && !IsVeo31Fast && !IsVeo3 || !IsGen4Turbo && !IsVeo31 && !IsGen3aTurbo && IsVeo31Fast && !IsVeo3 || !IsGen4Turbo && !IsVeo31 && !IsGen3aTurbo && !IsVeo31Fast && IsVeo3;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Runway.RequestVariant1?, TResult>? value1 = null,
-            global::System.Func<global::Runway.RequestVariant2?, TResult>? value2 = null,
-            global::System.Func<global::Runway.RequestVariant3?, TResult>? value3 = null,
-            global::System.Func<global::Runway.RequestVariant4?, TResult>? value4 = null,
-            global::System.Func<global::Runway.RequestVariant5?, TResult>? value5 = null,
+            global::System.Func<global::Runway.RequestGen4Turbo?, TResult>? gen4Turbo = null,
+            global::System.Func<global::Runway.RequestVeo31?, TResult>? veo31 = null,
+            global::System.Func<global::Runway.RequestGen3aTurbo?, TResult>? gen3aTurbo = null,
+            global::System.Func<global::Runway.RequestVeo31Fast?, TResult>? veo31Fast = null,
+            global::System.Func<global::Runway.RequestVeo3?, TResult>? veo3 = null,
             bool validate = true)
         {
             if (validate)
@@ -247,25 +247,25 @@ namespace Runway
                 Validate();
             }
 
-            if (IsValue1 && value1 != null)
+            if (IsGen4Turbo && gen4Turbo != null)
             {
-                return value1(Value1!);
+                return gen4Turbo(Gen4Turbo!);
             }
-            else if (IsValue2 && value2 != null)
+            else if (IsVeo31 && veo31 != null)
             {
-                return value2(Value2!);
+                return veo31(Veo31!);
             }
-            else if (IsValue3 && value3 != null)
+            else if (IsGen3aTurbo && gen3aTurbo != null)
             {
-                return value3(Value3!);
+                return gen3aTurbo(Gen3aTurbo!);
             }
-            else if (IsValue4 && value4 != null)
+            else if (IsVeo31Fast && veo31Fast != null)
             {
-                return value4(Value4!);
+                return veo31Fast(Veo31Fast!);
             }
-            else if (IsValue5 && value5 != null)
+            else if (IsVeo3 && veo3 != null)
             {
-                return value5(Value5!);
+                return veo3(Veo3!);
             }
 
             return default(TResult);
@@ -275,11 +275,11 @@ namespace Runway
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Runway.RequestVariant1?>? value1 = null,
-            global::System.Action<global::Runway.RequestVariant2?>? value2 = null,
-            global::System.Action<global::Runway.RequestVariant3?>? value3 = null,
-            global::System.Action<global::Runway.RequestVariant4?>? value4 = null,
-            global::System.Action<global::Runway.RequestVariant5?>? value5 = null,
+            global::System.Action<global::Runway.RequestGen4Turbo?>? gen4Turbo = null,
+            global::System.Action<global::Runway.RequestVeo31?>? veo31 = null,
+            global::System.Action<global::Runway.RequestGen3aTurbo?>? gen3aTurbo = null,
+            global::System.Action<global::Runway.RequestVeo31Fast?>? veo31Fast = null,
+            global::System.Action<global::Runway.RequestVeo3?>? veo3 = null,
             bool validate = true)
         {
             if (validate)
@@ -287,25 +287,25 @@ namespace Runway
                 Validate();
             }
 
-            if (IsValue1)
+            if (IsGen4Turbo)
             {
-                value1?.Invoke(Value1!);
+                gen4Turbo?.Invoke(Gen4Turbo!);
             }
-            else if (IsValue2)
+            else if (IsVeo31)
             {
-                value2?.Invoke(Value2!);
+                veo31?.Invoke(Veo31!);
             }
-            else if (IsValue3)
+            else if (IsGen3aTurbo)
             {
-                value3?.Invoke(Value3!);
+                gen3aTurbo?.Invoke(Gen3aTurbo!);
             }
-            else if (IsValue4)
+            else if (IsVeo31Fast)
             {
-                value4?.Invoke(Value4!);
+                veo31Fast?.Invoke(Veo31Fast!);
             }
-            else if (IsValue5)
+            else if (IsVeo3)
             {
-                value5?.Invoke(Value5!);
+                veo3?.Invoke(Veo3!);
             }
         }
 
@@ -316,16 +316,16 @@ namespace Runway
         {
             var fields = new object?[]
             {
-                Value1,
-                typeof(global::Runway.RequestVariant1),
-                Value2,
-                typeof(global::Runway.RequestVariant2),
-                Value3,
-                typeof(global::Runway.RequestVariant3),
-                Value4,
-                typeof(global::Runway.RequestVariant4),
-                Value5,
-                typeof(global::Runway.RequestVariant5),
+                Gen4Turbo,
+                typeof(global::Runway.RequestGen4Turbo),
+                Veo31,
+                typeof(global::Runway.RequestVeo31),
+                Gen3aTurbo,
+                typeof(global::Runway.RequestGen3aTurbo),
+                Veo31Fast,
+                typeof(global::Runway.RequestVeo31Fast),
+                Veo3,
+                typeof(global::Runway.RequestVeo3),
             };
             const int offset = unchecked((int)2166136261);
             const int prime = 16777619;
@@ -342,11 +342,11 @@ namespace Runway
         public bool Equals(Request other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::Runway.RequestVariant1?>.Default.Equals(Value1, other.Value1) &&
-                global::System.Collections.Generic.EqualityComparer<global::Runway.RequestVariant2?>.Default.Equals(Value2, other.Value2) &&
-                global::System.Collections.Generic.EqualityComparer<global::Runway.RequestVariant3?>.Default.Equals(Value3, other.Value3) &&
-                global::System.Collections.Generic.EqualityComparer<global::Runway.RequestVariant4?>.Default.Equals(Value4, other.Value4) &&
-                global::System.Collections.Generic.EqualityComparer<global::Runway.RequestVariant5?>.Default.Equals(Value5, other.Value5) 
+                global::System.Collections.Generic.EqualityComparer<global::Runway.RequestGen4Turbo?>.Default.Equals(Gen4Turbo, other.Gen4Turbo) &&
+                global::System.Collections.Generic.EqualityComparer<global::Runway.RequestVeo31?>.Default.Equals(Veo31, other.Veo31) &&
+                global::System.Collections.Generic.EqualityComparer<global::Runway.RequestGen3aTurbo?>.Default.Equals(Gen3aTurbo, other.Gen3aTurbo) &&
+                global::System.Collections.Generic.EqualityComparer<global::Runway.RequestVeo31Fast?>.Default.Equals(Veo31Fast, other.Veo31Fast) &&
+                global::System.Collections.Generic.EqualityComparer<global::Runway.RequestVeo3?>.Default.Equals(Veo3, other.Veo3) 
                 ;
         }
 

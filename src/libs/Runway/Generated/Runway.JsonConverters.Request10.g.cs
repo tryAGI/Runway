@@ -17,25 +17,25 @@ namespace Runway.JsonConverters
 
             var
             readerCopy = reader;
-            global::Runway.RequestVariant110? value1 = default;
+            global::Runway.RequestElevenVoiceIsolation? elevenVoiceIsolation = default;
             try
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.RequestVariant110), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.RequestVariant110> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.RequestVariant110).Name}");
-                value1 = global::System.Text.Json.JsonSerializer.Deserialize(ref readerCopy, typeInfo);
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.RequestElevenVoiceIsolation), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.RequestElevenVoiceIsolation> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.RequestElevenVoiceIsolation).Name}");
+                elevenVoiceIsolation = global::System.Text.Json.JsonSerializer.Deserialize(ref readerCopy, typeInfo);
             }
             catch (global::System.Text.Json.JsonException)
             {
             }
 
             var result = new global::Runway.Request10(
-                value1
+                elevenVoiceIsolation
                 );
 
-            if (value1 != null)
+            if (elevenVoiceIsolation != null)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.RequestVariant110), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.RequestVariant110> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.RequestVariant110).Name}");
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.RequestElevenVoiceIsolation), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.RequestElevenVoiceIsolation> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.RequestElevenVoiceIsolation).Name}");
                 _ = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
 
@@ -51,11 +51,11 @@ namespace Runway.JsonConverters
             options = options ?? throw new global::System.ArgumentNullException(nameof(options));
             var typeInfoResolver = options.TypeInfoResolver ?? throw new global::System.InvalidOperationException("TypeInfoResolver is not set.");
 
-            if (value.IsValue1)
+            if (value.IsElevenVoiceIsolation)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.RequestVariant110), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.RequestVariant110?> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.RequestVariant110).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Value1, typeInfo);
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.RequestElevenVoiceIsolation), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.RequestElevenVoiceIsolation?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.RequestElevenVoiceIsolation).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ElevenVoiceIsolation, typeInfo);
             }
         }
     }

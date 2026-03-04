@@ -13,97 +13,97 @@ namespace Runway
         /// An audio file containing dialogue to be processed.
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Runway.RequestVariant1MediaVariant1? Value1 { get; init; }
+        public global::Runway.RequestElevenMultilingualStsV2MediaSpeechToSpeechAudio? Audio { get; init; }
 #else
-        public global::Runway.RequestVariant1MediaVariant1? Value1 { get; }
+        public global::Runway.RequestElevenMultilingualStsV2MediaSpeechToSpeechAudio? Audio { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value1))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Audio))]
 #endif
-        public bool IsValue1 => Value1 != null;
+        public bool IsAudio => Audio != null;
 
         /// <summary>
         /// A video file containing dialogue to be processed.
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Runway.RequestVariant1MediaVariant2? Value2 { get; init; }
+        public global::Runway.RequestElevenMultilingualStsV2MediaSpeechToSpeechVideo? Video { get; init; }
 #else
-        public global::Runway.RequestVariant1MediaVariant2? Value2 { get; }
+        public global::Runway.RequestElevenMultilingualStsV2MediaSpeechToSpeechVideo? Video { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value2))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Video))]
 #endif
-        public bool IsValue2 => Value2 != null;
+        public bool IsVideo => Video != null;
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator Media(global::Runway.RequestVariant1MediaVariant1 value) => new Media((global::Runway.RequestVariant1MediaVariant1?)value);
+        public static implicit operator Media(global::Runway.RequestElevenMultilingualStsV2MediaSpeechToSpeechAudio value) => new Media((global::Runway.RequestElevenMultilingualStsV2MediaSpeechToSpeechAudio?)value);
 
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::Runway.RequestVariant1MediaVariant1?(Media @this) => @this.Value1;
+        public static implicit operator global::Runway.RequestElevenMultilingualStsV2MediaSpeechToSpeechAudio?(Media @this) => @this.Audio;
 
         /// <summary>
         /// 
         /// </summary>
-        public Media(global::Runway.RequestVariant1MediaVariant1? value)
+        public Media(global::Runway.RequestElevenMultilingualStsV2MediaSpeechToSpeechAudio? value)
         {
-            Value1 = value;
+            Audio = value;
         }
 
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator Media(global::Runway.RequestVariant1MediaVariant2 value) => new Media((global::Runway.RequestVariant1MediaVariant2?)value);
+        public static implicit operator Media(global::Runway.RequestElevenMultilingualStsV2MediaSpeechToSpeechVideo value) => new Media((global::Runway.RequestElevenMultilingualStsV2MediaSpeechToSpeechVideo?)value);
 
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::Runway.RequestVariant1MediaVariant2?(Media @this) => @this.Value2;
+        public static implicit operator global::Runway.RequestElevenMultilingualStsV2MediaSpeechToSpeechVideo?(Media @this) => @this.Video;
 
         /// <summary>
         /// 
         /// </summary>
-        public Media(global::Runway.RequestVariant1MediaVariant2? value)
+        public Media(global::Runway.RequestElevenMultilingualStsV2MediaSpeechToSpeechVideo? value)
         {
-            Value2 = value;
+            Video = value;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public Media(
-            global::Runway.RequestVariant1MediaVariant1? value1,
-            global::Runway.RequestVariant1MediaVariant2? value2
+            global::Runway.RequestElevenMultilingualStsV2MediaSpeechToSpeechAudio? audio,
+            global::Runway.RequestElevenMultilingualStsV2MediaSpeechToSpeechVideo? video
             )
         {
-            Value1 = value1;
-            Value2 = value2;
+            Audio = audio;
+            Video = video;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public object? Object =>
-            Value2 as object ??
-            Value1 as object 
+            Video as object ??
+            Audio as object 
             ;
 
         /// <summary>
         /// 
         /// </summary>
         public override string? ToString() =>
-            Value1?.ToString() ??
-            Value2?.ToString() 
+            Audio?.ToString() ??
+            Video?.ToString() 
             ;
 
         /// <summary>
@@ -111,15 +111,15 @@ namespace Runway
         /// </summary>
         public bool Validate()
         {
-            return IsValue1 && !IsValue2 || !IsValue1 && IsValue2;
+            return IsAudio && !IsVideo || !IsAudio && IsVideo;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Runway.RequestVariant1MediaVariant1?, TResult>? value1 = null,
-            global::System.Func<global::Runway.RequestVariant1MediaVariant2?, TResult>? value2 = null,
+            global::System.Func<global::Runway.RequestElevenMultilingualStsV2MediaSpeechToSpeechAudio?, TResult>? audio = null,
+            global::System.Func<global::Runway.RequestElevenMultilingualStsV2MediaSpeechToSpeechVideo?, TResult>? video = null,
             bool validate = true)
         {
             if (validate)
@@ -127,13 +127,13 @@ namespace Runway
                 Validate();
             }
 
-            if (IsValue1 && value1 != null)
+            if (IsAudio && audio != null)
             {
-                return value1(Value1!);
+                return audio(Audio!);
             }
-            else if (IsValue2 && value2 != null)
+            else if (IsVideo && video != null)
             {
-                return value2(Value2!);
+                return video(Video!);
             }
 
             return default(TResult);
@@ -143,8 +143,8 @@ namespace Runway
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Runway.RequestVariant1MediaVariant1?>? value1 = null,
-            global::System.Action<global::Runway.RequestVariant1MediaVariant2?>? value2 = null,
+            global::System.Action<global::Runway.RequestElevenMultilingualStsV2MediaSpeechToSpeechAudio?>? audio = null,
+            global::System.Action<global::Runway.RequestElevenMultilingualStsV2MediaSpeechToSpeechVideo?>? video = null,
             bool validate = true)
         {
             if (validate)
@@ -152,13 +152,13 @@ namespace Runway
                 Validate();
             }
 
-            if (IsValue1)
+            if (IsAudio)
             {
-                value1?.Invoke(Value1!);
+                audio?.Invoke(Audio!);
             }
-            else if (IsValue2)
+            else if (IsVideo)
             {
-                value2?.Invoke(Value2!);
+                video?.Invoke(Video!);
             }
         }
 
@@ -169,10 +169,10 @@ namespace Runway
         {
             var fields = new object?[]
             {
-                Value1,
-                typeof(global::Runway.RequestVariant1MediaVariant1),
-                Value2,
-                typeof(global::Runway.RequestVariant1MediaVariant2),
+                Audio,
+                typeof(global::Runway.RequestElevenMultilingualStsV2MediaSpeechToSpeechAudio),
+                Video,
+                typeof(global::Runway.RequestElevenMultilingualStsV2MediaSpeechToSpeechVideo),
             };
             const int offset = unchecked((int)2166136261);
             const int prime = 16777619;
@@ -189,8 +189,8 @@ namespace Runway
         public bool Equals(Media other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::Runway.RequestVariant1MediaVariant1?>.Default.Equals(Value1, other.Value1) &&
-                global::System.Collections.Generic.EqualityComparer<global::Runway.RequestVariant1MediaVariant2?>.Default.Equals(Value2, other.Value2) 
+                global::System.Collections.Generic.EqualityComparer<global::Runway.RequestElevenMultilingualStsV2MediaSpeechToSpeechAudio?>.Default.Equals(Audio, other.Audio) &&
+                global::System.Collections.Generic.EqualityComparer<global::Runway.RequestElevenMultilingualStsV2MediaSpeechToSpeechVideo?>.Default.Equals(Video, other.Video) 
                 ;
         }
 

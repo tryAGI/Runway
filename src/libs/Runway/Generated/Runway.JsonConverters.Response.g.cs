@@ -17,117 +17,117 @@ namespace Runway.JsonConverters
 
             var
             readerCopy = reader;
-            global::Runway.ResponseVariant1? value1 = default;
+            global::Runway.ResponseVariant1? pENDING = default;
             try
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.ResponseVariant1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.ResponseVariant1> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.ResponseVariant1).Name}");
-                value1 = global::System.Text.Json.JsonSerializer.Deserialize(ref readerCopy, typeInfo);
+                pENDING = global::System.Text.Json.JsonSerializer.Deserialize(ref readerCopy, typeInfo);
             }
             catch (global::System.Text.Json.JsonException)
             {
             }
 
             readerCopy = reader;
-            global::Runway.ResponseVariant2? value2 = default;
+            global::Runway.ResponseVariant2? tHROTTLED = default;
             try
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.ResponseVariant2), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.ResponseVariant2> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.ResponseVariant2).Name}");
-                value2 = global::System.Text.Json.JsonSerializer.Deserialize(ref readerCopy, typeInfo);
+                tHROTTLED = global::System.Text.Json.JsonSerializer.Deserialize(ref readerCopy, typeInfo);
             }
             catch (global::System.Text.Json.JsonException)
             {
             }
 
             readerCopy = reader;
-            global::Runway.ResponseVariant3? value3 = default;
+            global::Runway.ResponseVariant3? cANCELLED = default;
             try
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.ResponseVariant3), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.ResponseVariant3> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.ResponseVariant3).Name}");
-                value3 = global::System.Text.Json.JsonSerializer.Deserialize(ref readerCopy, typeInfo);
+                cANCELLED = global::System.Text.Json.JsonSerializer.Deserialize(ref readerCopy, typeInfo);
             }
             catch (global::System.Text.Json.JsonException)
             {
             }
 
             readerCopy = reader;
-            global::Runway.ResponseVariant4? value4 = default;
+            global::Runway.ResponseVariant4? rUNNING = default;
             try
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.ResponseVariant4), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.ResponseVariant4> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.ResponseVariant4).Name}");
-                value4 = global::System.Text.Json.JsonSerializer.Deserialize(ref readerCopy, typeInfo);
+                rUNNING = global::System.Text.Json.JsonSerializer.Deserialize(ref readerCopy, typeInfo);
             }
             catch (global::System.Text.Json.JsonException)
             {
             }
 
             readerCopy = reader;
-            global::Runway.ResponseVariant5? value5 = default;
+            global::Runway.ResponseVariant5? fAILED = default;
             try
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.ResponseVariant5), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.ResponseVariant5> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.ResponseVariant5).Name}");
-                value5 = global::System.Text.Json.JsonSerializer.Deserialize(ref readerCopy, typeInfo);
+                fAILED = global::System.Text.Json.JsonSerializer.Deserialize(ref readerCopy, typeInfo);
             }
             catch (global::System.Text.Json.JsonException)
             {
             }
 
             readerCopy = reader;
-            global::Runway.ResponseVariant6? value6 = default;
+            global::Runway.ResponseVariant6? sUCCEEDED = default;
             try
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.ResponseVariant6), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.ResponseVariant6> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.ResponseVariant6).Name}");
-                value6 = global::System.Text.Json.JsonSerializer.Deserialize(ref readerCopy, typeInfo);
+                sUCCEEDED = global::System.Text.Json.JsonSerializer.Deserialize(ref readerCopy, typeInfo);
             }
             catch (global::System.Text.Json.JsonException)
             {
             }
 
             var result = new global::Runway.Response(
-                value1,
-                value2,
-                value3,
-                value4,
-                value5,
-                value6
+                pENDING,
+                tHROTTLED,
+                cANCELLED,
+                rUNNING,
+                fAILED,
+                sUCCEEDED
                 );
 
-            if (value1 != null)
+            if (pENDING != null)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.ResponseVariant1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.ResponseVariant1> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.ResponseVariant1).Name}");
                 _ = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
-            else if (value2 != null)
+            else if (tHROTTLED != null)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.ResponseVariant2), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.ResponseVariant2> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.ResponseVariant2).Name}");
                 _ = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
-            else if (value3 != null)
+            else if (cANCELLED != null)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.ResponseVariant3), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.ResponseVariant3> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.ResponseVariant3).Name}");
                 _ = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
-            else if (value4 != null)
+            else if (rUNNING != null)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.ResponseVariant4), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.ResponseVariant4> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.ResponseVariant4).Name}");
                 _ = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
-            else if (value5 != null)
+            else if (fAILED != null)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.ResponseVariant5), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.ResponseVariant5> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.ResponseVariant5).Name}");
                 _ = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
-            else if (value6 != null)
+            else if (sUCCEEDED != null)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.ResponseVariant6), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.ResponseVariant6> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.ResponseVariant6).Name}");
@@ -146,41 +146,41 @@ namespace Runway.JsonConverters
             options = options ?? throw new global::System.ArgumentNullException(nameof(options));
             var typeInfoResolver = options.TypeInfoResolver ?? throw new global::System.InvalidOperationException("TypeInfoResolver is not set.");
 
-            if (value.IsValue1)
+            if (value.IsPENDING)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.ResponseVariant1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.ResponseVariant1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.ResponseVariant1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Value1, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PENDING, typeInfo);
             }
-            else if (value.IsValue2)
+            else if (value.IsTHROTTLED)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.ResponseVariant2), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.ResponseVariant2?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.ResponseVariant2).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Value2, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.THROTTLED, typeInfo);
             }
-            else if (value.IsValue3)
+            else if (value.IsCANCELLED)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.ResponseVariant3), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.ResponseVariant3?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.ResponseVariant3).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Value3, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.CANCELLED, typeInfo);
             }
-            else if (value.IsValue4)
+            else if (value.IsRUNNING)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.ResponseVariant4), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.ResponseVariant4?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.ResponseVariant4).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Value4, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.RUNNING, typeInfo);
             }
-            else if (value.IsValue5)
+            else if (value.IsFAILED)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.ResponseVariant5), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.ResponseVariant5?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.ResponseVariant5).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Value5, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.FAILED, typeInfo);
             }
-            else if (value.IsValue6)
+            else if (value.IsSUCCEEDED)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.ResponseVariant6), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.ResponseVariant6?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.ResponseVariant6).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Value6, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.SUCCEEDED, typeInfo);
             }
         }
     }

@@ -13,103 +13,103 @@ namespace Runway
         /// A pending task
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Runway.ResponseVariant1? Value1 { get; init; }
+        public global::Runway.ResponseVariant1? PENDING { get; init; }
 #else
-        public global::Runway.ResponseVariant1? Value1 { get; }
+        public global::Runway.ResponseVariant1? PENDING { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value1))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(PENDING))]
 #endif
-        public bool IsValue1 => Value1 != null;
+        public bool IsPENDING => PENDING != null;
 
         /// <summary>
         /// A throttled task
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Runway.ResponseVariant2? Value2 { get; init; }
+        public global::Runway.ResponseVariant2? THROTTLED { get; init; }
 #else
-        public global::Runway.ResponseVariant2? Value2 { get; }
+        public global::Runway.ResponseVariant2? THROTTLED { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value2))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(THROTTLED))]
 #endif
-        public bool IsValue2 => Value2 != null;
+        public bool IsTHROTTLED => THROTTLED != null;
 
         /// <summary>
         /// A cancelled or deleted task
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Runway.ResponseVariant3? Value3 { get; init; }
+        public global::Runway.ResponseVariant3? CANCELLED { get; init; }
 #else
-        public global::Runway.ResponseVariant3? Value3 { get; }
+        public global::Runway.ResponseVariant3? CANCELLED { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value3))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(CANCELLED))]
 #endif
-        public bool IsValue3 => Value3 != null;
+        public bool IsCANCELLED => CANCELLED != null;
 
         /// <summary>
         /// A running task
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Runway.ResponseVariant4? Value4 { get; init; }
+        public global::Runway.ResponseVariant4? RUNNING { get; init; }
 #else
-        public global::Runway.ResponseVariant4? Value4 { get; }
+        public global::Runway.ResponseVariant4? RUNNING { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value4))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(RUNNING))]
 #endif
-        public bool IsValue4 => Value4 != null;
+        public bool IsRUNNING => RUNNING != null;
 
         /// <summary>
         /// A failed task
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Runway.ResponseVariant5? Value5 { get; init; }
+        public global::Runway.ResponseVariant5? FAILED { get; init; }
 #else
-        public global::Runway.ResponseVariant5? Value5 { get; }
+        public global::Runway.ResponseVariant5? FAILED { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value5))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(FAILED))]
 #endif
-        public bool IsValue5 => Value5 != null;
+        public bool IsFAILED => FAILED != null;
 
         /// <summary>
         /// A succeeded task
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Runway.ResponseVariant6? Value6 { get; init; }
+        public global::Runway.ResponseVariant6? SUCCEEDED { get; init; }
 #else
-        public global::Runway.ResponseVariant6? Value6 { get; }
+        public global::Runway.ResponseVariant6? SUCCEEDED { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value6))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(SUCCEEDED))]
 #endif
-        public bool IsValue6 => Value6 != null;
+        public bool IsSUCCEEDED => SUCCEEDED != null;
         /// <summary>
         /// 
         /// </summary>
@@ -118,14 +118,14 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::Runway.ResponseVariant1?(Response @this) => @this.Value1;
+        public static implicit operator global::Runway.ResponseVariant1?(Response @this) => @this.PENDING;
 
         /// <summary>
         /// 
         /// </summary>
         public Response(global::Runway.ResponseVariant1? value)
         {
-            Value1 = value;
+            PENDING = value;
         }
 
         /// <summary>
@@ -136,14 +136,14 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::Runway.ResponseVariant2?(Response @this) => @this.Value2;
+        public static implicit operator global::Runway.ResponseVariant2?(Response @this) => @this.THROTTLED;
 
         /// <summary>
         /// 
         /// </summary>
         public Response(global::Runway.ResponseVariant2? value)
         {
-            Value2 = value;
+            THROTTLED = value;
         }
 
         /// <summary>
@@ -154,14 +154,14 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::Runway.ResponseVariant3?(Response @this) => @this.Value3;
+        public static implicit operator global::Runway.ResponseVariant3?(Response @this) => @this.CANCELLED;
 
         /// <summary>
         /// 
         /// </summary>
         public Response(global::Runway.ResponseVariant3? value)
         {
-            Value3 = value;
+            CANCELLED = value;
         }
 
         /// <summary>
@@ -172,14 +172,14 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::Runway.ResponseVariant4?(Response @this) => @this.Value4;
+        public static implicit operator global::Runway.ResponseVariant4?(Response @this) => @this.RUNNING;
 
         /// <summary>
         /// 
         /// </summary>
         public Response(global::Runway.ResponseVariant4? value)
         {
-            Value4 = value;
+            RUNNING = value;
         }
 
         /// <summary>
@@ -190,14 +190,14 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::Runway.ResponseVariant5?(Response @this) => @this.Value5;
+        public static implicit operator global::Runway.ResponseVariant5?(Response @this) => @this.FAILED;
 
         /// <summary>
         /// 
         /// </summary>
         public Response(global::Runway.ResponseVariant5? value)
         {
-            Value5 = value;
+            FAILED = value;
         }
 
         /// <summary>
@@ -208,58 +208,58 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::Runway.ResponseVariant6?(Response @this) => @this.Value6;
+        public static implicit operator global::Runway.ResponseVariant6?(Response @this) => @this.SUCCEEDED;
 
         /// <summary>
         /// 
         /// </summary>
         public Response(global::Runway.ResponseVariant6? value)
         {
-            Value6 = value;
+            SUCCEEDED = value;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public Response(
-            global::Runway.ResponseVariant1? value1,
-            global::Runway.ResponseVariant2? value2,
-            global::Runway.ResponseVariant3? value3,
-            global::Runway.ResponseVariant4? value4,
-            global::Runway.ResponseVariant5? value5,
-            global::Runway.ResponseVariant6? value6
+            global::Runway.ResponseVariant1? pENDING,
+            global::Runway.ResponseVariant2? tHROTTLED,
+            global::Runway.ResponseVariant3? cANCELLED,
+            global::Runway.ResponseVariant4? rUNNING,
+            global::Runway.ResponseVariant5? fAILED,
+            global::Runway.ResponseVariant6? sUCCEEDED
             )
         {
-            Value1 = value1;
-            Value2 = value2;
-            Value3 = value3;
-            Value4 = value4;
-            Value5 = value5;
-            Value6 = value6;
+            PENDING = pENDING;
+            THROTTLED = tHROTTLED;
+            CANCELLED = cANCELLED;
+            RUNNING = rUNNING;
+            FAILED = fAILED;
+            SUCCEEDED = sUCCEEDED;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public object? Object =>
-            Value6 as object ??
-            Value5 as object ??
-            Value4 as object ??
-            Value3 as object ??
-            Value2 as object ??
-            Value1 as object 
+            SUCCEEDED as object ??
+            FAILED as object ??
+            RUNNING as object ??
+            CANCELLED as object ??
+            THROTTLED as object ??
+            PENDING as object 
             ;
 
         /// <summary>
         /// 
         /// </summary>
         public override string? ToString() =>
-            Value1?.ToString() ??
-            Value2?.ToString() ??
-            Value3?.ToString() ??
-            Value4?.ToString() ??
-            Value5?.ToString() ??
-            Value6?.ToString() 
+            PENDING?.ToString() ??
+            THROTTLED?.ToString() ??
+            CANCELLED?.ToString() ??
+            RUNNING?.ToString() ??
+            FAILED?.ToString() ??
+            SUCCEEDED?.ToString() 
             ;
 
         /// <summary>
@@ -267,19 +267,19 @@ namespace Runway
         /// </summary>
         public bool Validate()
         {
-            return IsValue1 && !IsValue2 && !IsValue3 && !IsValue4 && !IsValue5 && !IsValue6 || !IsValue1 && IsValue2 && !IsValue3 && !IsValue4 && !IsValue5 && !IsValue6 || !IsValue1 && !IsValue2 && IsValue3 && !IsValue4 && !IsValue5 && !IsValue6 || !IsValue1 && !IsValue2 && !IsValue3 && IsValue4 && !IsValue5 && !IsValue6 || !IsValue1 && !IsValue2 && !IsValue3 && !IsValue4 && IsValue5 && !IsValue6 || !IsValue1 && !IsValue2 && !IsValue3 && !IsValue4 && !IsValue5 && IsValue6;
+            return IsPENDING && !IsTHROTTLED && !IsCANCELLED && !IsRUNNING && !IsFAILED && !IsSUCCEEDED || !IsPENDING && IsTHROTTLED && !IsCANCELLED && !IsRUNNING && !IsFAILED && !IsSUCCEEDED || !IsPENDING && !IsTHROTTLED && IsCANCELLED && !IsRUNNING && !IsFAILED && !IsSUCCEEDED || !IsPENDING && !IsTHROTTLED && !IsCANCELLED && IsRUNNING && !IsFAILED && !IsSUCCEEDED || !IsPENDING && !IsTHROTTLED && !IsCANCELLED && !IsRUNNING && IsFAILED && !IsSUCCEEDED || !IsPENDING && !IsTHROTTLED && !IsCANCELLED && !IsRUNNING && !IsFAILED && IsSUCCEEDED;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Runway.ResponseVariant1?, TResult>? value1 = null,
-            global::System.Func<global::Runway.ResponseVariant2?, TResult>? value2 = null,
-            global::System.Func<global::Runway.ResponseVariant3?, TResult>? value3 = null,
-            global::System.Func<global::Runway.ResponseVariant4?, TResult>? value4 = null,
-            global::System.Func<global::Runway.ResponseVariant5?, TResult>? value5 = null,
-            global::System.Func<global::Runway.ResponseVariant6?, TResult>? value6 = null,
+            global::System.Func<global::Runway.ResponseVariant1?, TResult>? pENDING = null,
+            global::System.Func<global::Runway.ResponseVariant2?, TResult>? tHROTTLED = null,
+            global::System.Func<global::Runway.ResponseVariant3?, TResult>? cANCELLED = null,
+            global::System.Func<global::Runway.ResponseVariant4?, TResult>? rUNNING = null,
+            global::System.Func<global::Runway.ResponseVariant5?, TResult>? fAILED = null,
+            global::System.Func<global::Runway.ResponseVariant6?, TResult>? sUCCEEDED = null,
             bool validate = true)
         {
             if (validate)
@@ -287,29 +287,29 @@ namespace Runway
                 Validate();
             }
 
-            if (IsValue1 && value1 != null)
+            if (IsPENDING && pENDING != null)
             {
-                return value1(Value1!);
+                return pENDING(PENDING!);
             }
-            else if (IsValue2 && value2 != null)
+            else if (IsTHROTTLED && tHROTTLED != null)
             {
-                return value2(Value2!);
+                return tHROTTLED(THROTTLED!);
             }
-            else if (IsValue3 && value3 != null)
+            else if (IsCANCELLED && cANCELLED != null)
             {
-                return value3(Value3!);
+                return cANCELLED(CANCELLED!);
             }
-            else if (IsValue4 && value4 != null)
+            else if (IsRUNNING && rUNNING != null)
             {
-                return value4(Value4!);
+                return rUNNING(RUNNING!);
             }
-            else if (IsValue5 && value5 != null)
+            else if (IsFAILED && fAILED != null)
             {
-                return value5(Value5!);
+                return fAILED(FAILED!);
             }
-            else if (IsValue6 && value6 != null)
+            else if (IsSUCCEEDED && sUCCEEDED != null)
             {
-                return value6(Value6!);
+                return sUCCEEDED(SUCCEEDED!);
             }
 
             return default(TResult);
@@ -319,12 +319,12 @@ namespace Runway
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Runway.ResponseVariant1?>? value1 = null,
-            global::System.Action<global::Runway.ResponseVariant2?>? value2 = null,
-            global::System.Action<global::Runway.ResponseVariant3?>? value3 = null,
-            global::System.Action<global::Runway.ResponseVariant4?>? value4 = null,
-            global::System.Action<global::Runway.ResponseVariant5?>? value5 = null,
-            global::System.Action<global::Runway.ResponseVariant6?>? value6 = null,
+            global::System.Action<global::Runway.ResponseVariant1?>? pENDING = null,
+            global::System.Action<global::Runway.ResponseVariant2?>? tHROTTLED = null,
+            global::System.Action<global::Runway.ResponseVariant3?>? cANCELLED = null,
+            global::System.Action<global::Runway.ResponseVariant4?>? rUNNING = null,
+            global::System.Action<global::Runway.ResponseVariant5?>? fAILED = null,
+            global::System.Action<global::Runway.ResponseVariant6?>? sUCCEEDED = null,
             bool validate = true)
         {
             if (validate)
@@ -332,29 +332,29 @@ namespace Runway
                 Validate();
             }
 
-            if (IsValue1)
+            if (IsPENDING)
             {
-                value1?.Invoke(Value1!);
+                pENDING?.Invoke(PENDING!);
             }
-            else if (IsValue2)
+            else if (IsTHROTTLED)
             {
-                value2?.Invoke(Value2!);
+                tHROTTLED?.Invoke(THROTTLED!);
             }
-            else if (IsValue3)
+            else if (IsCANCELLED)
             {
-                value3?.Invoke(Value3!);
+                cANCELLED?.Invoke(CANCELLED!);
             }
-            else if (IsValue4)
+            else if (IsRUNNING)
             {
-                value4?.Invoke(Value4!);
+                rUNNING?.Invoke(RUNNING!);
             }
-            else if (IsValue5)
+            else if (IsFAILED)
             {
-                value5?.Invoke(Value5!);
+                fAILED?.Invoke(FAILED!);
             }
-            else if (IsValue6)
+            else if (IsSUCCEEDED)
             {
-                value6?.Invoke(Value6!);
+                sUCCEEDED?.Invoke(SUCCEEDED!);
             }
         }
 
@@ -365,17 +365,17 @@ namespace Runway
         {
             var fields = new object?[]
             {
-                Value1,
+                PENDING,
                 typeof(global::Runway.ResponseVariant1),
-                Value2,
+                THROTTLED,
                 typeof(global::Runway.ResponseVariant2),
-                Value3,
+                CANCELLED,
                 typeof(global::Runway.ResponseVariant3),
-                Value4,
+                RUNNING,
                 typeof(global::Runway.ResponseVariant4),
-                Value5,
+                FAILED,
                 typeof(global::Runway.ResponseVariant5),
-                Value6,
+                SUCCEEDED,
                 typeof(global::Runway.ResponseVariant6),
             };
             const int offset = unchecked((int)2166136261);
@@ -393,12 +393,12 @@ namespace Runway
         public bool Equals(Response other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::Runway.ResponseVariant1?>.Default.Equals(Value1, other.Value1) &&
-                global::System.Collections.Generic.EqualityComparer<global::Runway.ResponseVariant2?>.Default.Equals(Value2, other.Value2) &&
-                global::System.Collections.Generic.EqualityComparer<global::Runway.ResponseVariant3?>.Default.Equals(Value3, other.Value3) &&
-                global::System.Collections.Generic.EqualityComparer<global::Runway.ResponseVariant4?>.Default.Equals(Value4, other.Value4) &&
-                global::System.Collections.Generic.EqualityComparer<global::Runway.ResponseVariant5?>.Default.Equals(Value5, other.Value5) &&
-                global::System.Collections.Generic.EqualityComparer<global::Runway.ResponseVariant6?>.Default.Equals(Value6, other.Value6) 
+                global::System.Collections.Generic.EqualityComparer<global::Runway.ResponseVariant1?>.Default.Equals(PENDING, other.PENDING) &&
+                global::System.Collections.Generic.EqualityComparer<global::Runway.ResponseVariant2?>.Default.Equals(THROTTLED, other.THROTTLED) &&
+                global::System.Collections.Generic.EqualityComparer<global::Runway.ResponseVariant3?>.Default.Equals(CANCELLED, other.CANCELLED) &&
+                global::System.Collections.Generic.EqualityComparer<global::Runway.ResponseVariant4?>.Default.Equals(RUNNING, other.RUNNING) &&
+                global::System.Collections.Generic.EqualityComparer<global::Runway.ResponseVariant5?>.Default.Equals(FAILED, other.FAILED) &&
+                global::System.Collections.Generic.EqualityComparer<global::Runway.ResponseVariant6?>.Default.Equals(SUCCEEDED, other.SUCCEEDED) 
                 ;
         }
 

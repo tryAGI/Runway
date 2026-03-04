@@ -13,136 +13,136 @@ namespace Runway
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Runway.RequestVariant12? Value1 { get; init; }
+        public global::Runway.RequestVeo312? Veo31 { get; init; }
 #else
-        public global::Runway.RequestVariant12? Value1 { get; }
+        public global::Runway.RequestVeo312? Veo31 { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value1))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Veo31))]
 #endif
-        public bool IsValue1 => Value1 != null;
+        public bool IsVeo31 => Veo31 != null;
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Runway.RequestVariant22? Value2 { get; init; }
+        public global::Runway.RequestVeo31Fast2? Veo31Fast { get; init; }
 #else
-        public global::Runway.RequestVariant22? Value2 { get; }
+        public global::Runway.RequestVeo31Fast2? Veo31Fast { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value2))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Veo31Fast))]
 #endif
-        public bool IsValue2 => Value2 != null;
+        public bool IsVeo31Fast => Veo31Fast != null;
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Runway.RequestVariant32? Value3 { get; init; }
+        public global::Runway.RequestVeo32? Veo3 { get; init; }
 #else
-        public global::Runway.RequestVariant32? Value3 { get; }
+        public global::Runway.RequestVeo32? Veo3 { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value3))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Veo3))]
 #endif
-        public bool IsValue3 => Value3 != null;
+        public bool IsVeo3 => Veo3 != null;
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator Request2(global::Runway.RequestVariant12 value) => new Request2((global::Runway.RequestVariant12?)value);
+        public static implicit operator Request2(global::Runway.RequestVeo312 value) => new Request2((global::Runway.RequestVeo312?)value);
 
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::Runway.RequestVariant12?(Request2 @this) => @this.Value1;
+        public static implicit operator global::Runway.RequestVeo312?(Request2 @this) => @this.Veo31;
 
         /// <summary>
         /// 
         /// </summary>
-        public Request2(global::Runway.RequestVariant12? value)
+        public Request2(global::Runway.RequestVeo312? value)
         {
-            Value1 = value;
+            Veo31 = value;
         }
 
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator Request2(global::Runway.RequestVariant22 value) => new Request2((global::Runway.RequestVariant22?)value);
+        public static implicit operator Request2(global::Runway.RequestVeo31Fast2 value) => new Request2((global::Runway.RequestVeo31Fast2?)value);
 
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::Runway.RequestVariant22?(Request2 @this) => @this.Value2;
+        public static implicit operator global::Runway.RequestVeo31Fast2?(Request2 @this) => @this.Veo31Fast;
 
         /// <summary>
         /// 
         /// </summary>
-        public Request2(global::Runway.RequestVariant22? value)
+        public Request2(global::Runway.RequestVeo31Fast2? value)
         {
-            Value2 = value;
+            Veo31Fast = value;
         }
 
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator Request2(global::Runway.RequestVariant32 value) => new Request2((global::Runway.RequestVariant32?)value);
+        public static implicit operator Request2(global::Runway.RequestVeo32 value) => new Request2((global::Runway.RequestVeo32?)value);
 
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::Runway.RequestVariant32?(Request2 @this) => @this.Value3;
+        public static implicit operator global::Runway.RequestVeo32?(Request2 @this) => @this.Veo3;
 
         /// <summary>
         /// 
         /// </summary>
-        public Request2(global::Runway.RequestVariant32? value)
+        public Request2(global::Runway.RequestVeo32? value)
         {
-            Value3 = value;
+            Veo3 = value;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public Request2(
-            global::Runway.RequestVariant12? value1,
-            global::Runway.RequestVariant22? value2,
-            global::Runway.RequestVariant32? value3
+            global::Runway.RequestVeo312? veo31,
+            global::Runway.RequestVeo31Fast2? veo31Fast,
+            global::Runway.RequestVeo32? veo3
             )
         {
-            Value1 = value1;
-            Value2 = value2;
-            Value3 = value3;
+            Veo31 = veo31;
+            Veo31Fast = veo31Fast;
+            Veo3 = veo3;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public object? Object =>
-            Value3 as object ??
-            Value2 as object ??
-            Value1 as object 
+            Veo3 as object ??
+            Veo31Fast as object ??
+            Veo31 as object 
             ;
 
         /// <summary>
         /// 
         /// </summary>
         public override string? ToString() =>
-            Value1?.ToString() ??
-            Value2?.ToString() ??
-            Value3?.ToString() 
+            Veo31?.ToString() ??
+            Veo31Fast?.ToString() ??
+            Veo3?.ToString() 
             ;
 
         /// <summary>
@@ -150,16 +150,16 @@ namespace Runway
         /// </summary>
         public bool Validate()
         {
-            return IsValue1 && !IsValue2 && !IsValue3 || !IsValue1 && IsValue2 && !IsValue3 || !IsValue1 && !IsValue2 && IsValue3;
+            return IsVeo31 && !IsVeo31Fast && !IsVeo3 || !IsVeo31 && IsVeo31Fast && !IsVeo3 || !IsVeo31 && !IsVeo31Fast && IsVeo3;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Runway.RequestVariant12?, TResult>? value1 = null,
-            global::System.Func<global::Runway.RequestVariant22?, TResult>? value2 = null,
-            global::System.Func<global::Runway.RequestVariant32?, TResult>? value3 = null,
+            global::System.Func<global::Runway.RequestVeo312?, TResult>? veo31 = null,
+            global::System.Func<global::Runway.RequestVeo31Fast2?, TResult>? veo31Fast = null,
+            global::System.Func<global::Runway.RequestVeo32?, TResult>? veo3 = null,
             bool validate = true)
         {
             if (validate)
@@ -167,17 +167,17 @@ namespace Runway
                 Validate();
             }
 
-            if (IsValue1 && value1 != null)
+            if (IsVeo31 && veo31 != null)
             {
-                return value1(Value1!);
+                return veo31(Veo31!);
             }
-            else if (IsValue2 && value2 != null)
+            else if (IsVeo31Fast && veo31Fast != null)
             {
-                return value2(Value2!);
+                return veo31Fast(Veo31Fast!);
             }
-            else if (IsValue3 && value3 != null)
+            else if (IsVeo3 && veo3 != null)
             {
-                return value3(Value3!);
+                return veo3(Veo3!);
             }
 
             return default(TResult);
@@ -187,9 +187,9 @@ namespace Runway
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Runway.RequestVariant12?>? value1 = null,
-            global::System.Action<global::Runway.RequestVariant22?>? value2 = null,
-            global::System.Action<global::Runway.RequestVariant32?>? value3 = null,
+            global::System.Action<global::Runway.RequestVeo312?>? veo31 = null,
+            global::System.Action<global::Runway.RequestVeo31Fast2?>? veo31Fast = null,
+            global::System.Action<global::Runway.RequestVeo32?>? veo3 = null,
             bool validate = true)
         {
             if (validate)
@@ -197,17 +197,17 @@ namespace Runway
                 Validate();
             }
 
-            if (IsValue1)
+            if (IsVeo31)
             {
-                value1?.Invoke(Value1!);
+                veo31?.Invoke(Veo31!);
             }
-            else if (IsValue2)
+            else if (IsVeo31Fast)
             {
-                value2?.Invoke(Value2!);
+                veo31Fast?.Invoke(Veo31Fast!);
             }
-            else if (IsValue3)
+            else if (IsVeo3)
             {
-                value3?.Invoke(Value3!);
+                veo3?.Invoke(Veo3!);
             }
         }
 
@@ -218,12 +218,12 @@ namespace Runway
         {
             var fields = new object?[]
             {
-                Value1,
-                typeof(global::Runway.RequestVariant12),
-                Value2,
-                typeof(global::Runway.RequestVariant22),
-                Value3,
-                typeof(global::Runway.RequestVariant32),
+                Veo31,
+                typeof(global::Runway.RequestVeo312),
+                Veo31Fast,
+                typeof(global::Runway.RequestVeo31Fast2),
+                Veo3,
+                typeof(global::Runway.RequestVeo32),
             };
             const int offset = unchecked((int)2166136261);
             const int prime = 16777619;
@@ -240,9 +240,9 @@ namespace Runway
         public bool Equals(Request2 other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::Runway.RequestVariant12?>.Default.Equals(Value1, other.Value1) &&
-                global::System.Collections.Generic.EqualityComparer<global::Runway.RequestVariant22?>.Default.Equals(Value2, other.Value2) &&
-                global::System.Collections.Generic.EqualityComparer<global::Runway.RequestVariant32?>.Default.Equals(Value3, other.Value3) 
+                global::System.Collections.Generic.EqualityComparer<global::Runway.RequestVeo312?>.Default.Equals(Veo31, other.Veo31) &&
+                global::System.Collections.Generic.EqualityComparer<global::Runway.RequestVeo31Fast2?>.Default.Equals(Veo31Fast, other.Veo31Fast) &&
+                global::System.Collections.Generic.EqualityComparer<global::Runway.RequestVeo32?>.Default.Equals(Veo3, other.Veo3) 
                 ;
         }
 

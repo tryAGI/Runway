@@ -13,48 +13,48 @@ namespace Runway
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Runway.RequestVariant17? Value1 { get; init; }
+        public global::Runway.RequestElevenMultilingualStsV2? ElevenMultilingualStsV2 { get; init; }
 #else
-        public global::Runway.RequestVariant17? Value1 { get; }
+        public global::Runway.RequestElevenMultilingualStsV2? ElevenMultilingualStsV2 { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value1))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ElevenMultilingualStsV2))]
 #endif
-        public bool IsValue1 => Value1 != null;
+        public bool IsElevenMultilingualStsV2 => ElevenMultilingualStsV2 != null;
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator Request7(global::Runway.RequestVariant17 value) => new Request7((global::Runway.RequestVariant17?)value);
+        public static implicit operator Request7(global::Runway.RequestElevenMultilingualStsV2 value) => new Request7((global::Runway.RequestElevenMultilingualStsV2?)value);
 
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::Runway.RequestVariant17?(Request7 @this) => @this.Value1;
+        public static implicit operator global::Runway.RequestElevenMultilingualStsV2?(Request7 @this) => @this.ElevenMultilingualStsV2;
 
         /// <summary>
         /// 
         /// </summary>
-        public Request7(global::Runway.RequestVariant17? value)
+        public Request7(global::Runway.RequestElevenMultilingualStsV2? value)
         {
-            Value1 = value;
+            ElevenMultilingualStsV2 = value;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public object? Object =>
-            Value1 as object 
+            ElevenMultilingualStsV2 as object 
             ;
 
         /// <summary>
         /// 
         /// </summary>
         public override string? ToString() =>
-            Value1?.ToString() 
+            ElevenMultilingualStsV2?.ToString() 
             ;
 
         /// <summary>
@@ -62,14 +62,14 @@ namespace Runway
         /// </summary>
         public bool Validate()
         {
-            return IsValue1;
+            return IsElevenMultilingualStsV2;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Runway.RequestVariant17?, TResult>? value1 = null,
+            global::System.Func<global::Runway.RequestElevenMultilingualStsV2?, TResult>? elevenMultilingualStsV2 = null,
             bool validate = true)
         {
             if (validate)
@@ -77,9 +77,9 @@ namespace Runway
                 Validate();
             }
 
-            if (IsValue1 && value1 != null)
+            if (IsElevenMultilingualStsV2 && elevenMultilingualStsV2 != null)
             {
-                return value1(Value1!);
+                return elevenMultilingualStsV2(ElevenMultilingualStsV2!);
             }
 
             return default(TResult);
@@ -89,7 +89,7 @@ namespace Runway
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Runway.RequestVariant17?>? value1 = null,
+            global::System.Action<global::Runway.RequestElevenMultilingualStsV2?>? elevenMultilingualStsV2 = null,
             bool validate = true)
         {
             if (validate)
@@ -97,9 +97,9 @@ namespace Runway
                 Validate();
             }
 
-            if (IsValue1)
+            if (IsElevenMultilingualStsV2)
             {
-                value1?.Invoke(Value1!);
+                elevenMultilingualStsV2?.Invoke(ElevenMultilingualStsV2!);
             }
         }
 
@@ -110,8 +110,8 @@ namespace Runway
         {
             var fields = new object?[]
             {
-                Value1,
-                typeof(global::Runway.RequestVariant17),
+                ElevenMultilingualStsV2,
+                typeof(global::Runway.RequestElevenMultilingualStsV2),
             };
             const int offset = unchecked((int)2166136261);
             const int prime = 16777619;
@@ -128,7 +128,7 @@ namespace Runway
         public bool Equals(Request7 other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::Runway.RequestVariant17?>.Default.Equals(Value1, other.Value1) 
+                global::System.Collections.Generic.EqualityComparer<global::Runway.RequestElevenMultilingualStsV2?>.Default.Equals(ElevenMultilingualStsV2, other.ElevenMultilingualStsV2) 
                 ;
         }
 

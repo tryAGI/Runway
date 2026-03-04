@@ -13,136 +13,136 @@ namespace Runway
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Runway.RequestVariant14? Value1 { get; init; }
+        public global::Runway.RequestGen4ImageTurbo? Gen4ImageTurbo { get; init; }
 #else
-        public global::Runway.RequestVariant14? Value1 { get; }
+        public global::Runway.RequestGen4ImageTurbo? Gen4ImageTurbo { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value1))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Gen4ImageTurbo))]
 #endif
-        public bool IsValue1 => Value1 != null;
+        public bool IsGen4ImageTurbo => Gen4ImageTurbo != null;
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Runway.RequestVariant23? Value2 { get; init; }
+        public global::Runway.RequestGen4Image? Gen4Image { get; init; }
 #else
-        public global::Runway.RequestVariant23? Value2 { get; }
+        public global::Runway.RequestGen4Image? Gen4Image { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value2))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Gen4Image))]
 #endif
-        public bool IsValue2 => Value2 != null;
+        public bool IsGen4Image => Gen4Image != null;
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Runway.RequestVariant33? Value3 { get; init; }
+        public global::Runway.RequestGemini25Flash? Gemini25Flash { get; init; }
 #else
-        public global::Runway.RequestVariant33? Value3 { get; }
+        public global::Runway.RequestGemini25Flash? Gemini25Flash { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value3))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Gemini25Flash))]
 #endif
-        public bool IsValue3 => Value3 != null;
+        public bool IsGemini25Flash => Gemini25Flash != null;
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator Request4(global::Runway.RequestVariant14 value) => new Request4((global::Runway.RequestVariant14?)value);
+        public static implicit operator Request4(global::Runway.RequestGen4ImageTurbo value) => new Request4((global::Runway.RequestGen4ImageTurbo?)value);
 
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::Runway.RequestVariant14?(Request4 @this) => @this.Value1;
+        public static implicit operator global::Runway.RequestGen4ImageTurbo?(Request4 @this) => @this.Gen4ImageTurbo;
 
         /// <summary>
         /// 
         /// </summary>
-        public Request4(global::Runway.RequestVariant14? value)
+        public Request4(global::Runway.RequestGen4ImageTurbo? value)
         {
-            Value1 = value;
+            Gen4ImageTurbo = value;
         }
 
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator Request4(global::Runway.RequestVariant23 value) => new Request4((global::Runway.RequestVariant23?)value);
+        public static implicit operator Request4(global::Runway.RequestGen4Image value) => new Request4((global::Runway.RequestGen4Image?)value);
 
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::Runway.RequestVariant23?(Request4 @this) => @this.Value2;
+        public static implicit operator global::Runway.RequestGen4Image?(Request4 @this) => @this.Gen4Image;
 
         /// <summary>
         /// 
         /// </summary>
-        public Request4(global::Runway.RequestVariant23? value)
+        public Request4(global::Runway.RequestGen4Image? value)
         {
-            Value2 = value;
+            Gen4Image = value;
         }
 
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator Request4(global::Runway.RequestVariant33 value) => new Request4((global::Runway.RequestVariant33?)value);
+        public static implicit operator Request4(global::Runway.RequestGemini25Flash value) => new Request4((global::Runway.RequestGemini25Flash?)value);
 
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::Runway.RequestVariant33?(Request4 @this) => @this.Value3;
+        public static implicit operator global::Runway.RequestGemini25Flash?(Request4 @this) => @this.Gemini25Flash;
 
         /// <summary>
         /// 
         /// </summary>
-        public Request4(global::Runway.RequestVariant33? value)
+        public Request4(global::Runway.RequestGemini25Flash? value)
         {
-            Value3 = value;
+            Gemini25Flash = value;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public Request4(
-            global::Runway.RequestVariant14? value1,
-            global::Runway.RequestVariant23? value2,
-            global::Runway.RequestVariant33? value3
+            global::Runway.RequestGen4ImageTurbo? gen4ImageTurbo,
+            global::Runway.RequestGen4Image? gen4Image,
+            global::Runway.RequestGemini25Flash? gemini25Flash
             )
         {
-            Value1 = value1;
-            Value2 = value2;
-            Value3 = value3;
+            Gen4ImageTurbo = gen4ImageTurbo;
+            Gen4Image = gen4Image;
+            Gemini25Flash = gemini25Flash;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public object? Object =>
-            Value3 as object ??
-            Value2 as object ??
-            Value1 as object 
+            Gemini25Flash as object ??
+            Gen4Image as object ??
+            Gen4ImageTurbo as object 
             ;
 
         /// <summary>
         /// 
         /// </summary>
         public override string? ToString() =>
-            Value1?.ToString() ??
-            Value2?.ToString() ??
-            Value3?.ToString() 
+            Gen4ImageTurbo?.ToString() ??
+            Gen4Image?.ToString() ??
+            Gemini25Flash?.ToString() 
             ;
 
         /// <summary>
@@ -150,16 +150,16 @@ namespace Runway
         /// </summary>
         public bool Validate()
         {
-            return IsValue1 && !IsValue2 && !IsValue3 || !IsValue1 && IsValue2 && !IsValue3 || !IsValue1 && !IsValue2 && IsValue3;
+            return IsGen4ImageTurbo && !IsGen4Image && !IsGemini25Flash || !IsGen4ImageTurbo && IsGen4Image && !IsGemini25Flash || !IsGen4ImageTurbo && !IsGen4Image && IsGemini25Flash;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Runway.RequestVariant14?, TResult>? value1 = null,
-            global::System.Func<global::Runway.RequestVariant23?, TResult>? value2 = null,
-            global::System.Func<global::Runway.RequestVariant33?, TResult>? value3 = null,
+            global::System.Func<global::Runway.RequestGen4ImageTurbo?, TResult>? gen4ImageTurbo = null,
+            global::System.Func<global::Runway.RequestGen4Image?, TResult>? gen4Image = null,
+            global::System.Func<global::Runway.RequestGemini25Flash?, TResult>? gemini25Flash = null,
             bool validate = true)
         {
             if (validate)
@@ -167,17 +167,17 @@ namespace Runway
                 Validate();
             }
 
-            if (IsValue1 && value1 != null)
+            if (IsGen4ImageTurbo && gen4ImageTurbo != null)
             {
-                return value1(Value1!);
+                return gen4ImageTurbo(Gen4ImageTurbo!);
             }
-            else if (IsValue2 && value2 != null)
+            else if (IsGen4Image && gen4Image != null)
             {
-                return value2(Value2!);
+                return gen4Image(Gen4Image!);
             }
-            else if (IsValue3 && value3 != null)
+            else if (IsGemini25Flash && gemini25Flash != null)
             {
-                return value3(Value3!);
+                return gemini25Flash(Gemini25Flash!);
             }
 
             return default(TResult);
@@ -187,9 +187,9 @@ namespace Runway
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Runway.RequestVariant14?>? value1 = null,
-            global::System.Action<global::Runway.RequestVariant23?>? value2 = null,
-            global::System.Action<global::Runway.RequestVariant33?>? value3 = null,
+            global::System.Action<global::Runway.RequestGen4ImageTurbo?>? gen4ImageTurbo = null,
+            global::System.Action<global::Runway.RequestGen4Image?>? gen4Image = null,
+            global::System.Action<global::Runway.RequestGemini25Flash?>? gemini25Flash = null,
             bool validate = true)
         {
             if (validate)
@@ -197,17 +197,17 @@ namespace Runway
                 Validate();
             }
 
-            if (IsValue1)
+            if (IsGen4ImageTurbo)
             {
-                value1?.Invoke(Value1!);
+                gen4ImageTurbo?.Invoke(Gen4ImageTurbo!);
             }
-            else if (IsValue2)
+            else if (IsGen4Image)
             {
-                value2?.Invoke(Value2!);
+                gen4Image?.Invoke(Gen4Image!);
             }
-            else if (IsValue3)
+            else if (IsGemini25Flash)
             {
-                value3?.Invoke(Value3!);
+                gemini25Flash?.Invoke(Gemini25Flash!);
             }
         }
 
@@ -218,12 +218,12 @@ namespace Runway
         {
             var fields = new object?[]
             {
-                Value1,
-                typeof(global::Runway.RequestVariant14),
-                Value2,
-                typeof(global::Runway.RequestVariant23),
-                Value3,
-                typeof(global::Runway.RequestVariant33),
+                Gen4ImageTurbo,
+                typeof(global::Runway.RequestGen4ImageTurbo),
+                Gen4Image,
+                typeof(global::Runway.RequestGen4Image),
+                Gemini25Flash,
+                typeof(global::Runway.RequestGemini25Flash),
             };
             const int offset = unchecked((int)2166136261);
             const int prime = 16777619;
@@ -240,9 +240,9 @@ namespace Runway
         public bool Equals(Request4 other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::Runway.RequestVariant14?>.Default.Equals(Value1, other.Value1) &&
-                global::System.Collections.Generic.EqualityComparer<global::Runway.RequestVariant23?>.Default.Equals(Value2, other.Value2) &&
-                global::System.Collections.Generic.EqualityComparer<global::Runway.RequestVariant33?>.Default.Equals(Value3, other.Value3) 
+                global::System.Collections.Generic.EqualityComparer<global::Runway.RequestGen4ImageTurbo?>.Default.Equals(Gen4ImageTurbo, other.Gen4ImageTurbo) &&
+                global::System.Collections.Generic.EqualityComparer<global::Runway.RequestGen4Image?>.Default.Equals(Gen4Image, other.Gen4Image) &&
+                global::System.Collections.Generic.EqualityComparer<global::Runway.RequestGemini25Flash?>.Default.Equals(Gemini25Flash, other.Gemini25Flash) 
                 ;
         }
 

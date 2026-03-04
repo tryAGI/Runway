@@ -13,48 +13,48 @@ namespace Runway
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Runway.RequestVariant19? Value1 { get; init; }
+        public global::Runway.RequestElevenVoiceDubbing? ElevenVoiceDubbing { get; init; }
 #else
-        public global::Runway.RequestVariant19? Value1 { get; }
+        public global::Runway.RequestElevenVoiceDubbing? ElevenVoiceDubbing { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value1))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ElevenVoiceDubbing))]
 #endif
-        public bool IsValue1 => Value1 != null;
+        public bool IsElevenVoiceDubbing => ElevenVoiceDubbing != null;
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator Request9(global::Runway.RequestVariant19 value) => new Request9((global::Runway.RequestVariant19?)value);
+        public static implicit operator Request9(global::Runway.RequestElevenVoiceDubbing value) => new Request9((global::Runway.RequestElevenVoiceDubbing?)value);
 
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::Runway.RequestVariant19?(Request9 @this) => @this.Value1;
+        public static implicit operator global::Runway.RequestElevenVoiceDubbing?(Request9 @this) => @this.ElevenVoiceDubbing;
 
         /// <summary>
         /// 
         /// </summary>
-        public Request9(global::Runway.RequestVariant19? value)
+        public Request9(global::Runway.RequestElevenVoiceDubbing? value)
         {
-            Value1 = value;
+            ElevenVoiceDubbing = value;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public object? Object =>
-            Value1 as object 
+            ElevenVoiceDubbing as object 
             ;
 
         /// <summary>
         /// 
         /// </summary>
         public override string? ToString() =>
-            Value1?.ToString() 
+            ElevenVoiceDubbing?.ToString() 
             ;
 
         /// <summary>
@@ -62,14 +62,14 @@ namespace Runway
         /// </summary>
         public bool Validate()
         {
-            return IsValue1;
+            return IsElevenVoiceDubbing;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Runway.RequestVariant19?, TResult>? value1 = null,
+            global::System.Func<global::Runway.RequestElevenVoiceDubbing?, TResult>? elevenVoiceDubbing = null,
             bool validate = true)
         {
             if (validate)
@@ -77,9 +77,9 @@ namespace Runway
                 Validate();
             }
 
-            if (IsValue1 && value1 != null)
+            if (IsElevenVoiceDubbing && elevenVoiceDubbing != null)
             {
-                return value1(Value1!);
+                return elevenVoiceDubbing(ElevenVoiceDubbing!);
             }
 
             return default(TResult);
@@ -89,7 +89,7 @@ namespace Runway
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Runway.RequestVariant19?>? value1 = null,
+            global::System.Action<global::Runway.RequestElevenVoiceDubbing?>? elevenVoiceDubbing = null,
             bool validate = true)
         {
             if (validate)
@@ -97,9 +97,9 @@ namespace Runway
                 Validate();
             }
 
-            if (IsValue1)
+            if (IsElevenVoiceDubbing)
             {
-                value1?.Invoke(Value1!);
+                elevenVoiceDubbing?.Invoke(ElevenVoiceDubbing!);
             }
         }
 
@@ -110,8 +110,8 @@ namespace Runway
         {
             var fields = new object?[]
             {
-                Value1,
-                typeof(global::Runway.RequestVariant19),
+                ElevenVoiceDubbing,
+                typeof(global::Runway.RequestElevenVoiceDubbing),
             };
             const int offset = unchecked((int)2166136261);
             const int prime = 16777619;
@@ -128,7 +128,7 @@ namespace Runway
         public bool Equals(Request9 other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::Runway.RequestVariant19?>.Default.Equals(Value1, other.Value1) 
+                global::System.Collections.Generic.EqualityComparer<global::Runway.RequestElevenVoiceDubbing?>.Default.Equals(ElevenVoiceDubbing, other.ElevenVoiceDubbing) 
                 ;
         }
 
