@@ -11,9 +11,10 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        /// <default>"runway-preset"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Type { get; set; }
+        public required string Type { get; set; } = "runway-preset";
 
         /// <summary>
         /// The preset voice ID to use for the generated speech.

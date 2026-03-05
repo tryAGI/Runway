@@ -15,8 +15,9 @@ namespace Runway
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Runway.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Runway.Response25> CreateUploadsAsync(
-            string xRunwayVersion,
+
             global::Runway.Request12 request,
+            string xRunwayVersion = "2024-11-06",
             global::System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
@@ -35,8 +36,8 @@ namespace Runway
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Runway.Response25> CreateUploadsAsync(
-            string xRunwayVersion,
             string filename,
+            string xRunwayVersion = "2024-11-06",
             global::Runway.RequestType type = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

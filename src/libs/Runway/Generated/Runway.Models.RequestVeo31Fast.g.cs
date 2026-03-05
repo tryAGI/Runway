@@ -48,9 +48,10 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        /// <default>"veo3.1_fast"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Model { get; set; }
+        public required string Model { get; set; } = "veo3.1_fast";
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

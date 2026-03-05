@@ -15,8 +15,9 @@ namespace Runway
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Runway.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Runway.Response15> CreateSpeechToSpeechAsync(
-            string xRunwayVersion,
+
             global::Runway.Request7 request,
+            string xRunwayVersion = "2024-11-06",
             global::System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
@@ -29,7 +30,7 @@ namespace Runway
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Runway.Response15> CreateSpeechToSpeechAsync(
-            string xRunwayVersion,
+            string xRunwayVersion = "2024-11-06",
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

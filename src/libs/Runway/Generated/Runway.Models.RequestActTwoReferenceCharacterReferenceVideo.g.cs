@@ -11,9 +11,10 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        /// <default>"video"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Type { get; set; }
+        public required string Type { get; set; } = "video";
 
         /// <summary>
         /// A video of a person performing in the manner that you would like your character to perform. The video must be between 3 and 30 seconds in duration. See [our docs](/assets/inputs#videos) on video inputs for more information.<br/>

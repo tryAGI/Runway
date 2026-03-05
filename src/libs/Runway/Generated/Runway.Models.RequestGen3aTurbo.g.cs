@@ -62,9 +62,10 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        /// <default>"gen3a_turbo"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Model { get; set; }
+        public required string Model { get; set; } = "gen3a_turbo";
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

@@ -68,9 +68,10 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        /// <default>"act_two"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Model { get; set; }
+        public required string Model { get; set; } = "act_two";
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

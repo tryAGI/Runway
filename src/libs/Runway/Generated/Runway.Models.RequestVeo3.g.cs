@@ -27,9 +27,10 @@ namespace Runway
         /// <summary>
         /// The number of seconds of duration for the output video.
         /// </summary>
+        /// <default>"8"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("duration")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required double Duration { get; set; }
+        public required double Duration { get; set; } = "8";
 
         /// <summary>
         /// The resolution of the output video.
@@ -42,9 +43,10 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        /// <default>"veo3"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Model { get; set; }
+        public required string Model { get; set; } = "veo3";
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

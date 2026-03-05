@@ -20,9 +20,10 @@ namespace Runway
         /// <summary>
         /// The position of the image in the output video. "first" will use the image as the first frame of the video.
         /// </summary>
+        /// <default>"first"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("position")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Position { get; set; }
+        public required string Position { get; set; } = "first";
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

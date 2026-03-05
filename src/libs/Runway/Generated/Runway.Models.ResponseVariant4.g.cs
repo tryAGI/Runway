@@ -25,9 +25,10 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        /// <default>"RUNNING"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("status")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Status { get; set; }
+        public required string Status { get; set; } = "RUNNING";
 
         /// <summary>
         /// 

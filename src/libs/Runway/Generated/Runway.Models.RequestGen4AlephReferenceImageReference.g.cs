@@ -11,9 +11,10 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        /// <default>"image"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Type { get; set; }
+        public required string Type { get; set; } = "image";
 
         /// <summary>
         /// A HTTPS URL, Runway or data URI containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.<br/>
