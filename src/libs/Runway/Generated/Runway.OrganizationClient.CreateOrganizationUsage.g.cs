@@ -34,8 +34,9 @@ namespace Runway
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Runway.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Runway.Response24> CreateOrganizationUsageAsync(
-            string xRunwayVersion,
+
             global::Runway.Request11 request,
+            string xRunwayVersion = "2024-11-06",
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             request = request ?? throw new global::System.ArgumentNullException(nameof(request));
@@ -193,7 +194,7 @@ namespace Runway
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Runway.Response24> CreateOrganizationUsageAsync(
-            string xRunwayVersion,
+            string xRunwayVersion = "2024-11-06",
             global::System.DateTime? startDate = default,
             global::System.DateTime? beforeDate = default,
             global::System.Threading.CancellationToken cancellationToken = default)

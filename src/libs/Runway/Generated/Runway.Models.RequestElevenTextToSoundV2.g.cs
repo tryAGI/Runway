@@ -31,9 +31,10 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        /// <default>"eleven_text_to_sound_v2"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Model { get; set; }
+        public required string Model { get; set; } = "eleven_text_to_sound_v2";
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

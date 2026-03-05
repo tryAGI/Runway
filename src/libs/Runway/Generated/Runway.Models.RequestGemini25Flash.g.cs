@@ -32,9 +32,10 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        /// <default>"gemini_2.5_flash"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Model { get; set; }
+        public required string Model { get; set; } = "gemini_2.5_flash";
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

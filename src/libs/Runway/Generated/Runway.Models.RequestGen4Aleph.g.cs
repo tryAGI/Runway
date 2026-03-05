@@ -53,9 +53,10 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        /// <default>"gen4_aleph"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Model { get; set; }
+        public required string Model { get; set; } = "gen4_aleph";
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

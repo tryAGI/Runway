@@ -35,7 +35,7 @@ namespace Runway
         /// <exception cref="global::Runway.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Runway.Response> GetTasksByIdAsync(
             global::System.Guid id,
-            string xRunwayVersion,
+            string xRunwayVersion = "2024-11-06",
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
