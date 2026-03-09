@@ -21,7 +21,7 @@ namespace Runway
         /// <default>"8"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("duration")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required double Duration { get; set; } = "8";
+        public required double Duration { get; set; } = 8;
 
         /// <summary>
         /// The resolution of the output video.
