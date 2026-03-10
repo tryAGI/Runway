@@ -76,11 +76,15 @@ namespace Runway.JsonConverters
             {
             }
 
-            var result = new global::Runway.Request(
+            var __value = new global::Runway.Request(
                 gen4Turbo,
+
                 veo31,
+
                 gen3aTurbo,
+
                 veo31Fast,
+
                 veo3
                 );
 
@@ -115,7 +119,7 @@ namespace Runway.JsonConverters
                 _ = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
 
-            return result;
+            return __value;
         }
 
         /// <inheritdoc />
