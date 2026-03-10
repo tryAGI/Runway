@@ -55,8 +55,7 @@ namespace Runway
         /// </summary>
         /// <default>"gen4_turbo"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Model { get; set; } = "gen4_turbo";
+        public string Model { get; set; } = "gen4_turbo";
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -90,19 +89,19 @@ namespace Runway
         public RequestGen4Turbo(
             global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<global::Runway.RequestGen4TurboPromptImagePromptImage>> promptImage,
             global::Runway.RequestGen4TurboRatio ratio,
-            string model,
             string? promptText,
             int? seed,
             int? duration,
-            global::Runway.RequestGen4TurboContentModeration? contentModeration)
+            global::Runway.RequestGen4TurboContentModeration? contentModeration,
+            string model = "gen4_turbo")
         {
             this.PromptImage = promptImage;
             this.Ratio = ratio;
-            this.Model = model ?? throw new global::System.ArgumentNullException(nameof(model));
             this.PromptText = promptText;
             this.Seed = seed;
             this.Duration = duration;
             this.ContentModeration = contentModeration;
+            this.Model = model;
         }
 
         /// <summary>

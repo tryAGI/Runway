@@ -22,8 +22,7 @@ namespace Runway
         /// </summary>
         /// <default>"eleven_voice_isolation"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Model { get; set; } = "eleven_voice_isolation";
+        public string Model { get; set; } = "eleven_voice_isolation";
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -44,10 +43,10 @@ namespace Runway
 #endif
         public RequestElevenVoiceIsolation(
             string audioUri,
-            string model)
+            string model = "eleven_voice_isolation")
         {
             this.AudioUri = audioUri;
-            this.Model = model ?? throw new global::System.ArgumentNullException(nameof(model));
+            this.Model = model;
         }
 
         /// <summary>

@@ -27,8 +27,7 @@ namespace Runway
         /// </summary>
         /// <default>"SUCCEEDED"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("status")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Status { get; set; } = "SUCCEEDED";
+        public string Status { get; set; } = "SUCCEEDED";
 
         /// <summary>
         /// An array of URLs that return the output of the task. These URLs will expire within 24-48 hours; fetch the task again to get fresh URLs. It is expected that you download the assets at these URLs and store them in your own storage system.
@@ -62,13 +61,13 @@ namespace Runway
         public ResponseVariant6(
             global::System.Guid id,
             global::System.DateTime createdAt,
-            string status,
-            global::System.Collections.Generic.IList<string> output)
+            global::System.Collections.Generic.IList<string> output,
+            string status = "SUCCEEDED")
         {
             this.Id = id;
             this.CreatedAt = createdAt;
-            this.Status = status ?? throw new global::System.ArgumentNullException(nameof(status));
             this.Output = output ?? throw new global::System.ArgumentNullException(nameof(output));
+            this.Status = status;
         }
 
         /// <summary>

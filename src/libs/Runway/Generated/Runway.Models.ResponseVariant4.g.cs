@@ -27,8 +27,7 @@ namespace Runway
         /// </summary>
         /// <default>"RUNNING"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("status")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Status { get; set; } = "RUNNING";
+        public string Status { get; set; } = "RUNNING";
 
         /// <summary>
         /// 
@@ -60,13 +59,13 @@ namespace Runway
         public ResponseVariant4(
             global::System.Guid id,
             global::System.DateTime createdAt,
-            string status,
-            double progress)
+            double progress,
+            string status = "RUNNING")
         {
             this.Id = id;
             this.CreatedAt = createdAt;
-            this.Status = status ?? throw new global::System.ArgumentNullException(nameof(status));
             this.Progress = progress;
+            this.Status = status;
         }
 
         /// <summary>

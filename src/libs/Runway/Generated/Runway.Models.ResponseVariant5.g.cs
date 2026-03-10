@@ -27,8 +27,7 @@ namespace Runway
         /// </summary>
         /// <default>"FAILED"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("status")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Status { get; set; } = "FAILED";
+        public string Status { get; set; } = "FAILED";
 
         /// <summary>
         /// A human-friendly reason for the failure. We do not recommend returning this to users directly without adding context.
@@ -71,14 +70,14 @@ namespace Runway
         public ResponseVariant5(
             global::System.Guid id,
             global::System.DateTime createdAt,
-            string status,
             string failure,
-            string? failureCode)
+            string? failureCode,
+            string status = "FAILED")
         {
             this.Id = id;
             this.CreatedAt = createdAt;
-            this.Status = status ?? throw new global::System.ArgumentNullException(nameof(status));
             this.Failure = failure ?? throw new global::System.ArgumentNullException(nameof(failure));
+            this.Status = status;
             this.FailureCode = failureCode;
         }
 

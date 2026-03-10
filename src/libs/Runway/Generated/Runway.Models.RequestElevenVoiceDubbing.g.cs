@@ -48,8 +48,7 @@ namespace Runway
         /// </summary>
         /// <default>"eleven_voice_dubbing"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Model { get; set; } = "eleven_voice_dubbing";
+        public string Model { get; set; } = "eleven_voice_dubbing";
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -83,17 +82,17 @@ namespace Runway
         public RequestElevenVoiceDubbing(
             string audioUri,
             global::Runway.RequestElevenVoiceDubbingTargetLang targetLang,
-            string model,
             bool? disableVoiceCloning,
             bool? dropBackgroundAudio,
-            int? numSpeakers)
+            int? numSpeakers,
+            string model = "eleven_voice_dubbing")
         {
             this.AudioUri = audioUri;
             this.TargetLang = targetLang;
-            this.Model = model ?? throw new global::System.ArgumentNullException(nameof(model));
             this.DisableVoiceCloning = disableVoiceCloning;
             this.DropBackgroundAudio = dropBackgroundAudio;
             this.NumSpeakers = numSpeakers;
+            this.Model = model;
         }
 
         /// <summary>

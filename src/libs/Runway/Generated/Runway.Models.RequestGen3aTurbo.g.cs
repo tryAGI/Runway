@@ -64,8 +64,7 @@ namespace Runway
         /// </summary>
         /// <default>"gen3a_turbo"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Model { get; set; } = "gen3a_turbo";
+        public string Model { get; set; } = "gen3a_turbo";
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -104,19 +103,19 @@ namespace Runway
         public RequestGen3aTurbo(
             string promptText,
             global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<global::Runway.RequestGen3aTurboPromptImagePromptImage>> promptImage,
-            string model,
             int? seed,
             double? duration,
             global::Runway.RequestGen3aTurboRatio? ratio,
-            global::Runway.RequestGen3aTurboContentModeration? contentModeration)
+            global::Runway.RequestGen3aTurboContentModeration? contentModeration,
+            string model = "gen3a_turbo")
         {
             this.PromptText = promptText ?? throw new global::System.ArgumentNullException(nameof(promptText));
             this.PromptImage = promptImage;
-            this.Model = model ?? throw new global::System.ArgumentNullException(nameof(model));
             this.Seed = seed;
             this.Duration = duration;
             this.Ratio = ratio;
             this.ContentModeration = contentModeration;
+            this.Model = model;
         }
 
         /// <summary>

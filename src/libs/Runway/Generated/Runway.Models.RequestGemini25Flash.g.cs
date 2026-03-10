@@ -34,8 +34,7 @@ namespace Runway
         /// </summary>
         /// <default>"gemini_2.5_flash"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Model { get; set; } = "gemini_2.5_flash";
+        public string Model { get; set; } = "gemini_2.5_flash";
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -62,13 +61,13 @@ namespace Runway
         public RequestGemini25Flash(
             string promptText,
             global::Runway.RequestGemini25FlashRatio ratio,
-            string model,
-            global::System.Collections.Generic.IList<global::Runway.RequestGemini25FlashReferenceImage>? referenceImages)
+            global::System.Collections.Generic.IList<global::Runway.RequestGemini25FlashReferenceImage>? referenceImages,
+            string model = "gemini_2.5_flash")
         {
             this.PromptText = promptText ?? throw new global::System.ArgumentNullException(nameof(promptText));
             this.Ratio = ratio;
-            this.Model = model ?? throw new global::System.ArgumentNullException(nameof(model));
             this.ReferenceImages = referenceImages;
+            this.Model = model;
         }
 
         /// <summary>

@@ -27,8 +27,7 @@ namespace Runway
         /// </summary>
         /// <default>"THROTTLED"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("status")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Status { get; set; } = "THROTTLED";
+        public string Status { get; set; } = "THROTTLED";
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -52,11 +51,11 @@ namespace Runway
         public ResponseVariant2(
             global::System.Guid id,
             global::System.DateTime createdAt,
-            string status)
+            string status = "THROTTLED")
         {
             this.Id = id;
             this.CreatedAt = createdAt;
-            this.Status = status ?? throw new global::System.ArgumentNullException(nameof(status));
+            this.Status = status;
         }
 
         /// <summary>

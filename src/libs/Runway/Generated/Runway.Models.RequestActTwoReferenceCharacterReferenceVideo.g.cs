@@ -13,8 +13,7 @@ namespace Runway
         /// </summary>
         /// <default>"video"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Type { get; set; } = "video";
+        public string Type { get; set; } = "video";
 
         /// <summary>
         /// A video of a person performing in the manner that you would like your character to perform. The video must be between 3 and 30 seconds in duration. See [our docs](/assets/inputs#videos) on video inputs for more information.<br/>
@@ -43,11 +42,11 @@ namespace Runway
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public RequestActTwoReferenceCharacterReferenceVideo(
-            string type,
-            string uri)
+            string uri,
+            string type = "video")
         {
-            this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
             this.Uri = uri;
+            this.Type = type;
         }
 
         /// <summary>

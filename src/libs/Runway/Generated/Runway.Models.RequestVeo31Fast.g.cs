@@ -50,8 +50,7 @@ namespace Runway
         /// </summary>
         /// <default>"veo3.1_fast"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Model { get; set; } = "veo3.1_fast";
+        public string Model { get; set; } = "veo3.1_fast";
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -85,17 +84,17 @@ namespace Runway
         public RequestVeo31Fast(
             global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<global::Runway.RequestVeo31FastPromptImagePromptImage>> promptImage,
             global::Runway.RequestVeo31FastRatio ratio,
-            string model,
             string? promptText,
             bool? audio,
-            double? duration)
+            double? duration,
+            string model = "veo3.1_fast")
         {
             this.PromptImage = promptImage;
             this.Ratio = ratio;
-            this.Model = model ?? throw new global::System.ArgumentNullException(nameof(model));
             this.PromptText = promptText;
             this.Audio = audio;
             this.Duration = duration;
+            this.Model = model;
         }
 
         /// <summary>

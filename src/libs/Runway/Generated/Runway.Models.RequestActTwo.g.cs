@@ -70,8 +70,7 @@ namespace Runway
         /// </summary>
         /// <default>"act_two"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Model { get; set; } = "act_two";
+        public string Model { get; set; } = "act_two";
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -116,21 +115,21 @@ namespace Runway
         public RequestActTwo(
             global::Runway.Character character,
             global::Runway.RequestActTwoReferenceCharacterReferenceVideo reference,
-            string model,
             int? seed,
             bool? bodyControl,
             int? expressionIntensity,
             global::Runway.RequestActTwoRatio? ratio,
-            global::Runway.RequestActTwoContentModeration? contentModeration)
+            global::Runway.RequestActTwoContentModeration? contentModeration,
+            string model = "act_two")
         {
             this.Character = character;
             this.Reference = reference ?? throw new global::System.ArgumentNullException(nameof(reference));
-            this.Model = model ?? throw new global::System.ArgumentNullException(nameof(model));
             this.Seed = seed;
             this.BodyControl = bodyControl;
             this.ExpressionIntensity = expressionIntensity;
             this.Ratio = ratio;
             this.ContentModeration = contentModeration;
+            this.Model = model;
         }
 
         /// <summary>

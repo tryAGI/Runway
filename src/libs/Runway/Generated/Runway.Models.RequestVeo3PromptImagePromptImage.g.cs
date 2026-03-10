@@ -22,8 +22,7 @@ namespace Runway
         /// </summary>
         /// <default>"first"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("position")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Position { get; set; } = "first";
+        public string Position { get; set; } = "first";
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -46,10 +45,10 @@ namespace Runway
 #endif
         public RequestVeo3PromptImagePromptImage(
             string uri,
-            string position)
+            string position = "first")
         {
             this.Uri = uri;
-            this.Position = position ?? throw new global::System.ArgumentNullException(nameof(position));
+            this.Position = position;
         }
 
         /// <summary>
