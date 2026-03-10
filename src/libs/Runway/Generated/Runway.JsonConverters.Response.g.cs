@@ -88,12 +88,17 @@ namespace Runway.JsonConverters
             {
             }
 
-            var result = new global::Runway.Response(
+            var __value = new global::Runway.Response(
                 pending,
+
                 throttled,
+
                 cancelled,
+
                 running,
+
                 failed,
+
                 succeeded
                 );
 
@@ -134,7 +139,7 @@ namespace Runway.JsonConverters
                 _ = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
 
-            return result;
+            return __value;
         }
 
         /// <inheritdoc />

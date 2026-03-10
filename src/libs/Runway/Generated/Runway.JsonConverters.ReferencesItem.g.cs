@@ -28,7 +28,7 @@ namespace Runway.JsonConverters
             {
             }
 
-            var result = new global::Runway.ReferencesItem(
+            var __value = new global::Runway.ReferencesItem(
                 image
                 );
 
@@ -39,7 +39,7 @@ namespace Runway.JsonConverters
                 _ = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
 
-            return result;
+            return __value;
         }
 
         /// <inheritdoc />
