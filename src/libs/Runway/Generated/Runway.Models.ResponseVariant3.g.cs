@@ -27,8 +27,7 @@ namespace Runway
         /// </summary>
         /// <default>"CANCELLED"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("status")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Status { get; set; } = "CANCELLED";
+        public string Status { get; set; } = "CANCELLED";
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -52,11 +51,11 @@ namespace Runway
         public ResponseVariant3(
             global::System.Guid id,
             global::System.DateTime createdAt,
-            string status)
+            string status = "CANCELLED")
         {
             this.Id = id;
             this.CreatedAt = createdAt;
-            this.Status = status ?? throw new global::System.ArgumentNullException(nameof(status));
+            this.Status = status;
         }
 
         /// <summary>

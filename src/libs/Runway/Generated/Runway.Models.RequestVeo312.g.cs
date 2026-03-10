@@ -41,8 +41,7 @@ namespace Runway
         /// </summary>
         /// <default>"veo3.1"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Model { get; set; } = "veo3.1";
+        public string Model { get; set; } = "veo3.1";
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -73,15 +72,15 @@ namespace Runway
         public RequestVeo312(
             string promptText,
             global::Runway.RequestVeo31Ratio2 ratio,
-            string model,
             bool? audio,
-            double? duration)
+            double? duration,
+            string model = "veo3.1")
         {
             this.PromptText = promptText ?? throw new global::System.ArgumentNullException(nameof(promptText));
             this.Ratio = ratio;
-            this.Model = model ?? throw new global::System.ArgumentNullException(nameof(model));
             this.Audio = audio;
             this.Duration = duration;
+            this.Model = model;
         }
 
         /// <summary>

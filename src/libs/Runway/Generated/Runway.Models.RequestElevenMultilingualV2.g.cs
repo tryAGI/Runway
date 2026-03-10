@@ -27,8 +27,7 @@ namespace Runway
         /// </summary>
         /// <default>"eleven_multilingual_v2"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Model { get; set; } = "eleven_multilingual_v2";
+        public string Model { get; set; } = "eleven_multilingual_v2";
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -52,11 +51,11 @@ namespace Runway
         public RequestElevenMultilingualV2(
             string promptText,
             global::Runway.RequestElevenMultilingualV2VoiceRunwayPresetVoice voice,
-            string model)
+            string model = "eleven_multilingual_v2")
         {
             this.PromptText = promptText ?? throw new global::System.ArgumentNullException(nameof(promptText));
             this.Voice = voice ?? throw new global::System.ArgumentNullException(nameof(voice));
-            this.Model = model ?? throw new global::System.ArgumentNullException(nameof(model));
+            this.Model = model;
         }
 
         /// <summary>

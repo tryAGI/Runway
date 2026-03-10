@@ -33,8 +33,7 @@ namespace Runway
         /// </summary>
         /// <default>"eleven_text_to_sound_v2"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Model { get; set; } = "eleven_text_to_sound_v2";
+        public string Model { get; set; } = "eleven_text_to_sound_v2";
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -61,14 +60,14 @@ namespace Runway
 #endif
         public RequestElevenTextToSoundV2(
             string promptText,
-            string model,
             double? duration,
-            bool? loop)
+            bool? loop,
+            string model = "eleven_text_to_sound_v2")
         {
             this.PromptText = promptText ?? throw new global::System.ArgumentNullException(nameof(promptText));
-            this.Model = model ?? throw new global::System.ArgumentNullException(nameof(model));
             this.Duration = duration;
             this.Loop = loop;
+            this.Model = model;
         }
 
         /// <summary>

@@ -13,8 +13,7 @@ namespace Runway
         /// </summary>
         /// <default>"runway-preset"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Type { get; set; } = "runway-preset";
+        public string Type { get; set; } = "runway-preset";
 
         /// <summary>
         /// The preset voice ID to use for the generated speech.
@@ -41,11 +40,11 @@ namespace Runway
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public RequestElevenMultilingualStsV2VoiceRunwayPresetVoice(
-            string type,
-            global::Runway.RequestElevenMultilingualStsV2VoiceRunwayPresetVoicePresetId presetId)
+            global::Runway.RequestElevenMultilingualStsV2VoiceRunwayPresetVoicePresetId presetId,
+            string type = "runway-preset")
         {
-            this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
             this.PresetId = presetId;
+            this.Type = type;
         }
 
         /// <summary>

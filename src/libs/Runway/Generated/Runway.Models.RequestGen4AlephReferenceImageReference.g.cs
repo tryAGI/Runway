@@ -13,8 +13,7 @@ namespace Runway
         /// </summary>
         /// <default>"image"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Type { get; set; } = "image";
+        public string Type { get; set; } = "image";
 
         /// <summary>
         /// A HTTPS URL, Runway or data URI containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.<br/>
@@ -43,11 +42,11 @@ namespace Runway
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public RequestGen4AlephReferenceImageReference(
-            string type,
-            string uri)
+            string uri,
+            string type = "image")
         {
-            this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
             this.Uri = uri;
+            this.Type = type;
         }
 
         /// <summary>

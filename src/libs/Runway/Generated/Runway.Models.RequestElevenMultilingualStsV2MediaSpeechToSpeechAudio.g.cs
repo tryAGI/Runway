@@ -13,8 +13,7 @@ namespace Runway
         /// </summary>
         /// <default>"audio"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Type { get; set; } = "audio";
+        public string Type { get; set; } = "audio";
 
         /// <summary>
         /// A HTTPS URL, Runway or data URI containing an encoded audio. See [our docs](/assets/inputs#audio) on audio inputs for more information.<br/>
@@ -43,11 +42,11 @@ namespace Runway
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public RequestElevenMultilingualStsV2MediaSpeechToSpeechAudio(
-            string type,
-            string uri)
+            string uri,
+            string type = "audio")
         {
-            this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
             this.Uri = uri;
+            this.Type = type;
         }
 
         /// <summary>

@@ -20,8 +20,7 @@ namespace Runway
         /// </summary>
         /// <default>"8"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("duration")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required double Duration { get; set; } = "8";
+        public double Duration { get; set; } = "8";
 
         /// <summary>
         /// The resolution of the output video.
@@ -36,8 +35,7 @@ namespace Runway
         /// </summary>
         /// <default>"veo3"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Model { get; set; } = "veo3";
+        public string Model { get; set; } = "veo3";
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -63,14 +61,14 @@ namespace Runway
 #endif
         public RequestVeo32(
             string promptText,
-            double duration,
             global::Runway.RequestVeo3Ratio2 ratio,
-            string model)
+            double duration = "8",
+            string model = "veo3")
         {
             this.PromptText = promptText ?? throw new global::System.ArgumentNullException(nameof(promptText));
-            this.Duration = duration;
             this.Ratio = ratio;
-            this.Model = model ?? throw new global::System.ArgumentNullException(nameof(model));
+            this.Duration = duration;
+            this.Model = model;
         }
 
         /// <summary>

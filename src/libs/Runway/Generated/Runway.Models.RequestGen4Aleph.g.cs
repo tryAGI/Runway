@@ -55,8 +55,7 @@ namespace Runway
         /// </summary>
         /// <default>"gen4_aleph"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Model { get; set; } = "gen4_aleph";
+        public string Model { get; set; } = "gen4_aleph";
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -94,18 +93,18 @@ namespace Runway
             string videoUri,
             string promptText,
             global::Runway.RequestGen4AlephRatio ratio,
-            string model,
             int? seed,
             global::System.Collections.Generic.IList<global::Runway.ReferencesItem>? references,
-            global::Runway.RequestGen4AlephContentModeration? contentModeration)
+            global::Runway.RequestGen4AlephContentModeration? contentModeration,
+            string model = "gen4_aleph")
         {
             this.VideoUri = videoUri;
             this.PromptText = promptText ?? throw new global::System.ArgumentNullException(nameof(promptText));
             this.Ratio = ratio;
-            this.Model = model ?? throw new global::System.ArgumentNullException(nameof(model));
             this.Seed = seed;
             this.References = references;
             this.ContentModeration = contentModeration;
+            this.Model = model;
         }
 
         /// <summary>

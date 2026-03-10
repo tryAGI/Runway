@@ -46,8 +46,7 @@ namespace Runway
         /// </summary>
         /// <default>"gen4_image"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Model { get; set; } = "gen4_image";
+        public string Model { get; set; } = "gen4_image";
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -80,17 +79,17 @@ namespace Runway
         public RequestGen4Image(
             string promptText,
             global::Runway.RequestGen4ImageRatio ratio,
-            string model,
             int? seed,
             global::System.Collections.Generic.IList<global::Runway.RequestGen4ImageReferenceImage>? referenceImages,
-            global::Runway.RequestGen4ImageContentModeration? contentModeration)
+            global::Runway.RequestGen4ImageContentModeration? contentModeration,
+            string model = "gen4_image")
         {
             this.PromptText = promptText ?? throw new global::System.ArgumentNullException(nameof(promptText));
             this.Ratio = ratio;
-            this.Model = model ?? throw new global::System.ArgumentNullException(nameof(model));
             this.Seed = seed;
             this.ReferenceImages = referenceImages;
             this.ContentModeration = contentModeration;
+            this.Model = model;
         }
 
         /// <summary>
