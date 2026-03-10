@@ -10,7 +10,7 @@ Auto-generated C# SDK for the [Runway ML API](https://docs.dev.runwayml.com/), b
 
 ```bash
 # Build
-dotnet build Runway.sln
+dotnet build Runway.slnx
 
 # Run all tests (requires RUNWAY_API_KEY env var)
 dotnet test src/tests/IntegrationTests
