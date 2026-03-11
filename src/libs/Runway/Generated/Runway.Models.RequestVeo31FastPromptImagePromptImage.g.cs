@@ -15,7 +15,7 @@ namespace Runway
         /// <example>https://example.com/image.jpg</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("uri")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public string Uri { get; set; } = default!;
+        public required string Uri { get; set; }
 
         /// <summary>
         /// The position of the image in the output video. "first" will use the image as the first frame of the video, "last" will use the image as the last frame of the video.
@@ -23,7 +23,7 @@ namespace Runway
         [global::System.Text.Json.Serialization.JsonPropertyName("position")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.RequestVeo31FastPromptImagePromptImagePositionJsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::Runway.RequestVeo31FastPromptImagePromptImagePosition Position { get; set; } = default!;
+        public required global::Runway.RequestVeo31FastPromptImagePromptImagePosition Position { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

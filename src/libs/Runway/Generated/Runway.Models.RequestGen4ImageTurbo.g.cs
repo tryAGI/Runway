@@ -13,7 +13,7 @@ namespace Runway
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("promptText")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public string PromptText { get; set; } = default!;
+        public required string PromptText { get; set; }
 
         /// <summary>
         /// If unspecified, a random number is chosen. Varying the seed integer is a way to get different results for the same other request parameters. Using the same seed integer for an identical request will produce similar results.
@@ -27,14 +27,14 @@ namespace Runway
         [global::System.Text.Json.Serialization.JsonPropertyName("ratio")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.RequestGen4ImageTurboRatioJsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::Runway.RequestGen4ImageTurboRatio Ratio { get; set; } = default!;
+        public required global::Runway.RequestGen4ImageTurboRatio Ratio { get; set; }
 
         /// <summary>
         /// An array of one to three images to be used as references for the generated image output.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("referenceImages")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::System.Collections.Generic.IList<global::Runway.RequestGen4ImageTurboReferenceImage> ReferenceImages { get; set; } = default!;
+        public required global::System.Collections.Generic.IList<global::Runway.RequestGen4ImageTurboReferenceImage> ReferenceImages { get; set; }
 
         /// <summary>
         /// Settings that affect the behavior of the content moderation system.

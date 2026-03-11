@@ -13,7 +13,7 @@ namespace Runway
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("models")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::System.Collections.Generic.Dictionary<string, global::Runway.ResponseUsageModels2> Models { get; set; } = default!;
+        public required global::System.Collections.Generic.Dictionary<string, global::Runway.ResponseUsageModels2> Models { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

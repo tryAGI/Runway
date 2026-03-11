@@ -13,14 +13,14 @@ namespace Runway
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("maxMonthlyCreditSpend")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public int MaxMonthlyCreditSpend { get; set; } = default!;
+        public required int MaxMonthlyCreditSpend { get; set; }
 
         /// <summary>
         /// An object containing model-specific limits. Each key represents a model.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("models")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::System.Collections.Generic.Dictionary<string, global::Runway.ResponseTierModels2> Models { get; set; } = default!;
+        public required global::System.Collections.Generic.Dictionary<string, global::Runway.ResponseTierModels2> Models { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
