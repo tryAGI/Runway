@@ -13,14 +13,14 @@ namespace Runway
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("results")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<global::Runway.ResponseResult> Results { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.ResponseResult> Results { get; set; } = default!;
 
         /// <summary>
         /// The list of models with usage during the queried time range.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("models")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<global::Runway.ResponseModel> Models { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.ResponseModel> Models { get; set; } = default!;
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

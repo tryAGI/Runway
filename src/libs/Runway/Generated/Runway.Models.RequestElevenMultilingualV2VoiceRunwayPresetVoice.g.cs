@@ -21,7 +21,7 @@ namespace Runway
         [global::System.Text.Json.Serialization.JsonPropertyName("presetId")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.RequestElevenMultilingualV2VoiceRunwayPresetVoicePresetIdJsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Runway.RequestElevenMultilingualV2VoiceRunwayPresetVoicePresetId PresetId { get; set; }
+        public global::Runway.RequestElevenMultilingualV2VoiceRunwayPresetVoicePresetId PresetId { get; set; } = default!;
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

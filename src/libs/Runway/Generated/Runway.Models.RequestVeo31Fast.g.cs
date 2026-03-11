@@ -22,7 +22,7 @@ namespace Runway
         [global::System.Text.Json.Serialization.JsonPropertyName("promptImage")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.RequestVeo31FastPromptImagePromptImage>>))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<global::Runway.RequestVeo31FastPromptImagePromptImage>> PromptImage { get; set; }
+        public global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<global::Runway.RequestVeo31FastPromptImagePromptImage>> PromptImage { get; set; } = default!;
 
         /// <summary>
         /// The resolution of the output video.
@@ -30,7 +30,7 @@ namespace Runway
         [global::System.Text.Json.Serialization.JsonPropertyName("ratio")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.RequestVeo31FastRatioJsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Runway.RequestVeo31FastRatio Ratio { get; set; }
+        public global::Runway.RequestVeo31FastRatio Ratio { get; set; } = default!;
 
         /// <summary>
         /// Whether to generate audio for the video. Audio inclusion affects pricing.<br/>

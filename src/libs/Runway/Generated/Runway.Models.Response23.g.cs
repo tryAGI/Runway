@@ -13,21 +13,21 @@ namespace Runway
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("tier")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Runway.ResponseTier Tier { get; set; }
+        public global::Runway.ResponseTier Tier { get; set; } = default!;
 
         /// <summary>
         /// The number of credits remaining in the organization account.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("creditBalance")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required int CreditBalance { get; set; }
+        public int CreditBalance { get; set; } = default!;
 
         /// <summary>
         /// Usage data for the organization.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("usage")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Runway.ResponseUsage Usage { get; set; }
+        public global::Runway.ResponseUsage Usage { get; set; } = default!;
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

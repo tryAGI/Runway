@@ -15,7 +15,7 @@ namespace Runway
         /// <example>https://example.com/image.jpg</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("uri")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Uri { get; set; }
+        public string Uri { get; set; } = default!;
 
         /// <summary>
         /// The position of the image in the output video. "first" will use the image as the first frame of the video.

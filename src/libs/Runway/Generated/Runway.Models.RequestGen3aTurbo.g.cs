@@ -17,7 +17,7 @@ namespace Runway
         /// <example>A beautiful sunset over a calm ocean.</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("promptText")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string PromptText { get; set; }
+        public string PromptText { get; set; } = default!;
 
         /// <summary>
         /// 
@@ -25,7 +25,7 @@ namespace Runway
         [global::System.Text.Json.Serialization.JsonPropertyName("promptImage")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.RequestGen3aTurboPromptImagePromptImage>>))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<global::Runway.RequestGen3aTurboPromptImagePromptImage>> PromptImage { get; set; }
+        public global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<global::Runway.RequestGen3aTurboPromptImagePromptImage>> PromptImage { get; set; } = default!;
 
         /// <summary>
         /// If unspecified, a random number is chosen. Varying the seed integer is a way to get different results for the same other request parameters. Using the same seed integer for an identical request will produce similar results.

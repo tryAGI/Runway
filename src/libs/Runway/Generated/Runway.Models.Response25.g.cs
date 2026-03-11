@@ -13,21 +13,21 @@ namespace Runway
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("uploadUrl")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string UploadUrl { get; set; }
+        public string UploadUrl { get; set; } = default!;
 
         /// <summary>
         /// Fields that must be included in the file upload request as form data.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("fields")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.Dictionary<string, string> Fields { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, string> Fields { get; set; } = default!;
 
         /// <summary>
         /// The Runway upload URI to use in other API generation requests
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("runwayUri")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string RunwayUri { get; set; }
+        public string RunwayUri { get; set; } = default!;
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

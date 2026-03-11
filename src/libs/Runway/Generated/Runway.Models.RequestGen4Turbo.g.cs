@@ -22,7 +22,7 @@ namespace Runway
         [global::System.Text.Json.Serialization.JsonPropertyName("promptImage")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.RequestGen4TurboPromptImagePromptImage>>))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<global::Runway.RequestGen4TurboPromptImagePromptImage>> PromptImage { get; set; }
+        public global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<global::Runway.RequestGen4TurboPromptImagePromptImage>> PromptImage { get; set; } = default!;
 
         /// <summary>
         /// If unspecified, a random number is chosen. Varying the seed integer is a way to get different results for the same other request parameters. Using the same seed integer for an identical request will produce similar results.
@@ -36,7 +36,7 @@ namespace Runway
         [global::System.Text.Json.Serialization.JsonPropertyName("ratio")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.RequestGen4TurboRatioJsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Runway.RequestGen4TurboRatio Ratio { get; set; }
+        public global::Runway.RequestGen4TurboRatio Ratio { get; set; } = default!;
 
         /// <summary>
         /// The number of seconds of duration for the output video.

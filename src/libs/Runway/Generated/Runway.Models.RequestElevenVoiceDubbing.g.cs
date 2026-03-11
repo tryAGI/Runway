@@ -15,7 +15,7 @@ namespace Runway
         /// <example>https://example.com/audio.mp3</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("audioUri")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string AudioUri { get; set; }
+        public string AudioUri { get; set; } = default!;
 
         /// <summary>
         /// The target language code to dub the audio to (e.g., "es" for Spanish, "fr" for French).
@@ -23,7 +23,7 @@ namespace Runway
         [global::System.Text.Json.Serialization.JsonPropertyName("targetLang")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.RequestElevenVoiceDubbingTargetLangJsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Runway.RequestElevenVoiceDubbingTargetLang TargetLang { get; set; }
+        public global::Runway.RequestElevenVoiceDubbingTargetLang TargetLang { get; set; } = default!;
 
         /// <summary>
         /// Whether to disable voice cloning and use a generic voice instead.

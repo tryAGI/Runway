@@ -20,7 +20,7 @@ namespace Runway
         [global::System.Text.Json.Serialization.JsonPropertyName("character")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.CharacterJsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Runway.Character Character { get; set; }
+        public global::Runway.Character Character { get; set; } = default!;
 
         /// <summary>
         /// The reference video containing the performance to apply to the character.<br/>
@@ -29,7 +29,7 @@ namespace Runway
         /// <example>{"type":"video","uri":"https://example.com/reference-performance.mp4"}</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("reference")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Runway.RequestActTwoReferenceCharacterReferenceVideo Reference { get; set; }
+        public global::Runway.RequestActTwoReferenceCharacterReferenceVideo Reference { get; set; } = default!;
 
         /// <summary>
         /// A boolean indicating whether to enable body control. When enabled, non-facial movements and gestures will be applied to the character in addition to facial expressions.<br/>

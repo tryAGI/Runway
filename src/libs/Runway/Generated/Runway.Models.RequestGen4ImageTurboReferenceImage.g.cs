@@ -15,7 +15,7 @@ namespace Runway
         /// <example>https://example.com/image.jpg</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("uri")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Uri { get; set; }
+        public string Uri { get; set; } = default!;
 
         /// <summary>
         /// A tag to identify the reference image. This is used to reference the image in prompt text.

@@ -13,7 +13,7 @@ namespace Runway
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("promptText")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string PromptText { get; set; }
+        public string PromptText { get; set; } = default!;
 
         /// <summary>
         /// The resolution of the output video.
@@ -21,7 +21,7 @@ namespace Runway
         [global::System.Text.Json.Serialization.JsonPropertyName("ratio")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.RequestVeo31Ratio2JsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Runway.RequestVeo31Ratio2 Ratio { get; set; }
+        public global::Runway.RequestVeo31Ratio2 Ratio { get; set; } = default!;
 
         /// <summary>
         /// Whether to generate audio for the video. Audio inclusion affects pricing.<br/>

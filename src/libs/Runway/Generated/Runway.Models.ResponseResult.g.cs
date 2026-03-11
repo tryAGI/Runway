@@ -13,14 +13,14 @@ namespace Runway
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("date")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.DateTime Date { get; set; }
+        public global::System.DateTime Date { get; set; } = default!;
 
         /// <summary>
         /// The credits used per model for the given date.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("usedCredits")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<global::Runway.ResponseResultUsedCredit> UsedCredits { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.ResponseResultUsedCredit> UsedCredits { get; set; } = default!;
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

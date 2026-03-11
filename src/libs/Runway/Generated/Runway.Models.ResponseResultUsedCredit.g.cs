@@ -14,14 +14,14 @@ namespace Runway
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.ResponseResultUsedCreditModelJsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Runway.ResponseResultUsedCreditModel Model { get; set; }
+        public global::Runway.ResponseResultUsedCreditModel Model { get; set; } = default!;
 
         /// <summary>
         /// The number of credits spent on the model.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("amount")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required int Amount { get; set; }
+        public int Amount { get; set; } = default!;
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

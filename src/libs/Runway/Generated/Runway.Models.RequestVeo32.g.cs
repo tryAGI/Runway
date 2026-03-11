@@ -13,14 +13,15 @@ namespace Runway
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("promptText")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string PromptText { get; set; }
+        public string PromptText { get; set; } = default!;
 
         /// <summary>
-        /// The number of seconds of duration for the output video.
+        /// The number of seconds of duration for the output video.<br/>
+        /// Default Value: 8
         /// </summary>
-        /// <default>"8"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("duration")]
-        public double Duration { get; set; } = "8";
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public double Duration { get; set; } = default!;
 
         /// <summary>
         /// The resolution of the output video.
@@ -28,7 +29,7 @@ namespace Runway
         [global::System.Text.Json.Serialization.JsonPropertyName("ratio")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.RequestVeo3Ratio2JsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Runway.RequestVeo3Ratio2 Ratio { get; set; }
+        public global::Runway.RequestVeo3Ratio2 Ratio { get; set; } = default!;
 
         /// <summary>
         /// 
@@ -50,7 +51,8 @@ namespace Runway
         /// A non-empty string up to 1000 characters (measured in UTF-16 code units). This should describe in detail what should appear in the output.
         /// </param>
         /// <param name="duration">
-        /// The number of seconds of duration for the output video.
+        /// The number of seconds of duration for the output video.<br/>
+        /// Default Value: 8
         /// </param>
         /// <param name="ratio">
         /// The resolution of the output video.
@@ -61,13 +63,13 @@ namespace Runway
 #endif
         public RequestVeo32(
             string promptText,
+            double duration,
             global::Runway.RequestVeo3Ratio2 ratio,
-            double duration = "8",
             string model = "veo3")
         {
             this.PromptText = promptText ?? throw new global::System.ArgumentNullException(nameof(promptText));
-            this.Ratio = ratio;
             this.Duration = duration;
+            this.Ratio = ratio;
             this.Model = model;
         }
 

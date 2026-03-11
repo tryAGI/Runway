@@ -13,7 +13,7 @@ namespace Runway
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("dailyGenerations")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required int DailyGenerations { get; set; }
+        public int DailyGenerations { get; set; } = default!;
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

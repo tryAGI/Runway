@@ -13,14 +13,14 @@ namespace Runway
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("promptText")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string PromptText { get; set; }
+        public string PromptText { get; set; } = default!;
 
         /// <summary>
         /// The voice to use for the generated speech.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("voice")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Runway.RequestElevenMultilingualV2VoiceRunwayPresetVoice Voice { get; set; }
+        public global::Runway.RequestElevenMultilingualV2VoiceRunwayPresetVoice Voice { get; set; } = default!;
 
         /// <summary>
         /// 

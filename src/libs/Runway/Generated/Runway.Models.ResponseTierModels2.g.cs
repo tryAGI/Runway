@@ -13,14 +13,14 @@ namespace Runway
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("maxConcurrentGenerations")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required int MaxConcurrentGenerations { get; set; }
+        public int MaxConcurrentGenerations { get; set; } = default!;
 
         /// <summary>
         /// The maximum number of generations that can be created each day for this model.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("maxDailyGenerations")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required int MaxDailyGenerations { get; set; }
+        public int MaxDailyGenerations { get; set; } = default!;
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
