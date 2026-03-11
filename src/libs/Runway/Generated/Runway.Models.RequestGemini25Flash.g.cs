@@ -13,7 +13,7 @@ namespace Runway
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("promptText")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public string PromptText { get; set; } = default!;
+        public required string PromptText { get; set; }
 
         /// <summary>
         /// The resolution of the output image.
@@ -21,7 +21,7 @@ namespace Runway
         [global::System.Text.Json.Serialization.JsonPropertyName("ratio")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.RequestGemini25FlashRatioJsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::Runway.RequestGemini25FlashRatio Ratio { get; set; } = default!;
+        public required global::Runway.RequestGemini25FlashRatio Ratio { get; set; }
 
         /// <summary>
         /// An array of up to three images to be used as references for the generated image output.

@@ -22,15 +22,14 @@ namespace Runway
         [global::System.Text.Json.Serialization.JsonPropertyName("promptImage")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.RequestVeo3PromptImagePromptImage>>))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<global::Runway.RequestVeo3PromptImagePromptImage>> PromptImage { get; set; } = default!;
+        public required global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<global::Runway.RequestVeo3PromptImagePromptImage>> PromptImage { get; set; }
 
         /// <summary>
-        /// The number of seconds of duration for the output video.<br/>
-        /// Default Value: 8
+        /// The number of seconds of duration for the output video.
         /// </summary>
+        /// <default>"8"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("duration")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public double Duration { get; set; } = default!;
+        public double Duration { get; set; } = "8";
 
         /// <summary>
         /// The resolution of the output video.
@@ -38,7 +37,7 @@ namespace Runway
         [global::System.Text.Json.Serialization.JsonPropertyName("ratio")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.RequestVeo3RatioJsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::Runway.RequestVeo3Ratio Ratio { get; set; } = default!;
+        public required global::Runway.RequestVeo3Ratio Ratio { get; set; }
 
         /// <summary>
         /// 
@@ -61,8 +60,7 @@ namespace Runway
         /// </param>
         /// <param name="promptImage"></param>
         /// <param name="duration">
-        /// The number of seconds of duration for the output video.<br/>
-        /// Default Value: 8
+        /// The number of seconds of duration for the output video.
         /// </param>
         /// <param name="ratio">
         /// The resolution of the output video.
@@ -73,15 +71,15 @@ namespace Runway
 #endif
         public RequestVeo3(
             global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<global::Runway.RequestVeo3PromptImagePromptImage>> promptImage,
-            double duration,
             global::Runway.RequestVeo3Ratio ratio,
             string? promptText,
+            double duration = "8",
             string model = "veo3")
         {
             this.PromptImage = promptImage;
-            this.Duration = duration;
             this.Ratio = ratio;
             this.PromptText = promptText;
+            this.Duration = duration;
             this.Model = model;
         }
 

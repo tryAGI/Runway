@@ -15,7 +15,7 @@ namespace Runway
         /// <example>https://example.com/audio.mp3</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("audioUri")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public string AudioUri { get; set; } = default!;
+        public required string AudioUri { get; set; }
 
         /// <summary>
         /// 

@@ -22,7 +22,7 @@ namespace Runway
         /// <example>https://example.com/image.jpg</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("uri")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public string Uri { get; set; } = default!;
+        public required string Uri { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

@@ -20,14 +20,14 @@ namespace Runway
         [global::System.Text.Json.Serialization.JsonPropertyName("media")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.MediaJsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::Runway.Media Media { get; set; } = default!;
+        public required global::Runway.Media Media { get; set; }
 
         /// <summary>
         /// The voice to use for the generated speech.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("voice")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::Runway.RequestElevenMultilingualStsV2VoiceRunwayPresetVoice Voice { get; set; } = default!;
+        public required global::Runway.RequestElevenMultilingualStsV2VoiceRunwayPresetVoice Voice { get; set; }
 
         /// <summary>
         /// 

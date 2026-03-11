@@ -15,14 +15,14 @@ namespace Runway
         /// <example>https://example.com/video.mp4</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("videoUri")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public string VideoUri { get; set; } = default!;
+        public required string VideoUri { get; set; }
 
         /// <summary>
         /// A non-empty string up to 1000 characters (measured in UTF-16 code units). This should describe in detail what should appear in the output.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("promptText")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public string PromptText { get; set; } = default!;
+        public required string PromptText { get; set; }
 
         /// <summary>
         /// The resolution of the output video.
@@ -30,7 +30,7 @@ namespace Runway
         [global::System.Text.Json.Serialization.JsonPropertyName("ratio")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.RequestGen4AlephRatioJsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::Runway.RequestGen4AlephRatio Ratio { get; set; } = default!;
+        public required global::Runway.RequestGen4AlephRatio Ratio { get; set; }
 
         /// <summary>
         /// If unspecified, a random number is chosen. Varying the seed integer is a way to get different results for the same other request parameters. Using the same seed integer for an identical request will produce similar results.
