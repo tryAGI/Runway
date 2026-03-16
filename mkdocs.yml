@@ -1,7 +1,10 @@
 site_name: Runway .NET Documentation
 nav:
 - Overview: index.md
-# EXAMPLES #
+# EXAMPLES:START
+- Examples:
+  - CreateImageToVideo: samples/CreateImageToVideo.md
+# EXAMPLES:END
         
 theme:
   name: material
