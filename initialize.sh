@@ -1,4 +1,4 @@
-dotnet tool install --global autosdk.cli --version 0.30.1-dev.3
+dotnet tool install --global autosdk.cli --prerelease
 
 autosdk init \
   Runway \
