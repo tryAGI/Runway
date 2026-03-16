@@ -20,7 +20,7 @@ namespace Runway
         /// </summary>
         /// <default>"8"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("duration")]
-        public double Duration { get; set; } = "8";
+        public double Duration { get; set; } = 8;
 
         /// <summary>
         /// The resolution of the output video.
@@ -62,7 +62,7 @@ namespace Runway
         public RequestVeo32(
             string promptText,
             global::Runway.RequestVeo3Ratio2 ratio,
-            double duration = "8",
+            double duration = 8,
             string model = "veo3")
         {
             this.PromptText = promptText ?? throw new global::System.ArgumentNullException(nameof(promptText));

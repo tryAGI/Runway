@@ -12,3 +12,12 @@ autosdk generate openapi.yaml \
   --targetFramework net10.0 \
   --output Generated \
   --exclude-deprecated-operations
+if [ $? -ne 0 ]; then
+ echo "Failed, exiting..."
+ exit 1
+fi
+dotnet run --project ../../helpers/FixOpenApiSpec Generated
+if [ $? -ne 0 ]; then
+ echo "Failed, exiting..."
+ exit 1
+fi
