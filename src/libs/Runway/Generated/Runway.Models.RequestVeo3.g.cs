@@ -27,7 +27,7 @@ namespace Runway
         /// <summary>
         /// The number of seconds of duration for the output video.
         /// </summary>
-        /// <default>"8"</default>
+        /// <default>8</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("duration")]
         public double Duration { get; set; } = 8;
 

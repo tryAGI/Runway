@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-AUTOSDK_VERSION=0.30.1-dev.1
+AUTOSDK_VERSION=0.30.1-dev.3
 
 dotnet tool update --global autosdk.cli --version "$AUTOSDK_VERSION" >/dev/null 2>&1 || \
   dotnet tool install --global autosdk.cli --version "$AUTOSDK_VERSION"
@@ -13,4 +13,3 @@ autosdk generate openapi.json \
   --targetFramework net10.0 \
   --output Generated \
   --exclude-deprecated-operations
-perl ./normalize-generated-consts.pl Generated
