@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Auto-generated C# SDK for the [Runway ML API](https://docs.dev.runwayml.com/), built with [AutoSDK](https://github.com/HavenDV/AutoSDK) from an OpenAPI specification. Published as the `Runway` NuGet package.
+Auto-generated C# SDK for the [Runway ML API](https://docs.dev.runwayml.com/), built with [AutoSDK](https://github.com/tryAGI/AutoSDK) from an OpenAPI specification. Published as the `Runway` NuGet package.
 
 ## Build & Test Commands
 
@@ -27,14 +27,14 @@ dotnet build src/helpers/TrimmingHelper/TrimmingHelper.csproj
 
 ## Architecture
 
-**Code generation pipeline:** `openapi.yaml` → AutoSDK (`autosdk.cli`) → `Generated/*.g.cs` files
+**Code generation pipeline:** `openapi.json` → AutoSDK (`autosdk.cli`) → `Generated/*.g.cs` files
 
 - `src/libs/Runway/` — Main SDK library (net10.0)
-  - `openapi.yaml` — Source OpenAPI specification (~6400 lines)
+  - `openapi.json` — Source OpenAPI specification
   - `generate.sh` — Regeneration script
   - `Generated/` — All auto-generated code (41 `.g.cs` files). **Do not edit manually.**
 - `src/tests/IntegrationTests/` — MSTest + FluentAssertions integration tests
-- `src/helpers/` — Build utilities (FixOpenApiSpec, GenerateDocs, TrimmingHelper)
+- `src/helpers/` — Build utilities (GenerateDocs, TrimmingHelper)
 
 **Client pattern:** `RunwayClient` (sealed partial class) implements `IRunwayClient`. Extensible via partial methods (`PrepareArguments`, `PrepareRequest`, `ProcessResponse`). Bearer token auth via constructor `apiKey` parameter.
 
