@@ -21,8 +21,8 @@ dotnet test src/tests/IntegrationTests --filter "CreateImageToVideo"
 # Regenerate SDK from OpenAPI spec
 cd src/libs/Runway && chmod +x ./generate.sh && ./generate.sh
 
-# Validate trimming/NativeAOT compatibility
-dotnet build src/helpers/TrimmingHelper/TrimmingHelper.csproj
+# Validate trimming/NativeAOT compatibility (requires: dotnet tool install -g autosdk.cli --prerelease)
+autosdk trim src/libs/*//*.csproj
 ```
 
 ## Architecture
@@ -34,7 +34,7 @@ dotnet build src/helpers/TrimmingHelper/TrimmingHelper.csproj
   - `generate.sh` — Regeneration script
   - `Generated/` — All auto-generated code (41 `.g.cs` files). **Do not edit manually.**
 - `src/tests/IntegrationTests/` — MSTest + FluentAssertions integration tests
-- `src/helpers/` — Build utilities (GenerateDocs, TrimmingHelper)
+- `src/helpers/` — Build utilities (GenerateDocs)
 
 **Client pattern:** `RunwayClient` (sealed partial class) implements `IRunwayClient`. Extensible via partial methods (`PrepareArguments`, `PrepareRequest`, `ProcessResponse`). Bearer token auth via constructor `apiKey` parameter.
 
