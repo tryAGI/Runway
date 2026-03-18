@@ -34,7 +34,7 @@ autosdk trim src/libs/*//*.csproj
   - `generate.sh` — Regeneration script
   - `Generated/` — All auto-generated code (41 `.g.cs` files). **Do not edit manually.**
 - `src/tests/IntegrationTests/` — MSTest + FluentAssertions integration tests
-- `src/helpers/` — Build utilities (GenerateDocs)
+- `src/helpers/` — Build utilities ()
 
 **Client pattern:** `RunwayClient` (sealed partial class) implements `IRunwayClient`. Extensible via partial methods (`PrepareArguments`, `PrepareRequest`, `ProcessResponse`). Bearer token auth via constructor `apiKey` parameter.
 
