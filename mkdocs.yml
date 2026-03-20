@@ -3,7 +3,9 @@ nav:
 - Overview: index.md
 # EXAMPLES:START
 - Examples:
-  - CreateImageToVideo: samples/CreateImageToVideo.md
+  - CreateTextToImage: examples/createtexttoimage.md
+  - CreateTextToVideo: examples/createtexttovideo.md
+  - Create Image To Video: examples/create-image-to-video.md
 # EXAMPLES:END
         
 theme:
