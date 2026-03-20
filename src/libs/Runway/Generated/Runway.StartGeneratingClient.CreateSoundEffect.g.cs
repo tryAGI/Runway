@@ -33,6 +33,21 @@ namespace Runway
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Runway.ApiException"></exception>
+        /// <remarks>
+        /// // npm install --save @runwayml/sdk<br/>
+        /// import RunwayML from '@runwayml/sdk';<br/>
+        /// // The env var RUNWAYML_API_SECRET is expected to contain your API key.<br/>
+        /// const client = new RunwayML();<br/>
+        /// const task = await client.soundEffect<br/>
+        ///   .create({<br/>
+        ///     model: 'eleven_text_to_sound_v2',<br/>
+        ///     promptText: 'A thunderstorm with heavy rain',<br/>
+        ///     duration: 10,<br/>
+        ///     loop: true,<br/>
+        ///   })<br/>
+        ///   .waitForTaskOutput();<br/>
+        /// console.log(task);
+        /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Runway.Response13> CreateSoundEffectAsync(
 
             global::Runway.Request6 request,
@@ -227,7 +242,6 @@ namespace Runway
                 }
             }
         }
-
         /// <summary>
         /// Generate sound effects<br/>
         /// This endpoint will start a new task to generate sound effects from a text description.

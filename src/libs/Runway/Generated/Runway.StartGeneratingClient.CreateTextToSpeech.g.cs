@@ -33,6 +33,23 @@ namespace Runway
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Runway.ApiException"></exception>
+        /// <remarks>
+        /// // npm install --save @runwayml/sdk<br/>
+        /// import RunwayML from '@runwayml/sdk';<br/>
+        /// // The env var RUNWAYML_API_SECRET is expected to contain your API key.<br/>
+        /// const client = new RunwayML();<br/>
+        /// const task = await client.textToSpeech<br/>
+        ///   .create({<br/>
+        ///     model: 'eleven_multilingual_v2',<br/>
+        ///     promptText: 'The quick brown fox jumps over the lazy dog',<br/>
+        ///     voice: {<br/>
+        ///       type: 'runway-preset',<br/>
+        ///       presetId: 'Leslie',<br/>
+        ///     },<br/>
+        ///   })<br/>
+        ///   .waitForTaskOutput();<br/>
+        /// console.log(task);
+        /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Runway.Response17> CreateTextToSpeechAsync(
 
             global::Runway.Request8 request,
@@ -227,7 +244,6 @@ namespace Runway
                 }
             }
         }
-
         /// <summary>
         /// Text to speech<br/>
         /// This endpoint will start a new task to generate speech from text.

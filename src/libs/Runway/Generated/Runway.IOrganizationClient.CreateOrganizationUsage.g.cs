@@ -14,12 +14,19 @@ namespace Runway
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Runway.ApiException"></exception>
+        /// <remarks>
+        /// // npm install --save @runwayml/sdk<br/>
+        /// import RunwayML from '@runwayml/sdk';<br/>
+        /// // The env var RUNWAYML_API_SECRET is expected to contain your API key.<br/>
+        /// const client = new RunwayML();<br/>
+        /// const usage = await client.organization.retrieveUsage();<br/>
+        /// console.log(usage);
+        /// </remarks>
         global::System.Threading.Tasks.Task<global::Runway.Response24> CreateOrganizationUsageAsync(
 
             global::Runway.Request11 request,
             string xRunwayVersion = "2024-11-06",
             global::System.Threading.CancellationToken cancellationToken = default);
-
         /// <summary>
         /// Query credit usage<br/>
         /// Fetch credit usage data broken down by model and day for the organization associated with the API key used to make the request. Up to 90 days of data can be queried at a time.

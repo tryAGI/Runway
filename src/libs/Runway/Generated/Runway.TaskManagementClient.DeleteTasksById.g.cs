@@ -29,6 +29,13 @@ namespace Runway
         /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Runway.ApiException"></exception>
+        /// <remarks>
+        /// // npm install --save @runwayml/sdk<br/>
+        /// import RunwayML from '@runwayml/sdk';<br/>
+        /// // The env var RUNWAYML_API_SECRET is expected to contain your API key.<br/>
+        /// const client = new RunwayML();<br/>
+        /// await client.tasks.delete('17f20503-6c24-4c16-946b-35dbbce2af2f');
+        /// </remarks>
         public async global::System.Threading.Tasks.Task DeleteTasksByIdAsync(
             global::System.Guid id,
             string xRunwayVersion = "2024-11-06",
