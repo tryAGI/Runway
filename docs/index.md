@@ -48,6 +48,32 @@ foreach (var output in taskDetail.Succeeded!.Output)
 }
 ```
 
+#### Text to Video
+Generate video from a text prompt using Veo 3.1 Fast.
+```csharp
+var response = await client.StartGenerating.CreateTextToVideoAsync(
+    xRunwayVersion: "2024-11-06",
+    request: new RequestVeo31Fast2
+    {
+        PromptText = "A calm ocean with gentle waves under a starlit sky",
+        Ratio = RequestVeo31FastRatio2.x1280_720,
+        Duration = 5,
+    });
+```
+
+#### Text to Image
+Generate images from text using Gen4 Image Turbo.
+```csharp
+var response = await client.StartGenerating.CreateTextToImageAsync(
+    xRunwayVersion: "2024-11-06",
+    request: new RequestGen4ImageTurbo
+    {
+        PromptText = "A vibrant coral reef teeming with tropical fish",
+        Ratio = RequestGen4ImageTurboRatio.x1280_720,
+        ReferenceImages = [],
+    });
+```
+
 #### Text to Speech
 Choose from 48 preset voices including Maya, Arjun, Eleanor, Bernard, and more.
 ```csharp
@@ -90,21 +116,46 @@ var response = await client.StartGenerating.CreateVoiceDubbingAsync(
     });
 ```
 
-#### Error Handling
-All generation APIs return async tasks. Check for failures with machine-readable error codes.
+#### Speech to Speech
+Transform the voice in an audio file while preserving the original speech content.
 ```csharp
+var response = await client.StartGenerating.CreateSpeechToSpeechAsync(
+    xRunwayVersion: "2024-11-06",
+    request: new RequestElevenMultilingualStsV2
+    {
+        Media = new RequestElevenMultilingualStsV2MediaSpeechToSpeechAudio
+        {
+            Uri = "https://example.com/speech.mp3",
+        },
+        Voice = new RequestElevenMultilingualStsV2VoiceRunwayPresetVoice
+        {
+            PresetId = RequestElevenMultilingualStsV2VoiceRunwayPresetVoicePresetId.Eleanor,
+        },
+        RemoveBackgroundNoise = true,
+    });
+```
+
+#### Error Handling and Cancellation
+All generation APIs return async tasks. Check for failures or cancel running tasks.
+```csharp
+// Check for failures with machine-readable error codes
 if (taskDetail.IsFailed)
 {
     Console.WriteLine($"Failure: {taskDetail.Failed!.Failure}");
     Console.WriteLine($"Code: {taskDetail.Failed.FailureCode}");
 }
+
+// Cancel a running task or delete a completed one
+await client.TaskManagement.DeleteTasksByIdAsync(
+    id: taskId,
+    xRunwayVersion: "2024-11-06");
 ```
 
 ## Support
 
-Priority place for bugs: https://github.com/tryAGI/Runway/issues  
-Priority place for ideas and general questions: https://github.com/tryAGI/Runway/discussions  
-Discord: https://discord.gg/Ca2xhfBf3v  
+Priority place for bugs: https://github.com/tryAGI/Runway/issues
+Priority place for ideas and general questions: https://github.com/tryAGI/Runway/discussions
+Discord: https://discord.gg/Ca2xhfBf3v
 
 ## Acknowledgments
 
