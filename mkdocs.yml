@@ -4,8 +4,11 @@ nav:
 # EXAMPLES:START
 - Examples:
   - CreateImageToVideoGen4Turbo: examples/createimagetovideogen4turbo.md
+  - CreateSoundEffect: examples/createsoundeffect.md
   - CreateTextToImage: examples/createtexttoimage.md
+  - CreateTextToSpeech: examples/createtexttospeech.md
   - CreateTextToVideo: examples/createtexttovideo.md
+  - CreateVoiceDubbing: examples/createvoicedubbing.md
   - GetTaskStatus: examples/gettaskstatus.md
   - Create Image To Video: examples/create-image-to-video.md
 # EXAMPLES:END
