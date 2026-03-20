@@ -6,6 +6,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Auto-generated C# SDK for the [Runway ML API](https://docs.dev.runwayml.com/), built with [AutoSDK](https://github.com/tryAGI/AutoSDK) from an OpenAPI specification. Published as the `Runway` NuGet package.
 
+**Supported APIs:** Image-to-video (Gen3a Turbo, Gen4 Turbo), text-to-video (Veo 3.1 Fast), text-to-image (Gen4 Image Turbo), text-to-speech (ElevenLabs Multilingual V2 with 48 preset voices), sound effects generation, voice dubbing (multi-language with voice cloning), and task management.
+
 ## Build & Test Commands
 
 ```bash

@@ -4,6 +4,7 @@ nav:
 # EXAMPLES:START
 - Examples:
   - CreateImageToVideoGen4Turbo: examples/createimagetovideogen4turbo.md
+  - CreateLoopingSoundEffect: examples/createloopingsoundeffect.md
   - CreateSoundEffect: examples/createsoundeffect.md
   - CreateTextToImage: examples/createtexttoimage.md
   - CreateTextToSpeech: examples/createtexttospeech.md
