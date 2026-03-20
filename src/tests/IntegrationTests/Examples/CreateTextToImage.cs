@@ -21,7 +21,7 @@ public partial class Tests
             request: new RequestGen4ImageTurbo
             {
                 PromptText = "A vibrant coral reef teeming with tropical fish",
-                Ratio = RequestGen4ImageTurboRatio.x1280768,
+                Ratio = RequestGen4ImageTurboRatio.x1280_720,
                 ReferenceImages = [],
             });
         response.Id.Should().NotBe(default(Guid));

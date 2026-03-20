@@ -21,7 +21,7 @@ public partial class Tests
             request: new RequestVeo31Fast2
             {
                 PromptText = "A calm ocean with gentle waves under a starlit sky",
-                Ratio = RequestVeo31FastRatio2.x1280768,
+                Ratio = RequestVeo31FastRatio2.x1280_720,
                 Duration = 5,
             });
         response.Id.Should().NotBe(default(Guid));
