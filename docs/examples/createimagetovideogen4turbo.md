@@ -1,0 +1,54 @@
+# CreateImageToVideoGen4Turbo
+
+
+
+This example assumes `using Runway;` is in scope and `apiKey` contains your Runway API key.
+
+```csharp
+using var client = new RunwayClient(apiKey);
+
+var response = await client.StartGenerating.CreateImageToVideoAsync(
+    xRunwayVersion: "2024-11-06",
+    request: new RequestGen4Turbo
+    {
+        PromptImage = "https://img.freepik.com/free-photo/beautiful-woman-with-long-blond-hair-looking-camera-outdoors-generated-by-artificial-intelligence_188544-240170.jpg",
+        PromptText = "The woman slowly turns her head and smiles",
+        Seed = 42,
+        Model = "gen4_turbo",
+        Duration = 5,
+        Ratio = RequestGen4TurboRatio.x1280_720,
+    });
+
+Console.WriteLine($"Task ID: {response.Id}");
+
+Response taskDetail;
+do
+{
+    taskDetail = await client.TaskManagement.GetTasksByIdAsync(
+        id: response.Id,
+        xRunwayVersion: "2024-11-06");
+
+    if (taskDetail.IsRunning)
+    {
+        Console.WriteLine($"Progress: {taskDetail.Running!.Progress}");
+    }
+
+    await Task.Delay(TimeSpan.FromSeconds(10));
+}
+while (!taskDetail.IsFailed && !taskDetail.IsSucceeded && !taskDetail.IsCancelled);
+
+if (taskDetail.IsSucceeded)
+{
+    Console.WriteLine($"Task Status: {taskDetail.Succeeded!.Status}");
+
+    foreach (var output in taskDetail.Succeeded.Output)
+    {
+        Console.WriteLine($"Video URL: {output}");
+    }
+}
+else if (taskDetail.IsFailed)
+{
+    Console.WriteLine($"Failure: {taskDetail.Failed!.Failure}");
+    Console.WriteLine($"FailureCode: {taskDetail.Failed.FailureCode}");
+}
+```

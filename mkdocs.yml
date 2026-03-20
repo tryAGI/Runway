@@ -3,8 +3,10 @@ nav:
 - Overview: index.md
 # EXAMPLES:START
 - Examples:
+  - CreateImageToVideoGen4Turbo: examples/createimagetovideogen4turbo.md
   - CreateTextToImage: examples/createtexttoimage.md
   - CreateTextToVideo: examples/createtexttovideo.md
+  - GetTaskStatus: examples/gettaskstatus.md
   - Create Image To Video: examples/create-image-to-video.md
 # EXAMPLES:END
         
