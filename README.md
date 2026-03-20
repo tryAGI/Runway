@@ -10,9 +10,10 @@
 - Same day update to support new features
 - Updated and supported automatically if there are no breaking changes
 - All modern .NET features - nullability, trimming, NativeAOT, etc.
-- Support .Net Framework/.Net Standard 2.0
 
 ### Usage
+
+#### Image to Video
 ```csharp
 using Runway;
 
@@ -22,41 +23,80 @@ var response = await client.StartGenerating.CreateImageToVideoAsync(
     xRunwayVersion: "2024-11-06",
     request: new RequestGen3aTurbo
     {
-        PromptImage = "https://img.freepik.com/free-photo/beautiful-woman-with-long-blond-hair-looking-camera-outdoors-generated-by-artificial-intelligence_188544-240170.jpg",
+        PromptImage = "https://example.com/photo.jpg",
         PromptText = "The girl smiles a little",
         Seed = 999999999,
         Model = "gen3a_turbo",
         Duration = 5,
         Ratio = RequestGen3aTurboRatio.x1280_768,
     });
-response.Id.Should().NotBe(default(Guid));
 
+// Poll until complete
 Response taskDetail;
 do
 {
     taskDetail = await client.TaskManagement.GetTasksByIdAsync(
         id: response.Id,
         xRunwayVersion: "2024-11-06");
-
-    if (taskDetail.IsRunning)
-    {
-        Console.WriteLine($"Progress: {taskDetail.Running!.Progress}");
-    }
-
     await Task.Delay(TimeSpan.FromSeconds(10));
 }
 while (!taskDetail.IsFailed && !taskDetail.IsSucceeded && !taskDetail.IsCancelled);
 
-if (taskDetail.IsSucceeded)
+foreach (var output in taskDetail.Succeeded!.Output)
 {
-    Console.WriteLine($"Task ID: {taskDetail.Succeeded!.Id}");
-    Console.WriteLine($"Task Status: {taskDetail.Succeeded.Status}");
-    Console.WriteLine($"CreatedAt: {taskDetail.Succeeded.CreatedAt}");
+    Console.WriteLine($"Video URL: {output}");
+}
+```
 
-    foreach (var output in taskDetail.Succeeded.Output)
+#### Text to Speech
+Choose from 48 preset voices including Maya, Arjun, Eleanor, Bernard, and more.
+```csharp
+var response = await client.StartGenerating.CreateTextToSpeechAsync(
+    xRunwayVersion: "2024-11-06",
+    request: new RequestElevenMultilingualV2
     {
-        Console.WriteLine($"Video URL: {output}");
-    }
+        PromptText = "Hello! Welcome to Runway's text-to-speech API.",
+        Voice = new RequestElevenMultilingualV2VoiceRunwayPresetVoice
+        {
+            PresetId = RequestElevenMultilingualV2VoiceRunwayPresetVoicePresetId.Maya,
+        },
+    });
+```
+
+#### Sound Effects
+Generate sound effects from text descriptions (0.5–30 seconds, optional seamless looping).
+```csharp
+var response = await client.StartGenerating.CreateSoundEffectAsync(
+    xRunwayVersion: "2024-11-06",
+    request: new RequestElevenTextToSoundV2
+    {
+        PromptText = "A thunderstorm with heavy rain and distant thunder rumbling",
+        Duration = 10.0,
+        Loop = false,
+    });
+```
+
+#### Voice Dubbing
+Dub audio to a target language with automatic voice cloning.
+```csharp
+var response = await client.StartGenerating.CreateVoiceDubbingAsync(
+    xRunwayVersion: "2024-11-06",
+    request: new RequestElevenVoiceDubbing
+    {
+        AudioUri = "https://example.com/audio.mp3",
+        TargetLang = RequestElevenVoiceDubbingTargetLang.Es,
+        DisableVoiceCloning = false,
+        DropBackgroundAudio = false,
+    });
+```
+
+#### Error Handling
+All generation APIs return async tasks. Check for failures with machine-readable error codes.
+```csharp
+if (taskDetail.IsFailed)
+{
+    Console.WriteLine($"Failure: {taskDetail.Failed!.Failure}");
+    Console.WriteLine($"Code: {taskDetail.Failed.FailureCode}");
 }
 ```
 

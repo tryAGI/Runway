@@ -10,7 +10,9 @@ nav:
   - CreateTextToSpeech: examples/createtexttospeech.md
   - CreateTextToVideo: examples/createtexttovideo.md
   - CreateVoiceDubbing: examples/createvoicedubbing.md
+  - ErrorHandling: examples/errorhandling.md
   - GetTaskStatus: examples/gettaskstatus.md
+  - ListPresetVoices: examples/listpresetvoices.md
   - Create Image To Video: examples/create-image-to-video.md
 # EXAMPLES:END
         
