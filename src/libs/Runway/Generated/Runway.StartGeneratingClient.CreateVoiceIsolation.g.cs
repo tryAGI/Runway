@@ -33,6 +33,19 @@ namespace Runway
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Runway.ApiException"></exception>
+        /// <remarks>
+        /// // npm install --save @runwayml/sdk<br/>
+        /// import RunwayML from '@runwayml/sdk';<br/>
+        /// // The env var RUNWAYML_API_SECRET is expected to contain your API key.<br/>
+        /// const client = new RunwayML();<br/>
+        /// const task = await client.voiceIsolation<br/>
+        ///   .create({<br/>
+        ///     model: 'eleven_voice_isolation',<br/>
+        ///     audioUrl: 'https://example.com/audio.mp3',<br/>
+        ///   })<br/>
+        ///   .waitForTaskOutput();<br/>
+        /// console.log(task);
+        /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Runway.Response21> CreateVoiceIsolationAsync(
 
             global::Runway.Request10 request,
@@ -227,7 +240,6 @@ namespace Runway
                 }
             }
         }
-
         /// <summary>
         /// Voice isolation<br/>
         /// This endpoint will start a new task to isolate the voice from the background audio. Audio duration must be greater than 4.6 seconds and less than 3600 seconds.
