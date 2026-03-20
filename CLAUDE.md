@@ -40,6 +40,14 @@ autosdk trim src/libs/*//*.csproj
 
 **Test pattern:** Partial `Tests` class split across files (`Tests.cs` base + `Tests.*.cs` per feature). Uses `GetAuthenticatedClient()` which reads `RUNWAY_API_KEY` from environment.
 
+### Documentation Generation
+
+Tests in `src/tests/IntegrationTests/Examples` are the single source of truth for both test coverage and documentation:
+- Each file has a JSDoc header (`order`, `title`, `slug`) consumed by `autosdk docs sync .`
+- Comments prefixed with `////` become prose paragraphs in generated docs
+- CI workflow (`.github/workflows/mkdocs.yml`) auto-generates `docs/examples/` and populates `EXAMPLES:START/END` markers in README.md, docs/index.md, and mkdocs.yml
+- Config: `autosdk.docs.json` points to `src/tests/IntegrationTests/Examples`
+
 ## Key Conventions
 
 - Target framework: `net10.0` single-target
