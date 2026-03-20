@@ -3,9 +3,11 @@ nav:
 - Overview: index.md
 # EXAMPLES:START
 - Examples:
+  - CancelTask: examples/canceltask.md
   - CreateImageToVideoGen4Turbo: examples/createimagetovideogen4turbo.md
   - CreateLoopingSoundEffect: examples/createloopingsoundeffect.md
   - CreateSoundEffect: examples/createsoundeffect.md
+  - CreateSpeechToSpeech: examples/createspeechtospeech.md
   - CreateTextToImage: examples/createtexttoimage.md
   - CreateTextToSpeech: examples/createtexttospeech.md
   - CreateTextToVideo: examples/createtexttovideo.md
