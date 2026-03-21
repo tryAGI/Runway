@@ -48,9 +48,9 @@ namespace Runway
         ///   .waitForTaskOutput();<br/>
         /// console.log(videoTask);
         /// </remarks>
-        global::System.Threading.Tasks.Task<global::Runway.Response15> CreateSpeechToSpeechAsync(
+        global::System.Threading.Tasks.Task<global::Runway.CreateSpeechToSpeechResponse> CreateSpeechToSpeechAsync(
 
-            global::Runway.Request7 request,
+            global::Runway.CreateSpeechToSpeechRequest request,
             string xRunwayVersion = "2024-11-06",
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
@@ -62,7 +62,7 @@ namespace Runway
         /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        global::System.Threading.Tasks.Task<global::Runway.Response15> CreateSpeechToSpeechAsync(
+        global::System.Threading.Tasks.Task<global::Runway.CreateSpeechToSpeechResponse> CreateSpeechToSpeechAsync(
             string xRunwayVersion = "2024-11-06",
             global::System.Threading.CancellationToken cancellationToken = default);
     }

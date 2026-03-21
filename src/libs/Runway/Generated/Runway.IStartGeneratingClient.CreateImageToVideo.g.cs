@@ -29,9 +29,9 @@ namespace Runway
         ///   .waitForTaskOutput();<br/>
         /// console.log(task);
         /// </remarks>
-        global::System.Threading.Tasks.Task<global::Runway.Response3> CreateImageToVideoAsync(
+        global::System.Threading.Tasks.Task<global::Runway.CreateImageToVideoResponse> CreateImageToVideoAsync(
 
-            global::Runway.Request request,
+            global::Runway.CreateImageToVideoRequest request,
             string xRunwayVersion = "2024-11-06",
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
@@ -43,7 +43,7 @@ namespace Runway
         /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        global::System.Threading.Tasks.Task<global::Runway.Response3> CreateImageToVideoAsync(
+        global::System.Threading.Tasks.Task<global::Runway.CreateImageToVideoResponse> CreateImageToVideoAsync(
             string xRunwayVersion = "2024-11-06",
             global::System.Threading.CancellationToken cancellationToken = default);
     }

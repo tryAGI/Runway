@@ -8,12 +8,12 @@ namespace Runway
         partial void PrepareCreateImageToVideoArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string xRunwayVersion,
-            global::Runway.Request request);
+            global::Runway.CreateImageToVideoRequest request);
         partial void PrepareCreateImageToVideoRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string xRunwayVersion,
-            global::Runway.Request request);
+            global::Runway.CreateImageToVideoRequest request);
         partial void ProcessCreateImageToVideoResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -48,9 +48,9 @@ namespace Runway
         ///   .waitForTaskOutput();<br/>
         /// console.log(task);
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Runway.Response3> CreateImageToVideoAsync(
+        public async global::System.Threading.Tasks.Task<global::Runway.CreateImageToVideoResponse> CreateImageToVideoAsync(
 
-            global::Runway.Request request,
+            global::Runway.CreateImageToVideoRequest request,
             string xRunwayVersion = "2024-11-06",
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -123,19 +123,19 @@ namespace Runway
             {
                 string? __content_429 = null;
                 global::System.Exception? __exception_429 = null;
-                global::Runway.Response4? __value_429 = null;
+                global::Runway.CreateImageToVideoResponse2? __value_429 = null;
                 try
                 {
                     if (ReadResponseAsString)
                     {
                         __content_429 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-                        __value_429 = global::Runway.Response4.FromJson(__content_429, JsonSerializerContext);
+                        __value_429 = global::Runway.CreateImageToVideoResponse2.FromJson(__content_429, JsonSerializerContext);
                     }
                     else
                     {
                         __content_429 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
 
-                        __value_429 = global::Runway.Response4.FromJson(__content_429, JsonSerializerContext);
+                        __value_429 = global::Runway.CreateImageToVideoResponse2.FromJson(__content_429, JsonSerializerContext);
                     }
                 }
                 catch (global::System.Exception __ex)
@@ -143,7 +143,7 @@ namespace Runway
                     __exception_429 = __ex;
                 }
 
-                throw new global::Runway.ApiException<global::Runway.Response4>(
+                throw new global::Runway.ApiException<global::Runway.CreateImageToVideoResponse2>(
                     message: __content_429 ?? __response.ReasonPhrase ?? string.Empty,
                     innerException: __exception_429,
                     statusCode: __response.StatusCode)
@@ -179,7 +179,7 @@ namespace Runway
                     __response.EnsureSuccessStatusCode();
 
                     return
-                        global::Runway.Response3.FromJson(__content, JsonSerializerContext) ??
+                        global::Runway.CreateImageToVideoResponse.FromJson(__content, JsonSerializerContext) ??
                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
                 }
                 catch (global::System.Exception __ex)
@@ -210,7 +210,7 @@ namespace Runway
                     ).ConfigureAwait(false);
 
                     return
-                        await global::Runway.Response3.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                        await global::Runway.CreateImageToVideoResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                         throw new global::System.InvalidOperationException("Response deserialization failed.");
                 }
                 catch (global::System.Exception __ex)
@@ -251,11 +251,11 @@ namespace Runway
         /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Runway.Response3> CreateImageToVideoAsync(
+        public async global::System.Threading.Tasks.Task<global::Runway.CreateImageToVideoResponse> CreateImageToVideoAsync(
             string xRunwayVersion = "2024-11-06",
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::Runway.Request
+            var __request = new global::Runway.CreateImageToVideoRequest
             {
             };
 

@@ -13,9 +13,9 @@ namespace Runway
         /// Passing an image reference allows the model to emulate the style or content of the reference in the output.
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Runway.RequestGen4AlephReferenceImageReference? Image { get; init; }
+        public global::Runway.CreateVideoToVideoRequestGen4AlephReferenceImageReference? Image { get; init; }
 #else
-        public global::Runway.RequestGen4AlephReferenceImageReference? Image { get; }
+        public global::Runway.CreateVideoToVideoRequestGen4AlephReferenceImageReference? Image { get; }
 #endif
 
         /// <summary>
@@ -28,17 +28,17 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator ReferencesItem(global::Runway.RequestGen4AlephReferenceImageReference value) => new ReferencesItem((global::Runway.RequestGen4AlephReferenceImageReference?)value);
+        public static implicit operator ReferencesItem(global::Runway.CreateVideoToVideoRequestGen4AlephReferenceImageReference value) => new ReferencesItem((global::Runway.CreateVideoToVideoRequestGen4AlephReferenceImageReference?)value);
 
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::Runway.RequestGen4AlephReferenceImageReference?(ReferencesItem @this) => @this.Image;
+        public static implicit operator global::Runway.CreateVideoToVideoRequestGen4AlephReferenceImageReference?(ReferencesItem @this) => @this.Image;
 
         /// <summary>
         /// 
         /// </summary>
-        public ReferencesItem(global::Runway.RequestGen4AlephReferenceImageReference? value)
+        public ReferencesItem(global::Runway.CreateVideoToVideoRequestGen4AlephReferenceImageReference? value)
         {
             Image = value;
         }
@@ -69,7 +69,7 @@ namespace Runway
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Runway.RequestGen4AlephReferenceImageReference?, TResult>? image = null,
+            global::System.Func<global::Runway.CreateVideoToVideoRequestGen4AlephReferenceImageReference?, TResult>? image = null,
             bool validate = true)
         {
             if (validate)
@@ -89,7 +89,7 @@ namespace Runway
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Runway.RequestGen4AlephReferenceImageReference?>? image = null,
+            global::System.Action<global::Runway.CreateVideoToVideoRequestGen4AlephReferenceImageReference?>? image = null,
             bool validate = true)
         {
             if (validate)
@@ -111,7 +111,7 @@ namespace Runway
             var fields = new object?[]
             {
                 Image,
-                typeof(global::Runway.RequestGen4AlephReferenceImageReference),
+                typeof(global::Runway.CreateVideoToVideoRequestGen4AlephReferenceImageReference),
             };
             const int offset = unchecked((int)2166136261);
             const int prime = 16777619;
@@ -128,7 +128,7 @@ namespace Runway
         public bool Equals(ReferencesItem other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::Runway.RequestGen4AlephReferenceImageReference?>.Default.Equals(Image, other.Image) 
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateVideoToVideoRequestGen4AlephReferenceImageReference?>.Default.Equals(Image, other.Image) 
                 ;
         }
 
