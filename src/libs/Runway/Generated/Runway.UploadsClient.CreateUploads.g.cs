@@ -8,12 +8,12 @@ namespace Runway
         partial void PrepareCreateUploadsArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string xRunwayVersion,
-            global::Runway.Request12 request);
+            global::Runway.CreateUploadsRequest request);
         partial void PrepareCreateUploadsRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string xRunwayVersion,
-            global::Runway.Request12 request);
+            global::Runway.CreateUploadsRequest request);
         partial void ProcessCreateUploadsResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -60,9 +60,9 @@ namespace Runway
         ///   .waitForTaskOutput();<br/>
         /// console.log(task);
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Runway.Response25> CreateUploadsAsync(
+        public async global::System.Threading.Tasks.Task<global::Runway.CreateUploadsResponse> CreateUploadsAsync(
 
-            global::Runway.Request12 request,
+            global::Runway.CreateUploadsRequest request,
             string xRunwayVersion = "2024-11-06",
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -188,7 +188,7 @@ namespace Runway
                     __response.EnsureSuccessStatusCode();
 
                     return
-                        global::Runway.Response25.FromJson(__content, JsonSerializerContext) ??
+                        global::Runway.CreateUploadsResponse.FromJson(__content, JsonSerializerContext) ??
                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
                 }
                 catch (global::System.Exception __ex)
@@ -219,7 +219,7 @@ namespace Runway
                     ).ConfigureAwait(false);
 
                     return
-                        await global::Runway.Response25.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                        await global::Runway.CreateUploadsResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                         throw new global::System.InvalidOperationException("Response deserialization failed.");
                 }
                 catch (global::System.Exception __ex)
@@ -266,13 +266,13 @@ namespace Runway
         /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Runway.Response25> CreateUploadsAsync(
+        public async global::System.Threading.Tasks.Task<global::Runway.CreateUploadsResponse> CreateUploadsAsync(
             string filename,
             string xRunwayVersion = "2024-11-06",
-            global::Runway.RequestType type = default,
+            global::Runway.CreateUploadsRequestType type = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::Runway.Request12
+            var __request = new global::Runway.CreateUploadsRequest
             {
                 Filename = filename,
                 Type = type,

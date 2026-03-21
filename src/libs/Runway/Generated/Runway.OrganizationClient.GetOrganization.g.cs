@@ -38,7 +38,7 @@ namespace Runway
         /// const details = await client.organization.retrieve();<br/>
         /// console.log(details.creditBalance);
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Runway.Response23> GetOrganizationAsync(
+        public async global::System.Threading.Tasks.Task<global::Runway.GetOrganizationResponse> GetOrganizationAsync(
             string xRunwayVersion = "2024-11-06",
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -121,7 +121,7 @@ namespace Runway
                     __response.EnsureSuccessStatusCode();
 
                     return
-                        global::Runway.Response23.FromJson(__content, JsonSerializerContext) ??
+                        global::Runway.GetOrganizationResponse.FromJson(__content, JsonSerializerContext) ??
                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
                 }
                 catch (global::System.Exception __ex)
@@ -152,7 +152,7 @@ namespace Runway
                     ).ConfigureAwait(false);
 
                     return
-                        await global::Runway.Response23.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                        await global::Runway.GetOrganizationResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                         throw new global::System.InvalidOperationException("Response deserialization failed.");
                 }
                 catch (global::System.Exception __ex)

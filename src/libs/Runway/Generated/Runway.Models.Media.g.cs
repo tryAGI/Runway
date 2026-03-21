@@ -13,9 +13,9 @@ namespace Runway
         /// An audio file containing dialogue to be processed.
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Runway.RequestElevenMultilingualStsV2MediaSpeechToSpeechAudio? Audio { get; init; }
+        public global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaSpeechToSpeechAudio? Audio { get; init; }
 #else
-        public global::Runway.RequestElevenMultilingualStsV2MediaSpeechToSpeechAudio? Audio { get; }
+        public global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaSpeechToSpeechAudio? Audio { get; }
 #endif
 
         /// <summary>
@@ -30,9 +30,9 @@ namespace Runway
         /// A video file containing dialogue to be processed.
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Runway.RequestElevenMultilingualStsV2MediaSpeechToSpeechVideo? Video { get; init; }
+        public global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaSpeechToSpeechVideo? Video { get; init; }
 #else
-        public global::Runway.RequestElevenMultilingualStsV2MediaSpeechToSpeechVideo? Video { get; }
+        public global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaSpeechToSpeechVideo? Video { get; }
 #endif
 
         /// <summary>
@@ -45,17 +45,17 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator Media(global::Runway.RequestElevenMultilingualStsV2MediaSpeechToSpeechAudio value) => new Media((global::Runway.RequestElevenMultilingualStsV2MediaSpeechToSpeechAudio?)value);
+        public static implicit operator Media(global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaSpeechToSpeechAudio value) => new Media((global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaSpeechToSpeechAudio?)value);
 
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::Runway.RequestElevenMultilingualStsV2MediaSpeechToSpeechAudio?(Media @this) => @this.Audio;
+        public static implicit operator global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaSpeechToSpeechAudio?(Media @this) => @this.Audio;
 
         /// <summary>
         /// 
         /// </summary>
-        public Media(global::Runway.RequestElevenMultilingualStsV2MediaSpeechToSpeechAudio? value)
+        public Media(global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaSpeechToSpeechAudio? value)
         {
             Audio = value;
         }
@@ -63,17 +63,17 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator Media(global::Runway.RequestElevenMultilingualStsV2MediaSpeechToSpeechVideo value) => new Media((global::Runway.RequestElevenMultilingualStsV2MediaSpeechToSpeechVideo?)value);
+        public static implicit operator Media(global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaSpeechToSpeechVideo value) => new Media((global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaSpeechToSpeechVideo?)value);
 
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::Runway.RequestElevenMultilingualStsV2MediaSpeechToSpeechVideo?(Media @this) => @this.Video;
+        public static implicit operator global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaSpeechToSpeechVideo?(Media @this) => @this.Video;
 
         /// <summary>
         /// 
         /// </summary>
-        public Media(global::Runway.RequestElevenMultilingualStsV2MediaSpeechToSpeechVideo? value)
+        public Media(global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaSpeechToSpeechVideo? value)
         {
             Video = value;
         }
@@ -82,8 +82,8 @@ namespace Runway
         /// 
         /// </summary>
         public Media(
-            global::Runway.RequestElevenMultilingualStsV2MediaSpeechToSpeechAudio? audio,
-            global::Runway.RequestElevenMultilingualStsV2MediaSpeechToSpeechVideo? video
+            global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaSpeechToSpeechAudio? audio,
+            global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaSpeechToSpeechVideo? video
             )
         {
             Audio = audio;
@@ -118,8 +118,8 @@ namespace Runway
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Runway.RequestElevenMultilingualStsV2MediaSpeechToSpeechAudio?, TResult>? audio = null,
-            global::System.Func<global::Runway.RequestElevenMultilingualStsV2MediaSpeechToSpeechVideo?, TResult>? video = null,
+            global::System.Func<global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaSpeechToSpeechAudio?, TResult>? audio = null,
+            global::System.Func<global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaSpeechToSpeechVideo?, TResult>? video = null,
             bool validate = true)
         {
             if (validate)
@@ -143,8 +143,8 @@ namespace Runway
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Runway.RequestElevenMultilingualStsV2MediaSpeechToSpeechAudio?>? audio = null,
-            global::System.Action<global::Runway.RequestElevenMultilingualStsV2MediaSpeechToSpeechVideo?>? video = null,
+            global::System.Action<global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaSpeechToSpeechAudio?>? audio = null,
+            global::System.Action<global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaSpeechToSpeechVideo?>? video = null,
             bool validate = true)
         {
             if (validate)
@@ -170,9 +170,9 @@ namespace Runway
             var fields = new object?[]
             {
                 Audio,
-                typeof(global::Runway.RequestElevenMultilingualStsV2MediaSpeechToSpeechAudio),
+                typeof(global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaSpeechToSpeechAudio),
                 Video,
-                typeof(global::Runway.RequestElevenMultilingualStsV2MediaSpeechToSpeechVideo),
+                typeof(global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaSpeechToSpeechVideo),
             };
             const int offset = unchecked((int)2166136261);
             const int prime = 16777619;
@@ -189,8 +189,8 @@ namespace Runway
         public bool Equals(Media other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::Runway.RequestElevenMultilingualStsV2MediaSpeechToSpeechAudio?>.Default.Equals(Audio, other.Audio) &&
-                global::System.Collections.Generic.EqualityComparer<global::Runway.RequestElevenMultilingualStsV2MediaSpeechToSpeechVideo?>.Default.Equals(Video, other.Video) 
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaSpeechToSpeechAudio?>.Default.Equals(Audio, other.Audio) &&
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaSpeechToSpeechVideo?>.Default.Equals(Video, other.Video) 
                 ;
         }
 

@@ -37,16 +37,16 @@ namespace Runway.JsonConverters
             if (__score0 > __bestScore) { __bestScore = __score0; __bestIndex = 0; }
             if (__score1 > __bestScore) { __bestScore = __score1; __bestIndex = 1; }
 
-            global::Runway.RequestActTwoCharacterCharacterImage? image = default;
-            global::Runway.RequestActTwoCharacterCharacterVideo? video = default;
+            global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterImage? image = default;
+            global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterVideo? video = default;
             if (__bestIndex >= 0)
             {
                 if (__bestIndex == 0)
                 {
                     try
                     {
-                        var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.RequestActTwoCharacterCharacterImage), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.RequestActTwoCharacterCharacterImage> ??
-                                       throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.RequestActTwoCharacterCharacterImage).Name}");
+                        var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterImage), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterImage> ??
+                                       throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterImage).Name}");
                         image = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                     }
                     catch (global::System.Text.Json.JsonException)
@@ -60,8 +60,8 @@ namespace Runway.JsonConverters
                 {
                     try
                     {
-                        var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.RequestActTwoCharacterCharacterVideo), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.RequestActTwoCharacterCharacterVideo> ??
-                                       throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.RequestActTwoCharacterCharacterVideo).Name}");
+                        var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterVideo), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterVideo> ??
+                                       throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterVideo).Name}");
                         video = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                     }
                     catch (global::System.Text.Json.JsonException)
@@ -77,8 +77,8 @@ namespace Runway.JsonConverters
             {
                 try
                 {
-                    var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.RequestActTwoCharacterCharacterImage), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.RequestActTwoCharacterCharacterImage> ??
-                                   throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.RequestActTwoCharacterCharacterImage).Name}");
+                    var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterImage), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterImage> ??
+                                   throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterImage).Name}");
                     image = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                 }
                 catch (global::System.Text.Json.JsonException)
@@ -90,8 +90,8 @@ namespace Runway.JsonConverters
 
                 try
                 {
-                    var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.RequestActTwoCharacterCharacterVideo), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.RequestActTwoCharacterCharacterVideo> ??
-                                   throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.RequestActTwoCharacterCharacterVideo).Name}");
+                    var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterVideo), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterVideo> ??
+                                   throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterVideo).Name}");
                     video = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                 }
                 catch (global::System.Text.Json.JsonException)
@@ -122,14 +122,14 @@ namespace Runway.JsonConverters
 
             if (value.IsImage)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.RequestActTwoCharacterCharacterImage), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.RequestActTwoCharacterCharacterImage?> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.RequestActTwoCharacterCharacterImage).Name}");
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterImage), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterImage?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterImage).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.Image, typeInfo);
             }
             else if (value.IsVideo)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.RequestActTwoCharacterCharacterVideo), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.RequestActTwoCharacterCharacterVideo?> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.RequestActTwoCharacterCharacterVideo).Name}");
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterVideo), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterVideo?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterVideo).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.Video, typeInfo);
             }
         }

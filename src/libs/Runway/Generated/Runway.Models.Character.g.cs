@@ -13,9 +13,9 @@ namespace Runway
         /// An image of your character. In the output, the character will use the reference video performance in its original static environment.
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Runway.RequestActTwoCharacterCharacterImage? Image { get; init; }
+        public global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterImage? Image { get; init; }
 #else
-        public global::Runway.RequestActTwoCharacterCharacterImage? Image { get; }
+        public global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterImage? Image { get; }
 #endif
 
         /// <summary>
@@ -30,9 +30,9 @@ namespace Runway
         /// A video of your character. In the output, the character will use the reference video performance in its original animated environment and some of the character's own movements.
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Runway.RequestActTwoCharacterCharacterVideo? Video { get; init; }
+        public global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterVideo? Video { get; init; }
 #else
-        public global::Runway.RequestActTwoCharacterCharacterVideo? Video { get; }
+        public global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterVideo? Video { get; }
 #endif
 
         /// <summary>
@@ -45,17 +45,17 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator Character(global::Runway.RequestActTwoCharacterCharacterImage value) => new Character((global::Runway.RequestActTwoCharacterCharacterImage?)value);
+        public static implicit operator Character(global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterImage value) => new Character((global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterImage?)value);
 
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::Runway.RequestActTwoCharacterCharacterImage?(Character @this) => @this.Image;
+        public static implicit operator global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterImage?(Character @this) => @this.Image;
 
         /// <summary>
         /// 
         /// </summary>
-        public Character(global::Runway.RequestActTwoCharacterCharacterImage? value)
+        public Character(global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterImage? value)
         {
             Image = value;
         }
@@ -63,17 +63,17 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator Character(global::Runway.RequestActTwoCharacterCharacterVideo value) => new Character((global::Runway.RequestActTwoCharacterCharacterVideo?)value);
+        public static implicit operator Character(global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterVideo value) => new Character((global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterVideo?)value);
 
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::Runway.RequestActTwoCharacterCharacterVideo?(Character @this) => @this.Video;
+        public static implicit operator global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterVideo?(Character @this) => @this.Video;
 
         /// <summary>
         /// 
         /// </summary>
-        public Character(global::Runway.RequestActTwoCharacterCharacterVideo? value)
+        public Character(global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterVideo? value)
         {
             Video = value;
         }
@@ -82,8 +82,8 @@ namespace Runway
         /// 
         /// </summary>
         public Character(
-            global::Runway.RequestActTwoCharacterCharacterImage? image,
-            global::Runway.RequestActTwoCharacterCharacterVideo? video
+            global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterImage? image,
+            global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterVideo? video
             )
         {
             Image = image;
@@ -118,8 +118,8 @@ namespace Runway
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Runway.RequestActTwoCharacterCharacterImage?, TResult>? image = null,
-            global::System.Func<global::Runway.RequestActTwoCharacterCharacterVideo?, TResult>? video = null,
+            global::System.Func<global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterImage?, TResult>? image = null,
+            global::System.Func<global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterVideo?, TResult>? video = null,
             bool validate = true)
         {
             if (validate)
@@ -143,8 +143,8 @@ namespace Runway
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Runway.RequestActTwoCharacterCharacterImage?>? image = null,
-            global::System.Action<global::Runway.RequestActTwoCharacterCharacterVideo?>? video = null,
+            global::System.Action<global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterImage?>? image = null,
+            global::System.Action<global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterVideo?>? video = null,
             bool validate = true)
         {
             if (validate)
@@ -170,9 +170,9 @@ namespace Runway
             var fields = new object?[]
             {
                 Image,
-                typeof(global::Runway.RequestActTwoCharacterCharacterImage),
+                typeof(global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterImage),
                 Video,
-                typeof(global::Runway.RequestActTwoCharacterCharacterVideo),
+                typeof(global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterVideo),
             };
             const int offset = unchecked((int)2166136261);
             const int prime = 16777619;
@@ -189,8 +189,8 @@ namespace Runway
         public bool Equals(Character other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::Runway.RequestActTwoCharacterCharacterImage?>.Default.Equals(Image, other.Image) &&
-                global::System.Collections.Generic.EqualityComparer<global::Runway.RequestActTwoCharacterCharacterVideo?>.Default.Equals(Video, other.Video) 
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterImage?>.Default.Equals(Image, other.Image) &&
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterVideo?>.Default.Equals(Video, other.Video) 
                 ;
         }
 

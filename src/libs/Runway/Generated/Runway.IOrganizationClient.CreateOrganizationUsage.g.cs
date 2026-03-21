@@ -22,9 +22,9 @@ namespace Runway
         /// const usage = await client.organization.retrieveUsage();<br/>
         /// console.log(usage);
         /// </remarks>
-        global::System.Threading.Tasks.Task<global::Runway.Response24> CreateOrganizationUsageAsync(
+        global::System.Threading.Tasks.Task<global::Runway.CreateOrganizationUsageResponse> CreateOrganizationUsageAsync(
 
-            global::Runway.Request11 request,
+            global::Runway.CreateOrganizationUsageRequest request,
             string xRunwayVersion = "2024-11-06",
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
@@ -42,7 +42,7 @@ namespace Runway
         /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        global::System.Threading.Tasks.Task<global::Runway.Response24> CreateOrganizationUsageAsync(
+        global::System.Threading.Tasks.Task<global::Runway.CreateOrganizationUsageResponse> CreateOrganizationUsageAsync(
             string xRunwayVersion = "2024-11-06",
             global::System.DateTime? startDate = default,
             global::System.DateTime? beforeDate = default,

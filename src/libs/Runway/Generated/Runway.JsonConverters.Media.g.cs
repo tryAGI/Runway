@@ -37,16 +37,16 @@ namespace Runway.JsonConverters
             if (__score0 > __bestScore) { __bestScore = __score0; __bestIndex = 0; }
             if (__score1 > __bestScore) { __bestScore = __score1; __bestIndex = 1; }
 
-            global::Runway.RequestElevenMultilingualStsV2MediaSpeechToSpeechAudio? audio = default;
-            global::Runway.RequestElevenMultilingualStsV2MediaSpeechToSpeechVideo? video = default;
+            global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaSpeechToSpeechAudio? audio = default;
+            global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaSpeechToSpeechVideo? video = default;
             if (__bestIndex >= 0)
             {
                 if (__bestIndex == 0)
                 {
                     try
                     {
-                        var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.RequestElevenMultilingualStsV2MediaSpeechToSpeechAudio), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.RequestElevenMultilingualStsV2MediaSpeechToSpeechAudio> ??
-                                       throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.RequestElevenMultilingualStsV2MediaSpeechToSpeechAudio).Name}");
+                        var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaSpeechToSpeechAudio), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaSpeechToSpeechAudio> ??
+                                       throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaSpeechToSpeechAudio).Name}");
                         audio = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                     }
                     catch (global::System.Text.Json.JsonException)
@@ -60,8 +60,8 @@ namespace Runway.JsonConverters
                 {
                     try
                     {
-                        var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.RequestElevenMultilingualStsV2MediaSpeechToSpeechVideo), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.RequestElevenMultilingualStsV2MediaSpeechToSpeechVideo> ??
-                                       throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.RequestElevenMultilingualStsV2MediaSpeechToSpeechVideo).Name}");
+                        var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaSpeechToSpeechVideo), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaSpeechToSpeechVideo> ??
+                                       throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaSpeechToSpeechVideo).Name}");
                         video = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                     }
                     catch (global::System.Text.Json.JsonException)
@@ -77,8 +77,8 @@ namespace Runway.JsonConverters
             {
                 try
                 {
-                    var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.RequestElevenMultilingualStsV2MediaSpeechToSpeechAudio), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.RequestElevenMultilingualStsV2MediaSpeechToSpeechAudio> ??
-                                   throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.RequestElevenMultilingualStsV2MediaSpeechToSpeechAudio).Name}");
+                    var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaSpeechToSpeechAudio), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaSpeechToSpeechAudio> ??
+                                   throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaSpeechToSpeechAudio).Name}");
                     audio = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                 }
                 catch (global::System.Text.Json.JsonException)
@@ -90,8 +90,8 @@ namespace Runway.JsonConverters
 
                 try
                 {
-                    var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.RequestElevenMultilingualStsV2MediaSpeechToSpeechVideo), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.RequestElevenMultilingualStsV2MediaSpeechToSpeechVideo> ??
-                                   throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.RequestElevenMultilingualStsV2MediaSpeechToSpeechVideo).Name}");
+                    var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaSpeechToSpeechVideo), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaSpeechToSpeechVideo> ??
+                                   throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaSpeechToSpeechVideo).Name}");
                     video = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                 }
                 catch (global::System.Text.Json.JsonException)
@@ -122,14 +122,14 @@ namespace Runway.JsonConverters
 
             if (value.IsAudio)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.RequestElevenMultilingualStsV2MediaSpeechToSpeechAudio), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.RequestElevenMultilingualStsV2MediaSpeechToSpeechAudio?> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.RequestElevenMultilingualStsV2MediaSpeechToSpeechAudio).Name}");
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaSpeechToSpeechAudio), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaSpeechToSpeechAudio?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaSpeechToSpeechAudio).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.Audio, typeInfo);
             }
             else if (value.IsVideo)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.RequestElevenMultilingualStsV2MediaSpeechToSpeechVideo), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.RequestElevenMultilingualStsV2MediaSpeechToSpeechVideo?> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.RequestElevenMultilingualStsV2MediaSpeechToSpeechVideo).Name}");
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaSpeechToSpeechVideo), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaSpeechToSpeechVideo?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaSpeechToSpeechVideo).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.Video, typeInfo);
             }
         }

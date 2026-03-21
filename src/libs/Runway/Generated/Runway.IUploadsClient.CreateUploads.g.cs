@@ -41,9 +41,9 @@ namespace Runway
         ///   .waitForTaskOutput();<br/>
         /// console.log(task);
         /// </remarks>
-        global::System.Threading.Tasks.Task<global::Runway.Response25> CreateUploadsAsync(
+        global::System.Threading.Tasks.Task<global::Runway.CreateUploadsResponse> CreateUploadsAsync(
 
-            global::Runway.Request12 request,
+            global::Runway.CreateUploadsRequest request,
             string xRunwayVersion = "2024-11-06",
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
@@ -61,10 +61,10 @@ namespace Runway
         /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        global::System.Threading.Tasks.Task<global::Runway.Response25> CreateUploadsAsync(
+        global::System.Threading.Tasks.Task<global::Runway.CreateUploadsResponse> CreateUploadsAsync(
             string filename,
             string xRunwayVersion = "2024-11-06",
-            global::Runway.RequestType type = default,
+            global::Runway.CreateUploadsRequestType type = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

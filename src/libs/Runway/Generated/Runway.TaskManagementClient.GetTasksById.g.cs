@@ -47,7 +47,7 @@ namespace Runway
         ///   .retrieve('17f20503-6c24-4c16-946b-35dbbce2af2f')<br/>
         ///   .waitForTaskOutput();
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Runway.Response> GetTasksByIdAsync(
+        public async global::System.Threading.Tasks.Task<global::Runway.GetTasksResponse> GetTasksByIdAsync(
             global::System.Guid id,
             string xRunwayVersion = "2024-11-06",
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -115,19 +115,19 @@ namespace Runway
             {
                 string? __content_404 = null;
                 global::System.Exception? __exception_404 = null;
-                global::Runway.Response2? __value_404 = null;
+                global::Runway.GetTasksResponse2? __value_404 = null;
                 try
                 {
                     if (ReadResponseAsString)
                     {
                         __content_404 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-                        __value_404 = global::Runway.Response2.FromJson(__content_404, JsonSerializerContext);
+                        __value_404 = global::Runway.GetTasksResponse2.FromJson(__content_404, JsonSerializerContext);
                     }
                     else
                     {
                         __content_404 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
 
-                        __value_404 = global::Runway.Response2.FromJson(__content_404, JsonSerializerContext);
+                        __value_404 = global::Runway.GetTasksResponse2.FromJson(__content_404, JsonSerializerContext);
                     }
                 }
                 catch (global::System.Exception __ex)
@@ -135,7 +135,7 @@ namespace Runway
                     __exception_404 = __ex;
                 }
 
-                throw new global::Runway.ApiException<global::Runway.Response2>(
+                throw new global::Runway.ApiException<global::Runway.GetTasksResponse2>(
                     message: __content_404 ?? __response.ReasonPhrase ?? string.Empty,
                     innerException: __exception_404,
                     statusCode: __response.StatusCode)
@@ -171,7 +171,7 @@ namespace Runway
                     __response.EnsureSuccessStatusCode();
 
                     return
-                        global::Runway.Response.FromJson(__content, JsonSerializerContext) ??
+                        global::Runway.GetTasksResponse.FromJson(__content, JsonSerializerContext) ??
                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
                 }
                 catch (global::System.Exception __ex)
@@ -202,7 +202,7 @@ namespace Runway
                     ).ConfigureAwait(false);
 
                     return
-                        await global::Runway.Response.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                        await global::Runway.GetTasksResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                         throw new global::System.InvalidOperationException("Response deserialization failed.");
                 }
                 catch (global::System.Exception __ex)
