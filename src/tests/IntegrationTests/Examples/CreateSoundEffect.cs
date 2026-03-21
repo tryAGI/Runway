@@ -19,7 +19,7 @@ public partial class Tests
 
         var response = await client.StartGenerating.CreateSoundEffectAsync(
             xRunwayVersion: "2024-11-06",
-            request: new RequestElevenTextToSoundV2
+            request: new CreateSoundEffectRequestElevenTextToSoundV2
             {
                 PromptText = "A thunderstorm with heavy rain and distant thunder rumbling",
                 Duration = 10.0,
@@ -31,7 +31,7 @@ public partial class Tests
 
         //// Poll the task until it completes.
 
-        Response taskDetail;
+        GetTasksResponse taskDetail;
         do
         {
             taskDetail = await client.TaskManagement.GetTasksByIdAsync(

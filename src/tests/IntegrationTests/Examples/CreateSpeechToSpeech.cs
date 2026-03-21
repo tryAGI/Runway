@@ -20,15 +20,15 @@ public partial class Tests
 
         var response = await client.StartGenerating.CreateSpeechToSpeechAsync(
             xRunwayVersion: "2024-11-06",
-            request: new RequestElevenMultilingualStsV2
+            request: new CreateSpeechToSpeechRequestElevenMultilingualStsV2
             {
-                Media = new RequestElevenMultilingualStsV2MediaSpeechToSpeechAudio
+                Media = new CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaSpeechToSpeechAudio
                 {
                     Uri = "https://example.com/speech.mp3",
                 },
-                Voice = new RequestElevenMultilingualStsV2VoiceRunwayPresetVoice
+                Voice = new CreateSpeechToSpeechRequestElevenMultilingualStsV2VoiceRunwayPresetVoice
                 {
-                    PresetId = RequestElevenMultilingualStsV2VoiceRunwayPresetVoicePresetId.Eleanor,
+                    PresetId = CreateSpeechToSpeechRequestElevenMultilingualStsV2VoiceRunwayPresetVoicePresetId.Eleanor,
                 },
                 RemoveBackgroundNoise = true,
             });
@@ -38,7 +38,7 @@ public partial class Tests
 
         //// Poll the task until it completes.
 
-        Response taskDetail;
+        GetTasksResponse taskDetail;
         do
         {
             taskDetail = await client.TaskManagement.GetTasksByIdAsync(

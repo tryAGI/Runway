@@ -19,10 +19,10 @@ public partial class Tests
 
         var response = await client.StartGenerating.CreateVoiceDubbingAsync(
             xRunwayVersion: "2024-11-06",
-            request: new RequestElevenVoiceDubbing
+            request: new CreateVoiceDubbingRequestElevenVoiceDubbing
             {
                 AudioUri = "https://example.com/audio.mp3",
-                TargetLang = RequestElevenVoiceDubbingTargetLang.Es,
+                TargetLang = CreateVoiceDubbingRequestElevenVoiceDubbingTargetLang.Es,
                 DisableVoiceCloning = false,
                 DropBackgroundAudio = false,
             });
@@ -32,7 +32,7 @@ public partial class Tests
 
         //// Poll the task until it completes.
 
-        Response taskDetail;
+        GetTasksResponse taskDetail;
         do
         {
             taskDetail = await client.TaskManagement.GetTasksByIdAsync(

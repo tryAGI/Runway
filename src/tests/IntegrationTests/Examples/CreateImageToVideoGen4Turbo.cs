@@ -19,20 +19,20 @@ public partial class Tests
 
         var response = await client.StartGenerating.CreateImageToVideoAsync(
             xRunwayVersion: "2024-11-06",
-            request: new RequestGen4Turbo
+            request: new CreateImageToVideoRequestGen4Turbo
             {
                 PromptImage = "https://img.freepik.com/free-photo/beautiful-woman-with-long-blond-hair-looking-camera-outdoors-generated-by-artificial-intelligence_188544-240170.jpg",
                 PromptText = "The woman slowly turns her head and smiles",
                 Seed = 42,
                 Model = "gen4_turbo",
                 Duration = 5,
-                Ratio = RequestGen4TurboRatio.x1280_720,
+                Ratio = CreateImageToVideoRequestGen4TurboRatio.x1280_720,
             });
         response.Id.Should().NotBe(default(Guid));
 
         Console.WriteLine($"Task ID: {response.Id}");
 
-        Response taskDetail;
+        GetTasksResponse taskDetail;
         do
         {
             taskDetail = await client.TaskManagement.GetTasksByIdAsync(

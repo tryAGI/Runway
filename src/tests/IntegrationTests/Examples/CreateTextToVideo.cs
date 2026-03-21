@@ -18,17 +18,17 @@ public partial class Tests
 
         var response = await client.StartGenerating.CreateTextToVideoAsync(
             xRunwayVersion: "2024-11-06",
-            request: new RequestVeo31Fast2
+            request: new CreateTextToVideoRequestVeo31Fast
             {
                 PromptText = "A calm ocean with gentle waves under a starlit sky",
-                Ratio = RequestVeo31FastRatio2.x1280_720,
+                Ratio = CreateTextToVideoRequestVeo31FastRatio.x1280_720,
                 Duration = 5,
             });
         response.Id.Should().NotBe(default(Guid));
 
         Console.WriteLine($"Task ID: {response.Id}");
 
-        Response taskDetail;
+        GetTasksResponse taskDetail;
         do
         {
             taskDetail = await client.TaskManagement.GetTasksByIdAsync(

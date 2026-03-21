@@ -14,7 +14,7 @@ public partial class Tests
     [TestMethod]
     public void Example_ListPresetVoices()
     {
-        var voices = Enum.GetValues<RequestElevenMultilingualV2VoiceRunwayPresetVoicePresetId>();
+        var voices = Enum.GetValues<CreateTextToSpeechRequestElevenMultilingualV2VoiceRunwayPresetVoicePresetId>();
 
         foreach (var voice in voices)
         {
@@ -22,8 +22,8 @@ public partial class Tests
         }
 
         voices.Length.Should().BeGreaterThan(0);
-        voices.Should().Contain(RequestElevenMultilingualV2VoiceRunwayPresetVoicePresetId.Maya);
-        voices.Should().Contain(RequestElevenMultilingualV2VoiceRunwayPresetVoicePresetId.Arjun);
-        voices.Should().Contain(RequestElevenMultilingualV2VoiceRunwayPresetVoicePresetId.Eleanor);
+        voices.Should().Contain(CreateTextToSpeechRequestElevenMultilingualV2VoiceRunwayPresetVoicePresetId.Maya);
+        voices.Should().Contain(CreateTextToSpeechRequestElevenMultilingualV2VoiceRunwayPresetVoicePresetId.Arjun);
+        voices.Should().Contain(CreateTextToSpeechRequestElevenMultilingualV2VoiceRunwayPresetVoicePresetId.Eleanor);
     }
 }

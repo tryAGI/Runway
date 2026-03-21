@@ -18,17 +18,17 @@ public partial class Tests
 
         var response = await client.StartGenerating.CreateTextToImageAsync(
             xRunwayVersion: "2024-11-06",
-            request: new RequestGen4ImageTurbo
+            request: new CreateTextToImageRequestGen4ImageTurbo
             {
                 PromptText = "A vibrant coral reef teeming with tropical fish",
-                Ratio = RequestGen4ImageTurboRatio.x1280_720,
+                Ratio = CreateTextToImageRequestGen4ImageTurboRatio.x1280_720,
                 ReferenceImages = [],
             });
         response.Id.Should().NotBe(default(Guid));
 
         Console.WriteLine($"Task ID: {response.Id}");
 
-        Response taskDetail;
+        GetTasksResponse taskDetail;
         do
         {
             taskDetail = await client.TaskManagement.GetTasksByIdAsync(
