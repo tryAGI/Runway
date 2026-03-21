@@ -38,6 +38,15 @@ namespace Runway
 
 
         /// <summary>
+        /// 
+        /// </summary>
+        public OrganizationClient Organization => new OrganizationClient(HttpClient, authorizations: Authorizations)
+        {
+            ReadResponseAsString = ReadResponseAsString,
+            JsonSerializerContext = JsonSerializerContext,
+        };
+
+        /// <summary>
         /// These endpoints all kick off tasks to create generations.
         /// </summary>
         public StartGeneratingClient StartGenerating => new StartGeneratingClient(HttpClient, authorizations: Authorizations)
@@ -59,15 +68,6 @@ namespace Runway
         /// Endpoints for uploading media files.
         /// </summary>
         public UploadsClient Uploads => new UploadsClient(HttpClient, authorizations: Authorizations)
-        {
-            ReadResponseAsString = ReadResponseAsString,
-            JsonSerializerContext = JsonSerializerContext,
-        };
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public OrganizationClient Organization => new OrganizationClient(HttpClient, authorizations: Authorizations)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
