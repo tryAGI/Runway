@@ -11,19 +11,19 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
-        x1280_720,
-        /// <summary>
-        /// 
-        /// </summary>
-        x720_1280,
-        /// <summary>
-        /// 
-        /// </summary>
         x1080_1920,
         /// <summary>
         /// 
         /// </summary>
+        x1280_720,
+        /// <summary>
+        /// 
+        /// </summary>
         x1920_1080,
+        /// <summary>
+        /// 
+        /// </summary>
+        x720_1280,
     }
 
     /// <summary>
@@ -38,10 +38,10 @@ namespace Runway
         {
             return value switch
             {
-                CreateTextToVideoRequestVeo3Ratio.x1280_720 => "1280:720",
-                CreateTextToVideoRequestVeo3Ratio.x720_1280 => "720:1280",
                 CreateTextToVideoRequestVeo3Ratio.x1080_1920 => "1080:1920",
+                CreateTextToVideoRequestVeo3Ratio.x1280_720 => "1280:720",
                 CreateTextToVideoRequestVeo3Ratio.x1920_1080 => "1920:1080",
+                CreateTextToVideoRequestVeo3Ratio.x720_1280 => "720:1280",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -52,10 +52,10 @@ namespace Runway
         {
             return value switch
             {
-                "1280:720" => CreateTextToVideoRequestVeo3Ratio.x1280_720,
-                "720:1280" => CreateTextToVideoRequestVeo3Ratio.x720_1280,
                 "1080:1920" => CreateTextToVideoRequestVeo3Ratio.x1080_1920,
+                "1280:720" => CreateTextToVideoRequestVeo3Ratio.x1280_720,
                 "1920:1080" => CreateTextToVideoRequestVeo3Ratio.x1920_1080,
+                "720:1280" => CreateTextToVideoRequestVeo3Ratio.x720_1280,
                 _ => null,
             };
         }
