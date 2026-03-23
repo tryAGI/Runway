@@ -12,11 +12,11 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
-        x768_1280,
+        x1280_768,
         /// <summary>
         /// 
         /// </summary>
-        x1280_768,
+        x768_1280,
     }
 
     /// <summary>
@@ -31,8 +31,8 @@ namespace Runway
         {
             return value switch
             {
-                CreateImageToVideoRequestGen3aTurboRatio.x768_1280 => "768:1280",
                 CreateImageToVideoRequestGen3aTurboRatio.x1280_768 => "1280:768",
+                CreateImageToVideoRequestGen3aTurboRatio.x768_1280 => "768:1280",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -43,8 +43,8 @@ namespace Runway
         {
             return value switch
             {
-                "768:1280" => CreateImageToVideoRequestGen3aTurboRatio.x768_1280,
                 "1280:768" => CreateImageToVideoRequestGen3aTurboRatio.x1280_768,
+                "768:1280" => CreateImageToVideoRequestGen3aTurboRatio.x768_1280,
                 _ => null,
             };
         }

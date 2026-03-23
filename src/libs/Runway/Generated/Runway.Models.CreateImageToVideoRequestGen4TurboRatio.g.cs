@@ -11,15 +11,19 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        x1104_832,
+        /// <summary>
+        /// 
+        /// </summary>
         x1280_720,
         /// <summary>
         /// 
         /// </summary>
-        x720_1280,
+        x1584_672,
         /// <summary>
         /// 
         /// </summary>
-        x1104_832,
+        x720_1280,
         /// <summary>
         /// 
         /// </summary>
@@ -28,10 +32,6 @@ namespace Runway
         /// 
         /// </summary>
         x960_960,
-        /// <summary>
-        /// 
-        /// </summary>
-        x1584_672,
     }
 
     /// <summary>
@@ -46,12 +46,12 @@ namespace Runway
         {
             return value switch
             {
-                CreateImageToVideoRequestGen4TurboRatio.x1280_720 => "1280:720",
-                CreateImageToVideoRequestGen4TurboRatio.x720_1280 => "720:1280",
                 CreateImageToVideoRequestGen4TurboRatio.x1104_832 => "1104:832",
+                CreateImageToVideoRequestGen4TurboRatio.x1280_720 => "1280:720",
+                CreateImageToVideoRequestGen4TurboRatio.x1584_672 => "1584:672",
+                CreateImageToVideoRequestGen4TurboRatio.x720_1280 => "720:1280",
                 CreateImageToVideoRequestGen4TurboRatio.x832_1104 => "832:1104",
                 CreateImageToVideoRequestGen4TurboRatio.x960_960 => "960:960",
-                CreateImageToVideoRequestGen4TurboRatio.x1584_672 => "1584:672",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -62,12 +62,12 @@ namespace Runway
         {
             return value switch
             {
-                "1280:720" => CreateImageToVideoRequestGen4TurboRatio.x1280_720,
-                "720:1280" => CreateImageToVideoRequestGen4TurboRatio.x720_1280,
                 "1104:832" => CreateImageToVideoRequestGen4TurboRatio.x1104_832,
+                "1280:720" => CreateImageToVideoRequestGen4TurboRatio.x1280_720,
+                "1584:672" => CreateImageToVideoRequestGen4TurboRatio.x1584_672,
+                "720:1280" => CreateImageToVideoRequestGen4TurboRatio.x720_1280,
                 "832:1104" => CreateImageToVideoRequestGen4TurboRatio.x832_1104,
                 "960:960" => CreateImageToVideoRequestGen4TurboRatio.x960_960,
-                "1584:672" => CreateImageToVideoRequestGen4TurboRatio.x1584_672,
                 _ => null,
             };
         }
