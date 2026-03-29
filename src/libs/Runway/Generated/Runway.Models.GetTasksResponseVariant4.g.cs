@@ -51,8 +51,8 @@ namespace Runway
         /// <param name="createdAt">
         /// The timestamp that the task was submitted at.
         /// </param>
-        /// <param name="status"></param>
         /// <param name="progress"></param>
+        /// <param name="status"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -64,8 +64,8 @@ namespace Runway
         {
             this.Id = id;
             this.CreatedAt = createdAt;
-            this.Progress = progress;
             this.Status = status;
+            this.Progress = progress;
         }
 
         /// <summary>
