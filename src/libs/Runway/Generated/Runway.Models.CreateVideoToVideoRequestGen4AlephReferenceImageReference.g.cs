@@ -33,11 +33,11 @@ namespace Runway
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateVideoToVideoRequestGen4AlephReferenceImageReference" /> class.
         /// </summary>
-        /// <param name="type"></param>
         /// <param name="uri">
         /// A HTTPS URL, Runway or data URI containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.<br/>
         /// Example: https://example.com/image.jpg
         /// </param>
+        /// <param name="type"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -45,8 +45,8 @@ namespace Runway
             string uri,
             string type = "image")
         {
-            this.Uri = uri;
             this.Type = type;
+            this.Uri = uri;
         }
 
         /// <summary>

@@ -33,11 +33,11 @@ namespace Runway
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateCharacterPerformanceRequestActTwoCharacterCharacterVideo" /> class.
         /// </summary>
-        /// <param name="type"></param>
         /// <param name="uri">
         /// A HTTPS URL, Runway or data URI containing an encoded video. See [our docs](/assets/inputs#videos) on video inputs for more information.<br/>
         /// Example: https://example.com/video.mp4
         /// </param>
+        /// <param name="type"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -45,8 +45,8 @@ namespace Runway
             string uri,
             string type = "video")
         {
-            this.Uri = uri;
             this.Type = type;
+            this.Uri = uri;
         }
 
         /// <summary>
