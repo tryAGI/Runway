@@ -93,7 +93,7 @@ namespace Runway.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateVoiceDubbingRequestElevenVoiceDubbing), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateVoiceDubbingRequestElevenVoiceDubbing?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateVoiceDubbingRequestElevenVoiceDubbing).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ElevenVoiceDubbing, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ElevenVoiceDubbing!, typeInfo);
             }
         }
     }

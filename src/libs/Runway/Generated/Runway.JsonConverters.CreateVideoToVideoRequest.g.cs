@@ -94,7 +94,7 @@ namespace Runway.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateVideoToVideoRequestGen4Aleph), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateVideoToVideoRequestGen4Aleph?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateVideoToVideoRequestGen4Aleph).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Gen4Aleph, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Gen4Aleph!, typeInfo);
             }
         }
     }
