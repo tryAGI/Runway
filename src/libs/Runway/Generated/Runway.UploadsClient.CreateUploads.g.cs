@@ -272,7 +272,6 @@ namespace Runway
             global::Runway.CreateUploadsRequestType type = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-
             var __request = new global::Runway.CreateUploadsRequest
             {
                 Filename = filename,
