@@ -12,7 +12,7 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
-        public const string DefaultBaseUrl = "https://api.dev.runwayml.com";
+        public const string DefaultBaseUrl = "https://api.dev.runwayml.com/";
 
         private bool _disposeHttpClient = true;
 

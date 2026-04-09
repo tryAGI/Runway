@@ -5,6 +5,25 @@ namespace Runway
 {
     public partial class OrganizationClient
     {
+
+
+        private static readonly global::Runway.EndPointSecurityRequirement s_GetOrganizationSecurityRequirement0 =
+            new global::Runway.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Runway.EndPointAuthorizationRequirement[]
+                {                    new global::Runway.EndPointAuthorizationRequirement
+                    {
+                        Type = "Http",
+                        Location = "Header",
+                        Name = "Bearer",
+                        FriendlyName = "Bearer",
+                    },
+                },
+            };
+        private static readonly global::Runway.EndPointSecurityRequirement[] s_GetOrganizationSecurityRequirements =
+            new global::Runway.EndPointSecurityRequirement[]
+            {                s_GetOrganizationSecurityRequirement0,
+            };
         partial void PrepareGetOrganizationArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string xRunwayVersion);
@@ -48,9 +67,15 @@ namespace Runway
                 httpClient: HttpClient,
                 xRunwayVersion: ref xRunwayVersion);
 
+
+            var __authorizations = global::Runway.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_GetOrganizationSecurityRequirements,
+                operationName: "GetOrganizationAsync");
+
             var __pathBuilder = new global::Runway.PathBuilder(
                 path: "/v1/organization",
-                baseUri: HttpClient.BaseAddress); 
+                baseUri: HttpClient.BaseAddress);
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Get,
@@ -60,7 +85,7 @@ namespace Runway
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")

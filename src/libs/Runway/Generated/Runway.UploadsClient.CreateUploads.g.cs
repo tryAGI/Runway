@@ -5,6 +5,25 @@ namespace Runway
 {
     public partial class UploadsClient
     {
+
+
+        private static readonly global::Runway.EndPointSecurityRequirement s_CreateUploadsSecurityRequirement0 =
+            new global::Runway.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Runway.EndPointAuthorizationRequirement[]
+                {                    new global::Runway.EndPointAuthorizationRequirement
+                    {
+                        Type = "Http",
+                        Location = "Header",
+                        Name = "Bearer",
+                        FriendlyName = "Bearer",
+                    },
+                },
+            };
+        private static readonly global::Runway.EndPointSecurityRequirement[] s_CreateUploadsSecurityRequirements =
+            new global::Runway.EndPointSecurityRequirement[]
+            {                s_CreateUploadsSecurityRequirement0,
+            };
         partial void PrepareCreateUploadsArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string xRunwayVersion,
@@ -75,9 +94,15 @@ namespace Runway
                 xRunwayVersion: ref xRunwayVersion,
                 request: request);
 
+
+            var __authorizations = global::Runway.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_CreateUploadsSecurityRequirements,
+                operationName: "CreateUploadsAsync");
+
             var __pathBuilder = new global::Runway.PathBuilder(
                 path: "/v1/uploads",
-                baseUri: HttpClient.BaseAddress); 
+                baseUri: HttpClient.BaseAddress);
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Post,
@@ -87,7 +112,7 @@ namespace Runway
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")
