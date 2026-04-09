@@ -5,6 +5,25 @@ namespace Runway
 {
     public partial class TaskManagementClient
     {
+
+
+        private static readonly global::Runway.EndPointSecurityRequirement s_GetTasksByIdSecurityRequirement0 =
+            new global::Runway.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Runway.EndPointAuthorizationRequirement[]
+                {                    new global::Runway.EndPointAuthorizationRequirement
+                    {
+                        Type = "Http",
+                        Location = "Header",
+                        Name = "Bearer",
+                        FriendlyName = "Bearer",
+                    },
+                },
+            };
+        private static readonly global::Runway.EndPointSecurityRequirement[] s_GetTasksByIdSecurityRequirements =
+            new global::Runway.EndPointSecurityRequirement[]
+            {                s_GetTasksByIdSecurityRequirement0,
+            };
         partial void PrepareGetTasksByIdArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref global::System.Guid id,
@@ -59,9 +78,15 @@ namespace Runway
                 id: ref id,
                 xRunwayVersion: ref xRunwayVersion);
 
+
+            var __authorizations = global::Runway.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_GetTasksByIdSecurityRequirements,
+                operationName: "GetTasksByIdAsync");
+
             var __pathBuilder = new global::Runway.PathBuilder(
                 path: $"/v1/tasks/{id}",
-                baseUri: HttpClient.BaseAddress); 
+                baseUri: HttpClient.BaseAddress);
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Get,
@@ -71,7 +96,7 @@ namespace Runway
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")

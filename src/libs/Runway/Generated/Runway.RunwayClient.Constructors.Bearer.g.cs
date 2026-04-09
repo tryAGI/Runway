@@ -6,6 +6,7 @@ namespace Runway
     public sealed partial class RunwayClient
     {
         /// <inheritdoc cref="RunwayClient(global::System.Net.Http.HttpClient?, global::System.Uri?, global::System.Collections.Generic.List{global::Runway.EndPointAuthorization}?, bool)"/>
+
         public RunwayClient(
             string apiKey,
             global::System.Net.Http.HttpClient? httpClient = null,
