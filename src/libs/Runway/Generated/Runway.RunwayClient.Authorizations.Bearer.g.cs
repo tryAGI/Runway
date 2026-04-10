@@ -25,6 +25,7 @@ namespace Runway
             Authorizations.Add(new global::Runway.EndPointAuthorization
             {
                 Type = "Http",
+                SchemeId = "ApiKeyAuth",
                 Location = "Header",
                 Name = "Bearer",
                 Value = apiKey,

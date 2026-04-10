@@ -11,6 +11,7 @@ namespace Runway
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Runway.ApiException"></exception>
         /// <remarks>
@@ -23,6 +24,7 @@ namespace Runway
         /// </remarks>
         global::System.Threading.Tasks.Task<global::Runway.GetOrganizationResponse> GetOrganizationAsync(
             string xRunwayVersion = "2024-11-06",
+            global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }
