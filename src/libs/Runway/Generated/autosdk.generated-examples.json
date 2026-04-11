@@ -1,0 +1,15 @@
+{
+  "Examples": [
+    {
+      "Order": 1,
+      "Title": "Get task detail",
+      "Slug": "get-task-detail",
+      "Description": "Return details about a task. Consumers of this API should not expect updates more frequent than once every five seconds for a given task.",
+      "Language": "http",
+      "Code": "### Get task detail\nGET {{host}}/v1/tasks/{{id}}\nAuthorization: Bearer {{token}}\nX-Runway-Version: 2024-11-06\nAccept: application/json\n\n## Responses\n# 200\n# Description: Success\n# Content-Type: application/json\n# 404\n# Description: The task does not exist, or was deleted or canceled.\n# Content-Type: application/json",
+      "Format": "http",
+      "OperationId": "getTasksById",
+      "Setup": null
+    }
+  ]
+}
