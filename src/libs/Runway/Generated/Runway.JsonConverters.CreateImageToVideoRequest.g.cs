@@ -23,11 +23,20 @@ namespace Runway.JsonConverters
                 foreach (var __jsonProp in __jsonDocument.RootElement.EnumerateObject())
                 {
                     __jsonProps.Add(__jsonProp.Name);
+                    if (__jsonProp.Value.ValueKind == global::System.Text.Json.JsonValueKind.Object)
+                    {
+                        foreach (var __nestedJsonProp in __jsonProp.Value.EnumerateObject())
+                        {
+                            __jsonProps.Add(__jsonProp.Name + "." + __nestedJsonProp.Name);
+                        }
+                    }
+
                 }
             }
 
             var __score0 = 0;
             if (__jsonProps.Contains("contentModeration")) __score0++;
+            if (__jsonProps.Contains("contentModeration.publicFigureThreshold")) __score0++;
             if (__jsonProps.Contains("duration")) __score0++;
             if (__jsonProps.Contains("model")) __score0++;
             if (__jsonProps.Contains("promptImage")) __score0++;
@@ -43,6 +52,7 @@ namespace Runway.JsonConverters
             if (__jsonProps.Contains("ratio")) __score1++;
             var __score2 = 0;
             if (__jsonProps.Contains("contentModeration")) __score2++;
+            if (__jsonProps.Contains("contentModeration.publicFigureThreshold")) __score2++;
             if (__jsonProps.Contains("duration")) __score2++;
             if (__jsonProps.Contains("model")) __score2++;
             if (__jsonProps.Contains("promptImage")) __score2++;
