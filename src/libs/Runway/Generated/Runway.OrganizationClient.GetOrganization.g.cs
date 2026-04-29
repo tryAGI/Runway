@@ -138,7 +138,7 @@ namespace Runway
                 PrepareGetOrganizationRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    xRunwayVersion: xRunwayVersion);
+                    xRunwayVersion: xRunwayVersion!);
 
                 return __httpRequest;
             }
