@@ -156,7 +156,7 @@ namespace Runway
                 PrepareCreateVoiceDubbingRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    xRunwayVersion: xRunwayVersion,
+                    xRunwayVersion: xRunwayVersion!,
                     request: request);
 
                 return __httpRequest;

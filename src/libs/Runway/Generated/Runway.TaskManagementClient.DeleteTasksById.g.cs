@@ -138,8 +138,8 @@ namespace Runway
                 PrepareDeleteTasksByIdRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    id: id,
-                    xRunwayVersion: xRunwayVersion);
+                    id: id!,
+                    xRunwayVersion: xRunwayVersion!);
 
                 return __httpRequest;
             }
