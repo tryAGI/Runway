@@ -63,6 +63,38 @@ namespace Runway
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
+            await DeleteTasksByIdAsResponseAsync(
+                id: id,
+                xRunwayVersion: xRunwayVersion,
+                requestOptions: requestOptions,
+                cancellationToken: cancellationToken
+            ).ConfigureAwait(false);
+        }
+        /// <summary>
+        /// Cancel or delete a task<br/>
+        /// Tasks that are running, pending, or throttled can be canceled by invoking this method. Invoking this method for other tasks will delete them.<br/>
+        /// The output data associated with a deleted task will be deleted from persistent storage in accordance with our data retention policy. Aborted and deleted tasks will not be able to be fetched again in the future.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="xRunwayVersion">
+        /// Default Value: 2024-11-06
+        /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Runway.ApiException"></exception>
+        /// <remarks>
+        /// // npm install --save @runwayml/sdk<br/>
+        /// import RunwayML from '@runwayml/sdk';<br/>
+        /// // The env var RUNWAYML_API_SECRET is expected to contain your API key.<br/>
+        /// const client = new RunwayML();<br/>
+        /// await client.tasks.delete('17f20503-6c24-4c16-946b-35dbbce2af2f');
+        /// </remarks>
+        public async global::System.Threading.Tasks.Task<global::Runway.AutoSDKHttpResponse> DeleteTasksByIdAsResponseAsync(
+            global::System.Guid id,
+            string xRunwayVersion = "2024-11-06",
+            global::Runway.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default)
+        {
             PrepareArguments(
                 client: HttpClient);
             PrepareDeleteTasksByIdArguments(
@@ -92,6 +124,7 @@ namespace Runway
 
             global::System.Net.Http.HttpRequestMessage __CreateHttpRequest()
             {
+
                             var __pathBuilder = new global::Runway.PathBuilder(
                                 path: $"/v1/tasks/{id}",
                                 baseUri: HttpClient.BaseAddress);
@@ -169,6 +202,8 @@ namespace Runway
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                     try
                     {
@@ -179,6 +214,11 @@ namespace Runway
                     }
                     catch (global::System.Net.Http.HttpRequestException __exception)
                     {
+                        var __retryDelay = global::Runway.AutoSDKRequestOptionsSupport.GetRetryDelay(
+                            clientOptions: Options,
+                            requestOptions: requestOptions,
+                            response: null,
+                            attempt: __attempt);
                         var __willRetry = __attempt < __maxAttempts && !__effectiveCancellationToken.IsCancellationRequested;
                         await global::Runway.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
@@ -196,6 +236,8 @@ namespace Runway
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: __willRetry,
+                                retryDelay: __willRetry ? __retryDelay : (global::System.TimeSpan?)null,
+                                retryReason: "exception",
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                         if (!__willRetry)
                         {
@@ -205,8 +247,7 @@ namespace Runway
                         __httpRequest.Dispose();
                         __httpRequest = null;
                         await global::Runway.AutoSDKRequestOptionsSupport.DelayBeforeRetryAsync(
-                            clientOptions: Options,
-                            requestOptions: requestOptions,
+                            retryDelay: __retryDelay,
                             cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
                         continue;
                     }
@@ -215,6 +256,11 @@ namespace Runway
                         __attempt < __maxAttempts &&
                         global::Runway.AutoSDKRequestOptionsSupport.ShouldRetryStatusCode(__response.StatusCode))
                     {
+                        var __retryDelay = global::Runway.AutoSDKRequestOptionsSupport.GetRetryDelay(
+                            clientOptions: Options,
+                            requestOptions: requestOptions,
+                            response: __response,
+                            attempt: __attempt);
                         await global::Runway.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Runway.AutoSDKRequestOptionsSupport.CreateHookContext(
@@ -231,14 +277,15 @@ namespace Runway
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: true,
+                                retryDelay: __retryDelay,
+                                retryReason: "status:" + ((int)__response.StatusCode).ToString(global::System.Globalization.CultureInfo.InvariantCulture),
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                         __response.Dispose();
                         __response = null;
                         __httpRequest.Dispose();
                         __httpRequest = null;
                         await global::Runway.AutoSDKRequestOptionsSupport.DelayBeforeRetryAsync(
-                            clientOptions: Options,
-                            requestOptions: requestOptions,
+                            retryDelay: __retryDelay,
                             cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
                         continue;
                     }
@@ -278,6 +325,8 @@ namespace Runway
                                 attempt: __attemptNumber,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
                 else
@@ -298,6 +347,8 @@ namespace Runway
                                 attempt: __attemptNumber,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
 
@@ -318,6 +369,10 @@ namespace Runway
                                 {
                                     __response.EnsureSuccessStatusCode();
 
+                return new global::Runway.AutoSDKHttpResponse(
+                                        statusCode: __response.StatusCode,
+                                        headers: global::Runway.AutoSDKHttpResponse.CreateHeaders(__response),
+                                        requestUri: __response.RequestMessage?.RequestUri);
                                 }
                                 catch (global::System.Exception __ex)
                                 {
@@ -339,6 +394,10 @@ namespace Runway
                                 try
                                 {
                                     __response.EnsureSuccessStatusCode();
+                                    return new global::Runway.AutoSDKHttpResponse(
+                                        statusCode: __response.StatusCode,
+                                        headers: global::Runway.AutoSDKHttpResponse.CreateHeaders(__response),
+                                        requestUri: __response.RequestMessage?.RequestUri);
                                 }
                                 catch (global::System.Exception __ex)
                                 {
