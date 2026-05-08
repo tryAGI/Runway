@@ -425,6 +425,92 @@ public partial class Tests
     }
 
     [TestMethod]
+    public async Task RunwayCli_ShortVideoClaudePlannerUsesLocalClaudeAuthMode()
+    {
+        var plannerPath = Directory.CreateTempSubdirectory("runway-claude-args-").FullName;
+        var outputPath = Path.Combine(plannerPath, "plan.json");
+        var argsPath = Path.Combine(plannerPath, "args.txt");
+        await File.WriteAllTextAsync(outputPath, CreatePlannerPlanJson(new RunwayShortVideoOptions { ShotCount = 2 })).ConfigureAwait(false);
+        await AddFakePlannerScriptAsync(
+            plannerPath,
+            "claude",
+            $"#!/bin/sh\nprintf '%s\\n' \"$@\" > \"{argsPath}\"\n/bin/cat \"{outputPath}\"\n",
+            $"@echo off\r\necho %* > \"{argsPath}\"\r\ntype \"{outputPath}\"\r\n").ConfigureAwait(false);
+
+        try
+        {
+            var result = await RunCliAsync(
+                "short-video a glass flower opens on a rainy street --shots 2 --plan-only --planner claude --planner-timeout-seconds 10",
+                removeApiKey: true,
+                environment: new Dictionary<string, string?> { ["PATH"] = plannerPath }).ConfigureAwait(false);
+
+            result.ExitCode.Should().Be(0);
+            var args = await File.ReadAllTextAsync(argsPath).ConfigureAwait(false);
+            args.Should().Contain("--print");
+            args.Should().Contain("--json-schema");
+            args.Should().Contain("--permission-mode");
+            args.Should().Contain("--");
+            args.Should().NotContain("--bare");
+        }
+        finally
+        {
+            Directory.Delete(plannerPath, recursive: true);
+        }
+    }
+
+    [TestMethod]
+    public async Task RunwayCli_ShortVideoClaudePlannerNormalizesCommonSchemaAliases()
+    {
+        var plannerPath = await CreateFakePlannerDirectoryAsync(
+            "claude",
+            """
+            {
+              "sourceText": "A glass flower opens on a rainy street.",
+              "scenario": "A two-shot rainy street product-style film.",
+              "style": "warm editorial",
+              "model": "veo3.1_fast",
+              "ratio": "1280:720",
+              "shotDurationSeconds": 4,
+              "shots": [
+                {
+                  "index": 1,
+                  "count": 2,
+                  "title": "Street reveal",
+                  "storyBeat": "The glass flower rests on wet pavement.",
+                  "imagePrompt": "Macro still of a glass flower on wet pavement.",
+                  "motionPrompt": "Slow push toward the glass flower as rain glows around it."
+                },
+                {
+                  "index": 2,
+                  "count": 2,
+                  "title": "Bloom",
+                  "description": "The flower opens under soft rain.",
+                  "keyframe": "Glass petals opening under soft rain.",
+                  "prompt": "The glass flower blooms as water ripples outward."
+                }
+              ]
+            }
+            """).ConfigureAwait(false);
+
+        try
+        {
+            var result = await RunCliAsync(
+                "short-video a glass flower opens on a rainy street --shots 2 --plan-only --planner claude --planner-timeout-seconds 10",
+                removeApiKey: true,
+                environment: new Dictionary<string, string?> { ["PATH"] = plannerPath }).ConfigureAwait(false);
+
+            result.ExitCode.Should().Be(0);
+            result.Stdout.Should().Contain("\"beat\": \"The glass flower rests on wet pavement.\"");
+            result.Stdout.Should().Contain("\"keyframePrompt\": \"Macro still of a glass flower on wet pavement.\"");
+            result.Stdout.Should().Contain("\"videoPrompt\": \"Slow push toward the glass flower as rain glows around it.\"");
+        }
+        finally
+        {
+            Directory.Delete(plannerPath, recursive: true);
+        }
+    }
+
+    [TestMethod]
     public async Task RunwayCli_ShortVideoAutoFallsBackWhenExternalPlannerReturnsInvalidJson()
     {
         var plannerPath = await CreateFakePlannerDirectoryAsync("claude", "not-json").ConfigureAwait(false);
@@ -596,6 +682,16 @@ public partial class Tests
         arguments.Should().ContainInOrder("-f", "concat", "-safe", "0", "-i", "/tmp/list.txt");
         arguments.Should().ContainInOrder("-c", "copy");
         arguments.Should().EndWith("/tmp/final.mp4");
+    }
+
+    [TestMethod]
+    public void RunwayCliShortVideo_CreatesFfmpegConcatListLines()
+    {
+        var lines = RunwayCliShortVideo.CreateConcatListLines(["/tmp/one.mp4", "/tmp/two's.mp4"]);
+
+        lines.Should().Equal(
+            "file '/tmp/one.mp4'",
+            "file '/tmp/two\\'s.mp4'");
     }
 
     [TestMethod]

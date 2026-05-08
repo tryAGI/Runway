@@ -84,8 +84,8 @@ internal static partial class RunwayCliShortVideo
         var listPath = Path.Combine(directory ?? Environment.CurrentDirectory, $"{Path.GetFileNameWithoutExtension(finalOutput)}.concat.txt");
         await File.WriteAllLinesAsync(
             listPath,
-            files.Select(file => $"file '{EscapeConcatPath(Path.GetFullPath(file))}'"),
-            Encoding.UTF8,
+            CreateConcatListLines(files),
+            new UTF8Encoding(encoderShouldEmitUTF8Identifier: false),
             cancellationToken).ConfigureAwait(false);
 
         var copyResult = await RunFfmpegAsync(
@@ -134,6 +134,13 @@ internal static partial class RunwayCliShortVideo
 
         Add(startInfo, outputPath);
         return startInfo;
+    }
+
+    internal static IReadOnlyList<string> CreateConcatListLines(IReadOnlyList<string> files)
+    {
+        return files
+            .Select(file => $"file '{EscapeConcatPath(Path.GetFullPath(file))}'")
+            .ToArray();
     }
 
     private static async Task<RunwayCliProcessResult> RunFfmpegAsync(

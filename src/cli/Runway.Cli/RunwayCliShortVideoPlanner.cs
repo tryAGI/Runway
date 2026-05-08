@@ -2,6 +2,7 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Text;
 using System.Text.Json;
+using System.Text.Json.Nodes;
 using Runway;
 
 internal enum RunwayCliShortVideoPlannerKind
@@ -203,7 +204,7 @@ internal static partial class RunwayCliShortVideo
             _ => throw new ArgumentOutOfRangeException(nameof(kind), kind, "Unsupported external planner."),
         };
 
-        var plan = DeserializePlannerOutput(result, GetPlannerDisplayName(kind));
+        var plan = DeserializePlannerOutput(result, GetPlannerDisplayName(kind), scenarioText, options);
         return await RunwayShortVideoExtensions.CreateShortVideoPlanAsync(
             scenarioText,
             (_, _, _) => ValueTask.FromResult<RunwayShortVideoPlan?>(plan),
@@ -221,10 +222,10 @@ internal static partial class RunwayCliShortVideo
         try
         {
             var startInfo = CreatePlannerStartInfo("claude", tempDirectory);
-            Add(startInfo, "--print", "--bare", "--model", plannerOptions.Model ?? DefaultClaudePlannerModel);
+            Add(startInfo, "--print", "--model", plannerOptions.Model ?? DefaultClaudePlannerModel);
             Add(startInfo, "--json-schema", CreatePlannerJsonSchema(), "--permission-mode", "plan", "--no-session-persistence");
             AddClaudeToolArguments(startInfo, plannerOptions.Tools);
-            Add(startInfo, CreatePlannerPrompt(scenarioText, options, plannerOptions.Tools));
+            Add(startInfo, "--", CreatePlannerPrompt(scenarioText, options, plannerOptions.Tools));
 
             var result = await RunPlannerProcessAsync(
                 startInfo,
@@ -350,11 +351,16 @@ internal static partial class RunwayCliShortVideo
         return result;
     }
 
-    private static RunwayShortVideoPlan DeserializePlannerOutput(string output, string displayName)
+    private static RunwayShortVideoPlan DeserializePlannerOutput(
+        string output,
+        string displayName,
+        string scenarioText,
+        RunwayShortVideoOptions options)
     {
         try
         {
             var json = ExtractPlannerJsonObject(output);
+            json = NormalizePlannerJsonForDeserialization(json, scenarioText, options);
             return JsonSerializer.Deserialize(
                 json,
                 RunwayShortVideoJsonSerializerContext.Default.RunwayShortVideoPlan)
@@ -399,12 +405,108 @@ internal static partial class RunwayCliShortVideo
             - shotDurationSeconds: {options.ShotDurationSeconds}
             - shots: exactly {options.ShotCount} shots
             - each shot index must be 1-based and count must be {options.ShotCount}
-            - each shot needs a concise title, story beat, keyframePrompt, and direct Runway videoPrompt
+            - each shot object must include exactly these required keys: "index", "count", "title", "beat", "keyframePrompt", "videoPrompt"
+            - use the exact key "beat" for the story beat; do not use "storyBeat", "description", or "summary"
             - keyframePrompt describes a still composition with subject, setting, lighting, composition, palette, and continuity anchors
             - videoPrompt describes camera movement, subject action, motion continuity, timing, and visual style for Runway text-to-video
             - avoid captions, subtitles, logos, UI text, and unreadable text unless explicitly requested by the scenario
             - keep prompts visual, concrete, production-ready, and safe to send directly to Runway
             """);
+    }
+
+    private static string NormalizePlannerJsonForDeserialization(
+        string json,
+        string scenarioText,
+        RunwayShortVideoOptions options)
+    {
+        var root = JsonNode.Parse(json)?.AsObject()
+            ?? throw new InvalidOperationException("Planner output did not contain a JSON object.");
+
+        SetDefaultString(root, "sourceText", scenarioText.Trim());
+        SetDefaultString(root, "scenario", scenarioText.Trim());
+        SetDefaultString(root, "style", string.IsNullOrWhiteSpace(options.Style)
+            ? "cinematic, coherent visual continuity, natural motion, high production value, no captions"
+            : options.Style.Trim());
+        SetDefaultString(root, "model", options.Model);
+        SetDefaultString(root, "ratio", options.Ratio);
+        if (!root.TryGetPropertyValue("shotDurationSeconds", out var duration) ||
+            duration is null ||
+            duration.GetValueKind() is not JsonValueKind.Number)
+        {
+            root["shotDurationSeconds"] = options.ShotDurationSeconds;
+        }
+
+        if (root["shots"] is not JsonArray shots)
+        {
+            throw new InvalidOperationException("Planner output did not contain a shots array.");
+        }
+
+        for (var i = 0; i < shots.Count; i++)
+        {
+            if (shots[i] is not JsonObject shot)
+            {
+                throw new InvalidOperationException("Planner output contained a non-object shot.");
+            }
+
+            shot["index"] = GetInt(shot, "index") ?? i + 1;
+            shot["count"] = GetInt(shot, "count") ?? shots.Count;
+            SetDefaultString(shot, "title", string.Create(CultureInfo.InvariantCulture, $"Shot {i + 1}"));
+
+            var beat = FirstString(shot, "beat", "storyBeat", "description", "summary", "action", "visualBeat");
+            if (!string.IsNullOrWhiteSpace(beat))
+            {
+                shot["beat"] = beat;
+            }
+
+            var keyframePrompt = FirstString(shot, "keyframePrompt", "keyframe", "imagePrompt", "visualPrompt", "stillPrompt", "beat", "title");
+            if (!string.IsNullOrWhiteSpace(keyframePrompt))
+            {
+                shot["keyframePrompt"] = keyframePrompt;
+            }
+
+            var videoPrompt = FirstString(shot, "videoPrompt", "prompt", "motionPrompt", "animationPrompt", "keyframePrompt", "beat");
+            if (!string.IsNullOrWhiteSpace(videoPrompt))
+            {
+                shot["videoPrompt"] = videoPrompt;
+            }
+        }
+
+        return root.ToJsonString();
+    }
+
+    private static void SetDefaultString(JsonObject value, string propertyName, string? defaultValue)
+    {
+        if (string.IsNullOrWhiteSpace(FirstString(value, propertyName)) &&
+            !string.IsNullOrWhiteSpace(defaultValue))
+        {
+            value[propertyName] = defaultValue.Trim();
+        }
+    }
+
+    private static string? FirstString(JsonObject value, params string[] propertyNames)
+    {
+        foreach (var propertyName in propertyNames)
+        {
+            if (value.TryGetPropertyValue(propertyName, out var node) &&
+                node is not null &&
+                node.GetValueKind() == JsonValueKind.String &&
+                node.GetValue<string>() is { Length: > 0 } text)
+            {
+                return text.Trim();
+            }
+        }
+
+        return null;
+    }
+
+    private static int? GetInt(JsonObject value, string propertyName)
+    {
+        return value.TryGetPropertyValue(propertyName, out var node) &&
+               node is not null &&
+               node.GetValueKind() == JsonValueKind.Number &&
+               node.GetValue<int>() is var result
+            ? result
+            : null;
     }
 
     private static string ExtractPlannerJsonObject(string value)

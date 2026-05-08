@@ -88,6 +88,55 @@ dnx Runway.Cli short-video "a calm product launch film for a transparent speaker
 
 `short-video` defaults to `--planner auto`: Claude Code first, Codex CLI second, deterministic fallback. Use `--planner deterministic` for reproducible local-only plans, or `--planner claude --planner-model opus` when the user wants stronger external storyboard planning. The bundled Runway planner prompt is informed by storyboard-creation workflows; no external storyboard skill is required.
 
+## Short Video
+
+Use `short-video` when the user has an idea and wants Runway to turn it into a finished multi-shot video. The user should be able to describe the result in plain language, such as "show how a small business owner makes product photos in minutes" or "make a simple launch video for a travel mug." The CLI expands that one sentence into a short plan, creates each shot with Runway, downloads the clips, and tries to stitch them into one final video.
+
+Default to simple, product-focused language:
+
+```bash
+dnx Runway.Cli short-video "A simple product video showing how Runway CLI helps someone turn one idea into ready-to-use images, product cards, and a short ad video from their laptop. Keep it friendly, clear, and made for everyday business owners, creators, and shop teams." \
+  --planner auto \
+  --shots 3 \
+  --duration 4 \
+  --ratio 1280:720 \
+  --model veo3.1-fast \
+  --output ./runway-short-video
+```
+
+What `short-video` does:
+
+- Turns one plain-language request into a small storyboard.
+- Creates a key visual idea for every shot.
+- Writes a video prompt for every shot.
+- Starts Runway video jobs for the planned shots.
+- Downloads the finished clips.
+- Uses `ffmpeg` when available to create one final video file.
+
+Use `--planner auto` for normal work. Auto planning tries Claude Code first, then Codex CLI, then the built-in planner. Use `--planner deterministic` only for CI, demos that must be repeatable, or environments with no external planner access. Use `--plan-only` when the user wants to review the idea before spending credits.
+
+Keep prompts friendly for non-technical users. Talk about outcomes, products, customers, creators, shops, campaigns, listings, and videos. Avoid implementation language such as SDK, endpoint, schema, CLI internals, auth, generated code, tests, or workflow names unless the user explicitly asks for that.
+
+Good user-facing short-video prompts:
+
+- "Show a candle shop owner making clean product photos, marketplace cards, and a short launch video from one idea."
+- "Create a warm 12-second launch video for a travel mug, from product photo to ad video."
+- "Show a creator turning one product image into a polished store listing and a simple social ad."
+- "Make a calm product walkthrough showing how a small team plans, creates, and saves ready-to-use media."
+
+When the user wants to edit the plan, split the flow:
+
+```bash
+dnx Runway.Cli short-video "a simple launch video for a transparent speaker" \
+  --planner auto \
+  --shots 3 \
+  --plan-only > ./short-video-plan.json
+
+dnx Runway.Cli short-video run \
+  --plan ./short-video-plan.json \
+  --output ./runway-short-video
+```
+
 Run an edited short-video plan:
 
 ```bash
