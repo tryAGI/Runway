@@ -20,7 +20,7 @@ public partial class Tests
             request: new CreateGptImage2TextToImageRequest
             {
                 PromptText = "A poster with readable text",
-                Ratio = "1024:1024",
+                Ratio = "1920:1088",
                 Resolution = GptImage2Resolution.x1K,
                 Quality = GptImage2Quality.Low,
                 OutputCount = 1,
@@ -43,8 +43,8 @@ public partial class Tests
         var body = JsonNode.Parse(handler.Body!)!.AsObject();
         body["model"]!.GetValue<string>().Should().Be("gpt_image_2");
         body["promptText"]!.GetValue<string>().Should().Be("A poster with readable text");
-        body["ratio"]!.GetValue<string>().Should().Be("1024:1024");
-        body["resolution"]!.GetValue<string>().Should().Be("1K");
+        body["ratio"]!.GetValue<string>().Should().Be("1920:1088");
+        body.Should().NotContainKey("resolution");
         body["quality"]!.GetValue<string>().Should().Be("low");
         body["outputCount"]!.GetValue<double>().Should().Be(1);
         body["referenceImages"]!.AsArray()[0]!["tag"]!.GetValue<string>().Should().Be("reference1");

@@ -264,7 +264,7 @@ var tools = runway.AsTools();
 
 ### GPT Image 2
 
-Runway's current model list includes `gpt_image_2`. Until it appears in the generated OpenAPI union, the SDK exposes a typed handwritten helper outside `Generated/`.
+Runway's current model list includes `gpt_image_2`. The SDK also keeps a typed convenience helper for GPT Image 2 text/image-to-image calls.
 
 ```csharp
 using Runway;
@@ -275,8 +275,7 @@ var response = await client.StartGenerating.CreateGptImage2TextToImageAsync(
     request: new CreateGptImage2TextToImageRequest
     {
         PromptText = "A clean poster that says RUNWAY CLI in precise typography",
-        Ratio = "1024:1024",
-        Resolution = GptImage2Resolution.x1K,
+        Ratio = "1920:1088",
         Quality = GptImage2Quality.Low,
         OutputCount = 1,
     });
@@ -359,8 +358,7 @@ dotnet run --project src/cli/Runway.Cli -- image a logo-style glass speaker icon
 
 dotnet run --project src/cli/Runway.Cli -- image "a sharp product poster with readable text" \
   --model gpt-image-2 \
-  --ratio 1024:1024 \
-  --resolution 1K \
+  --ratio 1920:1088 \
   --quality low \
   --output-count 1 \
   --output ./runway-gpt-image

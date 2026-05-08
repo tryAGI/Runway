@@ -35,7 +35,7 @@ Default to low-cost, practical choices:
 | Request | Default |
 | --- | --- |
 | Quick image | `image --model gemini-2.5-flash --ratio 1024:1024` |
-| Image with accurate text | `image --model gpt-image-2 --resolution 1K --quality low` |
+| Image with accurate text | `image --model gpt-image-2 --ratio 1920:1088 --quality low` |
 | Product photoshoot plan | `product-photoshoot create --mode product_shot --plan-only` |
 | Marketplace card bundle | `marketplace-cards create --scope full-set --plan-only` |
 | Text-to-video | `video --model veo3.1-fast --duration 4 --ratio 1280:720` |

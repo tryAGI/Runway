@@ -9,8 +9,8 @@ internal static class RunwayCliCreativeRecipes
     public const string AdVideoKind = "ad_video";
 
     public const string DefaultImageModel = "gpt_image_2";
-    public const string DefaultImageRatio = "1024:1024";
-    public const string DefaultImageResolution = "1K";
+    public const string DefaultImageRatio = "1920:1920";
+    public const string? DefaultImageResolution = null;
     public const string DefaultImageQuality = "low";
     public const string DefaultVideoModel = "veo3.1_fast";
     public const string DefaultVideoRatio = "1280:720";

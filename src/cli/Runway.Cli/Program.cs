@@ -496,10 +496,9 @@ var shortVideoRatioOption = new Option<string?>("--ratio")
     Description = "Short-video ratio/resolution. Defaults to the plan value or 1280:720.",
 };
 
-var imageRatioOption = new Option<string>("--ratio")
+var imageRatioOption = new Option<string?>("--ratio")
 {
-    Description = "Image ratio/resolution. Default model supports 1024:1024, 1344:768, 768:1344, and related Gemini ratios.",
-    DefaultValueFactory = _ => "1024:1024",
+    Description = "Image ratio/resolution. Defaults are model-specific; GPT Image 2 commonly uses 1920:1088, 2560:1440, or 1920:1920.",
 };
 
 var imageModelOption = new Option<string>("--model")
@@ -510,7 +509,7 @@ var imageModelOption = new Option<string>("--model")
 
 var imageResolutionOption = new Option<string?>("--resolution")
 {
-    Description = "Optional GPT Image 2 resolution tier: auto, 1K, 2K, or 4K.",
+    Description = "Deprecated GPT Image 2 resolution tier. Current API ignores this; use --ratio for output size.",
 };
 
 var imageQualityOption = new Option<string?>("--quality")
@@ -1118,7 +1117,10 @@ generateImageCommand.SetAction((ParseResult parseResult, CancellationToken cance
     {
         var prompt = RunwayCliGeneration.JoinPrompt(parseResult.GetValue(imagePromptArgument));
         var imageModel = parseResult.GetValue(imageModelOption) ?? "gemini-2.5-flash";
-        var ratio = parseResult.GetValue(imageRatioOption) ?? "1024:1024";
+        var normalizedImageModel = RunwayCliGeneration.NormalizeTextToImageModel(imageModel);
+        var ratio = RunwayCliGeneration.ResolveTextToImageRatio(
+            parseResult.GetValue(imageRatioOption),
+            normalizedImageModel);
         var referenceImages = parseResult.GetValue(referenceImageOption2);
         var seed = parseResult.GetValue(seedOption);
         var json = parseResult.GetValue(jsonOption);
@@ -1132,7 +1134,7 @@ generateImageCommand.SetAction((ParseResult parseResult, CancellationToken cance
                 await RunwayCliGeneration.ReadJsonTextAsync(json, ct).ConfigureAwait(false),
                 ct).ConfigureAwait(false);
         }
-        else if (RunwayCliGeneration.NormalizeTextToImageModel(imageModel) == "gpt_image_2")
+        else if (normalizedImageModel == "gpt_image_2")
         {
             var response = await client.StartGenerating.CreateGptImage2TextToImageAsync(
                 request: await RunwayCliGeneration.CreateGptImage2TextToImageRequestAsync(

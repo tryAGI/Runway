@@ -111,12 +111,6 @@ internal static class RunwayCliGeneration
             resolution: null,
             quality: null,
             cancellationToken).ConfigureAwait(false);
-        var normalizedModel = body["model"]?.GetValue<string>();
-        if (normalizedModel == "gpt_image_2")
-        {
-            throw new ArgumentException("gpt_image_2 is not present in the generated OpenAPI union yet. Use CreateGptImage2TextToImageRequestAsync or the friendly image command.");
-        }
-
         return ToGenerated<CreateTextToImageRequest>(body);
     }
 
@@ -146,7 +140,6 @@ internal static class RunwayCliGeneration
         AddContentModeration(body, publicFigureThreshold);
         if (normalizedModel == "gpt_image_2")
         {
-            SetIfNotNull(body, "resolution", resolution);
             SetIfNotNull(body, "quality", quality);
         }
 
@@ -155,6 +148,11 @@ internal static class RunwayCliGeneration
             normalizedModel,
             normalizedModel == "gemini_image3_pro" ? referenceSubject : null,
             cancellationToken).ConfigureAwait(false);
+
+        if (normalizedModel == "gen4_image_turbo" && references.Count == 0)
+        {
+            throw new ArgumentException("gen4-image-turbo requires at least one --reference-image. Use gpt-image-2 or gemini-2.5-flash for text-only image generation.");
+        }
 
         if (references.Count > 0)
         {
@@ -177,7 +175,6 @@ internal static class RunwayCliGeneration
         {
             PromptText = prompt,
             Ratio = ratio,
-            Resolution = ParseGptImage2Resolution(resolution),
             Quality = ParseGptImage2Quality(quality),
             OutputCount = outputCount,
         };
@@ -401,6 +398,20 @@ internal static class RunwayCliGeneration
     public static string NormalizeTextToImageModel(string? value)
     {
         return NormalizeModel(value, "gemini_2.5_flash", TextToImageModels);
+    }
+
+    public static string ResolveTextToImageRatio(string? value, string normalizedModel)
+    {
+        if (!string.IsNullOrWhiteSpace(value))
+        {
+            return value.Trim();
+        }
+
+        return normalizedModel switch
+        {
+            "gpt_image_2" => "1920:1920",
+            _ => "1024:1024",
+        };
     }
 
     public static GptImage2Resolution? ParseGptImage2Resolution(string? value)

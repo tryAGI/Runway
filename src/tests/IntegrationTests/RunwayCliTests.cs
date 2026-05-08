@@ -875,7 +875,7 @@ public partial class Tests
     }
 
     [TestMethod]
-    public async Task RunwayCli_CreatesGptImage2RequestWithResolutionQualityAndSixteenReferences()
+    public async Task RunwayCli_CreatesGptImage2RequestWithQualityAndSixteenReferences()
     {
         var references = Enumerable.Range(1, 16)
             .Select(index => $"https://example.com/reference-{index}.png")
@@ -883,7 +883,7 @@ public partial class Tests
 
         var request = await RunwayCliGeneration.CreateGptImage2TextToImageRequestAsync(
             "poster with crisp product typography",
-            "1024:1024",
+            "1920:1088",
             references,
             "1K",
             "low",
@@ -891,8 +891,8 @@ public partial class Tests
             CancellationToken.None).ConfigureAwait(false);
 
         request.PromptText.Should().Be("poster with crisp product typography");
-        request.Ratio.Should().Be("1024:1024");
-        request.Resolution.Should().Be(GptImage2Resolution.x1K);
+        request.Ratio.Should().Be("1920:1088");
+        request.Resolution.Should().BeNull();
         request.Quality.Should().Be(GptImage2Quality.Low);
         request.OutputCount.Should().Be(1);
         request.ReferenceImages.Should().HaveCount(16);
@@ -900,11 +900,39 @@ public partial class Tests
     }
 
     [TestMethod]
+    public void RunwayCli_UsesModelSpecificTextToImageRatioDefaults()
+    {
+        RunwayCliGeneration.ResolveTextToImageRatio(null, "gemini_2.5_flash").Should().Be("1024:1024");
+        RunwayCliGeneration.ResolveTextToImageRatio(null, "gpt_image_2").Should().Be("1920:1920");
+        RunwayCliGeneration.ResolveTextToImageRatio(" 1920:1088 ", "gpt_image_2").Should().Be("1920:1088");
+    }
+
+    [TestMethod]
+    public async Task RunwayCli_RejectsGen4ImageTurboWithoutReferenceImage()
+    {
+        var act = () => RunwayCliGeneration.CreateTextToImageJsonBodyAsync(
+            "clean product poster",
+            "gen4-image-turbo",
+            "1280:720",
+            referenceImages: null,
+            referenceSubject: "object",
+            seed: null,
+            outputCount: null,
+            publicFigureThreshold: null,
+            resolution: null,
+            quality: null,
+            CancellationToken.None);
+
+        await act.Should().ThrowAsync<ArgumentException>()
+            .WithMessage("gen4-image-turbo requires at least one --reference-image. Use gpt-image-2 or gemini-2.5-flash for text-only image generation.").ConfigureAwait(false);
+    }
+
+    [TestMethod]
     public async Task RunwayCli_RejectsTooManyGptImage2ReferenceImages()
     {
         var act = () => RunwayCliGeneration.CreateGptImage2TextToImageRequestAsync(
             "poster with crisp product typography",
-            "1024:1024",
+            "1920:1088",
             Enumerable.Range(1, 17).Select(index => $"https://example.com/reference-{index}.png").ToArray(),
             "1K",
             "low",

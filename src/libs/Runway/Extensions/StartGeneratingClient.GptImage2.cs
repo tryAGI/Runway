@@ -86,10 +86,10 @@ public sealed class CreateGptImage2TextToImageRequest
     /// <summary>
     /// Output ratio or model-supported width:height value.
     /// </summary>
-    public string Ratio { get; set; } = "1024:1024";
+    public string Ratio { get; set; } = "1920:1920";
 
     /// <summary>
-    /// Optional output resolution tier.
+    /// Deprecated output resolution tier. Current Runway GPT Image 2 uses <see cref="Ratio" /> for output size.
     /// </summary>
     public GptImage2Resolution? Resolution { get; set; }
 
@@ -121,11 +121,6 @@ public sealed class CreateGptImage2TextToImageRequest
             ["promptText"] = PromptText,
             ["ratio"] = Ratio,
         };
-
-        if (Resolution is { } resolution)
-        {
-            body["resolution"] = resolution.ToValueString();
-        }
 
         if (Quality is { } quality)
         {
