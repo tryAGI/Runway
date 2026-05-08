@@ -25,6 +25,19 @@ namespace Runway
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ElevenMultilingualV2))]
 #endif
         public bool IsElevenMultilingualV2 => ElevenMultilingualV2 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickElevenMultilingualV2(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Runway.CreateTextToSpeechRequestElevenMultilingualV2? value)
+        {
+            value = ElevenMultilingualV2;
+            return IsElevenMultilingualV2;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -69,7 +82,7 @@ namespace Runway
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Runway.CreateTextToSpeechRequestElevenMultilingualV2?, TResult>? elevenMultilingualV2 = null,
+            global::System.Func<global::Runway.CreateTextToSpeechRequestElevenMultilingualV2, TResult>? elevenMultilingualV2 = null,
             bool validate = true)
         {
             if (validate)
@@ -89,7 +102,25 @@ namespace Runway
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Runway.CreateTextToSpeechRequestElevenMultilingualV2?>? elevenMultilingualV2 = null,
+            global::System.Action<global::Runway.CreateTextToSpeechRequestElevenMultilingualV2>? elevenMultilingualV2 = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsElevenMultilingualV2)
+            {
+                elevenMultilingualV2?.Invoke(ElevenMultilingualV2!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::Runway.CreateTextToSpeechRequestElevenMultilingualV2>? elevenMultilingualV2 = null,
             bool validate = true)
         {
             if (validate)

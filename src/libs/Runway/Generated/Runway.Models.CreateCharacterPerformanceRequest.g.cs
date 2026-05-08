@@ -25,6 +25,19 @@ namespace Runway
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ActTwo))]
 #endif
         public bool IsActTwo => ActTwo != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickActTwo(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Runway.CreateCharacterPerformanceRequestActTwo? value)
+        {
+            value = ActTwo;
+            return IsActTwo;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -69,7 +82,7 @@ namespace Runway
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Runway.CreateCharacterPerformanceRequestActTwo?, TResult>? actTwo = null,
+            global::System.Func<global::Runway.CreateCharacterPerformanceRequestActTwo, TResult>? actTwo = null,
             bool validate = true)
         {
             if (validate)
@@ -89,7 +102,25 @@ namespace Runway
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Runway.CreateCharacterPerformanceRequestActTwo?>? actTwo = null,
+            global::System.Action<global::Runway.CreateCharacterPerformanceRequestActTwo>? actTwo = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsActTwo)
+            {
+                actTwo?.Invoke(ActTwo!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::Runway.CreateCharacterPerformanceRequestActTwo>? actTwo = null,
             bool validate = true)
         {
             if (validate)

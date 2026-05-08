@@ -25,6 +25,19 @@ namespace Runway
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ElevenVoiceDubbing))]
 #endif
         public bool IsElevenVoiceDubbing => ElevenVoiceDubbing != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickElevenVoiceDubbing(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Runway.CreateVoiceDubbingRequestElevenVoiceDubbing? value)
+        {
+            value = ElevenVoiceDubbing;
+            return IsElevenVoiceDubbing;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -69,7 +82,7 @@ namespace Runway
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Runway.CreateVoiceDubbingRequestElevenVoiceDubbing?, TResult>? elevenVoiceDubbing = null,
+            global::System.Func<global::Runway.CreateVoiceDubbingRequestElevenVoiceDubbing, TResult>? elevenVoiceDubbing = null,
             bool validate = true)
         {
             if (validate)
@@ -89,7 +102,25 @@ namespace Runway
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Runway.CreateVoiceDubbingRequestElevenVoiceDubbing?>? elevenVoiceDubbing = null,
+            global::System.Action<global::Runway.CreateVoiceDubbingRequestElevenVoiceDubbing>? elevenVoiceDubbing = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsElevenVoiceDubbing)
+            {
+                elevenVoiceDubbing?.Invoke(ElevenVoiceDubbing!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::Runway.CreateVoiceDubbingRequestElevenVoiceDubbing>? elevenVoiceDubbing = null,
             bool validate = true)
         {
             if (validate)

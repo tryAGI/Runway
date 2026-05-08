@@ -27,6 +27,19 @@ namespace Runway
         public bool IsImage => Image != null;
 
         /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickImage(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterImage? value)
+        {
+            value = Image;
+            return IsImage;
+        }
+
+        /// <summary>
         /// A video of your character. In the output, the character will use the reference video performance in its original animated environment and some of the character's own movements.
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -42,6 +55,19 @@ namespace Runway
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Video))]
 #endif
         public bool IsVideo => Video != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickVideo(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterVideo? value)
+        {
+            value = Video;
+            return IsVideo;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -118,8 +144,8 @@ namespace Runway
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterImage?, TResult>? image = null,
-            global::System.Func<global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterVideo?, TResult>? video = null,
+            global::System.Func<global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterImage, TResult>? image = null,
+            global::System.Func<global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterVideo, TResult>? video = null,
             bool validate = true)
         {
             if (validate)
@@ -143,8 +169,32 @@ namespace Runway
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterImage?>? image = null,
-            global::System.Action<global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterVideo?>? video = null,
+            global::System.Action<global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterImage>? image = null,
+
+            global::System.Action<global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterVideo>? video = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsImage)
+            {
+                image?.Invoke(Image!);
+            }
+            else if (IsVideo)
+            {
+                video?.Invoke(Video!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterImage>? image = null,
+            global::System.Action<global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterVideo>? video = null,
             bool validate = true)
         {
             if (validate)

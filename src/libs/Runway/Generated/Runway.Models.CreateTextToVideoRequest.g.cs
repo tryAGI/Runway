@@ -29,6 +29,19 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickVeo31(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Runway.CreateTextToVideoRequestVeo31? value)
+        {
+            value = Veo31;
+            return IsVeo31;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Runway.CreateTextToVideoRequestVeo31Fast? Veo31Fast { get; init; }
 #else
@@ -46,6 +59,19 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickVeo31Fast(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Runway.CreateTextToVideoRequestVeo31Fast? value)
+        {
+            value = Veo31Fast;
+            return IsVeo31Fast;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Runway.CreateTextToVideoRequestVeo3? Veo3 { get; init; }
 #else
@@ -59,6 +85,19 @@ namespace Runway
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Veo3))]
 #endif
         public bool IsVeo3 => Veo3 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickVeo3(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Runway.CreateTextToVideoRequestVeo3? value)
+        {
+            value = Veo3;
+            return IsVeo3;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -157,9 +196,9 @@ namespace Runway
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Runway.CreateTextToVideoRequestVeo31?, TResult>? veo31 = null,
-            global::System.Func<global::Runway.CreateTextToVideoRequestVeo31Fast?, TResult>? veo31Fast = null,
-            global::System.Func<global::Runway.CreateTextToVideoRequestVeo3?, TResult>? veo3 = null,
+            global::System.Func<global::Runway.CreateTextToVideoRequestVeo31, TResult>? veo31 = null,
+            global::System.Func<global::Runway.CreateTextToVideoRequestVeo31Fast, TResult>? veo31Fast = null,
+            global::System.Func<global::Runway.CreateTextToVideoRequestVeo3, TResult>? veo3 = null,
             bool validate = true)
         {
             if (validate)
@@ -187,9 +226,39 @@ namespace Runway
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Runway.CreateTextToVideoRequestVeo31?>? veo31 = null,
-            global::System.Action<global::Runway.CreateTextToVideoRequestVeo31Fast?>? veo31Fast = null,
-            global::System.Action<global::Runway.CreateTextToVideoRequestVeo3?>? veo3 = null,
+            global::System.Action<global::Runway.CreateTextToVideoRequestVeo31>? veo31 = null,
+
+            global::System.Action<global::Runway.CreateTextToVideoRequestVeo31Fast>? veo31Fast = null,
+
+            global::System.Action<global::Runway.CreateTextToVideoRequestVeo3>? veo3 = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsVeo31)
+            {
+                veo31?.Invoke(Veo31!);
+            }
+            else if (IsVeo31Fast)
+            {
+                veo31Fast?.Invoke(Veo31Fast!);
+            }
+            else if (IsVeo3)
+            {
+                veo3?.Invoke(Veo3!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::Runway.CreateTextToVideoRequestVeo31>? veo31 = null,
+            global::System.Action<global::Runway.CreateTextToVideoRequestVeo31Fast>? veo31Fast = null,
+            global::System.Action<global::Runway.CreateTextToVideoRequestVeo3>? veo3 = null,
             bool validate = true)
         {
             if (validate)

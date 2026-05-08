@@ -25,6 +25,19 @@ namespace Runway
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ElevenMultilingualStsV2))]
 #endif
         public bool IsElevenMultilingualStsV2 => ElevenMultilingualStsV2 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickElevenMultilingualStsV2(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2? value)
+        {
+            value = ElevenMultilingualStsV2;
+            return IsElevenMultilingualStsV2;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -69,7 +82,7 @@ namespace Runway
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2?, TResult>? elevenMultilingualStsV2 = null,
+            global::System.Func<global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2, TResult>? elevenMultilingualStsV2 = null,
             bool validate = true)
         {
             if (validate)
@@ -89,7 +102,25 @@ namespace Runway
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2?>? elevenMultilingualStsV2 = null,
+            global::System.Action<global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2>? elevenMultilingualStsV2 = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsElevenMultilingualStsV2)
+            {
+                elevenMultilingualStsV2?.Invoke(ElevenMultilingualStsV2!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2>? elevenMultilingualStsV2 = null,
             bool validate = true)
         {
             if (validate)

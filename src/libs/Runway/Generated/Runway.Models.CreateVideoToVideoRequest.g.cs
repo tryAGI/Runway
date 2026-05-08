@@ -25,6 +25,19 @@ namespace Runway
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Gen4Aleph))]
 #endif
         public bool IsGen4Aleph => Gen4Aleph != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickGen4Aleph(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Runway.CreateVideoToVideoRequestGen4Aleph? value)
+        {
+            value = Gen4Aleph;
+            return IsGen4Aleph;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -69,7 +82,7 @@ namespace Runway
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Runway.CreateVideoToVideoRequestGen4Aleph?, TResult>? gen4Aleph = null,
+            global::System.Func<global::Runway.CreateVideoToVideoRequestGen4Aleph, TResult>? gen4Aleph = null,
             bool validate = true)
         {
             if (validate)
@@ -89,7 +102,25 @@ namespace Runway
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Runway.CreateVideoToVideoRequestGen4Aleph?>? gen4Aleph = null,
+            global::System.Action<global::Runway.CreateVideoToVideoRequestGen4Aleph>? gen4Aleph = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsGen4Aleph)
+            {
+                gen4Aleph?.Invoke(Gen4Aleph!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::Runway.CreateVideoToVideoRequestGen4Aleph>? gen4Aleph = null,
             bool validate = true)
         {
             if (validate)
