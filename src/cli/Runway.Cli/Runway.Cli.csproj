@@ -14,8 +14,8 @@
     <Authors>tryAGI and contributors</Authors>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageIcon>nuget-icon.png</PackageIcon>
-    <Description>Command line interface for Runway image, video, task, and avatar workflows.</Description>
-    <PackageTags>runway;cli;video-generation;image-generation;avatar;api;ai</PackageTags>
+    <Description>Command line interface for Runway generation, task, upload, document, voice, realtime, workflow, organization, and avatar APIs.</Description>
+    <PackageTags>runway;cli;video-generation;image-generation;audio-generation;avatar;workflow;api;ai</PackageTags>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 

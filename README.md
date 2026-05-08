@@ -264,13 +264,25 @@ var tools = runway.AsTools();
 
 ### CLI
 
-This repository includes a local .NET tool project for image, video, task, and avatar workflows. It reads `RUNWAY_API_KEY` or `RUNWAYML_API_SECRET` by default.
+This repository includes a local .NET tool project for Runway generation, task management, uploads, documents, voices, realtime sessions, organization usage, workflows, and avatar workflows. It reads `RUNWAY_API_KEY` or `RUNWAYML_API_SECRET` by default.
 
 ```bash
+export RUNWAY_API_KEY="..."
+
 # One-shot via dnx. The installed tool command is `runway`; dnx uses the package ID.
 dnx Runway.Cli video a cinematic drone shot over a neon desert highway
 
 dnx Runway.Cli image a product photo of a translucent glass speaker on a steel table
+
+dnx Runway.Cli image "a clean app icon for a studio camera tool" \
+  --model gemini-2.5-flash \
+  --ratio 1024:1024 \
+  --output ./runway-image
+
+dnx Runway.Cli image-to-video "a slow push in on the reference image" \
+  --image ./reference.png \
+  --model gen4-turbo \
+  --output ./runway-video
 
 # Installed tool form.
 dotnet tool install --global Runway.Cli
@@ -290,6 +302,12 @@ dotnet run --project src/cli/Runway.Cli -- video a slow push in on the reference
   --image ./reference.png \
   --output ./runway-output
 
+dotnet run --project src/cli/Runway.Cli -- models
+
+dotnet run --project src/cli/Runway.Cli -- text-to-speech "A warm, concise product walkthrough voiceover." \
+  --voice-preset clara \
+  --output ./runway-audio
+
 dotnet run --project src/cli/Runway.Cli -- task get 17f20503-6c24-4c16-946b-35dbbce2af2f \
   --wait \
   --download \
@@ -304,6 +322,10 @@ dotnet run --project src/cli/Runway.Cli -- avatar video \
   --voice-preset clara \
   --text "Welcome to the Runway API hackathon." \
   --wait
+
+dotnet run --project src/cli/Runway.Cli -- upload create --file ./reference.png
+
+dotnet run --project src/cli/Runway.Cli -- workflow list
 ```
 
 ## Support

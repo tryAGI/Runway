@@ -12,7 +12,36 @@ public partial class Tests
         result.ExitCode.Should().Be(0);
         result.Stdout.Should().Contain("video <prompt>");
         result.Stdout.Should().Contain("image <prompt>");
+        result.Stdout.Should().Contain("text-to-video");
+        result.Stdout.Should().Contain("image-to-video");
+        result.Stdout.Should().Contain("video-to-video");
+        result.Stdout.Should().Contain("character-performance");
+        result.Stdout.Should().Contain("sound-effect");
+        result.Stdout.Should().Contain("speech-to-speech");
+        result.Stdout.Should().Contain("text-to-speech");
+        result.Stdout.Should().Contain("voice-dubbing");
+        result.Stdout.Should().Contain("voice-isolation");
+        result.Stdout.Should().Contain("document");
+        result.Stdout.Should().Contain("upload");
+        result.Stdout.Should().Contain("voice");
+        result.Stdout.Should().Contain("realtime");
+        result.Stdout.Should().Contain("organization");
+        result.Stdout.Should().Contain("workflow");
+        result.Stdout.Should().Contain("models");
         result.Stdout.Should().Contain("task");
+    }
+
+    [TestMethod]
+    public async Task RunwayCli_ModelsListsAllEndpointModelFamilies()
+    {
+        var result = await RunCliAsync("models", removeApiKey: true).ConfigureAwait(false);
+
+        result.ExitCode.Should().Be(0);
+        result.Stdout.Should().Contain("gen4.5");
+        result.Stdout.Should().Contain("gen4_aleph");
+        result.Stdout.Should().Contain("gpt_image_2");
+        result.Stdout.Should().Contain("eleven_voice_isolation");
+        result.Stdout.Should().Contain("gwm1_avatars");
     }
 
     [TestMethod]
