@@ -431,12 +431,75 @@ CLI endpoint and model coverage:
 | `upload` | `POST /v1/uploads` | Ephemeral uploads |
 | `voice` | `GET/POST/PATCH/DELETE /v1/voices`, `POST /v1/voices/preview` | `eleven_ttv_v3`, `eleven_multilingual_ttv_v2` |
 | `realtime` | `POST/GET/DELETE /v1/realtime_sessions` | `gwm1_avatars` |
-| `organization` | `GET /v1/organization`, `POST /v1/organization/usage` | Usage and metadata |
+| `organization`, `account` | `GET /v1/organization`, `POST /v1/organization/usage` | Usage and metadata; `account` is an alias for `organization get` |
 | `workflow` | `GET/POST /v1/workflows`, `GET /v1/workflow_invocations/{id}` | Published workflows |
+| `soul-id` | Local client-side registry under `~/.runway-cli/soul-ids/<id>/` | No API call; reference photos for face-faithful generation |
+| `auth` | Local credentials file under `~/.runway-cli/credentials.json` | No API call; `set/show/clear` API key |
+| `generate` | Router into `image`, `video`, `image-to-video`, `text-to-speech`, `sound-effect` by `--kind` | Per underlying command |
+| `models schema <model>` | None | Curated parameter notes per model id |
+| `marketing-studio avatars list` | `GET /v1/avatars` | Alias of `avatar list`; for Higgsfield Marketing Studio parity |
+| `marketing-studio webproducts fetch --url` | None (client-side OG/Twitter metadata extraction) | No API call |
 
 The CLI `short-video` command can plan with external agents before using Runway: `--planner auto` (default) tries Claude Code first, Codex CLI second, then the deterministic planner; `--planner deterministic` keeps output fully local and CI-safe. `--planner-model`, `--planner-tools`, and `--planner-timeout-seconds` also support `RUNWAY_SHORT_VIDEO_PLANNER_MODEL`, `RUNWAY_SHORT_VIDEO_PLANNER_TOOLS`, and `RUNWAY_SHORT_VIDEO_PLANNER_TIMEOUT_SECONDS`. `short-video run --plan` is execution-only and never invokes a planner. The bundled planner prompt is Runway-owned and was shaped by storyboard-creation workflows; no external storyboard skill is installed or required. Normal `short-video` generation writes the exact executed plan next to the final video as `*.plan.json`, and logs which planner source was used.
 
-The creative recipe commands are Runway-native. `product-photoshoot create`, `marketplace-cards create`, and `ad-video create` bundle product/ad/storyboard prompt guidance inspired by compact creator workflows: concise sensory prompts, camera and motion structure, lighting, positive phrasing, mode routing, reference-image handling, and model-fit defaults. They do not install or call Higgsfield, and marketplace-card plans are creative asset bundles rather than marketplace compliance claims. For presenter-like videos, use the existing avatar and character-performance commands; Runway does not expose Higgsfield-style reusable face-model training through this SDK.
+The creative recipe commands are Runway-native. `product-photoshoot create`, `marketplace-cards create`, and `ad-video create` bundle product/ad/storyboard prompt guidance inspired by compact creator workflows: concise sensory prompts, camera and motion structure, lighting, positive phrasing, mode routing, reference-image handling, and model-fit defaults. They do not install or call Higgsfield, and marketplace-card plans are creative asset bundles rather than marketplace compliance claims. For face-faithful identity reuse, the CLI ships a local `soul-id` registry (see "Higgsfield Parity" below) that auto-attaches reference photos to every generation call that supports them; it does not train a server-side identity model. For presenter-like talking videos, use the existing `avatar` and `character-performance` commands.
+
+#### Higgsfield Parity
+
+The CLI ships a Higgsfield-parity surface so an agent trained on `higgsfield-ai/skills` verbs can drive Runway with the same vocabulary. Mapping:
+
+| Higgsfield CLI | Runway CLI | Notes |
+| --- | --- | --- |
+| `higgsfield generate create` | `runway generate <prompt> --kind image\|video\|image-to-video\|text-to-speech\|sound-effect` | Thin router. For per-modality options, prefer `runway image`, `runway video`, `runway image-to-video`, `runway text-to-speech`, `runway sound-effect` directly. |
+| `higgsfield soul-id create/list/get/wait` | `runway soul-id create/list/get/wait/delete` | Local registry under `~/.runway-cli/soul-ids/<id>/`. Photos are stored client-side; `wait` is a no-op. Pass `--soul-id <id>` to `image`, `image-to-video`, `product-photoshoot create`, `marketplace-cards create`, or `ad-video create` to auto-attach the registered photos as reference images. Not wired into `short-video` because text-to-video does not accept reference images; chain `image` → `image-to-video` per shot for identity-faithful multi-shot stories. |
+| `higgsfield product-photoshoot --mode` (10 modes) | `runway product-photoshoot create --mode` (10 modes) | All Higgsfield modes mapped: `product_shot`, `lifestyle_scene`, `closeup_product_with_person`, `moodboard_pin`, `hero_banner`, `social_carousel`, `ad_creative_pack`, `virtual_model_tryout`, `conceptual_product`, `restyle`. |
+| `higgsfield marketplace-cards --scope` | `runway marketplace-cards create --scope` | All four scopes match: `main`, `product-images`, `aplus`, `full-set`. |
+| `higgsfield marketing-studio avatars` | `runway marketing-studio avatars list` | Re-exposes the existing avatar list endpoints. |
+| `higgsfield marketing-studio webproducts fetch --url` | `runway marketing-studio webproducts fetch --url` | Client-side OG/Twitter metadata extraction. |
+| `higgsfield marketing-studio products/hooks/settings/ad-references` | _not supported_ | Runway has no analog. Use `workflow` and `document` for adjacent capabilities. |
+| `higgsfield auth login` (device flow) | `runway auth set/show/clear` | Runway uses an API key, not OAuth device flow. The stored credentials file is `~/.runway-cli/credentials.json` (mode 0600). |
+| `higgsfield account` | `runway account` | Alias of `runway organization get`. |
+| `higgsfield model list` / `higgsfield model schema <model>` | `runway models` / `runway models schema <model>` | `models` lists Runway endpoint families and supported model IDs. `models schema <model>` prints curated parameter notes. |
+| `higgsfield upload` | `runway upload create` | Same shape, single subcommand. |
+| `higgsfield generate wait <task-id>` | `runway task get <task-id> --wait` | With `--download --kind image` or `--kind video` for one-step retrieval. |
+
+Soul-id example flow:
+
+```bash
+# Create a soul-id from 5+ reference photos
+dnx Runway.Cli soul-id create --name "alice" \
+  --image ./refs/1.jpg --image ./refs/2.jpg --image ./refs/3.jpg \
+  --image ./refs/4.jpg --image ./refs/5.jpg
+
+# List entries
+dnx Runway.Cli soul-id list
+
+# Generate a product shot using the soul-id (auto-attaches the photos)
+dnx Runway.Cli image "alice holding a vintage camera in golden-hour light" \
+  --model gpt-image-2 --soul-id <id> --output ./runway-output
+
+# Soul-id flows through every reference-aware recipe
+dnx Runway.Cli product-photoshoot create \
+  --prompt "alice in a quiet studio kitchen" \
+  --mode closeup_product_with_person --soul-id <id> --plan-only
+```
+
+Auth and account:
+
+```bash
+dnx Runway.Cli auth set --api-key "$RUNWAY_API_KEY"
+dnx Runway.Cli auth show
+dnx Runway.Cli auth clear
+
+dnx Runway.Cli account
+dnx Runway.Cli models schema gen4_turbo
+```
+
+Marketing-studio webproducts dossier:
+
+```bash
+dnx Runway.Cli marketing-studio webproducts fetch --url https://example.com/product
+```
 
 The short-video workflow is also available from the SDK through `RunwayShortVideoExtensions.CreateShortVideoPlan(...)`, `IChatClient.CreateShortVideoPlanAsync(...)`, `client.CreateShortVideoAsync(...)`, and `client.CreateShortVideoAsync(plan, ...)`. Backend code can use the deterministic planner, supply a custom `RunwayShortVideoPlanner`, ask any Microsoft.Extensions.AI `IChatClient` for richer storyboard JSON, review or edit the plan, then execute the edited plan. `RunwayShortVideoJsonSerializerContext` provides AOT-safe JSON metadata for serializing plans and results.
 

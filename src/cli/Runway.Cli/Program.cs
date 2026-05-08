@@ -1039,6 +1039,7 @@ var productPhotoshootCreateCommand = new Command("create", "Create product photo
 {
     recipePromptOption,
     promptImageOption,
+    soulIdReferenceOption,
     recipeCountOption,
     recipeRatioOption,
     recipeModelOption,
@@ -1064,7 +1065,7 @@ productPhotoshootCreateCommand.SetAction(async (ParseResult parseResult, Cancell
     {
         plan = RunwayCliCreativeRecipes.CreateProductPhotoshootPlan(
             RequireOption(parseResult, recipePromptOption),
-            parseResult.GetValue(promptImageOption),
+            MergeSoulIdImages(parseResult, parseResult.GetValue(promptImageOption)),
             parseResult.GetValue(recipeCountOption),
             parseResult.GetValue(recipeRatioOption),
             parseResult.GetValue(recipeModelOption),
@@ -1096,6 +1097,7 @@ var marketplaceCardsCreateCommand = new Command("create", "Create marketplace-st
 {
     recipePromptOption,
     marketplaceAssetOption,
+    soulIdReferenceOption,
     recipeCountOption,
     recipeRatioOption,
     recipeModelOption,
@@ -1119,7 +1121,7 @@ marketplaceCardsCreateCommand.SetAction(async (ParseResult parseResult, Cancella
     {
         plan = RunwayCliCreativeRecipes.CreateMarketplaceCardsPlan(
             RequireOption(parseResult, recipePromptOption),
-            parseResult.GetValue(marketplaceAssetOption),
+            MergeSoulIdImages(parseResult, parseResult.GetValue(marketplaceAssetOption)),
             parseResult.GetValue(recipeCountOption),
             parseResult.GetValue(recipeRatioOption),
             parseResult.GetValue(recipeModelOption),
@@ -1149,6 +1151,7 @@ var adVideoCreateCommand = new Command("create", "Create ad video shot prompts a
 {
     recipePromptOption,
     promptImageOption,
+    soulIdReferenceOption,
     recipeRatioOption,
     recipeModelOption,
     outputOption,
@@ -1174,7 +1177,7 @@ adVideoCreateCommand.SetAction(async (ParseResult parseResult, CancellationToken
     {
         plan = RunwayCliCreativeRecipes.CreateAdVideoPlan(
             RequireOption(parseResult, recipePromptOption),
-            parseResult.GetValue(promptImageOption),
+            MergeSoulIdImages(parseResult, parseResult.GetValue(promptImageOption)),
             parseResult.GetValue(adVideoShotCountOption),
             parseResult.GetValue(recipeRatioOption),
             parseResult.GetValue(recipeModelOption),

@@ -343,9 +343,19 @@ dnx Runway.Cli image "alice holding a vintage camera in golden-hour light" \
 # Animate using the same identity
 dnx Runway.Cli image-to-video "alice gently turns toward the camera" \
   --soul-id <id-from-list> --image ./refs/1.jpg --output ./runway-output
+
+# Soul-id also flows through every reference-aware recipe:
+dnx Runway.Cli product-photoshoot create --prompt "alice in a quiet studio kitchen" \
+  --mode closeup_product_with_person --soul-id <id-from-list> --plan-only
+
+dnx Runway.Cli marketplace-cards create --prompt "alice's signature mug" \
+  --scope main --soul-id <id-from-list> --plan-only
+
+dnx Runway.Cli ad-video create --prompt "alice unboxes the new kettle" \
+  --mode unboxing --shots 1 --soul-id <id-from-list> --plan-only
 ```
 
-The local soul-id registry stores reference photos only — it does not train a server-side identity model. For Runway-native talking-avatar workflows, use `runway avatar create` and `runway avatar video`.
+The local soul-id registry stores reference photos only — it does not train a server-side identity model. `--soul-id` is wired into every command that accepts reference images: `image`, `image-to-video`, `product-photoshoot create`, `marketplace-cards create`, and `ad-video create`. It is NOT wired into `short-video` because Runway's text-to-video endpoint does not accept reference images; for identity-faithful multi-shot stories, run `image` with `--soul-id` to produce a keyframe and then chain `image-to-video --image <keyframe> --soul-id <id>` per shot. For Runway-native talking-avatar workflows, use `runway avatar create` and `runway avatar video`.
 
 Auth and account:
 
