@@ -37,6 +37,7 @@ Default to low-cost, practical choices:
 | Quick image | `image --model gemini-2.5-flash --ratio 1024:1024` |
 | Image with accurate text | `image --model gpt-image-2 --resolution 1K --quality low` |
 | Text-to-video | `video --model veo3.1-fast --duration 4 --ratio 1280:720` |
+| Scenario to short film | `short-video --shots 3 --duration 4 --ratio 1280:720` |
 | Image-to-video from a local file | `image-to-video --model gen4-turbo --image <file>` |
 | Highest quality video | `video --model gen4.5` or `video --model veo3` |
 | Video edit / transformation | `video-to-video --video <file>` |
@@ -63,6 +64,23 @@ dnx Runway.Cli video "a cinematic drone shot over a neon desert highway" \
   --duration 4 \
   --ratio 1280:720 \
   --output ./runway-output
+```
+
+Generate a planned multi-shot short video from one scenario:
+
+```bash
+dnx Runway.Cli short-video "a tiny robot finds a glowing seed and turns a rooftop into a garden" \
+  --shots 3 \
+  --duration 4 \
+  --output ./runway-short-video
+```
+
+Review the generated scenario/keyframe prompts before spending credits:
+
+```bash
+dnx Runway.Cli short-video "a calm product launch film for a transparent speaker" \
+  --shots 3 \
+  --plan-only
 ```
 
 Animate a local image:
@@ -108,7 +126,7 @@ dnx Runway.Cli upload create --file ./reference.png
 
 ## Multi-Step Recipes
 
-Keep orchestration simple. Use shell loops or two-command recipes before adding new app code.
+Keep orchestration simple. Use `short-video` for scenario-to-keyframe-to-video one-shot work; use shell loops or two-command recipes when the user specifically needs custom control.
 
 Concept image, then animated video:
 

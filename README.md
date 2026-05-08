@@ -307,6 +307,14 @@ dnx Runway.Cli image-to-video "a slow push in on the reference image" \
   --model gen4-turbo \
   --output ./runway-video
 
+dnx Runway.Cli short-video "a tiny robot finds a glowing seed and turns a rooftop into a garden" \
+  --shots 3 \
+  --output ./runway-short-video
+
+dnx Runway.Cli short-video "a calm product launch film for a transparent speaker" \
+  --shots 3 \
+  --plan-only
+
 # Installed tool form.
 dotnet tool install --global Runway.Cli
 runway video a cinematic drone shot over a neon desert highway
@@ -332,6 +340,10 @@ dotnet run --project src/cli/Runway.Cli -- image "a sharp product poster with re
 dotnet run --project src/cli/Runway.Cli -- video a slow push in on the reference image \
   --image ./reference.png \
   --output ./runway-output
+
+dotnet run --project src/cli/Runway.Cli -- short-video "a tiny robot finds a glowing seed and turns a rooftop into a garden" \
+  --shots 3 \
+  --output ./runway-short-video
 
 dotnet run --project src/cli/Runway.Cli -- models
 
@@ -364,6 +376,7 @@ CLI endpoint and model coverage:
 | Command | Endpoint(s) | Models |
 | --- | --- | --- |
 | `video`, `text-to-video` | `POST /v1/text_to_video` | `gen4.5`, `veo3.1`, `veo3.1_fast`, `veo3` |
+| `short-video` | Multi-shot planner over `POST /v1/text_to_video`; optionally concatenates downloaded clips with `ffmpeg` | `gen4.5`, `veo3.1`, `veo3.1_fast`, `veo3` |
 | `image-to-video` | `POST /v1/image_to_video` | `gen4.5`, `gen4_turbo`, `gen3a_turbo`, `veo3.1`, `veo3.1_fast`, `veo3` |
 | `video-to-video` | `POST /v1/video_to_video` | `gen4_aleph` |
 | `image` | `POST /v1/text_to_image` | `gen4_image_turbo`, `gen4_image`, `gemini_image3_pro`, `gpt_image_2`, `gemini_2.5_flash` |
@@ -383,9 +396,11 @@ CLI endpoint and model coverage:
 | `organization` | `GET /v1/organization`, `POST /v1/organization/usage` | Usage and metadata |
 | `workflow` | `GET/POST /v1/workflows`, `GET /v1/workflow_invocations/{id}` | Published workflows |
 
+The short-video workflow is also available from the SDK through `RunwayShortVideoExtensions.CreateShortVideoPlan(...)` and `client.CreateShortVideoAsync(...)`. Backend code can use `CreateShortVideoPlan` to review or edit the generated scenario/keyframe prompts before calling Runway, or use `CreateShortVideoAsync` for the same one-shot behavior as the CLI.
+
 ### Agent Skill
 
-The repo includes a compact Codex-compatible skill at `.agents/skills/runway-cli/SKILL.md`. It mirrors the official [runwayml/skills](https://github.com/runwayml/skills) agent-skill flow, but uses `dnx Runway.Cli` as the runtime instead of bundled Python or Node scripts. The skill covers direct media generation, resource inspection, uploads, task polling/downloads, and simple multi-step recipes such as concept image to video and batch product-image animation.
+The repo includes a compact Codex-compatible skill at `.agents/skills/runway-cli/SKILL.md`. It mirrors the official [runwayml/skills](https://github.com/runwayml/skills) agent-skill flow, but uses `dnx Runway.Cli` as the runtime instead of bundled Python or Node scripts. The skill covers direct media generation, scenario-to-short-video planning, resource inspection, uploads, task polling/downloads, and simple multi-step recipes such as concept image to video and batch product-image animation.
 
 ## Support
 

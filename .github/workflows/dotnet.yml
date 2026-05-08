@@ -62,6 +62,9 @@ jobs:
       - name: Smoke model inventory
         run: dotnet run --project src/cli/Runway.Cli -c Release --no-build -- models
 
+      - name: Smoke short-video plan
+        run: dotnet run --project src/cli/Runway.Cli -c Release --no-build -- short-video "tiny robot finds a glowing garden" --shots 2 --plan-only
+
   release:
     name: Release
     runs-on: ubuntu-latest

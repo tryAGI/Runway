@@ -15,6 +15,8 @@ public partial class Tests
         skill.Should().Contain("name: runway-cli");
         skill.Should().Contain("dnx Runway.Cli");
         skill.Should().Contain("--prerelease --yes");
+        skill.Should().Contain("short-video");
+        skill.Should().Contain("--plan-only");
         skill.Should().Contain("image-to-video");
         skill.Should().Contain("text-to-speech");
         skill.Should().Contain("upload create");

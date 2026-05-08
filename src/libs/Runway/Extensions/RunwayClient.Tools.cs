@@ -25,11 +25,59 @@ public static class RunwayClientToolExtensions
 
         return
         [
+            client.AsShortVideoTool(runwayVersion),
             client.AsTextToVideoTool(runwayVersion),
             client.AsGenerateImageTool(runwayVersion),
             client.AsImageToVideoTool(runwayVersion),
             client.AsGetTaskTool(runwayVersion),
         ];
+    }
+
+    /// <summary>
+    /// Creates an <see cref="AIFunction"/> that expands a scenario into a multi-shot short-video plan and starts one task per shot.
+    /// </summary>
+    /// <param name="client">The Runway client.</param>
+    /// <param name="runwayVersion">The Runway API version header.</param>
+    /// <param name="shotCount">Number of shots to plan and submit.</param>
+    /// <param name="ratio">The output video ratio.</param>
+    /// <param name="duration">Duration in seconds for each shot.</param>
+    /// <param name="audio">Whether to request generated audio for models that support it.</param>
+    /// <returns>An AI function that returns the planned shots and task IDs.</returns>
+    public static AIFunction AsShortVideoTool(
+        this RunwayClient client,
+        string runwayVersion = "2024-11-06",
+        int shotCount = 3,
+        string ratio = RunwayShortVideoOptions.DefaultRatio,
+        double duration = 4,
+        bool audio = false)
+    {
+        ArgumentNullException.ThrowIfNull(client);
+
+        return AIFunctionFactory.Create(
+            async (
+                [Description("Scenario text to turn into a coherent multi-shot short video.")] string scenario,
+                [Description("Optional visual style guidance shared by all planned shots.")] string? style,
+                CancellationToken cancellationToken) =>
+            {
+                var result = await client.CreateShortVideoAsync(
+                    scenario,
+                    new RunwayShortVideoOptions
+                    {
+                        ShotCount = shotCount,
+                        Ratio = ratio,
+                        ShotDurationSeconds = duration,
+                        Audio = audio,
+                        Style = style,
+                        WaitForCompletion = false,
+                        DownloadOutputs = false,
+                    },
+                    runwayVersion,
+                    cancellationToken: cancellationToken).ConfigureAwait(false);
+
+                return FormatShortVideoResult(result);
+            },
+            name: "Runway_ShortVideo",
+            description: "Expands a scenario into keyframe prompts, starts one Runway text-to-video task per shot, and returns the task IDs to poll or download later.");
     }
 
     /// <summary>
@@ -200,6 +248,25 @@ public static class RunwayClientToolExtensions
         return string.Create(
             CultureInfo.InvariantCulture,
             $"Runway {taskType} task created.\nTask ID: {taskId}");
+    }
+
+    private static string FormatShortVideoResult(RunwayShortVideoResult result)
+    {
+        var lines = new List<string>
+        {
+            "Runway short-video tasks created.",
+            $"Scenario: {result.Plan.Scenario}",
+            "Shots:",
+        };
+
+        foreach (var shot in result.Shots)
+        {
+            lines.Add(string.Create(CultureInfo.InvariantCulture, $"- {shot.Shot.Index}. {shot.Shot.Title}"));
+            lines.Add($"  Beat: {shot.Shot.Beat}");
+            lines.Add(string.Create(CultureInfo.InvariantCulture, $"  Task ID: {shot.TaskId}"));
+        }
+
+        return string.Join("\n", lines);
     }
 
     private static string FormatTask(GetTasksResponse task)

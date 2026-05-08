@@ -439,6 +439,12 @@ var videoPromptArgument = new Argument<string[]>("prompt")
     Arity = ArgumentArity.OneOrMore,
 };
 
+var shortVideoPromptArgument = new Argument<string[]>("scenario")
+{
+    Description = "Scenario text to expand into a short multi-shot video.",
+    Arity = ArgumentArity.OneOrMore,
+};
+
 var imagePromptArgument = new Argument<string[]>("prompt")
 {
     Description = "Prompt text. Multiple words are joined, so quotes are optional.",
@@ -565,6 +571,37 @@ var noWaitOption = new Option<bool>("--no-wait")
     Description = "Submit the task and print the task ID without waiting or downloading outputs.",
 };
 
+var shortVideoShotCountOption = new Option<int>("--shots")
+{
+    Description = "Number of planned shots to generate. Supported range: 1-6.",
+    DefaultValueFactory = _ => 3,
+};
+
+var shortVideoStyleOption = new Option<string?>("--style")
+{
+    Description = "Optional shared visual style applied to every planned shot.",
+};
+
+var shortVideoAudioOption = new Option<bool>("--audio")
+{
+    Description = "Enable per-shot generated audio when the selected model supports it.",
+};
+
+var shortVideoPlanOnlyOption = new Option<bool>("--plan-only")
+{
+    Description = "Only print the scenario, keyframes, and prompts; do not call the Runway API.",
+};
+
+var shortVideoNoConcatOption = new Option<bool>("--no-concat")
+{
+    Description = "Leave downloaded shot segments separate instead of trying to concatenate them with ffmpeg.",
+};
+
+var ffmpegOption = new Option<string?>("--ffmpeg")
+{
+    Description = "Optional ffmpeg binary path used to concatenate downloaded short-video shot segments.",
+};
+
 var generateVideoCommand = new Command("video", "Generate a video locally from a text prompt.")
 {
     videoPromptArgument,
@@ -669,6 +706,92 @@ generateVideoCommand.SetAction((ParseResult parseResult, CancellationToken cance
             Console.WriteLine(path);
         }
     }, cancellationToken));
+
+var shortVideoCommand = new Command("short-video", "Expand a scenario into keyframe prompts and generate a multi-shot short video.")
+{
+    shortVideoPromptArgument,
+    outputOption,
+    videoRatioOption,
+    videoModelOption,
+    generationDurationOption,
+    shortVideoShotCountOption,
+    shortVideoStyleOption,
+    shortVideoAudioOption,
+    seedOption,
+    publicFigureThresholdOption,
+    shortVideoPlanOnlyOption,
+    shortVideoNoConcatOption,
+    ffmpegOption,
+    noWaitOption,
+    pollIntervalOption,
+};
+rootCommand.Subcommands.Add(shortVideoCommand);
+shortVideoCommand.SetAction((ParseResult parseResult, CancellationToken cancellationToken) =>
+{
+    var scenario = RunwayCliGeneration.JoinPrompt(parseResult.GetValue(shortVideoPromptArgument));
+    var output = RunwayCliShortVideo.ResolveOutput(parseResult.GetValue(outputOption), DateTime.UtcNow);
+    var options = CreateShortVideoOptions(parseResult, output.SegmentDirectory);
+    var plan = RunwayShortVideoExtensions.CreateShortVideoPlan(scenario, options);
+
+    if (parseResult.GetValue(shortVideoPlanOnlyOption))
+    {
+        Console.WriteLine(RunwayCliShortVideo.ToJson(plan));
+        return Task.FromResult(0);
+    }
+
+    return RunWithClientAsync(parseResult, async (client, runwayVersion, ct) =>
+    {
+        WriteShortVideoPlan(plan);
+
+        var result = await client.CreateShortVideoAsync(
+            scenario,
+            options,
+            runwayVersion,
+            progress: new RunwayCliInlineProgress<RunwayShortVideoProgress>(WriteShortVideoProgress),
+            cancellationToken: ct).ConfigureAwait(false);
+
+        if (parseResult.GetValue(noWaitOption))
+        {
+            foreach (var shot in result.Shots)
+            {
+                Console.WriteLine(shot.TaskId);
+            }
+
+            return;
+        }
+
+        if (parseResult.GetValue(shortVideoNoConcatOption))
+        {
+            foreach (var path in result.DownloadedFiles)
+            {
+                Console.WriteLine(path);
+            }
+
+            return;
+        }
+
+        var concat = await RunwayCliShortVideo.TryConcatAsync(
+            result.DownloadedFiles,
+            output.FinalOutput,
+            parseResult.GetValue(ffmpegOption),
+            ct).ConfigureAwait(false);
+        if (concat.Warning is { Length: > 0 })
+        {
+            await Console.Error.WriteLineAsync(concat.Warning).ConfigureAwait(false);
+        }
+
+        if (concat.Output is { Length: > 0 })
+        {
+            Console.WriteLine(concat.Output);
+            return;
+        }
+
+        foreach (var path in result.DownloadedFiles)
+        {
+            Console.WriteLine(path);
+        }
+    }, cancellationToken);
+});
 
 var generateImageCommand = new Command("image", "Generate an image locally from a text prompt.")
 {
@@ -1156,6 +1279,7 @@ modelsCommand.SetAction(_ =>
 {
     Console.WriteLine("Video generation:");
     Console.WriteLine("  text-to-video: gen4.5, veo3.1, veo3.1_fast, veo3");
+    Console.WriteLine("  short-video: multi-shot text-to-video orchestration over gen4.5, veo3.1, veo3.1_fast, veo3");
     Console.WriteLine("  image-to-video: gen4.5, gen4_turbo, gen3a_turbo, veo3.1, veo3.1_fast, veo3");
     Console.WriteLine("  video-to-video: gen4_aleph");
     Console.WriteLine("  character-performance: act_two");
@@ -1903,6 +2027,66 @@ async Task HandleGenerationTaskAsync(
     foreach (var path in downloaded)
     {
         Console.WriteLine(path);
+    }
+}
+
+RunwayShortVideoOptions CreateShortVideoOptions(
+    ParseResult parseResult,
+    string segmentOutput)
+{
+    return new RunwayShortVideoOptions
+    {
+        ShotCount = parseResult.GetValue(shortVideoShotCountOption),
+        ShotDurationSeconds = parseResult.GetValue(generationDurationOption) ?? 4,
+        Model = parseResult.GetValue(videoModelOption) ?? RunwayShortVideoOptions.DefaultModel,
+        Ratio = parseResult.GetValue(videoRatioOption) ?? RunwayShortVideoOptions.DefaultRatio,
+        Audio = parseResult.GetValue(shortVideoAudioOption),
+        Seed = parseResult.GetValue(seedOption),
+        Style = parseResult.GetValue(shortVideoStyleOption),
+        PublicFigureThreshold = parseResult.GetValue(publicFigureThresholdOption),
+        WaitForCompletion = !parseResult.GetValue(noWaitOption),
+        DownloadOutputs = !parseResult.GetValue(noWaitOption),
+        Output = segmentOutput,
+        PollInterval = TimeSpan.FromSeconds(parseResult.GetValue(pollIntervalOption)),
+    };
+}
+
+static void WriteShortVideoPlan(RunwayShortVideoPlan plan)
+{
+    Console.Error.WriteLine("Short-video plan:");
+    foreach (var shot in plan.Shots)
+    {
+        Console.Error.WriteLine($"  {shot.Index}. {shot.Title}");
+        Console.Error.WriteLine($"     {shot.Beat}");
+    }
+}
+
+static void WriteShortVideoProgress(RunwayShortVideoProgress progress)
+{
+    switch (progress.Stage)
+    {
+        case RunwayShortVideoProgressStage.StartingShot:
+            Console.Error.WriteLine($"Starting shot {progress.Shot.Index}/{progress.Shot.Count}: {progress.Shot.Title}");
+            break;
+
+        case RunwayShortVideoProgressStage.TaskCreated:
+            Console.Error.WriteLine($"Shot {progress.Shot.Index} task ID: {progress.TaskId}");
+            break;
+
+        case RunwayShortVideoProgressStage.TaskUpdated:
+            if (progress.Task is { } task)
+            {
+                WriteTaskProgress(task);
+            }
+
+            break;
+
+        case RunwayShortVideoProgressStage.ShotDownloaded:
+            Console.Error.WriteLine($"Downloaded shot {progress.Shot.Index}.");
+            break;
+
+        default:
+            break;
     }
 }
 

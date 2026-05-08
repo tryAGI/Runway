@@ -11,6 +11,7 @@ public partial class Tests
 
         result.ExitCode.Should().Be(0);
         result.Stdout.Should().Contain("video <prompt>");
+        result.Stdout.Should().Contain("short-video");
         result.Stdout.Should().Contain("image <prompt>");
         result.Stdout.Should().Contain("text-to-video");
         result.Stdout.Should().Contain("image-to-video");
@@ -38,6 +39,7 @@ public partial class Tests
 
         result.ExitCode.Should().Be(0);
         result.Stdout.Should().Contain("gen4.5");
+        result.Stdout.Should().Contain("short-video");
         result.Stdout.Should().Contain("gen4_aleph");
         result.Stdout.Should().Contain("gpt_image_2");
         result.Stdout.Should().Contain("eleven_voice_isolation");
@@ -60,6 +62,91 @@ public partial class Tests
 
         result.ExitCode.Should().Be(1);
         result.Stderr.Should().Contain("Set --api-key, RUNWAY_API_KEY, RUNWAYML_API_SECRET, or a .env file.");
+    }
+
+    [TestMethod]
+    public async Task RunwayCli_ShortVideoPlanOnlyDoesNotRequireApiKey()
+    {
+        var result = await RunCliAsync("short-video tiny robot finds a glowing garden --shots 2 --plan-only", removeApiKey: true).ConfigureAwait(false);
+
+        result.ExitCode.Should().Be(0);
+        result.Stdout.Should().Contain("\"scenario\"");
+        result.Stdout.Should().Contain("\"keyframePrompt\"");
+        result.Stdout.Should().Contain("\"videoPrompt\"");
+    }
+
+    [TestMethod]
+    public async Task RunwayCli_ShortVideoParsesScenarioBeforeRequiringApiKey()
+    {
+        var result = await RunCliAsync("short-video tiny robot finds a glowing garden --no-wait", removeApiKey: true).ConfigureAwait(false);
+
+        result.ExitCode.Should().Be(1);
+        result.Stderr.Should().Contain("Set --api-key, RUNWAY_API_KEY, RUNWAYML_API_SECRET, or a .env file.");
+    }
+
+    [TestMethod]
+    public void RunwayShortVideoPlanner_CreatesKeyframePromptsAndTextToVideoRequest()
+    {
+        var options = new RunwayShortVideoOptions
+        {
+            ShotCount = 3,
+            ShotDurationSeconds = 4,
+            Style = "warm macro sci-fi product film",
+            Seed = 42,
+        };
+
+        var plan = RunwayShortVideoExtensions.CreateShortVideoPlan(
+            "A tiny robot wakes inside a workshop. It finds a glowing seed. The seed becomes a rooftop garden at sunrise.",
+            options);
+
+        plan.Shots.Should().HaveCount(3);
+        plan.Scenario.Should().Contain("3-shot short film");
+        plan.Shots[0].KeyframePrompt.Should().Contain("Establishing keyframe");
+        plan.Shots[1].VideoPrompt.Should().Contain("Short film shot 2 of 3");
+        plan.Shots[2].VideoPrompt.Should().Contain("Resolution keyframe");
+
+        var request = RunwayShortVideoExtensions.CreateTextToVideoRequest(plan.Shots[0].VideoPrompt, options);
+
+        request.IsVeo31Fast.Should().BeTrue();
+        request.Veo31Fast!.PromptText.Should().Be(plan.Shots[0].VideoPrompt);
+        request.Veo31Fast.Ratio.Should().Be(CreateTextToVideoRequestVeo31FastRatio.x1280_720);
+        request.Veo31Fast.Duration.Should().Be(4);
+        request.Veo31Fast.Audio.Should().BeFalse();
+        request.Veo31Fast.AdditionalProperties["seed"].Should().Be(42);
+    }
+
+    [TestMethod]
+    public void RunwayCliShortVideo_ResolvesFileOutputToSegmentDirectoryAndFinalVideo()
+    {
+        var directory = Directory.CreateTempSubdirectory("runway-short-video-test-").FullName;
+
+        try
+        {
+            var finalPath = Path.Combine(directory, "final.mp4");
+            var output = RunwayCliShortVideo.ResolveOutput(finalPath, new DateTime(2026, 5, 8, 15, 0, 0, DateTimeKind.Utc));
+
+            output.FinalOutput.Should().Be(finalPath);
+            output.SegmentDirectory.Should().Be(Path.Combine(directory, "final-segments"));
+        }
+        finally
+        {
+            Directory.Delete(directory, recursive: true);
+        }
+    }
+
+    [TestMethod]
+    public void RunwayCliShortVideo_CreatesFfmpegConcatArguments()
+    {
+        var startInfo = RunwayCliShortVideo.CreateConcatStartInfo(
+            "ffmpeg",
+            "/tmp/list.txt",
+            "/tmp/final.mp4",
+            streamCopy: true);
+
+        var arguments = startInfo.ArgumentList.ToArray();
+        arguments.Should().ContainInOrder("-f", "concat", "-safe", "0", "-i", "/tmp/list.txt");
+        arguments.Should().ContainInOrder("-c", "copy");
+        arguments.Should().EndWith("/tmp/final.mp4");
     }
 
     [TestMethod]
