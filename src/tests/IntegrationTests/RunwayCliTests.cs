@@ -679,6 +679,332 @@ public partial class Tests
     }
 
     [TestMethod]
+    public void RunwayCliShortVideo_NameReplacesTimestampStemWhenOutputIsDirectory()
+    {
+        var directory = Directory.CreateTempSubdirectory("runway-short-video-name-test-").FullName;
+
+        try
+        {
+            var output = RunwayCliShortVideo.ResolveOutput(directory, new DateTime(2026, 5, 8, 15, 0, 0, DateTimeKind.Utc), name: "v4");
+
+            output.SegmentDirectory.Should().Be(directory);
+            output.FinalOutput.Should().Be(Path.Combine(directory, "runway-short-video-v4.mp4"));
+        }
+        finally
+        {
+            Directory.Delete(directory, recursive: true);
+        }
+    }
+
+    [TestMethod]
+    public void RunwayCliShortVideo_NameReplacesTimestampStemWhenOutputOmitted()
+    {
+        var output = RunwayCliShortVideo.ResolveOutput(output: null, new DateTime(2026, 5, 8, 15, 0, 0, DateTimeKind.Utc), name: "marketing-v4");
+
+        var expectedDirectory = Path.Combine(Environment.CurrentDirectory, "runway-short-video-marketing-v4");
+        output.SegmentDirectory.Should().Be(expectedDirectory);
+        output.FinalOutput.Should().Be(Path.Combine(expectedDirectory, "runway-short-video-marketing-v4.mp4"));
+    }
+
+    [TestMethod]
+    public void RunwayCliShortVideo_NameIsIgnoredWhenOutputIsExplicitFilePath()
+    {
+        var directory = Directory.CreateTempSubdirectory("runway-short-video-name-explicit-test-").FullName;
+
+        try
+        {
+            var finalPath = Path.Combine(directory, "launch.mp4");
+            var output = RunwayCliShortVideo.ResolveOutput(finalPath, new DateTime(2026, 5, 8, 15, 0, 0, DateTimeKind.Utc), name: "v4");
+
+            output.FinalOutput.Should().Be(finalPath);
+            output.SegmentDirectory.Should().Be(Path.Combine(directory, "launch-segments"));
+        }
+        finally
+        {
+            Directory.Delete(directory, recursive: true);
+        }
+    }
+
+    [TestMethod]
+    public void RunwayCliShortVideo_NameRejectsPathSeparators()
+    {
+        var act = () => RunwayCliShortVideo.ResolveOutput(output: null, new DateTime(2026, 5, 8, 15, 0, 0, DateTimeKind.Utc), name: "bad/name");
+
+        act.Should().Throw<ArgumentException>();
+    }
+
+    [TestMethod]
+    public void RunwayCliNaming_AutoNameStartsAtOneInEmptyDirectory()
+    {
+        var directory = Directory.CreateTempSubdirectory("runway-auto-name-empty-").FullName;
+
+        try
+        {
+            var name = RunwayCliNaming.ComputeNextNameWithPrefix(
+                stemPrefix: "runway-short-video-",
+                namePrefix: "v",
+                scanDirectory: directory);
+
+            name.Should().Be("v1");
+        }
+        finally
+        {
+            Directory.Delete(directory, recursive: true);
+        }
+    }
+
+    [TestMethod]
+    public void RunwayCliNaming_AutoNameIncrementsPastHighestSibling()
+    {
+        var directory = Directory.CreateTempSubdirectory("runway-auto-name-incr-").FullName;
+
+        try
+        {
+            File.WriteAllText(Path.Combine(directory, "runway-short-video-v1.mp4"), string.Empty);
+            File.WriteAllText(Path.Combine(directory, "runway-short-video-v3.plan.json"), "{}");
+            Directory.CreateDirectory(Path.Combine(directory, "runway-short-video-v2"));
+            File.WriteAllText(Path.Combine(directory, "runway-short-video-other.mp4"), string.Empty);
+
+            var name = RunwayCliNaming.ComputeNextNameWithPrefix(
+                stemPrefix: "runway-short-video-",
+                namePrefix: "v",
+                scanDirectory: directory);
+
+            name.Should().Be("v4");
+        }
+        finally
+        {
+            Directory.Delete(directory, recursive: true);
+        }
+    }
+
+    [TestMethod]
+    public void RunwayCliNaming_AutoNameIgnoresUnrelatedSiblings()
+    {
+        var directory = Directory.CreateTempSubdirectory("runway-auto-name-isolation-").FullName;
+
+        try
+        {
+            File.WriteAllText(Path.Combine(directory, "runway-product-photoshoot-v9-01-foo.png"), string.Empty);
+            File.WriteAllText(Path.Combine(directory, "unrelated-v8.mp4"), string.Empty);
+
+            var name = RunwayCliNaming.ComputeNextNameWithPrefix(
+                stemPrefix: "runway-short-video-",
+                namePrefix: "v",
+                scanDirectory: directory);
+
+            name.Should().Be("v1");
+        }
+        finally
+        {
+            Directory.Delete(directory, recursive: true);
+        }
+    }
+
+    [TestMethod]
+    public void RunwayCliNaming_AutoNameDoesNotConflateLongerSuffixes()
+    {
+        var directory = Directory.CreateTempSubdirectory("runway-auto-name-suffix-").FullName;
+
+        try
+        {
+            File.WriteAllText(Path.Combine(directory, "runway-short-video-v33.mp4"), string.Empty);
+
+            var name = RunwayCliNaming.ComputeNextNameWithPrefix(
+                stemPrefix: "runway-short-video-",
+                namePrefix: "v",
+                scanDirectory: directory);
+
+            name.Should().Be("v34");
+        }
+        finally
+        {
+            Directory.Delete(directory, recursive: true);
+        }
+    }
+
+    [TestMethod]
+    public void RunwayCliNaming_ResolveAutoNameScanDirectoryFallsBackToCwdWhenOutputIsNull()
+    {
+        var directory = RunwayCliNaming.ResolveAutoNameScanDirectory(output: null);
+
+        directory.Should().Be(Environment.CurrentDirectory);
+    }
+
+    [TestMethod]
+    public void RunwayCliNaming_ResolveAutoNameScanDirectoryUsesParentForFileOutput()
+    {
+        var temp = Directory.CreateTempSubdirectory("runway-auto-name-scan-parent-").FullName;
+
+        try
+        {
+            var directory = RunwayCliNaming.ResolveAutoNameScanDirectory(Path.Combine(temp, "result.mp4"));
+
+            directory.Should().Be(temp);
+        }
+        finally
+        {
+            Directory.Delete(temp, recursive: true);
+        }
+    }
+
+    [TestMethod]
+    public void RunwayCli_AutoNameAndResolveOutputProduceMatchingPaths()
+    {
+        var directory = Directory.CreateTempSubdirectory("runway-auto-name-resolve-end-to-end-").FullName;
+
+        try
+        {
+            File.WriteAllText(Path.Combine(directory, "runway-short-video-v3.mp4"), string.Empty);
+
+            var resolvedName = RunwayCliNaming.ComputeNextNameWithPrefix(
+                stemPrefix: "runway-short-video-",
+                namePrefix: "v",
+                scanDirectory: directory);
+
+            var output = RunwayCliShortVideo.ResolveOutput(
+                output: directory,
+                utcNow: new DateTime(2026, 5, 9, 0, 0, 0, DateTimeKind.Utc),
+                name: resolvedName);
+
+            resolvedName.Should().Be("v4");
+            output.SegmentDirectory.Should().Be(directory);
+            output.FinalOutput.Should().Be(Path.Combine(directory, "runway-short-video-v4.mp4"));
+            RunwayCliShortVideo.ResolvePlanOutputPath(output).Should().Be(Path.Combine(directory, "runway-short-video-v4.plan.json"));
+        }
+        finally
+        {
+            Directory.Delete(directory, recursive: true);
+        }
+    }
+
+    [TestMethod]
+    public async Task RunwayCli_ShortVideoAutoNameSurfacesResolvedNameInStderr()
+    {
+        var directory = Directory.CreateTempSubdirectory("runway-cli-auto-name-smoke-").FullName;
+
+        try
+        {
+            await File.WriteAllTextAsync(Path.Combine(directory, "runway-short-video-v3.mp4"), string.Empty).ConfigureAwait(false);
+
+            var result = await RunCliAsync(
+                $"short-video tiny robot finds a glowing garden --shots 2 --plan-only --planner deterministic --auto-name v --output {directory}",
+                removeApiKey: true).ConfigureAwait(false);
+
+            result.ExitCode.Should().Be(0);
+            result.Stderr.Should().Contain("Auto-name resolved to: v4");
+        }
+        finally
+        {
+            Directory.Delete(directory, recursive: true);
+        }
+    }
+
+    [TestMethod]
+    public async Task RunwayCli_ShortVideoNameAndAutoNameAreMutuallyExclusive()
+    {
+        var result = await RunCliAsync(
+            "short-video tiny robot finds a glowing garden --shots 2 --plan-only --planner deterministic --name v3 --auto-name v",
+            removeApiKey: true).ConfigureAwait(false);
+
+        result.ExitCode.Should().NotBe(0);
+        result.Stderr.Should().Contain("--name and --auto-name are mutually exclusive");
+    }
+
+    [TestMethod]
+    public async Task RunwayCli_RecipeAutoNameSurfacesResolvedNameInPlanOnly()
+    {
+        var directory = Directory.CreateTempSubdirectory("runway-cli-recipe-auto-name-smoke-").FullName;
+
+        try
+        {
+            await File.WriteAllTextAsync(Path.Combine(directory, "runway-product-photoshoot-v2-01-foo.png"), string.Empty).ConfigureAwait(false);
+
+            var result = await RunCliAsync(
+                $"product-photoshoot create --prompt brushed-steel-kettle --plan-only --auto-name v --output {directory}",
+                removeApiKey: true).ConfigureAwait(false);
+
+            result.ExitCode.Should().Be(0);
+            result.Stderr.Should().Contain("Auto-name resolved to: v3");
+        }
+        finally
+        {
+            Directory.Delete(directory, recursive: true);
+        }
+    }
+
+    [TestMethod]
+    public async Task RunwayCli_RecipeAutoNameResolvedEagerlyBeforePlanOnlyShortCircuit()
+    {
+        var directory = Directory.CreateTempSubdirectory("runway-cli-recipe-eager-resolution-").FullName;
+
+        try
+        {
+            await File.WriteAllTextAsync(Path.Combine(directory, "runway-product-photoshoot-v7-01-foo.png"), string.Empty).ConfigureAwait(false);
+
+            var result = await RunCliAsync(
+                $"product-photoshoot create --prompt brushed-steel-kettle --plan-only --auto-name v --output {directory}",
+                removeApiKey: true).ConfigureAwait(false);
+
+            result.ExitCode.Should().Be(0);
+            result.Stderr.Should().Contain("Auto-name resolved to: v8");
+            result.Stdout.Should().Contain("\"kind\"");
+            result.Stdout.Should().Contain("\"jobs\"");
+        }
+        finally
+        {
+            Directory.Delete(directory, recursive: true);
+        }
+    }
+
+    [TestMethod]
+    public async Task RunwayCli_AutoNameAcceptsNamePrefixAlias()
+    {
+        var directory = Directory.CreateTempSubdirectory("runway-cli-name-prefix-alias-").FullName;
+
+        try
+        {
+            await File.WriteAllTextAsync(Path.Combine(directory, "runway-short-video-v5.mp4"), string.Empty).ConfigureAwait(false);
+
+            var result = await RunCliAsync(
+                $"short-video tiny robot finds a glowing garden --shots 2 --plan-only --planner deterministic --name-prefix v --output {directory}",
+                removeApiKey: true).ConfigureAwait(false);
+
+            result.ExitCode.Should().Be(0);
+            result.Stderr.Should().Contain("Auto-name resolved to: v6");
+        }
+        finally
+        {
+            Directory.Delete(directory, recursive: true);
+        }
+    }
+
+    [TestMethod]
+    public void RunwayCliNaming_AutoNameMatchesSiblingsWithTrailingDashIndex()
+    {
+        var directory = Directory.CreateTempSubdirectory("runway-auto-name-recipe-").FullName;
+
+        try
+        {
+            File.WriteAllText(Path.Combine(directory, "runway-product-photoshoot-v2-01-hero.png"), string.Empty);
+            File.WriteAllText(Path.Combine(directory, "runway-product-photoshoot-v2-02-detail.png"), string.Empty);
+            File.WriteAllText(Path.Combine(directory, "runway-product-photoshoot-v3-01-hero.png"), string.Empty);
+            File.WriteAllText(Path.Combine(directory, "runway-marketplace-cards-v9-01-foo.png"), string.Empty);
+
+            var name = RunwayCliNaming.ComputeNextNameWithPrefix(
+                stemPrefix: "runway-product-photoshoot-",
+                namePrefix: "v",
+                scanDirectory: directory);
+
+            name.Should().Be("v4");
+        }
+        finally
+        {
+            Directory.Delete(directory, recursive: true);
+        }
+    }
+
+    [TestMethod]
     public async Task RunwayCliShortVideo_WritesPlanBesideFinalVideo()
     {
         var directory = Directory.CreateTempSubdirectory("runway-short-video-plan-test-").FullName;

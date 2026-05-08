@@ -1,18 +1,19 @@
 ---
 name: runway-cli
-description: Use when an agent should operate Runway through the .NET CLI with `dnx Runway.Cli`: generate images, videos, and audio; upload local assets; manage tasks, avatars, documents, voices, workflows, and organization usage; or orchestrate compact multi-step Runway media workflows.
+description: Use when an agent should operate Runway through the .NET CLI with `dnx Runway.Cli`: generate images, videos, and audio; upload local assets; manage tasks, avatars, documents, voices, workflows, and organization usage; or orchestrate compact multi-step Runway media workflows. Supports iterative runs with stable naming via `--name <suffix>` and auto-incrementing version suffixes via `--auto-name <prefix>` (alias `--name-prefix`) on `short-video`, `product-photoshoot create`, `marketplace-cards create`, and `ad-video create`.
 ---
 
 # Runway CLI
 
-Use the packaged .NET tool as the runtime. Stable packages can use `dnx Runway.Cli`; current main-branch packages are prerelease, so add `--prerelease --yes` when NuGet has no stable CLI version yet:
+Use the packaged .NET tool as the runtime. There is no stable `Runway.Cli` on NuGet yet, so default to `--prerelease --yes`. Drop the flags once a stable release is published.
 
 ```bash
-dnx Runway.Cli -- --help
-dnx Runway.Cli models
-
 dnx Runway.Cli --prerelease --yes -- --help
 dnx Runway.Cli --prerelease --yes models
+
+# Once stable lands on NuGet:
+dnx Runway.Cli -- --help
+dnx Runway.Cli models
 ```
 
 The NuGet package ID is `Runway.Cli`; the installed tool command is `runway`. In a source checkout before publishing, use:
@@ -20,6 +21,8 @@ The NuGet package ID is `Runway.Cli`; the installed tool command is `runway`. In
 ```bash
 dotnet run --project src/cli/Runway.Cli -- <command>
 ```
+
+**Note:** the examples below omit `--prerelease --yes` for brevity. Add it to every `dnx Runway.Cli` invocation until a stable package is published.
 
 ## Preflight
 
@@ -147,6 +150,41 @@ Run an edited short-video plan:
 dnx Runway.Cli short-video run \
   --plan ./short-video-plan.json \
   --output ./runway-short-video
+```
+
+### Iterative Runs (`--name`)
+
+Use `--name <suffix>` when the user is iterating on a marketing or product video and wants stable, scannable run names instead of timestamped directories. The name replaces the timestamp portion of the auto-generated stem, so the segment directory and final mp4 share one identifier:
+
+```bash
+dnx Runway.Cli short-video "a calm launch film for a transparent speaker" \
+  --name v4 \
+  --output ./artifacts \
+  --shots 4 \
+  --duration 4
+# → ./artifacts/runway-short-video-v4.mp4 + segments alongside
+```
+
+When `--output` is omitted, the run lives in `./runway-short-video-<name>/`. When `--output` is an explicit *file path* (e.g. `./final.mp4`), the user has chosen the filename and `--name` is ignored. `--name` also works on `short-video run`, so re-running an edited plan with a fresh suffix is straightforward.
+
+For unattended iteration use `--auto-name <prefix>` (alias `--name-prefix`) instead — the CLI scans the resolved `--output` directory for existing `runway-short-video-<prefix><N>.*` siblings and emits `<prefix><N+1>`:
+
+```bash
+dnx Runway.Cli short-video "..." \
+  --auto-name v \
+  --output ./artifacts \
+  --shots 4
+# Existing v3 → run resolves to v4 automatically (printed on stderr: "Auto-name resolved to: v4").
+```
+
+`--name` and `--auto-name` are mutually exclusive. The same `--name` / `--auto-name` flags also work on the recipe commands `product-photoshoot create`, `marketplace-cards create`, and `ad-video create`. There the name is injected into per-job filename stems (e.g., `runway-product-photoshoot-v4-01-hero.png`) so multiple iterations can coexist in a shared `--output` directory:
+
+```bash
+dnx Runway.Cli product-photoshoot create \
+  --prompt "transparent speaker on a brushed steel table" \
+  --auto-name v \
+  --output ./artifacts/photoshoot
+# Existing v3 files → next run lands as v4 across all jobs.
 ```
 
 Browse generated videos and their saved plans:

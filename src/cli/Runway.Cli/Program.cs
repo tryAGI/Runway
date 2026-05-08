@@ -621,6 +621,26 @@ var shortVideoNoConcatOption = new Option<bool>("--no-concat")
     Description = "Leave downloaded shot segments separate instead of trying to concatenate them with ffmpeg.",
 };
 
+var shortVideoNameOption = new Option<string?>("--name")
+{
+    Description = "Optional run name used for the segment directory and final mp4 filename. Replaces the timestamp stem (e.g., \"v4\" produces runway-short-video-v4/runway-short-video-v4.mp4). Ignored when --output is an explicit file path.",
+};
+
+var shortVideoAutoNameOption = new Option<string?>("--auto-name", ["--name-prefix"])
+{
+    Description = "Auto-generate --name as <prefix><N+1> by scanning the resolved --output directory for existing runway-short-video-<prefix><N>.* siblings (e.g., \"v\" emits v4 if v3 already exists). Alias: --name-prefix. Mutually exclusive with --name.",
+};
+
+var creativeRecipeNameOption = new Option<string?>("--name")
+{
+    Description = "Optional run name injected into per-job filename stems (e.g., \"v4\" produces runway-{kind}-v4-01-{label}.{ext}). Useful for keeping iterative recipe runs (v2/v3/v4) separate in a shared --output directory.",
+};
+
+var creativeRecipeAutoNameOption = new Option<string?>("--auto-name", ["--name-prefix"])
+{
+    Description = "Auto-generate --name as <prefix><N+1> by scanning the resolved --output directory for existing runway-{kind}-<prefix><N>-* siblings. Alias: --name-prefix. Mutually exclusive with --name.",
+};
+
 var shortVideoPlanOption = new Option<string?>("--plan")
 {
     Description = "Short-video plan JSON file, @path, inline JSON, or '-' for stdin.",
@@ -898,6 +918,8 @@ var shortVideoCommand = new Command("short-video", "Expand a scenario into keyfr
 {
     shortVideoPromptArgument,
     outputOption,
+    shortVideoNameOption,
+    shortVideoAutoNameOption,
     shortVideoRatioOption,
     videoModelOption,
     generationDurationOption,
@@ -933,7 +955,8 @@ shortVideoCommand.SetAction(async (ParseResult parseResult, CancellationToken ca
     try
     {
         var scenario = RunwayCliGeneration.JoinPrompt(scenarioParts);
-        output = RunwayCliShortVideo.ResolveOutput(parseResult.GetValue(outputOption), DateTime.UtcNow);
+        var resolvedName = ResolveShortVideoName(parseResult);
+        output = RunwayCliShortVideo.ResolveOutput(parseResult.GetValue(outputOption), DateTime.UtcNow, resolvedName);
         options = CreateShortVideoOptions(parseResult, output.SegmentDirectory);
         var plannerOptions = CreateShortVideoPlannerOptions(parseResult);
         var plannerResult = await RunwayCliShortVideo.CreatePlanResultAsync(
@@ -965,6 +988,8 @@ var shortVideoRunCommand = new Command("run", "Generate a short video from an ed
 {
     shortVideoPlanOption,
     outputOption,
+    shortVideoNameOption,
+    shortVideoAutoNameOption,
     shortVideoRatioOption,
     videoModelOption,
     generationDurationOption,
@@ -992,7 +1017,18 @@ shortVideoRunCommand.SetAction(async (ParseResult parseResult, CancellationToken
         return 1;
     }
 
-    var output = RunwayCliShortVideo.ResolveOutput(parseResult.GetValue(outputOption), DateTime.UtcNow);
+    string? resolvedName;
+    try
+    {
+        resolvedName = ResolveShortVideoName(parseResult);
+    }
+    catch (Exception ex)
+    {
+        await WriteErrorAsync(ex).ConfigureAwait(false);
+        return 1;
+    }
+
+    var output = RunwayCliShortVideo.ResolveOutput(parseResult.GetValue(outputOption), DateTime.UtcNow, resolvedName);
     var options = CreateShortVideoOptionsFromPlan(parseResult, output.SegmentDirectory, plan);
     return await RunShortVideoPlanAsync(parseResult, plan, options, output, cancellationToken).ConfigureAwait(false);
 });
@@ -1007,6 +1043,8 @@ var productPhotoshootCreateCommand = new Command("create", "Create product photo
     recipeRatioOption,
     recipeModelOption,
     outputOption,
+    creativeRecipeNameOption,
+    creativeRecipeAutoNameOption,
     productPhotoshootModeOption,
     productContextOption,
     brandContextOption,
@@ -1021,6 +1059,7 @@ productPhotoshootCommand.Subcommands.Add(productPhotoshootCreateCommand);
 productPhotoshootCreateCommand.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
 {
     RunwayCliCreativeRecipePlan plan;
+    string? recipeName;
     try
     {
         plan = RunwayCliCreativeRecipes.CreateProductPhotoshootPlan(
@@ -1034,6 +1073,7 @@ productPhotoshootCreateCommand.SetAction(async (ParseResult parseResult, Cancell
             parseResult.GetValue(brandContextOption),
             parseResult.GetValue(imageQualityOption),
             parseResult.GetValue(imageResolutionOption));
+        recipeName = ResolveCreativeRecipeName(parseResult, plan);
     }
     catch (Exception ex)
     {
@@ -1047,7 +1087,7 @@ productPhotoshootCreateCommand.SetAction(async (ParseResult parseResult, Cancell
         return 0;
     }
 
-    return await RunCreativeImageRecipeAsync(parseResult, plan, cancellationToken).ConfigureAwait(false);
+    return await RunCreativeImageRecipeAsync(parseResult, plan, recipeName, cancellationToken).ConfigureAwait(false);
 });
 
 var marketplaceCardsCommand = new Command("marketplace-cards", "Plan and generate Runway-native marketplace-style image prompt bundles.");
@@ -1060,6 +1100,8 @@ var marketplaceCardsCreateCommand = new Command("create", "Create marketplace-st
     recipeRatioOption,
     recipeModelOption,
     outputOption,
+    creativeRecipeNameOption,
+    creativeRecipeAutoNameOption,
     marketplaceScopeOption,
     marketplaceCategoryOption,
     marketplaceVisualStyleOption,
@@ -1072,6 +1114,7 @@ marketplaceCardsCommand.Subcommands.Add(marketplaceCardsCreateCommand);
 marketplaceCardsCreateCommand.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
 {
     RunwayCliCreativeRecipePlan plan;
+    string? recipeName;
     try
     {
         plan = RunwayCliCreativeRecipes.CreateMarketplaceCardsPlan(
@@ -1083,6 +1126,7 @@ marketplaceCardsCreateCommand.SetAction(async (ParseResult parseResult, Cancella
             parseResult.GetValue(marketplaceScopeOption),
             parseResult.GetValue(marketplaceCategoryOption),
             parseResult.GetValue(marketplaceVisualStyleOption));
+        recipeName = ResolveCreativeRecipeName(parseResult, plan);
     }
     catch (Exception ex)
     {
@@ -1096,7 +1140,7 @@ marketplaceCardsCreateCommand.SetAction(async (ParseResult parseResult, Cancella
         return 0;
     }
 
-    return await RunCreativeImageRecipeAsync(parseResult, plan, cancellationToken).ConfigureAwait(false);
+    return await RunCreativeImageRecipeAsync(parseResult, plan, recipeName, cancellationToken).ConfigureAwait(false);
 });
 
 var adVideoCommand = new Command("ad-video", "Plan and generate Runway-native ad video recipes.");
@@ -1108,6 +1152,8 @@ var adVideoCreateCommand = new Command("create", "Create ad video shot prompts a
     recipeRatioOption,
     recipeModelOption,
     outputOption,
+    creativeRecipeNameOption,
+    creativeRecipeAutoNameOption,
     adVideoModeOption,
     adVideoShotCountOption,
     adVideoStyleOption,
@@ -1123,6 +1169,7 @@ adVideoCommand.Subcommands.Add(adVideoCreateCommand);
 adVideoCreateCommand.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
 {
     RunwayCliCreativeRecipePlan plan;
+    string? recipeName;
     try
     {
         plan = RunwayCliCreativeRecipes.CreateAdVideoPlan(
@@ -1135,6 +1182,7 @@ adVideoCreateCommand.SetAction(async (ParseResult parseResult, CancellationToken
             parseResult.GetValue(adVideoStyleOption),
             parseResult.GetValue(adVideoAudioOption),
             parseResult.GetValue(generationDurationOption));
+        recipeName = ResolveCreativeRecipeName(parseResult, plan);
     }
     catch (Exception ex)
     {
@@ -1148,7 +1196,7 @@ adVideoCreateCommand.SetAction(async (ParseResult parseResult, CancellationToken
         return 0;
     }
 
-    return await RunCreativeVideoRecipeAsync(parseResult, plan, cancellationToken).ConfigureAwait(false);
+    return await RunCreativeVideoRecipeAsync(parseResult, plan, recipeName, cancellationToken).ConfigureAwait(false);
 });
 
 var generateImageCommand = new Command("image", "Generate an image locally from a text prompt.")
@@ -2899,6 +2947,7 @@ Task<int> RunShortVideoPlanAsync(
 Task<int> RunCreativeImageRecipeAsync(
     ParseResult parseResult,
     RunwayCliCreativeRecipePlan plan,
+    string? name,
     CancellationToken cancellationToken)
 {
     return RunWithClientAsync(parseResult, async (client, runwayVersion, ct) =>
@@ -2947,7 +2996,7 @@ Task<int> RunCreativeImageRecipeAsync(
                 taskId,
                 parseResult,
                 ".png",
-                CreateRecipeStem(plan, job),
+                CreateRecipeStem(plan, job, name),
                 ct).ConfigureAwait(false);
         }
     }, cancellationToken);
@@ -2956,6 +3005,7 @@ Task<int> RunCreativeImageRecipeAsync(
 Task<int> RunCreativeVideoRecipeAsync(
     ParseResult parseResult,
     RunwayCliCreativeRecipePlan plan,
+    string? name,
     CancellationToken cancellationToken)
 {
     return RunWithClientAsync(parseResult, async (client, runwayVersion, ct) =>
@@ -3005,7 +3055,7 @@ Task<int> RunCreativeVideoRecipeAsync(
                 taskId,
                 parseResult,
                 ".mp4",
-                CreateRecipeStem(plan, job),
+                CreateRecipeStem(plan, job, name),
                 ct).ConfigureAwait(false);
         }
     }, cancellationToken);
@@ -3030,11 +3080,68 @@ static void WriteCreativeRecipePlan(RunwayCliCreativeRecipePlan plan)
     }
 }
 
-static string CreateRecipeStem(RunwayCliCreativeRecipePlan plan, RunwayCliCreativeRecipeJob job)
+string? ResolveCreativeRecipeName(ParseResult parseResult, RunwayCliCreativeRecipePlan plan)
 {
+    var explicitName = parseResult.GetValue(creativeRecipeNameOption);
+    var autoNamePrefix = parseResult.GetValue(creativeRecipeAutoNameOption);
+
+    if (explicitName is { Length: > 0 } && autoNamePrefix is { Length: > 0 })
+    {
+        throw new ArgumentException("--name and --auto-name are mutually exclusive.");
+    }
+
+    if (autoNamePrefix is { Length: > 0 })
+    {
+        var scanDirectory = RunwayCliNaming.ResolveAutoNameScanDirectory(parseResult.GetValue(outputOption));
+        var stemPrefix = $"runway-{SanitizeStem(plan.Kind)}-";
+        var resolved = RunwayCliNaming.ComputeNextNameWithPrefix(
+            stemPrefix: stemPrefix,
+            namePrefix: autoNamePrefix,
+            scanDirectory: scanDirectory);
+        Console.Error.WriteLine($"Auto-name resolved to: {resolved}");
+        return resolved;
+    }
+
+    return explicitName;
+}
+
+string? ResolveShortVideoName(ParseResult parseResult)
+{
+    var explicitName = parseResult.GetValue(shortVideoNameOption);
+    var autoNamePrefix = parseResult.GetValue(shortVideoAutoNameOption);
+
+    if (explicitName is { Length: > 0 } && autoNamePrefix is { Length: > 0 })
+    {
+        throw new ArgumentException("--name and --auto-name are mutually exclusive.");
+    }
+
+    if (autoNamePrefix is { Length: > 0 })
+    {
+        var scanDirectory = RunwayCliNaming.ResolveAutoNameScanDirectory(parseResult.GetValue(outputOption));
+        var resolved = RunwayCliNaming.ComputeNextNameWithPrefix(
+            stemPrefix: "runway-short-video-",
+            namePrefix: autoNamePrefix,
+            scanDirectory: scanDirectory);
+        Console.Error.WriteLine($"Auto-name resolved to: {resolved}");
+        return resolved;
+    }
+
+    return explicitName;
+}
+
+static string CreateRecipeStem(RunwayCliCreativeRecipePlan plan, RunwayCliCreativeRecipeJob job, string? name = null)
+{
+    if (string.IsNullOrWhiteSpace(name))
+    {
+        return string.Create(
+            CultureInfo.InvariantCulture,
+            $"runway-{SanitizeStem(plan.Kind)}-{job.Index:00}-{SanitizeStem(job.Label)}");
+    }
+
+    var sanitizedName = SanitizeStem(RunwayCliNaming.SanitizeName(name));
     return string.Create(
         CultureInfo.InvariantCulture,
-        $"runway-{SanitizeStem(plan.Kind)}-{job.Index:00}-{SanitizeStem(job.Label)}");
+        $"runway-{SanitizeStem(plan.Kind)}-{sanitizedName}-{job.Index:00}-{SanitizeStem(job.Label)}");
 }
 
 static string SanitizeStem(string value)

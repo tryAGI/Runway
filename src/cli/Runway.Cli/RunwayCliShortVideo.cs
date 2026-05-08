@@ -6,9 +6,11 @@ using Runway;
 
 internal static partial class RunwayCliShortVideo
 {
-    public static RunwayCliShortVideoOutput ResolveOutput(string? output, DateTime utcNow)
+    public static RunwayCliShortVideoOutput ResolveOutput(string? output, DateTime utcNow, string? name = null)
     {
-        var stem = string.Create(CultureInfo.InvariantCulture, $"runway-short-video-{utcNow:yyyyMMdd-HHmmss}");
+        var stem = !string.IsNullOrWhiteSpace(name)
+            ? $"runway-short-video-{RunwayCliNaming.SanitizeName(name)}"
+            : string.Create(CultureInfo.InvariantCulture, $"runway-short-video-{utcNow:yyyyMMdd-HHmmss}");
         if (string.IsNullOrWhiteSpace(output))
         {
             var defaultDirectory = Path.Combine(Environment.CurrentDirectory, stem);
