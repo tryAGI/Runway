@@ -853,23 +853,28 @@ shortVideoCommand.SetAction(async (ParseResult parseResult, CancellationToken ca
     RunwayShortVideoPlan plan;
     RunwayShortVideoOptions options;
     RunwayCliShortVideoOutput output;
+    string plannerName;
     try
     {
         var scenario = RunwayCliGeneration.JoinPrompt(scenarioParts);
         output = RunwayCliShortVideo.ResolveOutput(parseResult.GetValue(outputOption), DateTime.UtcNow);
         options = CreateShortVideoOptions(parseResult, output.SegmentDirectory);
         var plannerOptions = CreateShortVideoPlannerOptions(parseResult);
-        plan = await RunwayCliShortVideo.CreatePlanAsync(
+        var plannerResult = await RunwayCliShortVideo.CreatePlanResultAsync(
             scenario,
             options,
             plannerOptions,
             cancellationToken).ConfigureAwait(false);
+        plan = plannerResult.Plan;
+        plannerName = plannerResult.Planner;
     }
     catch (Exception ex)
     {
         await WriteErrorAsync(ex).ConfigureAwait(false);
         return 1;
     }
+
+    Console.Error.WriteLine($"Short-video planner: {plannerName}");
 
     if (parseResult.GetValue(shortVideoPlanOnlyOption))
     {

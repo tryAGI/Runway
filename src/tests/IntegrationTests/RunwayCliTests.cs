@@ -168,6 +168,8 @@ public partial class Tests
             result.ExitCode.Should().Be(0);
             result.Stdout.Should().Contain("\"scenario\"");
             result.Stdout.Should().Contain("\"keyframePrompt\"");
+            result.Stderr.Should().Contain("Short-video planner: Deterministic");
+            result.Stderr.Should().Contain("Short-video planner: Deterministic");
         }
         finally
         {
@@ -188,6 +190,7 @@ public partial class Tests
                 environment: new Dictionary<string, string?> { ["PATH"] = plannerPath }).ConfigureAwait(false);
 
             result.ExitCode.Should().Be(1);
+            result.Stderr.Should().Contain("Short-video planner: Deterministic");
             result.Stderr.Should().Contain("Set --api-key, RUNWAY_API_KEY, RUNWAYML_API_SECRET, or a .env file.");
         }
         finally
@@ -214,6 +217,7 @@ public partial class Tests
 
             result.ExitCode.Should().Be(0);
             result.Stdout.Should().Contain("\"keyframePrompt\"");
+            result.Stderr.Should().Contain("Short-video planner: Deterministic");
         }
         finally
         {
@@ -417,6 +421,7 @@ public partial class Tests
             result.Stdout.Should().Contain("\"shotDurationSeconds\": 7");
             result.Stdout.Should().Contain("\"index\": 1");
             result.Stdout.Should().Contain("\"count\": 2");
+            result.Stderr.Should().Contain("Short-video planner: Claude");
         }
         finally
         {
@@ -503,6 +508,7 @@ public partial class Tests
             result.Stdout.Should().Contain("\"beat\": \"The glass flower rests on wet pavement.\"");
             result.Stdout.Should().Contain("\"keyframePrompt\": \"Macro still of a glass flower on wet pavement.\"");
             result.Stdout.Should().Contain("\"videoPrompt\": \"Slow push toward the glass flower as rain glows around it.\"");
+            result.Stderr.Should().Contain("Short-video planner: Claude");
         }
         finally
         {
@@ -525,6 +531,7 @@ public partial class Tests
             result.ExitCode.Should().Be(0);
             result.Stdout.Should().Contain("\"scenario\"");
             result.Stdout.Should().Contain("\"keyframePrompt\"");
+            result.Stderr.Should().Contain("Short-video planner: Deterministic");
         }
         finally
         {
@@ -551,6 +558,7 @@ public partial class Tests
             result.ExitCode.Should().Be(0);
             result.Stdout.Should().Contain("\"scenario\"");
             result.Stdout.Should().Contain("\"keyframePrompt\"");
+            result.Stderr.Should().Contain("Short-video planner: Codex");
         }
         finally
         {
@@ -692,6 +700,66 @@ public partial class Tests
         lines.Should().Equal(
             "file '/tmp/one.mp4'",
             "file '/tmp/two\\'s.mp4'");
+    }
+
+    [TestMethod]
+    public async Task RunwayCliShortVideo_RealFfmpegConcatSmoke()
+    {
+        var ffmpeg = FindExecutableOnPathForCliTest("ffmpeg")
+            ?? throw new AssertInconclusiveException("ffmpeg is not available.");
+        var directory = Directory.CreateTempSubdirectory("runway-ffmpeg-concat-").FullName;
+        var first = Path.Combine(directory, "first.mp4");
+        var second = Path.Combine(directory, "second.mp4");
+        var output = Path.Combine(directory, "joined.mp4");
+
+        try
+        {
+            await RunProcessForTestAsync(
+                ffmpeg,
+                [
+                    "-y",
+                    "-hide_banner",
+                    "-loglevel",
+                    "error",
+                    "-f",
+                    "lavfi",
+                    "-i",
+                    "color=c=red:s=64x64:d=0.2",
+                    "-pix_fmt",
+                    "yuv420p",
+                    first,
+                ]).ConfigureAwait(false);
+            await RunProcessForTestAsync(
+                ffmpeg,
+                [
+                    "-y",
+                    "-hide_banner",
+                    "-loglevel",
+                    "error",
+                    "-f",
+                    "lavfi",
+                    "-i",
+                    "color=c=blue:s=64x64:d=0.2",
+                    "-pix_fmt",
+                    "yuv420p",
+                    second,
+                ]).ConfigureAwait(false);
+
+            var result = await RunwayCliShortVideo.TryConcatAsync(
+                [first, second],
+                output,
+                ffmpeg,
+                CancellationToken.None).ConfigureAwait(false);
+
+            result.Output.Should().Be(output);
+            result.Warning.Should().BeNull();
+            File.Exists(output).Should().BeTrue();
+            new FileInfo(output).Length.Should().BeGreaterThan(0);
+        }
+        finally
+        {
+            Directory.Delete(directory, recursive: true);
+        }
     }
 
     [TestMethod]
@@ -1232,6 +1300,32 @@ public partial class Tests
         }
 
         return null;
+    }
+
+    private static async Task RunProcessForTestAsync(string fileName, IReadOnlyList<string> arguments)
+    {
+        var startInfo = new ProcessStartInfo(fileName)
+        {
+            RedirectStandardError = true,
+            RedirectStandardOutput = true,
+        };
+
+        foreach (var argument in arguments)
+        {
+            startInfo.ArgumentList.Add(argument);
+        }
+
+        using var process = Process.Start(startInfo)
+            ?? throw new InvalidOperationException($"Failed to start {fileName}.");
+        var stdout = process.StandardOutput.ReadToEndAsync();
+        var stderr = process.StandardError.ReadToEndAsync();
+        await process.WaitForExitAsync().ConfigureAwait(false);
+
+        if (process.ExitCode != 0)
+        {
+            throw new InvalidOperationException(
+                $"{fileName} failed with exit code {process.ExitCode}: {await stderr.ConfigureAwait(false)} {await stdout.ConfigureAwait(false)}");
+        }
     }
 
     private static string FindRunwayRoot()

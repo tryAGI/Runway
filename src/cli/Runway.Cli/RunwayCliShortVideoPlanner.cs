@@ -25,6 +25,10 @@ internal sealed record RunwayCliShortVideoPlannerOptions(
     RunwayCliShortVideoPlannerTools Tools,
     TimeSpan Timeout);
 
+internal sealed record RunwayCliShortVideoPlannerResult(
+    RunwayShortVideoPlan Plan,
+    string Planner);
+
 internal static partial class RunwayCliShortVideo
 {
     private const string DefaultClaudePlannerModel = "opus";
@@ -63,21 +67,36 @@ internal static partial class RunwayCliShortVideo
         RunwayCliShortVideoPlannerOptions plannerOptions,
         CancellationToken cancellationToken)
     {
+        return (await CreatePlanResultAsync(scenarioText, options, plannerOptions, cancellationToken).ConfigureAwait(false)).Plan;
+    }
+
+    public static async Task<RunwayCliShortVideoPlannerResult> CreatePlanResultAsync(
+        string scenarioText,
+        RunwayShortVideoOptions options,
+        RunwayCliShortVideoPlannerOptions plannerOptions,
+        CancellationToken cancellationToken)
+    {
         return plannerOptions.Kind switch
         {
-            RunwayCliShortVideoPlannerKind.Deterministic => RunwayShortVideoExtensions.CreateShortVideoPlan(scenarioText, options),
-            RunwayCliShortVideoPlannerKind.Claude => await CreatePlanWithRequiredExternalPlannerAsync(
-                RunwayCliShortVideoPlannerKind.Claude,
-                scenarioText,
-                options,
-                plannerOptions,
-                cancellationToken).ConfigureAwait(false),
-            RunwayCliShortVideoPlannerKind.Codex => await CreatePlanWithRequiredExternalPlannerAsync(
-                RunwayCliShortVideoPlannerKind.Codex,
-                scenarioText,
-                options,
-                plannerOptions,
-                cancellationToken).ConfigureAwait(false),
+            RunwayCliShortVideoPlannerKind.Deterministic => new RunwayCliShortVideoPlannerResult(
+                RunwayShortVideoExtensions.CreateShortVideoPlan(scenarioText, options),
+                "Deterministic"),
+            RunwayCliShortVideoPlannerKind.Claude => new RunwayCliShortVideoPlannerResult(
+                await CreatePlanWithRequiredExternalPlannerAsync(
+                    RunwayCliShortVideoPlannerKind.Claude,
+                    scenarioText,
+                    options,
+                    plannerOptions,
+                    cancellationToken).ConfigureAwait(false),
+                "Claude"),
+            RunwayCliShortVideoPlannerKind.Codex => new RunwayCliShortVideoPlannerResult(
+                await CreatePlanWithRequiredExternalPlannerAsync(
+                    RunwayCliShortVideoPlannerKind.Codex,
+                    scenarioText,
+                    options,
+                    plannerOptions,
+                    cancellationToken).ConfigureAwait(false),
+                "Codex"),
             _ => await CreatePlanWithAutoPlannerAsync(scenarioText, options, plannerOptions, cancellationToken).ConfigureAwait(false),
         };
     }
@@ -120,7 +139,7 @@ internal static partial class RunwayCliShortVideo
             """;
     }
 
-    private static async Task<RunwayShortVideoPlan> CreatePlanWithAutoPlannerAsync(
+    private static async Task<RunwayCliShortVideoPlannerResult> CreatePlanWithAutoPlannerAsync(
         string scenarioText,
         RunwayShortVideoOptions options,
         RunwayCliShortVideoPlannerOptions plannerOptions,
@@ -130,12 +149,14 @@ internal static partial class RunwayCliShortVideo
         {
             try
             {
-                return await CreatePlanWithExternalPlannerAsync(
-                    RunwayCliShortVideoPlannerKind.Claude,
-                    scenarioText,
-                    options,
-                    plannerOptions,
-                    cancellationToken).ConfigureAwait(false);
+                return new RunwayCliShortVideoPlannerResult(
+                    await CreatePlanWithExternalPlannerAsync(
+                        RunwayCliShortVideoPlannerKind.Claude,
+                        scenarioText,
+                        options,
+                        plannerOptions,
+                        cancellationToken).ConfigureAwait(false),
+                    "Claude");
             }
             catch (Exception ex) when (ex is not OperationCanceledException)
             {
@@ -146,19 +167,23 @@ internal static partial class RunwayCliShortVideo
         {
             try
             {
-                return await CreatePlanWithExternalPlannerAsync(
-                    RunwayCliShortVideoPlannerKind.Codex,
-                    scenarioText,
-                    options,
-                    plannerOptions,
-                    cancellationToken).ConfigureAwait(false);
+                return new RunwayCliShortVideoPlannerResult(
+                    await CreatePlanWithExternalPlannerAsync(
+                        RunwayCliShortVideoPlannerKind.Codex,
+                        scenarioText,
+                        options,
+                        plannerOptions,
+                        cancellationToken).ConfigureAwait(false),
+                    "Codex");
             }
             catch (Exception ex) when (ex is not OperationCanceledException)
             {
             }
         }
 
-        return RunwayShortVideoExtensions.CreateShortVideoPlan(scenarioText, options);
+        return new RunwayCliShortVideoPlannerResult(
+            RunwayShortVideoExtensions.CreateShortVideoPlan(scenarioText, options),
+            "Deterministic");
     }
 
     private static async Task<RunwayShortVideoPlan> CreatePlanWithRequiredExternalPlannerAsync(
