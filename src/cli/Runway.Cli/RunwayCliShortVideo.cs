@@ -4,7 +4,7 @@ using System.Text;
 using System.Text.Json;
 using Runway;
 
-internal static class RunwayCliShortVideo
+internal static partial class RunwayCliShortVideo
 {
     public static RunwayCliShortVideoOutput ResolveOutput(string? output, DateTime utcNow)
     {
@@ -182,6 +182,19 @@ internal static class RunwayCliShortVideo
             if (File.Exists(candidate))
             {
                 return candidate;
+            }
+
+            if (OperatingSystem.IsWindows() &&
+                Environment.GetEnvironmentVariable("PATHEXT") is { Length: > 0 } pathExt)
+            {
+                foreach (var extension in pathExt.Split(';', StringSplitOptions.RemoveEmptyEntries))
+                {
+                    candidate = Path.Combine(directory, $"{name}{extension}");
+                    if (File.Exists(candidate))
+                    {
+                        return candidate;
+                    }
+                }
             }
         }
 

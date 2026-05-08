@@ -70,7 +70,7 @@ public partial class Tests
     [TestMethod]
     public async Task RunwayCli_ShortVideoPlanOnlyDoesNotRequireApiKey()
     {
-        var result = await RunCliAsync("short-video tiny robot finds a glowing garden --shots 2 --plan-only", removeApiKey: true).ConfigureAwait(false);
+        var result = await RunCliAsync("short-video tiny robot finds a glowing garden --shots 2 --plan-only --planner deterministic", removeApiKey: true).ConfigureAwait(false);
 
         result.ExitCode.Should().Be(0);
         result.Stdout.Should().Contain("\"scenario\"");
@@ -81,10 +81,107 @@ public partial class Tests
     [TestMethod]
     public async Task RunwayCli_ShortVideoParsesScenarioBeforeRequiringApiKey()
     {
-        var result = await RunCliAsync("short-video tiny robot finds a glowing garden --no-wait", removeApiKey: true).ConfigureAwait(false);
+        var result = await RunCliAsync("short-video tiny robot finds a glowing garden --no-wait --planner deterministic", removeApiKey: true).ConfigureAwait(false);
 
         result.ExitCode.Should().Be(1);
         result.Stderr.Should().Contain("Set --api-key, RUNWAY_API_KEY, RUNWAYML_API_SECRET, or a .env file.");
+    }
+
+    [TestMethod]
+    public async Task RunwayCli_ShortVideoAutoFallsBackToDeterministicWhenNoExternalPlannerIsFound()
+    {
+        var plannerPath = Directory.CreateTempSubdirectory("runway-no-planner-").FullName;
+
+        try
+        {
+            var result = await RunCliAsync(
+                "short-video tiny robot finds a glowing garden --shots 2 --plan-only --planner auto",
+                removeApiKey: true,
+                environment: new Dictionary<string, string?> { ["PATH"] = plannerPath }).ConfigureAwait(false);
+
+            result.ExitCode.Should().Be(0);
+            result.Stdout.Should().Contain("\"scenario\"");
+            result.Stdout.Should().Contain("\"keyframePrompt\"");
+        }
+        finally
+        {
+            Directory.Delete(plannerPath, recursive: true);
+        }
+    }
+
+    [TestMethod]
+    public async Task RunwayCli_ShortVideoAutoPlansBeforeRequiringApiKey()
+    {
+        var plannerPath = Directory.CreateTempSubdirectory("runway-no-planner-").FullName;
+
+        try
+        {
+            var result = await RunCliAsync(
+                "short-video tiny robot finds a glowing garden --no-wait --planner auto",
+                removeApiKey: true,
+                environment: new Dictionary<string, string?> { ["PATH"] = plannerPath }).ConfigureAwait(false);
+
+            result.ExitCode.Should().Be(1);
+            result.Stderr.Should().Contain("Set --api-key, RUNWAY_API_KEY, RUNWAYML_API_SECRET, or a .env file.");
+        }
+        finally
+        {
+            Directory.Delete(plannerPath, recursive: true);
+        }
+    }
+
+    [TestMethod]
+    public async Task RunwayCli_ShortVideoPlannerCanBeSelectedFromEnvironment()
+    {
+        var plannerPath = Directory.CreateTempSubdirectory("runway-no-planner-").FullName;
+
+        try
+        {
+            var result = await RunCliAsync(
+                "short-video tiny robot finds a glowing garden --shots 2 --plan-only",
+                removeApiKey: true,
+                environment: new Dictionary<string, string?>
+                {
+                    ["PATH"] = plannerPath,
+                    ["RUNWAY_SHORT_VIDEO_PLANNER"] = "deterministic",
+                }).ConfigureAwait(false);
+
+            result.ExitCode.Should().Be(0);
+            result.Stdout.Should().Contain("\"keyframePrompt\"");
+        }
+        finally
+        {
+            Directory.Delete(plannerPath, recursive: true);
+        }
+    }
+
+    [TestMethod]
+    public async Task RunwayCli_ShortVideoExplicitUnavailableExternalPlannerFailsClearly()
+    {
+        var plannerPath = Directory.CreateTempSubdirectory("runway-no-planner-").FullName;
+
+        try
+        {
+            var claude = await RunCliAsync(
+                "short-video tiny robot finds a glowing garden --plan-only --planner claude",
+                removeApiKey: true,
+                environment: new Dictionary<string, string?> { ["PATH"] = plannerPath }).ConfigureAwait(false);
+            var codex = await RunCliAsync(
+                "short-video tiny robot finds a glowing garden --plan-only --planner codex",
+                removeApiKey: true,
+                environment: new Dictionary<string, string?> { ["PATH"] = plannerPath }).ConfigureAwait(false);
+
+            claude.ExitCode.Should().Be(1);
+            claude.Stderr.Should().Contain("Claude planner was requested");
+            claude.Stderr.Should().Contain("`claude` was not found on PATH");
+            codex.ExitCode.Should().Be(1);
+            codex.Stderr.Should().Contain("Codex planner was requested");
+            codex.Stderr.Should().Contain("`codex` was not found on PATH");
+        }
+        finally
+        {
+            Directory.Delete(plannerPath, recursive: true);
+        }
     }
 
     [TestMethod]
@@ -231,6 +328,103 @@ public partial class Tests
         chatClient.CapturedOptions.Should().HaveCount(2);
         chatClient.CapturedOptions[0]!.ResponseFormat.Should().BeOfType<ChatResponseFormatJson>();
         chatClient.CapturedOptions[1]!.ResponseFormat.Should().BeSameAs(ChatResponseFormat.Json);
+    }
+
+    [TestMethod]
+    public async Task RunwayCli_ShortVideoClaudePlannerUsesValidJsonAndNormalizesPlan()
+    {
+        var plannerPath = await CreateFakePlannerDirectoryAsync(
+            "claude",
+            CreatePlannerPlanJson(
+                new RunwayShortVideoOptions { ShotCount = 2, ShotDurationSeconds = 7, Ratio = "720:1280" },
+                preserveRequestedOptions: false)).ConfigureAwait(false);
+
+        try
+        {
+            var result = await RunCliAsync(
+                "short-video a glass flower opens on a rainy street --shots 2 --duration 7 --ratio 720:1280 --plan-only --planner claude --planner-timeout-seconds 10",
+                removeApiKey: true,
+                environment: new Dictionary<string, string?> { ["PATH"] = plannerPath }).ConfigureAwait(false);
+
+            result.ExitCode.Should().Be(0);
+            result.Stdout.Should().Contain("\"ratio\": \"720:1280\"");
+            result.Stdout.Should().Contain("\"shotDurationSeconds\": 7");
+            result.Stdout.Should().Contain("\"index\": 1");
+            result.Stdout.Should().Contain("\"count\": 2");
+        }
+        finally
+        {
+            Directory.Delete(plannerPath, recursive: true);
+        }
+    }
+
+    [TestMethod]
+    public async Task RunwayCli_ShortVideoAutoFallsBackWhenExternalPlannerReturnsInvalidJson()
+    {
+        var plannerPath = await CreateFakePlannerDirectoryAsync("claude", "not-json").ConfigureAwait(false);
+
+        try
+        {
+            var result = await RunCliAsync(
+                "short-video tiny robot finds a glowing garden --shots 2 --plan-only --planner auto --planner-timeout-seconds 10",
+                removeApiKey: true,
+                environment: new Dictionary<string, string?> { ["PATH"] = plannerPath }).ConfigureAwait(false);
+
+            result.ExitCode.Should().Be(0);
+            result.Stdout.Should().Contain("\"scenario\"");
+            result.Stdout.Should().Contain("\"keyframePrompt\"");
+        }
+        finally
+        {
+            Directory.Delete(plannerPath, recursive: true);
+        }
+    }
+
+    [TestMethod]
+    public async Task RunwayCli_ShortVideoAutoUsesCodexWhenClaudeReturnsInvalidJson()
+    {
+        var plannerPath = await CreateFakePlannerDirectoryAsync("claude", "not-json").ConfigureAwait(false);
+        await AddFakePlannerExecutableAsync(
+            plannerPath,
+            "codex",
+            CreatePlannerPlanJson(new RunwayShortVideoOptions { ShotCount = 2 })).ConfigureAwait(false);
+
+        try
+        {
+            var result = await RunCliAsync(
+                "short-video tiny robot finds a glowing garden --shots 2 --plan-only --planner auto --planner-timeout-seconds 10",
+                removeApiKey: true,
+                environment: new Dictionary<string, string?> { ["PATH"] = plannerPath }).ConfigureAwait(false);
+
+            result.ExitCode.Should().Be(0);
+            result.Stdout.Should().Contain("\"scenario\"");
+            result.Stdout.Should().Contain("\"keyframePrompt\"");
+        }
+        finally
+        {
+            Directory.Delete(plannerPath, recursive: true);
+        }
+    }
+
+    [TestMethod]
+    public async Task RunwayCli_ShortVideoExplicitExternalPlannerFailsWhenJsonIsInvalid()
+    {
+        var plannerPath = await CreateFakePlannerDirectoryAsync("claude", "not-json").ConfigureAwait(false);
+
+        try
+        {
+            var result = await RunCliAsync(
+                "short-video tiny robot finds a glowing garden --shots 2 --plan-only --planner claude --planner-timeout-seconds 10",
+                removeApiKey: true,
+                environment: new Dictionary<string, string?> { ["PATH"] = plannerPath }).ConfigureAwait(false);
+
+            result.ExitCode.Should().Be(1);
+            result.Stderr.Should().Contain("Claude planner returned invalid short-video JSON");
+        }
+        finally
+        {
+            Directory.Delete(plannerPath, recursive: true);
+        }
     }
 
     [TestMethod]
@@ -453,6 +647,44 @@ public partial class Tests
         return new ChatResponse([new ChatMessage(ChatRole.Assistant, text)]);
     }
 
+    private static async Task<string> CreateFakePlannerDirectoryAsync(
+        string executableName,
+        string output,
+        int exitCode = 0)
+    {
+        var directory = Directory.CreateTempSubdirectory("runway-planner-").FullName;
+        await AddFakePlannerExecutableAsync(directory, executableName, output, exitCode).ConfigureAwait(false);
+        return directory;
+    }
+
+    private static async Task AddFakePlannerExecutableAsync(
+        string directory,
+        string executableName,
+        string output,
+        int exitCode = 0)
+    {
+        var outputPath = Path.Combine(directory, $"{executableName}-planner-output.txt");
+        await File.WriteAllTextAsync(outputPath, output).ConfigureAwait(false);
+
+        if (OperatingSystem.IsWindows())
+        {
+            var scriptPath = Path.Combine(directory, $"{executableName}.cmd");
+            await File.WriteAllTextAsync(
+                scriptPath,
+                $"@echo off\r\ntype \"{outputPath}\"\r\nexit /b {exitCode}\r\n").ConfigureAwait(false);
+        }
+        else
+        {
+            var scriptPath = Path.Combine(directory, executableName);
+            await File.WriteAllTextAsync(
+                scriptPath,
+                $"#!/bin/sh\n/bin/cat \"{outputPath}\"\nexit {exitCode}\n").ConfigureAwait(false);
+            File.SetUnixFileMode(
+                scriptPath,
+                UnixFileMode.UserRead | UnixFileMode.UserWrite | UnixFileMode.UserExecute);
+        }
+    }
+
     private static string CreatePlannerPlanJson(
         RunwayShortVideoOptions? options = null,
         bool preserveRequestedOptions = true)
@@ -540,10 +772,13 @@ public partial class Tests
         }
     }
 
-    private static async Task<CliResult> RunCliAsync(string arguments, bool removeApiKey = false)
+    private static async Task<CliResult> RunCliAsync(
+        string arguments,
+        bool removeApiKey = false,
+        IReadOnlyDictionary<string, string?>? environment = null)
     {
         var runwayRoot = FindRunwayRoot();
-        var startInfo = new ProcessStartInfo("dotnet")
+        var startInfo = new ProcessStartInfo(FindDotnetExecutable())
         {
             WorkingDirectory = runwayRoot,
             RedirectStandardOutput = true,
@@ -574,6 +809,26 @@ public partial class Tests
             startInfo.Environment.Remove("RUNWAY_DOTENV_DISABLED");
         }
 
+        startInfo.Environment.Remove("RUNWAY_SHORT_VIDEO_PLANNER");
+        startInfo.Environment.Remove("RUNWAY_SHORT_VIDEO_PLANNER_MODEL");
+        startInfo.Environment.Remove("RUNWAY_SHORT_VIDEO_PLANNER_TOOLS");
+        startInfo.Environment.Remove("RUNWAY_SHORT_VIDEO_PLANNER_TIMEOUT_SECONDS");
+
+        if (environment is not null)
+        {
+            foreach (var (key, value) in environment)
+            {
+                if (value is null)
+                {
+                    startInfo.Environment.Remove(key);
+                }
+                else
+                {
+                    startInfo.Environment[key] = value;
+                }
+            }
+        }
+
         using var process = Process.Start(startInfo)
             ?? throw new InvalidOperationException("Failed to start Runway CLI process.");
 
@@ -582,6 +837,54 @@ public partial class Tests
         await process.WaitForExitAsync().ConfigureAwait(false);
 
         return new CliResult(process.ExitCode, await stdout.ConfigureAwait(false), await stderr.ConfigureAwait(false));
+    }
+
+    private static string FindDotnetExecutable()
+    {
+        if (Environment.ProcessPath is { Length: > 0 } processPath &&
+            string.Equals(Path.GetFileNameWithoutExtension(processPath), "dotnet", StringComparison.OrdinalIgnoreCase))
+        {
+            return processPath;
+        }
+
+        if (FindExecutableOnPathForCliTest("dotnet") is { Length: > 0 } dotnet)
+        {
+            return dotnet;
+        }
+
+        return "dotnet";
+    }
+
+    private static string? FindExecutableOnPathForCliTest(string name)
+    {
+        if (Environment.GetEnvironmentVariable("PATH") is not { Length: > 0 } path)
+        {
+            return null;
+        }
+
+        foreach (var directory in path.Split(Path.PathSeparator, StringSplitOptions.RemoveEmptyEntries))
+        {
+            var candidate = Path.Combine(directory, name);
+            if (File.Exists(candidate))
+            {
+                return candidate;
+            }
+
+            if (OperatingSystem.IsWindows() &&
+                Environment.GetEnvironmentVariable("PATHEXT") is { Length: > 0 } pathExt)
+            {
+                foreach (var extension in pathExt.Split(';', StringSplitOptions.RemoveEmptyEntries))
+                {
+                    candidate = Path.Combine(directory, $"{name}{extension}");
+                    if (File.Exists(candidate))
+                    {
+                        return candidate;
+                    }
+                }
+            }
+        }
+
+        return null;
     }
 
     private static string FindRunwayRoot()

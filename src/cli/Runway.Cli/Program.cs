@@ -597,6 +597,26 @@ var shortVideoPlanOnlyOption = new Option<bool>("--plan-only")
     Description = "Only print the scenario, keyframes, and prompts; do not call the Runway API.",
 };
 
+var shortVideoPlannerOption = new Option<string?>("--planner")
+{
+    Description = "Short-video scenario planner: auto, claude, codex, or deterministic. Defaults to RUNWAY_SHORT_VIDEO_PLANNER or auto.",
+};
+
+var shortVideoPlannerModelOption = new Option<string?>("--planner-model")
+{
+    Description = "External planner model. Defaults to RUNWAY_SHORT_VIDEO_PLANNER_MODEL, or opus for Claude.",
+};
+
+var shortVideoPlannerToolsOption = new Option<string?>("--planner-tools")
+{
+    Description = "External planner tool access: read-only or none. Defaults to RUNWAY_SHORT_VIDEO_PLANNER_TOOLS or read-only.",
+};
+
+var shortVideoPlannerTimeoutSecondsOption = new Option<int?>("--planner-timeout-seconds")
+{
+    Description = "External planner timeout in seconds. Defaults to RUNWAY_SHORT_VIDEO_PLANNER_TIMEOUT_SECONDS or 180.",
+};
+
 var shortVideoNoConcatOption = new Option<bool>("--no-concat")
 {
     Description = "Leave downloaded shot segments separate instead of trying to concatenate them with ffmpeg.",
@@ -730,33 +750,53 @@ var shortVideoCommand = new Command("short-video", "Expand a scenario into keyfr
     seedOption,
     publicFigureThresholdOption,
     shortVideoPlanOnlyOption,
+    shortVideoPlannerOption,
+    shortVideoPlannerModelOption,
+    shortVideoPlannerToolsOption,
+    shortVideoPlannerTimeoutSecondsOption,
     shortVideoNoConcatOption,
     ffmpegOption,
     noWaitOption,
     pollIntervalOption,
 };
 rootCommand.Subcommands.Add(shortVideoCommand);
-shortVideoCommand.SetAction((ParseResult parseResult, CancellationToken cancellationToken) =>
+shortVideoCommand.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
 {
     var scenarioParts = parseResult.GetValue(shortVideoPromptArgument);
     if (scenarioParts is not { Length: > 0 })
     {
         Console.Error.WriteLine("Missing required argument scenario.");
-        return Task.FromResult(1);
+        return 1;
     }
 
-    var scenario = RunwayCliGeneration.JoinPrompt(scenarioParts);
-    var output = RunwayCliShortVideo.ResolveOutput(parseResult.GetValue(outputOption), DateTime.UtcNow);
-    var options = CreateShortVideoOptions(parseResult, output.SegmentDirectory);
-    var plan = RunwayShortVideoExtensions.CreateShortVideoPlan(scenario, options);
+    RunwayShortVideoPlan plan;
+    RunwayShortVideoOptions options;
+    RunwayCliShortVideoOutput output;
+    try
+    {
+        var scenario = RunwayCliGeneration.JoinPrompt(scenarioParts);
+        output = RunwayCliShortVideo.ResolveOutput(parseResult.GetValue(outputOption), DateTime.UtcNow);
+        options = CreateShortVideoOptions(parseResult, output.SegmentDirectory);
+        var plannerOptions = CreateShortVideoPlannerOptions(parseResult);
+        plan = await RunwayCliShortVideo.CreatePlanAsync(
+            scenario,
+            options,
+            plannerOptions,
+            cancellationToken).ConfigureAwait(false);
+    }
+    catch (Exception ex)
+    {
+        await WriteErrorAsync(ex).ConfigureAwait(false);
+        return 1;
+    }
 
     if (parseResult.GetValue(shortVideoPlanOnlyOption))
     {
         Console.WriteLine(RunwayCliShortVideo.ToJson(plan));
-        return Task.FromResult(0);
+        return 0;
     }
 
-    return RunShortVideoPlanAsync(parseResult, plan, options, output, cancellationToken);
+    return await RunShortVideoPlanAsync(parseResult, plan, options, output, cancellationToken).ConfigureAwait(false);
 });
 
 var shortVideoRunCommand = new Command("run", "Generate a short video from an edited short-video plan JSON.")
@@ -2051,6 +2091,15 @@ RunwayShortVideoOptions CreateShortVideoOptions(
         Output = segmentOutput,
         PollInterval = TimeSpan.FromSeconds(parseResult.GetValue(pollIntervalOption)),
     };
+}
+
+RunwayCliShortVideoPlannerOptions CreateShortVideoPlannerOptions(ParseResult parseResult)
+{
+    return RunwayCliShortVideo.CreatePlannerOptions(
+        parseResult.GetValue(shortVideoPlannerOption),
+        parseResult.GetValue(shortVideoPlannerModelOption),
+        parseResult.GetValue(shortVideoPlannerToolsOption),
+        parseResult.GetValue(shortVideoPlannerTimeoutSecondsOption));
 }
 
 RunwayShortVideoOptions CreateShortVideoOptionsFromPlan(

@@ -37,7 +37,7 @@ Default to low-cost, practical choices:
 | Quick image | `image --model gemini-2.5-flash --ratio 1024:1024` |
 | Image with accurate text | `image --model gpt-image-2 --resolution 1K --quality low` |
 | Text-to-video | `video --model veo3.1-fast --duration 4 --ratio 1280:720` |
-| Scenario to short film | `short-video --shots 3 --duration 4 --ratio 1280:720` |
+| Scenario to short film | `short-video --planner auto --shots 3 --duration 4 --ratio 1280:720` |
 | Image-to-video from a local file | `image-to-video --model gen4-turbo --image <file>` |
 | Highest quality video | `video --model gen4.5` or `video --model veo3` |
 | Video edit / transformation | `video-to-video --video <file>` |
@@ -82,6 +82,8 @@ dnx Runway.Cli short-video "a calm product launch film for a transparent speaker
   --shots 3 \
   --plan-only > ./short-video-plan.json
 ```
+
+`short-video` defaults to `--planner auto`: Claude Code first, Codex CLI second, deterministic fallback. Use `--planner deterministic` for reproducible local-only plans, or `--planner claude --planner-model opus` when the user wants stronger external storyboard planning. The bundled Runway planner prompt is informed by storyboard-creation workflows; no external storyboard skill is required.
 
 Run an edited short-video plan:
 

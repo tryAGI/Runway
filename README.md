@@ -315,6 +315,12 @@ dnx Runway.Cli short-video "a calm product launch film for a transparent speaker
   --shots 3 \
   --plan-only > ./short-video-plan.json
 
+dnx Runway.Cli short-video "a three-shot cyberpunk food commercial" \
+  --planner claude \
+  --planner-model opus \
+  --planner-tools read-only \
+  --plan-only
+
 dnx Runway.Cli short-video run \
   --plan ./short-video-plan.json \
   --output ./runway-short-video
@@ -403,6 +409,8 @@ CLI endpoint and model coverage:
 | `realtime` | `POST/GET/DELETE /v1/realtime_sessions` | `gwm1_avatars` |
 | `organization` | `GET /v1/organization`, `POST /v1/organization/usage` | Usage and metadata |
 | `workflow` | `GET/POST /v1/workflows`, `GET /v1/workflow_invocations/{id}` | Published workflows |
+
+The CLI `short-video` command can plan with external agents before using Runway: `--planner auto` (default) tries Claude Code first, Codex CLI second, then the deterministic planner; `--planner deterministic` keeps output fully local and CI-safe. `--planner-model`, `--planner-tools`, and `--planner-timeout-seconds` also support `RUNWAY_SHORT_VIDEO_PLANNER_MODEL`, `RUNWAY_SHORT_VIDEO_PLANNER_TOOLS`, and `RUNWAY_SHORT_VIDEO_PLANNER_TIMEOUT_SECONDS`. `short-video run --plan` is execution-only and never invokes a planner. The bundled planner prompt is Runway-owned and was shaped by storyboard-creation workflows; no external storyboard skill is installed or required.
 
 The short-video workflow is also available from the SDK through `RunwayShortVideoExtensions.CreateShortVideoPlan(...)`, `IChatClient.CreateShortVideoPlanAsync(...)`, `client.CreateShortVideoAsync(...)`, and `client.CreateShortVideoAsync(plan, ...)`. Backend code can use the deterministic planner, supply a custom `RunwayShortVideoPlanner`, ask any Microsoft.Extensions.AI `IChatClient` for richer storyboard JSON, review or edit the plan, then execute the edited plan. `RunwayShortVideoJsonSerializerContext` provides AOT-safe JSON metadata for serializing plans and results.
 
