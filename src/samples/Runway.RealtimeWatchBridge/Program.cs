@@ -17,10 +17,8 @@ builder.Services.ConfigureHttpJsonOptions(options =>
 
 builder.Services.AddSingleton(sp =>
 {
-    var apiKey =
-        Environment.GetEnvironmentVariable("RUNWAY_API_KEY") is { Length: > 0 } runwayApiKey ? runwayApiKey :
-        Environment.GetEnvironmentVariable("RUNWAYML_API_SECRET") is { Length: > 0 } runwayMlApiSecret ? runwayMlApiSecret :
-        throw new InvalidOperationException("Set RUNWAY_API_KEY or RUNWAYML_API_SECRET before starting the sample.");
+    var apiKey = RunwayEnvironment.GetApiKey()
+        ?? throw new InvalidOperationException("Set RUNWAY_API_KEY, RUNWAYML_API_SECRET, or a .env file before starting the sample.");
 
     return new RunwayClient(apiKey);
 });

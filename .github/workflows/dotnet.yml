@@ -38,6 +38,27 @@ jobs:
       - name: Run trimming check
         run: autosdk trim src/libs/Runway/Runway.csproj
 
+  cli-smoke:
+    name: CLI Smoke
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Build CLI
+        run: dotnet build src/cli/Runway.Cli/Runway.Cli.csproj -c Release
+
+      - name: Smoke root help
+        run: dotnet run --project src/cli/Runway.Cli -c Release --no-build -- --help
+
+      - name: Smoke model inventory
+        run: dotnet run --project src/cli/Runway.Cli -c Release --no-build -- models
+
   release:
     name: Release
     runs-on: ubuntu-latest

@@ -24,15 +24,19 @@ public partial class Tests
     private const int WatchBridgeH264CodecId = 1;
     private const int WatchBridgeH265CodecId = 2;
 
+    private static string GetRunwayApiKey()
+    {
+        return RunwayEnvironment.GetApiKey() is { Length: > 0 } apiKey
+            ? apiKey
+            : throw new AssertInconclusiveException("RUNWAY_API_KEY, RUNWAYML_API_SECRET, or .env API key is not found.");
+    }
+
     [TestMethod]
     public async Task RealtimeWatchBridge_DeliversAvatarVideoFrame()
     {
         SkipUnlessWatchBridgeE2ETestsEnabled();
 
-        var apiKey =
-            Environment.GetEnvironmentVariable("RUNWAY_API_KEY") is { Length: > 0 } runwayApiKey ? runwayApiKey :
-            Environment.GetEnvironmentVariable("RUNWAYML_API_SECRET") is { Length: > 0 } runwayMlApiSecret ? runwayMlApiSecret :
-            throw new AssertInconclusiveException("RUNWAY_API_KEY or RUNWAYML_API_SECRET environment variable is not found.");
+        var apiKey = GetRunwayApiKey();
 
         using var timeout = new CancellationTokenSource(TimeSpan.FromMinutes(8));
         var port = GetFreeTcpPort();
@@ -175,10 +179,7 @@ public partial class Tests
         int expectedCodecId,
         string artifactFileName)
     {
-        var apiKey =
-            Environment.GetEnvironmentVariable("RUNWAY_API_KEY") is { Length: > 0 } runwayApiKey ? runwayApiKey :
-            Environment.GetEnvironmentVariable("RUNWAYML_API_SECRET") is { Length: > 0 } runwayMlApiSecret ? runwayMlApiSecret :
-            throw new AssertInconclusiveException("RUNWAY_API_KEY or RUNWAYML_API_SECRET environment variable is not found.");
+        var apiKey = GetRunwayApiKey();
 
         using var timeout = new CancellationTokenSource(TimeSpan.FromMinutes(8));
         var port = GetFreeTcpPort();
@@ -321,10 +322,7 @@ public partial class Tests
 
     private static async Task RunPngAlphaArtifactE2EAsync()
     {
-        var apiKey =
-            Environment.GetEnvironmentVariable("RUNWAY_API_KEY") is { Length: > 0 } runwayApiKey ? runwayApiKey :
-            Environment.GetEnvironmentVariable("RUNWAYML_API_SECRET") is { Length: > 0 } runwayMlApiSecret ? runwayMlApiSecret :
-            throw new AssertInconclusiveException("RUNWAY_API_KEY or RUNWAYML_API_SECRET environment variable is not found.");
+        var apiKey = GetRunwayApiKey();
 
         using var timeout = new CancellationTokenSource(TimeSpan.FromMinutes(8));
         var port = GetFreeTcpPort();

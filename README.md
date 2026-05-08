@@ -156,7 +156,7 @@ var response = await client.StartGenerating.CreateTextToVideoAsync(
     {
         PromptText = "A calm ocean with gentle waves under a starlit sky",
         Ratio = CreateTextToVideoRequestVeo31FastRatio.x1280_720,
-        Duration = 5,
+        Duration = 4,
     });
 ```
 
@@ -262,12 +262,34 @@ using var runway = new RunwayClient(apiKey);
 var tools = runway.AsTools();
 ```
 
+### GPT Image 2
+
+Runway's current model list includes `gpt_image_2`. Until it appears in the generated OpenAPI union, the SDK exposes a typed handwritten helper outside `Generated/`.
+
+```csharp
+using Runway;
+
+using var client = new RunwayClient(apiKey);
+
+var response = await client.StartGenerating.CreateGptImage2TextToImageAsync(
+    request: new CreateGptImage2TextToImageRequest
+    {
+        PromptText = "A clean poster that says RUNWAY CLI in precise typography",
+        Ratio = "1024:1024",
+        Resolution = GptImage2Resolution.x1K,
+        Quality = GptImage2Quality.Low,
+        OutputCount = 1,
+    });
+```
+
 ### CLI
 
-This repository includes a local .NET tool project for Runway generation, task management, uploads, documents, voices, realtime sessions, organization usage, workflows, and avatar workflows. It reads `RUNWAY_API_KEY` or `RUNWAYML_API_SECRET` by default.
+This repository includes a local .NET tool project for Runway generation, task management, uploads, documents, voices, realtime sessions, organization usage, workflows, and avatar workflows. It reads `RUNWAY_API_KEY`, `RUNWAYML_API_SECRET`, or the nearest `.env` file by default.
 
 ```bash
-export RUNWAY_API_KEY="..."
+cat > .env <<'EOF'
+RUNWAY_API_KEY=...
+EOF
 
 # One-shot via dnx. The installed tool command is `runway`; dnx uses the package ID.
 dnx Runway.Cli video a cinematic drone shot over a neon desert highway
@@ -298,6 +320,14 @@ dotnet run --project src/cli/Runway.Cli -- image a logo-style glass speaker icon
   --ratio 1024:1024 \
   --output ./runway-image
 
+dotnet run --project src/cli/Runway.Cli -- image "a sharp product poster with readable text" \
+  --model gpt-image-2 \
+  --ratio 1024:1024 \
+  --resolution 1K \
+  --quality low \
+  --output-count 1 \
+  --output ./runway-gpt-image
+
 dotnet run --project src/cli/Runway.Cli -- video a slow push in on the reference image \
   --image ./reference.png \
   --output ./runway-output
@@ -327,6 +357,30 @@ dotnet run --project src/cli/Runway.Cli -- upload create --file ./reference.png
 
 dotnet run --project src/cli/Runway.Cli -- workflow list
 ```
+
+CLI endpoint and model coverage:
+
+| Command | Endpoint(s) | Models |
+| --- | --- | --- |
+| `video`, `text-to-video` | `POST /v1/text_to_video` | `gen4.5`, `veo3.1`, `veo3.1_fast`, `veo3` |
+| `image-to-video` | `POST /v1/image_to_video` | `gen4.5`, `gen4_turbo`, `gen3a_turbo`, `veo3.1`, `veo3.1_fast`, `veo3` |
+| `video-to-video` | `POST /v1/video_to_video` | `gen4_aleph` |
+| `image` | `POST /v1/text_to_image` | `gen4_image_turbo`, `gen4_image`, `gemini_image3_pro`, `gpt_image_2`, `gemini_2.5_flash` |
+| `character-performance` | `POST /v1/character_performance` | `act_two` |
+| `sound-effect` | `POST /v1/sound_effect` | `eleven_text_to_sound_v2` |
+| `speech-to-speech` | `POST /v1/speech_to_speech` | `eleven_multilingual_sts_v2` |
+| `text-to-speech` | `POST /v1/text_to_speech` | `eleven_multilingual_v2` |
+| `voice-dubbing` | `POST /v1/voice_dubbing` | `eleven_voice_dubbing` |
+| `voice-isolation` | `POST /v1/voice_isolation` | `eleven_voice_isolation` |
+| `task` | `GET /v1/tasks/{id}`, `DELETE /v1/tasks/{id}` | Task management |
+| `avatar` | `GET/POST/PATCH/DELETE /v1/avatars`, conversation and usage endpoints | `gwm1_avatars`, avatar presets |
+| `avatar video` | `POST /v1/avatar_videos` | `gwm1_avatars` |
+| `document` | `GET/POST/PATCH/DELETE /v1/documents` | Knowledge documents |
+| `upload` | `POST /v1/uploads` | Ephemeral uploads |
+| `voice` | `GET/POST/PATCH/DELETE /v1/voices`, `POST /v1/voices/preview` | `eleven_ttv_v3`, `eleven_multilingual_ttv_v2` |
+| `realtime` | `POST/GET/DELETE /v1/realtime_sessions` | `gwm1_avatars` |
+| `organization` | `GET /v1/organization`, `POST /v1/organization/usage` | Usage and metadata |
+| `workflow` | `GET/POST /v1/workflows`, `GET /v1/workflow_invocations/{id}` | Published workflows |
 
 ## Support
 

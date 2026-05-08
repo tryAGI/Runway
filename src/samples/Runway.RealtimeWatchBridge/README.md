@@ -11,7 +11,7 @@ cd src/samples/Runway.RealtimeWatchBridge
 RUNWAY_API_KEY=... ASPNETCORE_URLS=http://127.0.0.1:5088 dotnet run
 ```
 
-Do not paste API keys into source files. Use `RUNWAY_API_KEY` or `RUNWAYML_API_SECRET`.
+Do not paste API keys into source files. Use `RUNWAY_API_KEY`, `RUNWAYML_API_SECRET`, or a `.env` file in this directory or a parent directory.
 
 The default media bridge is pure .NET and uses the sibling `Runway.RealtimeWatchBridge.MediaBridge` project. Build the full solution first if you want session startup to avoid the first-run `dotnet run --project` build cost:
 

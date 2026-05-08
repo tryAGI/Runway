@@ -18,11 +18,10 @@ public partial class Tests
 
         var response = await client.StartGenerating.CreateTextToImageAsync(
             xRunwayVersion: "2024-11-06",
-            request: new CreateTextToImageRequestGen4ImageTurbo
+            request: new CreateTextToImageRequestGemini25Flash
             {
                 PromptText = "A vibrant coral reef teeming with tropical fish",
-                Ratio = CreateTextToImageRequestGen4ImageTurboRatio.x1280_720,
-                ReferenceImages = [],
+                Ratio = CreateTextToImageRequestGemini25FlashRatio.x1024_1024,
             });
         response.Id.Should().NotBe(default(Guid));
 

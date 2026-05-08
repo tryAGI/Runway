@@ -50,7 +50,7 @@ public partial class Tests
         var result = await RunCliAsync("video tiny test prompt --no-wait", removeApiKey: true).ConfigureAwait(false);
 
         result.ExitCode.Should().Be(1);
-        result.Stderr.Should().Contain("Set --api-key, RUNWAY_API_KEY, or RUNWAYML_API_SECRET.");
+        result.Stderr.Should().Contain("Set --api-key, RUNWAY_API_KEY, RUNWAYML_API_SECRET, or a .env file.");
     }
 
     [TestMethod]
@@ -59,7 +59,7 @@ public partial class Tests
         var result = await RunCliAsync("image tiny test prompt --no-wait", removeApiKey: true).ConfigureAwait(false);
 
         result.ExitCode.Should().Be(1);
-        result.Stderr.Should().Contain("Set --api-key, RUNWAY_API_KEY, or RUNWAYML_API_SECRET.");
+        result.Stderr.Should().Contain("Set --api-key, RUNWAY_API_KEY, RUNWAYML_API_SECRET, or a .env file.");
     }
 
     [TestMethod]
@@ -91,6 +91,78 @@ public partial class Tests
 
         await act.Should().ThrowAsync<ArgumentException>()
             .WithMessage("Runway accepts up to three reference images.").ConfigureAwait(false);
+    }
+
+    [TestMethod]
+    public async Task RunwayCli_CreatesGptImage2RequestWithResolutionQualityAndSixteenReferences()
+    {
+        var references = Enumerable.Range(1, 16)
+            .Select(index => $"https://example.com/reference-{index}.png")
+            .ToArray();
+
+        var request = await RunwayCliGeneration.CreateGptImage2TextToImageRequestAsync(
+            "poster with crisp product typography",
+            "1024:1024",
+            references,
+            "1K",
+            "low",
+            1,
+            CancellationToken.None).ConfigureAwait(false);
+
+        request.PromptText.Should().Be("poster with crisp product typography");
+        request.Ratio.Should().Be("1024:1024");
+        request.Resolution.Should().Be(GptImage2Resolution.x1K);
+        request.Quality.Should().Be(GptImage2Quality.Low);
+        request.OutputCount.Should().Be(1);
+        request.ReferenceImages.Should().HaveCount(16);
+        request.ReferenceImages![15].Tag.Should().Be("reference16");
+    }
+
+    [TestMethod]
+    public async Task RunwayCli_RejectsTooManyGptImage2ReferenceImages()
+    {
+        var act = () => RunwayCliGeneration.CreateGptImage2TextToImageRequestAsync(
+            "poster with crisp product typography",
+            "1024:1024",
+            Enumerable.Range(1, 17).Select(index => $"https://example.com/reference-{index}.png").ToArray(),
+            "1K",
+            "low",
+            1,
+            CancellationToken.None);
+
+        await act.Should().ThrowAsync<ArgumentException>()
+            .WithMessage("GPT Image 2 accepts up to 16 reference images.").ConfigureAwait(false);
+    }
+
+    [TestMethod]
+    public void RunwayEnvironment_LoadsApiKeyFromDotEnv()
+    {
+        var originalCurrentDirectory = Environment.CurrentDirectory;
+        var originalRunwayApiKey = Environment.GetEnvironmentVariable("RUNWAY_API_KEY");
+        var originalRunwayMlApiSecret = Environment.GetEnvironmentVariable("RUNWAYML_API_SECRET");
+        var originalDotEnvDisabled = Environment.GetEnvironmentVariable("RUNWAY_DOTENV_DISABLED");
+        var directory = Directory.CreateTempSubdirectory("runway-dotenv-test-").FullName;
+        var childDirectory = Path.Combine(directory, "child");
+        Directory.CreateDirectory(childDirectory);
+
+        try
+        {
+            Environment.SetEnvironmentVariable("RUNWAY_API_KEY", null);
+            Environment.SetEnvironmentVariable("RUNWAYML_API_SECRET", null);
+            Environment.SetEnvironmentVariable("RUNWAY_DOTENV_DISABLED", null);
+            File.WriteAllText(Path.Combine(directory, ".env"), "RUNWAY_API_KEY=dotenv-test-key\n");
+            Environment.CurrentDirectory = childDirectory;
+
+            RunwayEnvironment.GetApiKey().Should().Be("dotenv-test-key");
+        }
+        finally
+        {
+            Environment.CurrentDirectory = originalCurrentDirectory;
+            Environment.SetEnvironmentVariable("RUNWAY_API_KEY", originalRunwayApiKey);
+            Environment.SetEnvironmentVariable("RUNWAYML_API_SECRET", originalRunwayMlApiSecret);
+            Environment.SetEnvironmentVariable("RUNWAY_DOTENV_DISABLED", originalDotEnvDisabled);
+            Directory.Delete(directory, recursive: true);
+        }
     }
 
     [TestMethod]
@@ -153,6 +225,11 @@ public partial class Tests
         {
             startInfo.Environment.Remove("RUNWAY_API_KEY");
             startInfo.Environment.Remove("RUNWAYML_API_SECRET");
+            startInfo.Environment["RUNWAY_DOTENV_DISABLED"] = "1";
+        }
+        else
+        {
+            startInfo.Environment.Remove("RUNWAY_DOTENV_DISABLED");
         }
 
         using var process = Process.Start(startInfo)

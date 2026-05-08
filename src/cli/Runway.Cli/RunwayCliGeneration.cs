@@ -108,11 +108,13 @@ internal static class RunwayCliGeneration
             seed,
             outputCount,
             publicFigureThreshold,
+            resolution: null,
+            quality: null,
             cancellationToken).ConfigureAwait(false);
         var normalizedModel = body["model"]?.GetValue<string>();
         if (normalizedModel == "gpt_image_2")
         {
-            throw new ArgumentException("gpt_image_2 is listed by Runway but is not present in the generated OpenAPI union yet. Use the CLI raw JSON path or the friendly image command, which posts this model directly.");
+            throw new ArgumentException("gpt_image_2 is not present in the generated OpenAPI union yet. Use CreateGptImage2TextToImageRequestAsync or the friendly image command.");
         }
 
         return ToGenerated<CreateTextToImageRequest>(body);
@@ -127,6 +129,8 @@ internal static class RunwayCliGeneration
         int? seed,
         double? outputCount,
         string? publicFigureThreshold,
+        string? resolution,
+        string? quality,
         CancellationToken cancellationToken)
     {
         var body = new JsonObject
@@ -140,9 +144,15 @@ internal static class RunwayCliGeneration
         SetIfNotNull(body, "seed", seed);
         SetIfNotNull(body, "outputCount", outputCount);
         AddContentModeration(body, publicFigureThreshold);
+        if (normalizedModel == "gpt_image_2")
+        {
+            SetIfNotNull(body, "resolution", resolution);
+            SetIfNotNull(body, "quality", quality);
+        }
 
         var references = await CreateReferenceImagesNodeAsync(
             referenceImages,
+            normalizedModel,
             normalizedModel == "gemini_image3_pro" ? referenceSubject : null,
             cancellationToken).ConfigureAwait(false);
 
@@ -152,6 +162,32 @@ internal static class RunwayCliGeneration
         }
 
         return body;
+    }
+
+    public static async Task<CreateGptImage2TextToImageRequest> CreateGptImage2TextToImageRequestAsync(
+        string prompt,
+        string ratio,
+        string[]? referenceImages,
+        string? resolution,
+        string? quality,
+        double? outputCount,
+        CancellationToken cancellationToken)
+    {
+        var request = new CreateGptImage2TextToImageRequest
+        {
+            PromptText = prompt,
+            Ratio = ratio,
+            Resolution = ParseGptImage2Resolution(resolution),
+            Quality = ParseGptImage2Quality(quality),
+            OutputCount = outputCount,
+        };
+
+        foreach (var referenceImage in await CreateGptImage2ReferenceImagesAsync(referenceImages, cancellationToken).ConfigureAwait(false))
+        {
+            request.ReferenceImages.Add(referenceImage);
+        }
+
+        return request;
     }
 
     public static async Task<CreateVideoToVideoRequest> CreateVideoToVideoRequestAsync(
@@ -348,6 +384,7 @@ internal static class RunwayCliGeneration
             "veo3_1" or "veo3-1" => "veo3.1",
             "gemini-2.5-flash" => "gemini_2.5_flash",
             "gemini-image3-pro" or "gemini-image-3-pro" => "gemini_image3_pro",
+            "gpt-image-2" => "gpt_image_2",
             "gen4-image" => "gen4_image",
             "gen4-image-turbo" => "gen4_image_turbo",
             _ => candidate,
@@ -364,6 +401,39 @@ internal static class RunwayCliGeneration
     public static string NormalizeTextToImageModel(string? value)
     {
         return NormalizeModel(value, "gemini_2.5_flash", TextToImageModels);
+    }
+
+    public static GptImage2Resolution? ParseGptImage2Resolution(string? value)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+        {
+            return null;
+        }
+
+        return value.Trim().ToLowerInvariant() switch
+        {
+            "auto" => GptImage2Resolution.Auto,
+            "1k" or "x1k" => GptImage2Resolution.x1K,
+            "2k" or "x2k" => GptImage2Resolution.x2K,
+            "4k" or "x4k" => GptImage2Resolution.x4K,
+            _ => throw new ArgumentException("Unsupported GPT Image 2 resolution. Supported values: auto, 1K, 2K, 4K."),
+        };
+    }
+
+    public static GptImage2Quality? ParseGptImage2Quality(string? value)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+        {
+            return null;
+        }
+
+        return value.Trim().ToLowerInvariant() switch
+        {
+            "low" => GptImage2Quality.Low,
+            "medium" => GptImage2Quality.Medium,
+            "high" => GptImage2Quality.High,
+            _ => throw new ArgumentException("Unsupported GPT Image 2 quality. Supported values: low, medium, high."),
+        };
     }
 
     public static JsonObject? CreateContentModerationNode(string? publicFigureThreshold)
@@ -451,6 +521,33 @@ internal static class RunwayCliGeneration
         for (var index = 0; index < values.Length; index++)
         {
             images.Add(new CreateTextToImageRequestGen4ImageTurboReferenceImage
+            {
+                Uri = await NormalizeInputAssetAsync(values[index], cancellationToken).ConfigureAwait(false),
+                Tag = $"reference{index + 1}",
+            });
+        }
+
+        return images;
+    }
+
+    public static async Task<IList<CreateGptImage2TextToImageReferenceImage>> CreateGptImage2ReferenceImagesAsync(
+        string[]? values,
+        CancellationToken cancellationToken)
+    {
+        if (values is not { Length: > 0 })
+        {
+            return [];
+        }
+
+        if (values.Length > 16)
+        {
+            throw new ArgumentException("GPT Image 2 accepts up to 16 reference images.");
+        }
+
+        var images = new List<CreateGptImage2TextToImageReferenceImage>(values.Length);
+        for (var index = 0; index < values.Length; index++)
+        {
+            images.Add(new CreateGptImage2TextToImageReferenceImage
             {
                 Uri = await NormalizeInputAssetAsync(values[index], cancellationToken).ConfigureAwait(false),
                 Tag = $"reference{index + 1}",
@@ -570,6 +667,7 @@ internal static class RunwayCliGeneration
 
     private static async Task<JsonArray> CreateReferenceImagesNodeAsync(
         string[]? values,
+        string normalizedModel,
         string? subject,
         CancellationToken cancellationToken)
     {
@@ -579,9 +677,16 @@ internal static class RunwayCliGeneration
             return images;
         }
 
-        if (values.Length > 3)
+        var maxReferenceImages = normalizedModel switch
         {
-            throw new ArgumentException("Runway accepts up to three reference images.");
+            "gemini_image3_pro" => 14,
+            "gpt_image_2" => 16,
+            _ => 3,
+        };
+
+        if (values.Length > maxReferenceImages)
+        {
+            throw new ArgumentException($"Runway accepts up to {maxReferenceImages} reference images for {normalizedModel}.");
         }
 
         for (var index = 0; index < values.Length; index++)

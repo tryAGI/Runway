@@ -11,7 +11,7 @@ const string DefaultRunwayVersion = "2024-11-06";
 
 var apiKeyOption = new Option<string?>("--api-key", ["-k"])
 {
-    Description = "Runway API key. Defaults to RUNWAY_API_KEY or RUNWAYML_API_SECRET.",
+    Description = "Runway API key. Defaults to RUNWAY_API_KEY, RUNWAYML_API_SECRET, or .env.",
     Recursive = true,
 };
 
@@ -493,8 +493,18 @@ var imageRatioOption = new Option<string>("--ratio")
 
 var imageModelOption = new Option<string>("--model")
 {
-    Description = "Image model: gemini-2.5-flash, gemini-image3-pro, gen4-image, or gen4-image-turbo.",
+    Description = "Image model: gemini-2.5-flash, gemini-image3-pro, gpt-image-2, gen4-image, or gen4-image-turbo.",
     DefaultValueFactory = _ => "gemini-2.5-flash",
+};
+
+var imageResolutionOption = new Option<string?>("--resolution")
+{
+    Description = "Optional GPT Image 2 resolution tier: auto, 1K, 2K, or 4K.",
+};
+
+var imageQualityOption = new Option<string?>("--quality")
+{
+    Description = "Optional GPT Image 2 quality tier: low, medium, or high.",
 };
 
 var videoModelOption = new Option<string?>("--model")
@@ -666,6 +676,8 @@ var generateImageCommand = new Command("image", "Generate an image locally from 
     outputOption,
     imageRatioOption,
     imageModelOption,
+    imageResolutionOption,
+    imageQualityOption,
     seedOption,
     referenceImageOption2,
     referenceSubjectOption,
@@ -697,22 +709,18 @@ generateImageCommand.SetAction((ParseResult parseResult, CancellationToken cance
         }
         else if (RunwayCliGeneration.NormalizeTextToImageModel(imageModel) == "gpt_image_2")
         {
-            var body = await RunwayCliGeneration.CreateTextToImageJsonBodyAsync(
-                prompt,
-                imageModel,
-                ratio,
-                referenceImages,
-                parseResult.GetValue(referenceSubjectOption) ?? "object",
-                seed,
-                parseResult.GetValue(outputCountOption),
-                parseResult.GetValue(publicFigureThresholdOption),
-                ct).ConfigureAwait(false);
-            taskId = await PostGenerationJsonAsync(
-                client,
-                runwayVersion,
-                "v1/text_to_image",
-                body.ToJsonString(),
-                ct).ConfigureAwait(false);
+            var response = await client.StartGenerating.CreateGptImage2TextToImageAsync(
+                request: await RunwayCliGeneration.CreateGptImage2TextToImageRequestAsync(
+                    prompt,
+                    ratio,
+                    referenceImages,
+                    parseResult.GetValue(imageResolutionOption),
+                    parseResult.GetValue(imageQualityOption),
+                    parseResult.GetValue(outputCountOption),
+                    ct).ConfigureAwait(false),
+                xRunwayVersion: runwayVersion,
+                cancellationToken: ct).ConfigureAwait(false);
+            taskId = response.Id;
         }
         else
         {
@@ -2057,9 +2065,8 @@ RunwayClient CreateClient(ParseResult parseResult)
 {
     var apiKey =
         parseResult.GetValue(apiKeyOption) is { Length: > 0 } optionValue ? optionValue :
-        Environment.GetEnvironmentVariable("RUNWAY_API_KEY") is { Length: > 0 } runwayApiKey ? runwayApiKey :
-        Environment.GetEnvironmentVariable("RUNWAYML_API_SECRET") is { Length: > 0 } runwayMlApiKey ? runwayMlApiKey :
-        throw new InvalidOperationException("Set --api-key, RUNWAY_API_KEY, or RUNWAYML_API_SECRET.");
+        RunwayEnvironment.GetApiKey() is { Length: > 0 } configuredApiKey ? configuredApiKey :
+        throw new InvalidOperationException("Set --api-key, RUNWAY_API_KEY, RUNWAYML_API_SECRET, or a .env file.");
 
     return new RunwayClient(apiKey);
 }

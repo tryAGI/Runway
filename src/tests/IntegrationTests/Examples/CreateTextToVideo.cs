@@ -22,7 +22,7 @@ public partial class Tests
             {
                 PromptText = "A calm ocean with gentle waves under a starlit sky",
                 Ratio = CreateTextToVideoRequestVeo31FastRatio.x1280_720,
-                Duration = 5,
+                Duration = 4,
             });
         response.Id.Should().NotBe(default(Guid));
 
