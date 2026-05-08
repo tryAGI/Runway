@@ -1,5 +1,7 @@
 using System.Diagnostics;
+using System.Runtime.CompilerServices;
 using System.Text.Json;
+using Microsoft.Extensions.AI;
 
 namespace Runway.IntegrationTests;
 
@@ -172,6 +174,63 @@ public partial class Tests
         var roundTrip = JsonSerializer.Deserialize(json, RunwayShortVideoJsonSerializerContext.Default.RunwayShortVideoPlan);
         roundTrip!.Shots.Should().HaveCount(2);
         roundTrip.Ratio.Should().Be("720:1280");
+    }
+
+    [TestMethod]
+    public async Task RunwayShortVideoPlanner_IChatClientRequestsJsonSchemaResponseFormat()
+    {
+        var chatClient = new CapturingChatClient(_ => CreateChatResponse(CreatePlannerPlanJson()));
+
+        var plan = await chatClient.CreateShortVideoPlanAsync(
+            "A glass flower opens on a rainy street.",
+            new RunwayShortVideoOptions { ShotCount = 2 }).ConfigureAwait(false);
+
+        plan.Shots.Should().HaveCount(2);
+        chatClient.CapturedOptions.Should().HaveCount(1);
+
+        var responseFormat = chatClient.CapturedOptions[0]!.ResponseFormat;
+        var schemaFormat = responseFormat.Should().BeOfType<ChatResponseFormatJson>().Subject;
+        schemaFormat.SchemaName.Should().Be("runway_short_video_plan");
+        schemaFormat.SchemaDescription.Should().Contain("Runway short-video storyboard plan");
+        schemaFormat.Schema.Should().NotBeNull();
+    }
+
+    [TestMethod]
+    public async Task RunwayShortVideoPlanner_IChatClientDeserializesAndNormalizesStructuredJson()
+    {
+        var chatClient = new CapturingChatClient(_ => CreateChatResponse(CreatePlannerPlanJson(
+            new RunwayShortVideoOptions { ShotCount = 2, ShotDurationSeconds = 7, Ratio = "720:1280" },
+            preserveRequestedOptions: false)));
+
+        var plan = await chatClient.CreateShortVideoPlanAsync(
+            "A glass flower opens on a rainy street.",
+            new RunwayShortVideoOptions { ShotCount = 2, ShotDurationSeconds = 7, Ratio = "720:1280" }).ConfigureAwait(false);
+
+        plan.Model.Should().Be(RunwayShortVideoOptions.DefaultModel);
+        plan.Ratio.Should().Be("720:1280");
+        plan.ShotDurationSeconds.Should().Be(7);
+        plan.Shots.Should().HaveCount(2);
+        plan.Shots[0].Index.Should().Be(1);
+        plan.Shots[0].Count.Should().Be(2);
+        plan.Shots[1].Index.Should().Be(2);
+        plan.Shots[1].Count.Should().Be(2);
+    }
+
+    [TestMethod]
+    public async Task RunwayShortVideoPlanner_IChatClientFallsBackWhenJsonSchemaResponseFormatIsUnsupported()
+    {
+        var chatClient = new CapturingChatClient(
+            _ => throw new NotSupportedException("JSON schema response format is not supported."),
+            _ => CreateChatResponse(CreatePlannerPlanJson()));
+
+        var plan = await chatClient.CreateShortVideoPlanAsync(
+            "A glass flower opens on a rainy street.",
+            new RunwayShortVideoOptions { ShotCount = 2 }).ConfigureAwait(false);
+
+        plan.Shots.Should().HaveCount(2);
+        chatClient.CapturedOptions.Should().HaveCount(2);
+        chatClient.CapturedOptions[0]!.ResponseFormat.Should().BeOfType<ChatResponseFormatJson>();
+        chatClient.CapturedOptions[1]!.ResponseFormat.Should().BeSameAs(ChatResponseFormat.Json);
     }
 
     [TestMethod]
@@ -387,6 +446,98 @@ public partial class Tests
 
         RunwayTaskExtensions.GetOutputExtension(new Uri("https://example.com/download?token=abc"), ".png")
             .Should().Be(".png");
+    }
+
+    private static ChatResponse CreateChatResponse(string text)
+    {
+        return new ChatResponse([new ChatMessage(ChatRole.Assistant, text)]);
+    }
+
+    private static string CreatePlannerPlanJson(
+        RunwayShortVideoOptions? options = null,
+        bool preserveRequestedOptions = true)
+    {
+        var effectiveOptions = options ?? new RunwayShortVideoOptions { ShotCount = 2 };
+        var plan = RunwayShortVideoExtensions.CreateShortVideoPlan(
+            "A glass flower opens on a rainy street.",
+            effectiveOptions);
+
+        if (!preserveRequestedOptions)
+        {
+            plan = new RunwayShortVideoPlan
+            {
+                SourceText = plan.SourceText,
+                Scenario = plan.Scenario,
+                Style = plan.Style,
+                Model = "llm-selected-model",
+                Ratio = "1:1",
+                ShotDurationSeconds = 99,
+                Shots =
+                [
+                    CopyShotWithIndexes(plan.Shots[0], index: 12, count: 99),
+                    CopyShotWithIndexes(plan.Shots[1], index: 13, count: 99),
+                ],
+            };
+        }
+
+        return JsonSerializer.Serialize(plan, RunwayShortVideoJsonSerializerContext.Default.RunwayShortVideoPlan);
+    }
+
+    private static RunwayShortVideoShot CopyShotWithIndexes(
+        RunwayShortVideoShot shot,
+        int index,
+        int count)
+    {
+        return new RunwayShortVideoShot
+        {
+            Index = index,
+            Count = count,
+            Title = shot.Title,
+            Beat = shot.Beat,
+            KeyframePrompt = shot.KeyframePrompt,
+            VideoPrompt = shot.VideoPrompt,
+        };
+    }
+
+    private sealed class CapturingChatClient(params Func<ChatOptions?, ChatResponse>[] responses) : IChatClient
+    {
+        private readonly Queue<Func<ChatOptions?, ChatResponse>> _responses = new(responses);
+
+        public List<ChatOptions?> CapturedOptions { get; } = [];
+
+        public Task<ChatResponse> GetResponseAsync(
+            IEnumerable<ChatMessage> messages,
+            ChatOptions? options = null,
+            CancellationToken cancellationToken = default)
+        {
+            CapturedOptions.Add(options);
+
+            if (_responses.Count == 0)
+            {
+                throw new InvalidOperationException("No chat response was configured.");
+            }
+
+            return Task.FromResult(_responses.Dequeue().Invoke(options));
+        }
+
+        public async IAsyncEnumerable<ChatResponseUpdate> GetStreamingResponseAsync(
+            IEnumerable<ChatMessage> messages,
+            ChatOptions? options = null,
+            [EnumeratorCancellation] CancellationToken cancellationToken = default)
+        {
+            cancellationToken.ThrowIfCancellationRequested();
+            await Task.CompletedTask.ConfigureAwait(false);
+            yield break;
+        }
+
+        public object? GetService(Type serviceType, object? serviceKey = null)
+        {
+            return serviceType.IsInstanceOfType(this) ? this : null;
+        }
+
+        public void Dispose()
+        {
+        }
     }
 
     private static async Task<CliResult> RunCliAsync(string arguments, bool removeApiKey = false)

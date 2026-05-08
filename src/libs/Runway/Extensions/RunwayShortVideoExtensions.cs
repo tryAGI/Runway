@@ -390,16 +390,14 @@ public static class RunwayShortVideoExtensions
         ArgumentException.ThrowIfNullOrWhiteSpace(scenarioText);
 
         var effectiveOptions = ValidateOptions(options);
-        var response = await chatClient.GetResponseAsync(
-            [
-                new ChatMessage(ChatRole.System, CreateShortVideoPlannerSystemPrompt()),
-                new ChatMessage(ChatRole.User, CreateShortVideoPlannerUserPrompt(scenarioText, effectiveOptions)),
-            ],
-            new ChatOptions
-            {
-                ResponseFormat = ChatResponseFormat.Json,
-                Temperature = 0.2f,
-            },
+        ChatMessage[] messages =
+        [
+            new ChatMessage(ChatRole.System, CreateShortVideoPlannerSystemPrompt()),
+            new ChatMessage(ChatRole.User, CreateShortVideoPlannerUserPrompt(scenarioText, effectiveOptions)),
+        ];
+        var response = await GetShortVideoPlannerResponseAsync(
+            chatClient,
+            messages,
             cancellationToken).ConfigureAwait(false);
 
         var json = ExtractJsonObject(response.Text);
@@ -409,6 +407,64 @@ public static class RunwayShortVideoExtensions
             ?? throw new InvalidOperationException("Planner response did not contain a short-video plan.");
 
         return NormalizePlan(plan, effectiveOptions);
+    }
+
+    private static async Task<ChatResponse> GetShortVideoPlannerResponseAsync(
+        IChatClient chatClient,
+        ChatMessage[] messages,
+        CancellationToken cancellationToken)
+    {
+        try
+        {
+            return await chatClient.GetResponseAsync(
+                messages,
+                CreateShortVideoPlannerChatOptions(useJsonSchema: true),
+                cancellationToken).ConfigureAwait(false);
+        }
+        catch (Exception ex) when (IsUnsupportedPlannerResponseFormatException(ex))
+        {
+            return await chatClient.GetResponseAsync(
+                messages,
+                CreateShortVideoPlannerChatOptions(useJsonSchema: false),
+                cancellationToken).ConfigureAwait(false);
+        }
+    }
+
+    private static ChatOptions CreateShortVideoPlannerChatOptions(bool useJsonSchema)
+    {
+        return new ChatOptions
+        {
+            ResponseFormat = useJsonSchema
+                ? ChatResponseFormat.ForJsonSchema<RunwayShortVideoPlan>(
+                    RunwayShortVideoJsonSerializerContext.Default.Options,
+                    "runway_short_video_plan",
+                    "A Runway short-video storyboard plan with one prompt per shot.")
+                : ChatResponseFormat.Json,
+            Temperature = 0.2f,
+        };
+    }
+
+    private static bool IsUnsupportedPlannerResponseFormatException(Exception exception)
+    {
+        return (exception is NotSupportedException || exception is InvalidOperationException) &&
+            IsResponseFormatUnsupportedMessage(exception.Message);
+    }
+
+    private static bool IsResponseFormatUnsupportedMessage(string? message)
+    {
+        if (string.IsNullOrWhiteSpace(message))
+        {
+            return false;
+        }
+
+        return (message.Contains("response format", StringComparison.OrdinalIgnoreCase) ||
+                message.Contains("responseFormat", StringComparison.OrdinalIgnoreCase) ||
+                message.Contains("response_format", StringComparison.OrdinalIgnoreCase) ||
+                message.Contains("json schema", StringComparison.OrdinalIgnoreCase) ||
+                message.Contains("json_schema", StringComparison.OrdinalIgnoreCase) ||
+                message.Contains("structured output", StringComparison.OrdinalIgnoreCase)) &&
+            (message.Contains("not support", StringComparison.OrdinalIgnoreCase) ||
+             message.Contains("unsupported", StringComparison.OrdinalIgnoreCase));
     }
 
     /// <summary>
