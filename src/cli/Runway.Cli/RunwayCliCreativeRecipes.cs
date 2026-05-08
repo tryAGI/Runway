@@ -20,6 +20,8 @@ internal static class RunwayCliCreativeRecipes
     [
         "product_shot",
         "lifestyle_scene",
+        "closeup_product_with_person",
+        "moodboard_pin",
         "hero_banner",
         "social_carousel",
         "ad_creative_pack",
@@ -331,6 +333,8 @@ internal static class RunwayCliCreativeRecipes
         return mode switch
         {
             "lifestyle_scene" => "Place the product in an aspirational real-use scene with believable hands, surfaces, and environmental cues.",
+            "closeup_product_with_person" => "Frame an intimate close-up that pairs the product with a believable human hand, face, or shoulder; preserve product proportions, accurate skin tones, and tactile contact between person and product.",
+            "moodboard_pin" => "Compose a Pinterest-style moodboard pin: vertical-friendly framing, curated color palette, layered textures and small props, soft directional light, and a quiet editorial mood that flatters the product.",
             "hero_banner" => "Create a wide premium hero composition with negative space for later layout, strong silhouette, and refined brand atmosphere.",
             "social_carousel" => $"Create a social carousel panel focused on {ToDisplay(label)} with a direct visual hook and clean product readability.",
             "ad_creative_pack" => $"Create an ad creative variation focused on {ToDisplay(label)} with a strong thumb-stopping composition.",
@@ -396,6 +400,8 @@ internal static class RunwayCliCreativeRecipes
             "social_carousel" => ["hook", "benefit", "detail", "lifestyle"],
             "ad_creative_pack" => ["hero", "problem-solution", "detail", "offer"],
             "lifestyle_scene" => ["lifestyle"],
+            "closeup_product_with_person" => ["closeup-with-person"],
+            "moodboard_pin" => ["moodboard-pin"],
             "hero_banner" => ["hero-banner"],
             "virtual_model_tryout" => ["model-tryout"],
             "conceptual_product" => ["conceptual"],

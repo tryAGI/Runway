@@ -37,6 +37,8 @@ Default to low-cost, practical choices:
 | Quick image | `image --model gemini-2.5-flash --ratio 1024:1024` |
 | Image with accurate text | `image --model gpt-image-2 --ratio 1920:1088 --quality low` |
 | Product photoshoot plan | `product-photoshoot create --mode product_shot --plan-only` |
+| Closeup with person | `product-photoshoot create --mode closeup_product_with_person --plan-only` |
+| Pinterest moodboard | `product-photoshoot create --mode moodboard_pin --plan-only` |
 | Marketplace card bundle | `marketplace-cards create --scope full-set --plan-only` |
 | Text-to-video | `video --model veo3.1-fast --duration 4 --ratio 1280:720` |
 | Ad-video recipe | `ad-video create --mode ugc --shots 1 --duration 4` |
@@ -45,6 +47,7 @@ Default to low-cost, practical choices:
 | Highest quality video | `video --model gen4.5` or `video --model veo3` |
 | Video edit / transformation | `video-to-video --video <file>` |
 | Text-to-speech | `text-to-speech --voice-preset clara` |
+| Generate by kind (Higgsfield-style) | `generate "<prompt>" --kind image\|video\|image-to-video\|text-to-speech\|sound-effect` |
 
 If the user asks for exact pricing, latest models, or a model not shown by `models`, verify against official docs before running.
 
@@ -174,7 +177,7 @@ dnx Runway.Cli ad-video create \
   --plan-only
 ```
 
-Execute a recipe by removing `--plan-only`. The recipe commands stay Runway-native: they use bundled prompt guidance for product/ad/storyboard work and call only Runway image/video generation endpoints. They do not install or call Higgsfield. For presenter-style video, use `avatar video` or `character-performance`; Runway does not provide Higgsfield-style reusable face-model training through this SDK.
+Execute a recipe by removing `--plan-only`. The recipe commands stay Runway-native: they use bundled prompt guidance for product/ad/storyboard work and call only Runway image/video generation endpoints. They do not install or call Higgsfield. For presenter-style video, use `avatar video` or `character-performance`. For face-faithful identity reuse, the CLI ships a local `soul-id` registry (see "Soul-ID and Higgsfield Parity" below) that attaches reference photos to generation calls; it does not train a server-side identity model.
 
 Animate a local image:
 
@@ -264,6 +267,66 @@ dnx Runway.Cli text-to-video "ignored when --json is used" --json @text-to-video
 ```
 
 Use this only when the friendly command cannot express the request.
+
+## Soul-ID and Higgsfield Parity
+
+The CLI ships a Higgsfield-parity surface so an agent trained on `higgsfield` verbs can drive Runway with the same vocabulary. Mapping:
+
+| Higgsfield CLI | Runway CLI | Notes |
+| --- | --- | --- |
+| `higgsfield generate create` | `runway generate <prompt> --kind image\|video\|image-to-video\|text-to-speech\|sound-effect` | Thin router. For per-modality options, prefer `runway image`, `runway video`, `runway image-to-video`, `runway text-to-speech`, `runway sound-effect` directly. |
+| `higgsfield soul-id create/list/get/wait` | `runway soul-id create/list/get/wait/delete` | Local registry under `~/.runway-cli/soul-ids/<id>/`. Photos are stored client-side; `wait` is a no-op (entries are always `ready`). Pass `--soul-id <id>` to `image` or `image-to-video` to auto-attach the registered photos as reference images. |
+| `higgsfield product-photoshoot --mode` (10 modes) | `runway product-photoshoot create --mode` (10 modes) | All Higgsfield modes mapped: `product_shot`, `lifestyle_scene`, `closeup_product_with_person`, `moodboard_pin`, `hero_banner`, `social_carousel`, `ad_creative_pack`, `virtual_model_tryout`, `conceptual_product`, `restyle`. |
+| `higgsfield marketplace-cards --scope` | `runway marketplace-cards create --scope` | All four scopes match: `main`, `product-images`, `aplus`, `full-set`. |
+| `higgsfield marketing-studio avatars` | `runway marketing-studio avatars list` | Re-exposes the existing avatar list/create endpoints. |
+| `higgsfield marketing-studio webproducts fetch --url` | `runway marketing-studio webproducts fetch --url` | Client-side OG/Twitter metadata extraction. |
+| `higgsfield marketing-studio products/hooks/settings/ad-references` | _not supported_ | Runway has no analog. Use `workflow` and `document` for adjacent capabilities. |
+| `higgsfield auth login` (device flow) | `runway auth set/show/clear` | Runway uses an API key, not OAuth device flow. The stored credentials file is `~/.runway-cli/credentials.json` (mode 0600). |
+| `higgsfield account` | `runway account` | Alias of `runway organization get`. |
+| `higgsfield model list` / `higgsfield model schema <model>` | `runway models` / `runway models schema <model>` | `models` lists Runway endpoint families and supported model IDs. `models schema <model>` prints curated parameter notes. |
+| `higgsfield upload` | `runway upload create` | Same shape, single subcommand. |
+| `higgsfield generate wait <task-id>` | `runway task get <task-id> --wait` | Same shape with `--download --kind image` or `--kind video` for one-step retrieval. |
+
+Soul-ID example flow:
+
+```bash
+# Create a soul-id from 5+ reference photos
+dnx Runway.Cli soul-id create --name "alice" \
+  --image ./refs/1.jpg --image ./refs/2.jpg --image ./refs/3.jpg \
+  --image ./refs/4.jpg --image ./refs/5.jpg
+
+# List entries
+dnx Runway.Cli soul-id list
+
+# Generate a product shot using the soul-id (auto-attaches the photos)
+dnx Runway.Cli image "alice holding a vintage camera in golden-hour light" \
+  --model gpt-image-2 --soul-id <id-from-list> --output ./runway-output
+
+# Animate using the same identity
+dnx Runway.Cli image-to-video "alice gently turns toward the camera" \
+  --soul-id <id-from-list> --image ./refs/1.jpg --output ./runway-output
+```
+
+The local soul-id registry stores reference photos only — it does not train a server-side identity model. For Runway-native talking-avatar workflows, use `runway avatar create` and `runway avatar video`.
+
+Auth and account:
+
+```bash
+# Store an API key for future runs (overrides nothing — env vars still take precedence)
+dnx Runway.Cli auth set --api-key "$RUNWAY_API_KEY"
+dnx Runway.Cli auth show     # prints source + masked key
+dnx Runway.Cli auth clear    # deletes the stored file
+
+# Show organization info (alias for `organization get`)
+dnx Runway.Cli account
+```
+
+Marketing-studio webproducts dossier:
+
+```bash
+dnx Runway.Cli marketing-studio webproducts fetch --url https://example.com/product
+# → JSON with title, description, og:image, additional images, site name, type
+```
 
 ## Integration Boundary
 

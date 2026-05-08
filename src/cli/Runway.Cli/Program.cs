@@ -712,6 +712,63 @@ var ffmpegOption = new Option<string?>("--ffmpeg")
     Description = "Optional ffmpeg binary path used to concatenate downloaded short-video shot segments.",
 };
 
+var generatePromptArgument = new Argument<string[]>("prompt")
+{
+    Description = "Prompt forwarded to the underlying per-modality command.",
+};
+
+var soulIdReferenceOption = new Option<string?>("--soul-id")
+{
+    Description = "Local soul-id from `runway soul-id list`. Photos are auto-attached as reference images.",
+};
+
+var soulIdNameOption = new Option<string?>("--name")
+{
+    Description = "Friendly name for the soul-id entry.",
+};
+
+var soulIdImageOption = new Option<string[]>("--image")
+{
+    Description = "Reference photo path. Repeat 5 to 20 times.",
+    AllowMultipleArgumentsPerToken = false,
+};
+
+var soulIdVariantOption = new Option<string?>("--variant")
+{
+    Description = "Soul-id variant: soul-2 (default) or soul-cinematic.",
+};
+
+var soulIdIdArgument = new Argument<string>("id")
+{
+    Description = "Soul-id identifier returned by `soul-id create` or `soul-id list`.",
+};
+
+var soulIdJsonFlag = new Option<bool>("--json")
+{
+    Description = "Emit JSON instead of the default tabular list output.",
+};
+
+var authApiKeyOption = new Option<string?>("--api-key")
+{
+    Description = "Runway API key to store. Read from RUNWAY_API_KEY if omitted.",
+};
+
+var generateKindOption = new Option<string?>("--kind")
+{
+    Description = "Generation kind: image, video, image-to-video, text-to-speech, sound-effect. Auto-detected from inputs when omitted.",
+};
+
+var modelSchemaIdArgument = new Argument<string>("model")
+{
+    Description = "Runway model id (e.g. gen4_turbo, veo3.1_fast, gpt_image_2).",
+};
+
+var webproductsUrlOption = new Option<string>("--url")
+{
+    Description = "Public URL of the product page to fetch.",
+    Required = true,
+};
+
 var galleryInputOption = new Option<string?>("--input")
 {
     Description = "Directory containing generated videos. Defaults to the current directory.",
@@ -1105,6 +1162,7 @@ var generateImageCommand = new Command("image", "Generate an image locally from 
     seedOption,
     referenceImageOption2,
     referenceSubjectOption,
+    soulIdReferenceOption,
     outputCountOption,
     publicFigureThresholdOption,
     jsonOption,
@@ -1121,7 +1179,7 @@ generateImageCommand.SetAction((ParseResult parseResult, CancellationToken cance
         var ratio = RunwayCliGeneration.ResolveTextToImageRatio(
             parseResult.GetValue(imageRatioOption),
             normalizedImageModel);
-        var referenceImages = parseResult.GetValue(referenceImageOption2);
+        var referenceImages = MergeSoulIdImages(parseResult, parseResult.GetValue(referenceImageOption2));
         var seed = parseResult.GetValue(seedOption);
         var json = parseResult.GetValue(jsonOption);
         Guid taskId;
@@ -1241,6 +1299,7 @@ var imageToVideoCommand = new Command("image-to-video", "Start an image-to-video
     optionalVideoPromptArgument,
     promptImageOption,
     lastImageOption,
+    soulIdReferenceOption,
     outputOption,
     videoRatioOption,
     videoModelOption,
@@ -1262,7 +1321,7 @@ imageToVideoCommand.SetAction((ParseResult parseResult, CancellationToken cancel
             : await RunwayCliGeneration.CreateImageToVideoRequestAsync(
                 string.Join(' ', parseResult.GetValue(optionalVideoPromptArgument) ?? []).Trim(),
                 parseResult.GetValue(videoModelOption),
-                parseResult.GetValue(promptImageOption),
+                MergeSoulIdImages(parseResult, parseResult.GetValue(promptImageOption)),
                 parseResult.GetValue(lastImageOption),
                 parseResult.GetValue(videoRatioOption) ?? "1280:720",
                 parseResult.GetValue(generationDurationOption),
@@ -2267,6 +2326,361 @@ galleryCreateCommand.SetAction(async (ParseResult parseResult, CancellationToken
     }
 });
 
+var soulIdCommand = new Command("soul-id", "Manage local soul-id reference photo bundles for face-faithful generation. Stored client-side; no Runway server-side identity training.");
+rootCommand.Subcommands.Add(soulIdCommand);
+
+var soulIdCreateCommand = new Command("create", "Create a soul-id from 5 to 20 reference photos. Prints the JSON entry on success.")
+{
+    soulIdNameOption,
+    soulIdImageOption,
+    soulIdVariantOption,
+};
+soulIdCommand.Subcommands.Add(soulIdCreateCommand);
+soulIdCreateCommand.SetAction(parseResult =>
+{
+    try
+    {
+        var name = RequireOption(parseResult, soulIdNameOption);
+        var photos = parseResult.GetValue(soulIdImageOption) ?? [];
+        var variant = parseResult.GetValue(soulIdVariantOption);
+        var entry = RunwayCliSoulId.Create(name, photos, variant);
+        Console.WriteLine(RunwayCliSoulId.ToJson(entry));
+        return 0;
+    }
+    catch (Exception ex)
+    {
+        Console.Error.WriteLine(ex.Message);
+        return 1;
+    }
+});
+
+var soulIdListCommand = new Command("list", "List local soul-id entries.")
+{
+    soulIdJsonFlag,
+};
+soulIdCommand.Subcommands.Add(soulIdListCommand);
+soulIdListCommand.SetAction(parseResult =>
+{
+    try
+    {
+        var entries = RunwayCliSoulId.List();
+        if (parseResult.GetValue(soulIdJsonFlag))
+        {
+            Console.WriteLine(RunwayCliSoulId.ToJson(entries));
+        }
+        else
+        {
+            foreach (var entry in entries)
+            {
+                Console.WriteLine($"{entry.Id}\t{entry.Variant}\t{entry.Name}\t{entry.Photos.Count} photos\t{entry.CreatedAt:O}");
+            }
+        }
+
+        return 0;
+    }
+    catch (Exception ex)
+    {
+        Console.Error.WriteLine(ex.Message);
+        return 1;
+    }
+});
+
+var soulIdGetCommand = new Command("get", "Show one soul-id entry.")
+{
+    soulIdIdArgument,
+};
+soulIdCommand.Subcommands.Add(soulIdGetCommand);
+soulIdGetCommand.SetAction(parseResult =>
+{
+    try
+    {
+        var id = parseResult.GetValue(soulIdIdArgument)
+            ?? throw new ArgumentException("Missing soul-id argument.");
+        var entry = RunwayCliSoulId.Get(id) ?? throw new ArgumentException($"Soul-id `{id}` not found.");
+        Console.WriteLine(RunwayCliSoulId.ToJson(entry));
+        return 0;
+    }
+    catch (Exception ex)
+    {
+        Console.Error.WriteLine(ex.Message);
+        return 1;
+    }
+});
+
+var soulIdWaitCommand = new Command("wait", "Wait for soul-id to finish training. Local registry is always ready, so this is a no-op for parity.")
+{
+    soulIdIdArgument,
+};
+soulIdCommand.Subcommands.Add(soulIdWaitCommand);
+soulIdWaitCommand.SetAction(parseResult =>
+{
+    try
+    {
+        var id = parseResult.GetValue(soulIdIdArgument)
+            ?? throw new ArgumentException("Missing soul-id argument.");
+        var entry = RunwayCliSoulId.Get(id) ?? throw new ArgumentException($"Soul-id `{id}` not found.");
+        Console.WriteLine(RunwayCliSoulId.ToJson(entry));
+        return 0;
+    }
+    catch (Exception ex)
+    {
+        Console.Error.WriteLine(ex.Message);
+        return 1;
+    }
+});
+
+var soulIdDeleteCommand = new Command("delete", "Delete a soul-id entry from the local registry.")
+{
+    soulIdIdArgument,
+};
+soulIdCommand.Subcommands.Add(soulIdDeleteCommand);
+soulIdDeleteCommand.SetAction(parseResult =>
+{
+    try
+    {
+        var id = parseResult.GetValue(soulIdIdArgument)
+            ?? throw new ArgumentException("Missing soul-id argument.");
+        var deleted = RunwayCliSoulId.Delete(id);
+        Console.WriteLine(deleted ? $"Deleted {id}." : $"Soul-id `{id}` not found.");
+        return deleted ? 0 : 1;
+    }
+    catch (Exception ex)
+    {
+        Console.Error.WriteLine(ex.Message);
+        return 1;
+    }
+});
+
+var authCommand = new Command("auth", "Manage Runway API key stored under ~/.runway-cli/credentials.json. Env var RUNWAY_API_KEY still takes precedence.");
+rootCommand.Subcommands.Add(authCommand);
+
+var authSetCommand = new Command("set", "Store a Runway API key in ~/.runway-cli/credentials.json.")
+{
+    authApiKeyOption,
+};
+authCommand.Subcommands.Add(authSetCommand);
+authSetCommand.SetAction(parseResult =>
+{
+    try
+    {
+        var apiKey =
+            parseResult.GetValue(authApiKeyOption) is { Length: > 0 } provided ? provided :
+            Environment.GetEnvironmentVariable("RUNWAY_API_KEY") is { Length: > 0 } envValue ? envValue :
+            throw new ArgumentException("Set --api-key, or export RUNWAY_API_KEY before running auth set.");
+        RunwayCliAuth.Write(apiKey);
+        Console.WriteLine($"Stored API key in {RunwayCliAuth.GetCredentialsFile()} (mode 0600).");
+        return 0;
+    }
+    catch (Exception ex)
+    {
+        Console.Error.WriteLine(ex.Message);
+        return 1;
+    }
+});
+
+var authShowCommand = new Command("show", "Show the active Runway API key source (env var, stored file, or .env). Key value is masked.");
+authCommand.Subcommands.Add(authShowCommand);
+authShowCommand.SetAction(_ =>
+{
+    var envValue = Environment.GetEnvironmentVariable("RUNWAY_API_KEY");
+    var envSecret = Environment.GetEnvironmentVariable("RUNWAYML_API_SECRET");
+    var stored = RunwayCliAuth.Read();
+
+    if (!string.IsNullOrEmpty(envValue))
+    {
+        Console.WriteLine($"source: env RUNWAY_API_KEY  apiKey: {RunwayCliAuth.Mask(envValue)}");
+    }
+    else if (!string.IsNullOrEmpty(envSecret))
+    {
+        Console.WriteLine($"source: env RUNWAYML_API_SECRET  apiKey: {RunwayCliAuth.Mask(envSecret)}");
+    }
+    else if (!string.IsNullOrEmpty(stored))
+    {
+        Console.WriteLine($"source: {RunwayCliAuth.GetCredentialsFile()}  apiKey: {RunwayCliAuth.Mask(stored)}");
+    }
+    else
+    {
+        Console.WriteLine("No API key configured. Run `runway auth set --api-key <key>` or export RUNWAY_API_KEY.");
+    }
+
+    return 0;
+});
+
+var authClearCommand = new Command("clear", "Delete the stored Runway API key file (does not affect env vars).");
+authCommand.Subcommands.Add(authClearCommand);
+authClearCommand.SetAction(_ =>
+{
+    var deleted = RunwayCliAuth.Clear();
+    Console.WriteLine(deleted
+        ? $"Deleted {RunwayCliAuth.GetCredentialsFile()}."
+        : "No stored credentials file to delete.");
+    return 0;
+});
+
+var accountCommand = new Command("account", "Show organization information and credit usage. Alias for `organization get`.");
+rootCommand.Subcommands.Add(accountCommand);
+accountCommand.SetAction((ParseResult parseResult, CancellationToken cancellationToken) =>
+    RunWithClientAsync(parseResult, async (client, runwayVersion, ct) =>
+    {
+        var response = await client.Organization.GetOrganizationAsync(
+            xRunwayVersion: runwayVersion,
+            cancellationToken: ct).ConfigureAwait(false);
+        WriteJson(response);
+    }, cancellationToken));
+
+var generateUmbrellaCommand = new Command("generate", "Higgsfield-parity router. Forwards <prompt> to image/video/image-to-video/text-to-speech/sound-effect based on --kind. Pass per-modality options through the dedicated command directly.")
+{
+    generatePromptArgument,
+    generateKindOption,
+};
+rootCommand.Subcommands.Add(generateUmbrellaCommand);
+generateUmbrellaCommand.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
+{
+    var prompt = string.Join(' ', parseResult.GetValue(generatePromptArgument) ?? []).Trim();
+    var kind = (parseResult.GetValue(generateKindOption) ?? "image").Trim().ToLowerInvariant();
+    var subcommand = kind switch
+    {
+        "image" or "text-to-image" or "txt2img" => "image",
+        "video" or "text-to-video" or "txt2vid" => "video",
+        "image-to-video" or "img2vid" or "i2v" => "image-to-video",
+        "text-to-speech" or "tts" or "speech" => "text-to-speech",
+        "sound-effect" or "sfx" or "audio" => "sound-effect",
+        _ => throw new ArgumentException($"Unknown --kind `{kind}`. Supported: image, video, image-to-video, text-to-speech, sound-effect."),
+    };
+    var forwarded = string.IsNullOrEmpty(prompt) ? new[] { subcommand } : new[] { subcommand, prompt };
+    cancellationToken.ThrowIfCancellationRequested();
+    return await rootCommand.Parse(forwarded).InvokeAsync().ConfigureAwait(false);
+});
+
+var modelSchemaCommand = new Command("schema", "Print known parameters for a Runway model id.")
+{
+    modelSchemaIdArgument,
+};
+modelsCommand.Subcommands.Add(modelSchemaCommand);
+modelSchemaCommand.SetAction(parseResult =>
+{
+    var model = parseResult.GetValue(modelSchemaIdArgument) ?? string.Empty;
+    var normalized = model.Trim().ToLowerInvariant().Replace('-', '_');
+    var lines = normalized switch
+    {
+        "gen4_turbo" or "gen4.5" or "gen4_image_turbo" or "gen4_image" or "gen3a_turbo" => new[]
+        {
+            $"model: {model}",
+            "endpoints: text-to-image (gen4_image*, gen4.5), image-to-video (gen3a_turbo, gen4_turbo, gen4.5)",
+            "common params: --prompt, --ratio (e.g. 1280:720, 1920:1088), --duration (image-to-video), --image (image-to-video), --reference-image (image), --seed",
+        },
+        "gpt_image_2" => new[]
+        {
+            $"model: {model}",
+            "endpoints: text-to-image",
+            "common params: --prompt, --ratio (1024:1024, 1920:1088, ...), --quality (low|medium|high), --resolution, --reference-image (up to 16), --output-count",
+        },
+        "gemini_2.5_flash" or "gemini_image3_pro" => new[]
+        {
+            $"model: {model}",
+            "endpoints: text-to-image",
+            "common params: --prompt, --ratio, --reference-image",
+        },
+        "veo3" or "veo3.1" or "veo3.1_fast" => new[]
+        {
+            $"model: {model}",
+            "endpoints: text-to-video, image-to-video",
+            "common params: --prompt, --ratio, --duration, --seed, --no-audio",
+        },
+        "gen4_aleph" => new[]
+        {
+            $"model: {model}",
+            "endpoints: video-to-video",
+            "common params: --prompt, --video, --ratio, --duration",
+        },
+        "act_two" => new[]
+        {
+            $"model: {model}",
+            "endpoints: character-performance",
+            "common params: --character-image, --character-video, --reference-video, --body-control, --expression-intensity",
+        },
+        "eleven_multilingual_v2" or "eleven_text_to_sound_v2" or "eleven_multilingual_sts_v2" or "eleven_voice_dubbing" or "eleven_voice_isolation" => new[]
+        {
+            $"model: {model}",
+            "endpoints: text-to-speech, sound-effect, speech-to-speech, voice-dubbing, voice-isolation (varies by model)",
+            "common params: --prompt or --text, --voice-preset or --custom-voice-id, --media (for s2s/dubbing/isolation), --target-language (dubbing)",
+        },
+        "gwm1_avatars" => new[]
+        {
+            $"model: {model}",
+            "endpoints: avatar video, realtime avatar sessions",
+            "common params: --preset-avatar or --avatar-id, --voice-preset or --custom-voice-id, --text or --audio",
+        },
+        _ => new[]
+        {
+            $"model: {model}",
+            "No curated schema available. Run `runway models` for the model catalog, or check Runway's official docs for newly added models.",
+        },
+    };
+
+    foreach (var line in lines)
+    {
+        Console.WriteLine(line);
+    }
+
+    return 0;
+});
+
+var marketingStudioCommand = new Command("marketing-studio", "Higgsfield Marketing Studio parity surface. Only the subcommands that map to Runway primitives (avatars, webproducts) are exposed; products/hooks/settings/ad-references have no Runway analog.");
+rootCommand.Subcommands.Add(marketingStudioCommand);
+
+var marketingAvatarsCommand = new Command("avatars", "List or get Runway avatars. Alias for the existing `avatar` command tree.");
+marketingStudioCommand.Subcommands.Add(marketingAvatarsCommand);
+
+var marketingAvatarsListCommand = new Command("list", "List custom avatars.")
+{
+    limitOption,
+    cursorOption,
+};
+marketingAvatarsCommand.Subcommands.Add(marketingAvatarsListCommand);
+marketingAvatarsListCommand.SetAction((ParseResult parseResult, CancellationToken cancellationToken) =>
+    RunWithClientAsync(parseResult, async (client, runwayVersion, ct) =>
+    {
+        var response = await client.Avatars.GetAvatarsAsync(
+            xRunwayVersion: runwayVersion,
+            limit: parseResult.GetValue(limitOption),
+            cursor: parseResult.GetValue(cursorOption),
+            cancellationToken: ct).ConfigureAwait(false);
+        WriteJson(response);
+    }, cancellationToken));
+
+var marketingWebproductsCommand = new Command("webproducts", "Fetch a public product URL and extract OG/Twitter metadata as a structured product dossier.");
+marketingStudioCommand.Subcommands.Add(marketingWebproductsCommand);
+
+var marketingWebproductsFetchCommand = new Command("fetch", "Fetch a public product URL and print its OG metadata as JSON.")
+{
+    webproductsUrlOption,
+};
+marketingWebproductsCommand.Subcommands.Add(marketingWebproductsFetchCommand);
+marketingWebproductsFetchCommand.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
+{
+    try
+    {
+        var url = parseResult.GetValue(webproductsUrlOption) ?? string.Empty;
+        if (string.IsNullOrWhiteSpace(url))
+        {
+            throw new ArgumentException("--url is required.");
+        }
+
+        using var http = new HttpClient();
+        http.DefaultRequestHeaders.UserAgent.ParseAdd("Runway.Cli/marketing-studio");
+        var html = await http.GetStringAsync(url, cancellationToken).ConfigureAwait(false);
+        var dossier = RunwayCliMarketingStudio.ParseProductDossier(url, html);
+        Console.WriteLine(RunwayCliMarketingStudio.ToJson(dossier));
+        return 0;
+    }
+    catch (Exception ex)
+    {
+        await Console.Error.WriteLineAsync(ex.Message).ConfigureAwait(false);
+        return 1;
+    }
+});
+
 return await rootCommand.Parse(args).InvokeAsync().ConfigureAwait(false);
 
 static async Task<Guid> PostGenerationJsonAsync(
@@ -2832,12 +3246,29 @@ async Task<int> RunWithClientAsync(
     }
 }
 
+string[]? MergeSoulIdImages(ParseResult parseResult, string[]? baseImages)
+{
+    if (parseResult.GetValue(soulIdReferenceOption) is not { Length: > 0 } soulIdValue)
+    {
+        return baseImages;
+    }
+
+    var resolved = RunwayCliSoulId.ResolvePhotos(soulIdValue);
+    if (baseImages is null || baseImages.Length == 0)
+    {
+        return [.. resolved];
+    }
+
+    return [.. baseImages, .. resolved];
+}
+
 RunwayClient CreateClient(ParseResult parseResult)
 {
     var apiKey =
         parseResult.GetValue(apiKeyOption) is { Length: > 0 } optionValue ? optionValue :
         RunwayEnvironment.GetApiKey() is { Length: > 0 } configuredApiKey ? configuredApiKey :
-        throw new InvalidOperationException("Set --api-key, RUNWAY_API_KEY, RUNWAYML_API_SECRET, or a .env file.");
+        RunwayCliAuth.Read() is { Length: > 0 } storedApiKey ? storedApiKey :
+        throw new InvalidOperationException("Set --api-key, RUNWAY_API_KEY, RUNWAYML_API_SECRET, run `runway auth set --api-key <key>`, or add a .env file.");
 
     return new RunwayClient(apiKey);
 }

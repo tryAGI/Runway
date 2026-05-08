@@ -59,7 +59,7 @@ public partial class Tests
         var result = await RunCliAsync("video tiny test prompt --no-wait", removeApiKey: true).ConfigureAwait(false);
 
         result.ExitCode.Should().Be(1);
-        result.Stderr.Should().Contain("Set --api-key, RUNWAY_API_KEY, RUNWAYML_API_SECRET, or a .env file.");
+        result.Stderr.Should().Contain("Set --api-key, RUNWAY_API_KEY, RUNWAYML_API_SECRET");
     }
 
     [TestMethod]
@@ -68,7 +68,7 @@ public partial class Tests
         var result = await RunCliAsync("image tiny test prompt --no-wait", removeApiKey: true).ConfigureAwait(false);
 
         result.ExitCode.Should().Be(1);
-        result.Stderr.Should().Contain("Set --api-key, RUNWAY_API_KEY, RUNWAYML_API_SECRET, or a .env file.");
+        result.Stderr.Should().Contain("Set --api-key, RUNWAY_API_KEY, RUNWAYML_API_SECRET");
     }
 
     [TestMethod]
@@ -88,7 +88,7 @@ public partial class Tests
         var result = await RunCliAsync("short-video tiny robot finds a glowing garden --no-wait --planner deterministic", removeApiKey: true).ConfigureAwait(false);
 
         result.ExitCode.Should().Be(1);
-        result.Stderr.Should().Contain("Set --api-key, RUNWAY_API_KEY, RUNWAYML_API_SECRET, or a .env file.");
+        result.Stderr.Should().Contain("Set --api-key, RUNWAY_API_KEY, RUNWAYML_API_SECRET");
     }
 
     [TestMethod]
@@ -149,9 +149,9 @@ public partial class Tests
         product.ExitCode.Should().Be(1);
         marketplace.ExitCode.Should().Be(1);
         ad.ExitCode.Should().Be(1);
-        product.Stderr.Should().Contain("Set --api-key, RUNWAY_API_KEY, RUNWAYML_API_SECRET, or a .env file.");
-        marketplace.Stderr.Should().Contain("Set --api-key, RUNWAY_API_KEY, RUNWAYML_API_SECRET, or a .env file.");
-        ad.Stderr.Should().Contain("Set --api-key, RUNWAY_API_KEY, RUNWAYML_API_SECRET, or a .env file.");
+        product.Stderr.Should().Contain("Set --api-key, RUNWAY_API_KEY, RUNWAYML_API_SECRET");
+        marketplace.Stderr.Should().Contain("Set --api-key, RUNWAY_API_KEY, RUNWAYML_API_SECRET");
+        ad.Stderr.Should().Contain("Set --api-key, RUNWAY_API_KEY, RUNWAYML_API_SECRET");
     }
 
     [TestMethod]
@@ -192,7 +192,7 @@ public partial class Tests
 
             result.ExitCode.Should().Be(1);
             result.Stderr.Should().Contain("Short-video planner: Deterministic");
-            result.Stderr.Should().Contain("Set --api-key, RUNWAY_API_KEY, RUNWAYML_API_SECRET, or a .env file.");
+            result.Stderr.Should().Contain("Set --api-key, RUNWAY_API_KEY, RUNWAYML_API_SECRET");
         }
         finally
         {
@@ -628,7 +628,7 @@ public partial class Tests
             var result = await RunCliAsync($"short-video run --plan {path} --no-wait", removeApiKey: true).ConfigureAwait(false);
 
             result.ExitCode.Should().Be(1);
-            result.Stderr.Should().Contain("Set --api-key, RUNWAY_API_KEY, RUNWAYML_API_SECRET, or a .env file.");
+            result.Stderr.Should().Contain("Set --api-key, RUNWAY_API_KEY, RUNWAYML_API_SECRET");
         }
         finally
         {
