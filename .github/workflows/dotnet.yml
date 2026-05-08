@@ -65,6 +65,9 @@ jobs:
       - name: Smoke short-video plan
         run: dotnet run --project src/cli/Runway.Cli -c Release --no-build -- short-video "tiny robot finds a glowing garden" --shots 2 --plan-only
 
+      - name: Smoke short-video edited-plan help
+        run: dotnet run --project src/cli/Runway.Cli -c Release --no-build -- short-video run --help
+
   release:
     name: Release
     runs-on: ubuntu-latest

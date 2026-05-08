@@ -1,7 +1,7 @@
 using System.Diagnostics;
 using System.Globalization;
 using System.Text;
-using System.Text.Json.Nodes;
+using System.Text.Json;
 using Runway;
 
 internal static class RunwayCliShortVideo
@@ -34,35 +34,23 @@ internal static class RunwayCliShortVideo
 
     public static string ToJson(RunwayShortVideoPlan plan)
     {
-        var shots = new JsonArray();
-        foreach (var shot in plan.Shots)
-        {
-            shots.Add(new JsonObject
-            {
-                ["index"] = shot.Index,
-                ["count"] = shot.Count,
-                ["title"] = shot.Title,
-                ["beat"] = shot.Beat,
-                ["keyframePrompt"] = shot.KeyframePrompt,
-                ["videoPrompt"] = shot.VideoPrompt,
-            });
-        }
-
-        var root = new JsonObject
-        {
-            ["sourceText"] = plan.SourceText,
-            ["scenario"] = plan.Scenario,
-            ["style"] = plan.Style,
-            ["model"] = plan.Model,
-            ["ratio"] = plan.Ratio,
-            ["shotDurationSeconds"] = plan.ShotDurationSeconds,
-            ["shots"] = shots,
-        };
-
-        return root.ToJsonString(new System.Text.Json.JsonSerializerOptions
+        var options = new JsonSerializerOptions(RunwayShortVideoJsonSerializerContext.Default.Options)
         {
             WriteIndented = true,
-        });
+        };
+
+        return JsonSerializer.Serialize(plan, typeof(RunwayShortVideoPlan), options);
+    }
+
+    public static async Task<RunwayShortVideoPlan> ReadPlanAsync(
+        string value,
+        CancellationToken cancellationToken)
+    {
+        var json = await RunwayCliGeneration.ReadJsonTextAsync(value, cancellationToken).ConfigureAwait(false);
+        return JsonSerializer.Deserialize(
+            json,
+            RunwayShortVideoJsonSerializerContext.Default.RunwayShortVideoPlan)
+            ?? throw new ArgumentException("Short-video plan JSON did not deserialize to a plan.");
     }
 
     public static async Task<RunwayCliConcatResult> TryConcatAsync(

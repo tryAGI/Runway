@@ -313,7 +313,11 @@ dnx Runway.Cli short-video "a tiny robot finds a glowing seed and turns a roofto
 
 dnx Runway.Cli short-video "a calm product launch film for a transparent speaker" \
   --shots 3 \
-  --plan-only
+  --plan-only > ./short-video-plan.json
+
+dnx Runway.Cli short-video run \
+  --plan ./short-video-plan.json \
+  --output ./runway-short-video
 
 # Installed tool form.
 dotnet tool install --global Runway.Cli
@@ -343,6 +347,10 @@ dotnet run --project src/cli/Runway.Cli -- video a slow push in on the reference
 
 dotnet run --project src/cli/Runway.Cli -- short-video "a tiny robot finds a glowing seed and turns a rooftop into a garden" \
   --shots 3 \
+  --output ./runway-short-video
+
+dotnet run --project src/cli/Runway.Cli -- short-video run \
+  --plan ./short-video-plan.json \
   --output ./runway-short-video
 
 dotnet run --project src/cli/Runway.Cli -- models
@@ -376,7 +384,7 @@ CLI endpoint and model coverage:
 | Command | Endpoint(s) | Models |
 | --- | --- | --- |
 | `video`, `text-to-video` | `POST /v1/text_to_video` | `gen4.5`, `veo3.1`, `veo3.1_fast`, `veo3` |
-| `short-video` | Multi-shot planner over `POST /v1/text_to_video`; optionally concatenates downloaded clips with `ffmpeg` | `gen4.5`, `veo3.1`, `veo3.1_fast`, `veo3` |
+| `short-video` | Multi-shot planner over `POST /v1/text_to_video`; `short-video run --plan` executes edited plan JSON; optionally concatenates downloaded clips with `ffmpeg` | `gen4.5`, `veo3.1`, `veo3.1_fast`, `veo3` |
 | `image-to-video` | `POST /v1/image_to_video` | `gen4.5`, `gen4_turbo`, `gen3a_turbo`, `veo3.1`, `veo3.1_fast`, `veo3` |
 | `video-to-video` | `POST /v1/video_to_video` | `gen4_aleph` |
 | `image` | `POST /v1/text_to_image` | `gen4_image_turbo`, `gen4_image`, `gemini_image3_pro`, `gpt_image_2`, `gemini_2.5_flash` |
@@ -396,7 +404,7 @@ CLI endpoint and model coverage:
 | `organization` | `GET /v1/organization`, `POST /v1/organization/usage` | Usage and metadata |
 | `workflow` | `GET/POST /v1/workflows`, `GET /v1/workflow_invocations/{id}` | Published workflows |
 
-The short-video workflow is also available from the SDK through `RunwayShortVideoExtensions.CreateShortVideoPlan(...)` and `client.CreateShortVideoAsync(...)`. Backend code can use `CreateShortVideoPlan` to review or edit the generated scenario/keyframe prompts before calling Runway, or use `CreateShortVideoAsync` for the same one-shot behavior as the CLI.
+The short-video workflow is also available from the SDK through `RunwayShortVideoExtensions.CreateShortVideoPlan(...)`, `IChatClient.CreateShortVideoPlanAsync(...)`, `client.CreateShortVideoAsync(...)`, and `client.CreateShortVideoAsync(plan, ...)`. Backend code can use the deterministic planner, supply a custom `RunwayShortVideoPlanner`, ask any Microsoft.Extensions.AI `IChatClient` for richer storyboard JSON, review or edit the plan, then execute the edited plan. `RunwayShortVideoJsonSerializerContext` provides AOT-safe JSON metadata for serializing plans and results.
 
 ### Agent Skill
 

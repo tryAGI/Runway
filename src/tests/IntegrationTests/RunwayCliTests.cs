@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Text.Json;
 
 namespace Runway.IntegrationTests;
 
@@ -113,6 +114,109 @@ public partial class Tests
         request.Veo31Fast.Duration.Should().Be(4);
         request.Veo31Fast.Audio.Should().BeFalse();
         request.Veo31Fast.AdditionalProperties["seed"].Should().Be(42);
+    }
+
+    [TestMethod]
+    public async Task RunwayShortVideoPlanner_UsesDelegatePlanAndJsonContextRoundTrips()
+    {
+        var options = new RunwayShortVideoOptions
+        {
+            ShotCount = 2,
+            ShotDurationSeconds = 5,
+            Ratio = "720:1280",
+            Style = "editorial vertical short",
+        };
+
+        var plan = await RunwayShortVideoExtensions.CreateShortVideoPlanAsync(
+            "A glass flower opens on a rainy street.",
+            static (scenario, plannerOptions, _) => ValueTask.FromResult<RunwayShortVideoPlan?>(new RunwayShortVideoPlan
+            {
+                SourceText = scenario,
+                Scenario = "Two-shot rainy street film.",
+                Style = plannerOptions.Style!,
+                Model = plannerOptions.Model,
+                Ratio = plannerOptions.Ratio,
+                ShotDurationSeconds = plannerOptions.ShotDurationSeconds,
+                Shots =
+                [
+                    new RunwayShortVideoShot
+                    {
+                        Index = 1,
+                        Count = 2,
+                        Title = "Opening",
+                        Beat = "A glass flower rests on wet pavement.",
+                        KeyframePrompt = "Macro keyframe of a glass flower on reflective pavement.",
+                        VideoPrompt = "Slow macro push toward a glass flower on reflective pavement.",
+                    },
+                    new RunwayShortVideoShot
+                    {
+                        Index = 2,
+                        Count = 2,
+                        Title = "Bloom",
+                        Beat = "The flower opens under soft rain.",
+                        KeyframePrompt = "Glass petals opening under soft rain.",
+                        VideoPrompt = "The glass flower blooms as rain ripples around it.",
+                    },
+                ],
+            }),
+            options).ConfigureAwait(false);
+
+        plan.Shots.Should().HaveCount(2);
+        plan.Ratio.Should().Be("720:1280");
+        plan.Shots[1].VideoPrompt.Should().Contain("blooms");
+
+        var json = JsonSerializer.Serialize(plan, RunwayShortVideoJsonSerializerContext.Default.RunwayShortVideoPlan);
+        json.Should().Contain("sourceText");
+        json.Should().Contain("keyframePrompt");
+
+        var roundTrip = JsonSerializer.Deserialize(json, RunwayShortVideoJsonSerializerContext.Default.RunwayShortVideoPlan);
+        roundTrip!.Shots.Should().HaveCount(2);
+        roundTrip.Ratio.Should().Be("720:1280");
+    }
+
+    [TestMethod]
+    public async Task RunwayCli_ShortVideoRunParsesPlanBeforeRequiringApiKey()
+    {
+        var plan = RunwayShortVideoExtensions.CreateShortVideoPlan(
+            "A tiny robot finds a glowing garden.",
+            new RunwayShortVideoOptions { ShotCount = 2 });
+        var path = Path.Combine(Path.GetTempPath(), $"{Guid.NewGuid():N}.json");
+        await File.WriteAllTextAsync(path, RunwayCliShortVideo.ToJson(plan)).ConfigureAwait(false);
+
+        try
+        {
+            var result = await RunCliAsync($"short-video run --plan {path} --no-wait", removeApiKey: true).ConfigureAwait(false);
+
+            result.ExitCode.Should().Be(1);
+            result.Stderr.Should().Contain("Set --api-key, RUNWAY_API_KEY, RUNWAYML_API_SECRET, or a .env file.");
+        }
+        finally
+        {
+            File.Delete(path);
+        }
+    }
+
+    [TestMethod]
+    public async Task RunwayCliShortVideo_ReadPlanAsyncLoadsEditedPlanJson()
+    {
+        var plan = RunwayShortVideoExtensions.CreateShortVideoPlan(
+            "A tiny robot finds a glowing garden.",
+            new RunwayShortVideoOptions { ShotCount = 2, Ratio = "720:1280" });
+        var path = Path.Combine(Path.GetTempPath(), $"{Guid.NewGuid():N}.json");
+        await File.WriteAllTextAsync(path, RunwayCliShortVideo.ToJson(plan)).ConfigureAwait(false);
+
+        try
+        {
+            var loaded = await RunwayCliShortVideo.ReadPlanAsync(path, CancellationToken.None).ConfigureAwait(false);
+
+            loaded.Shots.Should().HaveCount(2);
+            loaded.Ratio.Should().Be("720:1280");
+            loaded.Shots[0].VideoPrompt.Should().Contain("Short film shot 1 of 2");
+        }
+        finally
+        {
+            File.Delete(path);
+        }
     }
 
     [TestMethod]

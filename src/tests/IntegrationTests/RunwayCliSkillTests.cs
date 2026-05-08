@@ -17,6 +17,7 @@ public partial class Tests
         skill.Should().Contain("--prerelease --yes");
         skill.Should().Contain("short-video");
         skill.Should().Contain("--plan-only");
+        skill.Should().Contain("short-video run");
         skill.Should().Contain("image-to-video");
         skill.Should().Contain("text-to-speech");
         skill.Should().Contain("upload create");

@@ -1,5 +1,9 @@
 using System.Globalization;
 using System.Text;
+using System.Text.Json;
+using Microsoft.Extensions.AI;
+
+#pragma warning disable CS3001 // Argument type is not CLS-compliant
 
 namespace Runway;
 
@@ -59,7 +63,7 @@ public sealed class RunwayShortVideoOptions
     public string? PublicFigureThreshold { get; init; }
 
     /// <summary>
-    /// Whether <see cref="RunwayShortVideoExtensions.CreateShortVideoAsync"/> waits for each shot task to finish.
+    /// Whether short-video generation waits for each shot task to finish.
     /// </summary>
     public bool WaitForCompletion { get; init; } = true;
 
@@ -261,6 +265,18 @@ public sealed class RunwayShortVideoProgress
 }
 
 /// <summary>
+/// Creates a short-video plan from scenario text, options, and a cancellation token.
+/// </summary>
+/// <param name="scenarioText">Plain text describing the desired short video.</param>
+/// <param name="options">Planning and generation options.</param>
+/// <param name="cancellationToken">The token to cancel the operation with.</param>
+/// <returns>A planned short-video storyboard.</returns>
+public delegate ValueTask<RunwayShortVideoPlan?> RunwayShortVideoPlanner(
+    string scenarioText,
+    RunwayShortVideoOptions options,
+    CancellationToken cancellationToken);
+
+/// <summary>
 /// High-level helpers for creating short, planned multi-shot Runway videos.
 /// </summary>
 public static class RunwayShortVideoExtensions
@@ -329,6 +345,73 @@ public static class RunwayShortVideoExtensions
     }
 
     /// <summary>
+    /// Creates a short-video plan by calling a supplied planner delegate.
+    /// </summary>
+    /// <param name="scenarioText">Plain text describing the desired short video.</param>
+    /// <param name="planner">Planner delegate. Return <see langword="null"/> to use the deterministic planner.</param>
+    /// <param name="options">Optional planning and generation options.</param>
+    /// <param name="cancellationToken">The token to cancel the operation with.</param>
+    /// <returns>A validated short-video plan.</returns>
+    public static async Task<RunwayShortVideoPlan> CreateShortVideoPlanAsync(
+        string scenarioText,
+        RunwayShortVideoPlanner planner,
+        RunwayShortVideoOptions? options = null,
+        CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(scenarioText);
+        ArgumentNullException.ThrowIfNull(planner);
+
+        var effectiveOptions = ValidateOptions(options);
+        var planned = await planner(
+            NormalizeWhitespace(scenarioText),
+            effectiveOptions,
+            cancellationToken).ConfigureAwait(false);
+
+        return planned is null
+            ? CreateShortVideoPlan(scenarioText, effectiveOptions)
+            : NormalizePlan(planned, effectiveOptions);
+    }
+
+    /// <summary>
+    /// Creates a short-video plan by asking a <see cref="IChatClient"/> to produce structured storyboard JSON.
+    /// </summary>
+    /// <param name="chatClient">The chat client used to expand the scenario into shots.</param>
+    /// <param name="scenarioText">Plain text describing the desired short video.</param>
+    /// <param name="options">Optional planning and generation options.</param>
+    /// <param name="cancellationToken">The token to cancel the operation with.</param>
+    /// <returns>A validated short-video plan.</returns>
+    public static async Task<RunwayShortVideoPlan> CreateShortVideoPlanAsync(
+        this IChatClient chatClient,
+        string scenarioText,
+        RunwayShortVideoOptions? options = null,
+        CancellationToken cancellationToken = default)
+    {
+        ArgumentNullException.ThrowIfNull(chatClient);
+        ArgumentException.ThrowIfNullOrWhiteSpace(scenarioText);
+
+        var effectiveOptions = ValidateOptions(options);
+        var response = await chatClient.GetResponseAsync(
+            [
+                new ChatMessage(ChatRole.System, CreateShortVideoPlannerSystemPrompt()),
+                new ChatMessage(ChatRole.User, CreateShortVideoPlannerUserPrompt(scenarioText, effectiveOptions)),
+            ],
+            new ChatOptions
+            {
+                ResponseFormat = ChatResponseFormat.Json,
+                Temperature = 0.2f,
+            },
+            cancellationToken).ConfigureAwait(false);
+
+        var json = ExtractJsonObject(response.Text);
+        var plan = JsonSerializer.Deserialize(
+            json,
+            RunwayShortVideoJsonSerializerContext.Default.RunwayShortVideoPlan)
+            ?? throw new InvalidOperationException("Planner response did not contain a short-video plan.");
+
+        return NormalizePlan(plan, effectiveOptions);
+    }
+
+    /// <summary>
     /// Starts Runway text-to-video tasks for a planned short video and optionally waits for downloaded outputs.
     /// </summary>
     /// <param name="client">The Runway client.</param>
@@ -350,6 +433,132 @@ public static class RunwayShortVideoExtensions
 
         var effectiveOptions = ValidateOptions(options);
         var plan = CreateShortVideoPlan(scenarioText, effectiveOptions);
+        return await CreateShortVideoAsyncCore(
+            client,
+            plan,
+            effectiveOptions,
+            xRunwayVersion,
+            progress,
+            cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <summary>
+    /// Starts Runway text-to-video tasks using a supplied planner delegate.
+    /// </summary>
+    /// <param name="client">The Runway client.</param>
+    /// <param name="scenarioText">Plain text describing the desired short video.</param>
+    /// <param name="planner">Planner delegate. Return <see langword="null"/> to use the deterministic planner.</param>
+    /// <param name="options">Optional planning and generation options.</param>
+    /// <param name="xRunwayVersion">The Runway API version header.</param>
+    /// <param name="progress">Optional progress callback.</param>
+    /// <param name="cancellationToken">The token to cancel the operation with.</param>
+    /// <returns>A result containing the plan, task IDs, task states, and downloaded files.</returns>
+    public static async Task<RunwayShortVideoResult> CreateShortVideoAsync(
+        this RunwayClient client,
+        string scenarioText,
+        RunwayShortVideoPlanner planner,
+        RunwayShortVideoOptions? options = null,
+        string xRunwayVersion = "2024-11-06",
+        IProgress<RunwayShortVideoProgress>? progress = null,
+        CancellationToken cancellationToken = default)
+    {
+        ArgumentNullException.ThrowIfNull(client);
+        ArgumentNullException.ThrowIfNull(planner);
+
+        var effectiveOptions = ValidateOptions(options);
+        var plan = await CreateShortVideoPlanAsync(
+            scenarioText,
+            planner,
+            effectiveOptions,
+            cancellationToken).ConfigureAwait(false);
+
+        return await CreateShortVideoAsyncCore(
+            client,
+            plan,
+            effectiveOptions,
+            xRunwayVersion,
+            progress,
+            cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <summary>
+    /// Starts Runway text-to-video tasks using a supplied <see cref="IChatClient"/> planner.
+    /// </summary>
+    /// <param name="client">The Runway client.</param>
+    /// <param name="scenarioText">Plain text describing the desired short video.</param>
+    /// <param name="planner">The chat client used to expand the scenario into shots.</param>
+    /// <param name="options">Optional planning and generation options.</param>
+    /// <param name="xRunwayVersion">The Runway API version header.</param>
+    /// <param name="progress">Optional progress callback.</param>
+    /// <param name="cancellationToken">The token to cancel the operation with.</param>
+    /// <returns>A result containing the plan, task IDs, task states, and downloaded files.</returns>
+    public static async Task<RunwayShortVideoResult> CreateShortVideoAsync(
+        this RunwayClient client,
+        string scenarioText,
+        IChatClient planner,
+        RunwayShortVideoOptions? options = null,
+        string xRunwayVersion = "2024-11-06",
+        IProgress<RunwayShortVideoProgress>? progress = null,
+        CancellationToken cancellationToken = default)
+    {
+        ArgumentNullException.ThrowIfNull(client);
+        ArgumentNullException.ThrowIfNull(planner);
+
+        var effectiveOptions = ValidateOptions(options);
+        var plan = await planner.CreateShortVideoPlanAsync(
+            scenarioText,
+            effectiveOptions,
+            cancellationToken).ConfigureAwait(false);
+
+        return await CreateShortVideoAsyncCore(
+            client,
+            plan,
+            effectiveOptions,
+            xRunwayVersion,
+            progress,
+            cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <summary>
+    /// Starts Runway text-to-video tasks from a previously created or edited short-video plan.
+    /// </summary>
+    /// <param name="client">The Runway client.</param>
+    /// <param name="plan">The plan to execute.</param>
+    /// <param name="options">Optional generation options. Defaults are taken from the plan.</param>
+    /// <param name="xRunwayVersion">The Runway API version header.</param>
+    /// <param name="progress">Optional progress callback.</param>
+    /// <param name="cancellationToken">The token to cancel the operation with.</param>
+    /// <returns>A result containing the plan, task IDs, task states, and downloaded files.</returns>
+    public static async Task<RunwayShortVideoResult> CreateShortVideoAsync(
+        this RunwayClient client,
+        RunwayShortVideoPlan plan,
+        RunwayShortVideoOptions? options = null,
+        string xRunwayVersion = "2024-11-06",
+        IProgress<RunwayShortVideoProgress>? progress = null,
+        CancellationToken cancellationToken = default)
+    {
+        ArgumentNullException.ThrowIfNull(client);
+        ArgumentNullException.ThrowIfNull(plan);
+
+        var effectiveOptions = ValidateOptions(options ?? CreateOptionsFromPlan(plan));
+        var normalizedPlan = NormalizePlan(plan, effectiveOptions);
+        return await CreateShortVideoAsyncCore(
+            client,
+            normalizedPlan,
+            effectiveOptions,
+            xRunwayVersion,
+            progress,
+            cancellationToken).ConfigureAwait(false);
+    }
+
+    private static async Task<RunwayShortVideoResult> CreateShortVideoAsyncCore(
+        RunwayClient client,
+        RunwayShortVideoPlan plan,
+        RunwayShortVideoOptions effectiveOptions,
+        string xRunwayVersion,
+        IProgress<RunwayShortVideoProgress>? progress,
+        CancellationToken cancellationToken)
+    {
         var shotResults = new List<RunwayShortVideoShotResult>(plan.Shots.Count);
         var downloadedFiles = new List<string>();
 
@@ -525,6 +734,178 @@ public static class RunwayShortVideoExtensions
         };
         AddAdditionalRequestProperties(request.AdditionalProperties, seed, options.PublicFigureThreshold);
         return request;
+    }
+
+    private static RunwayShortVideoOptions CreateOptionsFromPlan(RunwayShortVideoPlan plan)
+    {
+        return new RunwayShortVideoOptions
+        {
+            ShotCount = plan.Shots.Count,
+            ShotDurationSeconds = plan.ShotDurationSeconds > 0 ? plan.ShotDurationSeconds : 4,
+            Model = string.IsNullOrWhiteSpace(plan.Model) ? RunwayShortVideoOptions.DefaultModel : plan.Model,
+            Ratio = string.IsNullOrWhiteSpace(plan.Ratio) ? RunwayShortVideoOptions.DefaultRatio : plan.Ratio,
+        };
+    }
+
+    private static RunwayShortVideoPlan NormalizePlan(
+        RunwayShortVideoPlan plan,
+        RunwayShortVideoOptions options)
+    {
+        if (plan.Shots.Count == 0)
+        {
+            throw new ArgumentException("Short-video plan must contain at least one shot.", nameof(plan));
+        }
+
+        if (plan.Shots.Count != options.ShotCount)
+        {
+            throw new ArgumentException(
+                string.Create(
+                    CultureInfo.InvariantCulture,
+                    $"Short-video plan contains {plan.Shots.Count} shots, but options request {options.ShotCount}."),
+                nameof(plan));
+        }
+
+        var normalizedShots = new List<RunwayShortVideoShot>(plan.Shots.Count);
+        for (var i = 0; i < plan.Shots.Count; i++)
+        {
+            var shot = plan.Shots[i];
+            var title = NormalizeRequired(shot.Title, $"Shot {i + 1} title");
+            var beat = NormalizeRequired(shot.Beat, $"Shot {i + 1} beat");
+            var keyframePrompt = TrimToLength(NormalizeRequired(shot.KeyframePrompt, $"Shot {i + 1} keyframePrompt"), 900);
+            var videoPrompt = TrimToLength(NormalizeRequired(shot.VideoPrompt, $"Shot {i + 1} videoPrompt"), 1000);
+
+            normalizedShots.Add(new RunwayShortVideoShot
+            {
+                Index = i + 1,
+                Count = plan.Shots.Count,
+                Title = title,
+                Beat = beat,
+                KeyframePrompt = keyframePrompt,
+                VideoPrompt = videoPrompt,
+            });
+        }
+
+        return new RunwayShortVideoPlan
+        {
+            SourceText = NormalizeRequired(plan.SourceText, nameof(plan.SourceText)),
+            Scenario = TrimToLength(NormalizeRequired(plan.Scenario, nameof(plan.Scenario)), 360),
+            Style = string.IsNullOrWhiteSpace(plan.Style)
+                ? "cinematic, coherent visual continuity, natural motion, high production value, no captions"
+                : NormalizeWhitespace(plan.Style),
+            Model = NormalizeTextToVideoModel(options.Model),
+            Ratio = options.Ratio,
+            ShotDurationSeconds = options.ShotDurationSeconds,
+            Shots = normalizedShots,
+        };
+    }
+
+    private static string NormalizeRequired(string? value, string name)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+        {
+            throw new ArgumentException($"{name} is required.");
+        }
+
+        return NormalizeWhitespace(value);
+    }
+
+    private static string CreateShortVideoPlannerSystemPrompt()
+    {
+        return """
+            You are a film storyboard planner for Runway text-to-video.
+            Return only compact JSON. Do not wrap it in Markdown.
+            The JSON must match this shape:
+            {
+              "sourceText": "original user scenario",
+              "scenario": "one compact scenario summary",
+              "style": "shared visual style",
+              "model": "Runway model id",
+              "ratio": "output ratio",
+              "shotDurationSeconds": 4,
+              "shots": [
+                {
+                  "index": 1,
+                  "count": 3,
+                  "title": "short shot title",
+                  "beat": "story beat",
+                  "keyframePrompt": "still-frame composition prompt",
+                  "videoPrompt": "Runway text-to-video prompt with camera movement and continuity"
+                }
+              ]
+            }
+            Keep prompts visual, concrete, and suitable for direct Runway text-to-video generation.
+            Avoid captions, subtitles, logos, and unreadable text unless explicitly requested.
+            """;
+    }
+
+    private static string CreateShortVideoPlannerUserPrompt(
+        string scenarioText,
+        RunwayShortVideoOptions options)
+    {
+        var style = string.IsNullOrWhiteSpace(options.Style)
+            ? "cinematic, coherent visual continuity, natural motion, high production value, no captions"
+            : NormalizeWhitespace(options.Style);
+
+        return string.Create(
+            CultureInfo.InvariantCulture,
+            $"""
+            Create a {options.ShotCount}-shot short-video plan.
+
+            Scenario:
+            {NormalizeWhitespace(scenarioText)}
+
+            Constraints:
+            - model: {NormalizeTextToVideoModel(options.Model)}
+            - ratio: {options.Ratio}
+            - duration per shot: {options.ShotDurationSeconds} seconds
+            - shared style: {style}
+            - return exactly {options.ShotCount} shots
+            - each shot needs a keyframePrompt and a direct Runway videoPrompt
+            """);
+    }
+
+    private static string ExtractJsonObject(string value)
+    {
+        var candidate = NormalizeWhitespace(value).Trim();
+        if (candidate.StartsWith("```", StringComparison.Ordinal))
+        {
+            var firstLineEnd = candidate.IndexOf('\n', StringComparison.Ordinal);
+            var lastFence = candidate.LastIndexOf("```", StringComparison.Ordinal);
+            if (firstLineEnd >= 0 && lastFence > firstLineEnd)
+            {
+                candidate = candidate[(firstLineEnd + 1)..lastFence].Trim();
+            }
+        }
+
+        if (IsJsonObject(candidate))
+        {
+            return candidate;
+        }
+
+        var start = candidate.IndexOf('{', StringComparison.Ordinal);
+        var end = candidate.LastIndexOf('}');
+        if (start < 0 || end <= start)
+        {
+            throw new InvalidOperationException("Planner response did not contain a JSON object.");
+        }
+
+        candidate = candidate[start..(end + 1)];
+        return IsJsonObject(candidate)
+            ? candidate
+            : throw new InvalidOperationException("Planner response did not contain valid JSON.");
+    }
+
+    private static bool IsJsonObject(string value)
+    {
+        try
+        {
+            using var document = JsonDocument.Parse(value);
+            return document.RootElement.ValueKind == JsonValueKind.Object;
+        }
+        catch (JsonException)
+        {
+            return false;
+        }
     }
 
     private static RunwayShortVideoOptions ValidateOptions(RunwayShortVideoOptions? options)

@@ -80,7 +80,15 @@ Review the generated scenario/keyframe prompts before spending credits:
 ```bash
 dnx Runway.Cli short-video "a calm product launch film for a transparent speaker" \
   --shots 3 \
-  --plan-only
+  --plan-only > ./short-video-plan.json
+```
+
+Run an edited short-video plan:
+
+```bash
+dnx Runway.Cli short-video run \
+  --plan ./short-video-plan.json \
+  --output ./runway-short-video
 ```
 
 Animate a local image:
@@ -126,7 +134,7 @@ dnx Runway.Cli upload create --file ./reference.png
 
 ## Multi-Step Recipes
 
-Keep orchestration simple. Use `short-video` for scenario-to-keyframe-to-video one-shot work; use shell loops or two-command recipes when the user specifically needs custom control.
+Keep orchestration simple. Use `short-video` for scenario-to-keyframe-to-video one-shot work. Use `short-video --plan-only` followed by `short-video run --plan` when the user wants to review or edit keyframes before spending video credits.
 
 Concept image, then animated video:
 
