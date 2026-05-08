@@ -25,6 +25,19 @@ namespace Runway
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Image))]
 #endif
         public bool IsImage => Image != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickImage(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Runway.CreateVideoToVideoRequestGen4AlephReferenceImageReference? value)
+        {
+            value = Image;
+            return IsImage;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -69,7 +82,7 @@ namespace Runway
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Runway.CreateVideoToVideoRequestGen4AlephReferenceImageReference?, TResult>? image = null,
+            global::System.Func<global::Runway.CreateVideoToVideoRequestGen4AlephReferenceImageReference, TResult>? image = null,
             bool validate = true)
         {
             if (validate)
@@ -89,7 +102,25 @@ namespace Runway
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Runway.CreateVideoToVideoRequestGen4AlephReferenceImageReference?>? image = null,
+            global::System.Action<global::Runway.CreateVideoToVideoRequestGen4AlephReferenceImageReference>? image = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsImage)
+            {
+                image?.Invoke(Image!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::Runway.CreateVideoToVideoRequestGen4AlephReferenceImageReference>? image = null,
             bool validate = true)
         {
             if (validate)

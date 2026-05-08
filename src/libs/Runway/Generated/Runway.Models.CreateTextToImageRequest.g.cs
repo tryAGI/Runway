@@ -29,6 +29,19 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickGen4ImageTurbo(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Runway.CreateTextToImageRequestGen4ImageTurbo? value)
+        {
+            value = Gen4ImageTurbo;
+            return IsGen4ImageTurbo;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Runway.CreateTextToImageRequestGen4Image? Gen4Image { get; init; }
 #else
@@ -46,6 +59,19 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickGen4Image(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Runway.CreateTextToImageRequestGen4Image? value)
+        {
+            value = Gen4Image;
+            return IsGen4Image;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Runway.CreateTextToImageRequestGemini25Flash? Gemini25Flash { get; init; }
 #else
@@ -59,6 +85,19 @@ namespace Runway
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Gemini25Flash))]
 #endif
         public bool IsGemini25Flash => Gemini25Flash != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickGemini25Flash(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Runway.CreateTextToImageRequestGemini25Flash? value)
+        {
+            value = Gemini25Flash;
+            return IsGemini25Flash;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -157,9 +196,9 @@ namespace Runway
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Runway.CreateTextToImageRequestGen4ImageTurbo?, TResult>? gen4ImageTurbo = null,
-            global::System.Func<global::Runway.CreateTextToImageRequestGen4Image?, TResult>? gen4Image = null,
-            global::System.Func<global::Runway.CreateTextToImageRequestGemini25Flash?, TResult>? gemini25Flash = null,
+            global::System.Func<global::Runway.CreateTextToImageRequestGen4ImageTurbo, TResult>? gen4ImageTurbo = null,
+            global::System.Func<global::Runway.CreateTextToImageRequestGen4Image, TResult>? gen4Image = null,
+            global::System.Func<global::Runway.CreateTextToImageRequestGemini25Flash, TResult>? gemini25Flash = null,
             bool validate = true)
         {
             if (validate)
@@ -187,9 +226,39 @@ namespace Runway
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Runway.CreateTextToImageRequestGen4ImageTurbo?>? gen4ImageTurbo = null,
-            global::System.Action<global::Runway.CreateTextToImageRequestGen4Image?>? gen4Image = null,
-            global::System.Action<global::Runway.CreateTextToImageRequestGemini25Flash?>? gemini25Flash = null,
+            global::System.Action<global::Runway.CreateTextToImageRequestGen4ImageTurbo>? gen4ImageTurbo = null,
+
+            global::System.Action<global::Runway.CreateTextToImageRequestGen4Image>? gen4Image = null,
+
+            global::System.Action<global::Runway.CreateTextToImageRequestGemini25Flash>? gemini25Flash = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsGen4ImageTurbo)
+            {
+                gen4ImageTurbo?.Invoke(Gen4ImageTurbo!);
+            }
+            else if (IsGen4Image)
+            {
+                gen4Image?.Invoke(Gen4Image!);
+            }
+            else if (IsGemini25Flash)
+            {
+                gemini25Flash?.Invoke(Gemini25Flash!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::Runway.CreateTextToImageRequestGen4ImageTurbo>? gen4ImageTurbo = null,
+            global::System.Action<global::Runway.CreateTextToImageRequestGen4Image>? gen4Image = null,
+            global::System.Action<global::Runway.CreateTextToImageRequestGemini25Flash>? gemini25Flash = null,
             bool validate = true)
         {
             if (validate)

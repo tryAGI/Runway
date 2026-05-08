@@ -25,6 +25,19 @@ namespace Runway
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ElevenVoiceIsolation))]
 #endif
         public bool IsElevenVoiceIsolation => ElevenVoiceIsolation != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickElevenVoiceIsolation(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Runway.CreateVoiceIsolationRequestElevenVoiceIsolation? value)
+        {
+            value = ElevenVoiceIsolation;
+            return IsElevenVoiceIsolation;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -69,7 +82,7 @@ namespace Runway
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Runway.CreateVoiceIsolationRequestElevenVoiceIsolation?, TResult>? elevenVoiceIsolation = null,
+            global::System.Func<global::Runway.CreateVoiceIsolationRequestElevenVoiceIsolation, TResult>? elevenVoiceIsolation = null,
             bool validate = true)
         {
             if (validate)
@@ -89,7 +102,25 @@ namespace Runway
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Runway.CreateVoiceIsolationRequestElevenVoiceIsolation?>? elevenVoiceIsolation = null,
+            global::System.Action<global::Runway.CreateVoiceIsolationRequestElevenVoiceIsolation>? elevenVoiceIsolation = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsElevenVoiceIsolation)
+            {
+                elevenVoiceIsolation?.Invoke(ElevenVoiceIsolation!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::Runway.CreateVoiceIsolationRequestElevenVoiceIsolation>? elevenVoiceIsolation = null,
             bool validate = true)
         {
             if (validate)

@@ -25,6 +25,19 @@ namespace Runway
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ElevenTextToSoundV2))]
 #endif
         public bool IsElevenTextToSoundV2 => ElevenTextToSoundV2 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickElevenTextToSoundV2(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Runway.CreateSoundEffectRequestElevenTextToSoundV2? value)
+        {
+            value = ElevenTextToSoundV2;
+            return IsElevenTextToSoundV2;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -69,7 +82,7 @@ namespace Runway
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Runway.CreateSoundEffectRequestElevenTextToSoundV2?, TResult>? elevenTextToSoundV2 = null,
+            global::System.Func<global::Runway.CreateSoundEffectRequestElevenTextToSoundV2, TResult>? elevenTextToSoundV2 = null,
             bool validate = true)
         {
             if (validate)
@@ -89,7 +102,25 @@ namespace Runway
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Runway.CreateSoundEffectRequestElevenTextToSoundV2?>? elevenTextToSoundV2 = null,
+            global::System.Action<global::Runway.CreateSoundEffectRequestElevenTextToSoundV2>? elevenTextToSoundV2 = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsElevenTextToSoundV2)
+            {
+                elevenTextToSoundV2?.Invoke(ElevenTextToSoundV2!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::Runway.CreateSoundEffectRequestElevenTextToSoundV2>? elevenTextToSoundV2 = null,
             bool validate = true)
         {
             if (validate)
