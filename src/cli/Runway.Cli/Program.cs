@@ -713,6 +713,26 @@ var ffmpegOption = new Option<string?>("--ffmpeg")
     Description = "Optional ffmpeg binary path used to concatenate downloaded short-video shot segments.",
 };
 
+var galleryInputOption = new Option<string?>("--input")
+{
+    Description = "Directory containing generated videos. Defaults to the current directory.",
+};
+
+var galleryOutputOption = new Option<string?>("--output", ["-o"])
+{
+    Description = "Gallery HTML output path. Defaults to runway-gallery.html in the input directory.",
+};
+
+var galleryRecursiveOption = new Option<bool>("--recursive")
+{
+    Description = "Include videos in nested directories.",
+};
+
+var galleryTitleOption = new Option<string?>("--title")
+{
+    Description = "Gallery page title.",
+};
+
 var generateVideoCommand = new Command("video", "Generate a video locally from a text prompt.")
 {
     videoPromptArgument,
@@ -2213,6 +2233,38 @@ cancelTaskCommand.SetAction((ParseResult parseResult, CancellationToken cancella
         Console.WriteLine("Cancelled.");
     }, cancellationToken));
 
+var galleryCommand = new Command("gallery", "Create a local HTML gallery for generated Runway videos.");
+rootCommand.Subcommands.Add(galleryCommand);
+
+var galleryCreateCommand = new Command("create", "Create a local HTML gallery for generated MP4 files.")
+{
+    galleryInputOption,
+    galleryOutputOption,
+    galleryRecursiveOption,
+    galleryTitleOption,
+};
+galleryCommand.Subcommands.Add(galleryCreateCommand);
+galleryCreateCommand.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
+{
+    try
+    {
+        var path = await RunwayCliGallery.CreateAsync(
+            parseResult.GetValue(galleryInputOption),
+            parseResult.GetValue(galleryOutputOption),
+            parseResult.GetValue(galleryRecursiveOption),
+            parseResult.GetValue(galleryTitleOption),
+            cancellationToken).ConfigureAwait(false);
+
+        Console.WriteLine(path);
+        return 0;
+    }
+    catch (Exception ex)
+    {
+        await WriteErrorAsync(ex).ConfigureAwait(false);
+        return 1;
+    }
+});
+
 return await rootCommand.Parse(args).InvokeAsync().ConfigureAwait(false);
 
 static async Task<Guid> PostGenerationJsonAsync(
@@ -2373,6 +2425,9 @@ Task<int> RunShortVideoPlanAsync(
 {
     return RunWithClientAsync(parseResult, async (client, runwayVersion, ct) =>
     {
+        var planPath = await RunwayCliShortVideo.WritePlanAsync(plan, output, ct).ConfigureAwait(false);
+        await Console.Error.WriteLineAsync($"Short-video plan JSON: {planPath}").ConfigureAwait(false);
+
         WriteShortVideoPlan(plan);
 
         var result = await client.CreateShortVideoAsync(

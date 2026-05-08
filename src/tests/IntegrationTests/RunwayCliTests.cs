@@ -36,6 +36,7 @@ public partial class Tests
         result.Stdout.Should().Contain("workflow");
         result.Stdout.Should().Contain("models");
         result.Stdout.Should().Contain("task");
+        result.Stdout.Should().Contain("gallery");
     }
 
     [TestMethod]
@@ -678,6 +679,31 @@ public partial class Tests
     }
 
     [TestMethod]
+    public async Task RunwayCliShortVideo_WritesPlanBesideFinalVideo()
+    {
+        var directory = Directory.CreateTempSubdirectory("runway-short-video-plan-test-").FullName;
+        var output = RunwayCliShortVideo.ResolveOutput(Path.Combine(directory, "launch.mp4"), new DateTime(2026, 5, 8, 15, 0, 0, DateTimeKind.Utc));
+        var plan = RunwayShortVideoExtensions.CreateShortVideoPlan(
+            "A small shop launches a new mug.",
+            new RunwayShortVideoOptions { ShotCount = 2 });
+
+        try
+        {
+            var path = await RunwayCliShortVideo.WritePlanAsync(plan, output, CancellationToken.None).ConfigureAwait(false);
+
+            path.Should().Be(Path.Combine(directory, "launch.plan.json"));
+            File.Exists(path).Should().BeTrue();
+            var json = await File.ReadAllTextAsync(path).ConfigureAwait(false);
+            json.Should().Contain("\"sourceText\"");
+            json.Should().Contain("\"shots\"");
+        }
+        finally
+        {
+            Directory.Delete(directory, recursive: true);
+        }
+    }
+
+    [TestMethod]
     public void RunwayCliShortVideo_CreatesFfmpegConcatArguments()
     {
         var startInfo = RunwayCliShortVideo.CreateConcatStartInfo(
@@ -755,6 +781,61 @@ public partial class Tests
             result.Warning.Should().BeNull();
             File.Exists(output).Should().BeTrue();
             new FileInfo(output).Length.Should().BeGreaterThan(0);
+        }
+        finally
+        {
+            Directory.Delete(directory, recursive: true);
+        }
+    }
+
+    [TestMethod]
+    public async Task RunwayCliGallery_CreatesHtmlForVideosAndPlans()
+    {
+        var directory = Directory.CreateTempSubdirectory("runway-gallery-test-").FullName;
+        var videoPath = Path.Combine(directory, "launch video.mp4");
+        var planPath = Path.Combine(directory, "launch video.plan.json");
+
+        try
+        {
+            await File.WriteAllBytesAsync(videoPath, [0, 1, 2, 3]).ConfigureAwait(false);
+            await File.WriteAllTextAsync(planPath, "{}").ConfigureAwait(false);
+
+            var output = await RunwayCliGallery.CreateAsync(
+                directory,
+                null,
+                recursive: false,
+                title: "Launch Gallery",
+                CancellationToken.None).ConfigureAwait(false);
+
+            File.Exists(output).Should().BeTrue();
+            var html = await File.ReadAllTextAsync(output).ConfigureAwait(false);
+            html.Should().Contain("Launch Gallery");
+            html.Should().Contain("launch video.mp4");
+            html.Should().Contain("launch%20video.mp4");
+            html.Should().Contain("launch%20video.plan.json");
+        }
+        finally
+        {
+            Directory.Delete(directory, recursive: true);
+        }
+    }
+
+    [TestMethod]
+    public async Task RunwayCli_GalleryCreateDoesNotRequireApiKey()
+    {
+        var directory = Directory.CreateTempSubdirectory("runway-gallery-cli-test-").FullName;
+        var videoPath = Path.Combine(directory, "clip.mp4");
+        await File.WriteAllBytesAsync(videoPath, [0, 1, 2, 3]).ConfigureAwait(false);
+
+        try
+        {
+            var result = await RunCliAsync(
+                $"gallery create --input {directory} --title Gallery",
+                removeApiKey: true).ConfigureAwait(false);
+
+            result.ExitCode.Should().Be(0);
+            result.Stdout.Should().Contain(Path.Combine(directory, "runway-gallery.html"));
+            File.Exists(Path.Combine(directory, "runway-gallery.html")).Should().BeTrue();
         }
         finally
         {

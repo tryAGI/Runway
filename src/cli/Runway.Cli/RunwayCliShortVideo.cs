@@ -42,6 +42,32 @@ internal static partial class RunwayCliShortVideo
         return JsonSerializer.Serialize(plan, typeof(RunwayShortVideoPlan), options);
     }
 
+    public static string ResolvePlanOutputPath(RunwayCliShortVideoOutput output)
+    {
+        var directory = Path.GetDirectoryName(Path.GetFullPath(output.FinalOutput)) ?? Environment.CurrentDirectory;
+        return Path.Combine(directory, $"{Path.GetFileNameWithoutExtension(output.FinalOutput)}.plan.json");
+    }
+
+    public static async Task<string> WritePlanAsync(
+        RunwayShortVideoPlan plan,
+        RunwayCliShortVideoOutput output,
+        CancellationToken cancellationToken)
+    {
+        var path = ResolvePlanOutputPath(output);
+        var directory = Path.GetDirectoryName(path);
+        if (!string.IsNullOrWhiteSpace(directory))
+        {
+            Directory.CreateDirectory(directory);
+        }
+
+        await File.WriteAllTextAsync(
+            path,
+            ToJson(plan),
+            new UTF8Encoding(encoderShouldEmitUTF8Identifier: false),
+            cancellationToken).ConfigureAwait(false);
+        return path;
+    }
+
     public static async Task<RunwayShortVideoPlan> ReadPlanAsync(
         string value,
         CancellationToken cancellationToken)

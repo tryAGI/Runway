@@ -311,6 +311,8 @@ dnx Runway.Cli short-video "a tiny robot finds a glowing seed and turns a roofto
   --shots 3 \
   --output ./runway-short-video
 
+# Normal generation also saves the exact plan beside the final video as *.plan.json.
+
 dnx Runway.Cli short-video "a calm product launch film for a transparent speaker" \
   --shots 3 \
   --plan-only > ./short-video-plan.json
@@ -399,6 +401,10 @@ dotnet run --project src/cli/Runway.Cli -- avatar video \
 dotnet run --project src/cli/Runway.Cli -- upload create --file ./reference.png
 
 dotnet run --project src/cli/Runway.Cli -- workflow list
+
+dotnet run --project src/cli/Runway.Cli -- gallery create \
+  --input ./runway-short-video \
+  --output ./runway-short-video/gallery.html
 ```
 
 CLI endpoint and model coverage:
@@ -420,6 +426,7 @@ CLI endpoint and model coverage:
 | `voice-dubbing` | `POST /v1/voice_dubbing` | `eleven_voice_dubbing` |
 | `voice-isolation` | `POST /v1/voice_isolation` | `eleven_voice_isolation` |
 | `task` | `GET /v1/tasks/{id}`, `DELETE /v1/tasks/{id}` | Task management |
+| `gallery create` | Local HTML gallery for generated MP4 files and adjacent `*.plan.json` files | No API call |
 | `avatar` | `GET/POST/PATCH/DELETE /v1/avatars`, conversation and usage endpoints | `gwm1_avatars`, avatar presets |
 | `avatar video` | `POST /v1/avatar_videos` | `gwm1_avatars` |
 | `document` | `GET/POST/PATCH/DELETE /v1/documents` | Knowledge documents |
@@ -429,7 +436,7 @@ CLI endpoint and model coverage:
 | `organization` | `GET /v1/organization`, `POST /v1/organization/usage` | Usage and metadata |
 | `workflow` | `GET/POST /v1/workflows`, `GET /v1/workflow_invocations/{id}` | Published workflows |
 
-The CLI `short-video` command can plan with external agents before using Runway: `--planner auto` (default) tries Claude Code first, Codex CLI second, then the deterministic planner; `--planner deterministic` keeps output fully local and CI-safe. `--planner-model`, `--planner-tools`, and `--planner-timeout-seconds` also support `RUNWAY_SHORT_VIDEO_PLANNER_MODEL`, `RUNWAY_SHORT_VIDEO_PLANNER_TOOLS`, and `RUNWAY_SHORT_VIDEO_PLANNER_TIMEOUT_SECONDS`. `short-video run --plan` is execution-only and never invokes a planner. The bundled planner prompt is Runway-owned and was shaped by storyboard-creation workflows; no external storyboard skill is installed or required.
+The CLI `short-video` command can plan with external agents before using Runway: `--planner auto` (default) tries Claude Code first, Codex CLI second, then the deterministic planner; `--planner deterministic` keeps output fully local and CI-safe. `--planner-model`, `--planner-tools`, and `--planner-timeout-seconds` also support `RUNWAY_SHORT_VIDEO_PLANNER_MODEL`, `RUNWAY_SHORT_VIDEO_PLANNER_TOOLS`, and `RUNWAY_SHORT_VIDEO_PLANNER_TIMEOUT_SECONDS`. `short-video run --plan` is execution-only and never invokes a planner. The bundled planner prompt is Runway-owned and was shaped by storyboard-creation workflows; no external storyboard skill is installed or required. Normal `short-video` generation writes the exact executed plan next to the final video as `*.plan.json`, and logs which planner source was used.
 
 The creative recipe commands are Runway-native. `product-photoshoot create`, `marketplace-cards create`, and `ad-video create` bundle product/ad/storyboard prompt guidance inspired by compact creator workflows: concise sensory prompts, camera and motion structure, lighting, positive phrasing, mode routing, reference-image handling, and model-fit defaults. They do not install or call Higgsfield, and marketplace-card plans are creative asset bundles rather than marketplace compliance claims. For presenter-like videos, use the existing avatar and character-performance commands; Runway does not expose Higgsfield-style reusable face-model training through this SDK.
 

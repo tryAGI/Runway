@@ -111,6 +111,7 @@ What `short-video` does:
 - Writes a video prompt for every shot.
 - Starts Runway video jobs for the planned shots.
 - Downloads the finished clips.
+- Saves the exact executed plan beside the final video as `*.plan.json`.
 - Uses `ffmpeg` when available to create one final video file.
 
 Use `--planner auto` for normal work. Auto planning tries Claude Code first, then Codex CLI, then the built-in planner. Use `--planner deterministic` only for CI, demos that must be repeatable, or environments with no external planner access. Use `--plan-only` when the user wants to review the idea before spending credits.
@@ -143,6 +144,14 @@ Run an edited short-video plan:
 dnx Runway.Cli short-video run \
   --plan ./short-video-plan.json \
   --output ./runway-short-video
+```
+
+Browse generated videos and their saved plans:
+
+```bash
+dnx Runway.Cli gallery create \
+  --input ./runway-short-video \
+  --output ./runway-short-video/gallery.html
 ```
 
 Plan Runway-native creative recipes before spending credits:
