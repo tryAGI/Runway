@@ -292,6 +292,7 @@ RUNWAY_API_KEY=...
 EOF
 
 # One-shot via dnx. The installed tool command is `runway`; dnx uses the package ID.
+# Add `--prerelease --yes` after `Runway.Cli` until the first stable CLI package is tagged.
 dnx Runway.Cli video a cinematic drone shot over a neon desert highway
 
 dnx Runway.Cli image a product photo of a translucent glass speaker on a steel table
@@ -381,6 +382,10 @@ CLI endpoint and model coverage:
 | `realtime` | `POST/GET/DELETE /v1/realtime_sessions` | `gwm1_avatars` |
 | `organization` | `GET /v1/organization`, `POST /v1/organization/usage` | Usage and metadata |
 | `workflow` | `GET/POST /v1/workflows`, `GET /v1/workflow_invocations/{id}` | Published workflows |
+
+### Agent Skill
+
+The repo includes a compact Codex-compatible skill at `.agents/skills/runway-cli/SKILL.md`. It mirrors the official [runwayml/skills](https://github.com/runwayml/skills) agent-skill flow, but uses `dnx Runway.Cli` as the runtime instead of bundled Python or Node scripts. The skill covers direct media generation, resource inspection, uploads, task polling/downloads, and simple multi-step recipes such as concept image to video and batch product-image animation.
 
 ## Support
 

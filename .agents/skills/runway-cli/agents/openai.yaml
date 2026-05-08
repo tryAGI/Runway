@@ -1,0 +1,7 @@
+interface:
+  display_name: "Runway CLI"
+  short_description: "Generate and manage Runway media via dnx"
+  default_prompt: "Use $runway-cli to generate a quick Runway image, save it locally, and report the output path."
+
+policy:
+  allow_implicit_invocation: true

@@ -53,6 +53,9 @@ jobs:
       - name: Build CLI
         run: dotnet build src/cli/Runway.Cli/Runway.Cli.csproj -c Release
 
+      - name: Smoke dnx package
+        run: dotnet dnx Runway.Cli --source "$PWD/src/cli/Runway.Cli/bin/Release" --prerelease --yes models
+
       - name: Smoke root help
         run: dotnet run --project src/cli/Runway.Cli -c Release --no-build -- --help
 
