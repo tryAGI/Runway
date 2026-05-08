@@ -73,6 +73,36 @@ namespace Runway
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
+        public global::Runway.CreateTextToImageRequestGptImage2? GptImage2 { get; init; }
+#else
+        public global::Runway.CreateTextToImageRequestGptImage2? GptImage2 { get; }
+#endif
+
+        /// <summary>
+        /// 
+        /// </summary>
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(GptImage2))]
+#endif
+        public bool IsGptImage2 => GptImage2 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickGptImage2(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Runway.CreateTextToImageRequestGptImage2? value)
+        {
+            value = GptImage2;
+            return IsGptImage2;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+#if NET6_0_OR_GREATER
         public global::Runway.CreateTextToImageRequestGeminiImage3Pro? GeminiImage3Pro { get; init; }
 #else
         public global::Runway.CreateTextToImageRequestGeminiImage3Pro? GeminiImage3Pro { get; }
@@ -167,6 +197,24 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public static implicit operator CreateTextToImageRequest(global::Runway.CreateTextToImageRequestGptImage2 value) => new CreateTextToImageRequest((global::Runway.CreateTextToImageRequestGptImage2?)value);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static implicit operator global::Runway.CreateTextToImageRequestGptImage2?(CreateTextToImageRequest @this) => @this.GptImage2;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public CreateTextToImageRequest(global::Runway.CreateTextToImageRequestGptImage2? value)
+        {
+            GptImage2 = value;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator CreateTextToImageRequest(global::Runway.CreateTextToImageRequestGeminiImage3Pro value) => new CreateTextToImageRequest((global::Runway.CreateTextToImageRequestGeminiImage3Pro?)value);
 
         /// <summary>
@@ -206,12 +254,14 @@ namespace Runway
         public CreateTextToImageRequest(
             global::Runway.CreateTextToImageRequestGen4ImageTurbo? gen4ImageTurbo,
             global::Runway.CreateTextToImageRequestGen4Image? gen4Image,
+            global::Runway.CreateTextToImageRequestGptImage2? gptImage2,
             global::Runway.CreateTextToImageRequestGeminiImage3Pro? geminiImage3Pro,
             global::Runway.CreateTextToImageRequestGemini25Flash? gemini25Flash
             )
         {
             Gen4ImageTurbo = gen4ImageTurbo;
             Gen4Image = gen4Image;
+            GptImage2 = gptImage2;
             GeminiImage3Pro = geminiImage3Pro;
             Gemini25Flash = gemini25Flash;
         }
@@ -222,6 +272,7 @@ namespace Runway
         public object? Object =>
             Gemini25Flash as object ??
             GeminiImage3Pro as object ??
+            GptImage2 as object ??
             Gen4Image as object ??
             Gen4ImageTurbo as object 
             ;
@@ -232,6 +283,7 @@ namespace Runway
         public override string? ToString() =>
             Gen4ImageTurbo?.ToString() ??
             Gen4Image?.ToString() ??
+            GptImage2?.ToString() ??
             GeminiImage3Pro?.ToString() ??
             Gemini25Flash?.ToString() 
             ;
@@ -241,7 +293,7 @@ namespace Runway
         /// </summary>
         public bool Validate()
         {
-            return IsGen4ImageTurbo && !IsGen4Image && !IsGeminiImage3Pro && !IsGemini25Flash || !IsGen4ImageTurbo && IsGen4Image && !IsGeminiImage3Pro && !IsGemini25Flash || !IsGen4ImageTurbo && !IsGen4Image && IsGeminiImage3Pro && !IsGemini25Flash || !IsGen4ImageTurbo && !IsGen4Image && !IsGeminiImage3Pro && IsGemini25Flash;
+            return IsGen4ImageTurbo && !IsGen4Image && !IsGptImage2 && !IsGeminiImage3Pro && !IsGemini25Flash || !IsGen4ImageTurbo && IsGen4Image && !IsGptImage2 && !IsGeminiImage3Pro && !IsGemini25Flash || !IsGen4ImageTurbo && !IsGen4Image && IsGptImage2 && !IsGeminiImage3Pro && !IsGemini25Flash || !IsGen4ImageTurbo && !IsGen4Image && !IsGptImage2 && IsGeminiImage3Pro && !IsGemini25Flash || !IsGen4ImageTurbo && !IsGen4Image && !IsGptImage2 && !IsGeminiImage3Pro && IsGemini25Flash;
         }
 
         /// <summary>
@@ -250,6 +302,7 @@ namespace Runway
         public TResult? Match<TResult>(
             global::System.Func<global::Runway.CreateTextToImageRequestGen4ImageTurbo, TResult>? gen4ImageTurbo = null,
             global::System.Func<global::Runway.CreateTextToImageRequestGen4Image, TResult>? gen4Image = null,
+            global::System.Func<global::Runway.CreateTextToImageRequestGptImage2, TResult>? gptImage2 = null,
             global::System.Func<global::Runway.CreateTextToImageRequestGeminiImage3Pro, TResult>? geminiImage3Pro = null,
             global::System.Func<global::Runway.CreateTextToImageRequestGemini25Flash, TResult>? gemini25Flash = null,
             bool validate = true)
@@ -266,6 +319,10 @@ namespace Runway
             else if (IsGen4Image && gen4Image != null)
             {
                 return gen4Image(Gen4Image!);
+            }
+            else if (IsGptImage2 && gptImage2 != null)
+            {
+                return gptImage2(GptImage2!);
             }
             else if (IsGeminiImage3Pro && geminiImage3Pro != null)
             {
@@ -287,6 +344,8 @@ namespace Runway
 
             global::System.Action<global::Runway.CreateTextToImageRequestGen4Image>? gen4Image = null,
 
+            global::System.Action<global::Runway.CreateTextToImageRequestGptImage2>? gptImage2 = null,
+
             global::System.Action<global::Runway.CreateTextToImageRequestGeminiImage3Pro>? geminiImage3Pro = null,
 
             global::System.Action<global::Runway.CreateTextToImageRequestGemini25Flash>? gemini25Flash = null,
@@ -304,6 +363,10 @@ namespace Runway
             else if (IsGen4Image)
             {
                 gen4Image?.Invoke(Gen4Image!);
+            }
+            else if (IsGptImage2)
+            {
+                gptImage2?.Invoke(GptImage2!);
             }
             else if (IsGeminiImage3Pro)
             {
@@ -321,6 +384,7 @@ namespace Runway
         public void Switch(
             global::System.Action<global::Runway.CreateTextToImageRequestGen4ImageTurbo>? gen4ImageTurbo = null,
             global::System.Action<global::Runway.CreateTextToImageRequestGen4Image>? gen4Image = null,
+            global::System.Action<global::Runway.CreateTextToImageRequestGptImage2>? gptImage2 = null,
             global::System.Action<global::Runway.CreateTextToImageRequestGeminiImage3Pro>? geminiImage3Pro = null,
             global::System.Action<global::Runway.CreateTextToImageRequestGemini25Flash>? gemini25Flash = null,
             bool validate = true)
@@ -337,6 +401,10 @@ namespace Runway
             else if (IsGen4Image)
             {
                 gen4Image?.Invoke(Gen4Image!);
+            }
+            else if (IsGptImage2)
+            {
+                gptImage2?.Invoke(GptImage2!);
             }
             else if (IsGeminiImage3Pro)
             {
@@ -359,6 +427,8 @@ namespace Runway
                 typeof(global::Runway.CreateTextToImageRequestGen4ImageTurbo),
                 Gen4Image,
                 typeof(global::Runway.CreateTextToImageRequestGen4Image),
+                GptImage2,
+                typeof(global::Runway.CreateTextToImageRequestGptImage2),
                 GeminiImage3Pro,
                 typeof(global::Runway.CreateTextToImageRequestGeminiImage3Pro),
                 Gemini25Flash,
@@ -381,6 +451,7 @@ namespace Runway
             return
                 global::System.Collections.Generic.EqualityComparer<global::Runway.CreateTextToImageRequestGen4ImageTurbo?>.Default.Equals(Gen4ImageTurbo, other.Gen4ImageTurbo) &&
                 global::System.Collections.Generic.EqualityComparer<global::Runway.CreateTextToImageRequestGen4Image?>.Default.Equals(Gen4Image, other.Gen4Image) &&
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateTextToImageRequestGptImage2?>.Default.Equals(GptImage2, other.GptImage2) &&
                 global::System.Collections.Generic.EqualityComparer<global::Runway.CreateTextToImageRequestGeminiImage3Pro?>.Default.Equals(GeminiImage3Pro, other.GeminiImage3Pro) &&
                 global::System.Collections.Generic.EqualityComparer<global::Runway.CreateTextToImageRequestGemini25Flash?>.Default.Equals(Gemini25Flash, other.Gemini25Flash) 
                 ;

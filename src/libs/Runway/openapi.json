@@ -7329,6 +7329,124 @@
                     "required": ["promptText", "ratio", "model"]
                   },
                   {
+                    "title": "gpt_image_2",
+                    "type": "object",
+                    "properties": {
+                      "promptText": {
+                        "description": "A non-empty string up to 32,000 characters describing the desired image.",
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 32000
+                      },
+                      "ratio": {
+                        "description": "The resolution of the output image, expressed as `<width>:<height>`. Use `auto` to let the model choose.",
+                        "type": "string",
+                        "enum": [
+                          "2048:880",
+                          "1920:1088",
+                          "1920:1280",
+                          "1920:1440",
+                          "1920:1536",
+                          "1920:1920",
+                          "1536:1920",
+                          "1440:1920",
+                          "1280:1920",
+                          "1088:1920",
+                          "2912:1248",
+                          "2560:1440",
+                          "2560:1712",
+                          "2560:1920",
+                          "2560:2048",
+                          "2560:2560",
+                          "2048:2560",
+                          "1920:2560",
+                          "1712:2560",
+                          "1440:2560",
+                          "3840:1648",
+                          "3840:2160",
+                          "3504:2336",
+                          "3264:2448",
+                          "3200:2560",
+                          "2880:2880",
+                          "2560:3200",
+                          "2448:3264",
+                          "2336:3504",
+                          "2160:3840",
+                          "auto"
+                        ]
+                      },
+                      "quality": {
+                        "description": "Rendering quality. Higher qualities consume more credits. Defaults to `high`.",
+                        "type": "string",
+                        "enum": ["low", "medium", "high", "auto"]
+                      },
+                      "background": {
+                        "description": "Background treatment. Defaults to `auto`, which lets the model pick. `transparent` is not supported by this model.",
+                        "type": "string",
+                        "enum": ["opaque", "auto"]
+                      },
+                      "referenceImages": {
+                        "description": "An array of up to 16 images to be used as references for the generated image output.",
+                        "maxItems": 16,
+                        "type": "array",
+                        "items": {
+                          "title": "GptImage2ReferenceImage",
+                          "type": "object",
+                          "properties": {
+                            "uri": {
+                              "description": "A HTTPS URL, Runway or data URI containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                              "example": "https://example.com/image.jpg",
+                              "anyOf": [
+                                {
+                                  "description": "A HTTPS URL.",
+                                  "example": "https://example.com/file",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 2048,
+                                  "pattern": "^https:\\/\\/.*"
+                                },
+                                {
+                                  "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                                  "example": "runway://<token>",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 5000,
+                                  "pattern": "^runway:\\/\\/.*"
+                                },
+                                {
+                                  "description": "A data URI containing encoded media.",
+                                  "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 5242880,
+                                  "pattern": "^data:image\\/.*"
+                                }
+                              ]
+                            },
+                            "tag": {
+                              "description": "A tag to identify the reference image. This may be used to reference the image in prompt text.",
+                              "type": "string",
+                              "minLength": 3,
+                              "maxLength": 16,
+                              "pattern": "^[a-z][a-z0-9_]+$"
+                            }
+                          },
+                          "required": ["uri"],
+                          "additionalProperties": false
+                        }
+                      },
+                      "outputCount": {
+                        "description": "The number of images to generate (1-10). Increasing this number will affect the number of credits consumed by the generation.",
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 10
+                      },
+                      "model": { "type": "string", "const": "gpt_image_2" }
+                    },
+                    "required": ["promptText", "ratio", "model"],
+                    "additionalProperties": false
+                  },
+                  {
                     "title": "gemini_image3_pro",
                     "type": "object",
                     "properties": {
@@ -7421,11 +7539,13 @@
                             },
                             "subject": {
                               "description": "Whether this is a reference of a human subject (for character consistency) or an object that appears in the output.",
+                              "default": "object",
                               "type": "string",
                               "enum": ["object", "human"]
                             }
                           },
-                          "required": ["uri", "subject"]
+                          "required": ["uri"],
+                          "additionalProperties": false
                         }
                       },
                       "outputCount": {
@@ -7438,7 +7558,8 @@
                         "const": "gemini_image3_pro"
                       }
                     },
-                    "required": ["promptText", "ratio", "model"]
+                    "required": ["promptText", "ratio", "model"],
+                    "additionalProperties": false
                   },
                   {
                     "title": "gemini_2.5_flash",
@@ -7937,7 +8058,6 @@
                     "title": "eleven_multilingual_sts_v2",
                     "type": "object",
                     "properties": {
-                      "runwayVoiceId": { "type": "string" },
                       "removeBackgroundNoise": {
                         "description": "Whether to remove background noise from the generated speech.",
                         "type": "boolean"
@@ -8619,6 +8739,7 @@
                               "gen4_turbo",
                               "gen4_image",
                               "gen4_image_turbo",
+                              "gpt_image_2",
                               "act_two",
                               "gen4_aleph",
                               "veo3",
@@ -8692,6 +8813,7 @@
                               "gen4_turbo",
                               "gen4_image",
                               "gen4_image_turbo",
+                              "gpt_image_2",
                               "act_two",
                               "gen4_aleph",
                               "veo3",
@@ -8822,6 +8944,7 @@
                                     "gen4_turbo",
                                     "gen4_image",
                                     "gen4_image_turbo",
+                                    "gpt_image_2",
                                     "act_two",
                                     "gen4_aleph",
                                     "veo3",
@@ -8873,6 +8996,7 @@
                           "gen4_turbo",
                           "gen4_image",
                           "gen4_image_turbo",
+                          "gpt_image_2",
                           "act_two",
                           "gen4_aleph",
                           "veo3",

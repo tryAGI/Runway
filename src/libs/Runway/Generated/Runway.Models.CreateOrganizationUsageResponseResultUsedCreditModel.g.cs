@@ -79,6 +79,10 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        GptImage2,
+        /// <summary>
+        /// 
+        /// </summary>
         Gwm1AvatarAsyncAudioToVideo,
         /// <summary>
         /// 
@@ -139,6 +143,7 @@ namespace Runway
                 CreateOrganizationUsageResponseResultUsedCreditModel.Gen4Image => "gen4_image",
                 CreateOrganizationUsageResponseResultUsedCreditModel.Gen4ImageTurbo => "gen4_image_turbo",
                 CreateOrganizationUsageResponseResultUsedCreditModel.Gen4Turbo => "gen4_turbo",
+                CreateOrganizationUsageResponseResultUsedCreditModel.GptImage2 => "gpt_image_2",
                 CreateOrganizationUsageResponseResultUsedCreditModel.Gwm1AvatarAsyncAudioToVideo => "gwm1_avatar_async_audio_to_video",
                 CreateOrganizationUsageResponseResultUsedCreditModel.Gwm1AvatarAsyncTextToVideo => "gwm1_avatar_async_text_to_video",
                 CreateOrganizationUsageResponseResultUsedCreditModel.Gwm1Avatars => "gwm1_avatars",
@@ -174,6 +179,7 @@ namespace Runway
                 "gen4_image" => CreateOrganizationUsageResponseResultUsedCreditModel.Gen4Image,
                 "gen4_image_turbo" => CreateOrganizationUsageResponseResultUsedCreditModel.Gen4ImageTurbo,
                 "gen4_turbo" => CreateOrganizationUsageResponseResultUsedCreditModel.Gen4Turbo,
+                "gpt_image_2" => CreateOrganizationUsageResponseResultUsedCreditModel.GptImage2,
                 "gwm1_avatar_async_audio_to_video" => CreateOrganizationUsageResponseResultUsedCreditModel.Gwm1AvatarAsyncAudioToVideo,
                 "gwm1_avatar_async_text_to_video" => CreateOrganizationUsageResponseResultUsedCreditModel.Gwm1AvatarAsyncTextToVideo,
                 "gwm1_avatars" => CreateOrganizationUsageResponseResultUsedCreditModel.Gwm1Avatars,

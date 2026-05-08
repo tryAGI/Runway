@@ -31,7 +31,6 @@ namespace Runway.JsonConverters
             if (__jsonProps.Contains("media")) __score0++;
             if (__jsonProps.Contains("model")) __score0++;
             if (__jsonProps.Contains("removeBackgroundNoise")) __score0++;
-            if (__jsonProps.Contains("runwayVoiceId")) __score0++;
             if (__jsonProps.Contains("voice")) __score0++;
             var __bestScore = 0;
             var __bestIndex = -1;

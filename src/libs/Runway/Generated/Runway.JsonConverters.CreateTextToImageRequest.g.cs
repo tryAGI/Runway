@@ -51,25 +51,35 @@ namespace Runway.JsonConverters
             if (__jsonProps.Contains("referenceImages")) __score1++;
             if (__jsonProps.Contains("seed")) __score1++;
             var __score2 = 0;
+            if (__jsonProps.Contains("background")) __score2++;
             if (__jsonProps.Contains("model")) __score2++;
             if (__jsonProps.Contains("outputCount")) __score2++;
             if (__jsonProps.Contains("promptText")) __score2++;
+            if (__jsonProps.Contains("quality")) __score2++;
             if (__jsonProps.Contains("ratio")) __score2++;
             if (__jsonProps.Contains("referenceImages")) __score2++;
             var __score3 = 0;
             if (__jsonProps.Contains("model")) __score3++;
+            if (__jsonProps.Contains("outputCount")) __score3++;
             if (__jsonProps.Contains("promptText")) __score3++;
             if (__jsonProps.Contains("ratio")) __score3++;
             if (__jsonProps.Contains("referenceImages")) __score3++;
+            var __score4 = 0;
+            if (__jsonProps.Contains("model")) __score4++;
+            if (__jsonProps.Contains("promptText")) __score4++;
+            if (__jsonProps.Contains("ratio")) __score4++;
+            if (__jsonProps.Contains("referenceImages")) __score4++;
             var __bestScore = 0;
             var __bestIndex = -1;
             if (__score0 > __bestScore) { __bestScore = __score0; __bestIndex = 0; }
             if (__score1 > __bestScore) { __bestScore = __score1; __bestIndex = 1; }
             if (__score2 > __bestScore) { __bestScore = __score2; __bestIndex = 2; }
             if (__score3 > __bestScore) { __bestScore = __score3; __bestIndex = 3; }
+            if (__score4 > __bestScore) { __bestScore = __score4; __bestIndex = 4; }
 
             global::Runway.CreateTextToImageRequestGen4ImageTurbo? gen4ImageTurbo = default;
             global::Runway.CreateTextToImageRequestGen4Image? gen4Image = default;
+            global::Runway.CreateTextToImageRequestGptImage2? gptImage2 = default;
             global::Runway.CreateTextToImageRequestGeminiImage3Pro? geminiImage3Pro = default;
             global::Runway.CreateTextToImageRequestGemini25Flash? gemini25Flash = default;
             if (__bestIndex >= 0)
@@ -108,6 +118,21 @@ namespace Runway.JsonConverters
                 {
                     try
                     {
+                        var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateTextToImageRequestGptImage2), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateTextToImageRequestGptImage2> ??
+                                       throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateTextToImageRequestGptImage2).Name}");
+                        gptImage2 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                    }
+                    catch (global::System.Text.Json.JsonException)
+                    {
+                    }
+                    catch (global::System.InvalidOperationException)
+                    {
+                    }
+                }
+                else if (__bestIndex == 3)
+                {
+                    try
+                    {
                         var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateTextToImageRequestGeminiImage3Pro), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateTextToImageRequestGeminiImage3Pro> ??
                                        throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateTextToImageRequestGeminiImage3Pro).Name}");
                         geminiImage3Pro = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
@@ -119,7 +144,7 @@ namespace Runway.JsonConverters
                     {
                     }
                 }
-                else if (__bestIndex == 3)
+                else if (__bestIndex == 4)
                 {
                     try
                     {
@@ -136,7 +161,7 @@ namespace Runway.JsonConverters
                 }
             }
 
-            if (gen4ImageTurbo == null && gen4Image == null && geminiImage3Pro == null && gemini25Flash == null)
+            if (gen4ImageTurbo == null && gen4Image == null && gptImage2 == null && geminiImage3Pro == null && gemini25Flash == null)
             {
                 try
                 {
@@ -156,6 +181,19 @@ namespace Runway.JsonConverters
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateTextToImageRequestGen4Image), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateTextToImageRequestGen4Image> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateTextToImageRequestGen4Image).Name}");
                     gen4Image = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                }
+                catch (global::System.Text.Json.JsonException)
+                {
+                }
+                catch (global::System.InvalidOperationException)
+                {
+                }
+
+                try
+                {
+                    var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateTextToImageRequestGptImage2), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateTextToImageRequestGptImage2> ??
+                                   throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateTextToImageRequestGptImage2).Name}");
+                    gptImage2 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                 }
                 catch (global::System.Text.Json.JsonException)
                 {
@@ -196,6 +234,8 @@ namespace Runway.JsonConverters
 
                 gen4Image,
 
+                gptImage2,
+
                 geminiImage3Pro,
 
                 gemini25Flash
@@ -224,6 +264,12 @@ namespace Runway.JsonConverters
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateTextToImageRequestGen4Image), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateTextToImageRequestGen4Image?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateTextToImageRequestGen4Image).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.Gen4Image!, typeInfo);
+            }
+            else if (value.IsGptImage2)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateTextToImageRequestGptImage2), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateTextToImageRequestGptImage2?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateTextToImageRequestGptImage2).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.GptImage2!, typeInfo);
             }
             else if (value.IsGeminiImage3Pro)
             {

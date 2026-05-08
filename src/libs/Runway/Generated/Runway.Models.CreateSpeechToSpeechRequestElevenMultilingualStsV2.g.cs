@@ -9,12 +9,6 @@ namespace Runway
     public sealed partial class CreateSpeechToSpeechRequestElevenMultilingualStsV2
     {
         /// <summary>
-        /// 
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("runwayVoiceId")]
-        public string? RunwayVoiceId { get; set; }
-
-        /// <summary>
         /// Whether to remove background noise from the generated speech.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("removeBackgroundNoise")]
@@ -55,7 +49,6 @@ namespace Runway
         /// <param name="voice">
         /// The voice to use for the generated speech.
         /// </param>
-        /// <param name="runwayVoiceId"></param>
         /// <param name="removeBackgroundNoise">
         /// Whether to remove background noise from the generated speech.
         /// </param>
@@ -66,11 +59,9 @@ namespace Runway
         public CreateSpeechToSpeechRequestElevenMultilingualStsV2(
             global::Runway.Media media,
             global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2VoiceRunwayPresetVoice voice,
-            string? runwayVoiceId,
             bool? removeBackgroundNoise,
             string model = "eleven_multilingual_sts_v2")
         {
-            this.RunwayVoiceId = runwayVoiceId;
             this.RemoveBackgroundNoise = removeBackgroundNoise;
             this.Media = media;
             this.Voice = voice ?? throw new global::System.ArgumentNullException(nameof(voice));

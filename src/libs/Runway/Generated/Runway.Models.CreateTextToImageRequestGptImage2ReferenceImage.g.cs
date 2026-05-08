@@ -6,7 +6,7 @@ namespace Runway
     /// <summary>
     /// 
     /// </summary>
-    public sealed partial class CreateTextToImageRequestGeminiImage3ProReferenceImage
+    public sealed partial class CreateTextToImageRequestGptImage2ReferenceImage
     {
         /// <summary>
         /// A HTTPS URL, Runway or data URI containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.<br/>
@@ -18,18 +18,10 @@ namespace Runway
         public required string Uri { get; set; }
 
         /// <summary>
-        /// A tag to identify the reference image. This is used to reference the image in prompt text.
+        /// A tag to identify the reference image. This may be used to reference the image in prompt text.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("tag")]
         public string? Tag { get; set; }
-
-        /// <summary>
-        /// Whether this is a reference of a human subject (for character consistency) or an object that appears in the output.<br/>
-        /// Default Value: object
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("subject")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.CreateTextToImageRequestGeminiImage3ProReferenceImageSubjectJsonConverter))]
-        public global::Runway.CreateTextToImageRequestGeminiImage3ProReferenceImageSubject? Subject { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -38,36 +30,30 @@ namespace Runway
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CreateTextToImageRequestGeminiImage3ProReferenceImage" /> class.
+        /// Initializes a new instance of the <see cref="CreateTextToImageRequestGptImage2ReferenceImage" /> class.
         /// </summary>
         /// <param name="uri">
         /// A HTTPS URL, Runway or data URI containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.<br/>
         /// Example: https://example.com/image.jpg
         /// </param>
         /// <param name="tag">
-        /// A tag to identify the reference image. This is used to reference the image in prompt text.
-        /// </param>
-        /// <param name="subject">
-        /// Whether this is a reference of a human subject (for character consistency) or an object that appears in the output.<br/>
-        /// Default Value: object
+        /// A tag to identify the reference image. This may be used to reference the image in prompt text.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
-        public CreateTextToImageRequestGeminiImage3ProReferenceImage(
+        public CreateTextToImageRequestGptImage2ReferenceImage(
             string uri,
-            string? tag,
-            global::Runway.CreateTextToImageRequestGeminiImage3ProReferenceImageSubject? subject)
+            string? tag)
         {
             this.Uri = uri;
             this.Tag = tag;
-            this.Subject = subject;
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CreateTextToImageRequestGeminiImage3ProReferenceImage" /> class.
+        /// Initializes a new instance of the <see cref="CreateTextToImageRequestGptImage2ReferenceImage" /> class.
         /// </summary>
-        public CreateTextToImageRequestGeminiImage3ProReferenceImage()
+        public CreateTextToImageRequestGptImage2ReferenceImage()
         {
         }
     }

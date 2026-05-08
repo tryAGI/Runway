@@ -141,6 +141,18 @@ namespace Runway
 
             typeof(global::Runway.JsonConverters.CreateTextToImageRequestGen4ImageContentModerationPublicFigureThresholdNullableJsonConverter),
 
+            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGptImage2RatioJsonConverter),
+
+            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGptImage2RatioNullableJsonConverter),
+
+            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGptImage2QualityJsonConverter),
+
+            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGptImage2QualityNullableJsonConverter),
+
+            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGptImage2BackgroundJsonConverter),
+
+            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGptImage2BackgroundNullableJsonConverter),
+
             typeof(global::Runway.JsonConverters.CreateTextToImageRequestGeminiImage3ProRatioJsonConverter),
 
             typeof(global::Runway.JsonConverters.CreateTextToImageRequestGeminiImage3ProRatioNullableJsonConverter),
@@ -563,6 +575,12 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGen4ImageReferenceImage))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGen4ImageContentModeration))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGen4ImageContentModerationPublicFigureThreshold), TypeInfoPropertyName = "CreateTextToImageRequestGen4ImageContentModerationPublicFigureThreshold2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGptImage2))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGptImage2Ratio), TypeInfoPropertyName = "CreateTextToImageRequestGptImage2Ratio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGptImage2Quality), TypeInfoPropertyName = "CreateTextToImageRequestGptImage2Quality2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGptImage2Background), TypeInfoPropertyName = "CreateTextToImageRequestGptImage2Background2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateTextToImageRequestGptImage2ReferenceImage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGptImage2ReferenceImage))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGeminiImage3Pro))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGeminiImage3ProRatio), TypeInfoPropertyName = "CreateTextToImageRequestGeminiImage3ProRatio2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateTextToImageRequestGeminiImage3ProReferenceImage>))]
@@ -907,12 +925,6 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestGen3aTurboPromptImagePromptImage>>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestGen3aTurboPromptImagePromptImage>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestVeo31FastPromptImagePromptImage>>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestVeo31FastPromptImagePromptImage>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestVeo3PromptImagePromptImage>>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestVeo3PromptImagePromptImage>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.ReferencesItem>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateTextToImageRequestGen4ImageTurboReferenceImage>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateTextToImageRequestGen4ImageReferenceImage>))]
     internal sealed partial class SourceGenerationContextChunk0 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }
@@ -1051,6 +1063,18 @@ namespace Runway
             typeof(global::Runway.JsonConverters.CreateTextToImageRequestGen4ImageContentModerationPublicFigureThresholdJsonConverter),
 
             typeof(global::Runway.JsonConverters.CreateTextToImageRequestGen4ImageContentModerationPublicFigureThresholdNullableJsonConverter),
+
+            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGptImage2RatioJsonConverter),
+
+            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGptImage2RatioNullableJsonConverter),
+
+            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGptImage2QualityJsonConverter),
+
+            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGptImage2QualityNullableJsonConverter),
+
+            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGptImage2BackgroundJsonConverter),
+
+            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGptImage2BackgroundNullableJsonConverter),
 
             typeof(global::Runway.JsonConverters.CreateTextToImageRequestGeminiImage3ProRatioJsonConverter),
 
@@ -1324,6 +1348,13 @@ namespace Runway
 
             typeof(global::Runway.JsonConverters.UnixTimestampJsonConverter),
         })]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestVeo31FastPromptImagePromptImage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestVeo3PromptImagePromptImage>>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestVeo3PromptImagePromptImage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.ReferencesItem>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateTextToImageRequestGen4ImageTurboReferenceImage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateTextToImageRequestGen4ImageReferenceImage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateTextToImageRequestGptImage2ReferenceImage>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateTextToImageRequestGeminiImage3ProReferenceImage>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateTextToImageRequestGemini25FlashReferenceImage>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.DataItem>))]
@@ -1458,6 +1489,12 @@ namespace Runway
             options.Converters.Add(new global::Runway.JsonConverters.CreateTextToImageRequestGen4ImageRatioNullableJsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.CreateTextToImageRequestGen4ImageContentModerationPublicFigureThresholdJsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.CreateTextToImageRequestGen4ImageContentModerationPublicFigureThresholdNullableJsonConverter());
+            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToImageRequestGptImage2RatioJsonConverter());
+            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToImageRequestGptImage2RatioNullableJsonConverter());
+            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToImageRequestGptImage2QualityJsonConverter());
+            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToImageRequestGptImage2QualityNullableJsonConverter());
+            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToImageRequestGptImage2BackgroundJsonConverter());
+            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToImageRequestGptImage2BackgroundNullableJsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.CreateTextToImageRequestGeminiImage3ProRatioJsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.CreateTextToImageRequestGeminiImage3ProRatioNullableJsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.CreateTextToImageRequestGeminiImage3ProReferenceImageSubjectJsonConverter());
