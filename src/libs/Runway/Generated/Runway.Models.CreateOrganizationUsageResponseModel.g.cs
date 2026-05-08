@@ -79,6 +79,10 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        GptImage2,
+        /// <summary>
+        /// 
+        /// </summary>
         Gwm1AvatarAsyncAudioToVideo,
         /// <summary>
         /// 
@@ -139,6 +143,7 @@ namespace Runway
                 CreateOrganizationUsageResponseModel.Gen4Image => "gen4_image",
                 CreateOrganizationUsageResponseModel.Gen4ImageTurbo => "gen4_image_turbo",
                 CreateOrganizationUsageResponseModel.Gen4Turbo => "gen4_turbo",
+                CreateOrganizationUsageResponseModel.GptImage2 => "gpt_image_2",
                 CreateOrganizationUsageResponseModel.Gwm1AvatarAsyncAudioToVideo => "gwm1_avatar_async_audio_to_video",
                 CreateOrganizationUsageResponseModel.Gwm1AvatarAsyncTextToVideo => "gwm1_avatar_async_text_to_video",
                 CreateOrganizationUsageResponseModel.Gwm1Avatars => "gwm1_avatars",
@@ -174,6 +179,7 @@ namespace Runway
                 "gen4_image" => CreateOrganizationUsageResponseModel.Gen4Image,
                 "gen4_image_turbo" => CreateOrganizationUsageResponseModel.Gen4ImageTurbo,
                 "gen4_turbo" => CreateOrganizationUsageResponseModel.Gen4Turbo,
+                "gpt_image_2" => CreateOrganizationUsageResponseModel.GptImage2,
                 "gwm1_avatar_async_audio_to_video" => CreateOrganizationUsageResponseModel.Gwm1AvatarAsyncAudioToVideo,
                 "gwm1_avatar_async_text_to_video" => CreateOrganizationUsageResponseModel.Gwm1AvatarAsyncTextToVideo,
                 "gwm1_avatars" => CreateOrganizationUsageResponseModel.Gwm1Avatars,

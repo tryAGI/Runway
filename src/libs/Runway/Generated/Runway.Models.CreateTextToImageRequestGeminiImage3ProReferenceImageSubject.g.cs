@@ -4,7 +4,8 @@
 namespace Runway
 {
     /// <summary>
-    /// Whether this is a reference of a human subject (for character consistency) or an object that appears in the output.
+    /// Whether this is a reference of a human subject (for character consistency) or an object that appears in the output.<br/>
+    /// Default Value: object
     /// </summary>
     public enum CreateTextToImageRequestGeminiImage3ProReferenceImageSubject
     {
