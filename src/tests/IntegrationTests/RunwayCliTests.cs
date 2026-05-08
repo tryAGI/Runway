@@ -110,6 +110,8 @@ public partial class Tests
         startInfo.ArgumentList.Add("run");
         startInfo.ArgumentList.Add("--project");
         startInfo.ArgumentList.Add(Path.Combine(runwayRoot, "src", "cli", "Runway.Cli", "Runway.Cli.csproj"));
+        startInfo.ArgumentList.Add("--configuration");
+        startInfo.ArgumentList.Add(GetCurrentBuildConfiguration());
         startInfo.ArgumentList.Add("--no-build");
         startInfo.ArgumentList.Add("--");
 
@@ -148,6 +150,14 @@ public partial class Tests
         }
 
         throw new InvalidOperationException("Could not locate Runway.slnx.");
+    }
+
+    private static string GetCurrentBuildConfiguration()
+    {
+        var targetFrameworkDirectory = new DirectoryInfo(AppContext.BaseDirectory);
+        return targetFrameworkDirectory.Parent?.Name is { Length: > 0 } configuration
+            ? configuration
+            : "Debug";
     }
 
     private static IEnumerable<string> SplitArguments(string arguments)
