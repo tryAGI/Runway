@@ -627,6 +627,87 @@ var shortVideoPlanOption = new Option<string?>("--plan")
     Description = "Short-video plan JSON file, @path, inline JSON, or '-' for stdin.",
 };
 
+var recipePromptOption = new Option<string?>("--prompt")
+{
+    Description = "Product, offer, or scenario prompt used to build the recipe plan.",
+};
+
+var recipeCountOption = new Option<int?>("--count")
+{
+    Description = "Number of image prompt jobs to plan.",
+};
+
+var recipeRatioOption = new Option<string?>("--ratio")
+{
+    Description = "Generation ratio/resolution. Defaults are recipe-specific.",
+};
+
+var recipeModelOption = new Option<string?>("--model")
+{
+    Description = "Runway generation model. Defaults are recipe-specific.",
+};
+
+var recipePlanOnlyOption = new Option<bool>("--plan-only")
+{
+    Description = "Only print the generated recipe plan JSON; do not call the Runway API.",
+};
+
+var productPhotoshootModeOption = new Option<string?>("--mode")
+{
+    Description = "Product photoshoot mode: product_shot, lifestyle_scene, hero_banner, social_carousel, ad_creative_pack, virtual_model_tryout, conceptual_product, or restyle.",
+};
+
+var productContextOption = new Option<string?>("--product-context")
+{
+    Description = "Extra product details, materials, differentiators, or usage context.",
+};
+
+var brandContextOption = new Option<string?>("--brand-context")
+{
+    Description = "Brand tone, audience, colors, campaign direction, or constraints.",
+};
+
+var marketplaceScopeOption = new Option<string?>("--scope")
+{
+    Description = "Marketplace card scope: main, product-images, aplus, or full-set.",
+};
+
+var marketplaceAssetOption = new Option<string[]>("--asset")
+{
+    Description = "Optional local path, HTTPS URL, Runway URI, or data URI product/brand asset. Repeat to provide multiple assets.",
+    Arity = ArgumentArity.ZeroOrMore,
+};
+
+var marketplaceCategoryOption = new Option<string?>("--category")
+{
+    Description = "Marketplace product category or shelf context.",
+};
+
+var marketplaceVisualStyleOption = new Option<string?>("--visual-style")
+{
+    Description = "Visual style for the marketplace prompt bundle.",
+};
+
+var adVideoModeOption = new Option<string?>("--mode")
+{
+    Description = "Ad-video mode: ugc, unboxing, product_showcase, product_review, tv_spot, or virtual_try_on.",
+};
+
+var adVideoShotCountOption = new Option<int?>("--shots")
+{
+    Description = "Number of ad-video shots to plan. Supported range: 1-6.",
+};
+
+var adVideoStyleOption = new Option<string?>("--style")
+{
+    Description = "Optional shared visual style applied to every ad-video shot.",
+};
+
+var adVideoAudioOption = new Option<bool>("--audio")
+{
+    Description = "Enable generated audio when the selected video model supports it.",
+};
+
 var ffmpegOption = new Option<string?>("--ffmpeg")
 {
     Description = "Optional ffmpeg binary path used to concatenate downloaded short-video shot segments.",
@@ -833,6 +914,160 @@ shortVideoRunCommand.SetAction(async (ParseResult parseResult, CancellationToken
     var output = RunwayCliShortVideo.ResolveOutput(parseResult.GetValue(outputOption), DateTime.UtcNow);
     var options = CreateShortVideoOptionsFromPlan(parseResult, output.SegmentDirectory, plan);
     return await RunShortVideoPlanAsync(parseResult, plan, options, output, cancellationToken).ConfigureAwait(false);
+});
+
+var productPhotoshootCommand = new Command("product-photoshoot", "Plan and generate Runway-native product photoshoot image recipes.");
+rootCommand.Subcommands.Add(productPhotoshootCommand);
+var productPhotoshootCreateCommand = new Command("create", "Create product photoshoot prompts and optionally generate images.")
+{
+    recipePromptOption,
+    promptImageOption,
+    recipeCountOption,
+    recipeRatioOption,
+    recipeModelOption,
+    outputOption,
+    productPhotoshootModeOption,
+    productContextOption,
+    brandContextOption,
+    imageQualityOption,
+    imageResolutionOption,
+    recipePlanOnlyOption,
+    publicFigureThresholdOption,
+    noWaitOption,
+    pollIntervalOption,
+};
+productPhotoshootCommand.Subcommands.Add(productPhotoshootCreateCommand);
+productPhotoshootCreateCommand.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
+{
+    RunwayCliCreativeRecipePlan plan;
+    try
+    {
+        plan = RunwayCliCreativeRecipes.CreateProductPhotoshootPlan(
+            RequireOption(parseResult, recipePromptOption),
+            parseResult.GetValue(promptImageOption),
+            parseResult.GetValue(recipeCountOption),
+            parseResult.GetValue(recipeRatioOption),
+            parseResult.GetValue(recipeModelOption),
+            parseResult.GetValue(productPhotoshootModeOption),
+            parseResult.GetValue(productContextOption),
+            parseResult.GetValue(brandContextOption),
+            parseResult.GetValue(imageQualityOption),
+            parseResult.GetValue(imageResolutionOption));
+    }
+    catch (Exception ex)
+    {
+        await WriteErrorAsync(ex).ConfigureAwait(false);
+        return 1;
+    }
+
+    if (parseResult.GetValue(recipePlanOnlyOption))
+    {
+        Console.WriteLine(RunwayCliCreativeRecipes.ToJson(plan));
+        return 0;
+    }
+
+    return await RunCreativeImageRecipeAsync(parseResult, plan, cancellationToken).ConfigureAwait(false);
+});
+
+var marketplaceCardsCommand = new Command("marketplace-cards", "Plan and generate Runway-native marketplace-style image prompt bundles.");
+rootCommand.Subcommands.Add(marketplaceCardsCommand);
+var marketplaceCardsCreateCommand = new Command("create", "Create marketplace-style image cards and optionally generate images.")
+{
+    recipePromptOption,
+    marketplaceAssetOption,
+    recipeCountOption,
+    recipeRatioOption,
+    recipeModelOption,
+    outputOption,
+    marketplaceScopeOption,
+    marketplaceCategoryOption,
+    marketplaceVisualStyleOption,
+    recipePlanOnlyOption,
+    publicFigureThresholdOption,
+    noWaitOption,
+    pollIntervalOption,
+};
+marketplaceCardsCommand.Subcommands.Add(marketplaceCardsCreateCommand);
+marketplaceCardsCreateCommand.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
+{
+    RunwayCliCreativeRecipePlan plan;
+    try
+    {
+        plan = RunwayCliCreativeRecipes.CreateMarketplaceCardsPlan(
+            RequireOption(parseResult, recipePromptOption),
+            parseResult.GetValue(marketplaceAssetOption),
+            parseResult.GetValue(recipeCountOption),
+            parseResult.GetValue(recipeRatioOption),
+            parseResult.GetValue(recipeModelOption),
+            parseResult.GetValue(marketplaceScopeOption),
+            parseResult.GetValue(marketplaceCategoryOption),
+            parseResult.GetValue(marketplaceVisualStyleOption));
+    }
+    catch (Exception ex)
+    {
+        await WriteErrorAsync(ex).ConfigureAwait(false);
+        return 1;
+    }
+
+    if (parseResult.GetValue(recipePlanOnlyOption))
+    {
+        Console.WriteLine(RunwayCliCreativeRecipes.ToJson(plan));
+        return 0;
+    }
+
+    return await RunCreativeImageRecipeAsync(parseResult, plan, cancellationToken).ConfigureAwait(false);
+});
+
+var adVideoCommand = new Command("ad-video", "Plan and generate Runway-native ad video recipes.");
+rootCommand.Subcommands.Add(adVideoCommand);
+var adVideoCreateCommand = new Command("create", "Create ad video shot prompts and optionally generate videos.")
+{
+    recipePromptOption,
+    promptImageOption,
+    recipeRatioOption,
+    recipeModelOption,
+    outputOption,
+    adVideoModeOption,
+    adVideoShotCountOption,
+    adVideoStyleOption,
+    adVideoAudioOption,
+    generationDurationOption,
+    recipePlanOnlyOption,
+    seedOption,
+    publicFigureThresholdOption,
+    noWaitOption,
+    pollIntervalOption,
+};
+adVideoCommand.Subcommands.Add(adVideoCreateCommand);
+adVideoCreateCommand.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
+{
+    RunwayCliCreativeRecipePlan plan;
+    try
+    {
+        plan = RunwayCliCreativeRecipes.CreateAdVideoPlan(
+            RequireOption(parseResult, recipePromptOption),
+            parseResult.GetValue(promptImageOption),
+            parseResult.GetValue(adVideoShotCountOption),
+            parseResult.GetValue(recipeRatioOption),
+            parseResult.GetValue(recipeModelOption),
+            parseResult.GetValue(adVideoModeOption),
+            parseResult.GetValue(adVideoStyleOption),
+            parseResult.GetValue(adVideoAudioOption),
+            parseResult.GetValue(generationDurationOption));
+    }
+    catch (Exception ex)
+    {
+        await WriteErrorAsync(ex).ConfigureAwait(false);
+        return 1;
+    }
+
+    if (parseResult.GetValue(recipePlanOnlyOption))
+    {
+        Console.WriteLine(RunwayCliCreativeRecipes.ToJson(plan));
+        return 0;
+    }
+
+    return await RunCreativeVideoRecipeAsync(parseResult, plan, cancellationToken).ConfigureAwait(false);
 });
 
 var generateImageCommand = new Command("image", "Generate an image locally from a text prompt.")
@@ -2185,6 +2420,121 @@ Task<int> RunShortVideoPlanAsync(
     }, cancellationToken);
 }
 
+Task<int> RunCreativeImageRecipeAsync(
+    ParseResult parseResult,
+    RunwayCliCreativeRecipePlan plan,
+    CancellationToken cancellationToken)
+{
+    return RunWithClientAsync(parseResult, async (client, runwayVersion, ct) =>
+    {
+        WriteCreativeRecipePlan(plan);
+
+        foreach (var job in plan.Jobs)
+        {
+            Guid taskId;
+            if (RunwayCliGeneration.NormalizeTextToImageModel(job.Model) == "gpt_image_2")
+            {
+                var response = await client.StartGenerating.CreateGptImage2TextToImageAsync(
+                    request: await RunwayCliGeneration.CreateGptImage2TextToImageRequestAsync(
+                        job.Prompt,
+                        job.Ratio,
+                        job.ReferenceImages.ToArray(),
+                        job.Resolution,
+                        job.Quality,
+                        1,
+                        ct).ConfigureAwait(false),
+                    xRunwayVersion: runwayVersion,
+                    cancellationToken: ct).ConfigureAwait(false);
+                taskId = response.Id;
+            }
+            else
+            {
+                var response = await client.StartGenerating.CreateTextToImageAsync(
+                    request: await RunwayCliGeneration.CreateTextToImageRequestAsync(
+                        job.Prompt,
+                        job.Model,
+                        job.Ratio,
+                        job.ReferenceImages.ToArray(),
+                        "object",
+                        null,
+                        1,
+                        parseResult.GetValue(publicFigureThresholdOption),
+                        ct).ConfigureAwait(false),
+                    xRunwayVersion: runwayVersion,
+                    cancellationToken: ct).ConfigureAwait(false);
+                taskId = response.Id;
+            }
+
+            await HandleGenerationTaskAsync(
+                client,
+                runwayVersion,
+                taskId,
+                parseResult,
+                ".png",
+                CreateRecipeStem(plan, job),
+                ct).ConfigureAwait(false);
+        }
+    }, cancellationToken);
+}
+
+Task<int> RunCreativeVideoRecipeAsync(
+    ParseResult parseResult,
+    RunwayCliCreativeRecipePlan plan,
+    CancellationToken cancellationToken)
+{
+    return RunWithClientAsync(parseResult, async (client, runwayVersion, ct) =>
+    {
+        WriteCreativeRecipePlan(plan);
+
+        foreach (var job in plan.Jobs)
+        {
+            Guid taskId;
+            if (job.ReferenceImages.Count > 0)
+            {
+                var response = await client.StartGenerating.CreateImageToVideoAsync(
+                    request: await RunwayCliGeneration.CreateImageToVideoRequestAsync(
+                        job.Prompt,
+                        job.Model,
+                        job.ReferenceImages.ToArray(),
+                        null,
+                        job.Ratio,
+                        job.DurationSeconds,
+                        parseResult.GetValue(seedOption),
+                        job.Audio == true,
+                        parseResult.GetValue(publicFigureThresholdOption),
+                        ct).ConfigureAwait(false),
+                    xRunwayVersion: runwayVersion,
+                    cancellationToken: ct).ConfigureAwait(false);
+                taskId = response.Id;
+            }
+            else
+            {
+                var response = await client.StartGenerating.CreateTextToVideoAsync(
+                    request: RunwayCliGeneration.CreateTextToVideoRequest(
+                        job.Prompt,
+                        job.Model,
+                        job.Ratio,
+                        job.DurationSeconds,
+                        parseResult.GetValue(seedOption),
+                        job.Audio == true,
+                        parseResult.GetValue(publicFigureThresholdOption)),
+                    xRunwayVersion: runwayVersion,
+                    cancellationToken: ct).ConfigureAwait(false);
+                taskId = response.Id;
+            }
+
+            await HandleGenerationTaskAsync(
+                client,
+                runwayVersion,
+                taskId,
+                parseResult,
+                ".mp4",
+                CreateRecipeStem(plan, job),
+                ct).ConfigureAwait(false);
+        }
+    }, cancellationToken);
+}
+
 static void WriteShortVideoPlan(RunwayShortVideoPlan plan)
 {
     Console.Error.WriteLine("Short-video plan:");
@@ -2193,6 +2543,47 @@ static void WriteShortVideoPlan(RunwayShortVideoPlan plan)
         Console.Error.WriteLine($"  {shot.Index}. {shot.Title}");
         Console.Error.WriteLine($"     {shot.Beat}");
     }
+}
+
+static void WriteCreativeRecipePlan(RunwayCliCreativeRecipePlan plan)
+{
+    Console.Error.WriteLine($"{ToDisplayName(plan.Kind)} plan:");
+    foreach (var job in plan.Jobs)
+    {
+        Console.Error.WriteLine($"  {job.Index}. {job.Label}");
+    }
+}
+
+static string CreateRecipeStem(RunwayCliCreativeRecipePlan plan, RunwayCliCreativeRecipeJob job)
+{
+    return string.Create(
+        CultureInfo.InvariantCulture,
+        $"runway-{SanitizeStem(plan.Kind)}-{job.Index:00}-{SanitizeStem(job.Label)}");
+}
+
+static string SanitizeStem(string value)
+{
+    var builder = new StringBuilder(value.Length);
+    foreach (var character in value)
+    {
+        if (char.IsLetterOrDigit(character))
+        {
+            builder.Append(char.ToLowerInvariant(character));
+        }
+        else if (character is '-' or '_' or ' ')
+        {
+            builder.Append('-');
+        }
+    }
+
+    var sanitized = builder.ToString().Trim('-');
+    return sanitized.Length > 0 ? sanitized : "recipe";
+}
+
+static string ToDisplayName(string value)
+{
+    return value.Replace("_", " ", StringComparison.Ordinal)
+        .Replace("-", " ", StringComparison.Ordinal);
 }
 
 static void WriteShortVideoProgress(RunwayShortVideoProgress progress)

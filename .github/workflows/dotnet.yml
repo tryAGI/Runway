@@ -68,6 +68,15 @@ jobs:
       - name: Smoke short-video edited-plan help
         run: dotnet run --project src/cli/Runway.Cli -c Release --no-build -- short-video run --help
 
+      - name: Smoke product photoshoot plan
+        run: dotnet run --project src/cli/Runway.Cli -c Release --no-build -- product-photoshoot create --prompt "transparent speaker" --mode product_shot --plan-only
+
+      - name: Smoke marketplace cards plan
+        run: dotnet run --project src/cli/Runway.Cli -c Release --no-build -- marketplace-cards create --prompt "compact travel kettle" --scope main --plan-only
+
+      - name: Smoke ad-video plan
+        run: dotnet run --project src/cli/Runway.Cli -c Release --no-build -- ad-video create --prompt "hands-free camera strap" --mode ugc --shots 1 --plan-only
+
   release:
     name: Release
     runs-on: ubuntu-latest

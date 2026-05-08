@@ -325,6 +325,22 @@ dnx Runway.Cli short-video run \
   --plan ./short-video-plan.json \
   --output ./runway-short-video
 
+dnx Runway.Cli product-photoshoot create \
+  --prompt "transparent speaker on a brushed steel table" \
+  --mode social_carousel \
+  --plan-only > ./product-photoshoot-plan.json
+
+dnx Runway.Cli marketplace-cards create \
+  --prompt "compact travel kettle" \
+  --scope full-set \
+  --plan-only > ./marketplace-cards-plan.json
+
+dnx Runway.Cli ad-video create \
+  --prompt "hands-free camera strap for travel creators" \
+  --mode ugc \
+  --shots 3 \
+  --plan-only > ./ad-video-plan.json
+
 # Installed tool form.
 dotnet tool install --global Runway.Cli
 runway video a cinematic drone shot over a neon desert highway
@@ -391,9 +407,12 @@ CLI endpoint and model coverage:
 | --- | --- | --- |
 | `video`, `text-to-video` | `POST /v1/text_to_video` | `gen4.5`, `veo3.1`, `veo3.1_fast`, `veo3` |
 | `short-video` | Multi-shot planner over `POST /v1/text_to_video`; `short-video run --plan` executes edited plan JSON; optionally concatenates downloaded clips with `ffmpeg` | `gen4.5`, `veo3.1`, `veo3.1_fast`, `veo3` |
+| `ad-video create` | Runway-native ad recipe planner over `POST /v1/text_to_video` or `POST /v1/image_to_video` when `--image` is supplied | `veo3.1_fast` by default; accepts video models |
 | `image-to-video` | `POST /v1/image_to_video` | `gen4.5`, `gen4_turbo`, `gen3a_turbo`, `veo3.1`, `veo3.1_fast`, `veo3` |
 | `video-to-video` | `POST /v1/video_to_video` | `gen4_aleph` |
 | `image` | `POST /v1/text_to_image` | `gen4_image_turbo`, `gen4_image`, `gemini_image3_pro`, `gpt_image_2`, `gemini_2.5_flash` |
+| `product-photoshoot create` | Runway-native product photoshoot recipe planner over `POST /v1/text_to_image` | `gpt_image_2` by default; accepts image models |
+| `marketplace-cards create` | Runway-native marketplace-style card recipe planner over `POST /v1/text_to_image` | `gpt_image_2` by default; accepts image models |
 | `character-performance` | `POST /v1/character_performance` | `act_two` |
 | `sound-effect` | `POST /v1/sound_effect` | `eleven_text_to_sound_v2` |
 | `speech-to-speech` | `POST /v1/speech_to_speech` | `eleven_multilingual_sts_v2` |
@@ -412,11 +431,13 @@ CLI endpoint and model coverage:
 
 The CLI `short-video` command can plan with external agents before using Runway: `--planner auto` (default) tries Claude Code first, Codex CLI second, then the deterministic planner; `--planner deterministic` keeps output fully local and CI-safe. `--planner-model`, `--planner-tools`, and `--planner-timeout-seconds` also support `RUNWAY_SHORT_VIDEO_PLANNER_MODEL`, `RUNWAY_SHORT_VIDEO_PLANNER_TOOLS`, and `RUNWAY_SHORT_VIDEO_PLANNER_TIMEOUT_SECONDS`. `short-video run --plan` is execution-only and never invokes a planner. The bundled planner prompt is Runway-owned and was shaped by storyboard-creation workflows; no external storyboard skill is installed or required.
 
+The creative recipe commands are Runway-native. `product-photoshoot create`, `marketplace-cards create`, and `ad-video create` bundle product/ad/storyboard prompt guidance inspired by compact creator workflows: concise sensory prompts, camera and motion structure, lighting, positive phrasing, mode routing, reference-image handling, and model-fit defaults. They do not install or call Higgsfield, and marketplace-card plans are creative asset bundles rather than marketplace compliance claims. For presenter-like videos, use the existing avatar and character-performance commands; Runway does not expose Higgsfield-style reusable face-model training through this SDK.
+
 The short-video workflow is also available from the SDK through `RunwayShortVideoExtensions.CreateShortVideoPlan(...)`, `IChatClient.CreateShortVideoPlanAsync(...)`, `client.CreateShortVideoAsync(...)`, and `client.CreateShortVideoAsync(plan, ...)`. Backend code can use the deterministic planner, supply a custom `RunwayShortVideoPlanner`, ask any Microsoft.Extensions.AI `IChatClient` for richer storyboard JSON, review or edit the plan, then execute the edited plan. `RunwayShortVideoJsonSerializerContext` provides AOT-safe JSON metadata for serializing plans and results.
 
 ### Agent Skill
 
-The repo includes a compact Codex-compatible skill at `.agents/skills/runway-cli/SKILL.md`. It mirrors the official [runwayml/skills](https://github.com/runwayml/skills) agent-skill flow, but uses `dnx Runway.Cli` as the runtime instead of bundled Python or Node scripts. The skill covers direct media generation, scenario-to-short-video planning, resource inspection, uploads, task polling/downloads, and simple multi-step recipes such as concept image to video and batch product-image animation.
+The repo includes a compact Codex-compatible skill at `.agents/skills/runway-cli/SKILL.md`. It mirrors the official [runwayml/skills](https://github.com/runwayml/skills) agent-skill flow, but uses `dnx Runway.Cli` as the runtime instead of bundled Python or Node scripts. The skill covers direct media generation, scenario-to-short-video planning, creative product/ad recipes, resource inspection, uploads, task polling/downloads, and simple multi-step recipes such as concept image to video and batch product-image animation.
 
 ## Support
 

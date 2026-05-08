@@ -36,7 +36,10 @@ Default to low-cost, practical choices:
 | --- | --- |
 | Quick image | `image --model gemini-2.5-flash --ratio 1024:1024` |
 | Image with accurate text | `image --model gpt-image-2 --resolution 1K --quality low` |
+| Product photoshoot plan | `product-photoshoot create --mode product_shot --plan-only` |
+| Marketplace card bundle | `marketplace-cards create --scope full-set --plan-only` |
 | Text-to-video | `video --model veo3.1-fast --duration 4 --ratio 1280:720` |
+| Ad-video recipe | `ad-video create --mode ugc --shots 1 --duration 4` |
 | Scenario to short film | `short-video --planner auto --shots 3 --duration 4 --ratio 1280:720` |
 | Image-to-video from a local file | `image-to-video --model gen4-turbo --image <file>` |
 | Highest quality video | `video --model gen4.5` or `video --model veo3` |
@@ -92,6 +95,28 @@ dnx Runway.Cli short-video run \
   --plan ./short-video-plan.json \
   --output ./runway-short-video
 ```
+
+Plan Runway-native creative recipes before spending credits:
+
+```bash
+dnx Runway.Cli product-photoshoot create \
+  --prompt "transparent speaker on a brushed steel table" \
+  --mode social_carousel \
+  --plan-only
+
+dnx Runway.Cli marketplace-cards create \
+  --prompt "compact travel kettle" \
+  --scope full-set \
+  --plan-only
+
+dnx Runway.Cli ad-video create \
+  --prompt "hands-free camera strap for travel creators" \
+  --mode ugc \
+  --shots 3 \
+  --plan-only
+```
+
+Execute a recipe by removing `--plan-only`. The recipe commands stay Runway-native: they use bundled prompt guidance for product/ad/storyboard work and call only Runway image/video generation endpoints. They do not install or call Higgsfield. For presenter-style video, use `avatar video` or `character-performance`; Runway does not provide Higgsfield-style reusable face-model training through this SDK.
 
 Animate a local image:
 

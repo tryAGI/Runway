@@ -15,6 +15,9 @@ public partial class Tests
         result.ExitCode.Should().Be(0);
         result.Stdout.Should().Contain("video <prompt>");
         result.Stdout.Should().Contain("short-video");
+        result.Stdout.Should().Contain("product-photoshoot");
+        result.Stdout.Should().Contain("marketplace-cards");
+        result.Stdout.Should().Contain("ad-video");
         result.Stdout.Should().Contain("image <prompt>");
         result.Stdout.Should().Contain("text-to-video");
         result.Stdout.Should().Contain("image-to-video");
@@ -85,6 +88,69 @@ public partial class Tests
 
         result.ExitCode.Should().Be(1);
         result.Stderr.Should().Contain("Set --api-key, RUNWAY_API_KEY, RUNWAYML_API_SECRET, or a .env file.");
+    }
+
+    [TestMethod]
+    public async Task RunwayCli_ProductPhotoshootPlanOnlyDoesNotRequireApiKey()
+    {
+        var result = await RunCliAsync(
+            "product-photoshoot create --prompt=tiny-camera --mode social_carousel --plan-only",
+            removeApiKey: true).ConfigureAwait(false);
+
+        result.ExitCode.Should().Be(0);
+        result.Stdout.Should().Contain("\"kind\": \"product_photoshoot\"");
+        result.Stdout.Should().Contain("\"mode\": \"social_carousel\"");
+        result.Stdout.Should().Contain("\"count\": 4");
+        result.Stdout.Should().Contain("\"model\": \"gpt_image_2\"");
+    }
+
+    [TestMethod]
+    public async Task RunwayCli_MarketplaceCardsPlanOnlyDoesNotRequireApiKey()
+    {
+        var result = await RunCliAsync(
+            "marketplace-cards create --prompt=tiny-camera --scope full-set --plan-only",
+            removeApiKey: true).ConfigureAwait(false);
+
+        result.ExitCode.Should().Be(0);
+        result.Stdout.Should().Contain("\"kind\": \"marketplace_cards\"");
+        result.Stdout.Should().Contain("\"scope\": \"full-set\"");
+        result.Stdout.Should().Contain("\"count\": 9");
+        result.Stdout.Should().Contain("not a compliance guarantee");
+    }
+
+    [TestMethod]
+    public async Task RunwayCli_AdVideoPlanOnlyDoesNotRequireApiKey()
+    {
+        var result = await RunCliAsync(
+            "ad-video create --prompt=tiny-camera --mode ugc --shots 2 --plan-only",
+            removeApiKey: true).ConfigureAwait(false);
+
+        result.ExitCode.Should().Be(0);
+        result.Stdout.Should().Contain("\"kind\": \"ad_video\"");
+        result.Stdout.Should().Contain("\"mode\": \"ugc\"");
+        result.Stdout.Should().Contain("\"count\": 2");
+        result.Stdout.Should().Contain("\"model\": \"veo3.1_fast\"");
+    }
+
+    [TestMethod]
+    public async Task RunwayCli_CreativeRecipeCommandsParseBeforeRequiringApiKey()
+    {
+        var product = await RunCliAsync(
+            "product-photoshoot create --prompt=tiny-camera --mode product_shot --no-wait",
+            removeApiKey: true).ConfigureAwait(false);
+        var marketplace = await RunCliAsync(
+            "marketplace-cards create --prompt=tiny-camera --scope main --no-wait",
+            removeApiKey: true).ConfigureAwait(false);
+        var ad = await RunCliAsync(
+            "ad-video create --prompt=tiny-camera --mode ugc --shots 1 --no-wait",
+            removeApiKey: true).ConfigureAwait(false);
+
+        product.ExitCode.Should().Be(1);
+        marketplace.ExitCode.Should().Be(1);
+        ad.ExitCode.Should().Be(1);
+        product.Stderr.Should().Contain("Set --api-key, RUNWAY_API_KEY, RUNWAYML_API_SECRET, or a .env file.");
+        marketplace.Stderr.Should().Contain("Set --api-key, RUNWAY_API_KEY, RUNWAYML_API_SECRET, or a .env file.");
+        ad.Stderr.Should().Contain("Set --api-key, RUNWAY_API_KEY, RUNWAYML_API_SECRET, or a .env file.");
     }
 
     [TestMethod]
@@ -428,6 +494,32 @@ public partial class Tests
     }
 
     [TestMethod]
+    public async Task RunwayCli_ShortVideoExplicitExternalPlannerFailsWhenPlannerTimesOut()
+    {
+        var plannerPath = Directory.CreateTempSubdirectory("runway-slow-planner-").FullName;
+        await AddFakePlannerScriptAsync(
+            plannerPath,
+            "claude",
+            "#!/bin/sh\n/bin/sleep 5\n",
+            "@echo off\r\nping -n 6 127.0.0.1 >nul\r\n").ConfigureAwait(false);
+
+        try
+        {
+            var result = await RunCliAsync(
+                "short-video tiny robot finds a glowing garden --shots 2 --plan-only --planner claude --planner-timeout-seconds 1",
+                removeApiKey: true,
+                environment: new Dictionary<string, string?> { ["PATH"] = plannerPath }).ConfigureAwait(false);
+
+            result.ExitCode.Should().Be(1);
+            result.Stderr.Should().Contain("Claude planner timed out after 1 seconds");
+        }
+        finally
+        {
+            Directory.Delete(plannerPath, recursive: true);
+        }
+    }
+
+    [TestMethod]
     public async Task RunwayCli_ShortVideoRunParsesPlanBeforeRequiringApiKey()
     {
         var plan = RunwayShortVideoExtensions.CreateShortVideoPlan(
@@ -579,6 +671,146 @@ public partial class Tests
     }
 
     [TestMethod]
+    public void RunwayCliCreativeRecipes_ProductPhotoshootModesCreateRoundTrippablePlans()
+    {
+        var expectedCounts = new Dictionary<string, int>
+        {
+            ["product_shot"] = 1,
+            ["lifestyle_scene"] = 1,
+            ["hero_banner"] = 1,
+            ["social_carousel"] = 4,
+            ["ad_creative_pack"] = 4,
+            ["virtual_model_tryout"] = 1,
+            ["conceptual_product"] = 1,
+            ["restyle"] = 1,
+        };
+
+        foreach (var (mode, expectedCount) in expectedCounts)
+        {
+            var plan = RunwayCliCreativeRecipes.CreateProductPhotoshootPlan(
+                "transparent speaker",
+                ["https://example.com/product.png"],
+                count: null,
+                ratio: null,
+                model: null,
+                mode,
+                productContext: "glass body with visible drivers",
+                brandContext: "premium calm studio",
+                quality: null,
+                resolution: null);
+
+            plan.Kind.Should().Be(RunwayCliCreativeRecipes.ProductPhotoshootKind);
+            plan.Mode.Should().Be(mode);
+            plan.Model.Should().Be(RunwayCliCreativeRecipes.DefaultImageModel);
+            plan.Ratio.Should().Be(RunwayCliCreativeRecipes.DefaultImageRatio);
+            plan.Count.Should().Be(expectedCount);
+            plan.Jobs.Should().HaveCount(expectedCount);
+            plan.Jobs.Should().OnlyContain(job => job.Prompt.Contains("positive phrasing", StringComparison.OrdinalIgnoreCase));
+            plan.Jobs.Should().OnlyContain(job => job.ReferenceImages.Contains("https://example.com/product.png"));
+
+            var json = RunwayCliCreativeRecipes.ToJson(plan);
+            var roundTrip = JsonSerializer.Deserialize(
+                json,
+                RunwayCliCreativeRecipeJsonSerializerContext.Default.RunwayCliCreativeRecipePlan);
+
+            roundTrip!.Kind.Should().Be(plan.Kind);
+            roundTrip.Jobs.Should().HaveCount(expectedCount);
+            roundTrip.ReferenceImages.Should().ContainSingle().Which.Should().Be("https://example.com/product.png");
+        }
+    }
+
+    [TestMethod]
+    public void RunwayCliCreativeRecipes_MarketplaceScopesCreateExpectedLabelsAndRoundTrip()
+    {
+        var expectedCounts = new Dictionary<string, int>
+        {
+            ["main"] = 1,
+            ["product-images"] = 4,
+            ["aplus"] = 4,
+            ["full-set"] = 9,
+        };
+
+        foreach (var (scope, expectedCount) in expectedCounts)
+        {
+            var plan = RunwayCliCreativeRecipes.CreateMarketplaceCardsPlan(
+                "wireless travel kettle",
+                ["https://example.com/asset.png"],
+                count: null,
+                ratio: null,
+                model: null,
+                scope,
+                category: "kitchen",
+                visualStyle: "bright editorial");
+
+            plan.Kind.Should().Be(RunwayCliCreativeRecipes.MarketplaceCardsKind);
+            plan.Scope.Should().Be(scope);
+            plan.Model.Should().Be(RunwayCliCreativeRecipes.DefaultImageModel);
+            plan.Ratio.Should().Be(RunwayCliCreativeRecipes.DefaultImageRatio);
+            plan.Count.Should().Be(expectedCount);
+            plan.Jobs.Should().HaveCount(expectedCount);
+            plan.Jobs.Should().OnlyContain(job => job.Prompt.Contains("not a compliance guarantee", StringComparison.OrdinalIgnoreCase));
+            plan.Assets.Should().ContainSingle().Which.Should().Be("https://example.com/asset.png");
+
+            var json = RunwayCliCreativeRecipes.ToJson(plan);
+            var roundTrip = JsonSerializer.Deserialize(
+                json,
+                RunwayCliCreativeRecipeJsonSerializerContext.Default.RunwayCliCreativeRecipePlan);
+
+            roundTrip!.Scope.Should().Be(scope);
+            roundTrip.Jobs.Select(job => job.Label).Should().Equal(plan.Jobs.Select(job => job.Label));
+        }
+    }
+
+    [TestMethod]
+    public void RunwayCliCreativeRecipes_AdVideoModesCreateExpectedShotPlansAndRoundTrip()
+    {
+        var modes = new[]
+        {
+            "ugc",
+            "unboxing",
+            "product_showcase",
+            "product_review",
+            "tv_spot",
+            "virtual_try_on",
+        };
+
+        foreach (var mode in modes)
+        {
+            var plan = RunwayCliCreativeRecipes.CreateAdVideoPlan(
+                "modular travel backpack",
+                ["https://example.com/reference.png"],
+                shots: 2,
+                ratio: null,
+                model: null,
+                mode,
+                style: "warm handheld commercial",
+                audio: true,
+                duration: null);
+
+            plan.Kind.Should().Be(RunwayCliCreativeRecipes.AdVideoKind);
+            plan.Mode.Should().Be(mode);
+            plan.Model.Should().Be(RunwayCliCreativeRecipes.DefaultVideoModel);
+            plan.Ratio.Should().Be(RunwayCliCreativeRecipes.DefaultVideoRatio);
+            plan.Count.Should().Be(2);
+            plan.DurationSeconds.Should().Be(RunwayCliCreativeRecipes.DefaultVideoDurationSeconds);
+            plan.Audio.Should().BeTrue();
+            plan.Jobs.Should().HaveCount(2);
+            plan.Jobs.Should().OnlyContain(job => job.Prompt.Contains("camera", StringComparison.OrdinalIgnoreCase));
+            plan.Jobs.Should().OnlyContain(job => job.Audio == true);
+            plan.Jobs.Should().OnlyContain(job => job.ReferenceImages.Contains("https://example.com/reference.png"));
+
+            var json = RunwayCliCreativeRecipes.ToJson(plan);
+            var roundTrip = JsonSerializer.Deserialize(
+                json,
+                RunwayCliCreativeRecipeJsonSerializerContext.Default.RunwayCliCreativeRecipePlan);
+
+            roundTrip!.Mode.Should().Be(mode);
+            roundTrip.Jobs.Should().HaveCount(2);
+            roundTrip.Jobs[0].DurationSeconds.Should().Be(RunwayCliCreativeRecipes.DefaultVideoDurationSeconds);
+        }
+    }
+
+    [TestMethod]
     public void RunwayEnvironment_LoadsApiKeyFromDotEnv()
     {
         var originalCurrentDirectory = Environment.CurrentDirectory;
@@ -683,6 +915,25 @@ public partial class Tests
                 scriptPath,
                 UnixFileMode.UserRead | UnixFileMode.UserWrite | UnixFileMode.UserExecute);
         }
+    }
+
+    private static async Task AddFakePlannerScriptAsync(
+        string directory,
+        string executableName,
+        string unixScript,
+        string windowsScript)
+    {
+        if (OperatingSystem.IsWindows())
+        {
+            await File.WriteAllTextAsync(Path.Combine(directory, $"{executableName}.cmd"), windowsScript).ConfigureAwait(false);
+            return;
+        }
+
+        var scriptPath = Path.Combine(directory, executableName);
+        await File.WriteAllTextAsync(scriptPath, unixScript).ConfigureAwait(false);
+        File.SetUnixFileMode(
+            scriptPath,
+            UnixFileMode.UserRead | UnixFileMode.UserWrite | UnixFileMode.UserExecute);
     }
 
     private static string CreatePlannerPlanJson(
