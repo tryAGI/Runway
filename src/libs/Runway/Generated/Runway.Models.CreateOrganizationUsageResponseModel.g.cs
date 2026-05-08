@@ -23,7 +23,15 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        ElevenScribeV2,
+        /// <summary>
+        /// 
+        /// </summary>
         ElevenTextToSoundV2,
+        /// <summary>
+        /// 
+        /// </summary>
+        ElevenV3,
         /// <summary>
         /// 
         /// </summary>
@@ -39,7 +47,19 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        GeminiImage31Flash,
+        /// <summary>
+        /// 
+        /// </summary>
+        GeminiImage3Pro,
+        /// <summary>
+        /// 
+        /// </summary>
         Gen3aTurbo,
+        /// <summary>
+        /// 
+        /// </summary>
+        Gen45,
         /// <summary>
         /// 
         /// </summary>
@@ -59,6 +79,22 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        Gwm1AvatarAsyncAudioToVideo,
+        /// <summary>
+        /// 
+        /// </summary>
+        Gwm1AvatarAsyncTextToVideo,
+        /// <summary>
+        /// 
+        /// </summary>
+        Gwm1Avatars,
+        /// <summary>
+        /// 
+        /// </summary>
+        Seedance2,
+        /// <summary>
+        /// 
+        /// </summary>
         Veo3,
         /// <summary>
         /// 
@@ -68,6 +104,10 @@ namespace Runway
         /// 
         /// </summary>
         Veo31Fast,
+        /// <summary>
+        /// 
+        /// </summary>
+        VoiceProcessing,
     }
 
     /// <summary>
@@ -85,18 +125,28 @@ namespace Runway
                 CreateOrganizationUsageResponseModel.ActTwo => "act_two",
                 CreateOrganizationUsageResponseModel.ElevenMultilingualStsV2 => "eleven_multilingual_sts_v2",
                 CreateOrganizationUsageResponseModel.ElevenMultilingualV2 => "eleven_multilingual_v2",
+                CreateOrganizationUsageResponseModel.ElevenScribeV2 => "eleven_scribe_v2",
                 CreateOrganizationUsageResponseModel.ElevenTextToSoundV2 => "eleven_text_to_sound_v2",
+                CreateOrganizationUsageResponseModel.ElevenV3 => "eleven_v3",
                 CreateOrganizationUsageResponseModel.ElevenVoiceDubbing => "eleven_voice_dubbing",
                 CreateOrganizationUsageResponseModel.ElevenVoiceIsolation => "eleven_voice_isolation",
                 CreateOrganizationUsageResponseModel.Gemini25Flash => "gemini_2.5_flash",
+                CreateOrganizationUsageResponseModel.GeminiImage31Flash => "gemini_image3.1_flash",
+                CreateOrganizationUsageResponseModel.GeminiImage3Pro => "gemini_image3_pro",
                 CreateOrganizationUsageResponseModel.Gen3aTurbo => "gen3a_turbo",
+                CreateOrganizationUsageResponseModel.Gen45 => "gen4.5",
                 CreateOrganizationUsageResponseModel.Gen4Aleph => "gen4_aleph",
                 CreateOrganizationUsageResponseModel.Gen4Image => "gen4_image",
                 CreateOrganizationUsageResponseModel.Gen4ImageTurbo => "gen4_image_turbo",
                 CreateOrganizationUsageResponseModel.Gen4Turbo => "gen4_turbo",
+                CreateOrganizationUsageResponseModel.Gwm1AvatarAsyncAudioToVideo => "gwm1_avatar_async_audio_to_video",
+                CreateOrganizationUsageResponseModel.Gwm1AvatarAsyncTextToVideo => "gwm1_avatar_async_text_to_video",
+                CreateOrganizationUsageResponseModel.Gwm1Avatars => "gwm1_avatars",
+                CreateOrganizationUsageResponseModel.Seedance2 => "seedance2",
                 CreateOrganizationUsageResponseModel.Veo3 => "veo3",
                 CreateOrganizationUsageResponseModel.Veo31 => "veo3.1",
                 CreateOrganizationUsageResponseModel.Veo31Fast => "veo3.1_fast",
+                CreateOrganizationUsageResponseModel.VoiceProcessing => "voice_processing",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -110,18 +160,28 @@ namespace Runway
                 "act_two" => CreateOrganizationUsageResponseModel.ActTwo,
                 "eleven_multilingual_sts_v2" => CreateOrganizationUsageResponseModel.ElevenMultilingualStsV2,
                 "eleven_multilingual_v2" => CreateOrganizationUsageResponseModel.ElevenMultilingualV2,
+                "eleven_scribe_v2" => CreateOrganizationUsageResponseModel.ElevenScribeV2,
                 "eleven_text_to_sound_v2" => CreateOrganizationUsageResponseModel.ElevenTextToSoundV2,
+                "eleven_v3" => CreateOrganizationUsageResponseModel.ElevenV3,
                 "eleven_voice_dubbing" => CreateOrganizationUsageResponseModel.ElevenVoiceDubbing,
                 "eleven_voice_isolation" => CreateOrganizationUsageResponseModel.ElevenVoiceIsolation,
                 "gemini_2.5_flash" => CreateOrganizationUsageResponseModel.Gemini25Flash,
+                "gemini_image3.1_flash" => CreateOrganizationUsageResponseModel.GeminiImage31Flash,
+                "gemini_image3_pro" => CreateOrganizationUsageResponseModel.GeminiImage3Pro,
                 "gen3a_turbo" => CreateOrganizationUsageResponseModel.Gen3aTurbo,
+                "gen4.5" => CreateOrganizationUsageResponseModel.Gen45,
                 "gen4_aleph" => CreateOrganizationUsageResponseModel.Gen4Aleph,
                 "gen4_image" => CreateOrganizationUsageResponseModel.Gen4Image,
                 "gen4_image_turbo" => CreateOrganizationUsageResponseModel.Gen4ImageTurbo,
                 "gen4_turbo" => CreateOrganizationUsageResponseModel.Gen4Turbo,
+                "gwm1_avatar_async_audio_to_video" => CreateOrganizationUsageResponseModel.Gwm1AvatarAsyncAudioToVideo,
+                "gwm1_avatar_async_text_to_video" => CreateOrganizationUsageResponseModel.Gwm1AvatarAsyncTextToVideo,
+                "gwm1_avatars" => CreateOrganizationUsageResponseModel.Gwm1Avatars,
+                "seedance2" => CreateOrganizationUsageResponseModel.Seedance2,
                 "veo3" => CreateOrganizationUsageResponseModel.Veo3,
                 "veo3.1" => CreateOrganizationUsageResponseModel.Veo31,
                 "veo3.1_fast" => CreateOrganizationUsageResponseModel.Veo31Fast,
+                "voice_processing" => CreateOrganizationUsageResponseModel.VoiceProcessing,
                 _ => null,
             };
         }

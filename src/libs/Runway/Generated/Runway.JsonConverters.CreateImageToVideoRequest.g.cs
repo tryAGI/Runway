@@ -44,34 +44,43 @@ namespace Runway.JsonConverters
             if (__jsonProps.Contains("ratio")) __score0++;
             if (__jsonProps.Contains("seed")) __score0++;
             var __score1 = 0;
-            if (__jsonProps.Contains("audio")) __score1++;
+            if (__jsonProps.Contains("contentModeration")) __score1++;
+            if (__jsonProps.Contains("contentModeration.publicFigureThreshold")) __score1++;
             if (__jsonProps.Contains("duration")) __score1++;
             if (__jsonProps.Contains("model")) __score1++;
             if (__jsonProps.Contains("promptImage")) __score1++;
             if (__jsonProps.Contains("promptText")) __score1++;
             if (__jsonProps.Contains("ratio")) __score1++;
+            if (__jsonProps.Contains("seed")) __score1++;
             var __score2 = 0;
-            if (__jsonProps.Contains("contentModeration")) __score2++;
-            if (__jsonProps.Contains("contentModeration.publicFigureThreshold")) __score2++;
+            if (__jsonProps.Contains("audio")) __score2++;
             if (__jsonProps.Contains("duration")) __score2++;
             if (__jsonProps.Contains("model")) __score2++;
             if (__jsonProps.Contains("promptImage")) __score2++;
             if (__jsonProps.Contains("promptText")) __score2++;
             if (__jsonProps.Contains("ratio")) __score2++;
-            if (__jsonProps.Contains("seed")) __score2++;
             var __score3 = 0;
-            if (__jsonProps.Contains("audio")) __score3++;
+            if (__jsonProps.Contains("contentModeration")) __score3++;
+            if (__jsonProps.Contains("contentModeration.publicFigureThreshold")) __score3++;
             if (__jsonProps.Contains("duration")) __score3++;
             if (__jsonProps.Contains("model")) __score3++;
             if (__jsonProps.Contains("promptImage")) __score3++;
             if (__jsonProps.Contains("promptText")) __score3++;
             if (__jsonProps.Contains("ratio")) __score3++;
+            if (__jsonProps.Contains("seed")) __score3++;
             var __score4 = 0;
+            if (__jsonProps.Contains("audio")) __score4++;
             if (__jsonProps.Contains("duration")) __score4++;
             if (__jsonProps.Contains("model")) __score4++;
             if (__jsonProps.Contains("promptImage")) __score4++;
             if (__jsonProps.Contains("promptText")) __score4++;
             if (__jsonProps.Contains("ratio")) __score4++;
+            var __score5 = 0;
+            if (__jsonProps.Contains("duration")) __score5++;
+            if (__jsonProps.Contains("model")) __score5++;
+            if (__jsonProps.Contains("promptImage")) __score5++;
+            if (__jsonProps.Contains("promptText")) __score5++;
+            if (__jsonProps.Contains("ratio")) __score5++;
             var __bestScore = 0;
             var __bestIndex = -1;
             if (__score0 > __bestScore) { __bestScore = __score0; __bestIndex = 0; }
@@ -79,7 +88,9 @@ namespace Runway.JsonConverters
             if (__score2 > __bestScore) { __bestScore = __score2; __bestIndex = 2; }
             if (__score3 > __bestScore) { __bestScore = __score3; __bestIndex = 3; }
             if (__score4 > __bestScore) { __bestScore = __score4; __bestIndex = 4; }
+            if (__score5 > __bestScore) { __bestScore = __score5; __bestIndex = 5; }
 
+            global::Runway.CreateImageToVideoRequestGen45? gen45 = default;
             global::Runway.CreateImageToVideoRequestGen4Turbo? gen4Turbo = default;
             global::Runway.CreateImageToVideoRequestVeo31? veo31 = default;
             global::Runway.CreateImageToVideoRequestGen3aTurbo? gen3aTurbo = default;
@@ -88,6 +99,21 @@ namespace Runway.JsonConverters
             if (__bestIndex >= 0)
             {
                 if (__bestIndex == 0)
+                {
+                    try
+                    {
+                        var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateImageToVideoRequestGen45), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateImageToVideoRequestGen45> ??
+                                       throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateImageToVideoRequestGen45).Name}");
+                        gen45 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                    }
+                    catch (global::System.Text.Json.JsonException)
+                    {
+                    }
+                    catch (global::System.InvalidOperationException)
+                    {
+                    }
+                }
+                else if (__bestIndex == 1)
                 {
                     try
                     {
@@ -102,7 +128,7 @@ namespace Runway.JsonConverters
                     {
                     }
                 }
-                else if (__bestIndex == 1)
+                else if (__bestIndex == 2)
                 {
                     try
                     {
@@ -117,7 +143,7 @@ namespace Runway.JsonConverters
                     {
                     }
                 }
-                else if (__bestIndex == 2)
+                else if (__bestIndex == 3)
                 {
                     try
                     {
@@ -132,7 +158,7 @@ namespace Runway.JsonConverters
                     {
                     }
                 }
-                else if (__bestIndex == 3)
+                else if (__bestIndex == 4)
                 {
                     try
                     {
@@ -147,7 +173,7 @@ namespace Runway.JsonConverters
                     {
                     }
                 }
-                else if (__bestIndex == 4)
+                else if (__bestIndex == 5)
                 {
                     try
                     {
@@ -164,8 +190,21 @@ namespace Runway.JsonConverters
                 }
             }
 
-            if (gen4Turbo == null && veo31 == null && gen3aTurbo == null && veo31Fast == null && veo3 == null)
+            if (gen45 == null && gen4Turbo == null && veo31 == null && gen3aTurbo == null && veo31Fast == null && veo3 == null)
             {
+                try
+                {
+                    var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateImageToVideoRequestGen45), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateImageToVideoRequestGen45> ??
+                                   throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateImageToVideoRequestGen45).Name}");
+                    gen45 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                }
+                catch (global::System.Text.Json.JsonException)
+                {
+                }
+                catch (global::System.InvalidOperationException)
+                {
+                }
+
                 try
                 {
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateImageToVideoRequestGen4Turbo), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateImageToVideoRequestGen4Turbo> ??
@@ -233,6 +272,8 @@ namespace Runway.JsonConverters
             }
 
             var __value = new global::Runway.CreateImageToVideoRequest(
+                gen45,
+
                 gen4Turbo,
 
                 veo31,
@@ -256,7 +297,13 @@ namespace Runway.JsonConverters
             options = options ?? throw new global::System.ArgumentNullException(nameof(options));
             var typeInfoResolver = options.TypeInfoResolver ?? throw new global::System.InvalidOperationException("TypeInfoResolver is not set.");
 
-            if (value.IsGen4Turbo)
+            if (value.IsGen45)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateImageToVideoRequestGen45), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateImageToVideoRequestGen45?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateImageToVideoRequestGen45).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Gen45!, typeInfo);
+            }
+            else if (value.IsGen4Turbo)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateImageToVideoRequestGen4Turbo), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateImageToVideoRequestGen4Turbo?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateImageToVideoRequestGen4Turbo).Name}");

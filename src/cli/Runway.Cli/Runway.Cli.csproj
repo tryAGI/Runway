@@ -1,0 +1,44 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <NoWarn>$(NoWarn);CA1303;CA1031;CA2007;IL2026;IL3050</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Label="NuGet">
+    <GeneratePackageOnBuild Condition=" '$(Configuration)' == 'Release' ">true</GeneratePackageOnBuild>
+    <PackAsTool>true</PackAsTool>
+    <ToolCommandName>runway</ToolCommandName>
+    <PackageId>Runway.Cli</PackageId>
+    <Authors>tryAGI and contributors</Authors>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageIcon>nuget-icon.png</PackageIcon>
+    <Description>Command line interface for Runway image, video, task, and avatar workflows.</Description>
+    <PackageTags>runway;cli;video-generation;image-generation;avatar;api;ai</PackageTags>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Versioning">
+    <MinVerTagPrefix>v</MinVerTagPrefix>
+    <MinVerDefaultPreReleaseIdentifiers>dev</MinVerDefaultPreReleaseIdentifiers>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\libs\Runway\Runway.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\assets\nuget-icon.png" Pack="true" PackagePath="\" Visible="false" />
+    <None Include="..\..\..\README.md" Pack="true" PackagePath="\" Visible="false" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MinVer" Version="7.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="System.CommandLine" Version="2.0.7" />
+  </ItemGroup>
+
+</Project>

@@ -1,7 +1,14 @@
 <Solution>
+  <Folder Name="/cli/">
+    <Project Path="src/cli/Runway.Cli/Runway.Cli.csproj" />
+  </Folder>
   <Folder Name="/libs/">
     <File Path="src/libs/Directory.Build.props" />
     <Project Path="src/libs/Runway/Runway.csproj" />
+  </Folder>
+  <Folder Name="/samples/">
+    <Project Path="src/samples/Runway.RealtimeWatchBridge.MediaBridge/Runway.RealtimeWatchBridge.MediaBridge.csproj" />
+    <Project Path="src/samples/Runway.RealtimeWatchBridge/Runway.RealtimeWatchBridge.csproj" />
   </Folder>
   <Folder Name="/Solution Items/">
     <File Path=".github/dependabot.yml" />

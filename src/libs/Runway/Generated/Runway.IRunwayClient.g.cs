@@ -48,7 +48,27 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public AvatarVideosClient AvatarVideos { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public AvatarsClient Avatars { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public KnowledgeClient Knowledge { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public OrganizationClient Organization { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public RealtimeSessionsClient RealtimeSessions { get; }
 
         /// <summary>
         /// These endpoints all kick off tasks to create generations.
@@ -64,6 +84,16 @@ namespace Runway
         /// Endpoints for uploading media files.
         /// </summary>
         public UploadsClient Uploads { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public VoicesClient Voices { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public WorkflowsClient Workflows { get; }
 
     }
 }

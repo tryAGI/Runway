@@ -9,6 +9,9 @@ nav:
 # EXAMPLES:START
 - Examples:
   - CancelTask: examples/canceltask.md
+  - CreateAvatar: examples/createavatar.md
+  - CreateAvatarVideo: examples/createavatarvideo.md
+  - CreateRealtimeAvatarSession: examples/createrealtimeavatarsession.md
   - CreateImageToVideoGen4Turbo: examples/createimagetovideogen4turbo.md
   - CreateLoopingSoundEffect: examples/createloopingsoundeffect.md
   - CreateSoundEffect: examples/createsoundeffect.md
@@ -19,7 +22,11 @@ nav:
   - CreateVoiceDubbing: examples/createvoicedubbing.md
   - ErrorHandling: examples/errorhandling.md
   - GetTaskStatus: examples/gettaskstatus.md
+  - ListAvatarConversations: examples/listavatarconversations.md
+  - ListCustomVoices: examples/listcustomvoices.md
+  - ListPresetAvatars: examples/listpresetavatars.md
   - ListPresetVoices: examples/listpresetvoices.md
+  - ListPublishedWorkflows: examples/listpublishedworkflows.md
   - Create Image To Video: examples/create-image-to-video.md
 # EXAMPLES:END
 

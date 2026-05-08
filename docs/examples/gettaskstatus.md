@@ -10,7 +10,7 @@ using var client = new RunwayClient(apiKey);
 // Replace with an actual task ID from a previous generation
 var taskId = Guid.Parse("00000000-0000-0000-0000-000000000000");
 
-Response taskDetail = await client.TaskManagement.GetTasksByIdAsync(
+GetTasksResponse taskDetail = await client.TaskManagement.GetTasksByIdAsync(
     id: taskId,
     xRunwayVersion: "2024-11-06");
 

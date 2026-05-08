@@ -9,7 +9,7 @@ using var client = new RunwayClient(apiKey);
 
 var response = await client.StartGenerating.CreateSoundEffectAsync(
     xRunwayVersion: "2024-11-06",
-    request: new RequestElevenTextToSoundV2
+    request: new CreateSoundEffectRequestElevenTextToSoundV2
     {
         PromptText = "Gentle forest ambience with birds chirping and a light breeze",
         Duration = 15.0,
@@ -20,7 +20,7 @@ Console.WriteLine($"Task ID: {response.Id}");
 
 // Poll the task until it completes.
 
-Response taskDetail;
+GetTasksResponse taskDetail;
 do
 {
     taskDetail = await client.TaskManagement.GetTasksByIdAsync(

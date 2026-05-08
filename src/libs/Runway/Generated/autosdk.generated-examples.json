@@ -10,6 +10,50 @@
       "Format": "http",
       "OperationId": "getTasksById",
       "Setup": null
+    },
+    {
+      "Order": 2,
+      "Title": "Run a published workflow",
+      "Slug": "run-a-published-workflow",
+      "Description": "Start a new task to execute a published workflow. You can optionally provide custom input values via \u0060nodeOutputs\u0060 to override the defaults defined in the workflow graph.",
+      "Language": "http",
+      "Code": "### Run a published workflow\nPOST {{host}}/v1/workflows/{{id}}\nAuthorization: Bearer {{token}}\nX-Runway-Version: 2024-11-06\nContent-Type: application/json\nAccept: application/json\n\n{\n  \u0022nodeOutputs\u0022: {}\n}\n\n## Responses\n# 200\n# Description: The response from running a workflow.\n# Content-Type: application/json\n# 404\n# Description: The published workflow does not exist or was deleted.\n# Content-Type: application/json",
+      "Format": "http",
+      "OperationId": "createWorkflowsById",
+      "Setup": null
+    },
+    {
+      "Order": 3,
+      "Title": "Get workflow invocation detail",
+      "Slug": "get-workflow-invocation-detail",
+      "Description": "Return details about a workflow invocation. Consumers of this API should not expect updates more frequent than once every five seconds for a given workflow invocation.",
+      "Language": "http",
+      "Code": "### Get workflow invocation detail\nGET {{host}}/v1/workflow_invocations/{{id}}\nAuthorization: Bearer {{token}}\nX-Runway-Version: 2024-11-06\nAccept: application/json\n\n## Responses\n# 200\n# Description: Success\n# Content-Type: application/json\n# 404\n# Description: The workflow invocation does not exist, was deleted or canceled, or is not a workflow task.\n# Content-Type: application/json",
+      "Format": "http",
+      "OperationId": "getWorkflowInvocationsById",
+      "Setup": null
+    },
+    {
+      "Order": 4,
+      "Title": "List published workflows",
+      "Slug": "list-published-workflows",
+      "Description": "Returns a list of all published workflows for the authenticated user, grouped by source workflow with their published versions.",
+      "Language": "csharp",
+      "Code": "using var client = new RunwayClient(apiKey);\nvar response = await client.Workflows.GetWorkflowsAsync();\n\n// Example response:\n// {\n//   \u0022data\u0022: [\n//     {\n//       \u0022name\u0022: \u0022My Video Generator\u0022,\n//       \u0022versions\u0022: [\n//         {\n//           \u0022id\u0022: \u0022a1b2c3d4-e5f6-7890-abcd-ef1234567890\u0022,\n//           \u0022version\u0022: 2,\n//           \u0022createdAt\u0022: \u00222024-06-27T19:49:32.334Z\u0022\n//         },\n//         {\n//           \u0022id\u0022: \u0022b2c3d4e5-f6a7-8901-bcde-f12345678901\u0022,\n//           \u0022version\u0022: 1,\n//           \u0022createdAt\u0022: \u00222024-06-20T10:30:00.000Z\u0022\n//         }\n//       ]\n//     }\n//   ]\n// }",
+      "Format": "sdk",
+      "OperationId": "getWorkflows",
+      "Setup": "This example assumes \u0060using Runway;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
+    },
+    {
+      "Order": 5,
+      "Title": "Get workflow details",
+      "Slug": "get-workflow-details",
+      "Description": "Returns details about a specific published workflow, including its graph schema.",
+      "Language": "http",
+      "Code": "### Get workflow details\nGET {{host}}/v1/workflows/{{id}}\nAuthorization: Bearer {{token}}\nX-Runway-Version: 2024-11-06\nAccept: application/json\n\n## Responses\n# 200\n# Description: The workflow details including graph schema.\n# Content-Type: application/json\n# 404\n# Description: The workflow does not exist or was deleted.\n# Content-Type: application/json",
+      "Format": "http",
+      "OperationId": "getWorkflowsById",
+      "Setup": null
     }
   ]
 }

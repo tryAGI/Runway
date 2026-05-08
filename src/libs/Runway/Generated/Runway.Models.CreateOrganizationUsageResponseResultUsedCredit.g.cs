@@ -17,7 +17,7 @@ namespace Runway
         public required global::Runway.CreateOrganizationUsageResponseResultUsedCreditModel Model { get; set; }
 
         /// <summary>
-        /// The number of credits spent on the model.
+        /// The net number of credits spent on the model. May be negative if refunds exceeded charges on this day.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("amount")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -36,7 +36,7 @@ namespace Runway
         /// The model that credits were spent on.
         /// </param>
         /// <param name="amount">
-        /// The number of credits spent on the model.
+        /// The net number of credits spent on the model. May be negative if refunds exceeded charges on this day.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

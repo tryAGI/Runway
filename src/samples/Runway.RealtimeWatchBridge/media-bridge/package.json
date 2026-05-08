@@ -1,0 +1,13 @@
+{
+  "name": "runway-realtime-watch-media-bridge",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "node --check bridge.mjs"
+  },
+  "dependencies": {
+    "@livekit/rtc-node": "0.13.24",
+    "sharp": "0.34.5",
+    "ws": "8.20.0"
+  }
+}

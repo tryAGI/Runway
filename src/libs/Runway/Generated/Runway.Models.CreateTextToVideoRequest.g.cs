@@ -13,6 +13,36 @@ namespace Runway
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
+        public global::Runway.CreateTextToVideoRequestGen45? Gen45 { get; init; }
+#else
+        public global::Runway.CreateTextToVideoRequestGen45? Gen45 { get; }
+#endif
+
+        /// <summary>
+        /// 
+        /// </summary>
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Gen45))]
+#endif
+        public bool IsGen45 => Gen45 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickGen45(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Runway.CreateTextToVideoRequestGen45? value)
+        {
+            value = Gen45;
+            return IsGen45;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+#if NET6_0_OR_GREATER
         public global::Runway.CreateTextToVideoRequestVeo31? Veo31 { get; init; }
 #else
         public global::Runway.CreateTextToVideoRequestVeo31? Veo31 { get; }
@@ -101,6 +131,24 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public static implicit operator CreateTextToVideoRequest(global::Runway.CreateTextToVideoRequestGen45 value) => new CreateTextToVideoRequest((global::Runway.CreateTextToVideoRequestGen45?)value);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static implicit operator global::Runway.CreateTextToVideoRequestGen45?(CreateTextToVideoRequest @this) => @this.Gen45;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public CreateTextToVideoRequest(global::Runway.CreateTextToVideoRequestGen45? value)
+        {
+            Gen45 = value;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator CreateTextToVideoRequest(global::Runway.CreateTextToVideoRequestVeo31 value) => new CreateTextToVideoRequest((global::Runway.CreateTextToVideoRequestVeo31?)value);
 
         /// <summary>
@@ -156,11 +204,13 @@ namespace Runway
         /// 
         /// </summary>
         public CreateTextToVideoRequest(
+            global::Runway.CreateTextToVideoRequestGen45? gen45,
             global::Runway.CreateTextToVideoRequestVeo31? veo31,
             global::Runway.CreateTextToVideoRequestVeo31Fast? veo31Fast,
             global::Runway.CreateTextToVideoRequestVeo3? veo3
             )
         {
+            Gen45 = gen45;
             Veo31 = veo31;
             Veo31Fast = veo31Fast;
             Veo3 = veo3;
@@ -172,13 +222,15 @@ namespace Runway
         public object? Object =>
             Veo3 as object ??
             Veo31Fast as object ??
-            Veo31 as object 
+            Veo31 as object ??
+            Gen45 as object 
             ;
 
         /// <summary>
         /// 
         /// </summary>
         public override string? ToString() =>
+            Gen45?.ToString() ??
             Veo31?.ToString() ??
             Veo31Fast?.ToString() ??
             Veo3?.ToString() 
@@ -189,13 +241,14 @@ namespace Runway
         /// </summary>
         public bool Validate()
         {
-            return IsVeo31 && !IsVeo31Fast && !IsVeo3 || !IsVeo31 && IsVeo31Fast && !IsVeo3 || !IsVeo31 && !IsVeo31Fast && IsVeo3;
+            return IsGen45 && !IsVeo31 && !IsVeo31Fast && !IsVeo3 || !IsGen45 && IsVeo31 && !IsVeo31Fast && !IsVeo3 || !IsGen45 && !IsVeo31 && IsVeo31Fast && !IsVeo3 || !IsGen45 && !IsVeo31 && !IsVeo31Fast && IsVeo3;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public TResult? Match<TResult>(
+            global::System.Func<global::Runway.CreateTextToVideoRequestGen45, TResult>? gen45 = null,
             global::System.Func<global::Runway.CreateTextToVideoRequestVeo31, TResult>? veo31 = null,
             global::System.Func<global::Runway.CreateTextToVideoRequestVeo31Fast, TResult>? veo31Fast = null,
             global::System.Func<global::Runway.CreateTextToVideoRequestVeo3, TResult>? veo3 = null,
@@ -206,7 +259,11 @@ namespace Runway
                 Validate();
             }
 
-            if (IsVeo31 && veo31 != null)
+            if (IsGen45 && gen45 != null)
+            {
+                return gen45(Gen45!);
+            }
+            else if (IsVeo31 && veo31 != null)
             {
                 return veo31(Veo31!);
             }
@@ -226,6 +283,8 @@ namespace Runway
         /// 
         /// </summary>
         public void Match(
+            global::System.Action<global::Runway.CreateTextToVideoRequestGen45>? gen45 = null,
+
             global::System.Action<global::Runway.CreateTextToVideoRequestVeo31>? veo31 = null,
 
             global::System.Action<global::Runway.CreateTextToVideoRequestVeo31Fast>? veo31Fast = null,
@@ -238,7 +297,11 @@ namespace Runway
                 Validate();
             }
 
-            if (IsVeo31)
+            if (IsGen45)
+            {
+                gen45?.Invoke(Gen45!);
+            }
+            else if (IsVeo31)
             {
                 veo31?.Invoke(Veo31!);
             }
@@ -256,6 +319,7 @@ namespace Runway
         /// 
         /// </summary>
         public void Switch(
+            global::System.Action<global::Runway.CreateTextToVideoRequestGen45>? gen45 = null,
             global::System.Action<global::Runway.CreateTextToVideoRequestVeo31>? veo31 = null,
             global::System.Action<global::Runway.CreateTextToVideoRequestVeo31Fast>? veo31Fast = null,
             global::System.Action<global::Runway.CreateTextToVideoRequestVeo3>? veo3 = null,
@@ -266,7 +330,11 @@ namespace Runway
                 Validate();
             }
 
-            if (IsVeo31)
+            if (IsGen45)
+            {
+                gen45?.Invoke(Gen45!);
+            }
+            else if (IsVeo31)
             {
                 veo31?.Invoke(Veo31!);
             }
@@ -287,6 +355,8 @@ namespace Runway
         {
             var fields = new object?[]
             {
+                Gen45,
+                typeof(global::Runway.CreateTextToVideoRequestGen45),
                 Veo31,
                 typeof(global::Runway.CreateTextToVideoRequestVeo31),
                 Veo31Fast,
@@ -309,6 +379,7 @@ namespace Runway
         public bool Equals(CreateTextToVideoRequest other)
         {
             return
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateTextToVideoRequestGen45?>.Default.Equals(Gen45, other.Gen45) &&
                 global::System.Collections.Generic.EqualityComparer<global::Runway.CreateTextToVideoRequestVeo31?>.Default.Equals(Veo31, other.Veo31) &&
                 global::System.Collections.Generic.EqualityComparer<global::Runway.CreateTextToVideoRequestVeo31Fast?>.Default.Equals(Veo31Fast, other.Veo31Fast) &&
                 global::System.Collections.Generic.EqualityComparer<global::Runway.CreateTextToVideoRequestVeo3?>.Default.Equals(Veo3, other.Veo3) 

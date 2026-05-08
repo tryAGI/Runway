@@ -11,6 +11,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="AwesomeAssertions" Version="9.4.0" />
+    <PackageReference Include="SixLabors.ImageSharp" Version="3.1.12" />
   </ItemGroup>
 
   <ItemGroup Label="GlobalUsings">
@@ -19,7 +20,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\cli\Runway.Cli\Runway.Cli.csproj" />
     <ProjectReference Include="..\..\libs\Runway\Runway.csproj" />
+    <ProjectReference Include="..\..\samples\Runway.RealtimeWatchBridge.MediaBridge\Runway.RealtimeWatchBridge.MediaBridge.csproj" />
   </ItemGroup>
 
 </Project>

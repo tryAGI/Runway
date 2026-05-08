@@ -4,7 +4,7 @@
 namespace Runway
 {
     /// <summary>
-    /// The resolution of the output video.
+    /// Deprecated. This field is ignored. The resolution of the output video is determined by the input video.
     /// </summary>
     public enum CreateVideoToVideoRequestGen4AlephRatio
     {

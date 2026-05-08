@@ -405,3 +405,6 @@ FodyWeavers.xsd
 site/
 _site/
 docs/assets/
+
+# Local secrets
+.env

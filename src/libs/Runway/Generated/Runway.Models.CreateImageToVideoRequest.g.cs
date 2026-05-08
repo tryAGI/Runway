@@ -13,6 +13,36 @@ namespace Runway
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
+        public global::Runway.CreateImageToVideoRequestGen45? Gen45 { get; init; }
+#else
+        public global::Runway.CreateImageToVideoRequestGen45? Gen45 { get; }
+#endif
+
+        /// <summary>
+        /// 
+        /// </summary>
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Gen45))]
+#endif
+        public bool IsGen45 => Gen45 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickGen45(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Runway.CreateImageToVideoRequestGen45? value)
+        {
+            value = Gen45;
+            return IsGen45;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+#if NET6_0_OR_GREATER
         public global::Runway.CreateImageToVideoRequestGen4Turbo? Gen4Turbo { get; init; }
 #else
         public global::Runway.CreateImageToVideoRequestGen4Turbo? Gen4Turbo { get; }
@@ -161,6 +191,24 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public static implicit operator CreateImageToVideoRequest(global::Runway.CreateImageToVideoRequestGen45 value) => new CreateImageToVideoRequest((global::Runway.CreateImageToVideoRequestGen45?)value);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static implicit operator global::Runway.CreateImageToVideoRequestGen45?(CreateImageToVideoRequest @this) => @this.Gen45;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public CreateImageToVideoRequest(global::Runway.CreateImageToVideoRequestGen45? value)
+        {
+            Gen45 = value;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator CreateImageToVideoRequest(global::Runway.CreateImageToVideoRequestGen4Turbo value) => new CreateImageToVideoRequest((global::Runway.CreateImageToVideoRequestGen4Turbo?)value);
 
         /// <summary>
@@ -252,6 +300,7 @@ namespace Runway
         /// 
         /// </summary>
         public CreateImageToVideoRequest(
+            global::Runway.CreateImageToVideoRequestGen45? gen45,
             global::Runway.CreateImageToVideoRequestGen4Turbo? gen4Turbo,
             global::Runway.CreateImageToVideoRequestVeo31? veo31,
             global::Runway.CreateImageToVideoRequestGen3aTurbo? gen3aTurbo,
@@ -259,6 +308,7 @@ namespace Runway
             global::Runway.CreateImageToVideoRequestVeo3? veo3
             )
         {
+            Gen45 = gen45;
             Gen4Turbo = gen4Turbo;
             Veo31 = veo31;
             Gen3aTurbo = gen3aTurbo;
@@ -274,13 +324,15 @@ namespace Runway
             Veo31Fast as object ??
             Gen3aTurbo as object ??
             Veo31 as object ??
-            Gen4Turbo as object 
+            Gen4Turbo as object ??
+            Gen45 as object 
             ;
 
         /// <summary>
         /// 
         /// </summary>
         public override string? ToString() =>
+            Gen45?.ToString() ??
             Gen4Turbo?.ToString() ??
             Veo31?.ToString() ??
             Gen3aTurbo?.ToString() ??
@@ -293,13 +345,14 @@ namespace Runway
         /// </summary>
         public bool Validate()
         {
-            return IsGen4Turbo && !IsVeo31 && !IsGen3aTurbo && !IsVeo31Fast && !IsVeo3 || !IsGen4Turbo && IsVeo31 && !IsGen3aTurbo && !IsVeo31Fast && !IsVeo3 || !IsGen4Turbo && !IsVeo31 && IsGen3aTurbo && !IsVeo31Fast && !IsVeo3 || !IsGen4Turbo && !IsVeo31 && !IsGen3aTurbo && IsVeo31Fast && !IsVeo3 || !IsGen4Turbo && !IsVeo31 && !IsGen3aTurbo && !IsVeo31Fast && IsVeo3;
+            return IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsGen3aTurbo && !IsVeo31Fast && !IsVeo3 || !IsGen45 && IsGen4Turbo && !IsVeo31 && !IsGen3aTurbo && !IsVeo31Fast && !IsVeo3 || !IsGen45 && !IsGen4Turbo && IsVeo31 && !IsGen3aTurbo && !IsVeo31Fast && !IsVeo3 || !IsGen45 && !IsGen4Turbo && !IsVeo31 && IsGen3aTurbo && !IsVeo31Fast && !IsVeo3 || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsGen3aTurbo && IsVeo31Fast && !IsVeo3 || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsGen3aTurbo && !IsVeo31Fast && IsVeo3;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public TResult? Match<TResult>(
+            global::System.Func<global::Runway.CreateImageToVideoRequestGen45, TResult>? gen45 = null,
             global::System.Func<global::Runway.CreateImageToVideoRequestGen4Turbo, TResult>? gen4Turbo = null,
             global::System.Func<global::Runway.CreateImageToVideoRequestVeo31, TResult>? veo31 = null,
             global::System.Func<global::Runway.CreateImageToVideoRequestGen3aTurbo, TResult>? gen3aTurbo = null,
@@ -312,7 +365,11 @@ namespace Runway
                 Validate();
             }
 
-            if (IsGen4Turbo && gen4Turbo != null)
+            if (IsGen45 && gen45 != null)
+            {
+                return gen45(Gen45!);
+            }
+            else if (IsGen4Turbo && gen4Turbo != null)
             {
                 return gen4Turbo(Gen4Turbo!);
             }
@@ -340,6 +397,8 @@ namespace Runway
         /// 
         /// </summary>
         public void Match(
+            global::System.Action<global::Runway.CreateImageToVideoRequestGen45>? gen45 = null,
+
             global::System.Action<global::Runway.CreateImageToVideoRequestGen4Turbo>? gen4Turbo = null,
 
             global::System.Action<global::Runway.CreateImageToVideoRequestVeo31>? veo31 = null,
@@ -356,7 +415,11 @@ namespace Runway
                 Validate();
             }
 
-            if (IsGen4Turbo)
+            if (IsGen45)
+            {
+                gen45?.Invoke(Gen45!);
+            }
+            else if (IsGen4Turbo)
             {
                 gen4Turbo?.Invoke(Gen4Turbo!);
             }
@@ -382,6 +445,7 @@ namespace Runway
         /// 
         /// </summary>
         public void Switch(
+            global::System.Action<global::Runway.CreateImageToVideoRequestGen45>? gen45 = null,
             global::System.Action<global::Runway.CreateImageToVideoRequestGen4Turbo>? gen4Turbo = null,
             global::System.Action<global::Runway.CreateImageToVideoRequestVeo31>? veo31 = null,
             global::System.Action<global::Runway.CreateImageToVideoRequestGen3aTurbo>? gen3aTurbo = null,
@@ -394,7 +458,11 @@ namespace Runway
                 Validate();
             }
 
-            if (IsGen4Turbo)
+            if (IsGen45)
+            {
+                gen45?.Invoke(Gen45!);
+            }
+            else if (IsGen4Turbo)
             {
                 gen4Turbo?.Invoke(Gen4Turbo!);
             }
@@ -423,6 +491,8 @@ namespace Runway
         {
             var fields = new object?[]
             {
+                Gen45,
+                typeof(global::Runway.CreateImageToVideoRequestGen45),
                 Gen4Turbo,
                 typeof(global::Runway.CreateImageToVideoRequestGen4Turbo),
                 Veo31,
@@ -449,6 +519,7 @@ namespace Runway
         public bool Equals(CreateImageToVideoRequest other)
         {
             return
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateImageToVideoRequestGen45?>.Default.Equals(Gen45, other.Gen45) &&
                 global::System.Collections.Generic.EqualityComparer<global::Runway.CreateImageToVideoRequestGen4Turbo?>.Default.Equals(Gen4Turbo, other.Gen4Turbo) &&
                 global::System.Collections.Generic.EqualityComparer<global::Runway.CreateImageToVideoRequestVeo31?>.Default.Equals(Veo31, other.Veo31) &&
                 global::System.Collections.Generic.EqualityComparer<global::Runway.CreateImageToVideoRequestGen3aTurbo?>.Default.Equals(Gen3aTurbo, other.Gen3aTurbo) &&

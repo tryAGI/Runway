@@ -1,4 +1,6 @@
 
+#pragma warning disable CS0618 // Type or member is obsolete
+
 #nullable enable
 
 namespace Runway
@@ -25,12 +27,12 @@ namespace Runway
         public required string PromptText { get; set; }
 
         /// <summary>
-        /// The resolution of the output video.
+        /// Deprecated. This field is ignored. The resolution of the output video is determined by the input video.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ratio")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestGen4AlephRatioJsonConverter))]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Runway.CreateVideoToVideoRequestGen4AlephRatio Ratio { get; set; }
+        [global::System.Obsolete("This property marked as deprecated.")]
+        public global::Runway.CreateVideoToVideoRequestGen4AlephRatio? Ratio { get; set; }
 
         /// <summary>
         /// If unspecified, a random number is chosen. Varying the seed integer is a way to get different results for the same other request parameters. Using the same seed integer for an identical request will produce similar results.
@@ -73,9 +75,6 @@ namespace Runway
         /// <param name="promptText">
         /// A non-empty string up to 1000 characters (measured in UTF-16 code units). This should describe in detail what should appear in the output.
         /// </param>
-        /// <param name="ratio">
-        /// The resolution of the output video.
-        /// </param>
         /// <param name="seed">
         /// If unspecified, a random number is chosen. Varying the seed integer is a way to get different results for the same other request parameters. Using the same seed integer for an identical request will produce similar results.
         /// </param>
@@ -92,7 +91,6 @@ namespace Runway
         public CreateVideoToVideoRequestGen4Aleph(
             string videoUri,
             string promptText,
-            global::Runway.CreateVideoToVideoRequestGen4AlephRatio ratio,
             int? seed,
             global::System.Collections.Generic.IList<global::Runway.ReferencesItem>? references,
             global::Runway.CreateVideoToVideoRequestGen4AlephContentModeration? contentModeration,
@@ -100,7 +98,6 @@ namespace Runway
         {
             this.VideoUri = videoUri;
             this.PromptText = promptText ?? throw new global::System.ArgumentNullException(nameof(promptText));
-            this.Ratio = ratio;
             this.Seed = seed;
             this.References = references;
             this.ContentModeration = contentModeration;

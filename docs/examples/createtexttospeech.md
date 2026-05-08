@@ -9,12 +9,12 @@ using var client = new RunwayClient(apiKey);
 
 var response = await client.StartGenerating.CreateTextToSpeechAsync(
     xRunwayVersion: "2024-11-06",
-    request: new RequestElevenMultilingualV2
+    request: new CreateTextToSpeechRequestElevenMultilingualV2
     {
         PromptText = "Hello! Welcome to Runway's text-to-speech API.",
-        Voice = new RequestElevenMultilingualV2VoiceRunwayPresetVoice
+        Voice = new CreateTextToSpeechRequestElevenMultilingualV2VoiceRunwayPresetVoice
         {
-            PresetId = RequestElevenMultilingualV2VoiceRunwayPresetVoicePresetId.Maya,
+            PresetId = CreateTextToSpeechRequestElevenMultilingualV2VoiceRunwayPresetVoicePresetId.Maya,
         },
     });
 
@@ -22,7 +22,7 @@ Console.WriteLine($"Task ID: {response.Id}");
 
 // Poll the task until it completes.
 
-Response taskDetail;
+GetTasksResponse taskDetail;
 do
 {
     taskDetail = await client.TaskManagement.GetTasksByIdAsync(
