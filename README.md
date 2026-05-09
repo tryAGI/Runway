@@ -5,6 +5,26 @@
 [![License: MIT](https://img.shields.io/github/license/tryAGI/Runway)](https://github.com/tryAGI/Runway/blob/main/LICENSE.txt)
 [![Discord](https://img.shields.io/discord/1115206893015662663?label=Discord&logo=discord&logoColor=white&color=d82679)](https://discord.gg/Ca2xhfBf3v)
 
+## What `runway short-video` produces
+
+Five storyboard keyframes generated end-to-end by Runway.Cli, planned by Claude from the repo's [`MARKETING.md`](MARKETING.md) brief, rendered with `runway image --model gemini-image3-pro`:
+
+| BEFORE | the pain | the pivot | the work | AFTER |
+|---|---|---|---|---|
+| ![Cluttered Before](docs/examples/keyframes/keyframe-01-cluttered-before.png) | ![Friction Close-Ups](docs/examples/keyframes/keyframe-02-friction-close-ups.png) | ![One Clean Command](docs/examples/keyframes/keyframe-03-one-clean-command.png) | ![Plan And Generation](docs/examples/keyframes/keyframe-04-plan-and-generation.png) | ![Finished Artifact](docs/examples/keyframes/keyframe-05-finished-artifact.png) |
+| Drowning in five Runway dashboard tabs, sticky-note prompt fragments, scattered clip files, and ffmpeg by hand | Macro of the friction: handwritten note, hand-typed concat command, mouse hovering between tabs | The pivot: one short command in a fresh terminal as the chaos blurs out behind | Terminal streams a multi-shot plan, percentages climb, clip thumbnails materialize in a folder | One polished vertical mp4 alone on a pristine desktop, ready to upload |
+
+Reproduce locally:
+
+```bash
+dotnet tool install -g Runway.Cli --prerelease
+echo "RUNWAY_API_KEY=..." > .env
+
+# Plan + generate the same 30-second short
+runway short-video "developer types one command and the promo for Runway.Cli assembles itself" \
+  --shots 5 --duration 6 --ratio 720:1280 --audio --planner auto
+```
+
 ## Features 🔥
 - Fully generated C# SDK based on [official Runway OpenAPI specification](https://raw.githubusercontent.com/runwayml/openapi/refs/heads/next/openapi.json) using [AutoSDK](https://github.com/tryAGI/AutoSDK)
 - Same day update to support new features
