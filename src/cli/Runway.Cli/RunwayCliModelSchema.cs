@@ -150,6 +150,59 @@ internal static class RunwayCliModelSchema
             $"Model `{modelId}` is not supported by `{endpoint}` per the Runway OpenAPI spec. Supported endpoints: {string.Join(", ", endpoints)}.");
     }
 
+    /// <summary>
+    /// Validates that every spec-required parameter for the chosen <paramref name="modelId"/> on
+    /// <paramref name="endpoint"/> is marked as provided in <paramref name="providedFlags"/>. A param is
+    /// only checked if the caller listed it in the dictionary — unknown params (CLI doesn't track them)
+    /// are not enforced. Unknown models pass through so brand-new spec entries don't break the CLI.
+    /// </summary>
+    public static void EnsureRequiredParametersProvided(
+        string modelId,
+        string endpoint,
+        IReadOnlyDictionary<string, bool> providedFlags)
+    {
+        if (string.IsNullOrWhiteSpace(modelId))
+        {
+            return;
+        }
+
+        var entries = Lookup(modelId);
+        if (entries.Count == 0)
+        {
+            return;
+        }
+
+        RunwayCliModelEndpoint? entry = null;
+        foreach (var candidate in entries)
+        {
+            if (string.Equals(candidate.Endpoint, endpoint, StringComparison.Ordinal))
+            {
+                entry = candidate;
+                break;
+            }
+        }
+
+        if (entry is null)
+        {
+            return;
+        }
+
+        var missing = new List<string>();
+        foreach (var required in entry.RequiredParameters)
+        {
+            if (providedFlags.TryGetValue(required, out var present) && !present)
+            {
+                missing.Add(required);
+            }
+        }
+
+        if (missing.Count > 0)
+        {
+            throw new ArgumentException(
+                $"Model `{modelId}` on `{endpoint}` requires {string.Join(", ", missing)} per the Runway OpenAPI spec. Run `runway models schema {modelId}` for the full parameter list.");
+        }
+    }
+
     private static HashSet<string> ReadRequiredSet(JsonElement variant)
     {
         var set = new HashSet<string>(StringComparer.Ordinal);

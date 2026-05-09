@@ -57,6 +57,47 @@ public partial class Tests
         Action(() => RunwayCliModelSchema.EnsureModelSupportsEndpoint("future_model_id", "text_to_image"))
             .Should().NotThrow();
 
+        // EnsureRequiredParametersProvided complains when a spec-required param is marked missing.
+        var missingPromptImage = Action(() => RunwayCliModelSchema.EnsureRequiredParametersProvided(
+            "gen3a_turbo",
+            "image_to_video",
+            new Dictionary<string, bool>
+            {
+                ["promptText"] = true,
+                ["promptImage"] = false,
+                ["ratio"] = true,
+            }));
+        missingPromptImage.Should().Throw<ArgumentException>().WithMessage("*requires promptImage*");
+
+        // Spec param the caller didn't list is not enforced (CLI doesn't track every flag).
+        Action(() => RunwayCliModelSchema.EnsureRequiredParametersProvided(
+            "gen4_image_turbo",
+            "text_to_image",
+            new Dictionary<string, bool>
+            {
+                ["promptText"] = true,
+                // ratio + referenceImages omitted -> not enforced
+            }))
+            .Should().NotThrow();
+
+        // All required flags satisfied -> passes silently.
+        Action(() => RunwayCliModelSchema.EnsureRequiredParametersProvided(
+            "veo3.1_fast",
+            "text_to_video",
+            new Dictionary<string, bool>
+            {
+                ["promptText"] = true,
+                ["ratio"] = true,
+            }))
+            .Should().NotThrow();
+
+        // Unknown model -> passes silently (brand-new spec entries don't break the CLI).
+        Action(() => RunwayCliModelSchema.EnsureRequiredParametersProvided(
+            "future_unknown_model",
+            "text_to_image",
+            new Dictionary<string, bool>()))
+            .Should().NotThrow();
+
         static Action Action(Action action) => action;
     }
 }

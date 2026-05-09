@@ -463,6 +463,30 @@ The CLI ships a Higgsfield-parity surface so an agent trained on `higgsfield-ai/
 | `higgsfield upload` | `runway upload create` | Same shape, single subcommand. |
 | `higgsfield generate wait <task-id>` | `runway task get <task-id> --wait` | With `--download --kind image` or `--kind video` for one-step retrieval. |
 
+#### Pre-flight Validation
+
+The CLI consults the embedded Runway OpenAPI spec before sending generation requests. Two checks run automatically — wrong-endpoint pairings and missing required parameters — both with spec-derived error messages so the user gets feedback before paying for an API round-trip. Unknown model IDs always pass through (brand-new spec entries work without a CLI release).
+
+```bash
+$ runway video "a cinematic shot" --model gpt_image_2
+# Model `gpt_image_2` is not supported by `text_to_video` per the Runway OpenAPI spec.
+# Supported endpoints: text_to_image.
+
+$ runway image "a poster" --model gen4_image_turbo
+# Model `gen4_image_turbo` on `text_to_image` requires referenceImages per the Runway OpenAPI spec.
+# Run `runway models schema gen4_image_turbo` for the full parameter list.
+
+$ runway image-to-video --image ./pic.png --model gen3a_turbo
+# Model `gen3a_turbo` on `image_to_video` requires promptText per the Runway OpenAPI spec.
+# Run `runway models schema gen3a_turbo` for the full parameter list.
+
+$ runway text-to-video "a cinematic shot" --model gen4.5
+# Model `gen4.5` on `text_to_video` requires duration per the Runway OpenAPI spec.
+# Run `runway models schema gen4.5` for the full parameter list.
+```
+
+Audio, avatar, character-performance, and realtime commands hardcode their model id; the validator runs as a sentinel that surfaces spec drift if the upstream Runway spec ever drops a model.
+
 Soul-id example flow:
 
 ```bash

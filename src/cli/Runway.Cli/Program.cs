@@ -387,6 +387,7 @@ avatarCommand.Subcommands.Add(videoCommand);
 videoCommand.SetAction((ParseResult parseResult, CancellationToken cancellationToken) =>
     RunWithClientAsync(parseResult, async (client, runwayVersion, ct) =>
     {
+        RunwayCliModelSchema.EnsureModelSupportsEndpoint("gwm1_avatars", "avatar_videos");
         var text = parseResult.GetValue(textOption);
         var audio = parseResult.GetValue(avatarAudioOption);
         if (audio is not { Length: > 0 } && text is not { Length: > 0 })
@@ -1234,6 +1235,12 @@ generateImageCommand.SetAction((ParseResult parseResult, CancellationToken cance
             parseResult.GetValue(imageRatioOption),
             normalizedImageModel);
         var referenceImages = MergeSoulIdImages(parseResult, parseResult.GetValue(referenceImageOption2));
+        RunwayCliModelSchema.EnsureRequiredParametersProvided(normalizedImageModel, "text_to_image", new Dictionary<string, bool>
+        {
+            ["promptText"] = !string.IsNullOrWhiteSpace(prompt),
+            ["ratio"] = !string.IsNullOrWhiteSpace(ratio),
+            ["referenceImages"] = referenceImages is { Length: > 0 },
+        });
         var seed = parseResult.GetValue(seedOption);
         var json = parseResult.GetValue(jsonOption);
         Guid taskId;
@@ -1327,7 +1334,14 @@ textToVideoCommand.SetAction((ParseResult parseResult, CancellationToken cancell
         var json = parseResult.GetValue(jsonOption);
         if (json is not { Length: > 0 })
         {
-            RunwayCliModelSchema.EnsureModelSupportsEndpoint(parseResult.GetValue(videoModelOption) ?? string.Empty, "text_to_video");
+            var t2vModel = parseResult.GetValue(videoModelOption) ?? string.Empty;
+            RunwayCliModelSchema.EnsureModelSupportsEndpoint(t2vModel, "text_to_video");
+            RunwayCliModelSchema.EnsureRequiredParametersProvided(t2vModel, "text_to_video", new Dictionary<string, bool>
+            {
+                ["promptText"] = !string.IsNullOrWhiteSpace(RunwayCliGeneration.JoinPrompt(parseResult.GetValue(textToVideoPromptArgument))),
+                ["ratio"] = true,
+                ["duration"] = parseResult.GetValue(generationDurationOption).HasValue,
+            });
         }
 
         var taskId = json is { Length: > 0 }
@@ -1377,7 +1391,17 @@ imageToVideoCommand.SetAction((ParseResult parseResult, CancellationToken cancel
         var json = parseResult.GetValue(jsonOption);
         if (json is not { Length: > 0 })
         {
-            RunwayCliModelSchema.EnsureModelSupportsEndpoint(parseResult.GetValue(videoModelOption) ?? string.Empty, "image_to_video");
+            var i2vModel = parseResult.GetValue(videoModelOption) ?? string.Empty;
+            var i2vPrompt = string.Join(' ', parseResult.GetValue(optionalVideoPromptArgument) ?? []).Trim();
+            var i2vImages = MergeSoulIdImages(parseResult, parseResult.GetValue(promptImageOption));
+            RunwayCliModelSchema.EnsureModelSupportsEndpoint(i2vModel, "image_to_video");
+            RunwayCliModelSchema.EnsureRequiredParametersProvided(i2vModel, "image_to_video", new Dictionary<string, bool>
+            {
+                ["promptText"] = !string.IsNullOrWhiteSpace(i2vPrompt),
+                ["promptImage"] = i2vImages is { Length: > 0 },
+                ["ratio"] = true,
+                ["duration"] = parseResult.GetValue(generationDurationOption).HasValue,
+            });
         }
 
         var request = json is { Length: > 0 }
@@ -1488,6 +1512,7 @@ rootCommand.Subcommands.Add(characterPerformanceCommand);
 characterPerformanceCommand.SetAction((ParseResult parseResult, CancellationToken cancellationToken) =>
     RunWithClientAsync(parseResult, async (client, runwayVersion, ct) =>
     {
+        RunwayCliModelSchema.EnsureModelSupportsEndpoint("act_two", "character_performance");
         var json = parseResult.GetValue(jsonOption);
         var request = json is { Length: > 0 }
             ? await RunwayCliGeneration.ReadGeneratedJsonAsync<CreateCharacterPerformanceRequest>(json, ct).ConfigureAwait(false)
@@ -1529,6 +1554,7 @@ rootCommand.Subcommands.Add(soundEffectCommand);
 soundEffectCommand.SetAction((ParseResult parseResult, CancellationToken cancellationToken) =>
     RunWithClientAsync(parseResult, async (client, runwayVersion, ct) =>
     {
+        RunwayCliModelSchema.EnsureModelSupportsEndpoint("eleven_text_to_sound_v2", "sound_effect");
         var json = parseResult.GetValue(jsonOption);
         var request = json is { Length: > 0 }
             ? await RunwayCliGeneration.ReadGeneratedJsonAsync<CreateSoundEffectRequest>(json, ct).ConfigureAwait(false)
@@ -1587,6 +1613,7 @@ rootCommand.Subcommands.Add(speechToSpeechCommand);
 speechToSpeechCommand.SetAction((ParseResult parseResult, CancellationToken cancellationToken) =>
     RunWithClientAsync(parseResult, async (client, runwayVersion, ct) =>
     {
+        RunwayCliModelSchema.EnsureModelSupportsEndpoint("eleven_multilingual_sts_v2", "speech_to_speech");
         var json = parseResult.GetValue(jsonOption);
         var request = json is { Length: > 0 }
             ? await RunwayCliGeneration.ReadGeneratedJsonAsync<CreateSpeechToSpeechRequest>(json, ct).ConfigureAwait(false)
@@ -1619,6 +1646,7 @@ rootCommand.Subcommands.Add(textToSpeechCommand);
 textToSpeechCommand.SetAction((ParseResult parseResult, CancellationToken cancellationToken) =>
     RunWithClientAsync(parseResult, async (client, runwayVersion, ct) =>
     {
+        RunwayCliModelSchema.EnsureModelSupportsEndpoint("eleven_multilingual_v2", "text_to_speech");
         var json = parseResult.GetValue(jsonOption);
         var request = json is { Length: > 0 }
             ? await RunwayCliGeneration.ReadGeneratedJsonAsync<CreateTextToSpeechRequest>(json, ct).ConfigureAwait(false)
@@ -1657,6 +1685,7 @@ rootCommand.Subcommands.Add(voiceDubbingCommand);
 voiceDubbingCommand.SetAction((ParseResult parseResult, CancellationToken cancellationToken) =>
     RunWithClientAsync(parseResult, async (client, runwayVersion, ct) =>
     {
+        RunwayCliModelSchema.EnsureModelSupportsEndpoint("eleven_voice_dubbing", "voice_dubbing");
         var json = parseResult.GetValue(jsonOption);
         var request = json is { Length: > 0 }
             ? await RunwayCliGeneration.ReadGeneratedJsonAsync<CreateVoiceDubbingRequest>(json, ct).ConfigureAwait(false)
@@ -1685,6 +1714,7 @@ rootCommand.Subcommands.Add(voiceIsolationCommand);
 voiceIsolationCommand.SetAction((ParseResult parseResult, CancellationToken cancellationToken) =>
     RunWithClientAsync(parseResult, async (client, runwayVersion, ct) =>
     {
+        RunwayCliModelSchema.EnsureModelSupportsEndpoint("eleven_voice_isolation", "voice_isolation");
         var json = parseResult.GetValue(jsonOption);
         var request = json is { Length: > 0 }
             ? await RunwayCliGeneration.ReadGeneratedJsonAsync<CreateVoiceIsolationRequest>(json, ct).ConfigureAwait(false)
@@ -2108,6 +2138,7 @@ realtimeCommand.Subcommands.Add(createRealtimeCommand);
 createRealtimeCommand.SetAction((ParseResult parseResult, CancellationToken cancellationToken) =>
     RunWithClientAsync(parseResult, async (client, runwayVersion, ct) =>
     {
+        RunwayCliModelSchema.EnsureModelSupportsEndpoint("gwm1_avatars", "realtime_sessions");
         var json = parseResult.GetValue(jsonOption);
         var request = json is { Length: > 0 }
             ? await RunwayCliGeneration.ReadGeneratedJsonAsync<CreateRealtimeSessionsRequest>(json, ct).ConfigureAwait(false)
