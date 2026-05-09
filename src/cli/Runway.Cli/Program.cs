@@ -602,6 +602,11 @@ var shortVideoNoInteractiveOption = new Option<bool>("--no-interactive")
     Description = "Skip the marketing-brief questionnaire. Defaults to interactive when stdin is a terminal; auto-skipped when stdin is redirected.",
 };
 
+var shortVideoKeyframesOption = new Option<string?>("--keyframes")
+{
+    Description = "Generate a high-quality keyframe still per shot via the chosen image model (gemini-image3-pro, gpt-image-2, gen4-image-turbo, ...) and animate it with image-to-video instead of pure text-to-video. Picks the closest supported aspect to --ratio for the image model and uses --model for the video pass.",
+};
+
 var shortVideoPlannerOption = new Option<string?>("--planner")
 {
     Description = "Short-video scenario planner: auto, claude, codex, or deterministic. Defaults to RUNWAY_SHORT_VIDEO_PLANNER or auto.",
@@ -938,6 +943,7 @@ var shortVideoCommand = new Command("short-video", "Expand a scenario into keyfr
     publicFigureThresholdOption,
     shortVideoPlanOnlyOption,
     shortVideoNoInteractiveOption,
+    shortVideoKeyframesOption,
     shortVideoPlannerOption,
     shortVideoPlannerModelOption,
     shortVideoPlannerToolsOption,
@@ -966,9 +972,9 @@ shortVideoCommand.SetAction(async (ParseResult parseResult, CancellationToken ca
         var scenario = RunwayCliGeneration.JoinPrompt(scenarioParts);
         var resolvedName = ResolveShortVideoName(parseResult);
         output = RunwayCliShortVideo.ResolveOutput(parseResult.GetValue(outputOption), DateTime.UtcNow, resolvedName);
-        options = CreateShortVideoOptions(parseResult, output.SegmentDirectory);
-        var plannerOptions = CreateShortVideoPlannerOptions(parseResult);
         var brief = await ResolveMarketingBriefAsync(parseResult, cancellationToken).ConfigureAwait(false);
+        options = CreateShortVideoOptions(parseResult, output.SegmentDirectory, brief);
+        var plannerOptions = CreateShortVideoPlannerOptions(parseResult);
         var plannerResult = await RunwayCliShortVideo.CreatePlanResultAsync(
             scenario,
             options,
@@ -1007,6 +1013,7 @@ var shortVideoRunCommand = new Command("run", "Generate a short video from an ed
     shortVideoAudioOption,
     seedOption,
     publicFigureThresholdOption,
+    shortVideoKeyframesOption,
     shortVideoNoConcatOption,
     ffmpegOption,
     noWaitOption,
@@ -2893,14 +2900,20 @@ async Task HandleGenerationTaskAsync(
 
 RunwayShortVideoOptions CreateShortVideoOptions(
     ParseResult parseResult,
-    string segmentOutput)
+    string segmentOutput,
+    RunwayCliMarketingBrief? brief = null)
 {
+    var explicitRatio = parseResult.GetValue(shortVideoRatioOption);
+    var ratio = !string.IsNullOrWhiteSpace(explicitRatio) ? explicitRatio
+        : !string.IsNullOrWhiteSpace(brief?.FormatAspectRatio) ? brief!.FormatAspectRatio!
+        : RunwayShortVideoOptions.DefaultRatio;
+
     return new RunwayShortVideoOptions
     {
         ShotCount = parseResult.GetValue(shortVideoShotCountOption),
         ShotDurationSeconds = parseResult.GetValue(generationDurationOption) ?? 4,
         Model = parseResult.GetValue(videoModelOption) ?? RunwayShortVideoOptions.DefaultModel,
-        Ratio = parseResult.GetValue(shortVideoRatioOption) ?? RunwayShortVideoOptions.DefaultRatio,
+        Ratio = ratio,
         Audio = parseResult.GetValue(shortVideoAudioOption),
         Seed = parseResult.GetValue(seedOption),
         Style = parseResult.GetValue(shortVideoStyleOption),
@@ -2994,18 +3007,42 @@ Task<int> RunShortVideoPlanAsync(
 
         WriteShortVideoPlan(plan);
 
-        var result = await client.CreateShortVideoAsync(
-            plan,
-            options,
-            runwayVersion,
-            progress: new RunwayCliInlineProgress<RunwayShortVideoProgress>(WriteShortVideoProgress),
-            cancellationToken: ct).ConfigureAwait(false);
+        IReadOnlyList<string> downloadedFiles;
+        IReadOnlyList<string> shotTaskIds;
+        var keyframesModel = parseResult.GetValue(shortVideoKeyframesOption);
+        if (!string.IsNullOrWhiteSpace(keyframesModel))
+        {
+            await Console.Error.WriteLineAsync(string.Create(
+                System.Globalization.CultureInfo.InvariantCulture,
+                $"Keyframes mode: {keyframesModel} -> image-to-video ({options.Model}).")).ConfigureAwait(false);
+            var keyframesResult = await RunwayCliShortVideoKeyframes.RunPlanAsync(
+                client,
+                plan,
+                options,
+                new RunwayCliShortVideoKeyframeOptions(keyframesModel, ReferenceSubject: "human"),
+                xRunwayVersion: runwayVersion,
+                log: line => Console.Error.WriteLine(line),
+                cancellationToken: ct).ConfigureAwait(false);
+            downloadedFiles = keyframesResult.DownloadedFiles;
+            shotTaskIds = keyframesResult.Shots.Select(shot => shot.VideoTaskId.ToString()).ToArray();
+        }
+        else
+        {
+            var result = await client.CreateShortVideoAsync(
+                plan,
+                options,
+                runwayVersion,
+                progress: new RunwayCliInlineProgress<RunwayShortVideoProgress>(WriteShortVideoProgress),
+                cancellationToken: ct).ConfigureAwait(false);
+            downloadedFiles = result.DownloadedFiles;
+            shotTaskIds = result.Shots.Select(shot => shot.TaskId.ToString()).ToArray();
+        }
 
         if (parseResult.GetValue(noWaitOption))
         {
-            foreach (var shot in result.Shots)
+            foreach (var taskId in shotTaskIds)
             {
-                Console.WriteLine(shot.TaskId);
+                Console.WriteLine(taskId);
             }
 
             return;
@@ -3013,7 +3050,7 @@ Task<int> RunShortVideoPlanAsync(
 
         if (parseResult.GetValue(shortVideoNoConcatOption))
         {
-            foreach (var path in result.DownloadedFiles)
+            foreach (var path in downloadedFiles)
             {
                 Console.WriteLine(path);
             }
@@ -3022,7 +3059,7 @@ Task<int> RunShortVideoPlanAsync(
         }
 
         var concat = await RunwayCliShortVideo.TryConcatAsync(
-            result.DownloadedFiles,
+            downloadedFiles,
             output.FinalOutput,
             parseResult.GetValue(ffmpegOption),
             ct).ConfigureAwait(false);
@@ -3037,7 +3074,7 @@ Task<int> RunShortVideoPlanAsync(
             return;
         }
 
-        foreach (var path in result.DownloadedFiles)
+        foreach (var path in downloadedFiles)
         {
             Console.WriteLine(path);
         }

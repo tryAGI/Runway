@@ -127,14 +127,15 @@ internal static class RunwayCliGeneration
         string? quality,
         CancellationToken cancellationToken)
     {
+        var normalizedModel = NormalizeTextToImageModel(model);
+        ValidateTextToImageRatio(ratio, normalizedModel);
         var body = new JsonObject
         {
-            ["model"] = NormalizeTextToImageModel(model),
+            ["model"] = normalizedModel,
             ["promptText"] = prompt,
             ["ratio"] = ratio,
         };
 
-        var normalizedModel = body["model"]!.GetValue<string>();
         SetIfNotNull(body, "seed", seed);
         SetIfNotNull(body, "outputCount", outputCount);
         AddContentModeration(body, publicFigureThreshold);
@@ -171,6 +172,7 @@ internal static class RunwayCliGeneration
         double? outputCount,
         CancellationToken cancellationToken)
     {
+        ValidateTextToImageRatio(ratio, "gpt_image_2");
         var request = new CreateGptImage2TextToImageRequest
         {
             PromptText = prompt,
@@ -411,6 +413,54 @@ internal static class RunwayCliGeneration
         {
             "gpt_image_2" => "1920:1920",
             _ => "1024:1024",
+        };
+    }
+
+    /// <summary>
+    /// Validates that <paramref name="ratio"/> is on the supported list for the given normalized image model.
+    /// Throws <see cref="ArgumentException"/> with the supported list when it isn't — the Runway API is known
+    /// to silently fall back to a default resolution when an unsupported ratio is sent (e.g. gemini-image3-pro
+    /// returning 1024x1024 for a request asking 768:1344), so we fail fast on the client.
+    /// </summary>
+    public static void ValidateTextToImageRatio(string ratio, string normalizedModel)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(ratio);
+        ArgumentException.ThrowIfNullOrWhiteSpace(normalizedModel);
+        var supported = GetSupportedTextToImageRatios(normalizedModel);
+        if (supported is null || supported.Contains(ratio))
+        {
+            return;
+        }
+
+        throw new ArgumentException(
+            $"Unsupported --ratio '{ratio}' for image model '{normalizedModel}'. Supported values: {string.Join(", ", supported)}.");
+    }
+
+    /// <summary>
+    /// Returns the list of supported ratios for the given normalized image model, or <c>null</c> when the
+    /// model has no enum-backed ratio set in the generated SDK (in which case validation is skipped and the
+    /// API has the final say).
+    /// </summary>
+    public static IReadOnlyList<string>? GetSupportedTextToImageRatios(string normalizedModel)
+    {
+        return normalizedModel switch
+        {
+            "gemini_2.5_flash" => Enum.GetValues<CreateTextToImageRequestGemini25FlashRatio>()
+                .Select(value => value.ToValueString())
+                .ToArray(),
+            "gemini_image3_pro" => Enum.GetValues<CreateTextToImageRequestGeminiImage3ProRatio>()
+                .Select(value => value.ToValueString())
+                .ToArray(),
+            "gen4_image" => Enum.GetValues<CreateTextToImageRequestGen4ImageRatio>()
+                .Select(value => value.ToValueString())
+                .ToArray(),
+            "gen4_image_turbo" => Enum.GetValues<CreateTextToImageRequestGen4ImageTurboRatio>()
+                .Select(value => value.ToValueString())
+                .ToArray(),
+            "gpt_image_2" => Enum.GetValues<CreateTextToImageRequestGptImage2Ratio>()
+                .Select(value => value.ToValueString())
+                .ToArray(),
+            _ => null,
         };
     }
 
