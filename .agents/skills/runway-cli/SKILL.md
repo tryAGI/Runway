@@ -5,24 +5,18 @@ description: Use when an agent should operate Runway through the .NET CLI with `
 
 # Runway CLI
 
-Use the packaged .NET tool as the runtime. There is no stable `Runway.Cli` on NuGet yet, so default to `--prerelease --yes`. Drop the flags once a stable release is published.
+Use the packaged .NET tool as the runtime:
 
 ```bash
-dnx Runway.Cli --prerelease --yes -- --help
-dnx Runway.Cli --prerelease --yes models
-
-# Once stable lands on NuGet:
 dnx Runway.Cli -- --help
 dnx Runway.Cli models
 ```
 
-The NuGet package ID is `Runway.Cli`; the installed tool command is `runway`. In a source checkout before publishing, use:
+The NuGet package ID is `Runway.Cli`; the installed tool command is `runway`. To opt into prerelease builds from main, add `--prerelease --yes` (`dnx Runway.Cli --prerelease --yes models`). In a source checkout before publishing, use:
 
 ```bash
 dotnet run --project src/cli/Runway.Cli -- <command>
 ```
-
-**Note:** the examples below omit `--prerelease --yes` for brevity. Add it to every `dnx Runway.Cli` invocation until a stable package is published.
 
 ## Preflight
 
