@@ -30,7 +30,54 @@ public static class RunwayClientToolExtensions
             client.AsGenerateImageTool(runwayVersion),
             client.AsImageToVideoTool(runwayVersion),
             client.AsGetTaskTool(runwayVersion),
+            AsGetModelSchemaTool(),
         ];
+    }
+
+    /// <summary>
+    /// Creates an <see cref="AIFunction"/> that returns the spec-derived endpoint and required/optional
+    /// parameter list for any Runway model id. Agents call this before picking between
+    /// <c>Runway_TextToVideo</c>, <c>Runway_ImageToVideo</c>, etc. to see which inputs the chosen
+    /// model needs without consulting external docs.
+    /// </summary>
+    /// <returns>An AI function that returns the per-endpoint required/optional split for a model id.</returns>
+    public static AIFunction AsGetModelSchemaTool()
+    {
+        return AIFunctionFactory.Create(
+            ([Description("Runway model id (e.g. `gen4_turbo`, `veo3.1_fast`, `gpt_image_2`).")] string modelId) =>
+            {
+                var entries = RunwayModelSchema.Lookup(modelId);
+                if (entries.Count == 0)
+                {
+                    return $"Unknown model `{modelId}`. Run Runway_GetModelSchema with a model id from the Runway docs, or use one of these known ids: {string.Join(", ", RunwayModelSchema.KnownModelIds())}.";
+                }
+
+                var lines = new List<string> { string.Create(CultureInfo.InvariantCulture, $"model: {modelId}") };
+                foreach (var entry in entries)
+                {
+                    lines.Add(string.Create(CultureInfo.InvariantCulture, $"endpoint: {entry.Endpoint}"));
+                    lines.Add(string.Create(CultureInfo.InvariantCulture, $"  required: {(entry.RequiredParameters.Count == 0 ? "(none)" : string.Join(", ", entry.RequiredParameters))}"));
+                    lines.Add(string.Create(CultureInfo.InvariantCulture, $"  optional: {(entry.OptionalParameters.Count == 0 ? "(none)" : string.Join(", ", entry.OptionalParameters))}"));
+                }
+
+                return string.Join("\n", lines);
+            },
+            name: "Runway_GetModelSchema",
+            description: "Returns the endpoint(s) and required/optional request parameters for a given Runway model id, derived from the embedded OpenAPI spec. Use this before picking between Runway_TextToVideo, Runway_ImageToVideo, Runway_GenerateImage, etc., or to discover newly added models without a code change.");
+    }
+
+    private static string DescribeModelTool(string baseDescription, string modelId, string endpoint)
+    {
+        var entries = RunwayModelSchema.Lookup(modelId);
+        var match = entries.FirstOrDefault(e => string.Equals(e.Endpoint, endpoint, StringComparison.Ordinal));
+        if (match is null)
+        {
+            return baseDescription;
+        }
+
+        var required = match.RequiredParameters.Count == 0 ? "(none)" : string.Join(", ", match.RequiredParameters);
+        var optional = match.OptionalParameters.Count == 0 ? "(none)" : string.Join(", ", match.OptionalParameters);
+        return $"{baseDescription} Uses model `{modelId}` on the `{endpoint}` endpoint. Required parameters per the Runway OpenAPI spec: {required}. Optional: {optional}. Call Runway_GetModelSchema for an authoritative listing.";
     }
 
     /// <summary>
@@ -77,7 +124,10 @@ public static class RunwayClientToolExtensions
                 return FormatShortVideoResult(result);
             },
             name: "Runway_ShortVideo",
-            description: "Expands a scenario into keyframe prompts, starts one Runway text-to-video task per shot, and returns the task IDs to poll or download later.");
+            description: DescribeModelTool(
+                "Expands a scenario into keyframe prompts, starts one Runway text-to-video task per shot, and returns the task IDs to poll or download later.",
+                modelId: RunwayShortVideoOptions.DefaultModel,
+                endpoint: "text_to_video"));
     }
 
     /// <summary>
@@ -117,7 +167,10 @@ public static class RunwayClientToolExtensions
                 return FormatCreatedTask(response.Id, "text-to-video");
             },
             name: "Runway_TextToVideo",
-            description: "Starts a Runway text-to-video generation task. Returns a task ID; call Runway_GetTask to check status and output URLs.");
+            description: DescribeModelTool(
+                "Starts a Runway text-to-video generation task. Returns a task ID; call Runway_GetTask to check status and output URLs.",
+                modelId: "veo3.1_fast",
+                endpoint: "text_to_video"));
     }
 
     /// <summary>
@@ -156,7 +209,10 @@ public static class RunwayClientToolExtensions
                 return FormatCreatedTask(response.Id, "image-to-video");
             },
             name: "Runway_ImageToVideo",
-            description: "Starts a Runway image-to-video generation task from an image URL, Runway URI, or data URI. Returns a task ID; call Runway_GetTask to check status and output URLs.");
+            description: DescribeModelTool(
+                "Starts a Runway image-to-video generation task from an image URL, Runway URI, or data URI. Returns a task ID; call Runway_GetTask to check status and output URLs.",
+                modelId: "gen4_turbo",
+                endpoint: "image_to_video"));
     }
 
     /// <summary>
@@ -203,7 +259,10 @@ public static class RunwayClientToolExtensions
                 return FormatCreatedTask(response.Id, "text-to-image");
             },
             name: "Runway_GenerateImage",
-            description: "Starts a Runway text-to-image generation task. Returns a task ID; call Runway_GetTask to check status and output URLs.");
+            description: DescribeModelTool(
+                "Starts a Runway text-to-image generation task. Returns a task ID; call Runway_GetTask to check status and output URLs.",
+                modelId: "gemini_2.5_flash",
+                endpoint: "text_to_image"));
     }
 
     /// <summary>

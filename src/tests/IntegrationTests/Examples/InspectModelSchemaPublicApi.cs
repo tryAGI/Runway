@@ -15,6 +15,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Runway;
 
 [TestClass]
+[TestCategory("Sdk")]
+[TestCategory("PublicApi")]
 public sealed class RunwayModelSchemaPublicApiTests
 {
     //// Drive RunwayModelSchema through the same public surface an external NuGet consumer would
@@ -54,6 +56,51 @@ public sealed class RunwayModelSchemaPublicApiTests
         // ArgumentNullException on null providedFlags — public-surface input validation contract.
         Assert.ThrowsExactly<ArgumentNullException>(static () =>
             RunwayModelSchema.EnsureRequiredParametersProvided("gpt_image_2", "text_to_image", null!));
+    }
+
+    //// AsTools() now exposes a Runway_GetModelSchema tool and enriches every other tool's
+    //// description with spec-derived endpoint + required/optional metadata so an agent picking
+    //// between Runway_TextToVideo / Runway_ImageToVideo / Runway_GenerateImage can read the
+    //// constraints from the tool schema itself.
+
+    [TestMethod]
+    public async Task Example_AsToolsExposesSchemaAwareTools()
+    {
+        // Use a stub HttpClient — we only inspect tool metadata, never invoke a network call.
+        using var client = new RunwayClient(apiKey: "test-key");
+        var tools = client.AsTools();
+
+        tools.Should().HaveCount(6);
+        tools.Select(t => t.Name).Should().Contain([
+            "Runway_ShortVideo",
+            "Runway_TextToVideo",
+            "Runway_ImageToVideo",
+            "Runway_GenerateImage",
+            "Runway_GetTask",
+            "Runway_GetModelSchema",
+        ]);
+
+        var textToVideo = tools.Single(t => t.Name == "Runway_TextToVideo");
+        textToVideo.Description.Should().Contain("veo3.1_fast");
+        textToVideo.Description.Should().Contain("text_to_video");
+        textToVideo.Description.Should().Contain("promptText");
+        textToVideo.Description.Should().Contain("Runway_GetModelSchema");
+
+        var imageToVideo = tools.Single(t => t.Name == "Runway_ImageToVideo");
+        imageToVideo.Description.Should().Contain("gen4_turbo");
+        imageToVideo.Description.Should().Contain("promptImage");
+
+        var getSchema = tools.Single(t => t.Name == "Runway_GetModelSchema");
+        var result = await getSchema.InvokeAsync(
+            new Microsoft.Extensions.AI.AIFunctionArguments
+            {
+                ["modelId"] = "gen4_turbo",
+            }).ConfigureAwait(false);
+
+        var rendered = result?.ToString() ?? string.Empty;
+        rendered.Should().Contain("model: gen4_turbo");
+        rendered.Should().Contain("endpoint: image_to_video");
+        rendered.Should().Contain("required: promptImage");
     }
 
     //// Sentinel: the OpenAPI spec is embedded into the SDK assembly as `Runway.openapi.json`.

@@ -155,71 +155,6 @@ public partial class Tests
     }
 
     [TestMethod]
-    public async Task RunwayCli_RecipeRejectsModelMissingRequiredImages()
-    {
-        // gen4_image_turbo requires referenceImages per the spec; product-photoshoot without
-        // --image / --soul-id should be rejected upfront, even with --plan-only (which would
-        // otherwise short-circuit before any API call).
-        var result = await RunCliAsync(
-            "product-photoshoot create --prompt=tiny-camera --mode product_shot --model gen4_image_turbo --plan-only",
-            removeApiKey: true).ConfigureAwait(false);
-
-        result.ExitCode.Should().Be(1);
-        result.Stderr.Should().Contain("Model `gen4_image_turbo` on `text_to_image` requires");
-        result.Stderr.Should().Contain("referenceImages (--reference-image)");
-        result.Stderr.Should().Contain("runway models schema gen4_image_turbo");
-    }
-
-    [TestMethod]
-    public async Task RunwayCli_RecipeAcceptsSoulIdAsReferenceImages()
-    {
-        // --soul-id merges registered photos into plan.ReferenceImages, which satisfies
-        // gen4_image_turbo's required `referenceImages` field. The recipe should accept the
-        // pairing even though the user didn't pass --image directly.
-        var sandbox = Path.Combine(Path.GetTempPath(), $"runway-soulid-recipe-{Guid.NewGuid():N}");
-        Directory.CreateDirectory(sandbox);
-        try
-        {
-            var photos = new List<string>(5);
-            for (var i = 1; i <= 5; i++)
-            {
-                var path = Path.Combine(sandbox, $"photo{i}.jpg");
-                File.WriteAllBytes(path, [(byte)i, 0x10, 0x20, 0x30]);
-                photos.Add(path);
-            }
-
-            var env = new Dictionary<string, string?> { ["RUNWAY_CLI_HOME"] = sandbox };
-
-            var imageArgs = string.Join(' ', photos.Select(p => $"--image {p}"));
-            var create = await RunCliAsync(
-                $"soul-id create --name alice {imageArgs}",
-                removeApiKey: true,
-                environment: env).ConfigureAwait(false);
-
-            create.ExitCode.Should().Be(0);
-            using var doc = System.Text.Json.JsonDocument.Parse(create.Stdout);
-            var soulId = doc.RootElement.GetProperty("id").GetString();
-            soulId.Should().NotBeNullOrEmpty();
-
-            var recipe = await RunCliAsync(
-                $"product-photoshoot create --prompt tiny-camera --mode product_shot --model gen4_image_turbo --soul-id {soulId} --plan-only",
-                removeApiKey: true,
-                environment: env).ConfigureAwait(false);
-
-            recipe.ExitCode.Should().Be(0);
-            recipe.Stdout.Should().Contain("\"model\": \"gen4_image_turbo\"");
-            recipe.Stdout.Should().Contain($"soul-ids/{soulId}");
-        }
-        finally
-        {
-            if (Directory.Exists(sandbox))
-            {
-                Directory.Delete(sandbox, recursive: true);
-            }
-        }
-    }
-
-    [TestMethod]
     public async Task RunwayCli_ShortVideoAutoFallsBackToDeterministicWhenNoExternalPlannerIsFound()
     {
         var plannerPath = Directory.CreateTempSubdirectory("runway-no-planner-").FullName;
@@ -1122,7 +1057,7 @@ public partial class Tests
     [TestMethod]
     public async Task RunwayCliShortVideo_RealFfmpegConcatSmoke()
     {
-        var ffmpeg = FindExecutableOnPathForCliTest("ffmpeg")
+        var ffmpeg = CliHarness.FindExecutableOnPath("ffmpeg")
             ?? throw new AssertInconclusiveException("ffmpeg is not available.");
         var directory = Directory.CreateTempSubdirectory("runway-ffmpeg-concat-").FullName;
         var first = Path.Combine(directory, "first.mp4");
@@ -1687,120 +1622,11 @@ public partial class Tests
         }
     }
 
-    private static async Task<CliResult> RunCliAsync(
+    private static Task<CliResult> RunCliAsync(
         string arguments,
         bool removeApiKey = false,
-        IReadOnlyDictionary<string, string?>? environment = null)
-    {
-        var runwayRoot = FindRunwayRoot();
-        var startInfo = new ProcessStartInfo(FindDotnetExecutable())
-        {
-            WorkingDirectory = runwayRoot,
-            RedirectStandardOutput = true,
-            RedirectStandardError = true,
-        };
-
-        startInfo.ArgumentList.Add("run");
-        startInfo.ArgumentList.Add("--project");
-        startInfo.ArgumentList.Add(Path.Combine(runwayRoot, "src", "cli", "Runway.Cli", "Runway.Cli.csproj"));
-        startInfo.ArgumentList.Add("--configuration");
-        startInfo.ArgumentList.Add(GetCurrentBuildConfiguration());
-        startInfo.ArgumentList.Add("--no-build");
-        startInfo.ArgumentList.Add("--");
-
-        foreach (var argument in SplitArguments(arguments))
-        {
-            startInfo.ArgumentList.Add(argument);
-        }
-
-        if (removeApiKey)
-        {
-            startInfo.Environment.Remove("RUNWAY_API_KEY");
-            startInfo.Environment.Remove("RUNWAYML_API_SECRET");
-            startInfo.Environment["RUNWAY_DOTENV_DISABLED"] = "1";
-        }
-        else
-        {
-            startInfo.Environment.Remove("RUNWAY_DOTENV_DISABLED");
-        }
-
-        startInfo.Environment.Remove("RUNWAY_SHORT_VIDEO_PLANNER");
-        startInfo.Environment.Remove("RUNWAY_SHORT_VIDEO_PLANNER_MODEL");
-        startInfo.Environment.Remove("RUNWAY_SHORT_VIDEO_PLANNER_TOOLS");
-        startInfo.Environment.Remove("RUNWAY_SHORT_VIDEO_PLANNER_TIMEOUT_SECONDS");
-
-        if (environment is not null)
-        {
-            foreach (var (key, value) in environment)
-            {
-                if (value is null)
-                {
-                    startInfo.Environment.Remove(key);
-                }
-                else
-                {
-                    startInfo.Environment[key] = value;
-                }
-            }
-        }
-
-        using var process = Process.Start(startInfo)
-            ?? throw new InvalidOperationException("Failed to start Runway CLI process.");
-
-        var stdout = process.StandardOutput.ReadToEndAsync();
-        var stderr = process.StandardError.ReadToEndAsync();
-        await process.WaitForExitAsync().ConfigureAwait(false);
-
-        return new CliResult(process.ExitCode, await stdout.ConfigureAwait(false), await stderr.ConfigureAwait(false));
-    }
-
-    private static string FindDotnetExecutable()
-    {
-        if (Environment.ProcessPath is { Length: > 0 } processPath &&
-            string.Equals(Path.GetFileNameWithoutExtension(processPath), "dotnet", StringComparison.OrdinalIgnoreCase))
-        {
-            return processPath;
-        }
-
-        if (FindExecutableOnPathForCliTest("dotnet") is { Length: > 0 } dotnet)
-        {
-            return dotnet;
-        }
-
-        return "dotnet";
-    }
-
-    private static string? FindExecutableOnPathForCliTest(string name)
-    {
-        if (Environment.GetEnvironmentVariable("PATH") is not { Length: > 0 } path)
-        {
-            return null;
-        }
-
-        foreach (var directory in path.Split(Path.PathSeparator, StringSplitOptions.RemoveEmptyEntries))
-        {
-            var candidate = Path.Combine(directory, name);
-            if (File.Exists(candidate))
-            {
-                return candidate;
-            }
-
-            if (OperatingSystem.IsWindows() &&
-                Environment.GetEnvironmentVariable("PATHEXT") is { Length: > 0 } pathExt)
-            {
-                foreach (var extension in pathExt.Split(';', StringSplitOptions.RemoveEmptyEntries))
-                {
-                    candidate = Path.Combine(directory, $"{name}{extension}");
-                    if (File.Exists(candidate))
-                    {
-                        return candidate;
-                    }
-                }
-            }
-        }
-
-        return null;
-    }
+        IReadOnlyDictionary<string, string?>? environment = null) =>
+        CliHarness.RunCliAsync(arguments, removeApiKey, environment);
 
     private static async Task RunProcessForTestAsync(string fileName, IReadOnlyList<string> arguments)
     {
@@ -1828,34 +1654,5 @@ public partial class Tests
         }
     }
 
-    private static string FindRunwayRoot()
-    {
-        var directory = new DirectoryInfo(AppContext.BaseDirectory);
-        while (directory is not null)
-        {
-            if (File.Exists(Path.Combine(directory.FullName, "Runway.slnx")))
-            {
-                return directory.FullName;
-            }
-
-            directory = directory.Parent;
-        }
-
-        throw new InvalidOperationException("Could not locate Runway.slnx.");
-    }
-
-    private static string GetCurrentBuildConfiguration()
-    {
-        var targetFrameworkDirectory = new DirectoryInfo(AppContext.BaseDirectory);
-        return targetFrameworkDirectory.Parent?.Name is { Length: > 0 } configuration
-            ? configuration
-            : "Debug";
-    }
-
-    private static IEnumerable<string> SplitArguments(string arguments)
-    {
-        return arguments.Split(' ', StringSplitOptions.RemoveEmptyEntries);
-    }
-
-    private sealed record CliResult(int ExitCode, string Stdout, string Stderr);
+    private static string FindRunwayRoot() => CliHarness.FindRunwayRoot();
 }
