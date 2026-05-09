@@ -2611,67 +2611,37 @@ modelsCommand.Subcommands.Add(modelSchemaCommand);
 modelSchemaCommand.SetAction(parseResult =>
 {
     var model = parseResult.GetValue(modelSchemaIdArgument) ?? string.Empty;
-    var normalized = model.Trim().ToLowerInvariant().Replace('-', '_');
-    var lines = normalized switch
+    var entries = RunwayCliModelSchema.Lookup(model);
+    if (entries.Count == 0)
     {
-        "gen4_turbo" or "gen4.5" or "gen4_image_turbo" or "gen4_image" or "gen3a_turbo" => new[]
-        {
-            $"model: {model}",
-            "endpoints: text-to-image (gen4_image*, gen4.5), image-to-video (gen3a_turbo, gen4_turbo, gen4.5)",
-            "common params: --prompt, --ratio (e.g. 1280:720, 1920:1088), --duration (image-to-video), --image (image-to-video), --reference-image (image), --seed",
-        },
-        "gpt_image_2" => new[]
-        {
-            $"model: {model}",
-            "endpoints: text-to-image",
-            "common params: --prompt, --ratio (1024:1024, 1920:1088, ...), --quality (low|medium|high), --resolution, --reference-image (up to 16), --output-count",
-        },
-        "gemini_2.5_flash" or "gemini_image3_pro" => new[]
-        {
-            $"model: {model}",
-            "endpoints: text-to-image",
-            "common params: --prompt, --ratio, --reference-image",
-        },
-        "veo3" or "veo3.1" or "veo3.1_fast" => new[]
-        {
-            $"model: {model}",
-            "endpoints: text-to-video, image-to-video",
-            "common params: --prompt, --ratio, --duration, --seed, --no-audio",
-        },
-        "gen4_aleph" => new[]
-        {
-            $"model: {model}",
-            "endpoints: video-to-video",
-            "common params: --prompt, --video, --ratio, --duration",
-        },
-        "act_two" => new[]
-        {
-            $"model: {model}",
-            "endpoints: character-performance",
-            "common params: --character-image, --character-video, --reference-video, --body-control, --expression-intensity",
-        },
-        "eleven_multilingual_v2" or "eleven_text_to_sound_v2" or "eleven_multilingual_sts_v2" or "eleven_voice_dubbing" or "eleven_voice_isolation" => new[]
-        {
-            $"model: {model}",
-            "endpoints: text-to-speech, sound-effect, speech-to-speech, voice-dubbing, voice-isolation (varies by model)",
-            "common params: --prompt or --text, --voice-preset or --custom-voice-id, --media (for s2s/dubbing/isolation), --target-language (dubbing)",
-        },
-        "gwm1_avatars" => new[]
-        {
-            $"model: {model}",
-            "endpoints: avatar video, realtime avatar sessions",
-            "common params: --preset-avatar or --avatar-id, --voice-preset or --custom-voice-id, --text or --audio",
-        },
-        _ => new[]
-        {
-            $"model: {model}",
-            "No curated schema available. Run `runway models` for the model catalog, or check Runway's official docs for newly added models.",
-        },
-    };
+        Console.WriteLine($"model: {model}");
+        Console.WriteLine("No schema entry found in the embedded Runway OpenAPI spec. Run `runway models` for the catalog or check Runway docs for newly added models.");
+        return 1;
+    }
 
-    foreach (var line in lines)
+    Console.WriteLine($"model: {model}");
+    var endpointNames = entries.Select(static e => e.Endpoint)
+        .Distinct(StringComparer.Ordinal)
+        .OrderBy(static e => e, StringComparer.Ordinal);
+    Console.WriteLine($"endpoints: {string.Join(", ", endpointNames)}");
+
+    var allParams = entries.SelectMany(static e => e.Parameters)
+        .Distinct(StringComparer.Ordinal)
+        .OrderBy(static p => p, StringComparer.Ordinal)
+        .ToList();
+    if (allParams.Count > 0)
     {
-        Console.WriteLine(line);
+        Console.WriteLine($"parameters: {string.Join(", ", allParams)}");
+    }
+
+    if (entries.Count > 1)
+    {
+        Console.WriteLine();
+        Console.WriteLine("per-endpoint:");
+        foreach (var entry in entries.OrderBy(static e => e.Endpoint, StringComparer.Ordinal))
+        {
+            Console.WriteLine($"  {entry.Endpoint}: {string.Join(", ", entry.Parameters)}");
+        }
     }
 
     return 0;

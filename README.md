@@ -436,7 +436,7 @@ CLI endpoint and model coverage:
 | `soul-id` | Local client-side registry under `~/.runway-cli/soul-ids/<id>/` | No API call; reference photos for face-faithful generation |
 | `auth` | Local credentials file under `~/.runway-cli/credentials.json` | No API call; `set/show/clear` API key |
 | `generate` | Router into `image`, `video`, `image-to-video`, `text-to-speech`, `sound-effect` by `--kind` | Per underlying command |
-| `models schema <model>` | None | Curated parameter notes per model id |
+| `models schema <model>` | None (parses embedded Runway OpenAPI spec) | Auto-derived endpoints + request parameters per model id |
 | `marketing-studio avatars list` | `GET /v1/avatars` | Alias of `avatar list`; for Higgsfield Marketing Studio parity |
 | `marketing-studio webproducts fetch --url` | None (client-side OG/Twitter metadata extraction) | No API call |
 
@@ -459,7 +459,7 @@ The CLI ships a Higgsfield-parity surface so an agent trained on `higgsfield-ai/
 | `higgsfield marketing-studio products/hooks/settings/ad-references` | _not supported_ | Runway has no analog. Use `workflow` and `document` for adjacent capabilities. |
 | `higgsfield auth login` (device flow) | `runway auth set/show/clear` | Runway uses an API key, not OAuth device flow. The stored credentials file is `~/.runway-cli/credentials.json` (mode 0600). |
 | `higgsfield account` | `runway account` | Alias of `runway organization get`. |
-| `higgsfield model list` / `higgsfield model schema <model>` | `runway models` / `runway models schema <model>` | `models` lists Runway endpoint families and supported model IDs. `models schema <model>` prints curated parameter notes. |
+| `higgsfield model list` / `higgsfield model schema <model>` | `runway models` / `runway models schema <model>` | `models` lists Runway endpoint families and supported model IDs. `models schema <model>` parses the embedded Runway OpenAPI spec at runtime — new models added to the auto-updated spec become discoverable without any code change. |
 | `higgsfield upload` | `runway upload create` | Same shape, single subcommand. |
 | `higgsfield generate wait <task-id>` | `runway task get <task-id> --wait` | With `--download --kind image` or `--kind video` for one-step retrieval. |
 
