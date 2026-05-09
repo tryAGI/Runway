@@ -67,13 +67,23 @@ internal static partial class RunwayCliShortVideo
         RunwayCliShortVideoPlannerOptions plannerOptions,
         CancellationToken cancellationToken)
     {
-        return (await CreatePlanResultAsync(scenarioText, options, plannerOptions, cancellationToken).ConfigureAwait(false)).Plan;
+        return (await CreatePlanResultAsync(scenarioText, options, plannerOptions, brief: null, cancellationToken).ConfigureAwait(false)).Plan;
+    }
+
+    public static Task<RunwayCliShortVideoPlannerResult> CreatePlanResultAsync(
+        string scenarioText,
+        RunwayShortVideoOptions options,
+        RunwayCliShortVideoPlannerOptions plannerOptions,
+        CancellationToken cancellationToken)
+    {
+        return CreatePlanResultAsync(scenarioText, options, plannerOptions, brief: null, cancellationToken);
     }
 
     public static async Task<RunwayCliShortVideoPlannerResult> CreatePlanResultAsync(
         string scenarioText,
         RunwayShortVideoOptions options,
         RunwayCliShortVideoPlannerOptions plannerOptions,
+        RunwayCliMarketingBrief? brief,
         CancellationToken cancellationToken)
     {
         return plannerOptions.Kind switch
@@ -87,6 +97,7 @@ internal static partial class RunwayCliShortVideo
                     scenarioText,
                     options,
                     plannerOptions,
+                    brief,
                     cancellationToken).ConfigureAwait(false),
                 "Claude"),
             RunwayCliShortVideoPlannerKind.Codex => new RunwayCliShortVideoPlannerResult(
@@ -95,9 +106,10 @@ internal static partial class RunwayCliShortVideo
                     scenarioText,
                     options,
                     plannerOptions,
+                    brief,
                     cancellationToken).ConfigureAwait(false),
                 "Codex"),
-            _ => await CreatePlanWithAutoPlannerAsync(scenarioText, options, plannerOptions, cancellationToken).ConfigureAwait(false),
+            _ => await CreatePlanWithAutoPlannerAsync(scenarioText, options, plannerOptions, brief, cancellationToken).ConfigureAwait(false),
         };
     }
 
@@ -143,6 +155,7 @@ internal static partial class RunwayCliShortVideo
         string scenarioText,
         RunwayShortVideoOptions options,
         RunwayCliShortVideoPlannerOptions plannerOptions,
+        RunwayCliMarketingBrief? brief,
         CancellationToken cancellationToken)
     {
         if (FindExecutableOnPath("claude") is { Length: > 0 })
@@ -155,6 +168,7 @@ internal static partial class RunwayCliShortVideo
                         scenarioText,
                         options,
                         plannerOptions,
+                        brief,
                         cancellationToken).ConfigureAwait(false),
                     "Claude");
             }
@@ -173,6 +187,7 @@ internal static partial class RunwayCliShortVideo
                         scenarioText,
                         options,
                         plannerOptions,
+                        brief,
                         cancellationToken).ConfigureAwait(false),
                     "Codex");
             }
@@ -191,6 +206,7 @@ internal static partial class RunwayCliShortVideo
         string scenarioText,
         RunwayShortVideoOptions options,
         RunwayCliShortVideoPlannerOptions plannerOptions,
+        RunwayCliMarketingBrief? brief,
         CancellationToken cancellationToken)
     {
         var executableName = GetPlannerExecutableName(kind);
@@ -204,6 +220,7 @@ internal static partial class RunwayCliShortVideo
             scenarioText,
             options,
             plannerOptions,
+            brief,
             cancellationToken).ConfigureAwait(false);
     }
 
@@ -212,6 +229,7 @@ internal static partial class RunwayCliShortVideo
         string scenarioText,
         RunwayShortVideoOptions options,
         RunwayCliShortVideoPlannerOptions plannerOptions,
+        RunwayCliMarketingBrief? brief,
         CancellationToken cancellationToken)
     {
         var result = kind switch
@@ -220,11 +238,13 @@ internal static partial class RunwayCliShortVideo
                 scenarioText,
                 options,
                 plannerOptions,
+                brief,
                 cancellationToken).ConfigureAwait(false),
             RunwayCliShortVideoPlannerKind.Codex => await RunCodexPlannerAsync(
                 scenarioText,
                 options,
                 plannerOptions,
+                brief,
                 cancellationToken).ConfigureAwait(false),
             _ => throw new ArgumentOutOfRangeException(nameof(kind), kind, "Unsupported external planner."),
         };
@@ -241,6 +261,7 @@ internal static partial class RunwayCliShortVideo
         string scenarioText,
         RunwayShortVideoOptions options,
         RunwayCliShortVideoPlannerOptions plannerOptions,
+        RunwayCliMarketingBrief? brief,
         CancellationToken cancellationToken)
     {
         var tempDirectory = CreatePlannerTempDirectory();
@@ -250,7 +271,7 @@ internal static partial class RunwayCliShortVideo
             Add(startInfo, "--print", "--model", plannerOptions.Model ?? DefaultClaudePlannerModel);
             Add(startInfo, "--json-schema", CreatePlannerJsonSchema(), "--permission-mode", "plan", "--no-session-persistence");
             AddClaudeToolArguments(startInfo, plannerOptions.Tools);
-            Add(startInfo, "--", CreatePlannerPrompt(scenarioText, options, plannerOptions.Tools));
+            Add(startInfo, "--", CreatePlannerPrompt(scenarioText, options, plannerOptions.Tools, brief));
 
             var result = await RunPlannerProcessAsync(
                 startInfo,
@@ -270,6 +291,7 @@ internal static partial class RunwayCliShortVideo
         string scenarioText,
         RunwayShortVideoOptions options,
         RunwayCliShortVideoPlannerOptions plannerOptions,
+        RunwayCliMarketingBrief? brief,
         CancellationToken cancellationToken)
     {
         var tempDirectory = CreatePlannerTempDirectory();
@@ -288,7 +310,7 @@ internal static partial class RunwayCliShortVideo
                 Add(startInfo, "--model", model);
             }
 
-            Add(startInfo, CreatePlannerPrompt(scenarioText, options, plannerOptions.Tools));
+            Add(startInfo, CreatePlannerPrompt(scenarioText, options, plannerOptions.Tools, brief));
 
             var result = await RunPlannerProcessAsync(
                 startInfo,
@@ -397,10 +419,19 @@ internal static partial class RunwayCliShortVideo
         }
     }
 
-    private static string CreatePlannerPrompt(
+    internal static string CreatePlannerPrompt(
         string scenarioText,
         RunwayShortVideoOptions options,
         RunwayCliShortVideoPlannerTools tools)
+    {
+        return CreatePlannerPrompt(scenarioText, options, tools, brief: null);
+    }
+
+    internal static string CreatePlannerPrompt(
+        string scenarioText,
+        RunwayShortVideoOptions options,
+        RunwayCliShortVideoPlannerTools tools,
+        RunwayCliMarketingBrief? brief)
     {
         var style = string.IsNullOrWhiteSpace(options.Style)
             ? "cinematic, coherent visual continuity, natural motion, high production value, no captions"
@@ -408,6 +439,10 @@ internal static partial class RunwayCliShortVideo
         var toolPolicy = tools == RunwayCliShortVideoPlannerTools.None
             ? "Do not use tools, inspect files, run shell commands, or fetch external resources."
             : "Tool access is read-only only. You may read/search/fetch context if useful, but do not run shell commands and do not write or edit files.";
+        var briefSection = brief is null ? null : RunwayCliMarketingBriefStore.RenderPlannerSection(brief);
+        var briefBlock = string.IsNullOrWhiteSpace(briefSection)
+            ? string.Empty
+            : string.Create(CultureInfo.InvariantCulture, $"\n{briefSection}\n");
 
         return string.Create(
             CultureInfo.InvariantCulture,
@@ -417,7 +452,7 @@ internal static partial class RunwayCliShortVideo
             Return exactly one JSON object matching the provided schema. Do not include Markdown, prose, code fences, comments, or extra keys.
 
             {toolPolicy}
-
+            {briefBlock}
             Scenario text:
             {scenarioText.Trim()}
 

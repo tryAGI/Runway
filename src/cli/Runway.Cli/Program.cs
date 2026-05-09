@@ -597,6 +597,11 @@ var shortVideoPlanOnlyOption = new Option<bool>("--plan-only")
     Description = "Only print the scenario, keyframes, and prompts; do not call the Runway API.",
 };
 
+var shortVideoNoInteractiveOption = new Option<bool>("--no-interactive")
+{
+    Description = "Skip the marketing-brief questionnaire. Defaults to interactive when stdin is a terminal; auto-skipped when stdin is redirected.",
+};
+
 var shortVideoPlannerOption = new Option<string?>("--planner")
 {
     Description = "Short-video scenario planner: auto, claude, codex, or deterministic. Defaults to RUNWAY_SHORT_VIDEO_PLANNER or auto.",
@@ -932,6 +937,7 @@ var shortVideoCommand = new Command("short-video", "Expand a scenario into keyfr
     seedOption,
     publicFigureThresholdOption,
     shortVideoPlanOnlyOption,
+    shortVideoNoInteractiveOption,
     shortVideoPlannerOption,
     shortVideoPlannerModelOption,
     shortVideoPlannerToolsOption,
@@ -962,10 +968,12 @@ shortVideoCommand.SetAction(async (ParseResult parseResult, CancellationToken ca
         output = RunwayCliShortVideo.ResolveOutput(parseResult.GetValue(outputOption), DateTime.UtcNow, resolvedName);
         options = CreateShortVideoOptions(parseResult, output.SegmentDirectory);
         var plannerOptions = CreateShortVideoPlannerOptions(parseResult);
+        var brief = await ResolveMarketingBriefAsync(parseResult, cancellationToken).ConfigureAwait(false);
         var plannerResult = await RunwayCliShortVideo.CreatePlanResultAsync(
             scenario,
             options,
             plannerOptions,
+            brief,
             cancellationToken).ConfigureAwait(false);
         plan = plannerResult.Plan;
         plannerName = plannerResult.Planner;
@@ -2911,6 +2919,43 @@ RunwayCliShortVideoPlannerOptions CreateShortVideoPlannerOptions(ParseResult par
         parseResult.GetValue(shortVideoPlannerModelOption),
         parseResult.GetValue(shortVideoPlannerToolsOption),
         parseResult.GetValue(shortVideoPlannerTimeoutSecondsOption));
+}
+
+async Task<RunwayCliMarketingBrief> ResolveMarketingBriefAsync(
+    ParseResult parseResult,
+    CancellationToken cancellationToken)
+{
+    var directory = Environment.CurrentDirectory;
+    var brief = await RunwayCliMarketingBriefStore.ReadAsync(directory, cancellationToken).ConfigureAwait(false);
+
+    var noInteractive = parseResult.GetValue(shortVideoNoInteractiveOption);
+    if (noInteractive || Console.IsInputRedirected)
+    {
+        if (!brief.IsEmpty)
+        {
+            await Console.Error.WriteLineAsync(string.Create(
+                System.Globalization.CultureInfo.InvariantCulture,
+                $"Loaded MARKETING.md from {directory}.")).ConfigureAwait(false);
+        }
+
+        return brief;
+    }
+
+    var collected = await RunwayCliMarketingBriefStore.AskMissingAsync(
+        brief,
+        Console.In,
+        Console.Out,
+        cancellationToken).ConfigureAwait(false);
+
+    var wrote = await RunwayCliMarketingBriefStore.WriteAsync(directory, collected, cancellationToken).ConfigureAwait(false);
+    if (wrote)
+    {
+        await Console.Error.WriteLineAsync(string.Create(
+            System.Globalization.CultureInfo.InvariantCulture,
+            $"Updated {Path.Combine(directory, RunwayCliMarketingBriefStore.FileName)}.")).ConfigureAwait(false);
+    }
+
+    return collected;
 }
 
 RunwayShortVideoOptions CreateShortVideoOptionsFromPlan(
