@@ -14,7 +14,12 @@ Five storyboard keyframes generated end-to-end by Runway.Cli, planned by Claude 
 | ![Cluttered Before](docs/examples/keyframes/keyframe-01-cluttered-before.png) | ![Friction Close-Ups](docs/examples/keyframes/keyframe-02-friction-close-ups.png) | ![One Clean Command](docs/examples/keyframes/keyframe-03-one-clean-command.png) | ![Plan And Generation](docs/examples/keyframes/keyframe-04-plan-and-generation.png) | ![Finished Artifact](docs/examples/keyframes/keyframe-05-finished-artifact.png) |
 | Drowning in five Runway dashboard tabs, sticky-note prompt fragments, scattered clip files, and ffmpeg by hand | Macro of the friction: handwritten note, hand-typed concat command, mouse hovering between tabs | The pivot: one short command in a fresh terminal as the chaos blurs out behind | Terminal streams a multi-shot plan, percentages climb, clip thumbnails materialize in a folder | One polished vertical mp4 alone on a pristine desktop, ready to upload |
 
-▶ Watch the 30-second motion version (audio on): [`runway-short-video-promo-v2.mp4`](https://github.com/tryAGI/Runway/releases/download/demo-promo-v1/runway-short-video-promo-v2.mp4) — same brief, 5 shots animated with `veo3.1_fast`, ffmpeg-concatenated by the CLI.
+▶ Watch the 30-second motion versions (audio on):
+
+| Mode | File | How it was generated |
+|---|---|---|
+| Text-to-video | [`runway-short-video-promo-v2.mp4`](https://github.com/tryAGI/Runway/releases/download/demo-promo-v1/runway-short-video-promo-v2.mp4) | 5 shots planned by Claude, each rendered directly with `veo3.1_fast` text-to-video |
+| Keyframes mode | [`runway-short-video-promo-v3.mp4`](https://github.com/tryAGI/Runway/releases/download/demo-promo-v2/runway-short-video-promo-v3.mp4) | Same plan; each shot anchored on a `gemini-image3-pro` keyframe still, then animated with `veo3.1_fast` image-to-video |
 
 Reproduce locally:
 
@@ -22,9 +27,14 @@ Reproduce locally:
 dotnet tool install -g Runway.Cli --prerelease
 echo "RUNWAY_API_KEY=..." > .env
 
-# Plan + generate the same 30-second short
+# Plan + generate the same 30-second short (text-to-video, demo-promo-v1)
 runway short-video "developer types one command and the promo for Runway.Cli assembles itself" \
   --shots 5 --duration 6 --ratio 720:1280 --audio --planner auto
+
+# Higher fidelity: anchor each shot on a Nano Banana Pro keyframe (demo-promo-v2)
+runway short-video "..." \
+  --shots 5 --duration 6 --ratio 720:1280 --audio --planner auto \
+  --keyframes gemini-image3-pro
 ```
 
 ## Features 🔥
