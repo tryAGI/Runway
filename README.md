@@ -473,19 +473,23 @@ $ runway video "a cinematic shot" --model gpt_image_2
 # Supported endpoints: text_to_image.
 
 $ runway image "a poster" --model gen4_image_turbo
-# Model `gen4_image_turbo` on `text_to_image` requires referenceImages per the Runway OpenAPI spec.
+# Model `gen4_image_turbo` on `text_to_image` requires referenceImages (--reference-image) per the Runway OpenAPI spec.
 # Run `runway models schema gen4_image_turbo` for the full parameter list.
 
 $ runway image-to-video --image ./pic.png --model gen3a_turbo
-# Model `gen3a_turbo` on `image_to_video` requires promptText per the Runway OpenAPI spec.
+# Model `gen3a_turbo` on `image_to_video` requires promptText (--prompt) per the Runway OpenAPI spec.
 # Run `runway models schema gen3a_turbo` for the full parameter list.
 
 $ runway text-to-video "a cinematic shot" --model gen4.5
-# Model `gen4.5` on `text_to_video` requires duration per the Runway OpenAPI spec.
+# Model `gen4.5` on `text_to_video` requires duration (--duration) per the Runway OpenAPI spec.
 # Run `runway models schema gen4.5` for the full parameter list.
+
+$ runway product-photoshoot create --prompt "x" --model gen4_image_turbo --plan-only
+# Model `gen4_image_turbo` on `text_to_image` requires referenceImages (--reference-image) per the Runway OpenAPI spec.
+# Run `runway models schema gen4_image_turbo` for the full parameter list.
 ```
 
-Audio, avatar, character-performance, and realtime commands hardcode their model id; the validator runs as a sentinel that surfaces spec drift if the upstream Runway spec ever drops a model.
+Each missing required parameter is rendered as `<spec-name> (<cli-flag>)` so humans see which flag to add; agents and scripts that grep for the spec name still match. Validation runs even with `--plan-only`, so recipe commands (`product-photoshoot create`, `marketplace-cards create`, `ad-video create`) catch wrong-input combinations before any per-job API call. Audio, avatar, character-performance, and realtime commands hardcode their model id; the validator runs as a sentinel that surfaces spec drift if the upstream Runway spec ever drops a model.
 
 Soul-id example flow:
 

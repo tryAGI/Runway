@@ -14,6 +14,45 @@ internal static class RunwayCliModelSchema
 
     private static readonly Lazy<IReadOnlyDictionary<string, IReadOnlyList<RunwayCliModelEndpoint>>> Map = new(LoadMap);
 
+    /// <summary>
+    /// Maps spec property names (as they appear in the OpenAPI request body) to the CLI flag the
+    /// user should add to satisfy them. Used to make missing-required errors actionable for humans
+    /// without forcing them to translate spec names to flag names.
+    /// </summary>
+    private static readonly Dictionary<string, string> SpecParamToCliFlag = new(StringComparer.Ordinal)
+    {
+        ["promptText"] = "--prompt",
+        ["promptImage"] = "--image",
+        ["referenceImages"] = "--reference-image",
+        ["ratio"] = "--ratio",
+        ["duration"] = "--duration",
+        ["seed"] = "--seed",
+        ["audio"] = "--audio (or remove --no-audio)",
+        ["videoUri"] = "--video",
+        ["references"] = "--reference-image",
+        ["media"] = "--media",
+        ["voice"] = "--voice-preset / --custom-voice-id",
+        ["audioUri"] = "--audio",
+        ["targetLang"] = "--target-language",
+        ["character"] = "--character-image / --character-video",
+        ["reference"] = "--reference-video",
+        ["bodyControl"] = "--body-control",
+        ["expressionIntensity"] = "--expression-intensity",
+        ["avatar"] = "--preset-avatar / --avatar-id",
+        ["speech"] = "--text or --audio",
+        ["personality"] = "--personality",
+        ["startScript"] = "--start-script",
+        ["tools"] = "--tools-json",
+        ["maxDuration"] = "--max-duration",
+        ["outputCount"] = "--output-count",
+        ["quality"] = "--quality",
+        ["background"] = "--background",
+        ["contentModeration"] = "--public-figure-threshold",
+    };
+
+    public static string DescribeRequiredParam(string specName) =>
+        SpecParamToCliFlag.TryGetValue(specName, out var flag) ? $"{specName} ({flag})" : specName;
+
     public static IReadOnlyList<RunwayCliModelEndpoint> Lookup(string modelId)
     {
         if (string.IsNullOrWhiteSpace(modelId))
@@ -198,8 +237,9 @@ internal static class RunwayCliModelSchema
 
         if (missing.Count > 0)
         {
+            var rendered = string.Join(", ", missing.Select(DescribeRequiredParam));
             throw new ArgumentException(
-                $"Model `{modelId}` on `{endpoint}` requires {string.Join(", ", missing)} per the Runway OpenAPI spec. Run `runway models schema {modelId}` for the full parameter list.");
+                $"Model `{modelId}` on `{endpoint}` requires {rendered} per the Runway OpenAPI spec. Run `runway models schema {modelId}` for the full parameter list.");
         }
     }
 

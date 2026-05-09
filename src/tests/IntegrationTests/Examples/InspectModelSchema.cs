@@ -57,7 +57,8 @@ public partial class Tests
         Action(() => RunwayCliModelSchema.EnsureModelSupportsEndpoint("future_model_id", "text_to_image"))
             .Should().NotThrow();
 
-        // EnsureRequiredParametersProvided complains when a spec-required param is marked missing.
+        // EnsureRequiredParametersProvided complains when a spec-required param is marked missing,
+        // and translates spec property names to the CLI flag the user should add.
         var missingPromptImage = Action(() => RunwayCliModelSchema.EnsureRequiredParametersProvided(
             "gen3a_turbo",
             "image_to_video",
@@ -67,7 +68,15 @@ public partial class Tests
                 ["promptImage"] = false,
                 ["ratio"] = true,
             }));
-        missingPromptImage.Should().Throw<ArgumentException>().WithMessage("*requires promptImage*");
+        missingPromptImage.Should().Throw<ArgumentException>()
+            .WithMessage("*requires promptImage (--image)*");
+
+        // DescribeRequiredParam annotates known spec params with their CLI flag.
+        RunwayCliModelSchema.DescribeRequiredParam("referenceImages").Should().Be("referenceImages (--reference-image)");
+        RunwayCliModelSchema.DescribeRequiredParam("duration").Should().Be("duration (--duration)");
+        RunwayCliModelSchema.DescribeRequiredParam("promptText").Should().Be("promptText (--prompt)");
+        // Unknown spec params fall through to bare name.
+        RunwayCliModelSchema.DescribeRequiredParam("someBrandNewSpecField").Should().Be("someBrandNewSpecField");
 
         // Spec param the caller didn't list is not enforced (CLI doesn't track every flag).
         Action(() => RunwayCliModelSchema.EnsureRequiredParametersProvided(

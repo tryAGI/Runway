@@ -1078,6 +1078,13 @@ productPhotoshootCreateCommand.SetAction(async (ParseResult parseResult, Cancell
             parseResult.GetValue(imageQualityOption),
             parseResult.GetValue(imageResolutionOption));
         recipeName = ResolveCreativeRecipeName(parseResult, plan);
+        RunwayCliModelSchema.EnsureModelSupportsEndpoint(plan.Model, "text_to_image");
+        RunwayCliModelSchema.EnsureRequiredParametersProvided(plan.Model, "text_to_image", new Dictionary<string, bool>
+        {
+            ["promptText"] = !string.IsNullOrWhiteSpace(plan.SourcePrompt),
+            ["ratio"] = !string.IsNullOrWhiteSpace(plan.Ratio),
+            ["referenceImages"] = plan.ReferenceImages.Count > 0,
+        });
     }
     catch (Exception ex)
     {
@@ -1132,6 +1139,13 @@ marketplaceCardsCreateCommand.SetAction(async (ParseResult parseResult, Cancella
             parseResult.GetValue(marketplaceCategoryOption),
             parseResult.GetValue(marketplaceVisualStyleOption));
         recipeName = ResolveCreativeRecipeName(parseResult, plan);
+        RunwayCliModelSchema.EnsureModelSupportsEndpoint(plan.Model, "text_to_image");
+        RunwayCliModelSchema.EnsureRequiredParametersProvided(plan.Model, "text_to_image", new Dictionary<string, bool>
+        {
+            ["promptText"] = !string.IsNullOrWhiteSpace(plan.SourcePrompt),
+            ["ratio"] = !string.IsNullOrWhiteSpace(plan.Ratio),
+            ["referenceImages"] = plan.Assets.Count > 0,
+        });
     }
     catch (Exception ex)
     {
@@ -1189,6 +1203,15 @@ adVideoCreateCommand.SetAction(async (ParseResult parseResult, CancellationToken
             parseResult.GetValue(adVideoAudioOption),
             parseResult.GetValue(generationDurationOption));
         recipeName = ResolveCreativeRecipeName(parseResult, plan);
+        var adVideoEndpoint = plan.ReferenceImages.Count > 0 ? "image_to_video" : "text_to_video";
+        RunwayCliModelSchema.EnsureModelSupportsEndpoint(plan.Model, adVideoEndpoint);
+        RunwayCliModelSchema.EnsureRequiredParametersProvided(plan.Model, adVideoEndpoint, new Dictionary<string, bool>
+        {
+            ["promptText"] = plan.Jobs.Count > 0 && !string.IsNullOrWhiteSpace(plan.Jobs[0].Prompt),
+            ["promptImage"] = plan.ReferenceImages.Count > 0,
+            ["ratio"] = !string.IsNullOrWhiteSpace(plan.Ratio),
+            ["duration"] = plan.DurationSeconds.HasValue,
+        });
     }
     catch (Exception ex)
     {
