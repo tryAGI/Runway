@@ -92,7 +92,7 @@ dnx Runway.Cli short-video "a calm product launch film for a transparent speaker
 
 Use `short-video` when the user has an idea and wants Runway to turn it into a finished multi-shot video. The user should be able to describe the result in plain language, such as "show how a small business owner makes product photos in minutes" or "make a simple launch video for a travel mug." The CLI expands that one sentence into a short plan, creates each shot with Runway, downloads the clips, and tries to stitch them into one final video.
 
-Default to simple, product-focused language:
+Default to simple, product-focused language. For polished/branded results add `--keyframes gemini-image3-pro` so each shot is anchored on a hand-quality still before animation:
 
 ```bash
 dnx Runway.Cli short-video "A simple product video showing how Runway CLI helps someone turn one idea into ready-to-use images, product cards, and a short ad video from their laptop. Keep it friendly, clear, and made for everyday business owners, creators, and shop teams." \
@@ -101,8 +101,11 @@ dnx Runway.Cli short-video "A simple product video showing how Runway CLI helps 
   --duration 4 \
   --ratio 1280:720 \
   --model veo3.1-fast \
+  --keyframes gemini-image3-pro \
   --output ./runway-short-video
 ```
+
+Drop `--keyframes` for fast iteration or motion-driven scenarios where text-to-video alone is enough; see the dedicated subsection below for the full tradeoffs.
 
 What `short-video` does:
 
