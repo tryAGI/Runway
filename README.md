@@ -7,12 +7,12 @@
 
 ## What `runway short-video` produces
 
-Five storyboard keyframes generated end-to-end by Runway.Cli, planned by Claude from the repo's [`MARKETING.md`](MARKETING.md) brief, rendered with `runway image --model gemini-image3-pro`:
+Five storyboard keyframes generated end-to-end by Runway.Cli with `--keyframes gemini-image3-pro`, planned by Claude from the repo's [`MARKETING.md`](MARKETING.md) brief. These are the exact stills that anchor the linked motion demo below — each was rendered with Nano Banana Pro at 768:1344 and then animated by `veo3.1_fast` image-to-video.
 
 | BEFORE | the pain | the pivot | the work | AFTER |
 |---|---|---|---|---|
-| ![Cluttered Before](docs/examples/keyframes/keyframe-01-cluttered-before.png) | ![Friction Close-Ups](docs/examples/keyframes/keyframe-02-friction-close-ups.png) | ![One Clean Command](docs/examples/keyframes/keyframe-03-one-clean-command.png) | ![Plan And Generation](docs/examples/keyframes/keyframe-04-plan-and-generation.png) | ![Finished Artifact](docs/examples/keyframes/keyframe-05-finished-artifact.png) |
-| Drowning in five Runway dashboard tabs, sticky-note prompt fragments, scattered clip files, and ffmpeg by hand | Macro of the friction: handwritten note, hand-typed concat command, mouse hovering between tabs | The pivot: one short command in a fresh terminal as the chaos blurs out behind | Terminal streams a multi-shot plan, percentages climb, clip thumbnails materialize in a folder | One polished vertical mp4 alone on a pristine desktop, ready to upload |
+| ![Cluttered Desk Overload](docs/examples/keyframes/keyframe-01-cluttered-desk-overload.png) | ![Manual ffmpeg Round Trip](docs/examples/keyframes/keyframe-02-manual-ffmpeg-round-trip.png) | ![One Clean Command](docs/examples/keyframes/keyframe-03-one-clean-command.png) | ![Plan Streams and Shots Render](docs/examples/keyframes/keyframe-04-plan-streams-and-shots-render.png) | ![Finished Vertical Video Lands](docs/examples/keyframes/keyframe-05-finished-vertical-video-lands.png) |
+| Five glowing Runway dashboard tabs, sticky-note prompt fragments, scattered clip files | The hand-typed `ffmpeg -f concat -safe 0 -i list.txt -c copy output.mp4` while a wall clock reads 15 minutes lost | The pivot: same developer types `runway short-video launch-our-new-feature` in one focused terminal | Plan JSON streams (urban_night / noir / shot_id / type) while three shot progress bars climb | A single polished vertical mp4 tile centered on the desktop, hand drifting up to upload |
 
 ▶ Watch the 30-second motion versions (audio on):
 
