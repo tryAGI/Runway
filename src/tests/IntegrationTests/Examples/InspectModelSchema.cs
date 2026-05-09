@@ -15,7 +15,7 @@ public partial class Tests
     [TestMethod]
     public void Example_ModelSchemaAutoDerivedFromOpenApi()
     {
-        var imageToVideo = RunwayCliModelSchema.Lookup("gen4_turbo");
+        var imageToVideo = RunwayModelSchema.Lookup("gen4_turbo");
         imageToVideo.Should().NotBeEmpty();
         imageToVideo.Should().Contain(e => e.Endpoint == "image_to_video");
         imageToVideo.Single().Parameters.Should().Contain("promptImage");
@@ -23,43 +23,43 @@ public partial class Tests
         imageToVideo.Single().RequiredParameters.Should().NotContain("model");
         imageToVideo.Single().OptionalParameters.Should().Contain("seed");
 
-        var multiEndpoint = RunwayCliModelSchema.Lookup("veo3.1_fast");
+        var multiEndpoint = RunwayModelSchema.Lookup("veo3.1_fast");
         multiEndpoint.Select(e => e.Endpoint).Distinct().Should().BeEquivalentTo(["image_to_video", "text_to_video"]);
         multiEndpoint.First(e => e.Endpoint == "text_to_video").RequiredParameters.Should().Contain(["promptText", "ratio"]);
         multiEndpoint.First(e => e.Endpoint == "image_to_video").RequiredParameters.Should().Contain(["promptImage", "ratio"]);
         multiEndpoint.First(e => e.Endpoint == "text_to_video").OptionalParameters.Should().Contain("audio");
 
-        var gptImage = RunwayCliModelSchema.Lookup("gpt_image_2");
+        var gptImage = RunwayModelSchema.Lookup("gpt_image_2");
         gptImage.Single().Parameters.Should().Contain(["referenceImages", "quality"]);
         gptImage.Single().RequiredParameters.Should().Contain(["promptText", "ratio"]);
         gptImage.Single().OptionalParameters.Should().Contain(["quality", "background"]);
 
-        var withDash = RunwayCliModelSchema.Lookup("gen4-turbo");
+        var withDash = RunwayModelSchema.Lookup("gen4-turbo");
         withDash.Should().BeEquivalentTo(imageToVideo);
 
-        var unknown = RunwayCliModelSchema.Lookup("definitely_not_a_runway_model");
+        var unknown = RunwayModelSchema.Lookup("definitely_not_a_runway_model");
         unknown.Should().BeEmpty();
 
-        var known = RunwayCliModelSchema.KnownModelIds().ToList();
+        var known = RunwayModelSchema.KnownModelIds().ToList();
         known.Should().Contain("gen4_turbo");
         known.Should().Contain("gpt_image_2");
         known.Should().Contain("veo3.1_fast");
 
         // EnsureModelSupportsEndpoint catches mismatches against the spec.
-        var rejection = Action(() => RunwayCliModelSchema.EnsureModelSupportsEndpoint("gpt_image_2", "text_to_video"));
+        var rejection = Action(() => RunwayModelSchema.EnsureModelSupportsEndpoint("gpt_image_2", "text_to_video"));
         rejection.Should().Throw<ArgumentException>().WithMessage("*not supported by `text_to_video`*");
 
         // Correct pairing passes silently.
-        Action(() => RunwayCliModelSchema.EnsureModelSupportsEndpoint("gpt_image_2", "text_to_image"))
+        Action(() => RunwayModelSchema.EnsureModelSupportsEndpoint("gpt_image_2", "text_to_image"))
             .Should().NotThrow();
 
         // Unknown models are allowed through (so brand-new spec entries work without a CLI release).
-        Action(() => RunwayCliModelSchema.EnsureModelSupportsEndpoint("future_model_id", "text_to_image"))
+        Action(() => RunwayModelSchema.EnsureModelSupportsEndpoint("future_model_id", "text_to_image"))
             .Should().NotThrow();
 
         // EnsureRequiredParametersProvided complains when a spec-required param is marked missing,
         // and translates spec property names to the CLI flag the user should add.
-        var missingPromptImage = Action(() => RunwayCliModelSchema.EnsureRequiredParametersProvided(
+        var missingPromptImage = Action(() => RunwayModelSchema.EnsureRequiredParametersProvided(
             "gen3a_turbo",
             "image_to_video",
             new Dictionary<string, bool>
@@ -72,14 +72,14 @@ public partial class Tests
             .WithMessage("*requires promptImage (--image)*");
 
         // DescribeRequiredParam annotates known spec params with their CLI flag.
-        RunwayCliModelSchema.DescribeRequiredParam("referenceImages").Should().Be("referenceImages (--reference-image)");
-        RunwayCliModelSchema.DescribeRequiredParam("duration").Should().Be("duration (--duration)");
-        RunwayCliModelSchema.DescribeRequiredParam("promptText").Should().Be("promptText (--prompt)");
+        RunwayModelSchema.DescribeRequiredParam("referenceImages").Should().Be("referenceImages (--reference-image)");
+        RunwayModelSchema.DescribeRequiredParam("duration").Should().Be("duration (--duration)");
+        RunwayModelSchema.DescribeRequiredParam("promptText").Should().Be("promptText (--prompt)");
         // Unknown spec params fall through to bare name.
-        RunwayCliModelSchema.DescribeRequiredParam("someBrandNewSpecField").Should().Be("someBrandNewSpecField");
+        RunwayModelSchema.DescribeRequiredParam("someBrandNewSpecField").Should().Be("someBrandNewSpecField");
 
         // Spec param the caller didn't list is not enforced (CLI doesn't track every flag).
-        Action(() => RunwayCliModelSchema.EnsureRequiredParametersProvided(
+        Action(() => RunwayModelSchema.EnsureRequiredParametersProvided(
             "gen4_image_turbo",
             "text_to_image",
             new Dictionary<string, bool>
@@ -90,7 +90,7 @@ public partial class Tests
             .Should().NotThrow();
 
         // All required flags satisfied -> passes silently.
-        Action(() => RunwayCliModelSchema.EnsureRequiredParametersProvided(
+        Action(() => RunwayModelSchema.EnsureRequiredParametersProvided(
             "veo3.1_fast",
             "text_to_video",
             new Dictionary<string, bool>
@@ -101,7 +101,7 @@ public partial class Tests
             .Should().NotThrow();
 
         // Unknown model -> passes silently (brand-new spec entries don't break the CLI).
-        Action(() => RunwayCliModelSchema.EnsureRequiredParametersProvided(
+        Action(() => RunwayModelSchema.EnsureRequiredParametersProvided(
             "future_unknown_model",
             "text_to_image",
             new Dictionary<string, bool>()))

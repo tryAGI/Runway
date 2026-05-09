@@ -387,7 +387,7 @@ avatarCommand.Subcommands.Add(videoCommand);
 videoCommand.SetAction((ParseResult parseResult, CancellationToken cancellationToken) =>
     RunWithClientAsync(parseResult, async (client, runwayVersion, ct) =>
     {
-        RunwayCliModelSchema.EnsureModelSupportsEndpoint("gwm1_avatars", "avatar_videos");
+        RunwayModelSchema.EnsureModelSupportsEndpoint("gwm1_avatars", "avatar_videos");
         var text = parseResult.GetValue(textOption);
         var audio = parseResult.GetValue(avatarAudioOption);
         if (audio is not { Length: > 0 } && text is not { Length: > 0 })
@@ -852,7 +852,7 @@ generateVideoCommand.SetAction((ParseResult parseResult, CancellationToken cance
         }
         else if (promptImages is { Length: > 0 } || lastImage is { Length: > 0 })
         {
-            RunwayCliModelSchema.EnsureModelSupportsEndpoint(model ?? string.Empty, "image_to_video");
+            RunwayModelSchema.EnsureModelSupportsEndpoint(model ?? string.Empty, "image_to_video");
             var request = await RunwayCliGeneration.CreateImageToVideoRequestAsync(
                 prompt,
                 model,
@@ -873,7 +873,7 @@ generateVideoCommand.SetAction((ParseResult parseResult, CancellationToken cance
         }
         else
         {
-            RunwayCliModelSchema.EnsureModelSupportsEndpoint(model ?? string.Empty, "text_to_video");
+            RunwayModelSchema.EnsureModelSupportsEndpoint(model ?? string.Empty, "text_to_video");
             var request = RunwayCliGeneration.CreateTextToVideoRequest(
                 prompt,
                 model,
@@ -1078,8 +1078,8 @@ productPhotoshootCreateCommand.SetAction(async (ParseResult parseResult, Cancell
             parseResult.GetValue(imageQualityOption),
             parseResult.GetValue(imageResolutionOption));
         recipeName = ResolveCreativeRecipeName(parseResult, plan);
-        RunwayCliModelSchema.EnsureModelSupportsEndpoint(plan.Model, "text_to_image");
-        RunwayCliModelSchema.EnsureRequiredParametersProvided(plan.Model, "text_to_image", new Dictionary<string, bool>
+        RunwayModelSchema.EnsureModelSupportsEndpoint(plan.Model, "text_to_image");
+        RunwayModelSchema.EnsureRequiredParametersProvided(plan.Model, "text_to_image", new Dictionary<string, bool>
         {
             ["promptText"] = !string.IsNullOrWhiteSpace(plan.SourcePrompt),
             ["ratio"] = !string.IsNullOrWhiteSpace(plan.Ratio),
@@ -1139,8 +1139,8 @@ marketplaceCardsCreateCommand.SetAction(async (ParseResult parseResult, Cancella
             parseResult.GetValue(marketplaceCategoryOption),
             parseResult.GetValue(marketplaceVisualStyleOption));
         recipeName = ResolveCreativeRecipeName(parseResult, plan);
-        RunwayCliModelSchema.EnsureModelSupportsEndpoint(plan.Model, "text_to_image");
-        RunwayCliModelSchema.EnsureRequiredParametersProvided(plan.Model, "text_to_image", new Dictionary<string, bool>
+        RunwayModelSchema.EnsureModelSupportsEndpoint(plan.Model, "text_to_image");
+        RunwayModelSchema.EnsureRequiredParametersProvided(plan.Model, "text_to_image", new Dictionary<string, bool>
         {
             ["promptText"] = !string.IsNullOrWhiteSpace(plan.SourcePrompt),
             ["ratio"] = !string.IsNullOrWhiteSpace(plan.Ratio),
@@ -1204,8 +1204,8 @@ adVideoCreateCommand.SetAction(async (ParseResult parseResult, CancellationToken
             parseResult.GetValue(generationDurationOption));
         recipeName = ResolveCreativeRecipeName(parseResult, plan);
         var adVideoEndpoint = plan.ReferenceImages.Count > 0 ? "image_to_video" : "text_to_video";
-        RunwayCliModelSchema.EnsureModelSupportsEndpoint(plan.Model, adVideoEndpoint);
-        RunwayCliModelSchema.EnsureRequiredParametersProvided(plan.Model, adVideoEndpoint, new Dictionary<string, bool>
+        RunwayModelSchema.EnsureModelSupportsEndpoint(plan.Model, adVideoEndpoint);
+        RunwayModelSchema.EnsureRequiredParametersProvided(plan.Model, adVideoEndpoint, new Dictionary<string, bool>
         {
             ["promptText"] = plan.Jobs.Count > 0 && !string.IsNullOrWhiteSpace(plan.Jobs[0].Prompt),
             ["promptImage"] = plan.ReferenceImages.Count > 0,
@@ -1253,12 +1253,12 @@ generateImageCommand.SetAction((ParseResult parseResult, CancellationToken cance
         var prompt = RunwayCliGeneration.JoinPrompt(parseResult.GetValue(imagePromptArgument));
         var imageModel = parseResult.GetValue(imageModelOption) ?? "gemini-2.5-flash";
         var normalizedImageModel = RunwayCliGeneration.NormalizeTextToImageModel(imageModel);
-        RunwayCliModelSchema.EnsureModelSupportsEndpoint(normalizedImageModel, "text_to_image");
+        RunwayModelSchema.EnsureModelSupportsEndpoint(normalizedImageModel, "text_to_image");
         var ratio = RunwayCliGeneration.ResolveTextToImageRatio(
             parseResult.GetValue(imageRatioOption),
             normalizedImageModel);
         var referenceImages = MergeSoulIdImages(parseResult, parseResult.GetValue(referenceImageOption2));
-        RunwayCliModelSchema.EnsureRequiredParametersProvided(normalizedImageModel, "text_to_image", new Dictionary<string, bool>
+        RunwayModelSchema.EnsureRequiredParametersProvided(normalizedImageModel, "text_to_image", new Dictionary<string, bool>
         {
             ["promptText"] = !string.IsNullOrWhiteSpace(prompt),
             ["ratio"] = !string.IsNullOrWhiteSpace(ratio),
@@ -1358,8 +1358,8 @@ textToVideoCommand.SetAction((ParseResult parseResult, CancellationToken cancell
         if (json is not { Length: > 0 })
         {
             var t2vModel = parseResult.GetValue(videoModelOption) ?? string.Empty;
-            RunwayCliModelSchema.EnsureModelSupportsEndpoint(t2vModel, "text_to_video");
-            RunwayCliModelSchema.EnsureRequiredParametersProvided(t2vModel, "text_to_video", new Dictionary<string, bool>
+            RunwayModelSchema.EnsureModelSupportsEndpoint(t2vModel, "text_to_video");
+            RunwayModelSchema.EnsureRequiredParametersProvided(t2vModel, "text_to_video", new Dictionary<string, bool>
             {
                 ["promptText"] = !string.IsNullOrWhiteSpace(RunwayCliGeneration.JoinPrompt(parseResult.GetValue(textToVideoPromptArgument))),
                 ["ratio"] = true,
@@ -1417,8 +1417,8 @@ imageToVideoCommand.SetAction((ParseResult parseResult, CancellationToken cancel
             var i2vModel = parseResult.GetValue(videoModelOption) ?? string.Empty;
             var i2vPrompt = string.Join(' ', parseResult.GetValue(optionalVideoPromptArgument) ?? []).Trim();
             var i2vImages = MergeSoulIdImages(parseResult, parseResult.GetValue(promptImageOption));
-            RunwayCliModelSchema.EnsureModelSupportsEndpoint(i2vModel, "image_to_video");
-            RunwayCliModelSchema.EnsureRequiredParametersProvided(i2vModel, "image_to_video", new Dictionary<string, bool>
+            RunwayModelSchema.EnsureModelSupportsEndpoint(i2vModel, "image_to_video");
+            RunwayModelSchema.EnsureRequiredParametersProvided(i2vModel, "image_to_video", new Dictionary<string, bool>
             {
                 ["promptText"] = !string.IsNullOrWhiteSpace(i2vPrompt),
                 ["promptImage"] = i2vImages is { Length: > 0 },
@@ -1535,7 +1535,7 @@ rootCommand.Subcommands.Add(characterPerformanceCommand);
 characterPerformanceCommand.SetAction((ParseResult parseResult, CancellationToken cancellationToken) =>
     RunWithClientAsync(parseResult, async (client, runwayVersion, ct) =>
     {
-        RunwayCliModelSchema.EnsureModelSupportsEndpoint("act_two", "character_performance");
+        RunwayModelSchema.EnsureModelSupportsEndpoint("act_two", "character_performance");
         var json = parseResult.GetValue(jsonOption);
         var request = json is { Length: > 0 }
             ? await RunwayCliGeneration.ReadGeneratedJsonAsync<CreateCharacterPerformanceRequest>(json, ct).ConfigureAwait(false)
@@ -1577,7 +1577,7 @@ rootCommand.Subcommands.Add(soundEffectCommand);
 soundEffectCommand.SetAction((ParseResult parseResult, CancellationToken cancellationToken) =>
     RunWithClientAsync(parseResult, async (client, runwayVersion, ct) =>
     {
-        RunwayCliModelSchema.EnsureModelSupportsEndpoint("eleven_text_to_sound_v2", "sound_effect");
+        RunwayModelSchema.EnsureModelSupportsEndpoint("eleven_text_to_sound_v2", "sound_effect");
         var json = parseResult.GetValue(jsonOption);
         var request = json is { Length: > 0 }
             ? await RunwayCliGeneration.ReadGeneratedJsonAsync<CreateSoundEffectRequest>(json, ct).ConfigureAwait(false)
@@ -1636,7 +1636,7 @@ rootCommand.Subcommands.Add(speechToSpeechCommand);
 speechToSpeechCommand.SetAction((ParseResult parseResult, CancellationToken cancellationToken) =>
     RunWithClientAsync(parseResult, async (client, runwayVersion, ct) =>
     {
-        RunwayCliModelSchema.EnsureModelSupportsEndpoint("eleven_multilingual_sts_v2", "speech_to_speech");
+        RunwayModelSchema.EnsureModelSupportsEndpoint("eleven_multilingual_sts_v2", "speech_to_speech");
         var json = parseResult.GetValue(jsonOption);
         var request = json is { Length: > 0 }
             ? await RunwayCliGeneration.ReadGeneratedJsonAsync<CreateSpeechToSpeechRequest>(json, ct).ConfigureAwait(false)
@@ -1669,7 +1669,7 @@ rootCommand.Subcommands.Add(textToSpeechCommand);
 textToSpeechCommand.SetAction((ParseResult parseResult, CancellationToken cancellationToken) =>
     RunWithClientAsync(parseResult, async (client, runwayVersion, ct) =>
     {
-        RunwayCliModelSchema.EnsureModelSupportsEndpoint("eleven_multilingual_v2", "text_to_speech");
+        RunwayModelSchema.EnsureModelSupportsEndpoint("eleven_multilingual_v2", "text_to_speech");
         var json = parseResult.GetValue(jsonOption);
         var request = json is { Length: > 0 }
             ? await RunwayCliGeneration.ReadGeneratedJsonAsync<CreateTextToSpeechRequest>(json, ct).ConfigureAwait(false)
@@ -1708,7 +1708,7 @@ rootCommand.Subcommands.Add(voiceDubbingCommand);
 voiceDubbingCommand.SetAction((ParseResult parseResult, CancellationToken cancellationToken) =>
     RunWithClientAsync(parseResult, async (client, runwayVersion, ct) =>
     {
-        RunwayCliModelSchema.EnsureModelSupportsEndpoint("eleven_voice_dubbing", "voice_dubbing");
+        RunwayModelSchema.EnsureModelSupportsEndpoint("eleven_voice_dubbing", "voice_dubbing");
         var json = parseResult.GetValue(jsonOption);
         var request = json is { Length: > 0 }
             ? await RunwayCliGeneration.ReadGeneratedJsonAsync<CreateVoiceDubbingRequest>(json, ct).ConfigureAwait(false)
@@ -1737,7 +1737,7 @@ rootCommand.Subcommands.Add(voiceIsolationCommand);
 voiceIsolationCommand.SetAction((ParseResult parseResult, CancellationToken cancellationToken) =>
     RunWithClientAsync(parseResult, async (client, runwayVersion, ct) =>
     {
-        RunwayCliModelSchema.EnsureModelSupportsEndpoint("eleven_voice_isolation", "voice_isolation");
+        RunwayModelSchema.EnsureModelSupportsEndpoint("eleven_voice_isolation", "voice_isolation");
         var json = parseResult.GetValue(jsonOption);
         var request = json is { Length: > 0 }
             ? await RunwayCliGeneration.ReadGeneratedJsonAsync<CreateVoiceIsolationRequest>(json, ct).ConfigureAwait(false)
@@ -2161,7 +2161,7 @@ realtimeCommand.Subcommands.Add(createRealtimeCommand);
 createRealtimeCommand.SetAction((ParseResult parseResult, CancellationToken cancellationToken) =>
     RunWithClientAsync(parseResult, async (client, runwayVersion, ct) =>
     {
-        RunwayCliModelSchema.EnsureModelSupportsEndpoint("gwm1_avatars", "realtime_sessions");
+        RunwayModelSchema.EnsureModelSupportsEndpoint("gwm1_avatars", "realtime_sessions");
         var json = parseResult.GetValue(jsonOption);
         var request = json is { Length: > 0 }
             ? await RunwayCliGeneration.ReadGeneratedJsonAsync<CreateRealtimeSessionsRequest>(json, ct).ConfigureAwait(false)
@@ -2678,7 +2678,7 @@ modelsCommand.Subcommands.Add(modelSchemaCommand);
 modelSchemaCommand.SetAction(parseResult =>
 {
     var model = parseResult.GetValue(modelSchemaIdArgument) ?? string.Empty;
-    var entries = RunwayCliModelSchema.Lookup(model);
+    var entries = RunwayModelSchema.Lookup(model);
     if (entries.Count == 0)
     {
         Console.WriteLine($"model: {model}");

@@ -281,6 +281,35 @@ var response = await client.StartGenerating.CreateGptImage2TextToImageAsync(
     });
 ```
 
+### Model Schema
+
+The Runway OpenAPI spec is embedded in the SDK assembly, and `RunwayModelSchema` exposes per-model endpoint metadata so apps can discover model capabilities without hand-writing a catalog or shelling out to the CLI.
+
+```csharp
+using Runway;
+
+foreach (var entry in RunwayModelSchema.Lookup("gen4_turbo"))
+{
+    Console.WriteLine($"{entry.Endpoint}: required={string.Join(",", entry.RequiredParameters)}");
+}
+
+// Validate a chosen model against an endpoint before issuing a request:
+RunwayModelSchema.EnsureModelSupportsEndpoint("gpt_image_2", "text_to_image");
+
+// Validate that the user's inputs satisfy the spec's required-set for the chosen model:
+RunwayModelSchema.EnsureRequiredParametersProvided(
+    modelId: "gen4_image_turbo",
+    endpoint: "text_to_image",
+    providedFlags: new Dictionary<string, bool>
+    {
+        ["promptText"] = !string.IsNullOrEmpty(prompt),
+        ["ratio"] = !string.IsNullOrEmpty(ratio),
+        ["referenceImages"] = referenceImages.Length > 0,
+    });
+```
+
+Unknown model ids pass through silently so brand-new spec entries don't break existing callers. The CLI uses this same API to power `runway models schema <model>` and the pre-flight validators on every generation command.
+
 ### CLI
 
 This repository includes a local .NET tool project for Runway generation, task management, uploads, documents, voices, realtime sessions, organization usage, workflows, and avatar workflows. It reads `RUNWAY_API_KEY`, `RUNWAYML_API_SECRET`, or the nearest `.env` file by default.

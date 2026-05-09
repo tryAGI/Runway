@@ -1,23 +1,36 @@
 using System.Text.Json;
 
-internal sealed record RunwayCliModelEndpoint(
+namespace Runway;
+
+/// <summary>
+/// One row of the Runway model→endpoint mapping derived from the embedded OpenAPI spec.
+/// </summary>
+public sealed record RunwayModelEndpoint(
     string Endpoint,
     IReadOnlyList<string> RequiredParameters,
     IReadOnlyList<string> OptionalParameters)
 {
+    /// <summary>
+    /// All parameters the endpoint accepts for this model — required first, then optional.
+    /// </summary>
     public IEnumerable<string> Parameters => RequiredParameters.Concat(OptionalParameters);
 }
 
-internal static class RunwayCliModelSchema
+/// <summary>
+/// Reads the Runway OpenAPI spec embedded in this assembly and exposes per-model endpoint metadata
+/// (which endpoints accept which model id, plus required/optional request parameters per variant).
+/// Designed for SDK consumers that want to discover model capabilities programmatically without
+/// shelling out to <c>runway models schema</c> or hand-writing a model catalog.
+/// </summary>
+public static class RunwayModelSchema
 {
-    private const string EmbeddedSpecResource = "Runway.Cli.openapi.json";
+    private const string EmbeddedSpecResource = "Runway.openapi.json";
 
-    private static readonly Lazy<IReadOnlyDictionary<string, IReadOnlyList<RunwayCliModelEndpoint>>> Map = new(LoadMap);
+    private static readonly Lazy<Dictionary<string, IReadOnlyList<RunwayModelEndpoint>>> Map = new(LoadMap);
 
     /// <summary>
-    /// Maps spec property names (as they appear in the OpenAPI request body) to the CLI flag the
-    /// user should add to satisfy them. Used to make missing-required errors actionable for humans
-    /// without forcing them to translate spec names to flag names.
+    /// Maps spec property names to the CLI flag the user should add to satisfy them.
+    /// Used by <see cref="EnsureRequiredParametersProvided"/> to render actionable errors.
     /// </summary>
     private static readonly Dictionary<string, string> SpecParamToCliFlag = new(StringComparer.Ordinal)
     {
@@ -50,10 +63,12 @@ internal static class RunwayCliModelSchema
         ["contentModeration"] = "--public-figure-threshold",
     };
 
-    public static string DescribeRequiredParam(string specName) =>
-        SpecParamToCliFlag.TryGetValue(specName, out var flag) ? $"{specName} ({flag})" : specName;
-
-    public static IReadOnlyList<RunwayCliModelEndpoint> Lookup(string modelId)
+    /// <summary>
+    /// Returns the endpoints that accept <paramref name="modelId"/> per the embedded OpenAPI spec.
+    /// Empty when the model id is unknown. Dash and underscore are interchangeable
+    /// (e.g. <c>gen4-turbo</c> and <c>gen4_turbo</c> both resolve).
+    /// </summary>
+    public static IReadOnlyList<RunwayModelEndpoint> Lookup(string modelId)
     {
         if (string.IsNullOrWhiteSpace(modelId))
         {
@@ -70,17 +85,111 @@ internal static class RunwayCliModelSchema
         return map.TryGetValue(normalized, out entries) ? entries : [];
     }
 
+    /// <summary>
+    /// Enumerates every model id discovered in the embedded spec.
+    /// </summary>
     public static IEnumerable<string> KnownModelIds() => Map.Value.Keys;
 
-    private static IReadOnlyDictionary<string, IReadOnlyList<RunwayCliModelEndpoint>> LoadMap()
+    /// <summary>
+    /// Annotates a spec property name with the CLI flag a Runway.Cli user should add (e.g.
+    /// <c>"promptImage"</c> → <c>"promptImage (--image)"</c>). Unknown spec names fall through to
+    /// the bare property name.
+    /// </summary>
+    public static string DescribeRequiredParam(string specName) =>
+        SpecParamToCliFlag.TryGetValue(specName, out var flag) ? $"{specName} ({flag})" : specName;
+
+    /// <summary>
+    /// Throws when <paramref name="modelId"/> is known but not accepted by <paramref name="endpoint"/>.
+    /// Unknown models pass through silently so brand-new spec entries don't break callers.
+    /// </summary>
+    public static void EnsureModelSupportsEndpoint(string modelId, string endpoint)
     {
-        var assembly = typeof(RunwayCliModelSchema).Assembly;
+        if (string.IsNullOrWhiteSpace(modelId))
+        {
+            return;
+        }
+
+        var entries = Lookup(modelId);
+        if (entries.Count == 0)
+        {
+            return;
+        }
+
+        var endpoints = entries.Select(static e => e.Endpoint).Distinct(StringComparer.Ordinal).ToList();
+        if (endpoints.Contains(endpoint, StringComparer.Ordinal))
+        {
+            return;
+        }
+
+        throw new ArgumentException(
+            $"Model `{modelId}` is not supported by `{endpoint}` per the Runway OpenAPI spec. Supported endpoints: {string.Join(", ", endpoints)}.");
+    }
+
+    /// <summary>
+    /// Validates that every spec-required parameter for the chosen <paramref name="modelId"/> on
+    /// <paramref name="endpoint"/> is marked as provided in <paramref name="providedFlags"/>. A param is
+    /// only checked if the caller listed it in the dictionary — unknown params (not tracked by the
+    /// caller) are not enforced. Unknown models pass through so brand-new spec entries don't break.
+    /// </summary>
+    public static void EnsureRequiredParametersProvided(
+        string modelId,
+        string endpoint,
+        IReadOnlyDictionary<string, bool> providedFlags)
+    {
+        ArgumentNullException.ThrowIfNull(providedFlags);
+
+        if (string.IsNullOrWhiteSpace(modelId))
+        {
+            return;
+        }
+
+        var entries = Lookup(modelId);
+        if (entries.Count == 0)
+        {
+            return;
+        }
+
+        RunwayModelEndpoint? entry = null;
+        foreach (var candidate in entries)
+        {
+            if (string.Equals(candidate.Endpoint, endpoint, StringComparison.Ordinal))
+            {
+                entry = candidate;
+                break;
+            }
+        }
+
+        if (entry is null)
+        {
+            return;
+        }
+
+        var missing = new List<string>();
+        foreach (var required in entry.RequiredParameters)
+        {
+            if (providedFlags.TryGetValue(required, out var present) && !present)
+            {
+                missing.Add(required);
+            }
+        }
+
+        if (missing.Count > 0)
+        {
+            var rendered = string.Join(", ", missing.Select(DescribeRequiredParam));
+            throw new ArgumentException(
+                $"Model `{modelId}` on `{endpoint}` requires {rendered} per the Runway OpenAPI spec. Run `runway models schema {modelId}` for the full parameter list.");
+        }
+    }
+
+    private static Dictionary<string, IReadOnlyList<RunwayModelEndpoint>> LoadMap()
+    {
+        var assembly = typeof(RunwayModelSchema).Assembly;
         using var stream = assembly.GetManifestResourceStream(EmbeddedSpecResource)
-            ?? throw new InvalidOperationException($"Embedded resource `{EmbeddedSpecResource}` missing from Runway.Cli.");
+            ?? throw new InvalidOperationException($"Embedded resource `{EmbeddedSpecResource}` missing from Runway assembly.");
         using var document = JsonDocument.Parse(stream, new JsonDocumentOptions { CommentHandling = JsonCommentHandling.Skip });
         var root = document.RootElement.Clone();
 
-        var result = new Dictionary<string, List<RunwayCliModelEndpoint>>(StringComparer.OrdinalIgnoreCase);
+        var result = new Dictionary<string, List<RunwayModelEndpoint>>(StringComparer.OrdinalIgnoreCase);
 
         if (!root.TryGetProperty("paths", out var paths) || paths.ValueKind != JsonValueKind.Object)
         {
@@ -157,90 +266,13 @@ internal static class RunwayCliModelSchema
                             result[modelId] = list;
                         }
 
-                        list.Add(new RunwayCliModelEndpoint(endpointName, requiredParams, optionalParams));
+                        list.Add(new RunwayModelEndpoint(endpointName, requiredParams, optionalParams));
                     }
                 }
             }
         }
 
         return ToReadOnly(result);
-    }
-
-    public static void EnsureModelSupportsEndpoint(string modelId, string endpoint)
-    {
-        if (string.IsNullOrWhiteSpace(modelId))
-        {
-            return;
-        }
-
-        var entries = Lookup(modelId);
-        if (entries.Count == 0)
-        {
-            return;
-        }
-
-        var endpoints = entries.Select(static e => e.Endpoint).Distinct(StringComparer.Ordinal).ToList();
-        if (endpoints.Contains(endpoint, StringComparer.Ordinal))
-        {
-            return;
-        }
-
-        throw new ArgumentException(
-            $"Model `{modelId}` is not supported by `{endpoint}` per the Runway OpenAPI spec. Supported endpoints: {string.Join(", ", endpoints)}.");
-    }
-
-    /// <summary>
-    /// Validates that every spec-required parameter for the chosen <paramref name="modelId"/> on
-    /// <paramref name="endpoint"/> is marked as provided in <paramref name="providedFlags"/>. A param is
-    /// only checked if the caller listed it in the dictionary — unknown params (CLI doesn't track them)
-    /// are not enforced. Unknown models pass through so brand-new spec entries don't break the CLI.
-    /// </summary>
-    public static void EnsureRequiredParametersProvided(
-        string modelId,
-        string endpoint,
-        IReadOnlyDictionary<string, bool> providedFlags)
-    {
-        if (string.IsNullOrWhiteSpace(modelId))
-        {
-            return;
-        }
-
-        var entries = Lookup(modelId);
-        if (entries.Count == 0)
-        {
-            return;
-        }
-
-        RunwayCliModelEndpoint? entry = null;
-        foreach (var candidate in entries)
-        {
-            if (string.Equals(candidate.Endpoint, endpoint, StringComparison.Ordinal))
-            {
-                entry = candidate;
-                break;
-            }
-        }
-
-        if (entry is null)
-        {
-            return;
-        }
-
-        var missing = new List<string>();
-        foreach (var required in entry.RequiredParameters)
-        {
-            if (providedFlags.TryGetValue(required, out var present) && !present)
-            {
-                missing.Add(required);
-            }
-        }
-
-        if (missing.Count > 0)
-        {
-            var rendered = string.Join(", ", missing.Select(DescribeRequiredParam));
-            throw new ArgumentException(
-                $"Model `{modelId}` on `{endpoint}` requires {rendered} per the Runway OpenAPI spec. Run `runway models schema {modelId}` for the full parameter list.");
-        }
     }
 
     private static HashSet<string> ReadRequiredSet(JsonElement variant)
@@ -353,10 +385,10 @@ internal static class RunwayCliModelSchema
         return Resolve(node, root, depth + 1);
     }
 
-    private static IReadOnlyDictionary<string, IReadOnlyList<RunwayCliModelEndpoint>> ToReadOnly(
-        Dictionary<string, List<RunwayCliModelEndpoint>> source)
+    private static Dictionary<string, IReadOnlyList<RunwayModelEndpoint>> ToReadOnly(
+        Dictionary<string, List<RunwayModelEndpoint>> source)
     {
-        var copy = new Dictionary<string, IReadOnlyList<RunwayCliModelEndpoint>>(source.Count, StringComparer.OrdinalIgnoreCase);
+        var copy = new Dictionary<string, IReadOnlyList<RunwayModelEndpoint>>(source.Count, StringComparer.OrdinalIgnoreCase);
         foreach (var kvp in source)
         {
             copy[kvp.Key] = kvp.Value;

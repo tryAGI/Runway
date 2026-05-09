@@ -13,4 +13,8 @@
     <PackageReference Include="Microsoft.Extensions.AI.Abstractions" Version="10.5.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <EmbeddedResource Include="openapi.json" LogicalName="Runway.openapi.json" />
+  </ItemGroup>
+
 </Project>
