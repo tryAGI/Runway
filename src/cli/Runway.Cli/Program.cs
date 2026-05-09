@@ -1051,6 +1051,57 @@ shortVideoRunCommand.SetAction(async (ParseResult parseResult, CancellationToken
     return await RunShortVideoPlanAsync(parseResult, plan, options, output, cancellationToken).ConfigureAwait(false);
 });
 
+var shortVideoDiffPlanAOption = new Argument<string>("plan-a")
+{
+    Description = "First short-video plan JSON file path. Pass '-' to read from stdin.",
+};
+var shortVideoDiffPlanBOption = new Argument<string>("plan-b")
+{
+    Description = "Second short-video plan JSON file path. Pass '-' to read from stdin (only one of plan-a / plan-b can be stdin).",
+};
+var shortVideoDiffJsonOption = new Option<bool>("--json")
+{
+    Description = "Emit machine-readable JSON instead of the default human-readable text.",
+};
+var shortVideoDiffCommand = new Command("diff", "Compare two short-video plan JSON files and print the per-field differences.")
+{
+    shortVideoDiffPlanAOption,
+    shortVideoDiffPlanBOption,
+    shortVideoDiffJsonOption,
+};
+shortVideoCommand.Subcommands.Add(shortVideoDiffCommand);
+shortVideoDiffCommand.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
+{
+    RunwayShortVideoPlan planA;
+    RunwayShortVideoPlan planB;
+    try
+    {
+        planA = await RunwayCliShortVideo.ReadPlanAsync(
+            parseResult.GetValue(shortVideoDiffPlanAOption) ?? throw new ArgumentException("Missing required argument plan-a."),
+            cancellationToken).ConfigureAwait(false);
+        planB = await RunwayCliShortVideo.ReadPlanAsync(
+            parseResult.GetValue(shortVideoDiffPlanBOption) ?? throw new ArgumentException("Missing required argument plan-b."),
+            cancellationToken).ConfigureAwait(false);
+    }
+    catch (Exception ex)
+    {
+        await WriteErrorAsync(ex).ConfigureAwait(false);
+        return 1;
+    }
+
+    var diff = RunwayCliShortVideoDiff.Compute(planA, planB);
+    var rendered = parseResult.GetValue(shortVideoDiffJsonOption)
+        ? RunwayCliShortVideoDiff.RenderJson(diff)
+        : RunwayCliShortVideoDiff.RenderText(diff);
+    Console.Write(rendered);
+    if (!rendered.EndsWith('\n'))
+    {
+        Console.WriteLine();
+    }
+
+    return 0;
+});
+
 var productPhotoshootCommand = new Command("product-photoshoot", "Plan and generate Runway-native product photoshoot image recipes.");
 rootCommand.Subcommands.Add(productPhotoshootCommand);
 var productPhotoshootCreateCommand = new Command("create", "Create product photoshoot prompts and optionally generate images.")
