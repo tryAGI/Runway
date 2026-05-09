@@ -851,6 +851,7 @@ generateVideoCommand.SetAction((ParseResult parseResult, CancellationToken cance
         }
         else if (promptImages is { Length: > 0 } || lastImage is { Length: > 0 })
         {
+            RunwayCliModelSchema.EnsureModelSupportsEndpoint(model ?? string.Empty, "image_to_video");
             var request = await RunwayCliGeneration.CreateImageToVideoRequestAsync(
                 prompt,
                 model,
@@ -871,6 +872,7 @@ generateVideoCommand.SetAction((ParseResult parseResult, CancellationToken cance
         }
         else
         {
+            RunwayCliModelSchema.EnsureModelSupportsEndpoint(model ?? string.Empty, "text_to_video");
             var request = RunwayCliGeneration.CreateTextToVideoRequest(
                 prompt,
                 model,
@@ -1227,6 +1229,7 @@ generateImageCommand.SetAction((ParseResult parseResult, CancellationToken cance
         var prompt = RunwayCliGeneration.JoinPrompt(parseResult.GetValue(imagePromptArgument));
         var imageModel = parseResult.GetValue(imageModelOption) ?? "gemini-2.5-flash";
         var normalizedImageModel = RunwayCliGeneration.NormalizeTextToImageModel(imageModel);
+        RunwayCliModelSchema.EnsureModelSupportsEndpoint(normalizedImageModel, "text_to_image");
         var ratio = RunwayCliGeneration.ResolveTextToImageRatio(
             parseResult.GetValue(imageRatioOption),
             normalizedImageModel);
@@ -1322,6 +1325,11 @@ textToVideoCommand.SetAction((ParseResult parseResult, CancellationToken cancell
     RunWithClientAsync(parseResult, async (client, runwayVersion, ct) =>
     {
         var json = parseResult.GetValue(jsonOption);
+        if (json is not { Length: > 0 })
+        {
+            RunwayCliModelSchema.EnsureModelSupportsEndpoint(parseResult.GetValue(videoModelOption) ?? string.Empty, "text_to_video");
+        }
+
         var taskId = json is { Length: > 0 }
             ? await PostGenerationJsonAsync(client, runwayVersion, "v1/text_to_video", await RunwayCliGeneration.ReadJsonTextAsync(json, ct).ConfigureAwait(false), ct).ConfigureAwait(false)
             : (await client.StartGenerating.CreateTextToVideoAsync(
@@ -1367,6 +1375,11 @@ imageToVideoCommand.SetAction((ParseResult parseResult, CancellationToken cancel
     RunWithClientAsync(parseResult, async (client, runwayVersion, ct) =>
     {
         var json = parseResult.GetValue(jsonOption);
+        if (json is not { Length: > 0 })
+        {
+            RunwayCliModelSchema.EnsureModelSupportsEndpoint(parseResult.GetValue(videoModelOption) ?? string.Empty, "image_to_video");
+        }
+
         var request = json is { Length: > 0 }
             ? await RunwayCliGeneration.ReadGeneratedJsonAsync<CreateImageToVideoRequest>(json, ct).ConfigureAwait(false)
             : await RunwayCliGeneration.CreateImageToVideoRequestAsync(
@@ -2625,13 +2638,24 @@ modelSchemaCommand.SetAction(parseResult =>
         .OrderBy(static e => e, StringComparer.Ordinal);
     Console.WriteLine($"endpoints: {string.Join(", ", endpointNames)}");
 
-    var allParams = entries.SelectMany(static e => e.Parameters)
+    var requiredUnion = entries.SelectMany(static e => e.RequiredParameters)
         .Distinct(StringComparer.Ordinal)
         .OrderBy(static p => p, StringComparer.Ordinal)
         .ToList();
-    if (allParams.Count > 0)
+    var optionalUnion = entries.SelectMany(static e => e.OptionalParameters)
+        .Distinct(StringComparer.Ordinal)
+        .Except(requiredUnion, StringComparer.Ordinal)
+        .OrderBy(static p => p, StringComparer.Ordinal)
+        .ToList();
+
+    if (requiredUnion.Count > 0)
     {
-        Console.WriteLine($"parameters: {string.Join(", ", allParams)}");
+        Console.WriteLine($"required: {string.Join(", ", requiredUnion)}");
+    }
+
+    if (optionalUnion.Count > 0)
+    {
+        Console.WriteLine($"optional: {string.Join(", ", optionalUnion)}");
     }
 
     if (entries.Count > 1)
@@ -2640,7 +2664,11 @@ modelSchemaCommand.SetAction(parseResult =>
         Console.WriteLine("per-endpoint:");
         foreach (var entry in entries.OrderBy(static e => e.Endpoint, StringComparer.Ordinal))
         {
-            Console.WriteLine($"  {entry.Endpoint}: {string.Join(", ", entry.Parameters)}");
+            var required = entry.RequiredParameters.Count > 0 ? string.Join(", ", entry.RequiredParameters) : "(none)";
+            var optional = entry.OptionalParameters.Count > 0 ? string.Join(", ", entry.OptionalParameters) : "(none)";
+            Console.WriteLine($"  {entry.Endpoint}");
+            Console.WriteLine($"    required: {required}");
+            Console.WriteLine($"    optional: {optional}");
         }
     }
 

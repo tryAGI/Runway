@@ -1,6 +1,12 @@
 using System.Text.Json;
 
-internal sealed record RunwayCliModelEndpoint(string Endpoint, IReadOnlyList<string> Parameters);
+internal sealed record RunwayCliModelEndpoint(
+    string Endpoint,
+    IReadOnlyList<string> RequiredParameters,
+    IReadOnlyList<string> OptionalParameters)
+{
+    public IEnumerable<string> Parameters => RequiredParameters.Concat(OptionalParameters);
+}
 
 internal static class RunwayCliModelSchema
 {
@@ -81,16 +87,28 @@ internal static class RunwayCliModelSchema
                     }
 
                     var modelResolved = Resolve(modelProperty, root);
-                    var paramNames = new List<string>();
+                    var requiredSet = ReadRequiredSet(variant);
+                    var requiredParams = new List<string>();
+                    var optionalParams = new List<string>();
                     foreach (var prop in properties.EnumerateObject())
                     {
-                        if (!string.Equals(prop.Name, "model", StringComparison.Ordinal))
+                        if (string.Equals(prop.Name, "model", StringComparison.Ordinal))
                         {
-                            paramNames.Add(prop.Name);
+                            continue;
+                        }
+
+                        if (requiredSet.Contains(prop.Name))
+                        {
+                            requiredParams.Add(prop.Name);
+                        }
+                        else
+                        {
+                            optionalParams.Add(prop.Name);
                         }
                     }
 
-                    paramNames.Sort(StringComparer.Ordinal);
+                    requiredParams.Sort(StringComparer.Ordinal);
+                    optionalParams.Sort(StringComparer.Ordinal);
 
                     foreach (var modelId in EnumerateModelIds(modelResolved))
                     {
@@ -100,13 +118,57 @@ internal static class RunwayCliModelSchema
                             result[modelId] = list;
                         }
 
-                        list.Add(new RunwayCliModelEndpoint(endpointName, paramNames));
+                        list.Add(new RunwayCliModelEndpoint(endpointName, requiredParams, optionalParams));
                     }
                 }
             }
         }
 
         return ToReadOnly(result);
+    }
+
+    public static void EnsureModelSupportsEndpoint(string modelId, string endpoint)
+    {
+        if (string.IsNullOrWhiteSpace(modelId))
+        {
+            return;
+        }
+
+        var entries = Lookup(modelId);
+        if (entries.Count == 0)
+        {
+            return;
+        }
+
+        var endpoints = entries.Select(static e => e.Endpoint).Distinct(StringComparer.Ordinal).ToList();
+        if (endpoints.Contains(endpoint, StringComparer.Ordinal))
+        {
+            return;
+        }
+
+        throw new ArgumentException(
+            $"Model `{modelId}` is not supported by `{endpoint}` per the Runway OpenAPI spec. Supported endpoints: {string.Join(", ", endpoints)}.");
+    }
+
+    private static HashSet<string> ReadRequiredSet(JsonElement variant)
+    {
+        var set = new HashSet<string>(StringComparer.Ordinal);
+        if (variant.ValueKind != JsonValueKind.Object ||
+            !variant.TryGetProperty("required", out var required) ||
+            required.ValueKind != JsonValueKind.Array)
+        {
+            return set;
+        }
+
+        foreach (var value in required.EnumerateArray())
+        {
+            if (value.ValueKind == JsonValueKind.String && value.GetString() is { Length: > 0 } name)
+            {
+                set.Add(name);
+            }
+        }
+
+        return set;
     }
 
     private static IEnumerable<string> EnumerateModelIds(JsonElement modelSchema)
