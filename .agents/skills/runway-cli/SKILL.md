@@ -116,6 +116,59 @@ What `short-video` does:
 
 Use `--planner auto` for normal work. Auto planning tries Claude Code first, then Codex CLI, then the built-in planner. Use `--planner deterministic` only for CI, demos that must be repeatable, or environments with no external planner access. Use `--plan-only` when the user wants to review the idea before spending credits.
 
+### Marketing Brief (`MARKETING.md`)
+
+`short-video` reads `./MARKETING.md` from the working directory before planning. When present, the brief's audience, tone, CTA, and proof points are injected into the Claude/Codex planner prompt so generated shots reflect the campaign — not just the scenario string. When absent, the CLI prompts the user for the gaps interactively (skipped automatically when stdin is redirected, e.g. in CI) and writes the answers back to `./MARKETING.md`. Pass `--no-interactive` to skip the questionnaire entirely; the brief is loaded from disk if it exists, otherwise the planner runs without one. The brief's `Format.AspectRatio` field also auto-fills `--ratio` when the flag is omitted, so a YouTube-Shorts-targeted brief doesn't need `--ratio 720:1280` repeated on every invocation.
+
+Template (lives at the repo root or run cwd):
+
+```markdown
+# MARKETING.md
+## Product
+- One-liner:
+- Category:
+## Audience
+- Persona:
+- Awareness stage: problem-aware | solution-aware | product-aware
+- Pain points:
+## Goal
+- Primary objective: awareness | leads | activation | conversion
+- Call to action:
+- Success metric:
+## Message
+- Core value proposition:
+- Differentiators:
+- Proof points:
+## Voice
+- Tone:
+- Words to avoid:
+## Format
+- Platform: youtube-shorts | tiktok | reels | instagram-feed | x | linkedin | web
+- Aspect ratio:
+- Length seconds:
+- Captions on screen: yes | no
+```
+
+Concrete BEFORE/AFTER language in `Message.Differentiators` measurably improves the planner's shot beats — vague "marketing-brief aware planning" produced abstract floating-storyboard shots; explicit "show a chaotic desktop with five dashboard tabs, then one clean terminal" produced grounded demo imagery. See `MARKETING.md` at the Runway repo root for a worked example.
+
+### Keyframes Mode (`--keyframes`)
+
+For higher visual fidelity, swap pure text-to-video for an image-then-animate chain:
+
+```bash
+dnx Runway.Cli short-video "..." \
+  --shots 5 --duration 6 --ratio 720:1280 --audio \
+  --planner auto \
+  --keyframes gemini-image3-pro \
+  --output ./artifacts
+```
+
+When `--keyframes <image-model>` is set, the CLI generates one high-quality keyframe still per shot via `runway image` with that model and the shot's `keyframePrompt`, then animates the keyframe via `image-to-video` using `--model` and the shot's `videoPrompt`. The image ratio is auto-picked as the smallest supported aspect within 5% of `--ratio` — a 720:1280 video target with `gemini-image3-pro` resolves to `768:1344` keyframes (1 MP) instead of the model's 16-MP-class options. Supported `--keyframes` values mirror `runway image --model`: `gemini-image3-pro` (Nano Banana Pro), `gpt-image-2`, `gemini-2.5-flash`, `gen4-image`, `gen4-image-turbo`. Each keyframe is saved alongside the shot mp4 as `keyframe-NN.png` so the user can inspect and re-roll a single shot via `runway image-to-video --image keyframe-03.png …` without redoing the whole run.
+
+Use `--keyframes` when the user wants polished, brand-consistent visuals (product launches, pitch reels, hero animations). Skip it for fast iteration or when the scenario is purely motion-driven (chase, reveal, cinematic action).
+
+The image model also benefits from per-model `--ratio` validation: passing an unsupported aspect now fails fast with the supported list, instead of the API silently defaulting to `1024:1024`.
+
 Keep prompts friendly for non-technical users. Talk about outcomes, products, customers, creators, shops, campaigns, listings, and videos. Avoid implementation language such as SDK, endpoint, schema, CLI internals, auth, generated code, tests, or workflow names unless the user explicitly asks for that.
 
 Good user-facing short-video prompts:
