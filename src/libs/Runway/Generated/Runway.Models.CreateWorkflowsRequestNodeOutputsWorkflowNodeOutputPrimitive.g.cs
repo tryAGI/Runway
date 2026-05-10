@@ -51,5 +51,6 @@ namespace Runway
         public CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputPrimitive()
         {
         }
+
     }
 }

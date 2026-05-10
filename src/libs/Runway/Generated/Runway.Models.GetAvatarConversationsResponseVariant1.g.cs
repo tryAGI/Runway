@@ -155,5 +155,6 @@ namespace Runway
         public GetAvatarConversationsResponseVariant1()
         {
         }
+
     }
 }

@@ -53,5 +53,18 @@ namespace Runway
         public CreateAvatarVideosRequestAvatarRunwayPresetAvatar()
         {
         }
+
+        /// <summary>
+        /// Creates a new <see cref="CreateAvatarVideosRequestAvatarRunwayPresetAvatar"/> from its single non-const required field,
+        /// hardcoding any const discriminator fields.
+        /// </summary>
+        public static CreateAvatarVideosRequestAvatarRunwayPresetAvatar FromPresetId(global::Runway.CreateAvatarVideosRequestAvatarRunwayPresetAvatarPresetId presetId)
+        {
+            return new CreateAvatarVideosRequestAvatarRunwayPresetAvatar
+            {
+                PresetId = presetId,
+            };
+        }
+
     }
 }

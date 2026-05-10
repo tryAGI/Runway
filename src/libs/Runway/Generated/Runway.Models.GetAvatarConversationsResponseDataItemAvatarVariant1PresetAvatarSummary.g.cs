@@ -64,5 +64,6 @@ namespace Runway
         public GetAvatarConversationsResponseDataItemAvatarVariant1PresetAvatarSummary()
         {
         }
+
     }
 }

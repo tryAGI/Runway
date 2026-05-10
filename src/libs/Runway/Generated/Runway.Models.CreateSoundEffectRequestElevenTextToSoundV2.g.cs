@@ -76,5 +76,18 @@ namespace Runway
         public CreateSoundEffectRequestElevenTextToSoundV2()
         {
         }
+
+        /// <summary>
+        /// Creates a new <see cref="CreateSoundEffectRequestElevenTextToSoundV2"/> from its single non-const required field,
+        /// hardcoding any const discriminator fields.
+        /// </summary>
+        public static CreateSoundEffectRequestElevenTextToSoundV2 FromPromptText(string promptText)
+        {
+            return new CreateSoundEffectRequestElevenTextToSoundV2
+            {
+                PromptText = promptText,
+            };
+        }
+
     }
 }

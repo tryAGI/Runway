@@ -55,5 +55,6 @@ namespace Runway
         public CreateOrganizationUsageResponseResultUsedCredit()
         {
         }
+
     }
 }

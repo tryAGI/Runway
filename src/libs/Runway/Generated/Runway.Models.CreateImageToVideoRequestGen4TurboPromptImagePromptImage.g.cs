@@ -57,5 +57,18 @@ namespace Runway
         public CreateImageToVideoRequestGen4TurboPromptImagePromptImage()
         {
         }
+
+        /// <summary>
+        /// Creates a new <see cref="CreateImageToVideoRequestGen4TurboPromptImagePromptImage"/> from its single non-const required field,
+        /// hardcoding any const discriminator fields.
+        /// </summary>
+        public static CreateImageToVideoRequestGen4TurboPromptImagePromptImage FromUri(string uri)
+        {
+            return new CreateImageToVideoRequestGen4TurboPromptImagePromptImage
+            {
+                Uri = uri,
+            };
+        }
+
     }
 }

@@ -45,6 +45,13 @@ namespace Runway
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.CreateAvatarVideosRequestSpeechAudioInput PickAudio() => IsAudio
+            ? Audio!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Audio' but the value was {ToString()}.");
+
+        /// <summary>
         /// Provide text for the avatar to speak via TTS.
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -73,6 +80,13 @@ namespace Runway
             value = Text;
             return IsText;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.CreateAvatarVideosRequestSpeechTextInput PickText() => IsText
+            ? Text!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Text' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

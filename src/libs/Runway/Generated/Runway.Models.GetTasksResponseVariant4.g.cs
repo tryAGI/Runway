@@ -74,5 +74,6 @@ namespace Runway
         public GetTasksResponseVariant4()
         {
         }
+
     }
 }

@@ -45,6 +45,13 @@ namespace Runway
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.GetAvatarConversationsResponseVariant1 PickInProgress() => IsInProgress
+            ? InProgress!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'InProgress' but the value was {ToString()}.");
+
+        /// <summary>
         /// A conversation that completed successfully.
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -75,6 +82,13 @@ namespace Runway
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.GetAvatarConversationsResponseVariant2 PickEnded() => IsEnded
+            ? Ended!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Ended' but the value was {ToString()}.");
+
+        /// <summary>
         /// A conversation that ended due to an error.
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -103,6 +117,13 @@ namespace Runway
             value = Failed;
             return IsFailed;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.GetAvatarConversationsResponseVariant3 PickFailed() => IsFailed
+            ? Failed!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Failed' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

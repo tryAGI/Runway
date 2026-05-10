@@ -52,5 +52,18 @@ namespace Runway
         public GetAvatarConversationsResponseVariant1AvatarVariant1PresetAvatar()
         {
         }
+
+        /// <summary>
+        /// Creates a new <see cref="GetAvatarConversationsResponseVariant1AvatarVariant1PresetAvatar"/> from its single non-const required field,
+        /// hardcoding any const discriminator fields.
+        /// </summary>
+        public static GetAvatarConversationsResponseVariant1AvatarVariant1PresetAvatar FromPresetId(string presetId)
+        {
+            return new GetAvatarConversationsResponseVariant1AvatarVariant1PresetAvatar
+            {
+                PresetId = presetId,
+            };
+        }
+
     }
 }

@@ -52,5 +52,6 @@ namespace Runway
         public CreateOrganizationUsageRequest()
         {
         }
+
     }
 }

@@ -40,5 +40,6 @@ namespace Runway
         public CreateImageToVideoResponse2()
         {
         }
+
     }
 }

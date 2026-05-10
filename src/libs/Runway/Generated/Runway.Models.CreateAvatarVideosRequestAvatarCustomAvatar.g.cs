@@ -52,5 +52,18 @@ namespace Runway
         public CreateAvatarVideosRequestAvatarCustomAvatar()
         {
         }
+
+        /// <summary>
+        /// Creates a new <see cref="CreateAvatarVideosRequestAvatarCustomAvatar"/> from its single non-const required field,
+        /// hardcoding any const discriminator fields.
+        /// </summary>
+        public static CreateAvatarVideosRequestAvatarCustomAvatar FromAvatarId(global::System.Guid avatarId)
+        {
+            return new CreateAvatarVideosRequestAvatarCustomAvatar
+            {
+                AvatarId = avatarId,
+            };
+        }
+
     }
 }

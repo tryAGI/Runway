@@ -45,6 +45,13 @@ namespace Runway
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.GetVoicesResponseDataItemVoiceProcessing PickProcessing() => IsProcessing
+            ? Processing!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Processing' but the value was {ToString()}.");
+
+        /// <summary>
         /// A voice that is ready for use.
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -75,6 +82,13 @@ namespace Runway
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.GetVoicesResponseDataItemVoiceReady PickReady() => IsReady
+            ? Ready!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Ready' but the value was {ToString()}.");
+
+        /// <summary>
         /// A voice that failed to finish processing.
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -103,6 +117,13 @@ namespace Runway
             value = Failed;
             return IsFailed;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.GetVoicesResponseDataItemVoiceFailed PickFailed() => IsFailed
+            ? Failed!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Failed' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

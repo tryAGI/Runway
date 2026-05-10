@@ -53,5 +53,18 @@ namespace Runway
         public CreateTextToSpeechRequestElevenMultilingualV2VoiceRunwayPresetVoice()
         {
         }
+
+        /// <summary>
+        /// Creates a new <see cref="CreateTextToSpeechRequestElevenMultilingualV2VoiceRunwayPresetVoice"/> from its single non-const required field,
+        /// hardcoding any const discriminator fields.
+        /// </summary>
+        public static CreateTextToSpeechRequestElevenMultilingualV2VoiceRunwayPresetVoice FromPresetId(global::Runway.CreateTextToSpeechRequestElevenMultilingualV2VoiceRunwayPresetVoicePresetId presetId)
+        {
+            return new CreateTextToSpeechRequestElevenMultilingualV2VoiceRunwayPresetVoice
+            {
+                PresetId = presetId,
+            };
+        }
+
     }
 }

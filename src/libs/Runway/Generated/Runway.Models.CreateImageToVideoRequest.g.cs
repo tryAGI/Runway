@@ -47,6 +47,13 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public global::Runway.CreateImageToVideoRequestGen45 PickGen45() => IsGen45
+            ? Gen45!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Gen45' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Runway.CreateImageToVideoRequestGen4Turbo? Gen4Turbo { get; init; }
 #else
@@ -73,6 +80,13 @@ namespace Runway
             value = Gen4Turbo;
             return IsGen4Turbo;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.CreateImageToVideoRequestGen4Turbo PickGen4Turbo() => IsGen4Turbo
+            ? Gen4Turbo!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Gen4Turbo' but the value was {ToString()}.");
 
         /// <summary>
         /// 
@@ -107,6 +121,13 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public global::Runway.CreateImageToVideoRequestVeo31 PickVeo31() => IsVeo31
+            ? Veo31!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Veo31' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Runway.CreateImageToVideoRequestGen3aTurbo? Gen3aTurbo { get; init; }
 #else
@@ -133,6 +154,13 @@ namespace Runway
             value = Gen3aTurbo;
             return IsGen3aTurbo;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.CreateImageToVideoRequestGen3aTurbo PickGen3aTurbo() => IsGen3aTurbo
+            ? Gen3aTurbo!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Gen3aTurbo' but the value was {ToString()}.");
 
         /// <summary>
         /// 
@@ -167,6 +195,13 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public global::Runway.CreateImageToVideoRequestVeo31Fast PickVeo31Fast() => IsVeo31Fast
+            ? Veo31Fast!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Veo31Fast' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Runway.CreateImageToVideoRequestVeo3? Veo3 { get; init; }
 #else
@@ -193,6 +228,13 @@ namespace Runway
             value = Veo3;
             return IsVeo3;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.CreateImageToVideoRequestVeo3 PickVeo3() => IsVeo3
+            ? Veo3!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Veo3' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

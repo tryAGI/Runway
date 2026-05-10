@@ -45,6 +45,13 @@ namespace Runway
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.GetAvatarConversationsResponseDataItemAvatarVariant1PresetAvatarSummary PickRunwayPreset() => IsRunwayPreset
+            ? RunwayPreset!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'RunwayPreset' but the value was {ToString()}.");
+
+        /// <summary>
         /// A custom avatar created by the user.
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -73,6 +80,13 @@ namespace Runway
             value = Custom;
             return IsCustom;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.GetAvatarConversationsResponseDataItemAvatarVariant1CustomAvatarSummary PickCustom() => IsCustom
+            ? Custom!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Custom' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

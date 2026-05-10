@@ -53,5 +53,6 @@ namespace Runway
         public GetWorkflowInvocationsResponseWorkflowInvocationRunningNodeErrors2()
         {
         }
+
     }
 }

@@ -64,5 +64,18 @@ namespace Runway
         public CreateAvatarVideosRequestSpeechTextInput()
         {
         }
+
+        /// <summary>
+        /// Creates a new <see cref="CreateAvatarVideosRequestSpeechTextInput"/> from its single non-const required field,
+        /// hardcoding any const discriminator fields.
+        /// </summary>
+        public static CreateAvatarVideosRequestSpeechTextInput FromText(string text)
+        {
+            return new CreateAvatarVideosRequestSpeechTextInput
+            {
+                Text = text,
+            };
+        }
+
     }
 }

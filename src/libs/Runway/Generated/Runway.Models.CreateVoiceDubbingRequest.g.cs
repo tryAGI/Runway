@@ -43,6 +43,13 @@ namespace Runway
             value = ElevenVoiceDubbing;
             return IsElevenVoiceDubbing;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.CreateVoiceDubbingRequestElevenVoiceDubbing PickElevenVoiceDubbing() => IsElevenVoiceDubbing
+            ? ElevenVoiceDubbing!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'ElevenVoiceDubbing' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

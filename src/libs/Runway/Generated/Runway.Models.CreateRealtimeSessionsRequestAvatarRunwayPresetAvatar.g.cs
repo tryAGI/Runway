@@ -53,5 +53,18 @@ namespace Runway
         public CreateRealtimeSessionsRequestAvatarRunwayPresetAvatar()
         {
         }
+
+        /// <summary>
+        /// Creates a new <see cref="CreateRealtimeSessionsRequestAvatarRunwayPresetAvatar"/> from its single non-const required field,
+        /// hardcoding any const discriminator fields.
+        /// </summary>
+        public static CreateRealtimeSessionsRequestAvatarRunwayPresetAvatar FromPresetId(global::Runway.CreateRealtimeSessionsRequestAvatarRunwayPresetAvatarPresetId presetId)
+        {
+            return new CreateRealtimeSessionsRequestAvatarRunwayPresetAvatar
+            {
+                PresetId = presetId,
+            };
+        }
+
     }
 }

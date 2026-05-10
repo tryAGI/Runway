@@ -53,5 +53,18 @@ namespace Runway
         public CreateAvatarsRequestVoiceRunwayLivePresetVoice()
         {
         }
+
+        /// <summary>
+        /// Creates a new <see cref="CreateAvatarsRequestVoiceRunwayLivePresetVoice"/> from its single non-const required field,
+        /// hardcoding any const discriminator fields.
+        /// </summary>
+        public static CreateAvatarsRequestVoiceRunwayLivePresetVoice FromPresetId(global::Runway.CreateAvatarsRequestVoiceRunwayLivePresetVoicePresetId presetId)
+        {
+            return new CreateAvatarsRequestVoiceRunwayLivePresetVoice
+            {
+                PresetId = presetId,
+            };
+        }
+
     }
 }

@@ -56,5 +56,6 @@ namespace Runway
         public CreateTextToImageRequestGen4ImageTurboReferenceImage()
         {
         }
+
     }
 }

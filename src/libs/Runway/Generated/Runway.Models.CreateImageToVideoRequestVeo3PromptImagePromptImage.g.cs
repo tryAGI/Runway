@@ -57,5 +57,18 @@ namespace Runway
         public CreateImageToVideoRequestVeo3PromptImagePromptImage()
         {
         }
+
+        /// <summary>
+        /// Creates a new <see cref="CreateImageToVideoRequestVeo3PromptImagePromptImage"/> from its single non-const required field,
+        /// hardcoding any const discriminator fields.
+        /// </summary>
+        public static CreateImageToVideoRequestVeo3PromptImagePromptImage FromUri(string uri)
+        {
+            return new CreateImageToVideoRequestVeo3PromptImagePromptImage
+            {
+                Uri = uri,
+            };
+        }
+
     }
 }

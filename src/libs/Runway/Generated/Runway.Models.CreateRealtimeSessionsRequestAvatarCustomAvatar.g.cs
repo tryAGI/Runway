@@ -52,5 +52,18 @@ namespace Runway
         public CreateRealtimeSessionsRequestAvatarCustomAvatar()
         {
         }
+
+        /// <summary>
+        /// Creates a new <see cref="CreateRealtimeSessionsRequestAvatarCustomAvatar"/> from its single non-const required field,
+        /// hardcoding any const discriminator fields.
+        /// </summary>
+        public static CreateRealtimeSessionsRequestAvatarCustomAvatar FromAvatarId(global::System.Guid avatarId)
+        {
+            return new CreateRealtimeSessionsRequestAvatarCustomAvatar
+            {
+                AvatarId = avatarId,
+            };
+        }
+
     }
 }

@@ -43,6 +43,13 @@ namespace Runway
             value = ElevenVoiceIsolation;
             return IsElevenVoiceIsolation;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.CreateVoiceIsolationRequestElevenVoiceIsolation PickElevenVoiceIsolation() => IsElevenVoiceIsolation
+            ? ElevenVoiceIsolation!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'ElevenVoiceIsolation' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

@@ -45,6 +45,13 @@ namespace Runway
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.CreateRealtimeSessionsRequestToolClientEventTool PickClientEvent() => IsClientEvent
+            ? ClientEvent!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'ClientEvent' but the value was {ToString()}.");
+
+        /// <summary>
         /// A tool that makes a round-trip RPC call to your backend server during the session.
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -73,6 +80,13 @@ namespace Runway
             value = BackendRpc;
             return IsBackendRpc;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.CreateRealtimeSessionsRequestToolBackendRPCTool PickBackendRpc() => IsBackendRpc
+            ? BackendRpc!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'BackendRpc' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

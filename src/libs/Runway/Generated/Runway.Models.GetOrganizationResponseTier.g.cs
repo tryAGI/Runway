@@ -54,5 +54,6 @@ namespace Runway
         public GetOrganizationResponseTier()
         {
         }
+
     }
 }

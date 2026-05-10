@@ -65,5 +65,6 @@ namespace Runway
         public GetAvatarConversationsResponseVariant2TranscriptItemToolCall()
         {
         }
+
     }
 }

@@ -50,5 +50,18 @@ namespace Runway
         public CreateAvatarVideosRequestSpeechTextInputVoiceCustomVoice()
         {
         }
+
+        /// <summary>
+        /// Creates a new <see cref="CreateAvatarVideosRequestSpeechTextInputVoiceCustomVoice"/> from its single non-const required field,
+        /// hardcoding any const discriminator fields.
+        /// </summary>
+        public static CreateAvatarVideosRequestSpeechTextInputVoiceCustomVoice FromId(global::System.Guid id)
+        {
+            return new CreateAvatarVideosRequestSpeechTextInputVoiceCustomVoice
+            {
+                Id = id,
+            };
+        }
+
     }
 }

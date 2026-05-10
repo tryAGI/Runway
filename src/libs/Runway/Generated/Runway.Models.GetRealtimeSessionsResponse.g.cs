@@ -45,6 +45,13 @@ namespace Runway
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.GetRealtimeSessionsResponseSessionNotReady PickNotReady() => IsNotReady
+            ? NotReady!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'NotReady' but the value was {ToString()}.");
+
+        /// <summary>
         /// A session that is ready to connect.
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -73,6 +80,13 @@ namespace Runway
             value = Ready;
             return IsReady;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.GetRealtimeSessionsResponseSessionReady PickReady() => IsReady
+            ? Ready!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Ready' but the value was {ToString()}.");
 
         /// <summary>
         /// A session with an active WebRTC connection.
@@ -105,6 +119,13 @@ namespace Runway
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.GetRealtimeSessionsResponseSessionRunning PickRunning() => IsRunning
+            ? Running!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Running' but the value was {ToString()}.");
+
+        /// <summary>
         /// A session that ended normally.
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -133,6 +154,13 @@ namespace Runway
             value = Completed;
             return IsCompleted;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.GetRealtimeSessionsResponseSessionCompleted PickCompleted() => IsCompleted
+            ? Completed!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Completed' but the value was {ToString()}.");
 
         /// <summary>
         /// A session that encountered an error.
@@ -165,6 +193,13 @@ namespace Runway
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.GetRealtimeSessionsResponseSessionFailed PickFailed() => IsFailed
+            ? Failed!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Failed' but the value was {ToString()}.");
+
+        /// <summary>
         /// A session that was explicitly cancelled.
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -193,6 +228,13 @@ namespace Runway
             value = Cancelled;
             return IsCancelled;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.GetRealtimeSessionsResponseSessionCancelled PickCancelled() => IsCancelled
+            ? Cancelled!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Cancelled' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

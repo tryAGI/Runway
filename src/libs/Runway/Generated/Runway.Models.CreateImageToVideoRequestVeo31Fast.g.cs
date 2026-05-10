@@ -101,5 +101,6 @@ namespace Runway
         public CreateImageToVideoRequestVeo31Fast()
         {
         }
+
     }
 }

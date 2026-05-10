@@ -43,6 +43,13 @@ namespace Runway
             value = ElevenMultilingualV2;
             return IsElevenMultilingualV2;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.CreateTextToSpeechRequestElevenMultilingualV2 PickElevenMultilingualV2() => IsElevenMultilingualV2
+            ? ElevenMultilingualV2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'ElevenMultilingualV2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

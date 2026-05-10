@@ -40,5 +40,6 @@ namespace Runway
         public GetAvatarConversationsResponseVariant1AvatarVariant1Discriminator()
         {
         }
+
     }
 }
