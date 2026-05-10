@@ -1512,6 +1512,54 @@ public partial class Tests
     }
 
     [TestMethod]
+    public void RunwayVideoToVideo_Gen4AlephWrapsAsGen4AlephVariant()
+    {
+        var request = RunwayVideoToVideo.Gen4Aleph(
+            "https://example.com/source.mp4",
+            "Restyle as a watercolor painting.",
+            seed: 7);
+
+        request.IsGen4Aleph.Should().BeTrue();
+        var body = request.Gen4Aleph!;
+        body.VideoUri.Should().Be("https://example.com/source.mp4");
+        body.PromptText.Should().Be("Restyle as a watercolor painting.");
+        body.Seed.Should().Be(7);
+        body.Model.Should().Be("gen4_aleph");
+    }
+
+    [TestMethod]
+    public void RunwayRatioSupport_FlagsTheGen4ImageOnlySquareCaseFromIssue113()
+    {
+        // Issue #113 point 3: gen4_image accepts 1:1 (720:720) but Veo3.1 Fast image-to-video does not.
+        // Using gen4_image's 720:720 enum value as the canonical square-aspect smoke test.
+        var supporters = RunwayRatioSupport.GetSupportingModels("720:720");
+
+        supporters.Should().Contain("gen4_image");
+        supporters.Should().Contain("gen4_image_turbo");
+        supporters.Should().NotContain("veo3.1_fast");
+        supporters.Should().NotContain("veo3.1");
+        supporters.Should().NotContain("veo3");
+        supporters.Should().NotContain("gen4_turbo");
+    }
+
+    [TestMethod]
+    public void RunwayRatioSupport_VideoModelsShareCommon1280x720()
+    {
+        var supporters = RunwayRatioSupport.GetSupportingModels("1280:720");
+
+        // Every video-generating model accepts 1280:720.
+        supporters.Should().Contain(["veo3.1_fast", "veo3.1", "veo3", "gen4.5", "gen4_turbo", "gen4_aleph", "act_two"]);
+    }
+
+    [TestMethod]
+    public void RunwayRatioSupport_IsSupportedByMatchesTheList()
+    {
+        RunwayRatioSupport.IsSupportedBy("720:720", "gen4_image").Should().BeTrue();
+        RunwayRatioSupport.IsSupportedBy("720:720", "veo3.1_fast").Should().BeFalse();
+        RunwayRatioSupport.IsSupportedBy("not-a-real-ratio", "gen4_image").Should().BeFalse();
+    }
+
+    [TestMethod]
     public void RunwaySpeeches_FromAudioSerializesAsAudioInput()
     {
         const string audioUri = "https://example.com/clip.mp3";

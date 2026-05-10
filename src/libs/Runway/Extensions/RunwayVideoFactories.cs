@@ -229,3 +229,38 @@ public static class RunwayImageToVideo
         });
     }
 }
+
+/// <summary>
+/// Short-named factory helpers for <c>POST /v1/video_to_video</c>. As of the current spec, only
+/// <c>gen4_aleph</c> is supported; the helper hides the verbose
+/// <c>CreateVideoToVideoRequestGen4Aleph</c> wrapping.
+/// </summary>
+public static class RunwayVideoToVideo
+{
+    /// <summary>
+    /// Builds a <c>gen4_aleph</c> video-to-video request from an input video URI and a prompt.
+    /// The <c>ratio</c> field on the underlying spec is deprecated (output resolution is determined
+    /// by the input video) and intentionally omitted from this overload.
+    /// </summary>
+#pragma warning disable CA1054 // Runway accepts HTTPS URLs, runway:// URIs, and data: URIs interchangeably.
+    public static CreateVideoToVideoRequest Gen4Aleph(
+        string videoUri,
+        string promptText,
+        int? seed = null,
+        global::System.Collections.Generic.IList<ReferencesItem>? references = null,
+        CreateVideoToVideoRequestGen4AlephContentModeration? contentModeration = null)
+#pragma warning restore CA1054
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(videoUri);
+        ArgumentException.ThrowIfNullOrWhiteSpace(promptText);
+
+        return new CreateVideoToVideoRequest(new CreateVideoToVideoRequestGen4Aleph
+        {
+            VideoUri = videoUri,
+            PromptText = promptText,
+            Seed = seed,
+            References = references,
+            ContentModeration = contentModeration,
+        });
+    }
+}

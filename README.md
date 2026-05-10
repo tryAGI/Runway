@@ -726,6 +726,12 @@ var characterRequest = RunwayCharacterPerformance.ActTwo(
     referenceVideoUri: "https://example.com/performance.mp4",
     bodyControl: true);
 
+// /v1/video_to_video — gen4_aleph passthrough (omits the deprecated `ratio` field)
+var restyle = RunwayVideoToVideo.Gen4Aleph(
+    "https://example.com/source.mp4",
+    "Restyle as a watercolor painting.",
+    seed: 7);
+
 // Avatar variants: a custom avatar + custom voice
 var custom = new CreateAvatarVideosRequest
 {
@@ -742,6 +748,16 @@ var dubbed = new CreateAvatarVideosRequest
 ```
 
 For multi-frame `image-to-video` inputs (first + last frame), construct the underlying `CreateImageToVideoRequest...` type directly — the factory string overload covers the common single-URI shape.
+
+`RunwayRatioSupport` answers "which models accept this aspect?" without trial-and-error 400 responses. The lookup is built from the per-model `Ratio` enums at construction time, so it stays in sync with the spec on regeneration:
+
+```csharp
+RunwayRatioSupport.GetSupportingModels("720:720");
+// => ["gen4_image", "gen4_image_turbo"]   (only the image surface accepts square)
+
+RunwayRatioSupport.IsSupportedBy("720:720", "veo3.1_fast");
+// => false   (matches Runway's runtime 400; explains why CreateImageToVideoRequestVeo31FastRatio omits 1:1)
+```
 
 `RunwayPollingExtensions` adds `WaitForAvatarAsync(IAvatarsClient, Guid, ...)` and `WaitForRealtimeSessionAsync(IRealtimeSessionsClient, Guid, ...)` so consumers don't reimplement the poll-until-terminal loop for `/v1/avatars/{id}` and `/v1/realtime_sessions/{id}` (mirroring the existing `client.WaitForTaskAsync(taskId, ...)` for `/v1/tasks/{id}`).
 
