@@ -12,6 +12,11 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public global::Runway.CreateVoicesRequestFromDiscriminatorType? Type { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Runway.CreateVoicesRequestFromVoiceFromAudio? Audio { get; init; }
 #else
@@ -108,10 +113,13 @@ namespace Runway
         /// 
         /// </summary>
         public From(
+            global::Runway.CreateVoicesRequestFromDiscriminatorType? type,
             global::Runway.CreateVoicesRequestFromVoiceFromAudio? audio,
             global::Runway.CreateVoicesRequestFromVoiceFromText? text
             )
         {
+            Type = type;
+
             Audio = audio;
             Text = text;
         }

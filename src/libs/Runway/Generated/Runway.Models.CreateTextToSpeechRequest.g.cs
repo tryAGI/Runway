@@ -12,6 +12,11 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public global::Runway.CreateTextToSpeechRequestDiscriminatorModel? Model { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Runway.CreateTextToSpeechRequestElevenMultilingualV2? ElevenMultilingualV2 { get; init; }
 #else
@@ -54,6 +59,19 @@ namespace Runway
         public CreateTextToSpeechRequest(global::Runway.CreateTextToSpeechRequestElevenMultilingualV2? value)
         {
             ElevenMultilingualV2 = value;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public CreateTextToSpeechRequest(
+            global::Runway.CreateTextToSpeechRequestDiscriminatorModel? model,
+            global::Runway.CreateTextToSpeechRequestElevenMultilingualV2? elevenMultilingualV2
+            )
+        {
+            Model = model;
+
+            ElevenMultilingualV2 = elevenMultilingualV2;
         }
 
         /// <summary>

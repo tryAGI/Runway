@@ -12,6 +12,11 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public global::Runway.CreateVoiceIsolationRequestDiscriminatorModel? Model { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Runway.CreateVoiceIsolationRequestElevenVoiceIsolation? ElevenVoiceIsolation { get; init; }
 #else
@@ -54,6 +59,19 @@ namespace Runway
         public CreateVoiceIsolationRequest(global::Runway.CreateVoiceIsolationRequestElevenVoiceIsolation? value)
         {
             ElevenVoiceIsolation = value;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public CreateVoiceIsolationRequest(
+            global::Runway.CreateVoiceIsolationRequestDiscriminatorModel? model,
+            global::Runway.CreateVoiceIsolationRequestElevenVoiceIsolation? elevenVoiceIsolation
+            )
+        {
+            Model = model;
+
+            ElevenVoiceIsolation = elevenVoiceIsolation;
         }
 
         /// <summary>

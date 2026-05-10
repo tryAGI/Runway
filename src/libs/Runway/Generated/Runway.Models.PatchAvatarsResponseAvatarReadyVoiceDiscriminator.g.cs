@@ -12,7 +12,8 @@ namespace Runway
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
-        public string? Type { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.PatchAvatarsResponseAvatarReadyVoiceDiscriminatorTypeJsonConverter))]
+        public global::Runway.PatchAvatarsResponseAvatarReadyVoiceDiscriminatorType? Type { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -28,7 +29,7 @@ namespace Runway
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public PatchAvatarsResponseAvatarReadyVoiceDiscriminator(
-            string? type)
+            global::Runway.PatchAvatarsResponseAvatarReadyVoiceDiscriminatorType? type)
         {
             this.Type = type;
         }

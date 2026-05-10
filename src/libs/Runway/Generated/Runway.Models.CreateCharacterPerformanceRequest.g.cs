@@ -12,6 +12,11 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public global::Runway.CreateCharacterPerformanceRequestDiscriminatorModel? Model { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Runway.CreateCharacterPerformanceRequestActTwo? ActTwo { get; init; }
 #else
@@ -54,6 +59,19 @@ namespace Runway
         public CreateCharacterPerformanceRequest(global::Runway.CreateCharacterPerformanceRequestActTwo? value)
         {
             ActTwo = value;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public CreateCharacterPerformanceRequest(
+            global::Runway.CreateCharacterPerformanceRequestDiscriminatorModel? model,
+            global::Runway.CreateCharacterPerformanceRequestActTwo? actTwo
+            )
+        {
+            Model = model;
+
+            ActTwo = actTwo;
         }
 
         /// <summary>

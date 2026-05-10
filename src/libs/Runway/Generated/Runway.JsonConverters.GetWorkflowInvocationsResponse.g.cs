@@ -15,241 +15,57 @@ namespace Runway.JsonConverters
             options = options ?? throw new global::System.ArgumentNullException(nameof(options));
             var typeInfoResolver = options.TypeInfoResolver ?? throw new global::System.InvalidOperationException("TypeInfoResolver is not set.");
 
-            using var __jsonDocument = global::System.Text.Json.JsonDocument.ParseValue(ref reader);
-            var __rawJson = __jsonDocument.RootElement.GetRawText();
-            var __jsonProps = new global::System.Collections.Generic.HashSet<string>();
-            if (__jsonDocument.RootElement.ValueKind == global::System.Text.Json.JsonValueKind.Object)
-            {
-                foreach (var __jsonProp in __jsonDocument.RootElement.EnumerateObject())
-                {
-                    __jsonProps.Add(__jsonProp.Name);
 
-                }
-            }
-
-            var __score0 = 0;
-            if (__jsonProps.Contains("createdAt")) __score0++;
-            if (__jsonProps.Contains("id")) __score0++;
-            if (__jsonProps.Contains("status")) __score0++;
-            var __score1 = 0;
-            if (__jsonProps.Contains("createdAt")) __score1++;
-            if (__jsonProps.Contains("id")) __score1++;
-            if (__jsonProps.Contains("status")) __score1++;
-            var __score2 = 0;
-            if (__jsonProps.Contains("createdAt")) __score2++;
-            if (__jsonProps.Contains("id")) __score2++;
-            if (__jsonProps.Contains("status")) __score2++;
-            var __score3 = 0;
-            if (__jsonProps.Contains("createdAt")) __score3++;
-            if (__jsonProps.Contains("id")) __score3++;
-            if (__jsonProps.Contains("nodeErrors")) __score3++;
-            if (__jsonProps.Contains("output")) __score3++;
-            if (__jsonProps.Contains("progress")) __score3++;
-            if (__jsonProps.Contains("status")) __score3++;
-            var __score4 = 0;
-            if (__jsonProps.Contains("createdAt")) __score4++;
-            if (__jsonProps.Contains("failure")) __score4++;
-            if (__jsonProps.Contains("failureCode")) __score4++;
-            if (__jsonProps.Contains("id")) __score4++;
-            if (__jsonProps.Contains("nodeErrors")) __score4++;
-            if (__jsonProps.Contains("status")) __score4++;
-            var __score5 = 0;
-            if (__jsonProps.Contains("createdAt")) __score5++;
-            if (__jsonProps.Contains("id")) __score5++;
-            if (__jsonProps.Contains("nodeErrors")) __score5++;
-            if (__jsonProps.Contains("output")) __score5++;
-            if (__jsonProps.Contains("status")) __score5++;
-            var __bestScore = 0;
-            var __bestIndex = -1;
-            if (__score0 > __bestScore) { __bestScore = __score0; __bestIndex = 0; }
-            if (__score1 > __bestScore) { __bestScore = __score1; __bestIndex = 1; }
-            if (__score2 > __bestScore) { __bestScore = __score2; __bestIndex = 2; }
-            if (__score3 > __bestScore) { __bestScore = __score3; __bestIndex = 3; }
-            if (__score4 > __bestScore) { __bestScore = __score4; __bestIndex = 4; }
-            if (__score5 > __bestScore) { __bestScore = __score5; __bestIndex = 5; }
+            var readerCopy = reader;
+            var discriminatorTypeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetWorkflowInvocationsResponseDiscriminator), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetWorkflowInvocationsResponseDiscriminator> ??
+                            throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.GetWorkflowInvocationsResponseDiscriminator)}");
+            var discriminator = global::System.Text.Json.JsonSerializer.Deserialize(ref readerCopy, discriminatorTypeInfo);
 
             global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationPending? pending = default;
-            global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationThrottled? throttled = default;
-            global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationCancelled? cancelled = default;
-            global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationRunning? running = default;
-            global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationFailed? failed = default;
-            global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationSucceeded? succeeded = default;
-            if (__bestIndex >= 0)
+            if (discriminator?.Status == global::Runway.GetWorkflowInvocationsResponseDiscriminatorStatus.Pending)
             {
-                if (__bestIndex == 0)
-                {
-                    try
-                    {
-                        var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationPending), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationPending> ??
-                                       throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationPending).Name}");
-                        pending = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
-                    }
-                    catch (global::System.Text.Json.JsonException)
-                    {
-                    }
-                    catch (global::System.InvalidOperationException)
-                    {
-                    }
-                }
-                else if (__bestIndex == 1)
-                {
-                    try
-                    {
-                        var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationThrottled), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationThrottled> ??
-                                       throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationThrottled).Name}");
-                        throttled = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
-                    }
-                    catch (global::System.Text.Json.JsonException)
-                    {
-                    }
-                    catch (global::System.InvalidOperationException)
-                    {
-                    }
-                }
-                else if (__bestIndex == 2)
-                {
-                    try
-                    {
-                        var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationCancelled), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationCancelled> ??
-                                       throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationCancelled).Name}");
-                        cancelled = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
-                    }
-                    catch (global::System.Text.Json.JsonException)
-                    {
-                    }
-                    catch (global::System.InvalidOperationException)
-                    {
-                    }
-                }
-                else if (__bestIndex == 3)
-                {
-                    try
-                    {
-                        var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationRunning), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationRunning> ??
-                                       throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationRunning).Name}");
-                        running = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
-                    }
-                    catch (global::System.Text.Json.JsonException)
-                    {
-                    }
-                    catch (global::System.InvalidOperationException)
-                    {
-                    }
-                }
-                else if (__bestIndex == 4)
-                {
-                    try
-                    {
-                        var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationFailed), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationFailed> ??
-                                       throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationFailed).Name}");
-                        failed = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
-                    }
-                    catch (global::System.Text.Json.JsonException)
-                    {
-                    }
-                    catch (global::System.InvalidOperationException)
-                    {
-                    }
-                }
-                else if (__bestIndex == 5)
-                {
-                    try
-                    {
-                        var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationSucceeded), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationSucceeded> ??
-                                       throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationSucceeded).Name}");
-                        succeeded = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
-                    }
-                    catch (global::System.Text.Json.JsonException)
-                    {
-                    }
-                    catch (global::System.InvalidOperationException)
-                    {
-                    }
-                }
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationPending), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationPending> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationPending)}");
+                pending = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
-
-            if (pending == null && throttled == null && cancelled == null && running == null && failed == null && succeeded == null)
+            global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationThrottled? throttled = default;
+            if (discriminator?.Status == global::Runway.GetWorkflowInvocationsResponseDiscriminatorStatus.Throttled)
             {
-                try
-                {
-                    var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationPending), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationPending> ??
-                                   throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationPending).Name}");
-                    pending = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
-                }
-                catch (global::System.Text.Json.JsonException)
-                {
-                }
-                catch (global::System.InvalidOperationException)
-                {
-                }
-
-                try
-                {
-                    var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationThrottled), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationThrottled> ??
-                                   throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationThrottled).Name}");
-                    throttled = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
-                }
-                catch (global::System.Text.Json.JsonException)
-                {
-                }
-                catch (global::System.InvalidOperationException)
-                {
-                }
-
-                try
-                {
-                    var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationCancelled), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationCancelled> ??
-                                   throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationCancelled).Name}");
-                    cancelled = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
-                }
-                catch (global::System.Text.Json.JsonException)
-                {
-                }
-                catch (global::System.InvalidOperationException)
-                {
-                }
-
-                try
-                {
-                    var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationRunning), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationRunning> ??
-                                   throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationRunning).Name}");
-                    running = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
-                }
-                catch (global::System.Text.Json.JsonException)
-                {
-                }
-                catch (global::System.InvalidOperationException)
-                {
-                }
-
-                try
-                {
-                    var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationFailed), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationFailed> ??
-                                   throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationFailed).Name}");
-                    failed = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
-                }
-                catch (global::System.Text.Json.JsonException)
-                {
-                }
-                catch (global::System.InvalidOperationException)
-                {
-                }
-
-                try
-                {
-                    var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationSucceeded), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationSucceeded> ??
-                                   throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationSucceeded).Name}");
-                    succeeded = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
-                }
-                catch (global::System.Text.Json.JsonException)
-                {
-                }
-                catch (global::System.InvalidOperationException)
-                {
-                }
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationThrottled), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationThrottled> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationThrottled)}");
+                throttled = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+            }
+            global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationCancelled? cancelled = default;
+            if (discriminator?.Status == global::Runway.GetWorkflowInvocationsResponseDiscriminatorStatus.Cancelled)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationCancelled), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationCancelled> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationCancelled)}");
+                cancelled = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+            }
+            global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationRunning? running = default;
+            if (discriminator?.Status == global::Runway.GetWorkflowInvocationsResponseDiscriminatorStatus.Running)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationRunning), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationRunning> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationRunning)}");
+                running = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+            }
+            global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationFailed? failed = default;
+            if (discriminator?.Status == global::Runway.GetWorkflowInvocationsResponseDiscriminatorStatus.Failed)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationFailed), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationFailed> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationFailed)}");
+                failed = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+            }
+            global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationSucceeded? succeeded = default;
+            if (discriminator?.Status == global::Runway.GetWorkflowInvocationsResponseDiscriminatorStatus.Succeeded)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationSucceeded), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationSucceeded> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationSucceeded)}");
+                succeeded = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
 
             var __value = new global::Runway.GetWorkflowInvocationsResponse(
+                discriminator?.Status,
                 pending,
 
                 throttled,

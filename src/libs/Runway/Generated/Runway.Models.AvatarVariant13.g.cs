@@ -10,6 +10,11 @@ namespace Runway
     public readonly partial struct AvatarVariant13 : global::System.IEquatable<AvatarVariant13>
     {
         /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.GetAvatarConversationsResponseVariant2AvatarVariant1DiscriminatorType? Type { get; }
+
+        /// <summary>
         /// A preset avatar.
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -108,10 +113,13 @@ namespace Runway
         /// 
         /// </summary>
         public AvatarVariant13(
+            global::Runway.GetAvatarConversationsResponseVariant2AvatarVariant1DiscriminatorType? type,
             global::Runway.GetAvatarConversationsResponseVariant2AvatarVariant1PresetAvatar? runwayPreset,
             global::Runway.GetAvatarConversationsResponseVariant2AvatarVariant1CustomAvatar? custom
             )
         {
+            Type = type;
+
             RunwayPreset = runwayPreset;
             Custom = custom;
         }

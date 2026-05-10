@@ -10,6 +10,11 @@ namespace Runway
     public readonly partial struct Speech : global::System.IEquatable<Speech>
     {
         /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.CreateAvatarVideosRequestSpeechDiscriminatorType? Type { get; }
+
+        /// <summary>
         /// Provide an audio file for the avatar to speak.
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -108,10 +113,13 @@ namespace Runway
         /// 
         /// </summary>
         public Speech(
+            global::Runway.CreateAvatarVideosRequestSpeechDiscriminatorType? type,
             global::Runway.CreateAvatarVideosRequestSpeechAudioInput? audio,
             global::Runway.CreateAvatarVideosRequestSpeechTextInput? text
             )
         {
+            Type = type;
+
             Audio = audio;
             Text = text;
         }

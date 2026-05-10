@@ -12,7 +12,8 @@ namespace Runway
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("status")]
-        public string? Status { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.PatchVoicesResponseDiscriminatorStatusJsonConverter))]
+        public global::Runway.PatchVoicesResponseDiscriminatorStatus? Status { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -28,7 +29,7 @@ namespace Runway
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public PatchVoicesResponseDiscriminator(
-            string? status)
+            global::Runway.PatchVoicesResponseDiscriminatorStatus? status)
         {
             this.Status = status;
         }

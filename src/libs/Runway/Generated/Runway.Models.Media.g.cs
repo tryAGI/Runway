@@ -10,6 +10,11 @@ namespace Runway
     public readonly partial struct Media : global::System.IEquatable<Media>
     {
         /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaDiscriminatorType? Type { get; }
+
+        /// <summary>
         /// An audio file containing dialogue to be processed.
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -108,10 +113,13 @@ namespace Runway
         /// 
         /// </summary>
         public Media(
+            global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaDiscriminatorType? type,
             global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaSpeechToSpeechAudio? audio,
             global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaSpeechToSpeechVideo? video
             )
         {
+            Type = type;
+
             Audio = audio;
             Video = video;
         }

@@ -10,6 +10,11 @@ namespace Runway
     public readonly partial struct DataItem2 : global::System.IEquatable<DataItem2>
     {
         /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.GetVoicesResponseDataItemDiscriminatorStatus? Status { get; }
+
+        /// <summary>
         /// A voice that is still being processed.
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -156,11 +161,14 @@ namespace Runway
         /// 
         /// </summary>
         public DataItem2(
+            global::Runway.GetVoicesResponseDataItemDiscriminatorStatus? status,
             global::Runway.GetVoicesResponseDataItemVoiceProcessing? processing,
             global::Runway.GetVoicesResponseDataItemVoiceReady? ready,
             global::Runway.GetVoicesResponseDataItemVoiceFailed? failed
             )
         {
+            Status = status;
+
             Processing = processing;
             Ready = ready;
             Failed = failed;

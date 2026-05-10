@@ -12,6 +12,11 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public global::Runway.CreateVoiceDubbingRequestDiscriminatorModel? Model { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Runway.CreateVoiceDubbingRequestElevenVoiceDubbing? ElevenVoiceDubbing { get; init; }
 #else
@@ -54,6 +59,19 @@ namespace Runway
         public CreateVoiceDubbingRequest(global::Runway.CreateVoiceDubbingRequestElevenVoiceDubbing? value)
         {
             ElevenVoiceDubbing = value;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public CreateVoiceDubbingRequest(
+            global::Runway.CreateVoiceDubbingRequestDiscriminatorModel? model,
+            global::Runway.CreateVoiceDubbingRequestElevenVoiceDubbing? elevenVoiceDubbing
+            )
+        {
+            Model = model;
+
+            ElevenVoiceDubbing = elevenVoiceDubbing;
         }
 
         /// <summary>

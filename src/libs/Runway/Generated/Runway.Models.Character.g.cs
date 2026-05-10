@@ -10,6 +10,11 @@ namespace Runway
     public readonly partial struct Character : global::System.IEquatable<Character>
     {
         /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.CreateCharacterPerformanceRequestActTwoCharacterDiscriminatorType? Type { get; }
+
+        /// <summary>
         /// An image of your character. In the output, the character will use the reference video performance in its original static environment.
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -108,10 +113,13 @@ namespace Runway
         /// 
         /// </summary>
         public Character(
+            global::Runway.CreateCharacterPerformanceRequestActTwoCharacterDiscriminatorType? type,
             global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterImage? image,
             global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterVideo? video
             )
         {
+            Type = type;
+
             Image = image;
             Video = video;
         }

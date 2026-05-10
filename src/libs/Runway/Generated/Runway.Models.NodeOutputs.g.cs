@@ -10,6 +10,11 @@ namespace Runway
     public readonly partial struct NodeOutputs : global::System.IEquatable<NodeOutputs>
     {
         /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.CreateWorkflowsRequestNodeOutputsDiscriminatorType? Type { get; }
+
+        /// <summary>
         /// A primitive value (string, number, or boolean)
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -204,12 +209,15 @@ namespace Runway
         /// 
         /// </summary>
         public NodeOutputs(
+            global::Runway.CreateWorkflowsRequestNodeOutputsDiscriminatorType? type,
             global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputPrimitive? primitive,
             global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputImage? image,
             global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputVideo? video,
             global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputAudio? audio
             )
         {
+            Type = type;
+
             Primitive = primitive;
             Image = image;
             Video = video;

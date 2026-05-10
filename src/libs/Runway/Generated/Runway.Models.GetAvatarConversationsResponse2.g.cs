@@ -10,6 +10,11 @@ namespace Runway
     public readonly partial struct GetAvatarConversationsResponse2 : global::System.IEquatable<GetAvatarConversationsResponse2>
     {
         /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.GetAvatarConversationsResponseDiscriminatorStatus? Status { get; }
+
+        /// <summary>
         /// A conversation that is currently active.
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -156,11 +161,14 @@ namespace Runway
         /// 
         /// </summary>
         public GetAvatarConversationsResponse2(
+            global::Runway.GetAvatarConversationsResponseDiscriminatorStatus? status,
             global::Runway.GetAvatarConversationsResponseVariant1? inProgress,
             global::Runway.GetAvatarConversationsResponseVariant2? ended,
             global::Runway.GetAvatarConversationsResponseVariant3? failed
             )
         {
+            Status = status;
+
             InProgress = inProgress;
             Ended = ended;
             Failed = failed;

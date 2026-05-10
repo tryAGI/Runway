@@ -10,6 +10,11 @@ namespace Runway
     public readonly partial struct GetWorkflowInvocationsResponse : global::System.IEquatable<GetWorkflowInvocationsResponse>
     {
         /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.GetWorkflowInvocationsResponseDiscriminatorStatus? Status { get; }
+
+        /// <summary>
         /// A pending workflow invocation
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -300,6 +305,7 @@ namespace Runway
         /// 
         /// </summary>
         public GetWorkflowInvocationsResponse(
+            global::Runway.GetWorkflowInvocationsResponseDiscriminatorStatus? status,
             global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationPending? pending,
             global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationThrottled? throttled,
             global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationCancelled? cancelled,
@@ -308,6 +314,8 @@ namespace Runway
             global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationSucceeded? succeeded
             )
         {
+            Status = status;
+
             Pending = pending;
             Throttled = throttled;
             Cancelled = cancelled;

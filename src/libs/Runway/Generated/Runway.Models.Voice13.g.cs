@@ -10,6 +10,11 @@ namespace Runway
     public readonly partial struct Voice13 : global::System.IEquatable<Voice13>
     {
         /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.PatchAvatarsResponseAvatarProcessingVoiceDiscriminatorType? Type { get; }
+
+        /// <summary>
         /// A preset voice from the Runway API.
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -108,10 +113,13 @@ namespace Runway
         /// 
         /// </summary>
         public Voice13(
+            global::Runway.PatchAvatarsResponseAvatarProcessingVoiceDiscriminatorType? type,
             global::Runway.PatchAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponse? runwayLivePreset,
             global::Runway.PatchAvatarsResponseAvatarProcessingVoiceCustomVoiceResponse? custom
             )
         {
+            Type = type;
+
             RunwayLivePreset = runwayLivePreset;
             Custom = custom;
         }

@@ -10,6 +10,11 @@ namespace Runway
     public readonly partial struct GetRealtimeSessionsResponse : global::System.IEquatable<GetRealtimeSessionsResponse>
     {
         /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.GetRealtimeSessionsResponseDiscriminatorStatus? Status { get; }
+
+        /// <summary>
         /// A session that is being provisioned.
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -300,6 +305,7 @@ namespace Runway
         /// 
         /// </summary>
         public GetRealtimeSessionsResponse(
+            global::Runway.GetRealtimeSessionsResponseDiscriminatorStatus? status,
             global::Runway.GetRealtimeSessionsResponseSessionNotReady? notReady,
             global::Runway.GetRealtimeSessionsResponseSessionReady? ready,
             global::Runway.GetRealtimeSessionsResponseSessionRunning? running,
@@ -308,6 +314,8 @@ namespace Runway
             global::Runway.GetRealtimeSessionsResponseSessionCancelled? cancelled
             )
         {
+            Status = status;
+
             NotReady = notReady;
             Ready = ready;
             Running = running;

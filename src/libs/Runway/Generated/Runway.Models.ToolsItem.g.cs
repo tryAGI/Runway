@@ -10,6 +10,11 @@ namespace Runway
     public readonly partial struct ToolsItem : global::System.IEquatable<ToolsItem>
     {
         /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.CreateRealtimeSessionsRequestToolDiscriminatorType? Type { get; }
+
+        /// <summary>
         /// A fire-and-forget tool that sends arguments to the frontend client of the realtime session.
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -108,10 +113,13 @@ namespace Runway
         /// 
         /// </summary>
         public ToolsItem(
+            global::Runway.CreateRealtimeSessionsRequestToolDiscriminatorType? type,
             global::Runway.CreateRealtimeSessionsRequestToolClientEventTool? clientEvent,
             global::Runway.CreateRealtimeSessionsRequestToolBackendRPCTool? backendRpc
             )
         {
+            Type = type;
+
             ClientEvent = clientEvent;
             BackendRpc = backendRpc;
         }

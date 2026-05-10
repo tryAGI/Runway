@@ -12,6 +12,11 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public global::Runway.CreateTextToVideoRequestDiscriminatorModel? Model { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Runway.CreateTextToVideoRequestGen45? Gen45 { get; init; }
 #else
@@ -204,12 +209,15 @@ namespace Runway
         /// 
         /// </summary>
         public CreateTextToVideoRequest(
+            global::Runway.CreateTextToVideoRequestDiscriminatorModel? model,
             global::Runway.CreateTextToVideoRequestGen45? gen45,
             global::Runway.CreateTextToVideoRequestVeo31? veo31,
             global::Runway.CreateTextToVideoRequestVeo31Fast? veo31Fast,
             global::Runway.CreateTextToVideoRequestVeo3? veo3
             )
         {
+            Model = model;
+
             Gen45 = gen45;
             Veo31 = veo31;
             Veo31Fast = veo31Fast;

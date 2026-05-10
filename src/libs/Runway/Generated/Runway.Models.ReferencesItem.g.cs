@@ -10,6 +10,11 @@ namespace Runway
     public readonly partial struct ReferencesItem : global::System.IEquatable<ReferencesItem>
     {
         /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.CreateVideoToVideoRequestGen4AlephReferenceDiscriminatorType? Type { get; }
+
+        /// <summary>
         /// Passing an image reference allows the model to emulate the style or content of the reference in the output.
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -54,6 +59,19 @@ namespace Runway
         public ReferencesItem(global::Runway.CreateVideoToVideoRequestGen4AlephReferenceImageReference? value)
         {
             Image = value;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public ReferencesItem(
+            global::Runway.CreateVideoToVideoRequestGen4AlephReferenceDiscriminatorType? type,
+            global::Runway.CreateVideoToVideoRequestGen4AlephReferenceImageReference? image
+            )
+        {
+            Type = type;
+
+            Image = image;
         }
 
         /// <summary>

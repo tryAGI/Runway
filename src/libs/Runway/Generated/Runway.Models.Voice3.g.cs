@@ -10,6 +10,11 @@ namespace Runway
     public readonly partial struct Voice3 : global::System.IEquatable<Voice3>
     {
         /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceDiscriminatorType? Type { get; }
+
+        /// <summary>
         /// A preset voice from the Runway API.
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -108,10 +113,13 @@ namespace Runway
         /// 
         /// </summary>
         public Voice3(
+            global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceDiscriminatorType? type,
             global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceRunwayPresetVoice? preset,
             global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceCustomVoice? custom
             )
         {
+            Type = type;
+
             Preset = preset;
             Custom = custom;
         }

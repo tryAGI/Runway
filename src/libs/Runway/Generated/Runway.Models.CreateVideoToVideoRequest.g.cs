@@ -12,6 +12,11 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public global::Runway.CreateVideoToVideoRequestDiscriminatorModel? Model { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Runway.CreateVideoToVideoRequestGen4Aleph? Gen4Aleph { get; init; }
 #else
@@ -54,6 +59,19 @@ namespace Runway
         public CreateVideoToVideoRequest(global::Runway.CreateVideoToVideoRequestGen4Aleph? value)
         {
             Gen4Aleph = value;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public CreateVideoToVideoRequest(
+            global::Runway.CreateVideoToVideoRequestDiscriminatorModel? model,
+            global::Runway.CreateVideoToVideoRequestGen4Aleph? gen4Aleph
+            )
+        {
+            Model = model;
+
+            Gen4Aleph = gen4Aleph;
         }
 
         /// <summary>

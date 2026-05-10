@@ -12,7 +12,8 @@ namespace Runway
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
-        public string? Model { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.CreateVoiceDubbingRequestDiscriminatorModelJsonConverter))]
+        public global::Runway.CreateVoiceDubbingRequestDiscriminatorModel? Model { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -28,7 +29,7 @@ namespace Runway
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public CreateVoiceDubbingRequestDiscriminator(
-            string? model)
+            global::Runway.CreateVoiceDubbingRequestDiscriminatorModel? model)
         {
             this.Model = model;
         }

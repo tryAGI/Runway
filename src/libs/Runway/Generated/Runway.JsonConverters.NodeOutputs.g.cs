@@ -15,161 +15,43 @@ namespace Runway.JsonConverters
             options = options ?? throw new global::System.ArgumentNullException(nameof(options));
             var typeInfoResolver = options.TypeInfoResolver ?? throw new global::System.InvalidOperationException("TypeInfoResolver is not set.");
 
-            using var __jsonDocument = global::System.Text.Json.JsonDocument.ParseValue(ref reader);
-            var __rawJson = __jsonDocument.RootElement.GetRawText();
-            var __jsonProps = new global::System.Collections.Generic.HashSet<string>();
-            if (__jsonDocument.RootElement.ValueKind == global::System.Text.Json.JsonValueKind.Object)
-            {
-                foreach (var __jsonProp in __jsonDocument.RootElement.EnumerateObject())
-                {
-                    __jsonProps.Add(__jsonProp.Name);
 
-                }
-            }
-
-            var __score0 = 0;
-            if (__jsonProps.Contains("type")) __score0++;
-            if (__jsonProps.Contains("value")) __score0++;
-            var __score1 = 0;
-            if (__jsonProps.Contains("type")) __score1++;
-            if (__jsonProps.Contains("uri")) __score1++;
-            var __score2 = 0;
-            if (__jsonProps.Contains("type")) __score2++;
-            if (__jsonProps.Contains("uri")) __score2++;
-            var __score3 = 0;
-            if (__jsonProps.Contains("type")) __score3++;
-            if (__jsonProps.Contains("uri")) __score3++;
-            var __bestScore = 0;
-            var __bestIndex = -1;
-            if (__score0 > __bestScore) { __bestScore = __score0; __bestIndex = 0; }
-            if (__score1 > __bestScore) { __bestScore = __score1; __bestIndex = 1; }
-            if (__score2 > __bestScore) { __bestScore = __score2; __bestIndex = 2; }
-            if (__score3 > __bestScore) { __bestScore = __score3; __bestIndex = 3; }
+            var readerCopy = reader;
+            var discriminatorTypeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateWorkflowsRequestNodeOutputsDiscriminator), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateWorkflowsRequestNodeOutputsDiscriminator> ??
+                            throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.CreateWorkflowsRequestNodeOutputsDiscriminator)}");
+            var discriminator = global::System.Text.Json.JsonSerializer.Deserialize(ref readerCopy, discriminatorTypeInfo);
 
             global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputPrimitive? primitive = default;
-            global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputImage? image = default;
-            global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputVideo? video = default;
-            global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputAudio? audio = default;
-            if (__bestIndex >= 0)
+            if (discriminator?.Type == global::Runway.CreateWorkflowsRequestNodeOutputsDiscriminatorType.Primitive)
             {
-                if (__bestIndex == 0)
-                {
-                    try
-                    {
-                        var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputPrimitive), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputPrimitive> ??
-                                       throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputPrimitive).Name}");
-                        primitive = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
-                    }
-                    catch (global::System.Text.Json.JsonException)
-                    {
-                    }
-                    catch (global::System.InvalidOperationException)
-                    {
-                    }
-                }
-                else if (__bestIndex == 1)
-                {
-                    try
-                    {
-                        var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputImage), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputImage> ??
-                                       throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputImage).Name}");
-                        image = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
-                    }
-                    catch (global::System.Text.Json.JsonException)
-                    {
-                    }
-                    catch (global::System.InvalidOperationException)
-                    {
-                    }
-                }
-                else if (__bestIndex == 2)
-                {
-                    try
-                    {
-                        var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputVideo), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputVideo> ??
-                                       throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputVideo).Name}");
-                        video = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
-                    }
-                    catch (global::System.Text.Json.JsonException)
-                    {
-                    }
-                    catch (global::System.InvalidOperationException)
-                    {
-                    }
-                }
-                else if (__bestIndex == 3)
-                {
-                    try
-                    {
-                        var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputAudio), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputAudio> ??
-                                       throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputAudio).Name}");
-                        audio = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
-                    }
-                    catch (global::System.Text.Json.JsonException)
-                    {
-                    }
-                    catch (global::System.InvalidOperationException)
-                    {
-                    }
-                }
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputPrimitive), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputPrimitive> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputPrimitive)}");
+                primitive = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
-
-            if (primitive == null && image == null && video == null && audio == null)
+            global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputImage? image = default;
+            if (discriminator?.Type == global::Runway.CreateWorkflowsRequestNodeOutputsDiscriminatorType.Image)
             {
-                try
-                {
-                    var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputPrimitive), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputPrimitive> ??
-                                   throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputPrimitive).Name}");
-                    primitive = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
-                }
-                catch (global::System.Text.Json.JsonException)
-                {
-                }
-                catch (global::System.InvalidOperationException)
-                {
-                }
-
-                try
-                {
-                    var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputImage), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputImage> ??
-                                   throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputImage).Name}");
-                    image = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
-                }
-                catch (global::System.Text.Json.JsonException)
-                {
-                }
-                catch (global::System.InvalidOperationException)
-                {
-                }
-
-                try
-                {
-                    var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputVideo), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputVideo> ??
-                                   throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputVideo).Name}");
-                    video = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
-                }
-                catch (global::System.Text.Json.JsonException)
-                {
-                }
-                catch (global::System.InvalidOperationException)
-                {
-                }
-
-                try
-                {
-                    var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputAudio), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputAudio> ??
-                                   throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputAudio).Name}");
-                    audio = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
-                }
-                catch (global::System.Text.Json.JsonException)
-                {
-                }
-                catch (global::System.InvalidOperationException)
-                {
-                }
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputImage), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputImage> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputImage)}");
+                image = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+            }
+            global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputVideo? video = default;
+            if (discriminator?.Type == global::Runway.CreateWorkflowsRequestNodeOutputsDiscriminatorType.Video)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputVideo), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputVideo> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputVideo)}");
+                video = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+            }
+            global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputAudio? audio = default;
+            if (discriminator?.Type == global::Runway.CreateWorkflowsRequestNodeOutputsDiscriminatorType.Audio)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputAudio), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputAudio> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputAudio)}");
+                audio = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
 
             var __value = new global::Runway.NodeOutputs(
+                discriminator?.Type,
                 primitive,
 
                 image,

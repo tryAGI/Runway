@@ -10,6 +10,11 @@ namespace Runway
     public readonly partial struct GetAvatarsResponse2 : global::System.IEquatable<GetAvatarsResponse2>
     {
         /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.GetAvatarsResponseDiscriminatorStatus? Status { get; }
+
+        /// <summary>
         /// An avatar that is still being processed.
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -156,11 +161,14 @@ namespace Runway
         /// 
         /// </summary>
         public GetAvatarsResponse2(
+            global::Runway.GetAvatarsResponseDiscriminatorStatus? status,
             global::Runway.GetAvatarsResponseAvatarProcessing? processing,
             global::Runway.GetAvatarsResponseAvatarReady? ready,
             global::Runway.GetAvatarsResponseAvatarFailed? failed
             )
         {
+            Status = status;
+
             Processing = processing;
             Ready = ready;
             Failed = failed;

@@ -15,156 +15,36 @@ namespace Runway.JsonConverters
             options = options ?? throw new global::System.ArgumentNullException(nameof(options));
             var typeInfoResolver = options.TypeInfoResolver ?? throw new global::System.InvalidOperationException("TypeInfoResolver is not set.");
 
-            using var __jsonDocument = global::System.Text.Json.JsonDocument.ParseValue(ref reader);
-            var __rawJson = __jsonDocument.RootElement.GetRawText();
-            var __jsonProps = new global::System.Collections.Generic.HashSet<string>();
-            if (__jsonDocument.RootElement.ValueKind == global::System.Text.Json.JsonValueKind.Object)
-            {
-                foreach (var __jsonProp in __jsonDocument.RootElement.EnumerateObject())
-                {
-                    __jsonProps.Add(__jsonProp.Name);
 
-                }
-            }
-
-            var __score0 = 0;
-            if (__jsonProps.Contains("createdAt")) __score0++;
-            if (__jsonProps.Contains("documentIds")) __score0++;
-            if (__jsonProps.Contains("id")) __score0++;
-            if (__jsonProps.Contains("name")) __score0++;
-            if (__jsonProps.Contains("personality")) __score0++;
-            if (__jsonProps.Contains("processedImageUri")) __score0++;
-            if (__jsonProps.Contains("referenceImageUri")) __score0++;
-            if (__jsonProps.Contains("startScript")) __score0++;
-            if (__jsonProps.Contains("status")) __score0++;
-            if (__jsonProps.Contains("updatedAt")) __score0++;
-            if (__jsonProps.Contains("voice")) __score0++;
-            var __score1 = 0;
-            if (__jsonProps.Contains("createdAt")) __score1++;
-            if (__jsonProps.Contains("documentIds")) __score1++;
-            if (__jsonProps.Contains("id")) __score1++;
-            if (__jsonProps.Contains("name")) __score1++;
-            if (__jsonProps.Contains("personality")) __score1++;
-            if (__jsonProps.Contains("processedImageUri")) __score1++;
-            if (__jsonProps.Contains("referenceImageUri")) __score1++;
-            if (__jsonProps.Contains("startScript")) __score1++;
-            if (__jsonProps.Contains("status")) __score1++;
-            if (__jsonProps.Contains("updatedAt")) __score1++;
-            if (__jsonProps.Contains("voice")) __score1++;
-            var __score2 = 0;
-            if (__jsonProps.Contains("createdAt")) __score2++;
-            if (__jsonProps.Contains("documentIds")) __score2++;
-            if (__jsonProps.Contains("failureReason")) __score2++;
-            if (__jsonProps.Contains("id")) __score2++;
-            if (__jsonProps.Contains("name")) __score2++;
-            if (__jsonProps.Contains("personality")) __score2++;
-            if (__jsonProps.Contains("processedImageUri")) __score2++;
-            if (__jsonProps.Contains("referenceImageUri")) __score2++;
-            if (__jsonProps.Contains("startScript")) __score2++;
-            if (__jsonProps.Contains("status")) __score2++;
-            if (__jsonProps.Contains("updatedAt")) __score2++;
-            if (__jsonProps.Contains("voice")) __score2++;
-            var __bestScore = 0;
-            var __bestIndex = -1;
-            if (__score0 > __bestScore) { __bestScore = __score0; __bestIndex = 0; }
-            if (__score1 > __bestScore) { __bestScore = __score1; __bestIndex = 1; }
-            if (__score2 > __bestScore) { __bestScore = __score2; __bestIndex = 2; }
+            var readerCopy = reader;
+            var discriminatorTypeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetAvatarsResponseDataItemDiscriminator), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetAvatarsResponseDataItemDiscriminator> ??
+                            throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.GetAvatarsResponseDataItemDiscriminator)}");
+            var discriminator = global::System.Text.Json.JsonSerializer.Deserialize(ref readerCopy, discriminatorTypeInfo);
 
             global::Runway.GetAvatarsResponseDataItemAvatarProcessing? processing = default;
-            global::Runway.GetAvatarsResponseDataItemAvatarReady? ready = default;
-            global::Runway.GetAvatarsResponseDataItemAvatarFailed? failed = default;
-            if (__bestIndex >= 0)
+            if (discriminator?.Status == global::Runway.GetAvatarsResponseDataItemDiscriminatorStatus.Processing)
             {
-                if (__bestIndex == 0)
-                {
-                    try
-                    {
-                        var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetAvatarsResponseDataItemAvatarProcessing), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetAvatarsResponseDataItemAvatarProcessing> ??
-                                       throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.GetAvatarsResponseDataItemAvatarProcessing).Name}");
-                        processing = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
-                    }
-                    catch (global::System.Text.Json.JsonException)
-                    {
-                    }
-                    catch (global::System.InvalidOperationException)
-                    {
-                    }
-                }
-                else if (__bestIndex == 1)
-                {
-                    try
-                    {
-                        var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetAvatarsResponseDataItemAvatarReady), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetAvatarsResponseDataItemAvatarReady> ??
-                                       throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.GetAvatarsResponseDataItemAvatarReady).Name}");
-                        ready = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
-                    }
-                    catch (global::System.Text.Json.JsonException)
-                    {
-                    }
-                    catch (global::System.InvalidOperationException)
-                    {
-                    }
-                }
-                else if (__bestIndex == 2)
-                {
-                    try
-                    {
-                        var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetAvatarsResponseDataItemAvatarFailed), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetAvatarsResponseDataItemAvatarFailed> ??
-                                       throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.GetAvatarsResponseDataItemAvatarFailed).Name}");
-                        failed = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
-                    }
-                    catch (global::System.Text.Json.JsonException)
-                    {
-                    }
-                    catch (global::System.InvalidOperationException)
-                    {
-                    }
-                }
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetAvatarsResponseDataItemAvatarProcessing), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetAvatarsResponseDataItemAvatarProcessing> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.GetAvatarsResponseDataItemAvatarProcessing)}");
+                processing = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
-
-            if (processing == null && ready == null && failed == null)
+            global::Runway.GetAvatarsResponseDataItemAvatarReady? ready = default;
+            if (discriminator?.Status == global::Runway.GetAvatarsResponseDataItemDiscriminatorStatus.Ready)
             {
-                try
-                {
-                    var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetAvatarsResponseDataItemAvatarProcessing), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetAvatarsResponseDataItemAvatarProcessing> ??
-                                   throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.GetAvatarsResponseDataItemAvatarProcessing).Name}");
-                    processing = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
-                }
-                catch (global::System.Text.Json.JsonException)
-                {
-                }
-                catch (global::System.InvalidOperationException)
-                {
-                }
-
-                try
-                {
-                    var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetAvatarsResponseDataItemAvatarReady), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetAvatarsResponseDataItemAvatarReady> ??
-                                   throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.GetAvatarsResponseDataItemAvatarReady).Name}");
-                    ready = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
-                }
-                catch (global::System.Text.Json.JsonException)
-                {
-                }
-                catch (global::System.InvalidOperationException)
-                {
-                }
-
-                try
-                {
-                    var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetAvatarsResponseDataItemAvatarFailed), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetAvatarsResponseDataItemAvatarFailed> ??
-                                   throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.GetAvatarsResponseDataItemAvatarFailed).Name}");
-                    failed = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
-                }
-                catch (global::System.Text.Json.JsonException)
-                {
-                }
-                catch (global::System.InvalidOperationException)
-                {
-                }
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetAvatarsResponseDataItemAvatarReady), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetAvatarsResponseDataItemAvatarReady> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.GetAvatarsResponseDataItemAvatarReady)}");
+                ready = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+            }
+            global::Runway.GetAvatarsResponseDataItemAvatarFailed? failed = default;
+            if (discriminator?.Status == global::Runway.GetAvatarsResponseDataItemDiscriminatorStatus.Failed)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetAvatarsResponseDataItemAvatarFailed), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetAvatarsResponseDataItemAvatarFailed> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.GetAvatarsResponseDataItemAvatarFailed)}");
+                failed = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
 
             var __value = new global::Runway.DataItem(
+                discriminator?.Status,
                 processing,
 
                 ready,

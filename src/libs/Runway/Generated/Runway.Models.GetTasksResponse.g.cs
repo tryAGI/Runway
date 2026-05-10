@@ -10,6 +10,11 @@ namespace Runway
     public readonly partial struct GetTasksResponse : global::System.IEquatable<GetTasksResponse>
     {
         /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.GetTasksResponseDiscriminatorStatus? Status { get; }
+
+        /// <summary>
         /// A pending task
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -300,6 +305,7 @@ namespace Runway
         /// 
         /// </summary>
         public GetTasksResponse(
+            global::Runway.GetTasksResponseDiscriminatorStatus? status,
             global::Runway.GetTasksResponseVariant1? pending,
             global::Runway.GetTasksResponseVariant2? throttled,
             global::Runway.GetTasksResponseVariant3? cancelled,
@@ -308,6 +314,8 @@ namespace Runway
             global::Runway.GetTasksResponseVariant6? succeeded
             )
         {
+            Status = status;
+
             Pending = pending;
             Throttled = throttled;
             Cancelled = cancelled;

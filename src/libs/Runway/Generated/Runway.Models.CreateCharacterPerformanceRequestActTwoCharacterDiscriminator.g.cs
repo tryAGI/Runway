@@ -12,7 +12,8 @@ namespace Runway
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
-        public string? Type { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.CreateCharacterPerformanceRequestActTwoCharacterDiscriminatorTypeJsonConverter))]
+        public global::Runway.CreateCharacterPerformanceRequestActTwoCharacterDiscriminatorType? Type { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -28,7 +29,7 @@ namespace Runway
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public CreateCharacterPerformanceRequestActTwoCharacterDiscriminator(
-            string? type)
+            global::Runway.CreateCharacterPerformanceRequestActTwoCharacterDiscriminatorType? type)
         {
             this.Type = type;
         }

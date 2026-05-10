@@ -12,6 +12,11 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public global::Runway.CreateTextToImageRequestDiscriminatorModel? Model { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Runway.CreateTextToImageRequestGen4ImageTurbo? Gen4ImageTurbo { get; init; }
 #else
@@ -252,6 +257,7 @@ namespace Runway
         /// 
         /// </summary>
         public CreateTextToImageRequest(
+            global::Runway.CreateTextToImageRequestDiscriminatorModel? model,
             global::Runway.CreateTextToImageRequestGen4ImageTurbo? gen4ImageTurbo,
             global::Runway.CreateTextToImageRequestGen4Image? gen4Image,
             global::Runway.CreateTextToImageRequestGptImage2? gptImage2,
@@ -259,6 +265,8 @@ namespace Runway
             global::Runway.CreateTextToImageRequestGemini25Flash? gemini25Flash
             )
         {
+            Model = model;
+
             Gen4ImageTurbo = gen4ImageTurbo;
             Gen4Image = gen4Image;
             GptImage2 = gptImage2;

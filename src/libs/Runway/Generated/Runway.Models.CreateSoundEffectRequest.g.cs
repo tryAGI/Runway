@@ -12,6 +12,11 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public global::Runway.CreateSoundEffectRequestDiscriminatorModel? Model { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Runway.CreateSoundEffectRequestElevenTextToSoundV2? ElevenTextToSoundV2 { get; init; }
 #else
@@ -54,6 +59,19 @@ namespace Runway
         public CreateSoundEffectRequest(global::Runway.CreateSoundEffectRequestElevenTextToSoundV2? value)
         {
             ElevenTextToSoundV2 = value;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public CreateSoundEffectRequest(
+            global::Runway.CreateSoundEffectRequestDiscriminatorModel? model,
+            global::Runway.CreateSoundEffectRequestElevenTextToSoundV2? elevenTextToSoundV2
+            )
+        {
+            Model = model;
+
+            ElevenTextToSoundV2 = elevenTextToSoundV2;
         }
 
         /// <summary>

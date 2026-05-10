@@ -12,6 +12,11 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterDiscriminatorType? Type { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterStringParameter? String { get; init; }
 #else
@@ -300,6 +305,7 @@ namespace Runway
         /// 
         /// </summary>
         public ParametersItem2(
+            global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterDiscriminatorType? type,
             global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterStringParameter? @string,
             global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterIntegerParameter? integer,
             global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterNumberParameter? number,
@@ -308,6 +314,8 @@ namespace Runway
             global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterObjectParameter? objectValue
             )
         {
+            Type = type;
+
             String = @string;
             Integer = integer;
             Number = number;
