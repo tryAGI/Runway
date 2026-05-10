@@ -105,15 +105,20 @@ public static class RunwayBuiltInWorkflowExtensions
             node[input.OutputKey] = wrapped;
         }
 
-        // 2. Submit the workflow. Use Dictionary<string, object> shape for direct serialization
-        //    via the SDK's existing JSON path.
+        // 2. Submit the workflow. Convert the JsonObject tree into a plain dict-of-dicts so
+        //    the SDK's source-generated serializer can emit it without falling back on
+        //    reflection-based deserialization (trim-safe).
         var nodeOutputsDict = new Dictionary<string, object>(StringComparer.Ordinal);
         foreach (var (key, val) in nodeOutputs)
         {
-            if (val is null) continue;
-            // Round-trip via JSON to plain dict-of-dicts for the SDK's serializer.
-            nodeOutputsDict[key] = JsonSerializer.Deserialize<Dictionary<string, object>>(val.ToJsonString())
-                ?? throw new InvalidOperationException("Failed to round-trip nodeOutputs payload.");
+            if (val is not JsonObject obj) continue;
+            var inner = new Dictionary<string, object>(StringComparer.Ordinal);
+            foreach (var (innerKey, innerVal) in obj)
+            {
+                if (innerVal is null) continue;
+                inner[innerKey] = innerVal;
+            }
+            nodeOutputsDict[key] = inner;
         }
 
         var request = new CreateWorkflowsRequest { NodeOutputs = nodeOutputsDict };
