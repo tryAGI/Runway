@@ -424,51 +424,51 @@ internal static class RunwayCliGeneration
     /// </summary>
     public static void ValidateTextToImageRatio(string ratio, string normalizedModel)
     {
+        ValidateRatioAgainstEndpoint(ratio, normalizedModel, RunwayRatioEndpoints.TextToImage, "image");
+    }
+
+    public static void ValidateTextToVideoRatio(string ratio, string normalizedModel)
+    {
+        ValidateRatioAgainstEndpoint(ratio, normalizedModel, RunwayRatioEndpoints.TextToVideo, "text-to-video");
+    }
+
+    public static void ValidateImageToVideoRatio(string ratio, string normalizedModel)
+    {
+        ValidateRatioAgainstEndpoint(ratio, normalizedModel, RunwayRatioEndpoints.ImageToVideo, "image-to-video");
+    }
+
+    private static void ValidateRatioAgainstEndpoint(
+        string ratio,
+        string normalizedModel,
+        string endpoint,
+        string surfaceLabel)
+    {
         ArgumentException.ThrowIfNullOrWhiteSpace(ratio);
         ArgumentException.ThrowIfNullOrWhiteSpace(normalizedModel);
-        var supported = GetSupportedTextToImageRatios(normalizedModel);
-        if (supported is null || supported.Contains(ratio))
+        var supported = RunwayRatioSupport.GetSupportedRatios(normalizedModel, endpoint);
+        // Empty list means the model has no enum-backed ratio set on this endpoint (e.g. unknown
+        // model or an audio surface) — skip validation and let the API have the final say.
+        if (supported.Count == 0 || supported.Contains(ratio, StringComparer.Ordinal))
         {
             return;
         }
 
-        var alternates = RunwayRatioSupport.GetSupportingModels(ratio)
-            .Where(m => !string.Equals(m, normalizedModel, StringComparison.Ordinal))
-            .ToArray();
-        var alternateHint = alternates.Length > 0
-            ? $" Other Runway models that DO accept '{ratio}': {string.Join(", ", alternates)}."
-            : string.Empty;
-
+        var trailer = RunwayCliRatioHints.BuildRejectionTrailer(ratio, normalizedModel, supported);
         throw new ArgumentException(
-            $"Unsupported --ratio '{ratio}' for image model '{normalizedModel}'. Supported values: {string.Join(", ", supported)}.{alternateHint}");
+            $"Unsupported --ratio '{ratio}' for {surfaceLabel} model '{normalizedModel}'. {trailer}");
     }
 
     /// <summary>
     /// Returns the list of supported ratios for the given normalized image model, or <c>null</c> when the
     /// model has no enum-backed ratio set in the generated SDK (in which case validation is skipped and the
-    /// API has the final say).
+    /// API has the final say). Delegates to <see cref="RunwayRatioSupport.GetSupportedRatios(string, string)"/>
+    /// with <see cref="RunwayRatioEndpoints.TextToImage"/> as the single source of truth.
     /// </summary>
     public static IReadOnlyList<string>? GetSupportedTextToImageRatios(string normalizedModel)
     {
-        return normalizedModel switch
-        {
-            "gemini_2.5_flash" => Enum.GetValues<CreateTextToImageRequestGemini25FlashRatio>()
-                .Select(value => value.ToValueString())
-                .ToArray(),
-            "gemini_image3_pro" => Enum.GetValues<CreateTextToImageRequestGeminiImage3ProRatio>()
-                .Select(value => value.ToValueString())
-                .ToArray(),
-            "gen4_image" => Enum.GetValues<CreateTextToImageRequestGen4ImageRatio>()
-                .Select(value => value.ToValueString())
-                .ToArray(),
-            "gen4_image_turbo" => Enum.GetValues<CreateTextToImageRequestGen4ImageTurboRatio>()
-                .Select(value => value.ToValueString())
-                .ToArray(),
-            "gpt_image_2" => Enum.GetValues<CreateTextToImageRequestGptImage2Ratio>()
-                .Select(value => value.ToValueString())
-                .ToArray(),
-            _ => null,
-        };
+        ArgumentException.ThrowIfNullOrWhiteSpace(normalizedModel);
+        var ratios = RunwayRatioSupport.GetSupportedRatios(normalizedModel, RunwayRatioEndpoints.TextToImage);
+        return ratios.Count == 0 ? null : ratios;
     }
 
     public static GptImage2Resolution? ParseGptImage2Resolution(string? value)

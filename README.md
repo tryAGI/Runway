@@ -769,7 +769,15 @@ RunwayRatioSupport.GetSupportedRatios("veo3.1_fast", RunwayRatioEndpoints.TextTo
 // => []   (veo3.1_fast is a video model)
 ```
 
-The CLI's `models schema <model>` command now prints a `ratios:` line per endpoint, and `image --ratio <bad>` errors include a "Other Runway models that DO accept '<ratio>'" hint.
+The CLI's `models schema <model>` command now prints a `ratios:` line per endpoint. `image`, `text-to-video`, and `image-to-video` all fail fast on unsupported `--ratio` values, with three layered hints: the supported list for the chosen model, "Other Runway models that DO accept '<ratio>'", and the two closest accepted aspects (ranked by aspect-distance, then pixel area). Example:
+
+```
+$ dnx Runway.Cli text-to-video "test" --model veo3.1_fast --ratio 720:720
+Unsupported --ratio '720:720' for text-to-video model 'veo3.1_fast'.
+Supported values: 1080:1920, 1280:720, 1920:1080, 720:1280.
+Other Runway models that DO accept '720:720': gen4_image, gen4_image_turbo.
+Closest accepted aspects: 720:1280, 1080:1920.
+```
 
 `RunwayPollingExtensions` adds `WaitForAvatarAsync(IAvatarsClient, Guid, ...)` and `WaitForRealtimeSessionAsync(IRealtimeSessionsClient, Guid, ...)` so consumers don't reimplement the poll-until-terminal loop for `/v1/avatars/{id}` and `/v1/realtime_sessions/{id}` (mirroring the existing `client.WaitForTaskAsync(taskId, ...)` for `/v1/tasks/{id}`).
 

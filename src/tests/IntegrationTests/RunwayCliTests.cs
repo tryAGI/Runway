@@ -1593,7 +1593,78 @@ public partial class Tests
         var act = () => RunwayCliGeneration.ValidateTextToImageRatio("1280:720", "gpt_image_2");
 
         act.Should().Throw<ArgumentException>()
-            .WithMessage("*Unsupported --ratio '1280:720' for image model 'gpt_image_2'*Other Runway models that DO accept '1280:720'*gen4_image*");
+            .WithMessage("*Unsupported --ratio '1280:720' for image model 'gpt_image_2'*Other Runway models that DO accept '1280:720'*gen4_image*Closest accepted aspects:*");
+    }
+
+    [TestMethod]
+    public void RunwayCliGeneration_ValidateTextToVideoRatioRejectsUnsupportedRatio()
+    {
+        // 720:720 (1:1) is supported by gen4_image but NOT by veo3.1_fast on text_to_video.
+        var act = () => RunwayCliGeneration.ValidateTextToVideoRatio("720:720", "veo3.1_fast");
+
+        act.Should().Throw<ArgumentException>()
+            .WithMessage("*Unsupported --ratio '720:720' for text-to-video model 'veo3.1_fast'*Other Runway models that DO accept '720:720'*gen4_image*Closest accepted aspects:*");
+    }
+
+    [TestMethod]
+    public void RunwayCliGeneration_ValidateImageToVideoRatioRejectsUnsupportedRatio()
+    {
+        // 1104:832 is supported by gen4_turbo image-to-video but NOT veo3.1_fast image-to-video.
+        var act = () => RunwayCliGeneration.ValidateImageToVideoRatio("1104:832", "veo3.1_fast");
+
+        act.Should().Throw<ArgumentException>()
+            .WithMessage("*Unsupported --ratio '1104:832' for image-to-video model 'veo3.1_fast'*gen4_turbo*Closest accepted aspects:*");
+    }
+
+    [TestMethod]
+    public void RunwayCliGeneration_ValidateTextToVideoRatioAcceptsKnownGoodRatio()
+    {
+        var act = () => RunwayCliGeneration.ValidateTextToVideoRatio("1280:720", "veo3.1_fast");
+
+        act.Should().NotThrow();
+    }
+
+    [TestMethod]
+    public void RunwayCliGeneration_ValidateTextToVideoRatioNoOpsForUnknownModel()
+    {
+        // No enum-backed ratio set => skip and let the API decide.
+        var act = () => RunwayCliGeneration.ValidateTextToVideoRatio("anything:anything", "future_model_we_dont_know_about");
+
+        act.Should().NotThrow();
+    }
+
+    [TestMethod]
+    public void RunwayCliRatioHints_TryGetClosestAspectsRanksByDistanceThenArea()
+    {
+        // Target 1:1 with both 720:720 and 960:960 in the candidate list.
+        // 720:720 should win on area when both are aspect-perfect.
+        IReadOnlyList<string> candidates = new[] { "1280:720", "720:720", "960:960", "1920:1080" };
+
+        var closest = RunwayCliRatioHints.TryGetClosestAspects("1024:1024", candidates, count: 2);
+
+        closest.Should().HaveCount(2);
+        closest[0].Should().Be("720:720");
+        closest[1].Should().Be("960:960");
+    }
+
+    [TestMethod]
+    public void RunwayCliRatioHints_TryGetClosestAspectsToleratesMalformedCandidates()
+    {
+        IReadOnlyList<string> candidates = new[] { "garbage", "1280:720", "0:0" };
+
+        var closest = RunwayCliRatioHints.TryGetClosestAspects("1280:720", candidates, count: 1);
+
+        closest.Should().ContainSingle().Which.Should().Be("1280:720");
+    }
+
+    [TestMethod]
+    public void RunwayCliGeneration_GetSupportedTextToImageRatiosDelegatesToRunwayRatioSupport()
+    {
+        var legacy = RunwayCliGeneration.GetSupportedTextToImageRatios("gen4_image");
+        var central = RunwayRatioSupport.GetSupportedRatios("gen4_image", RunwayRatioEndpoints.TextToImage);
+
+        legacy.Should().NotBeNull();
+        legacy!.Should().BeEquivalentTo(central);
     }
 
     [TestMethod]

@@ -884,13 +884,16 @@ generateVideoCommand.SetAction((ParseResult parseResult, CancellationToken cance
 
         if (json is not { Length: > 0 })
         {
+            var resolvedModel = model ?? string.Empty;
             if (promptImages is { Length: > 0 } || lastImage is { Length: > 0 })
             {
-                RunwayModelSchema.EnsureModelSupportsEndpoint(model ?? string.Empty, "image_to_video");
+                RunwayModelSchema.EnsureModelSupportsEndpoint(resolvedModel, "image_to_video");
+                RunwayCliGeneration.ValidateImageToVideoRatio(ratio, resolvedModel);
             }
             else
             {
-                RunwayModelSchema.EnsureModelSupportsEndpoint(model ?? string.Empty, "text_to_video");
+                RunwayModelSchema.EnsureModelSupportsEndpoint(resolvedModel, "text_to_video");
+                RunwayCliGeneration.ValidateTextToVideoRatio(ratio, resolvedModel);
             }
         }
 
@@ -1443,7 +1446,9 @@ textToVideoCommand.SetAction((ParseResult parseResult, CancellationToken cancell
         if (json is not { Length: > 0 })
         {
             var t2vModel = parseResult.GetValue(videoModelOption) ?? string.Empty;
+            var t2vRatio = parseResult.GetValue(videoRatioOption) ?? "1280:720";
             RunwayModelSchema.EnsureModelSupportsEndpoint(t2vModel, "text_to_video");
+            RunwayCliGeneration.ValidateTextToVideoRatio(t2vRatio, t2vModel);
             RunwayModelSchema.EnsureRequiredParametersProvided(t2vModel, "text_to_video", new Dictionary<string, bool>
             {
                 ["promptText"] = !string.IsNullOrWhiteSpace(RunwayCliGeneration.JoinPrompt(parseResult.GetValue(textToVideoPromptArgument))),
@@ -1509,7 +1514,9 @@ imageToVideoCommand.SetAction((ParseResult parseResult, CancellationToken cancel
             var i2vModel = parseResult.GetValue(videoModelOption) ?? string.Empty;
             var i2vPrompt = string.Join(' ', parseResult.GetValue(optionalVideoPromptArgument) ?? []).Trim();
             var i2vImages = MergeSoulIdImages(parseResult, parseResult.GetValue(promptImageOption));
+            var i2vRatio = parseResult.GetValue(videoRatioOption) ?? "1280:720";
             RunwayModelSchema.EnsureModelSupportsEndpoint(i2vModel, "image_to_video");
+            RunwayCliGeneration.ValidateImageToVideoRatio(i2vRatio, i2vModel);
             RunwayModelSchema.EnsureRequiredParametersProvided(i2vModel, "image_to_video", new Dictionary<string, bool>
             {
                 ["promptText"] = !string.IsNullOrWhiteSpace(i2vPrompt),
