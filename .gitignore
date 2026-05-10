@@ -408,3 +408,6 @@ docs/assets/
 
 # Local secrets
 .env
+
+# Local short-video runtime artifacts (timestamped scenario plans + downloaded shots)
+runway-short-video-*/
