@@ -37,6 +37,23 @@ runway short-video "..." \
   --keyframes gemini-image3-pro
 ```
 
+## Use as an agent skill
+
+The CLI also ships as an installable agent skill via the [skills.sh](https://skills.sh) ecosystem. The skill bundles guidance for Claude Code, Cursor, Codex, and 50+ other agents on how to drive `dnx Runway.Cli` for image, video, and audio generation, multi-shot short videos, and the named custom workflows.
+
+```bash
+# Install into the current project (auto-detects your agent)
+npx skills add tryAGI/Runway
+
+# Or globally for all agents
+npx skills add tryAGI/Runway -g
+
+# Target a specific agent and skip prompts (CI-friendly)
+npx skills add tryAGI/Runway -a claude-code -y
+```
+
+After install, the skill's instructions live at `.agents/skills/runway-cli/SKILL.md`. Listing on [skills.sh/tryAGI/Runway](https://skills.sh/tryAGI/Runway) is updated automatically from anonymous install telemetry.
+
 ## Features 🔥
 - Fully generated C# SDK based on [official Runway OpenAPI specification](https://raw.githubusercontent.com/runwayml/openapi/refs/heads/next/openapi.json) using [AutoSDK](https://github.com/tryAGI/AutoSDK)
 - Same day update to support new features
