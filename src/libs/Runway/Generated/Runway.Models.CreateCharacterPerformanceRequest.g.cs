@@ -43,6 +43,13 @@ namespace Runway
             value = ActTwo;
             return IsActTwo;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.CreateCharacterPerformanceRequestActTwo PickActTwo() => IsActTwo
+            ? ActTwo!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'ActTwo' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

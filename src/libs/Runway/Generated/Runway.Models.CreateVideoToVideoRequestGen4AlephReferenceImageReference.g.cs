@@ -55,5 +55,18 @@ namespace Runway
         public CreateVideoToVideoRequestGen4AlephReferenceImageReference()
         {
         }
+
+        /// <summary>
+        /// Creates a new <see cref="CreateVideoToVideoRequestGen4AlephReferenceImageReference"/> from its single non-const required field,
+        /// hardcoding any const discriminator fields.
+        /// </summary>
+        public static CreateVideoToVideoRequestGen4AlephReferenceImageReference FromUri(string uri)
+        {
+            return new CreateVideoToVideoRequestGen4AlephReferenceImageReference
+            {
+                Uri = uri,
+            };
+        }
+
     }
 }

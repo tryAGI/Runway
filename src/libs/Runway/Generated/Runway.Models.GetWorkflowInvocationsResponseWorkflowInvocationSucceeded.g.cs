@@ -87,5 +87,6 @@ namespace Runway
         public GetWorkflowInvocationsResponseWorkflowInvocationSucceeded()
         {
         }
+
     }
 }

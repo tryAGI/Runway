@@ -43,6 +43,13 @@ namespace Runway
             value = ElevenTextToSoundV2;
             return IsElevenTextToSoundV2;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.CreateSoundEffectRequestElevenTextToSoundV2 PickElevenTextToSoundV2() => IsElevenTextToSoundV2
+            ? ElevenTextToSoundV2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'ElevenTextToSoundV2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

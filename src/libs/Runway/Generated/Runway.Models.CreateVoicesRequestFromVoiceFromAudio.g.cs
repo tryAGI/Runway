@@ -55,5 +55,18 @@ namespace Runway
         public CreateVoicesRequestFromVoiceFromAudio()
         {
         }
+
+        /// <summary>
+        /// Creates a new <see cref="CreateVoicesRequestFromVoiceFromAudio"/> from its single non-const required field,
+        /// hardcoding any const discriminator fields.
+        /// </summary>
+        public static CreateVoicesRequestFromVoiceFromAudio FromAudio(string audio)
+        {
+            return new CreateVoicesRequestFromVoiceFromAudio
+            {
+                Audio = audio,
+            };
+        }
+
     }
 }

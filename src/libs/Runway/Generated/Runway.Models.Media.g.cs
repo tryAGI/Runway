@@ -45,6 +45,13 @@ namespace Runway
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaSpeechToSpeechAudio PickAudio() => IsAudio
+            ? Audio!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Audio' but the value was {ToString()}.");
+
+        /// <summary>
         /// A video file containing dialogue to be processed.
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -73,6 +80,13 @@ namespace Runway
             value = Video;
             return IsVideo;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaSpeechToSpeechVideo PickVideo() => IsVideo
+            ? Video!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Video' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

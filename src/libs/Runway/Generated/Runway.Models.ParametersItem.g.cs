@@ -47,6 +47,13 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterStringParameter PickString() => IsString
+            ? String!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'String' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterIntegerParameter? Integer { get; init; }
 #else
@@ -73,6 +80,13 @@ namespace Runway
             value = Integer;
             return IsInteger;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterIntegerParameter PickInteger() => IsInteger
+            ? Integer!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Integer' but the value was {ToString()}.");
 
         /// <summary>
         /// 
@@ -107,6 +121,13 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterNumberParameter PickNumber() => IsNumber
+            ? Number!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Number' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterBooleanParameter? Boolean { get; init; }
 #else
@@ -133,6 +154,13 @@ namespace Runway
             value = Boolean;
             return IsBoolean;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterBooleanParameter PickBoolean() => IsBoolean
+            ? Boolean!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Boolean' but the value was {ToString()}.");
 
         /// <summary>
         /// 
@@ -167,6 +195,13 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterArrayParameter PickArray() => IsArray
+            ? Array!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Array' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterObjectParameter? ObjectValue { get; init; }
 #else
@@ -193,6 +228,13 @@ namespace Runway
             value = ObjectValue;
             return IsObjectValue;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterObjectParameter PickObjectValue() => IsObjectValue
+            ? ObjectValue!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'ObjectValue' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

@@ -46,6 +46,13 @@ namespace Runway
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.PatchAvatarsRequestVoiceRunwayLivePresetVoice PickRunwayLivePreset() => IsRunwayLivePreset
+            ? RunwayLivePreset!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'RunwayLivePreset' but the value was {ToString()}.");
+
+        /// <summary>
         /// A custom voice created via the Voices API.
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -74,6 +81,13 @@ namespace Runway
             value = Custom;
             return IsCustom;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.PatchAvatarsRequestVoiceCustomVoice PickCustom() => IsCustom
+            ? Custom!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Custom' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

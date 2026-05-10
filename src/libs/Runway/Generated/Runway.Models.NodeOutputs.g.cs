@@ -45,6 +45,13 @@ namespace Runway
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputPrimitive PickPrimitive() => IsPrimitive
+            ? Primitive!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Primitive' but the value was {ToString()}.");
+
+        /// <summary>
         /// An image asset
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -73,6 +80,13 @@ namespace Runway
             value = Image;
             return IsImage;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputImage PickImage() => IsImage
+            ? Image!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Image' but the value was {ToString()}.");
 
         /// <summary>
         /// A video asset
@@ -105,6 +119,13 @@ namespace Runway
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputVideo PickVideo() => IsVideo
+            ? Video!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Video' but the value was {ToString()}.");
+
+        /// <summary>
         /// An audio asset
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -133,6 +154,13 @@ namespace Runway
             value = Audio;
             return IsAudio;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputAudio PickAudio() => IsAudio
+            ? Audio!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Audio' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

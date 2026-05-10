@@ -98,5 +98,6 @@ namespace Runway
         public CreateTextToImageRequestGen4Image()
         {
         }
+
     }
 }

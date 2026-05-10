@@ -127,5 +127,6 @@ namespace Runway
         public CreateAvatarsRequest()
         {
         }
+
     }
 }

@@ -123,5 +123,6 @@ namespace Runway
         public PatchAvatarsRequest()
         {
         }
+
     }
 }

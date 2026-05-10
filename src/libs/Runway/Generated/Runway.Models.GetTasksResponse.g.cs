@@ -45,6 +45,13 @@ namespace Runway
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.GetTasksResponseVariant1 PickPending() => IsPending
+            ? Pending!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Pending' but the value was {ToString()}.");
+
+        /// <summary>
         /// A throttled task
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -73,6 +80,13 @@ namespace Runway
             value = Throttled;
             return IsThrottled;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.GetTasksResponseVariant2 PickThrottled() => IsThrottled
+            ? Throttled!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Throttled' but the value was {ToString()}.");
 
         /// <summary>
         /// A cancelled or deleted task
@@ -105,6 +119,13 @@ namespace Runway
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.GetTasksResponseVariant3 PickCancelled() => IsCancelled
+            ? Cancelled!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Cancelled' but the value was {ToString()}.");
+
+        /// <summary>
         /// A running task
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -133,6 +154,13 @@ namespace Runway
             value = Running;
             return IsRunning;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.GetTasksResponseVariant4 PickRunning() => IsRunning
+            ? Running!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Running' but the value was {ToString()}.");
 
         /// <summary>
         /// A failed task
@@ -165,6 +193,13 @@ namespace Runway
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.GetTasksResponseVariant5 PickFailed() => IsFailed
+            ? Failed!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Failed' but the value was {ToString()}.");
+
+        /// <summary>
         /// A succeeded task
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -193,6 +228,13 @@ namespace Runway
             value = Succeeded;
             return IsSucceeded;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.GetTasksResponseVariant6 PickSucceeded() => IsSucceeded
+            ? Succeeded!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Succeeded' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

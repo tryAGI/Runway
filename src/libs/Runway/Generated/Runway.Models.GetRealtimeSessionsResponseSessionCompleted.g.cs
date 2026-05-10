@@ -76,5 +76,6 @@ namespace Runway
         public GetRealtimeSessionsResponseSessionCompleted()
         {
         }
+
     }
 }

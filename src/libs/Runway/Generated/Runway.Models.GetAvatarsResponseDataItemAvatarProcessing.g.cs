@@ -158,5 +158,6 @@ namespace Runway
         public GetAvatarsResponseDataItemAvatarProcessing()
         {
         }
+
     }
 }

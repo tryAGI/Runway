@@ -47,6 +47,13 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public global::Runway.CreateTextToVideoRequestGen45 PickGen45() => IsGen45
+            ? Gen45!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Gen45' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Runway.CreateTextToVideoRequestVeo31? Veo31 { get; init; }
 #else
@@ -73,6 +80,13 @@ namespace Runway
             value = Veo31;
             return IsVeo31;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.CreateTextToVideoRequestVeo31 PickVeo31() => IsVeo31
+            ? Veo31!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Veo31' but the value was {ToString()}.");
 
         /// <summary>
         /// 
@@ -107,6 +121,13 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public global::Runway.CreateTextToVideoRequestVeo31Fast PickVeo31Fast() => IsVeo31Fast
+            ? Veo31Fast!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Veo31Fast' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Runway.CreateTextToVideoRequestVeo3? Veo3 { get; init; }
 #else
@@ -133,6 +154,13 @@ namespace Runway
             value = Veo3;
             return IsVeo3;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.CreateTextToVideoRequestVeo3 PickVeo3() => IsVeo3
+            ? Veo3!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Veo3' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

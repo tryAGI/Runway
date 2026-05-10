@@ -47,6 +47,13 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public global::Runway.CreateTextToImageRequestGen4ImageTurbo PickGen4ImageTurbo() => IsGen4ImageTurbo
+            ? Gen4ImageTurbo!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Gen4ImageTurbo' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Runway.CreateTextToImageRequestGen4Image? Gen4Image { get; init; }
 #else
@@ -73,6 +80,13 @@ namespace Runway
             value = Gen4Image;
             return IsGen4Image;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.CreateTextToImageRequestGen4Image PickGen4Image() => IsGen4Image
+            ? Gen4Image!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Gen4Image' but the value was {ToString()}.");
 
         /// <summary>
         /// 
@@ -107,6 +121,13 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public global::Runway.CreateTextToImageRequestGptImage2 PickGptImage2() => IsGptImage2
+            ? GptImage2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'GptImage2' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Runway.CreateTextToImageRequestGeminiImage3Pro? GeminiImage3Pro { get; init; }
 #else
@@ -137,6 +158,13 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public global::Runway.CreateTextToImageRequestGeminiImage3Pro PickGeminiImage3Pro() => IsGeminiImage3Pro
+            ? GeminiImage3Pro!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'GeminiImage3Pro' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Runway.CreateTextToImageRequestGemini25Flash? Gemini25Flash { get; init; }
 #else
@@ -163,6 +191,13 @@ namespace Runway
             value = Gemini25Flash;
             return IsGemini25Flash;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.CreateTextToImageRequestGemini25Flash PickGemini25Flash() => IsGemini25Flash
+            ? Gemini25Flash!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Gemini25Flash' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

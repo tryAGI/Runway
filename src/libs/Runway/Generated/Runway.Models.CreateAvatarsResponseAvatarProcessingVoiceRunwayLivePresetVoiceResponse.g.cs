@@ -77,5 +77,6 @@ namespace Runway
         public CreateAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponse()
         {
         }
+
     }
 }

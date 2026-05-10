@@ -73,5 +73,6 @@ namespace Runway
         public GetAvatarConversationsResponseVariant3AvatarVariant1CustomAvatar()
         {
         }
+
     }
 }

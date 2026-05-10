@@ -55,5 +55,18 @@ namespace Runway
         public CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputAudio()
         {
         }
+
+        /// <summary>
+        /// Creates a new <see cref="CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputAudio"/> from its single non-const required field,
+        /// hardcoding any const discriminator fields.
+        /// </summary>
+        public static CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputAudio FromUri(string uri)
+        {
+            return new CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputAudio
+            {
+                Uri = uri,
+            };
+        }
+
     }
 }

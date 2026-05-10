@@ -52,5 +52,18 @@ namespace Runway
         public PatchAvatarsRequestVoiceCustomVoice()
         {
         }
+
+        /// <summary>
+        /// Creates a new <see cref="PatchAvatarsRequestVoiceCustomVoice"/> from its single non-const required field,
+        /// hardcoding any const discriminator fields.
+        /// </summary>
+        public static PatchAvatarsRequestVoiceCustomVoice FromId(global::System.Guid id)
+        {
+            return new PatchAvatarsRequestVoiceCustomVoice
+            {
+                Id = id,
+            };
+        }
+
     }
 }

@@ -55,5 +55,18 @@ namespace Runway
         public CreateAvatarVideosRequestSpeechAudioInput()
         {
         }
+
+        /// <summary>
+        /// Creates a new <see cref="CreateAvatarVideosRequestSpeechAudioInput"/> from its single non-const required field,
+        /// hardcoding any const discriminator fields.
+        /// </summary>
+        public static CreateAvatarVideosRequestSpeechAudioInput FromAudio(string audio)
+        {
+            return new CreateAvatarVideosRequestSpeechAudioInput
+            {
+                Audio = audio,
+            };
+        }
+
     }
 }
