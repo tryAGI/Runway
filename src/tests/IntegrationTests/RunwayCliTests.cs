@@ -1352,6 +1352,68 @@ public partial class Tests
     }
 
     [TestMethod]
+    public void RunwayAvatars_PresetWrapsRequestUnion()
+    {
+        var avatar = RunwayAvatars.Preset(CreateAvatarVideosRequestAvatarRunwayPresetAvatarPresetId.Influencer);
+
+        avatar.IsRunwayPreset.Should().BeTrue();
+        avatar.RunwayPreset!.PresetId.Should().Be(CreateAvatarVideosRequestAvatarRunwayPresetAvatarPresetId.Influencer);
+        avatar.RunwayPreset.Type.Should().Be("runway-preset");
+    }
+
+    [TestMethod]
+    public void RunwayAvatars_CustomWrapsRequestUnion()
+    {
+        var id = Guid.NewGuid();
+        var avatar = RunwayAvatars.Custom(id);
+
+        avatar.IsCustom.Should().BeTrue();
+        avatar.Custom!.AvatarId.Should().Be(id);
+        avatar.Custom.Type.Should().Be("custom");
+    }
+
+    [TestMethod]
+    public void RunwaySpeeches_FromTextWithPresetIdSerializesAsRunwayPreset()
+    {
+        var speech = RunwaySpeeches.FromText(
+            "Welcome to the Runway demo.",
+            CreateAvatarVideosRequestSpeechTextInputVoiceRunwayPresetVoicePresetId.Clara);
+
+        speech.IsText.Should().BeTrue();
+        var text = speech.Text!;
+        text.Text.Should().Be("Welcome to the Runway demo.");
+        text.Voice.HasValue.Should().BeTrue();
+        var voice = text.Voice!.Value;
+        voice.IsPreset.Should().BeTrue();
+        voice.Preset!.PresetId
+            .Should().Be(CreateAvatarVideosRequestSpeechTextInputVoiceRunwayPresetVoicePresetId.Clara);
+    }
+
+    [TestMethod]
+    public void RunwaySpeeches_FromTextWithCustomVoiceIdSerializesAsCustom()
+    {
+        var voiceId = Guid.NewGuid();
+
+        var speech = RunwaySpeeches.FromText("Hello.", voiceId);
+
+        speech.IsText.Should().BeTrue();
+        var voice = speech.Text!.Voice!.Value;
+        voice.IsCustom.Should().BeTrue();
+        voice.Custom!.Id.Should().Be(voiceId);
+    }
+
+    [TestMethod]
+    public void RunwaySpeeches_FromAudioSerializesAsAudioInput()
+    {
+        const string audioUri = "https://example.com/clip.mp3";
+        var speech = RunwaySpeeches.FromAudio(audioUri);
+
+        speech.IsAudio.Should().BeTrue();
+        speech.Audio!.Audio.Should().Be(audioUri);
+        speech.Audio.Type.Should().Be("audio");
+    }
+
+    [TestMethod]
     [DataRow("INTERNAL.BAD_OUTPUT.CODE01", true)]
     [DataRow("INTERNAL.BAD_OUTPUT.CODE99", true)]
     [DataRow("INTERNAL.WHATEVER", true)]

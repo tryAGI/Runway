@@ -690,6 +690,38 @@ dnx Runway.Cli marketing-studio webproducts fetch --url https://example.com/prod
 
 The short-video workflow is also available from the SDK through `RunwayShortVideoExtensions.CreateShortVideoPlan(...)`, `IChatClient.CreateShortVideoPlanAsync(...)`, `client.CreateShortVideoAsync(...)`, and `client.CreateShortVideoAsync(plan, ...)`. Backend code can use the deterministic planner, supply a custom `RunwayShortVideoPlanner`, ask any Microsoft.Extensions.AI `IChatClient` for richer storyboard JSON, review or edit the plan, then execute the edited plan. `RunwayShortVideoJsonSerializerContext` provides AOT-safe JSON metadata for serializing plans and results.
 
+### SDK helpers for verbose request shapes and resource polling
+
+The discriminated-union request shapes generated for `POST /v1/avatar_videos` (`Avatar`, `Voice3`, `Speech`) carry full OpenAPI path names. Three short-named factory classes wrap them so call sites stay readable:
+
+```csharp
+using Runway;
+
+var request = new CreateAvatarVideosRequest
+{
+    Avatar = RunwayAvatars.Preset(CreateAvatarVideosRequestAvatarRunwayPresetAvatarPresetId.Influencer),
+    Speech = RunwaySpeeches.FromText(
+        "Welcome to the Runway demo.",
+        CreateAvatarVideosRequestSpeechTextInputVoiceRunwayPresetVoicePresetId.Clara),
+};
+
+// Or: a custom avatar + custom voice
+var custom = new CreateAvatarVideosRequest
+{
+    Avatar = RunwayAvatars.Custom(avatarGuid),
+    Speech = RunwaySpeeches.FromText("...", customVoiceGuid),
+};
+
+// Or: lip-sync to a pre-recorded clip
+var dubbed = new CreateAvatarVideosRequest
+{
+    Avatar = RunwayAvatars.Custom(avatarGuid),
+    Speech = RunwaySpeeches.FromAudio("https://example.com/clip.mp3"),
+};
+```
+
+`RunwayPollingExtensions` adds `WaitForAvatarAsync(IAvatarsClient, Guid, ...)` and `WaitForRealtimeSessionAsync(IRealtimeSessionsClient, Guid, ...)` so consumers don't reimplement the poll-until-terminal loop for `/v1/avatars/{id}` and `/v1/realtime_sessions/{id}` (mirroring the existing `client.WaitForTaskAsync(taskId, ...)` for `/v1/tasks/{id}`).
+
 ### Agent Skill
 
 The repo includes a compact Codex-compatible skill at `.agents/skills/runway-cli/SKILL.md`. It mirrors the official [runwayml/skills](https://github.com/runwayml/skills) agent-skill flow, but uses `dnx Runway.Cli` as the runtime instead of bundled Python or Node scripts. The skill covers direct media generation, scenario-to-short-video planning, creative product/ad recipes, resource inspection, uploads, task polling/downloads, and simple multi-step recipes such as concept image to video and batch product-image animation.
