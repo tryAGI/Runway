@@ -1239,6 +1239,7 @@ public partial class Tests
                 null,
                 recursive: false,
                 title: "Launch Gallery",
+                metadata: null,
                 CancellationToken.None).ConfigureAwait(false);
 
             File.Exists(output).Should().BeTrue();
@@ -1270,6 +1271,118 @@ public partial class Tests
             result.ExitCode.Should().Be(0);
             result.Stdout.Should().Contain(Path.Combine(directory, "runway-gallery.html"));
             File.Exists(Path.Combine(directory, "runway-gallery.html")).Should().BeTrue();
+        }
+        finally
+        {
+            Directory.Delete(directory, recursive: true);
+        }
+    }
+
+    [TestMethod]
+    public async Task RunwayCliGallery_RendersEnrichedTilesWhenMetadataIsProvided()
+    {
+        var directory = Directory.CreateTempSubdirectory("runway-gallery-meta-test-").FullName;
+        var keyframesDirectory = Path.Combine(directory, "keyframes");
+        var shotsDirectory = Path.Combine(directory, "shots");
+        Directory.CreateDirectory(keyframesDirectory);
+        Directory.CreateDirectory(shotsDirectory);
+        var keyframePath = Path.Combine(keyframesDirectory, "16-aphorism.png");
+        var clipPath = Path.Combine(shotsDirectory, "16-aphorism.mp4");
+        var planPath = Path.Combine(directory, "plan.json");
+
+        try
+        {
+            await File.WriteAllBytesAsync(keyframePath, [0, 1, 2, 3]).ConfigureAwait(false);
+            await File.WriteAllBytesAsync(clipPath, [4, 5, 6, 7]).ConfigureAwait(false);
+            await File.WriteAllTextAsync(planPath, """
+                {
+                  "title": "Where pleasure lives",
+                  "subtitle": "Chinese parable",
+                  "imageModel": "gemini-image3-pro",
+                  "videoModel": "gen4-turbo",
+                  "imageRatio": "1344:768",
+                  "videoRatio": "1280:720",
+                  "shotDurationSeconds": 5,
+                  "shots": [
+                    {
+                      "id": "16-aphorism",
+                      "index": 16,
+                      "title": "Aphorism",
+                      "beat": "the elder smiles",
+                      "image": "Wide watercolor: an old man on a mountain.",
+                      "motion": "the warm valley light slowly deepens",
+                      "videoSeed": 7777
+                    }
+                  ]
+                }
+                """).ConfigureAwait(false);
+
+            var output = await RunwayCliGallery.CreateAsync(
+                directory,
+                null,
+                recursive: false,
+                title: null,
+                metadata: planPath,
+                CancellationToken.None).ConfigureAwait(false);
+
+            File.Exists(output).Should().BeTrue();
+            var html = await File.ReadAllTextAsync(output).ConfigureAwait(false);
+            html.Should().Contain("Where pleasure lives");
+            html.Should().Contain("Chinese parable");
+            html.Should().Contain("Aphorism");
+            html.Should().Contain("the elder smiles");
+            html.Should().Contain("keyframes/16-aphorism.png");
+            html.Should().Contain("shots/16-aphorism.mp4");
+            html.Should().Contain("gemini-image3-pro");
+            html.Should().Contain("gen4-turbo");
+            html.Should().Contain("1344:768");
+            html.Should().Contain("1280:720");
+            html.Should().Contain("video seed 7777");
+            html.Should().Contain("Copy image regen");
+            html.Should().Contain("Copy video regen");
+            html.Should().Contain("dnx Runway.Cli image &#39;Wide watercolor: an old man on a mountain.&#39;");
+            html.Should().Contain("dnx Runway.Cli image-to-video &#39;the warm valley light slowly deepens&#39;");
+            html.Should().Contain("--seed 7777");
+            html.Should().Contain("--image ./keyframes/16-aphorism.png");
+        }
+        finally
+        {
+            Directory.Delete(directory, recursive: true);
+        }
+    }
+
+    [TestMethod]
+    public async Task RunwayCliGallery_RendersPlaceholderWhenClipMissing()
+    {
+        var directory = Directory.CreateTempSubdirectory("runway-gallery-meta-pending-test-").FullName;
+        var planPath = Path.Combine(directory, "plan.json");
+
+        try
+        {
+            await File.WriteAllTextAsync(planPath, """
+                {
+                  "model": "veo3.1_fast",
+                  "ratio": "1280:720",
+                  "shotDurationSeconds": 4,
+                  "shots": [
+                    { "index": 1, "title": "Opening", "beat": "wide shot", "videoPrompt": "a slow push-in" }
+                  ]
+                }
+                """).ConfigureAwait(false);
+
+            var output = await RunwayCliGallery.CreateAsync(
+                directory,
+                null,
+                recursive: false,
+                title: "Pending",
+                metadata: planPath,
+                CancellationToken.None).ConfigureAwait(false);
+
+            var html = await File.ReadAllTextAsync(output).ConfigureAwait(false);
+            html.Should().Contain("Opening");
+            html.Should().Contain("no keyframe");
+            html.Should().Contain("no clip yet");
+            html.Should().Contain("Copy video regen");
         }
         finally
         {

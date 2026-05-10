@@ -827,6 +827,11 @@ var galleryTitleOption = new Option<string?>("--title")
     Description = "Gallery page title.",
 };
 
+var galleryMetadataOption = new Option<string?>("--metadata")
+{
+    Description = "Path to a plan JSON (e.g. a runway-short-video plan) used to render enriched tiles with paired keyframes, model metadata, and copyable regen commands.",
+};
+
 var generateVideoCommand = new Command("video", "Generate a video locally from a text prompt.")
 {
     videoPromptArgument,
@@ -2712,6 +2717,7 @@ var galleryCreateCommand = new Command("create", "Create a local HTML gallery fo
     galleryOutputOption,
     galleryRecursiveOption,
     galleryTitleOption,
+    galleryMetadataOption,
 };
 galleryCommand.Subcommands.Add(galleryCreateCommand);
 galleryCreateCommand.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
@@ -2723,6 +2729,7 @@ galleryCreateCommand.SetAction(async (ParseResult parseResult, CancellationToken
             parseResult.GetValue(galleryOutputOption),
             parseResult.GetValue(galleryRecursiveOption),
             parseResult.GetValue(galleryTitleOption),
+            parseResult.GetValue(galleryMetadataOption),
             cancellationToken).ConfigureAwait(false);
 
         Console.WriteLine(path);
