@@ -184,6 +184,11 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public static CreateTextToImageRequest FromGen4ImageTurbo(global::Runway.CreateTextToImageRequestGen4ImageTurbo? value) => new CreateTextToImageRequest(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator CreateTextToImageRequest(global::Runway.CreateTextToImageRequestGen4Image value) => new CreateTextToImageRequest((global::Runway.CreateTextToImageRequestGen4Image?)value);
 
         /// <summary>
@@ -198,6 +203,11 @@ namespace Runway
         {
             Gen4Image = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static CreateTextToImageRequest FromGen4Image(global::Runway.CreateTextToImageRequestGen4Image? value) => new CreateTextToImageRequest(value);
 
         /// <summary>
         /// 
@@ -220,6 +230,11 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public static CreateTextToImageRequest FromGptImage2(global::Runway.CreateTextToImageRequestGptImage2? value) => new CreateTextToImageRequest(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator CreateTextToImageRequest(global::Runway.CreateTextToImageRequestGeminiImage3Pro value) => new CreateTextToImageRequest((global::Runway.CreateTextToImageRequestGeminiImage3Pro?)value);
 
         /// <summary>
@@ -238,6 +253,11 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public static CreateTextToImageRequest FromGeminiImage3Pro(global::Runway.CreateTextToImageRequestGeminiImage3Pro? value) => new CreateTextToImageRequest(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator CreateTextToImageRequest(global::Runway.CreateTextToImageRequestGemini25Flash value) => new CreateTextToImageRequest((global::Runway.CreateTextToImageRequestGemini25Flash?)value);
 
         /// <summary>
@@ -252,6 +272,11 @@ namespace Runway
         {
             Gemini25Flash = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static CreateTextToImageRequest FromGemini25Flash(global::Runway.CreateTextToImageRequestGemini25Flash? value) => new CreateTextToImageRequest(value);
 
         /// <summary>
         /// 

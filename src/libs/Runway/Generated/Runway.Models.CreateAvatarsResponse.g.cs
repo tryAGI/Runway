@@ -124,6 +124,11 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public static CreateAvatarsResponse FromProcessing(global::Runway.CreateAvatarsResponseAvatarProcessing? value) => new CreateAvatarsResponse(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator CreateAvatarsResponse(global::Runway.CreateAvatarsResponseAvatarReady value) => new CreateAvatarsResponse((global::Runway.CreateAvatarsResponseAvatarReady?)value);
 
         /// <summary>
@@ -142,6 +147,11 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public static CreateAvatarsResponse FromReady(global::Runway.CreateAvatarsResponseAvatarReady? value) => new CreateAvatarsResponse(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator CreateAvatarsResponse(global::Runway.CreateAvatarsResponseAvatarFailed value) => new CreateAvatarsResponse((global::Runway.CreateAvatarsResponseAvatarFailed?)value);
 
         /// <summary>
@@ -156,6 +166,11 @@ namespace Runway
         {
             Failed = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static CreateAvatarsResponse FromFailed(global::Runway.CreateAvatarsResponseAvatarFailed? value) => new CreateAvatarsResponse(value);
 
         /// <summary>
         /// 

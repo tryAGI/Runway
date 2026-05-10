@@ -214,6 +214,11 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public static CreateImageToVideoRequest FromGen45(global::Runway.CreateImageToVideoRequestGen45? value) => new CreateImageToVideoRequest(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator CreateImageToVideoRequest(global::Runway.CreateImageToVideoRequestGen4Turbo value) => new CreateImageToVideoRequest((global::Runway.CreateImageToVideoRequestGen4Turbo?)value);
 
         /// <summary>
@@ -228,6 +233,11 @@ namespace Runway
         {
             Gen4Turbo = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static CreateImageToVideoRequest FromGen4Turbo(global::Runway.CreateImageToVideoRequestGen4Turbo? value) => new CreateImageToVideoRequest(value);
 
         /// <summary>
         /// 
@@ -250,6 +260,11 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public static CreateImageToVideoRequest FromVeo31(global::Runway.CreateImageToVideoRequestVeo31? value) => new CreateImageToVideoRequest(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator CreateImageToVideoRequest(global::Runway.CreateImageToVideoRequestGen3aTurbo value) => new CreateImageToVideoRequest((global::Runway.CreateImageToVideoRequestGen3aTurbo?)value);
 
         /// <summary>
@@ -264,6 +279,11 @@ namespace Runway
         {
             Gen3aTurbo = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static CreateImageToVideoRequest FromGen3aTurbo(global::Runway.CreateImageToVideoRequestGen3aTurbo? value) => new CreateImageToVideoRequest(value);
 
         /// <summary>
         /// 
@@ -286,6 +306,11 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public static CreateImageToVideoRequest FromVeo31Fast(global::Runway.CreateImageToVideoRequestVeo31Fast? value) => new CreateImageToVideoRequest(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator CreateImageToVideoRequest(global::Runway.CreateImageToVideoRequestVeo3 value) => new CreateImageToVideoRequest((global::Runway.CreateImageToVideoRequestVeo3?)value);
 
         /// <summary>
@@ -300,6 +325,11 @@ namespace Runway
         {
             Veo3 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static CreateImageToVideoRequest FromVeo3(global::Runway.CreateImageToVideoRequestVeo3? value) => new CreateImageToVideoRequest(value);
 
         /// <summary>
         /// 

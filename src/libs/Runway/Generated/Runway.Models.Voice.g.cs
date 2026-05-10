@@ -95,6 +95,11 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public static Voice FromRunwayLivePreset(global::Runway.CreateAvatarsRequestVoiceRunwayLivePresetVoice? value) => new Voice(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator Voice(global::Runway.CreateAvatarsRequestVoiceCustomVoice value) => new Voice((global::Runway.CreateAvatarsRequestVoiceCustomVoice?)value);
 
         /// <summary>
@@ -109,6 +114,11 @@ namespace Runway
         {
             Custom = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static Voice FromCustom(global::Runway.CreateAvatarsRequestVoiceCustomVoice? value) => new Voice(value);
 
         /// <summary>
         /// 

@@ -214,6 +214,11 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public static ParametersItem FromString(global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterStringParameter? value) => new ParametersItem(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ParametersItem(global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterIntegerParameter value) => new ParametersItem((global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterIntegerParameter?)value);
 
         /// <summary>
@@ -228,6 +233,11 @@ namespace Runway
         {
             Integer = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ParametersItem FromInteger(global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterIntegerParameter? value) => new ParametersItem(value);
 
         /// <summary>
         /// 
@@ -250,6 +260,11 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public static ParametersItem FromNumber(global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterNumberParameter? value) => new ParametersItem(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ParametersItem(global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterBooleanParameter value) => new ParametersItem((global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterBooleanParameter?)value);
 
         /// <summary>
@@ -264,6 +279,11 @@ namespace Runway
         {
             Boolean = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ParametersItem FromBoolean(global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterBooleanParameter? value) => new ParametersItem(value);
 
         /// <summary>
         /// 
@@ -286,6 +306,11 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public static ParametersItem FromArray(global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterArrayParameter? value) => new ParametersItem(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ParametersItem(global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterObjectParameter value) => new ParametersItem((global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterObjectParameter?)value);
 
         /// <summary>
@@ -300,6 +325,11 @@ namespace Runway
         {
             ObjectValue = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ParametersItem FromObjectValue(global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterObjectParameter? value) => new ParametersItem(value);
 
         /// <summary>
         /// 

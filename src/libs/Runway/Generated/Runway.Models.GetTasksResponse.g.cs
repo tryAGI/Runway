@@ -214,6 +214,11 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public static GetTasksResponse FromPending(global::Runway.GetTasksResponseVariant1? value) => new GetTasksResponse(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator GetTasksResponse(global::Runway.GetTasksResponseVariant2 value) => new GetTasksResponse((global::Runway.GetTasksResponseVariant2?)value);
 
         /// <summary>
@@ -228,6 +233,11 @@ namespace Runway
         {
             Throttled = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static GetTasksResponse FromThrottled(global::Runway.GetTasksResponseVariant2? value) => new GetTasksResponse(value);
 
         /// <summary>
         /// 
@@ -250,6 +260,11 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public static GetTasksResponse FromCancelled(global::Runway.GetTasksResponseVariant3? value) => new GetTasksResponse(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator GetTasksResponse(global::Runway.GetTasksResponseVariant4 value) => new GetTasksResponse((global::Runway.GetTasksResponseVariant4?)value);
 
         /// <summary>
@@ -264,6 +279,11 @@ namespace Runway
         {
             Running = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static GetTasksResponse FromRunning(global::Runway.GetTasksResponseVariant4? value) => new GetTasksResponse(value);
 
         /// <summary>
         /// 
@@ -286,6 +306,11 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public static GetTasksResponse FromFailed(global::Runway.GetTasksResponseVariant5? value) => new GetTasksResponse(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator GetTasksResponse(global::Runway.GetTasksResponseVariant6 value) => new GetTasksResponse((global::Runway.GetTasksResponseVariant6?)value);
 
         /// <summary>
@@ -300,6 +325,11 @@ namespace Runway
         {
             Succeeded = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static GetTasksResponse FromSucceeded(global::Runway.GetTasksResponseVariant6? value) => new GetTasksResponse(value);
 
         /// <summary>
         /// 

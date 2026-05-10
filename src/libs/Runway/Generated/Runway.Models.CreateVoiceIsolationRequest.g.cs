@@ -64,6 +64,11 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public static CreateVoiceIsolationRequest FromElevenVoiceIsolation(global::Runway.CreateVoiceIsolationRequestElevenVoiceIsolation? value) => new CreateVoiceIsolationRequest(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public CreateVoiceIsolationRequest(
             global::Runway.CreateVoiceIsolationRequestDiscriminatorModel? model,
             global::Runway.CreateVoiceIsolationRequestElevenVoiceIsolation? elevenVoiceIsolation

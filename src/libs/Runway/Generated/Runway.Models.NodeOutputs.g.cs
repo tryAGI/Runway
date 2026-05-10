@@ -154,6 +154,11 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public static NodeOutputs FromPrimitive(global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputPrimitive? value) => new NodeOutputs(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator NodeOutputs(global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputImage value) => new NodeOutputs((global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputImage?)value);
 
         /// <summary>
@@ -168,6 +173,11 @@ namespace Runway
         {
             Image = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static NodeOutputs FromImage(global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputImage? value) => new NodeOutputs(value);
 
         /// <summary>
         /// 
@@ -190,6 +200,11 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public static NodeOutputs FromVideo(global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputVideo? value) => new NodeOutputs(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator NodeOutputs(global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputAudio value) => new NodeOutputs((global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputAudio?)value);
 
         /// <summary>
@@ -204,6 +219,11 @@ namespace Runway
         {
             Audio = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static NodeOutputs FromAudio(global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputAudio? value) => new NodeOutputs(value);
 
         /// <summary>
         /// 

@@ -64,6 +64,11 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public static CreateCharacterPerformanceRequest FromActTwo(global::Runway.CreateCharacterPerformanceRequestActTwo? value) => new CreateCharacterPerformanceRequest(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public CreateCharacterPerformanceRequest(
             global::Runway.CreateCharacterPerformanceRequestDiscriminatorModel? model,
             global::Runway.CreateCharacterPerformanceRequestActTwo? actTwo

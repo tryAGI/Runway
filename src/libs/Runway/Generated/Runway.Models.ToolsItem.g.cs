@@ -94,6 +94,11 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public static ToolsItem FromClientEvent(global::Runway.CreateRealtimeSessionsRequestToolClientEventTool? value) => new ToolsItem(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ToolsItem(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCTool value) => new ToolsItem((global::Runway.CreateRealtimeSessionsRequestToolBackendRPCTool?)value);
 
         /// <summary>
@@ -108,6 +113,11 @@ namespace Runway
         {
             BackendRpc = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ToolsItem FromBackendRpc(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCTool? value) => new ToolsItem(value);
 
         /// <summary>
         /// 

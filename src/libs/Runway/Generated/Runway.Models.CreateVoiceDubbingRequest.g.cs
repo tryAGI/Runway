@@ -64,6 +64,11 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public static CreateVoiceDubbingRequest FromElevenVoiceDubbing(global::Runway.CreateVoiceDubbingRequestElevenVoiceDubbing? value) => new CreateVoiceDubbingRequest(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public CreateVoiceDubbingRequest(
             global::Runway.CreateVoiceDubbingRequestDiscriminatorModel? model,
             global::Runway.CreateVoiceDubbingRequestElevenVoiceDubbing? elevenVoiceDubbing

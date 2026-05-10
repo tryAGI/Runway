@@ -214,6 +214,11 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public static GetRealtimeSessionsResponse FromNotReady(global::Runway.GetRealtimeSessionsResponseSessionNotReady? value) => new GetRealtimeSessionsResponse(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator GetRealtimeSessionsResponse(global::Runway.GetRealtimeSessionsResponseSessionReady value) => new GetRealtimeSessionsResponse((global::Runway.GetRealtimeSessionsResponseSessionReady?)value);
 
         /// <summary>
@@ -228,6 +233,11 @@ namespace Runway
         {
             Ready = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static GetRealtimeSessionsResponse FromReady(global::Runway.GetRealtimeSessionsResponseSessionReady? value) => new GetRealtimeSessionsResponse(value);
 
         /// <summary>
         /// 
@@ -250,6 +260,11 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public static GetRealtimeSessionsResponse FromRunning(global::Runway.GetRealtimeSessionsResponseSessionRunning? value) => new GetRealtimeSessionsResponse(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator GetRealtimeSessionsResponse(global::Runway.GetRealtimeSessionsResponseSessionCompleted value) => new GetRealtimeSessionsResponse((global::Runway.GetRealtimeSessionsResponseSessionCompleted?)value);
 
         /// <summary>
@@ -264,6 +279,11 @@ namespace Runway
         {
             Completed = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static GetRealtimeSessionsResponse FromCompleted(global::Runway.GetRealtimeSessionsResponseSessionCompleted? value) => new GetRealtimeSessionsResponse(value);
 
         /// <summary>
         /// 
@@ -286,6 +306,11 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public static GetRealtimeSessionsResponse FromFailed(global::Runway.GetRealtimeSessionsResponseSessionFailed? value) => new GetRealtimeSessionsResponse(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator GetRealtimeSessionsResponse(global::Runway.GetRealtimeSessionsResponseSessionCancelled value) => new GetRealtimeSessionsResponse((global::Runway.GetRealtimeSessionsResponseSessionCancelled?)value);
 
         /// <summary>
@@ -300,6 +325,11 @@ namespace Runway
         {
             Cancelled = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static GetRealtimeSessionsResponse FromCancelled(global::Runway.GetRealtimeSessionsResponseSessionCancelled? value) => new GetRealtimeSessionsResponse(value);
 
         /// <summary>
         /// 

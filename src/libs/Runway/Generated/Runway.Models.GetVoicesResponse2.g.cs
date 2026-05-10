@@ -124,6 +124,11 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public static GetVoicesResponse2 FromProcessing(global::Runway.GetVoicesResponseVoiceProcessing? value) => new GetVoicesResponse2(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator GetVoicesResponse2(global::Runway.GetVoicesResponseVoiceReady value) => new GetVoicesResponse2((global::Runway.GetVoicesResponseVoiceReady?)value);
 
         /// <summary>
@@ -142,6 +147,11 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public static GetVoicesResponse2 FromReady(global::Runway.GetVoicesResponseVoiceReady? value) => new GetVoicesResponse2(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator GetVoicesResponse2(global::Runway.GetVoicesResponseVoiceFailed value) => new GetVoicesResponse2((global::Runway.GetVoicesResponseVoiceFailed?)value);
 
         /// <summary>
@@ -156,6 +166,11 @@ namespace Runway
         {
             Failed = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static GetVoicesResponse2 FromFailed(global::Runway.GetVoicesResponseVoiceFailed? value) => new GetVoicesResponse2(value);
 
         /// <summary>
         /// 

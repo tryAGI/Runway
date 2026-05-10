@@ -64,6 +64,11 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public static CreateSoundEffectRequest FromElevenTextToSoundV2(global::Runway.CreateSoundEffectRequestElevenTextToSoundV2? value) => new CreateSoundEffectRequest(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public CreateSoundEffectRequest(
             global::Runway.CreateSoundEffectRequestDiscriminatorModel? model,
             global::Runway.CreateSoundEffectRequestElevenTextToSoundV2? elevenTextToSoundV2

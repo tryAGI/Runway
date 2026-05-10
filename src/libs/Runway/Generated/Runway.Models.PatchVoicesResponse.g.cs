@@ -124,6 +124,11 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public static PatchVoicesResponse FromProcessing(global::Runway.PatchVoicesResponseVoiceProcessing? value) => new PatchVoicesResponse(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator PatchVoicesResponse(global::Runway.PatchVoicesResponseVoiceReady value) => new PatchVoicesResponse((global::Runway.PatchVoicesResponseVoiceReady?)value);
 
         /// <summary>
@@ -142,6 +147,11 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public static PatchVoicesResponse FromReady(global::Runway.PatchVoicesResponseVoiceReady? value) => new PatchVoicesResponse(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator PatchVoicesResponse(global::Runway.PatchVoicesResponseVoiceFailed value) => new PatchVoicesResponse((global::Runway.PatchVoicesResponseVoiceFailed?)value);
 
         /// <summary>
@@ -156,6 +166,11 @@ namespace Runway
         {
             Failed = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static PatchVoicesResponse FromFailed(global::Runway.PatchVoicesResponseVoiceFailed? value) => new PatchVoicesResponse(value);
 
         /// <summary>
         /// 
