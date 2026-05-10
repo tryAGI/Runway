@@ -1,6 +1,6 @@
 ---
 name: runway-cli
-description: "Use when an agent should operate Runway through the .NET CLI with `dnx Runway.Cli`: generate images, videos, and audio; upload local assets; manage tasks, avatars, documents, voices, workflows, and organization usage; or orchestrate compact multi-step Runway media workflows. Supports iterative runs with stable naming via `--name <suffix>` and auto-incrementing version suffixes via `--auto-name <prefix>` (alias `--name-prefix`) on `short-video`, `product-photoshoot create`, `marketplace-cards create`, and `ad-video create`."
+description: "Use when an agent should operate Runway through the .NET CLI with `dnx Runway.Cli`: generate images, videos, and audio; upload local assets; manage tasks, avatars, documents, voices, workflows, and organization usage; or orchestrate compact multi-step Runway media workflows. Supports iterative runs with stable naming via `--name <suffix>` and auto-incrementing version suffixes via `--auto-name <prefix>` (alias `--name-prefix`) on `short-video`, `product-photoshoot create`, `marketplace-cards create`, and `ad-video create`. For published custom workflows, use the named hardcoded subcommands `fabric-color-texture-swap`, `video-style-transfer`, `ai-hair-salon`, `virtual-try-on`, `json-to-manga`, `b-roll-generator`, `storyboard-to-film`, `story-panels`, `storyboard-creator`, `character-creator`, `image-variations`, `mockup-generator`, `build-system-prompt`, `asset-reversioning`, `backplate-generator`, `wine-label-generator`, `game-item-generator`, `human-pose-replication`, or `workflow register <id>` for any other published workflow."
 ---
 
 # Runway CLI
@@ -307,6 +307,34 @@ For local files that are too large for data URIs or need reusable `runway://` re
 ```bash
 dnx Runway.Cli upload create --file ./reference.png
 ```
+
+## Custom Workflows
+
+The CLI ships **18 named subcommands** that wrap the user's published Runway workflows. Each one takes only the user-facing inputs as ergonomic flags — agents never need workflow UUIDs, node UUIDs, or `nodeOutputs` JSON. Any input flag left unset keeps the workflow's authored default.
+
+For routing, use the machine-readable registry:
+
+```bash
+dnx Runway.Cli workflow built-ins --json
+```
+
+That JSON enumerates every command with its `displayName`, required-flag list (Image / Video / Audio inputs), and optional-flag list (Prompt / Number / Boolean inputs with default previews). Pick the right subcommand from there, then run it.
+
+**Quick category index** (full per-command tables and examples live in the linked deep-dive files; [`references/workflows.md`](references/workflows.md) is the top-level index):
+
+| Category | When to reach for it | Deep-dive |
+| --- | --- | --- |
+| Photo / Identity Restyle | Restyle one source image, same subject | [`references/workflows/photo-restyle.md`](references/workflows/photo-restyle.md) |
+| Composition / Scene | Place a subject into a new context (background, mockup, label) | [`references/workflows/scene-composition.md`](references/workflows/scene-composition.md) |
+| Story / Sequence | Text or one image → multi-shot panels, b-roll, storyboard, manga, or film | [`references/workflows/story-sequence.md`](references/workflows/story-sequence.md) |
+| Character & Item Generation | Generate fresh assets from a description | [`references/workflows/character-item.md`](references/workflows/character-item.md) |
+| Video & Prompt Sandbox | Restyle a clip; iterate prompt-engineering choices | [`references/workflows/video-sandbox.md`](references/workflows/video-sandbox.md) |
+
+Common conventions across all 18 commands: local `--image` / `--video` / `--audio` files are auto-uploaded; `https://`, `runway://`, and `data:` URIs pass through; the CLI waits + downloads outputs to `./runway-<command-name>/` by default. Use `--no-wait` to submit and exit, `--no-download` to skip the file fetch, and `--poll-interval-seconds` for cadence.
+
+Workflows that aren't yet built-in: register on the fly with `workflow register <uuid> [--name <command>]`, then use the resulting dynamic subcommand. Inspect or remove via `workflow registered list/show/remove`. See [`references/workflows/registering.md`](references/workflows/registering.md) for storage shape and slug derivation.
+
+When the user asks to run a published workflow: prefer the named built-ins first (use `workflow built-ins --json` to pick), then `workflow register` + dynamic command, and only fall back to `workflow run <uuid> --node-outputs-json` as a last-resort escape hatch.
 
 ## Multi-Step Recipes
 

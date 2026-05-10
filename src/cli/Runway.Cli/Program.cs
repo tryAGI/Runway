@@ -7,6 +7,8 @@ using System.Text.Json;
 using System.Text.Json.Nodes;
 using Runway;
 
+// Historical CLI names → SDK types so the long-standing CLI surface stays callable.
+
 const string DefaultRunwayVersion = "2024-11-06";
 
 var apiKeyOption = new Option<string?>("--api-key", ["-k"])
@@ -574,6 +576,11 @@ var noAudioOption = new Option<bool>("--no-audio")
 var noWaitOption = new Option<bool>("--no-wait")
 {
     Description = "Submit the task and print the task ID without waiting or downloading outputs.",
+};
+
+var noDownloadOption = new Option<bool>("--no-download")
+{
+    Description = "Skip downloading workflow outputs after completion. URLs are still printed.",
 };
 
 var shortVideoShotCountOption = new Option<int>("--shots")
@@ -2017,7 +2024,7 @@ createUploadCommand.SetAction((ParseResult parseResult, CancellationToken cancel
 
         if (file is { Length: > 0 })
         {
-            await UploadEphemeralFileAsync(response, file, ct).ConfigureAwait(false);
+            await RunwayCliBuiltInWorkflows.UploadEphemeralFileAsync(response, file, ct).ConfigureAwait(false);
         }
 
         WriteJson(response);
@@ -2396,6 +2403,224 @@ getWorkflowInvocationCommand.SetAction((ParseResult parseResult, CancellationTok
 
         WriteJson(response);
     }, cancellationToken));
+
+var workflowRegisterIdArgument = new Argument<Guid>("id")
+{
+    Description = "Published workflow ID to fetch and persist locally as a top-level subcommand.",
+};
+var workflowRegisterNameOption = new Option<string?>("--name")
+{
+    Description = "Override the generated subcommand name (defaults to a slug of the workflow's display name).",
+};
+var workflowRegisterCommand = new Command("register", "Fetch a published workflow and register it locally as a top-level subcommand named by its slug. Stored under ~/.runway-cli/workflows/<command>.json.")
+{
+    workflowRegisterIdArgument,
+    workflowRegisterNameOption,
+};
+workflowCommand.Subcommands.Add(workflowRegisterCommand);
+workflowRegisterCommand.SetAction((ParseResult parseResult, CancellationToken cancellationToken) =>
+    RunWithClientAsync(parseResult, async (client, runwayVersion, ct) =>
+    {
+        var workflowId = parseResult.GetValue(workflowRegisterIdArgument);
+        using var request = new HttpRequestMessage(HttpMethod.Get, $"/v1/workflows/{workflowId}");
+        request.Headers.Add("X-Runway-Version", runwayVersion);
+        request.Headers.Authorization = GetBearerAuthorization(client);
+        using var response = await client.HttpClient.SendAsync(request, ct).ConfigureAwait(false);
+        var body = await response.Content.ReadAsStringAsync(ct).ConfigureAwait(false);
+        if (!response.IsSuccessStatusCode)
+        {
+            throw new InvalidOperationException($"Workflow fetch failed with HTTP {(int)response.StatusCode}: {body}");
+        }
+
+        var analyzed = RunwayCliBuiltInWorkflowRegistry.AnalyzeGraph(body, parseResult.GetValue(workflowRegisterNameOption));
+        if (RunwayCliBuiltInWorkflows.BuiltIns.Any(b => string.Equals(b.CommandName, analyzed.CommandName, StringComparison.Ordinal)))
+        {
+            throw new InvalidOperationException($"Subcommand '{analyzed.CommandName}' clashes with a built-in. Pass --name to choose a different one.");
+        }
+
+        var path = RunwayCliBuiltInWorkflowRegistry.Save(analyzed.CommandName, analyzed.Description, analyzed.Picks, body);
+        // Materialize once for the user-facing summary so the printed inputs reflect the same
+        // shape that LoadAll would re-derive on next CLI invocation.
+        var workflow = BuiltInWorkflowSelection.MaterializeFromGraph(
+            analyzed.CommandName, analyzed.Description, BuiltInWorkflowCategory.Uncategorized, analyzed.Picks, body, source: $"register:{analyzed.WorkflowId}");
+        await Console.Error.WriteLineAsync($"Registered workflow '{workflow.DisplayName}' as '{workflow.CommandName}' ({workflow.Inputs.Count} inputs).").ConfigureAwait(false);
+        await Console.Error.WriteLineAsync($"  Saved to: {path}").ConfigureAwait(false);
+        Console.WriteLine(JsonSerializer.Serialize(new
+        {
+            commandName = workflow.CommandName,
+            workflowId = workflow.WorkflowId,
+            displayName = workflow.DisplayName,
+            description = workflow.Description,
+            inputs = workflow.Inputs.Select(i => new { flag = i.Flag, kind = i.Kind.ToString(), required = i.Required, description = i.Description, defaultPreview = i.DefaultPreview, nodeId = i.NodeId }),
+        }));
+    }, cancellationToken));
+
+var workflowBuiltInsCommand = new Command("built-ins", "List the built-in workflow subcommands shipped with this CLI release. Use --json for an agent-routing-friendly summary.");
+var workflowBuiltInsJsonOption = new Option<bool>("--json")
+{
+    Description = "Emit machine-readable JSON instead of the default human-readable table.",
+};
+var workflowBuiltInsCategoryOption = new Option<string?>("--category")
+{
+    Description = "Filter by category (enum name like 'PhotoRestyle' or slug like 'photo-restyle'; case-insensitive).",
+};
+workflowBuiltInsCommand.Options.Add(workflowBuiltInsJsonOption);
+workflowBuiltInsCommand.Options.Add(workflowBuiltInsCategoryOption);
+workflowCommand.Subcommands.Add(workflowBuiltInsCommand);
+workflowBuiltInsCommand.SetAction((ParseResult parseResult, CancellationToken cancellationToken) =>
+{
+    var asJson = parseResult.GetValue(workflowBuiltInsJsonOption);
+    var categoryFilter = parseResult.GetValue(workflowBuiltInsCategoryOption);
+    BuiltInWorkflowCategory? filter = null;
+    if (categoryFilter is { Length: > 0 })
+    {
+        filter = BuiltInWorkflowCategoryExtensions.TryResolve(categoryFilter);
+        if (filter is null)
+        {
+            var valid = string.Join(", ", Enum.GetNames<BuiltInWorkflowCategory>());
+            Console.Error.WriteLine($"Unknown --category '{categoryFilter}'. Valid values: {valid} (or their slug forms).");
+            return Task.FromResult(1);
+        }
+    }
+
+    var builtIns = filter is { } f
+        ? RunwayCliBuiltInWorkflows.BuiltIns.Where(w => w.Category == f).ToList()
+        : (IReadOnlyList<BuiltInWorkflow>)RunwayCliBuiltInWorkflows.BuiltIns;
+
+    if (asJson)
+    {
+        // Top-level shape: { categories: [...], workflows: [...] }. Categories appear even when
+        // a --category filter narrows the workflow list, so an agent can always enumerate
+        // available routes without a second call.
+        var categoryList = Enum.GetValues<BuiltInWorkflowCategory>()
+            .Where(c => c != BuiltInWorkflowCategory.Uncategorized)
+            .Where(c => filter is null || c == filter)
+            .Select(c => new
+            {
+                name = c.ToString(),
+                displayName = c.DisplayName(),
+                slug = c.Slug(),
+                description = c.Description(),
+                count = RunwayCliBuiltInWorkflows.BuiltIns.Count(w => w.Category == c),
+            });
+        var workflows = builtIns.Select(w => new
+        {
+            commandName = w.CommandName,
+            displayName = w.DisplayName,
+            description = w.Description,
+            workflowId = w.WorkflowId,
+            category = w.Category.ToString(),
+            categoryDisplay = w.Category.DisplayName(),
+            required = w.Inputs.Where(i => i.Required).Select(i => new
+            {
+                flag = i.Flag,
+                kind = i.Kind.ToString(),
+                description = i.Description,
+            }),
+            optional = w.Inputs.Where(i => !i.Required).Select(i => new
+            {
+                flag = i.Flag,
+                kind = i.Kind.ToString(),
+                description = i.Description,
+                defaultPreview = i.DefaultPreview,
+            }),
+        });
+        Console.WriteLine(JsonSerializer.Serialize(new { categories = categoryList, workflows }));
+    }
+    else
+    {
+        Console.Write(BuiltInWorkflows.RenderHumanList(builtIns));
+    }
+    return Task.FromResult(0);
+});
+
+var workflowRegisteredCommand = new Command("registered", "Manage locally registered workflow subcommands stored under ~/.runway-cli/workflows/.");
+workflowCommand.Subcommands.Add(workflowRegisteredCommand);
+
+var workflowRegisteredListCommand = new Command("list", "List locally registered workflows.");
+workflowRegisteredCommand.Subcommands.Add(workflowRegisteredListCommand);
+workflowRegisteredListCommand.SetAction((ParseResult parseResult, CancellationToken cancellationToken) =>
+{
+    try
+    {
+        var entries = RunwayCliBuiltInWorkflowRegistry.EnumerateRaw();
+        var summary = entries.Select(e => new
+        {
+            commandName = e.CommandName,
+            workflowId = e.WorkflowId,
+            displayName = e.DisplayName,
+            picks = e.PicksCount,
+            path = e.FilePath,
+            error = e.Error,
+        });
+        Console.WriteLine(JsonSerializer.Serialize(summary));
+        return Task.FromResult(0);
+    }
+    catch (Exception ex)
+    {
+        Console.Error.WriteLine(ex.Message);
+        return Task.FromResult(1);
+    }
+});
+
+var workflowRegisteredNameArgument = new Argument<string>("name")
+{
+    Description = "Locally-registered subcommand name.",
+};
+
+var workflowRegisteredShowCommand = new Command("show", "Print one registered workflow record.")
+{
+    workflowRegisteredNameArgument,
+};
+workflowRegisteredCommand.Subcommands.Add(workflowRegisteredShowCommand);
+workflowRegisteredShowCommand.SetAction((ParseResult parseResult, CancellationToken cancellationToken) =>
+{
+    try
+    {
+        var name = parseResult.GetValue(workflowRegisteredNameArgument) ?? throw new ArgumentException("Missing required argument name.");
+        var workflow = RunwayCliBuiltInWorkflows.LoadAllCommands().FirstOrDefault(w => string.Equals(w.CommandName, name, StringComparison.Ordinal))
+            ?? throw new InvalidOperationException($"No registered workflow named '{name}'.");
+        Console.WriteLine(JsonSerializer.Serialize(new
+        {
+            commandName = workflow.CommandName,
+            workflowId = workflow.WorkflowId,
+            displayName = workflow.DisplayName,
+            description = workflow.Description,
+            inputs = workflow.Inputs.Select(i => new { flag = i.Flag, kind = i.Kind.ToString(), required = i.Required, description = i.Description, defaultPreview = i.DefaultPreview, nodeId = i.NodeId }),
+        }));
+        return Task.FromResult(0);
+    }
+    catch (Exception ex)
+    {
+        Console.Error.WriteLine(ex.Message);
+        return Task.FromResult(1);
+    }
+});
+
+var workflowRegisteredRemoveCommand = new Command("remove", "Delete a locally registered workflow record.")
+{
+    workflowRegisteredNameArgument,
+};
+workflowRegisteredCommand.Subcommands.Add(workflowRegisteredRemoveCommand);
+workflowRegisteredRemoveCommand.SetAction((ParseResult parseResult, CancellationToken cancellationToken) =>
+{
+    try
+    {
+        var name = parseResult.GetValue(workflowRegisteredNameArgument) ?? throw new ArgumentException("Missing required argument name.");
+        if (RunwayCliBuiltInWorkflows.BuiltIns.Any(b => string.Equals(b.CommandName, name, StringComparison.Ordinal)))
+        {
+            throw new InvalidOperationException($"Cannot remove '{name}': it is a built-in subcommand, not a registered one.");
+        }
+        var removed = RunwayCliBuiltInWorkflowRegistry.Remove(name);
+        Console.Error.WriteLine(removed ? $"Removed '{name}'." : $"No registered workflow named '{name}'.");
+        return Task.FromResult(removed ? 0 : 1);
+    }
+    catch (Exception ex)
+    {
+        Console.Error.WriteLine(ex.Message);
+        return Task.FromResult(1);
+    }
+});
 
 var taskCommand = new Command("task", "Inspect or cancel Runway generation tasks.");
 rootCommand.Subcommands.Add(taskCommand);
@@ -2849,6 +3074,42 @@ marketingWebproductsFetchCommand.SetAction(async (ParseResult parseResult, Cance
         return 1;
     }
 });
+
+foreach (var workflow in RunwayCliBuiltInWorkflows.LoadAllCommands())
+{
+    var workflowCmd = new Command(workflow.CommandName, workflow.Description);
+    var flagOptions = new Dictionary<string, Option<string?>>(StringComparer.Ordinal);
+    foreach (var input in workflow.Inputs)
+    {
+        var option = RunwayCliBuiltInWorkflows.BuildOption(input);
+        workflowCmd.Options.Add(option);
+        flagOptions[input.Flag] = option;
+    }
+    workflowCmd.Options.Add(outputOption);
+    workflowCmd.Options.Add(noWaitOption);
+    workflowCmd.Options.Add(noDownloadOption);
+    workflowCmd.Options.Add(pollIntervalOption);
+
+    var capturedWorkflow = workflow;
+    var capturedFlagOptions = flagOptions;
+    workflowCmd.SetAction((ParseResult parseResult, CancellationToken cancellationToken) =>
+        RunWithClientAsync(parseResult, async (client, runwayVersion, ct) =>
+        {
+            await RunwayCliBuiltInWorkflows.RunAsync(
+                capturedWorkflow,
+                client,
+                runwayVersion,
+                parseResult,
+                capturedFlagOptions,
+                outputOption,
+                noWaitOption,
+                noDownloadOption,
+                pollIntervalOption,
+                ct).ConfigureAwait(false);
+        }, cancellationToken));
+
+    rootCommand.Subcommands.Add(workflowCmd);
+}
 
 return await rootCommand.Parse(args).InvokeAsync().ConfigureAwait(false);
 
@@ -3415,36 +3676,6 @@ static async Task<string?> ReadContentAsync(
     return fileValue == "-"
         ? await Console.In.ReadToEndAsync(cancellationToken).ConfigureAwait(false)
         : await File.ReadAllTextAsync(fileValue, cancellationToken).ConfigureAwait(false);
-}
-
-async Task UploadEphemeralFileAsync(
-    CreateUploadsResponse upload,
-    string file,
-    CancellationToken cancellationToken)
-{
-    var path = Path.GetFullPath(file);
-    if (!File.Exists(path))
-    {
-        throw new FileNotFoundException($"Upload file was not found: {path}", path);
-    }
-
-    using var form = new MultipartFormDataContent();
-    foreach (var field in upload.Fields)
-    {
-        form.Add(new StringContent(field.Value), field.Key);
-    }
-
-    var fileContent = new ByteArrayContent(await File.ReadAllBytesAsync(path, cancellationToken).ConfigureAwait(false));
-    fileContent.Headers.ContentType = MediaTypeHeaderValue.Parse(RunwayCliGeneration.GetMediaType(path));
-    form.Add(fileContent, "file", Path.GetFileName(path));
-
-    using var httpClient = new HttpClient();
-    using var response = await httpClient.PostAsync(upload.UploadUrl, form, cancellationToken).ConfigureAwait(false);
-    if (!response.IsSuccessStatusCode)
-    {
-        var responseBody = await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-        throw new InvalidOperationException($"Upload failed with HTTP {(int)response.StatusCode}: {responseBody}");
-    }
 }
 
 async Task<From> CreateVoiceSourceAsync(ParseResult parseResult, CancellationToken cancellationToken)

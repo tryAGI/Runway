@@ -37,6 +37,114 @@ public partial class Tests
         result.Stdout.Should().Contain("models");
         result.Stdout.Should().Contain("task");
         result.Stdout.Should().Contain("gallery");
+        result.Stdout.Should().Contain("fabric-color-texture-swap");
+        result.Stdout.Should().Contain("video-style-transfer");
+        result.Stdout.Should().Contain("ai-hair-salon");
+        result.Stdout.Should().Contain("virtual-try-on");
+        result.Stdout.Should().Contain("json-to-manga");
+        result.Stdout.Should().Contain("b-roll-generator");
+        result.Stdout.Should().Contain("storyboard-to-film");
+        result.Stdout.Should().Contain("story-panels");
+        result.Stdout.Should().Contain("storyboard-creator");
+        result.Stdout.Should().Contain("character-creator");
+        result.Stdout.Should().Contain("image-variations");
+        result.Stdout.Should().Contain("mockup-generator");
+        result.Stdout.Should().Contain("build-system-prompt");
+        result.Stdout.Should().Contain("asset-reversioning");
+        result.Stdout.Should().Contain("backplate-generator");
+        result.Stdout.Should().Contain("wine-label-generator");
+        result.Stdout.Should().Contain("game-item-generator");
+        result.Stdout.Should().Contain("human-pose-replication");
+    }
+
+    [TestMethod]
+    public async Task RunwayCli_WorkflowBuiltIns_JsonContainsCategoriesAndWorkflows()
+    {
+        var result = await RunCliAsync("workflow built-ins --json", removeApiKey: true).ConfigureAwait(false);
+
+        result.ExitCode.Should().Be(0);
+        var json = JsonDocument.Parse(result.Stdout);
+        json.RootElement.ValueKind.Should().Be(JsonValueKind.Object);
+
+        json.RootElement.TryGetProperty("categories", out var categories).Should().BeTrue();
+        categories.GetArrayLength().Should().Be(5,
+            because: "there are 5 curated categories (Uncategorized is dynamic-only, not surfaced here)");
+        foreach (var cat in categories.EnumerateArray())
+        {
+            cat.TryGetProperty("name", out _).Should().BeTrue();
+            cat.TryGetProperty("displayName", out _).Should().BeTrue();
+            cat.TryGetProperty("slug", out _).Should().BeTrue();
+            cat.TryGetProperty("description", out _).Should().BeTrue();
+            cat.TryGetProperty("count", out var count).Should().BeTrue();
+            count.GetInt32().Should().BeGreaterThan(0);
+        }
+
+        json.RootElement.TryGetProperty("workflows", out var workflows).Should().BeTrue();
+        workflows.GetArrayLength().Should().Be(RunwayCliBuiltInWorkflows.BuiltIns.Count);
+
+        var commands = new HashSet<string>(StringComparer.Ordinal);
+        foreach (var entry in workflows.EnumerateArray())
+        {
+            entry.TryGetProperty("commandName", out var cn).Should().BeTrue();
+            entry.TryGetProperty("displayName", out _).Should().BeTrue();
+            entry.TryGetProperty("workflowId", out _).Should().BeTrue();
+            entry.TryGetProperty("category", out _).Should().BeTrue();
+            entry.TryGetProperty("categoryDisplay", out _).Should().BeTrue();
+            entry.TryGetProperty("required", out var req).Should().BeTrue();
+            req.ValueKind.Should().Be(JsonValueKind.Array);
+            entry.TryGetProperty("optional", out var opt).Should().BeTrue();
+            opt.ValueKind.Should().Be(JsonValueKind.Array);
+            commands.Add(cn.GetString()!);
+        }
+
+        foreach (var built in RunwayCliBuiltInWorkflows.BuiltIns)
+        {
+            commands.Should().Contain(built.CommandName);
+        }
+    }
+
+    [TestMethod]
+    public async Task RunwayCli_WorkflowBuiltIns_CategoryFilterByEnumName()
+    {
+        var result = await RunCliAsync("workflow built-ins --json --category PhotoRestyle", removeApiKey: true).ConfigureAwait(false);
+
+        result.ExitCode.Should().Be(0);
+        var json = JsonDocument.Parse(result.Stdout);
+        var workflows = json.RootElement.GetProperty("workflows");
+        var commands = workflows.EnumerateArray().Select(w => w.GetProperty("commandName").GetString()!).ToList();
+        commands.Should().HaveCount(6);
+        commands.Should().AllSatisfy(_ => { });
+        commands.Should().BeEquivalentTo(
+        [
+            "fabric-color-texture-swap", "ai-hair-salon", "virtual-try-on",
+            "image-variations", "asset-reversioning", "human-pose-replication",
+        ]);
+
+        var categories = json.RootElement.GetProperty("categories");
+        categories.GetArrayLength().Should().Be(1, because: "the categories list mirrors the filter");
+        categories[0].GetProperty("name").GetString().Should().Be("PhotoRestyle");
+    }
+
+    [TestMethod]
+    public async Task RunwayCli_WorkflowBuiltIns_CategoryFilterBySlug()
+    {
+        var result = await RunCliAsync("workflow built-ins --json --category video-sandbox", removeApiKey: true).ConfigureAwait(false);
+
+        result.ExitCode.Should().Be(0);
+        var json = JsonDocument.Parse(result.Stdout);
+        var commands = json.RootElement.GetProperty("workflows")
+            .EnumerateArray().Select(w => w.GetProperty("commandName").GetString()!).ToList();
+        commands.Should().BeEquivalentTo(["video-style-transfer", "build-system-prompt"]);
+    }
+
+    [TestMethod]
+    public async Task RunwayCli_WorkflowBuiltIns_RejectsUnknownCategory()
+    {
+        var result = await RunCliAsync("workflow built-ins --category bogus", removeApiKey: true).ConfigureAwait(false);
+
+        result.ExitCode.Should().Be(1);
+        result.Stderr.Should().Contain("Unknown --category 'bogus'");
+        result.Stderr.Should().Contain("PhotoRestyle");
     }
 
     [TestMethod]

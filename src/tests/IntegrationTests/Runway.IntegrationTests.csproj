@@ -25,4 +25,8 @@
     <ProjectReference Include="..\..\samples\Runway.RealtimeWatchBridge.MediaBridge\Runway.RealtimeWatchBridge.MediaBridge.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="..\..\libs\Runway\Fixtures\workflows\*.json" Link="Fixtures\workflows\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
 </Project>

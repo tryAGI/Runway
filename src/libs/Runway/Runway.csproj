@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <EmbeddedResource Include="openapi.json" LogicalName="Runway.openapi.json" />
+    <EmbeddedResource Include="Fixtures\workflows\*.json" LogicalName="Runway.Fixtures.workflows.%(Filename)%(Extension)" />
   </ItemGroup>
 
 </Project>

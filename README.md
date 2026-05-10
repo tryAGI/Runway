@@ -359,6 +359,44 @@ RunwayModelSchema.EnsureRequiredParametersProvided(
 
 Unknown model ids pass through silently so brand-new spec entries don't break existing callers. The CLI uses this same API to power `runway models schema <model>` and the pre-flight validators on every generation command.
 
+### Built-in workflows (SDK)
+
+The SDK ships **18 hardcoded workflow commands** as a public API — the same set the CLI exposes (`fabric-color-texture-swap`, `ai-hair-salon`, `virtual-try-on`, `video-style-transfer`, …). Library consumers (a Telegram bot, a desktop app, a backend service) can enumerate and invoke them without going through the CLI shell:
+
+```csharp
+using Runway;
+
+using var client = new RunwayClient(apiKey);
+
+// 1. Discover what's available — useful for inline-button menus.
+foreach (var w in BuiltInWorkflows.All)
+{
+    Console.WriteLine($"{w.CommandName}  ({w.Category.DisplayName()})  {w.DisplayName}");
+}
+
+// 2. Run one end-to-end with whatever inputs the user gave you.
+var inputs = BuiltInWorkflowInputs.Create()
+    .SetStream("--image", uploadedPhotoStream, "photo.png")
+    .Set("--hairstyle", userMessage)
+    .Set("--background", "soft sunset gradient backdrop");
+
+var result = await client.RunBuiltInWorkflowAsync(
+    BuiltInWorkflows.AiHairSalon,
+    inputs,
+    waitForCompletion: true,
+    pollInterval: TimeSpan.FromSeconds(15),
+    progress: new Progress<double>(p => Console.WriteLine($"{p:P0}")),
+    cancellationToken: cancellationToken);
+
+foreach (var url in result.AllOutputUris)
+{
+    // result.Status is BuiltInWorkflowStatus.Succeeded; URLs expire in 24-48h.
+    await SendToUser(url);
+}
+```
+
+Inputs accept `Stream` / `byte[]` / `Uri` / local file path / smart-resolved string. Local assets are auto-uploaded as ephemeral assets before the workflow runs; `https://`, `runway://`, and `data:` URIs pass through unchanged. `RunBuiltInWorkflowAsync` handles upload + submit + poll + terminal-state dispatch in one call. Use `waitForCompletion: false` to fire-and-forget and re-poll later via the invocation ID. Look up workflows by command name (`BuiltInWorkflows.FindByCommandName("ai-hair-salon")`), strongly-typed kind (`BuiltInWorkflows.FindByKind(BuiltInWorkflowKind.AiHairSalon)`), or convenience accessor (`BuiltInWorkflows.AiHairSalon`).
+
 ### CLI
 
 This repository includes a local .NET tool project for Runway generation, task management, uploads, documents, voices, realtime sessions, organization usage, workflows, and avatar workflows. It reads `RUNWAY_API_KEY`, `RUNWAYML_API_SECRET`, or the nearest `.env` file by default.
@@ -419,6 +457,37 @@ dnx Runway.Cli ad-video create \
   --mode ugc \
   --shots 3 \
   --plan-only > ./ad-video-plan.json
+
+# Run a published custom workflow (Fabric/Color/Texture Swap) by friendly flags
+# instead of remembering workflow + node UUIDs.
+dnx Runway.Cli fabric-color-texture-swap \
+  --image ./assets/sample-dress.jpg \
+  --change-1 "Change: color to teal" \
+  --output ./out
+
+# Restyle a clip via the Video Style Transfer workflow.
+dnx Runway.Cli video-style-transfer \
+  --video ./assets/sample-clip.mp4 \
+  --style "modern Pixar 3D style with vibrant colors" \
+  --output ./out
+
+# More named workflows: AI Hair Salon, Virtual Try On, JSON to Manga, B-Roll, Storyboard to Film.
+dnx Runway.Cli ai-hair-salon --image ./portrait.jpg --hairstyle "soft pixie cut" --output ./out
+dnx Runway.Cli virtual-try-on --person ./model.jpg --garment ./jacket.png --scene "downtown at dusk" --output ./out
+dnx Runway.Cli json-to-manga --character ./protagonist.png --storyboard @./storyboard.json --output ./out
+dnx Runway.Cli b-roll-generator --image ./scene.jpg --b-roll "wide establishing shot" --output ./out
+dnx Runway.Cli storyboard-to-film --character ./lead.png --script @./treatment.txt --output ./out
+
+# 11 more: story-panels, storyboard-creator, character-creator, image-variations, mockup-generator,
+# build-system-prompt, asset-reversioning, backplate-generator, wine-label-generator, game-item-generator,
+# human-pose-replication. Each surfaces only the user-facing inputs of its published workflow.
+dnx Runway.Cli storyboard-creator --prompt "a quiet detective scene in a rainy alley" --output ./out
+dnx Runway.Cli mockup-generator --image ./logo.png --mockup "Mockup details: subway billboard, glossy paper" --output ./out
+dnx Runway.Cli human-pose-replication --character ./hero.jpg --pose ./pose-ref.jpg --output ./out
+
+# Register any other published workflow as a top-level subcommand on the fly.
+dnx Runway.Cli workflow register <workflow-uuid> --name my-tool
+dnx Runway.Cli my-tool --help
 
 # Installed tool form.
 dotnet tool install --global Runway.Cli
