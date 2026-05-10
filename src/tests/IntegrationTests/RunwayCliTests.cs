@@ -1560,6 +1560,55 @@ public partial class Tests
     }
 
     [TestMethod]
+    public void RunwayRatioSupport_GetSupportedRatiosListsEveryAspectAcrossEndpoints()
+    {
+        var ratios = RunwayRatioSupport.GetSupportedRatios("veo3.1_fast");
+
+        // veo3.1_fast surfaces on both text_to_video and image_to_video; both share these four aspects.
+        ratios.Should().Contain(["1080:1920", "1280:720", "1920:1080", "720:1280"]);
+        ratios.Should().NotContain("720:720"); // square is not in the veo3.1_fast enum
+    }
+
+    [TestMethod]
+    public void RunwayRatioSupport_GetSupportedRatiosForModelOnlyOneEndpoint()
+    {
+        var i2vRatios = RunwayRatioSupport.GetSupportedRatios("veo3.1_fast", RunwayRatioEndpoints.ImageToVideo);
+        var t2iRatios = RunwayRatioSupport.GetSupportedRatios("veo3.1_fast", RunwayRatioEndpoints.TextToImage);
+
+        i2vRatios.Should().NotBeEmpty();
+        t2iRatios.Should().BeEmpty(); // veo3.1_fast is a video model, not an image model
+    }
+
+    [TestMethod]
+    public void RunwayRatioSupport_UnknownModelReturnsEmptyLists()
+    {
+        RunwayRatioSupport.GetSupportedRatios("not-a-real-model").Should().BeEmpty();
+        RunwayRatioSupport.GetSupportedRatios("not-a-real-model", RunwayRatioEndpoints.TextToVideo).Should().BeEmpty();
+    }
+
+    [TestMethod]
+    public void RunwayCliGeneration_ValidateTextToImageRatioSuggestsAlternateModelsForUnsupportedRatio()
+    {
+        // 1280:720 is supported by gen4_image but NOT by gpt_image_2.
+        var act = () => RunwayCliGeneration.ValidateTextToImageRatio("1280:720", "gpt_image_2");
+
+        act.Should().Throw<ArgumentException>()
+            .WithMessage("*Unsupported --ratio '1280:720' for image model 'gpt_image_2'*Other Runway models that DO accept '1280:720'*gen4_image*");
+    }
+
+    [TestMethod]
+    public async Task RunwayCli_ModelsSchemaPrintsSupportedRatios()
+    {
+        var result = await RunCliAsync("models schema veo3.1_fast", removeApiKey: true).ConfigureAwait(false);
+
+        result.ExitCode.Should().Be(0);
+        result.Stdout.Should().Contain("ratios:");
+        result.Stdout.Should().Contain("1280:720");
+        // veo3.1_fast surfaces on both text_to_video and image_to_video, so per-endpoint ratios should print.
+        result.Stdout.Should().Contain("per-endpoint:");
+    }
+
+    [TestMethod]
     public void RunwaySpeeches_FromAudioSerializesAsAudioInput()
     {
         const string audioUri = "https://example.com/clip.mp3";

@@ -432,8 +432,15 @@ internal static class RunwayCliGeneration
             return;
         }
 
+        var alternates = RunwayRatioSupport.GetSupportingModels(ratio)
+            .Where(m => !string.Equals(m, normalizedModel, StringComparison.Ordinal))
+            .ToArray();
+        var alternateHint = alternates.Length > 0
+            ? $" Other Runway models that DO accept '{ratio}': {string.Join(", ", alternates)}."
+            : string.Empty;
+
         throw new ArgumentException(
-            $"Unsupported --ratio '{ratio}' for image model '{normalizedModel}'. Supported values: {string.Join(", ", supported)}.");
+            $"Unsupported --ratio '{ratio}' for image model '{normalizedModel}'. Supported values: {string.Join(", ", supported)}.{alternateHint}");
     }
 
     /// <summary>

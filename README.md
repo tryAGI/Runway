@@ -749,15 +749,27 @@ var dubbed = new CreateAvatarVideosRequest
 
 For multi-frame `image-to-video` inputs (first + last frame), construct the underlying `CreateImageToVideoRequest...` type directly — the factory string overload covers the common single-URI shape.
 
-`RunwayRatioSupport` answers "which models accept this aspect?" without trial-and-error 400 responses. The lookup is built from the per-model `Ratio` enums at construction time, so it stays in sync with the spec on regeneration:
+`RunwayRatioSupport` answers "which models accept this aspect?" — and the reverse — without trial-and-error 400 responses. The lookup is built from the per-model `Ratio` enums at construction time, so it stays in sync with the spec on regeneration:
 
 ```csharp
+// Forward: which models support a given aspect?
 RunwayRatioSupport.GetSupportingModels("720:720");
 // => ["gen4_image", "gen4_image_turbo"]   (only the image surface accepts square)
 
 RunwayRatioSupport.IsSupportedBy("720:720", "veo3.1_fast");
 // => false   (matches Runway's runtime 400; explains why CreateImageToVideoRequestVeo31FastRatio omits 1:1)
+
+// Reverse: which aspects does a given model support — across all endpoints, or scoped to one?
+RunwayRatioSupport.GetSupportedRatios("veo3.1_fast");
+// => ["1080:1920", "1280:720", "1920:1080", "720:1280"]
+
+RunwayRatioSupport.GetSupportedRatios("veo3.1_fast", RunwayRatioEndpoints.ImageToVideo);
+// => same four (veo3.1_fast surfaces on text_to_video AND image_to_video)
+RunwayRatioSupport.GetSupportedRatios("veo3.1_fast", RunwayRatioEndpoints.TextToImage);
+// => []   (veo3.1_fast is a video model)
 ```
+
+The CLI's `models schema <model>` command now prints a `ratios:` line per endpoint, and `image --ratio <bad>` errors include a "Other Runway models that DO accept '<ratio>'" hint.
 
 `RunwayPollingExtensions` adds `WaitForAvatarAsync(IAvatarsClient, Guid, ...)` and `WaitForRealtimeSessionAsync(IRealtimeSessionsClient, Guid, ...)` so consumers don't reimplement the poll-until-terminal loop for `/v1/avatars/{id}` and `/v1/realtime_sessions/{id}` (mirroring the existing `client.WaitForTaskAsync(taskId, ...)` for `/v1/tasks/{id}`).
 

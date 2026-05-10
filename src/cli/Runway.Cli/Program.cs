@@ -3121,6 +3121,19 @@ modelSchemaCommand.SetAction(parseResult =>
             Console.WriteLine($"  {entry.Endpoint}");
             Console.WriteLine($"    required: {required}");
             Console.WriteLine($"    optional: {optional}");
+            var perEndpointRatios = RunwayRatioSupport.GetSupportedRatios(model, entry.Endpoint);
+            if (perEndpointRatios.Count > 0)
+            {
+                Console.WriteLine($"    ratios: {string.Join(", ", perEndpointRatios)}");
+            }
+        }
+    }
+    else
+    {
+        var ratios = RunwayRatioSupport.GetSupportedRatios(model);
+        if (ratios.Count > 0)
+        {
+            Console.WriteLine($"ratios: {string.Join(", ", ratios)}");
         }
     }
 
