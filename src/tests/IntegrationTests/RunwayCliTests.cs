@@ -1403,6 +1403,115 @@ public partial class Tests
     }
 
     [TestMethod]
+    public void RunwayTextToVideo_Veo31FastWrapsAsVeo31FastVariant()
+    {
+        var request = RunwayTextToVideo.Veo31Fast(
+            "A glowing rooftop garden at dusk.",
+            CreateTextToVideoRequestVeo31FastRatio.x1280_720,
+            audio: false,
+            duration: 4);
+
+        request.IsVeo31Fast.Should().BeTrue();
+        var body = request.Veo31Fast!;
+        body.PromptText.Should().Be("A glowing rooftop garden at dusk.");
+        body.Ratio.Should().Be(CreateTextToVideoRequestVeo31FastRatio.x1280_720);
+        body.Audio.Should().Be(false);
+        body.Duration.Should().Be(4);
+        body.Model.Should().Be("veo3.1_fast");
+    }
+
+    [TestMethod]
+    public void RunwayTextToVideo_Gen45RequiresDuration()
+    {
+        var request = RunwayTextToVideo.Gen45(
+            "A tiny robot waters the garden.",
+            CreateTextToVideoRequestGen45Ratio.x1280_720,
+            duration: 5,
+            seed: 42);
+
+        request.IsGen45.Should().BeTrue();
+        var body = request.Gen45!;
+        body.Duration.Should().Be(5);
+        body.Seed.Should().Be(42);
+        body.Model.Should().Be("gen4.5");
+    }
+
+    [TestMethod]
+    public void RunwayImageToVideo_Veo31FastWrapsImageUriAsAnyOf()
+    {
+        var request = RunwayImageToVideo.Veo31Fast(
+            "https://example.com/keyframe.png",
+            CreateImageToVideoRequestVeo31FastRatio.x1280_720,
+            promptText: "the camera slowly pushes in",
+            duration: 5);
+
+        request.IsVeo31Fast.Should().BeTrue();
+        var body = request.Veo31Fast!;
+        body.PromptImage.Value1.Should().Be("https://example.com/keyframe.png");
+        body.PromptText.Should().Be("the camera slowly pushes in");
+        body.Duration.Should().Be(5);
+        body.Model.Should().Be("veo3.1_fast");
+    }
+
+    [TestMethod]
+    public void RunwayImageToVideo_Gen4TurboTakesIntDuration()
+    {
+        var request = RunwayImageToVideo.Gen4Turbo(
+            "https://example.com/keyframe.png",
+            CreateImageToVideoRequestGen4TurboRatio.x1280_720,
+            duration: 5,
+            seed: 7777);
+
+        request.IsGen4Turbo.Should().BeTrue();
+        var body = request.Gen4Turbo!;
+        body.Duration.Should().Be(5);
+        body.Seed.Should().Be(7777);
+    }
+
+    [TestMethod]
+    public void RunwayCharacters_ImageWrapsAsImageVariant()
+    {
+        var character = RunwayCharacters.Image("https://example.com/face.jpg");
+
+        character.IsImage.Should().BeTrue();
+        character.Image!.Uri.Should().Be("https://example.com/face.jpg");
+        character.Image.Type.Should().Be("image");
+    }
+
+    [TestMethod]
+    public void RunwayCharacters_VideoWrapsAsVideoVariant()
+    {
+        var character = RunwayCharacters.Video("https://example.com/character.mp4");
+
+        character.IsVideo.Should().BeTrue();
+        character.Video!.Uri.Should().Be("https://example.com/character.mp4");
+        character.Video.Type.Should().Be("video");
+    }
+
+    [TestMethod]
+    public void RunwayCharacterPerformance_ActTwoComposesCharacterAndReference()
+    {
+        var character = RunwayCharacters.Image("https://example.com/face.jpg");
+        var request = RunwayCharacterPerformance.ActTwo(
+            character,
+            "https://example.com/performance.mp4",
+            ratio: CreateCharacterPerformanceRequestActTwoRatio.x1280_720,
+            bodyControl: true,
+            expressionIntensity: 4,
+            seed: 9);
+
+        request.IsActTwo.Should().BeTrue();
+        var body = request.ActTwo!;
+        body.Character.IsImage.Should().BeTrue();
+        body.Reference.Uri.Should().Be("https://example.com/performance.mp4");
+        body.Ratio.Should().Be(CreateCharacterPerformanceRequestActTwoRatio.x1280_720);
+        body.BodyControl.Should().BeTrue();
+        body.ExpressionIntensity.Should().Be(4);
+        body.Seed.Should().Be(9);
+        body.Model.Should().Be("act_two");
+    }
+
+    [TestMethod]
     public void RunwaySpeeches_FromAudioSerializesAsAudioInput()
     {
         const string audioUri = "https://example.com/clip.mp3";

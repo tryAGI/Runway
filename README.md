@@ -692,12 +692,13 @@ The short-video workflow is also available from the SDK through `RunwayShortVide
 
 ### SDK helpers for verbose request shapes and resource polling
 
-The discriminated-union request shapes generated for `POST /v1/avatar_videos` (`Avatar`, `Voice3`, `Speech`) carry full OpenAPI path names. Three short-named factory classes wrap them so call sites stay readable:
+The discriminated-union request shapes generated for `POST /v1/avatar_videos`, `POST /v1/text_to_video`, `POST /v1/image_to_video`, and `POST /v1/character_performance` carry full OpenAPI path names. Short-named static factory classes wrap them so call sites stay readable:
 
 ```csharp
 using Runway;
 
-var request = new CreateAvatarVideosRequest
+// /v1/avatar_videos — Avatar / Voice3 / Speech unions
+var avatarRequest = new CreateAvatarVideosRequest
 {
     Avatar = RunwayAvatars.Preset(CreateAvatarVideosRequestAvatarRunwayPresetAvatarPresetId.Influencer),
     Speech = RunwaySpeeches.FromText(
@@ -705,20 +706,42 @@ var request = new CreateAvatarVideosRequest
         CreateAvatarVideosRequestSpeechTextInputVoiceRunwayPresetVoicePresetId.Clara),
 };
 
-// Or: a custom avatar + custom voice
+// /v1/text_to_video — one factory per supported model variant
+var textToVideo = RunwayTextToVideo.Veo31Fast(
+    "A glowing rooftop garden at dusk.",
+    CreateTextToVideoRequestVeo31FastRatio.x1280_720,
+    audio: false,
+    duration: 4);
+
+// /v1/image_to_video — accepts a single HTTPS/Runway/data URI for the prompt image
+var imageToVideo = RunwayImageToVideo.Gen4Turbo(
+    "https://example.com/keyframe.png",
+    CreateImageToVideoRequestGen4TurboRatio.x1280_720,
+    promptText: "the camera slowly pushes in",
+    duration: 5);
+
+// /v1/character_performance — Character + reference video
+var characterRequest = RunwayCharacterPerformance.ActTwo(
+    RunwayCharacters.Image("https://example.com/face.jpg"),
+    referenceVideoUri: "https://example.com/performance.mp4",
+    bodyControl: true);
+
+// Avatar variants: a custom avatar + custom voice
 var custom = new CreateAvatarVideosRequest
 {
     Avatar = RunwayAvatars.Custom(avatarGuid),
     Speech = RunwaySpeeches.FromText("...", customVoiceGuid),
 };
 
-// Or: lip-sync to a pre-recorded clip
+// Avatar variants: lip-sync to a pre-recorded clip
 var dubbed = new CreateAvatarVideosRequest
 {
     Avatar = RunwayAvatars.Custom(avatarGuid),
     Speech = RunwaySpeeches.FromAudio("https://example.com/clip.mp3"),
 };
 ```
+
+For multi-frame `image-to-video` inputs (first + last frame), construct the underlying `CreateImageToVideoRequest...` type directly — the factory string overload covers the common single-URI shape.
 
 `RunwayPollingExtensions` adds `WaitForAvatarAsync(IAvatarsClient, Guid, ...)` and `WaitForRealtimeSessionAsync(IRealtimeSessionsClient, Guid, ...)` so consumers don't reimplement the poll-until-terminal loop for `/v1/avatars/{id}` and `/v1/realtime_sessions/{id}` (mirroring the existing `client.WaitForTaskAsync(taskId, ...)` for `/v1/tasks/{id}`).
 
