@@ -1,6 +1,6 @@
 ---
 name: runway-cli
-description: Use when an agent should operate Runway through the .NET CLI with `dnx Runway.Cli`: generate images, videos, and audio; upload local assets; manage tasks, avatars, documents, voices, workflows, and organization usage; or orchestrate compact multi-step Runway media workflows. Supports iterative runs with stable naming via `--name <suffix>` and auto-incrementing version suffixes via `--auto-name <prefix>` (alias `--name-prefix`) on `short-video`, `product-photoshoot create`, `marketplace-cards create`, and `ad-video create`.
+description: "Use when an agent should operate Runway through the .NET CLI with `dnx Runway.Cli`: generate images, videos, and audio; upload local assets; manage tasks, avatars, documents, voices, workflows, and organization usage; or orchestrate compact multi-step Runway media workflows. Supports iterative runs with stable naming via `--name <suffix>` and auto-incrementing version suffixes via `--auto-name <prefix>` (alias `--name-prefix`) on `short-video`, `product-photoshoot create`, `marketplace-cards create`, and `ad-video create`."
 ---
 
 # Runway CLI
