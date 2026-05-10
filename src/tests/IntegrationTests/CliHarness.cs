@@ -40,10 +40,14 @@ internal static class CliHarness
             startInfo.Environment.Remove("RUNWAY_API_KEY");
             startInfo.Environment.Remove("RUNWAYML_API_SECRET");
             startInfo.Environment["RUNWAY_DOTENV_DISABLED"] = "1";
+            // RunwayCliAuth.Read() consults ~/.runway-cli/credentials.json by default; redirect to a
+            // throwaway dir so a key stored via `runway auth set` doesn't leak into removeApiKey tests.
+            startInfo.Environment["RUNWAY_CLI_HOME"] = Path.Combine(Path.GetTempPath(), "runway-cli-test-no-credentials");
         }
         else
         {
             startInfo.Environment.Remove("RUNWAY_DOTENV_DISABLED");
+            startInfo.Environment.Remove("RUNWAY_CLI_HOME");
         }
 
         startInfo.Environment.Remove("RUNWAY_SHORT_VIDEO_PLANNER");
