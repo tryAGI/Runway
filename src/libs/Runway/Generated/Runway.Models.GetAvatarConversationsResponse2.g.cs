@@ -124,6 +124,11 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public static GetAvatarConversationsResponse2 FromInProgress(global::Runway.GetAvatarConversationsResponseVariant1? value) => new GetAvatarConversationsResponse2(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator GetAvatarConversationsResponse2(global::Runway.GetAvatarConversationsResponseVariant2 value) => new GetAvatarConversationsResponse2((global::Runway.GetAvatarConversationsResponseVariant2?)value);
 
         /// <summary>
@@ -142,6 +147,11 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public static GetAvatarConversationsResponse2 FromEnded(global::Runway.GetAvatarConversationsResponseVariant2? value) => new GetAvatarConversationsResponse2(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator GetAvatarConversationsResponse2(global::Runway.GetAvatarConversationsResponseVariant3 value) => new GetAvatarConversationsResponse2((global::Runway.GetAvatarConversationsResponseVariant3?)value);
 
         /// <summary>
@@ -156,6 +166,11 @@ namespace Runway
         {
             Failed = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static GetAvatarConversationsResponse2 FromFailed(global::Runway.GetAvatarConversationsResponseVariant3? value) => new GetAvatarConversationsResponse2(value);
 
         /// <summary>
         /// 

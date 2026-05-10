@@ -94,6 +94,11 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public static From FromAudio(global::Runway.CreateVoicesRequestFromVoiceFromAudio? value) => new From(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator From(global::Runway.CreateVoicesRequestFromVoiceFromText value) => new From((global::Runway.CreateVoicesRequestFromVoiceFromText?)value);
 
         /// <summary>
@@ -108,6 +113,11 @@ namespace Runway
         {
             Text = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static From FromText(global::Runway.CreateVoicesRequestFromVoiceFromText? value) => new From(value);
 
         /// <summary>
         /// 

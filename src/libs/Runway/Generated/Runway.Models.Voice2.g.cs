@@ -95,6 +95,11 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public static Voice2 FromRunwayLivePreset(global::Runway.PatchAvatarsRequestVoiceRunwayLivePresetVoice? value) => new Voice2(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator Voice2(global::Runway.PatchAvatarsRequestVoiceCustomVoice value) => new Voice2((global::Runway.PatchAvatarsRequestVoiceCustomVoice?)value);
 
         /// <summary>
@@ -109,6 +114,11 @@ namespace Runway
         {
             Custom = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static Voice2 FromCustom(global::Runway.PatchAvatarsRequestVoiceCustomVoice? value) => new Voice2(value);
 
         /// <summary>
         /// 

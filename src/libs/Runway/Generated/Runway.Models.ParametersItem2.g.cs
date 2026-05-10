@@ -214,6 +214,11 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public static ParametersItem2 FromString(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterStringParameter? value) => new ParametersItem2(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ParametersItem2(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterIntegerParameter value) => new ParametersItem2((global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterIntegerParameter?)value);
 
         /// <summary>
@@ -228,6 +233,11 @@ namespace Runway
         {
             Integer = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ParametersItem2 FromInteger(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterIntegerParameter? value) => new ParametersItem2(value);
 
         /// <summary>
         /// 
@@ -250,6 +260,11 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public static ParametersItem2 FromNumber(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterNumberParameter? value) => new ParametersItem2(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ParametersItem2(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterBooleanParameter value) => new ParametersItem2((global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterBooleanParameter?)value);
 
         /// <summary>
@@ -264,6 +279,11 @@ namespace Runway
         {
             Boolean = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ParametersItem2 FromBoolean(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterBooleanParameter? value) => new ParametersItem2(value);
 
         /// <summary>
         /// 
@@ -286,6 +306,11 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public static ParametersItem2 FromArray(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterArrayParameter? value) => new ParametersItem2(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ParametersItem2(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterObjectParameter value) => new ParametersItem2((global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterObjectParameter?)value);
 
         /// <summary>
@@ -300,6 +325,11 @@ namespace Runway
         {
             ObjectValue = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ParametersItem2 FromObjectValue(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterObjectParameter? value) => new ParametersItem2(value);
 
         /// <summary>
         /// 

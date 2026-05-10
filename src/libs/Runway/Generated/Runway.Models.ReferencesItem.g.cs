@@ -64,6 +64,11 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public static ReferencesItem FromImage(global::Runway.CreateVideoToVideoRequestGen4AlephReferenceImageReference? value) => new ReferencesItem(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public ReferencesItem(
             global::Runway.CreateVideoToVideoRequestGen4AlephReferenceDiscriminatorType? type,
             global::Runway.CreateVideoToVideoRequestGen4AlephReferenceImageReference? image

@@ -94,6 +94,11 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public static AvatarVariant1 FromRunwayPreset(global::Runway.GetAvatarConversationsResponseDataItemAvatarVariant1PresetAvatarSummary? value) => new AvatarVariant1(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator AvatarVariant1(global::Runway.GetAvatarConversationsResponseDataItemAvatarVariant1CustomAvatarSummary value) => new AvatarVariant1((global::Runway.GetAvatarConversationsResponseDataItemAvatarVariant1CustomAvatarSummary?)value);
 
         /// <summary>
@@ -108,6 +113,11 @@ namespace Runway
         {
             Custom = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static AvatarVariant1 FromCustom(global::Runway.GetAvatarConversationsResponseDataItemAvatarVariant1CustomAvatarSummary? value) => new AvatarVariant1(value);
 
         /// <summary>
         /// 

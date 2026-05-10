@@ -94,6 +94,11 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public static Avatar FromRunwayPreset(global::Runway.CreateAvatarVideosRequestAvatarRunwayPresetAvatar? value) => new Avatar(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator Avatar(global::Runway.CreateAvatarVideosRequestAvatarCustomAvatar value) => new Avatar((global::Runway.CreateAvatarVideosRequestAvatarCustomAvatar?)value);
 
         /// <summary>
@@ -108,6 +113,11 @@ namespace Runway
         {
             Custom = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static Avatar FromCustom(global::Runway.CreateAvatarVideosRequestAvatarCustomAvatar? value) => new Avatar(value);
 
         /// <summary>
         /// 

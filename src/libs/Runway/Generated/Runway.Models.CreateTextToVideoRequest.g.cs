@@ -154,6 +154,11 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public static CreateTextToVideoRequest FromGen45(global::Runway.CreateTextToVideoRequestGen45? value) => new CreateTextToVideoRequest(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator CreateTextToVideoRequest(global::Runway.CreateTextToVideoRequestVeo31 value) => new CreateTextToVideoRequest((global::Runway.CreateTextToVideoRequestVeo31?)value);
 
         /// <summary>
@@ -168,6 +173,11 @@ namespace Runway
         {
             Veo31 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static CreateTextToVideoRequest FromVeo31(global::Runway.CreateTextToVideoRequestVeo31? value) => new CreateTextToVideoRequest(value);
 
         /// <summary>
         /// 
@@ -190,6 +200,11 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public static CreateTextToVideoRequest FromVeo31Fast(global::Runway.CreateTextToVideoRequestVeo31Fast? value) => new CreateTextToVideoRequest(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator CreateTextToVideoRequest(global::Runway.CreateTextToVideoRequestVeo3 value) => new CreateTextToVideoRequest((global::Runway.CreateTextToVideoRequestVeo3?)value);
 
         /// <summary>
@@ -204,6 +219,11 @@ namespace Runway
         {
             Veo3 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static CreateTextToVideoRequest FromVeo3(global::Runway.CreateTextToVideoRequestVeo3? value) => new CreateTextToVideoRequest(value);
 
         /// <summary>
         /// 

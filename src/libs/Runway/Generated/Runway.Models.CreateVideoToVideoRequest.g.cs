@@ -64,6 +64,11 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public static CreateVideoToVideoRequest FromGen4Aleph(global::Runway.CreateVideoToVideoRequestGen4Aleph? value) => new CreateVideoToVideoRequest(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public CreateVideoToVideoRequest(
             global::Runway.CreateVideoToVideoRequestDiscriminatorModel? model,
             global::Runway.CreateVideoToVideoRequestGen4Aleph? gen4Aleph

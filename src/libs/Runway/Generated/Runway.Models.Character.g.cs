@@ -94,6 +94,11 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public static Character FromImage(global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterImage? value) => new Character(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator Character(global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterVideo value) => new Character((global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterVideo?)value);
 
         /// <summary>
@@ -108,6 +113,11 @@ namespace Runway
         {
             Video = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static Character FromVideo(global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterVideo? value) => new Character(value);
 
         /// <summary>
         /// 

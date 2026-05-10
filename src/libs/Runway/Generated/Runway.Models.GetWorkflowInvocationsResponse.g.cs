@@ -214,6 +214,11 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public static GetWorkflowInvocationsResponse FromPending(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationPending? value) => new GetWorkflowInvocationsResponse(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator GetWorkflowInvocationsResponse(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationThrottled value) => new GetWorkflowInvocationsResponse((global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationThrottled?)value);
 
         /// <summary>
@@ -228,6 +233,11 @@ namespace Runway
         {
             Throttled = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static GetWorkflowInvocationsResponse FromThrottled(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationThrottled? value) => new GetWorkflowInvocationsResponse(value);
 
         /// <summary>
         /// 
@@ -250,6 +260,11 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public static GetWorkflowInvocationsResponse FromCancelled(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationCancelled? value) => new GetWorkflowInvocationsResponse(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator GetWorkflowInvocationsResponse(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationRunning value) => new GetWorkflowInvocationsResponse((global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationRunning?)value);
 
         /// <summary>
@@ -264,6 +279,11 @@ namespace Runway
         {
             Running = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static GetWorkflowInvocationsResponse FromRunning(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationRunning? value) => new GetWorkflowInvocationsResponse(value);
 
         /// <summary>
         /// 
@@ -286,6 +306,11 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public static GetWorkflowInvocationsResponse FromFailed(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationFailed? value) => new GetWorkflowInvocationsResponse(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator GetWorkflowInvocationsResponse(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationSucceeded value) => new GetWorkflowInvocationsResponse((global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationSucceeded?)value);
 
         /// <summary>
@@ -300,6 +325,11 @@ namespace Runway
         {
             Succeeded = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static GetWorkflowInvocationsResponse FromSucceeded(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationSucceeded? value) => new GetWorkflowInvocationsResponse(value);
 
         /// <summary>
         /// 

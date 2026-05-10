@@ -94,6 +94,11 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public static Speech FromAudio(global::Runway.CreateAvatarVideosRequestSpeechAudioInput? value) => new Speech(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator Speech(global::Runway.CreateAvatarVideosRequestSpeechTextInput value) => new Speech((global::Runway.CreateAvatarVideosRequestSpeechTextInput?)value);
 
         /// <summary>
@@ -108,6 +113,11 @@ namespace Runway
         {
             Text = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static Speech FromText(global::Runway.CreateAvatarVideosRequestSpeechTextInput? value) => new Speech(value);
 
         /// <summary>
         /// 

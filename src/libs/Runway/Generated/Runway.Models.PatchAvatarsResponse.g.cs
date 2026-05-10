@@ -124,6 +124,11 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public static PatchAvatarsResponse FromProcessing(global::Runway.PatchAvatarsResponseAvatarProcessing? value) => new PatchAvatarsResponse(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator PatchAvatarsResponse(global::Runway.PatchAvatarsResponseAvatarReady value) => new PatchAvatarsResponse((global::Runway.PatchAvatarsResponseAvatarReady?)value);
 
         /// <summary>
@@ -142,6 +147,11 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public static PatchAvatarsResponse FromReady(global::Runway.PatchAvatarsResponseAvatarReady? value) => new PatchAvatarsResponse(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator PatchAvatarsResponse(global::Runway.PatchAvatarsResponseAvatarFailed value) => new PatchAvatarsResponse((global::Runway.PatchAvatarsResponseAvatarFailed?)value);
 
         /// <summary>
@@ -156,6 +166,11 @@ namespace Runway
         {
             Failed = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static PatchAvatarsResponse FromFailed(global::Runway.PatchAvatarsResponseAvatarFailed? value) => new PatchAvatarsResponse(value);
 
         /// <summary>
         /// 

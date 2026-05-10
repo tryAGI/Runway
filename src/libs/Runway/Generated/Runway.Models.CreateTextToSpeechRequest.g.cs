@@ -64,6 +64,11 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public static CreateTextToSpeechRequest FromElevenMultilingualV2(global::Runway.CreateTextToSpeechRequestElevenMultilingualV2? value) => new CreateTextToSpeechRequest(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public CreateTextToSpeechRequest(
             global::Runway.CreateTextToSpeechRequestDiscriminatorModel? model,
             global::Runway.CreateTextToSpeechRequestElevenMultilingualV2? elevenMultilingualV2
