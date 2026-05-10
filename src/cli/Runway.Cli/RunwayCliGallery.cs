@@ -140,11 +140,20 @@ internal static class RunwayCliGallery
         RunwayCliGalleryPlan plan,
         RunwayCliGalleryShot shot)
     {
-        var keyframePath = TryFindShotFile(inputDirectory, shot, ["png", "jpg", "jpeg", "webp"], "keyframe", "keyframes");
-        var videoPath = TryFindShotFile(inputDirectory, shot, ["mp4", "mov", "webm"], "shot", "shots");
+        var keyframePath = TryFindShotFile(
+            inputDirectory,
+            shot,
+            ["png", "jpg", "jpeg", "webp"],
+            "keyframe",
+            "keyframes",
+            extraStems: shot.RecipeStem is { Length: > 0 } ? [shot.RecipeStem] : []);
+        var videoPath = plan.LooksLikeImageRecipe
+            ? null
+            : TryFindShotFile(inputDirectory, shot, ["mp4", "mov", "webm"], "shot", "shots");
 
         return new RunwayCliGalleryPairedItem(
             Shot: shot,
+            Plan: plan,
             KeyframeHref: keyframePath is null ? null : ToHref(inputDirectory, keyframePath),
             KeyframeSize: keyframePath is null ? null : new FileInfo(keyframePath).Length,
             VideoHref: videoPath is null ? null : ToHref(inputDirectory, videoPath),
@@ -162,7 +171,8 @@ internal static class RunwayCliGallery
         RunwayCliGalleryShot shot,
         IReadOnlyList<string> extensions,
         string indexedPrefix,
-        string subdirectory)
+        string subdirectory,
+        IReadOnlyList<string>? extraStems = null)
     {
         var candidates = new List<string>();
         if (!string.IsNullOrWhiteSpace(shot.Id))
@@ -176,6 +186,20 @@ internal static class RunwayCliGallery
             var indexed = string.Create(CultureInfo.InvariantCulture, $"{indexedPrefix}-{idx:00}");
             candidates.Add(Path.Combine(subdirectory, indexed));
             candidates.Add(indexed);
+        }
+
+        if (extraStems is { Count: > 0 })
+        {
+            foreach (var stem in extraStems)
+            {
+                if (string.IsNullOrWhiteSpace(stem))
+                {
+                    continue;
+                }
+
+                candidates.Add(Path.Combine(subdirectory, stem));
+                candidates.Add(stem);
+            }
         }
 
         foreach (var stem in candidates)
@@ -261,23 +285,29 @@ internal static class RunwayCliGallery
                 builder.AppendLine($"      <p class=\"beat\">{Html(beat)}</p>");
             }
 
-            builder.AppendLine("      <div class=\"pair\">");
+            var imageOnly = tile.Plan.LooksLikeImageRecipe;
+            builder.AppendLine(imageOnly
+                ? "      <div class=\"pair\" style=\"grid-template-columns:1fr;\">"
+                : "      <div class=\"pair\">");
             if (tile.KeyframeHref is { Length: > 0 } keyframeHref)
             {
-                builder.AppendLine($"        <a href=\"{Html(keyframeHref)}\"><img src=\"{Html(keyframeHref)}\" alt=\"keyframe\" loading=\"lazy\"></a>");
+                builder.AppendLine($"        <a href=\"{Html(keyframeHref)}\"><img src=\"{Html(keyframeHref)}\" alt=\"image\" loading=\"lazy\"></a>");
             }
             else
             {
-                builder.AppendLine("        <div class=\"placeholder\">no keyframe</div>");
+                builder.AppendLine($"        <div class=\"placeholder\">no {(imageOnly ? "image yet" : "keyframe")}</div>");
             }
 
-            if (tile.VideoHref is { Length: > 0 } videoHref)
+            if (!imageOnly)
             {
-                builder.AppendLine($"        <video src=\"{Html(videoHref)}\" controls preload=\"metadata\"></video>");
-            }
-            else
-            {
-                builder.AppendLine("        <div class=\"placeholder\">no clip yet</div>");
+                if (tile.VideoHref is { Length: > 0 } videoHref)
+                {
+                    builder.AppendLine($"        <video src=\"{Html(videoHref)}\" controls preload=\"metadata\"></video>");
+                }
+                else
+                {
+                    builder.AppendLine("        <div class=\"placeholder\">no clip yet</div>");
+                }
             }
 
             builder.AppendLine("      </div>");
@@ -288,10 +318,13 @@ internal static class RunwayCliGallery
                 builder.AppendLine($"      <div class=\"meta\">{Html(imageMeta)}</div>");
             }
 
-            var videoMeta = FormatAssetMeta("video", tile.VideoModel, tile.VideoRatio, tile.VideoSize, tile.DurationSeconds, tile.VideoModified);
-            if (videoMeta is { Length: > 0 })
+            if (!imageOnly)
             {
-                builder.AppendLine($"      <div class=\"meta\">{Html(videoMeta)}</div>");
+                var videoMeta = FormatAssetMeta("video", tile.VideoModel, tile.VideoRatio, tile.VideoSize, tile.DurationSeconds, tile.VideoModified);
+                if (videoMeta is { Length: > 0 })
+                {
+                    builder.AppendLine($"      <div class=\"meta\">{Html(videoMeta)}</div>");
+                }
             }
 
             var seedBits = new List<string>();
@@ -311,7 +344,7 @@ internal static class RunwayCliGallery
             }
 
             var imagePrompt = tile.Shot.ImagePrompt;
-            var videoPrompt = tile.Shot.VideoPrompt;
+            var videoPrompt = imageOnly ? null : tile.Shot.VideoPrompt;
             if (imagePrompt is { Length: > 0 } || videoPrompt is { Length: > 0 })
             {
                 builder.AppendLine("      <details>");
@@ -330,7 +363,7 @@ internal static class RunwayCliGallery
             }
 
             var imageCommand = BuildImageCommand(tile);
-            var videoCommand = BuildVideoCommand(tile);
+            var videoCommand = imageOnly ? null : BuildVideoCommand(tile);
             if (imageCommand is { Length: > 0 } || videoCommand is { Length: > 0 })
             {
                 builder.AppendLine("      <div class=\"actions\">");
@@ -522,6 +555,7 @@ internal sealed record RunwayCliGalleryItem(
 
 internal sealed record RunwayCliGalleryPairedItem(
     RunwayCliGalleryShot Shot,
+    RunwayCliGalleryPlan Plan,
     string? KeyframeHref,
     long? KeyframeSize,
     string? VideoHref,
@@ -555,6 +589,8 @@ internal sealed class RunwayCliGalleryPlan
 
     public IReadOnlyList<RunwayCliGalleryShot> Shots { get; init; } = [];
 
+    public string? Kind { get; init; }
+
     public static RunwayCliGalleryPlan FromJson(JsonElement root)
     {
         if (root.ValueKind != JsonValueKind.Object)
@@ -562,11 +598,16 @@ internal sealed class RunwayCliGalleryPlan
             throw new InvalidOperationException("Gallery metadata plan must be a JSON object.");
         }
 
+        var kind = TryGetString(root, "kind");
+        var shotsList = TryGetProperty(root, out var shotsElement, "shots") && shotsElement.ValueKind == JsonValueKind.Array
+            ? shotsElement
+            : (TryGetProperty(root, out var jobsElement, "jobs") && jobsElement.ValueKind == JsonValueKind.Array ? jobsElement : default);
+
         var shots = new List<RunwayCliGalleryShot>();
-        if (TryGetProperty(root, out var shotsElement, "shots") && shotsElement.ValueKind == JsonValueKind.Array)
+        if (shotsList.ValueKind == JsonValueKind.Array)
         {
             var fallbackIndex = 1;
-            foreach (var shotElement in shotsElement.EnumerateArray())
+            foreach (var shotElement in shotsList.EnumerateArray())
             {
                 if (shotElement.ValueKind != JsonValueKind.Object)
                 {
@@ -574,7 +615,7 @@ internal sealed class RunwayCliGalleryPlan
                     continue;
                 }
 
-                shots.Add(RunwayCliGalleryShot.FromJson(shotElement, fallbackIndex));
+                shots.Add(RunwayCliGalleryShot.FromJson(shotElement, fallbackIndex, kind));
                 fallbackIndex++;
             }
         }
@@ -582,17 +623,23 @@ internal sealed class RunwayCliGalleryPlan
         return new RunwayCliGalleryPlan
         {
             Title = TryGetString(root, "title"),
-            Subtitle = TryGetString(root, "subtitle"),
+            Subtitle = TryGetString(root, "subtitle", "sourcePrompt", "source_prompt"),
             Model = TryGetString(root, "model"),
             ImageModel = TryGetString(root, "imageModel", "image_model"),
             VideoModel = TryGetString(root, "videoModel", "video_model"),
             Ratio = TryGetString(root, "ratio"),
             ImageRatio = TryGetString(root, "imageRatio", "image_ratio"),
             VideoRatio = TryGetString(root, "videoRatio", "video_ratio"),
-            ShotDurationSeconds = TryGetDouble(root, "shotDurationSeconds", "durationPerShot", "duration_per_shot"),
+            ShotDurationSeconds = TryGetDouble(root, "shotDurationSeconds", "durationPerShot", "duration_per_shot", "durationSeconds"),
+            Kind = kind,
             Shots = shots,
         };
     }
+
+    public bool LooksLikeImageRecipe =>
+        Kind is { Length: > 0 } && (
+            Kind.Equals("product_photoshoot", StringComparison.OrdinalIgnoreCase) ||
+            Kind.Equals("marketplace_cards", StringComparison.OrdinalIgnoreCase));
 
     internal static bool TryGetProperty(JsonElement element, out JsonElement value, params string[] names)
     {
@@ -694,17 +741,22 @@ internal sealed class RunwayCliGalleryShot
 
     public long? VideoSeed { get; init; }
 
-    public static RunwayCliGalleryShot FromJson(JsonElement element, int fallbackIndex)
+    public string? RecipeStem { get; init; }
+
+    public static RunwayCliGalleryShot FromJson(JsonElement element, int fallbackIndex, string? planKind = null)
     {
         var index = (int?)RunwayCliGalleryPlan.TryGetInt64(element, "index", "segment", "shot");
         var sharedSeed = RunwayCliGalleryPlan.TryGetInt64(element, "seed");
+        var resolvedIndex = index ?? fallbackIndex;
+        var label = RunwayCliGalleryPlan.TryGetString(element, "label");
+        var recipeStem = ComputeRecipeStem(planKind, resolvedIndex, label);
         return new RunwayCliGalleryShot
         {
             Id = RunwayCliGalleryPlan.TryGetString(element, "id"),
-            Index = index ?? fallbackIndex,
+            Index = resolvedIndex,
             Title = RunwayCliGalleryPlan.TryGetString(element, "title", "label"),
             Beat = RunwayCliGalleryPlan.TryGetString(element, "beat"),
-            ImagePrompt = RunwayCliGalleryPlan.TryGetString(element, "image", "imagePrompt", "keyframePrompt"),
+            ImagePrompt = RunwayCliGalleryPlan.TryGetString(element, "image", "imagePrompt", "keyframePrompt", "prompt"),
             VideoPrompt = RunwayCliGalleryPlan.TryGetString(element, "motion", "videoPrompt", "prompt"),
             ImageModel = RunwayCliGalleryPlan.TryGetString(element, "imageModel", "image_model"),
             VideoModel = RunwayCliGalleryPlan.TryGetString(element, "videoModel", "video_model", "model"),
@@ -713,6 +765,47 @@ internal sealed class RunwayCliGalleryShot
             DurationSeconds = RunwayCliGalleryPlan.TryGetDouble(element, "duration", "durationSeconds", "shotDurationSeconds"),
             ImageSeed = RunwayCliGalleryPlan.TryGetInt64(element, "imageSeed", "image_seed") ?? sharedSeed,
             VideoSeed = RunwayCliGalleryPlan.TryGetInt64(element, "videoSeed", "video_seed") ?? sharedSeed,
+            RecipeStem = recipeStem,
         };
+    }
+
+    private static string? ComputeRecipeStem(string? kind, int index, string? label)
+    {
+        if (string.IsNullOrWhiteSpace(kind))
+        {
+            return null;
+        }
+
+        var sanitizedKind = SanitizeStem(kind);
+        if (sanitizedKind.Length == 0)
+        {
+            return null;
+        }
+
+        var sanitizedLabel = SanitizeStem(label ?? string.Empty);
+        return string.IsNullOrWhiteSpace(sanitizedLabel)
+            ? string.Create(CultureInfo.InvariantCulture, $"runway-{sanitizedKind}-{index:00}")
+            : string.Create(CultureInfo.InvariantCulture, $"runway-{sanitizedKind}-{index:00}-{sanitizedLabel}");
+    }
+
+    private static string SanitizeStem(string value)
+    {
+        var builder = new System.Text.StringBuilder(value.Length);
+        foreach (var character in value)
+        {
+            if (char.IsLetterOrDigit(character))
+            {
+                builder.Append(char.ToLowerInvariant(character));
+            }
+            else if (character is '-' or '_' or ' ')
+            {
+                if (builder.Length > 0 && builder[^1] != '-')
+                {
+                    builder.Append('-');
+                }
+            }
+        }
+
+        return builder.ToString().Trim('-');
     }
 }

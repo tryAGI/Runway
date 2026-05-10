@@ -550,6 +550,16 @@ dotnet run --project src/cli/Runway.Cli -- workflow list
 dotnet run --project src/cli/Runway.Cli -- gallery create \
   --input ./runway-short-video \
   --output ./runway-short-video/gallery.html
+
+# Enriched layout for storyboard QA: pass the recipe/short-video plan JSON.
+# Each tile shows the keyframe + clip side by side, model/ratio/duration metadata,
+# the image+motion prompts in a collapsible panel, and copy-to-clipboard buttons
+# that emit ready-to-run `dnx Runway.Cli image …` / `image-to-video …` commands
+# (including the shot's video seed).
+dotnet run --project src/cli/Runway.Cli -- gallery create \
+  --input ./runway-short-video \
+  --metadata ./runway-short-video/runway-short-video.plan.json \
+  --output ./runway-short-video/gallery.html
 ```
 
 CLI endpoint and model coverage:
@@ -571,7 +581,7 @@ CLI endpoint and model coverage:
 | `voice-dubbing` | `POST /v1/voice_dubbing` | `eleven_voice_dubbing` |
 | `voice-isolation` | `POST /v1/voice_isolation` | `eleven_voice_isolation` |
 | `task` | `GET /v1/tasks/{id}`, `DELETE /v1/tasks/{id}` | Task management |
-| `gallery create` | Local HTML gallery for generated MP4 files and adjacent `*.plan.json` files | No API call |
+| `gallery create` | Local HTML gallery for generated MP4 files and adjacent `*.plan.json` files. With `--metadata <plan.json>`, switches to a paired layout (keyframe + clip per shot) with model/ratio/duration metadata, prompts, and copy-to-clipboard regen commands. Accepts both `short-video` plan JSON (`shots[]`) and recipe plan JSON (`jobs[]` from `product-photoshoot`/`marketplace-cards`/`ad-video`). | No API call |
 | `avatar` | `GET/POST/PATCH/DELETE /v1/avatars`, conversation and usage endpoints | `gwm1_avatars`, avatar presets |
 | `avatar video` | `POST /v1/avatar_videos` | `gwm1_avatars` |
 | `document` | `GET/POST/PATCH/DELETE /v1/documents` | Knowledge documents |
@@ -590,6 +600,8 @@ CLI endpoint and model coverage:
 The CLI `short-video` command can plan with external agents before using Runway: `--planner auto` (default) tries Claude Code first, Codex CLI second, then the deterministic planner; `--planner deterministic` keeps output fully local and CI-safe. `--planner-model`, `--planner-tools`, and `--planner-timeout-seconds` also support `RUNWAY_SHORT_VIDEO_PLANNER_MODEL`, `RUNWAY_SHORT_VIDEO_PLANNER_TOOLS`, and `RUNWAY_SHORT_VIDEO_PLANNER_TIMEOUT_SECONDS`. `short-video run --plan` is execution-only and never invokes a planner. The bundled planner prompt is Runway-owned and was shaped by storyboard-creation workflows; no external storyboard skill is installed or required. Normal `short-video` generation writes the exact executed plan next to the final video as `*.plan.json`, and logs which planner source was used.
 
 The creative recipe commands are Runway-native. `product-photoshoot create`, `marketplace-cards create`, and `ad-video create` bundle product/ad/storyboard prompt guidance inspired by compact creator workflows: concise sensory prompts, camera and motion structure, lighting, positive phrasing, mode routing, reference-image handling, and model-fit defaults. They do not install or call Higgsfield, and marketplace-card plans are creative asset bundles rather than marketplace compliance claims. For face-faithful identity reuse, the CLI ships a local `soul-id` registry (see "Higgsfield Parity" below) that auto-attaches reference photos to every generation call that supports them; it does not train a server-side identity model. For presenter-like talking videos, use the existing `avatar` and `character-performance` commands.
+
+Every generation command (`image`, `image-to-video`, `text-to-video`, `video-to-video`, `character-performance`, `sound-effect`, `text-to-speech`, `speech-to-speech`, `voice-dubbing`, `voice-isolation`) accepts `--retry-on-internal-error <N>` (default `0`) and `--retry-backoff-seconds <S>` (default `5`). When the server returns a transient `INTERNAL.*` failure (for example `INTERNAL.BAD_OUTPUT.CODE01`), the CLI re-submits the same request up to `N` more times instead of bailing out. Other failure codes (`SAFETY.*`, `INPUT_VALIDATION.*`, `4xx`) are not retried, since the same input would fail again. The recipe wrappers (`short-video`, `product-photoshoot create`, `marketplace-cards create`, `ad-video create`) default `--retry-on-internal-error` to `2` so a single transient flake on shot N does not abort the whole multi-shot run; pass `--retry-on-internal-error 0` to opt out for strict CI runs.
 
 #### Higgsfield Parity
 

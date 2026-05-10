@@ -1352,6 +1352,92 @@ public partial class Tests
     }
 
     [TestMethod]
+    [DataRow("INTERNAL.BAD_OUTPUT.CODE01", true)]
+    [DataRow("INTERNAL.BAD_OUTPUT.CODE99", true)]
+    [DataRow("INTERNAL.WHATEVER", true)]
+    [DataRow("INTERNAL", true)]
+    [DataRow("SAFETY.INPUT.MULTIMODAL", false)]
+    [DataRow("SAFETY.OUTPUT.AUDIO", false)]
+    [DataRow("INPUT_VALIDATION.PROMPT", false)]
+    [DataRow("", false)]
+    [DataRow(null, false)]
+    public void RunwayCliRetry_IsRetryableFailureCodeMatchesIssue112Allowlist(string? failureCode, bool expected)
+    {
+        RunwayCliRetry.IsRetryableFailureCode(failureCode).Should().Be(expected);
+    }
+
+    [TestMethod]
+    public async Task RunwayCli_GenerationCommandsExposeRetryFlags()
+    {
+        var imageHelp = await RunCliAsync("image-to-video --help").ConfigureAwait(false);
+        imageHelp.Stdout.Should().Contain("--retry-on-internal-error");
+        imageHelp.Stdout.Should().Contain("--retry-backoff-seconds");
+
+        var shortVideoHelp = await RunCliAsync("short-video --help").ConfigureAwait(false);
+        shortVideoHelp.Stdout.Should().Contain("--retry-on-internal-error");
+        shortVideoHelp.Stdout.Should().Contain("Recipes default to 2");
+
+        var photoHelp = await RunCliAsync("product-photoshoot create --help").ConfigureAwait(false);
+        photoHelp.Stdout.Should().Contain("--retry-on-internal-error");
+        photoHelp.Stdout.Should().Contain("Recipes default to 2");
+    }
+
+    [TestMethod]
+    public async Task RunwayCliGallery_RendersRecipeJobsPlanAsImageOnlyTiles()
+    {
+        var directory = Directory.CreateTempSubdirectory("runway-gallery-recipe-test-").FullName;
+        // Recipe writes files via SanitizeStem(kind) which converts `_` → `-`.
+        var jobImagePath = Path.Combine(directory, "runway-product-photoshoot-01-product-shot.png");
+        var planPath = Path.Combine(directory, "plan.json");
+
+        try
+        {
+            await File.WriteAllBytesAsync(jobImagePath, [9, 9, 9, 9]).ConfigureAwait(false);
+            await File.WriteAllTextAsync(planPath, """
+                {
+                  "kind": "product_photoshoot",
+                  "mode": "product_shot",
+                  "sourcePrompt": "A linen-wrapped soap bar on a marble shelf.",
+                  "model": "gpt_image_2",
+                  "ratio": "1920:1920",
+                  "count": 1,
+                  "jobs": [
+                    {
+                      "index": 1,
+                      "label": "Product shot",
+                      "prompt": "Product shot of a linen-wrapped soap bar on a marble shelf.",
+                      "model": "gpt_image_2",
+                      "ratio": "1920:1920"
+                    }
+                  ]
+                }
+                """).ConfigureAwait(false);
+
+            var output = await RunwayCliGallery.CreateAsync(
+                directory,
+                null,
+                recursive: false,
+                title: null,
+                metadata: planPath,
+                CancellationToken.None).ConfigureAwait(false);
+
+            var html = await File.ReadAllTextAsync(output).ConfigureAwait(false);
+            html.Should().Contain("Product shot");
+            html.Should().Contain("runway-product-photoshoot-01-product-shot.png");
+            html.Should().Contain("A linen-wrapped soap bar on a marble shelf.");
+            html.Should().Contain("gpt_image_2");
+            html.Should().Contain("1920:1920");
+            html.Should().Contain("Copy image regen");
+            html.Should().NotContain("Copy video regen");
+            html.Should().NotContain("no clip yet"); // image recipe shouldn't show clip placeholder
+        }
+        finally
+        {
+            Directory.Delete(directory, recursive: true);
+        }
+    }
+
+    [TestMethod]
     public async Task RunwayCliGallery_RendersPlaceholderWhenClipMissing()
     {
         var directory = Directory.CreateTempSubdirectory("runway-gallery-meta-pending-test-").FullName;

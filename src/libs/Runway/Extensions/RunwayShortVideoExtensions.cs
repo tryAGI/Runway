@@ -86,6 +86,17 @@ public sealed class RunwayShortVideoOptions
     /// File-name prefix used for downloaded shot files.
     /// </summary>
     public string OutputStemPrefix { get; init; } = "runway-short-video-shot";
+
+    /// <summary>
+    /// Number of retries applied to each shot when it fails with a transient INTERNAL.* failure code
+    /// (for example INTERNAL.BAD_OUTPUT.CODE01). Other failure codes are not retried.
+    /// </summary>
+    public int RetryOnInternalError { get; init; }
+
+    /// <summary>
+    /// Base delay between retries triggered by <see cref="RetryOnInternalError"/>. Defaults to 5 seconds when unset.
+    /// </summary>
+    public TimeSpan? RetryBackoff { get; init; }
 }
 
 /// <summary>
@@ -617,6 +628,8 @@ public static class RunwayShortVideoExtensions
     {
         var shotResults = new List<RunwayShortVideoShotResult>(plan.Shots.Count);
         var downloadedFiles = new List<string>();
+        var retryBackoff = effectiveOptions.RetryBackoff ?? TimeSpan.FromSeconds(5);
+        var maxRetries = Math.Max(0, effectiveOptions.RetryOnInternalError);
 
         foreach (var shot in plan.Shots)
         {
@@ -626,22 +639,29 @@ public static class RunwayShortVideoExtensions
                 Shot = shot,
             });
 
-            var response = await client.StartGenerating.CreateTextToVideoAsync(
-                request: CreateTextToVideoRequest(shot.VideoPrompt, effectiveOptions, shot.Index),
-                xRunwayVersion: xRunwayVersion,
-                cancellationToken: cancellationToken).ConfigureAwait(false);
-
-            progress?.Report(new RunwayShortVideoProgress
-            {
-                Stage = RunwayShortVideoProgressStage.TaskCreated,
-                Shot = shot,
-                TaskId = response.Id,
-            });
-
+            CreateTextToVideoResponse response = null!;
             GetTasksResponse? task = null;
             IReadOnlyList<string> shotDownloadedFiles = [];
-            if (effectiveOptions.WaitForCompletion)
+
+            for (var attempt = 0; attempt <= maxRetries; attempt++)
             {
+                response = await client.StartGenerating.CreateTextToVideoAsync(
+                    request: CreateTextToVideoRequest(shot.VideoPrompt, effectiveOptions, shot.Index),
+                    xRunwayVersion: xRunwayVersion,
+                    cancellationToken: cancellationToken).ConfigureAwait(false);
+
+                progress?.Report(new RunwayShortVideoProgress
+                {
+                    Stage = RunwayShortVideoProgressStage.TaskCreated,
+                    Shot = shot,
+                    TaskId = response.Id,
+                });
+
+                if (!effectiveOptions.WaitForCompletion)
+                {
+                    break;
+                }
+
                 task = await client.WaitForTaskAsync(
                     response.Id,
                     xRunwayVersion: xRunwayVersion,
@@ -655,25 +675,35 @@ public static class RunwayShortVideoExtensions
                     })),
                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
-                if (effectiveOptions.DownloadOutputs)
+                if (!task.Value.IsFailed || attempt >= maxRetries || !IsRetryableInternalFailure(task.Value.Failed?.FailureCode))
                 {
-                    shotDownloadedFiles = await task.Value.DownloadOutputsAsync(
-                        output: ResolveShotOutput(effectiveOptions.Output, plan.Shots.Count),
-                        defaultExtension: ".mp4",
-                        stemPrefix: string.Create(
-                            CultureInfo.InvariantCulture,
-                            $"{effectiveOptions.OutputStemPrefix}-{shot.Index:00}"),
-                        cancellationToken: cancellationToken).ConfigureAwait(false);
-                    downloadedFiles.AddRange(shotDownloadedFiles);
-
-                    progress?.Report(new RunwayShortVideoProgress
-                    {
-                        Stage = RunwayShortVideoProgressStage.ShotDownloaded,
-                        Shot = shot,
-                        TaskId = response.Id,
-                        Task = task,
-                    });
+                    break;
                 }
+
+                if (retryBackoff > TimeSpan.Zero)
+                {
+                    await Task.Delay(retryBackoff, cancellationToken).ConfigureAwait(false);
+                }
+            }
+
+            if (effectiveOptions.WaitForCompletion && task is not null && !task.Value.IsFailed && effectiveOptions.DownloadOutputs)
+            {
+                shotDownloadedFiles = await task.Value.DownloadOutputsAsync(
+                    output: ResolveShotOutput(effectiveOptions.Output, plan.Shots.Count),
+                    defaultExtension: ".mp4",
+                    stemPrefix: string.Create(
+                        CultureInfo.InvariantCulture,
+                        $"{effectiveOptions.OutputStemPrefix}-{shot.Index:00}"),
+                    cancellationToken: cancellationToken).ConfigureAwait(false);
+                downloadedFiles.AddRange(shotDownloadedFiles);
+
+                progress?.Report(new RunwayShortVideoProgress
+                {
+                    Stage = RunwayShortVideoProgressStage.ShotDownloaded,
+                    Shot = shot,
+                    TaskId = response.Id,
+                    Task = task,
+                });
             }
 
             shotResults.Add(new RunwayShortVideoShotResult
@@ -691,6 +721,13 @@ public static class RunwayShortVideoExtensions
             Shots = shotResults,
             DownloadedFiles = downloadedFiles,
         };
+    }
+
+    private static bool IsRetryableInternalFailure(string? failureCode)
+    {
+        return !string.IsNullOrWhiteSpace(failureCode) &&
+               (failureCode.StartsWith("INTERNAL.", StringComparison.Ordinal) ||
+                failureCode.Equals("INTERNAL", StringComparison.Ordinal));
     }
 
     /// <summary>

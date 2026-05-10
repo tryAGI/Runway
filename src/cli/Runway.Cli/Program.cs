@@ -374,6 +374,24 @@ var pollIntervalOption = new Option<int>("--poll-interval-seconds")
     DefaultValueFactory = _ => 5,
 };
 
+var retryOnInternalErrorOption = new Option<int>("--retry-on-internal-error")
+{
+    Description = "Retry up to N times when the server returns an INTERNAL.* failure code (transient server flakes such as INTERNAL.BAD_OUTPUT.CODE01). Other failure codes are not retried.",
+    DefaultValueFactory = _ => 0,
+};
+
+var retryBackoffSecondsOption = new Option<int>("--retry-backoff-seconds")
+{
+    Description = "Base delay in seconds between retries when --retry-on-internal-error fires.",
+    DefaultValueFactory = _ => 5,
+};
+
+var recipeRetryOnInternalErrorOption = new Option<int>("--retry-on-internal-error")
+{
+    Description = "Retry up to N times when the server returns an INTERNAL.* failure code on any shot. Recipes default to 2 because losing a single shot to a transient flake should not abort a multi-shot recipe.",
+    DefaultValueFactory = _ => 2,
+};
+
 var videoCommand = new Command("video", "Generate an avatar video from text or audio.")
 {
     textOption,
@@ -847,6 +865,8 @@ var generateVideoCommand = new Command("video", "Generate a video locally from a
     jsonOption,
     noWaitOption,
     pollIntervalOption,
+    retryOnInternalErrorOption,
+    retryBackoffSecondsOption,
 };
 rootCommand.Subcommands.Add(generateVideoCommand);
 generateVideoCommand.SetAction((ParseResult parseResult, CancellationToken cancellationToken) =>
@@ -861,82 +881,72 @@ generateVideoCommand.SetAction((ParseResult parseResult, CancellationToken cance
         var model = parseResult.GetValue(videoModelOption);
         var publicFigureThreshold = parseResult.GetValue(publicFigureThresholdOption);
         var json = parseResult.GetValue(jsonOption);
-        Guid taskId;
 
-        if (json is { Length: > 0 })
+        if (json is not { Length: > 0 })
         {
-            taskId = await PostGenerationJsonAsync(
-                client,
-                runwayVersion,
-                "v1/text_to_video",
-                await RunwayCliGeneration.ReadJsonTextAsync(json, ct).ConfigureAwait(false),
-                ct).ConfigureAwait(false);
-        }
-        else if (promptImages is { Length: > 0 } || lastImage is { Length: > 0 })
-        {
-            RunwayModelSchema.EnsureModelSupportsEndpoint(model ?? string.Empty, "image_to_video");
-            var request = await RunwayCliGeneration.CreateImageToVideoRequestAsync(
-                prompt,
-                model,
-                promptImages,
-                lastImage,
-                ratio,
-                duration,
-                seed,
-                !parseResult.GetValue(noAudioOption),
-                publicFigureThreshold,
-                ct).ConfigureAwait(false);
-            var response = await client.StartGenerating.CreateImageToVideoAsync(
-                request: request,
-                xRunwayVersion: runwayVersion,
-                cancellationToken: ct).ConfigureAwait(false);
-
-            taskId = response.Id;
-        }
-        else
-        {
-            RunwayModelSchema.EnsureModelSupportsEndpoint(model ?? string.Empty, "text_to_video");
-            var request = RunwayCliGeneration.CreateTextToVideoRequest(
-                prompt,
-                model,
-                ratio,
-                duration,
-                seed,
-                !parseResult.GetValue(noAudioOption),
-                publicFigureThreshold);
-            var response = await client.StartGenerating.CreateTextToVideoAsync(
-                request: request,
-                xRunwayVersion: runwayVersion,
-                cancellationToken: ct).ConfigureAwait(false);
-
-            taskId = response.Id;
+            if (promptImages is { Length: > 0 } || lastImage is { Length: > 0 })
+            {
+                RunwayModelSchema.EnsureModelSupportsEndpoint(model ?? string.Empty, "image_to_video");
+            }
+            else
+            {
+                RunwayModelSchema.EnsureModelSupportsEndpoint(model ?? string.Empty, "text_to_video");
+            }
         }
 
-        await Console.Error.WriteLineAsync($"Task ID: {taskId}").ConfigureAwait(false);
+        await HandleGenerationTaskAsync(
+            client,
+            runwayVersion,
+            async submitCt =>
+            {
+                if (json is { Length: > 0 })
+                {
+                    return await PostGenerationJsonAsync(
+                        client,
+                        runwayVersion,
+                        "v1/text_to_video",
+                        await RunwayCliGeneration.ReadJsonTextAsync(json, submitCt).ConfigureAwait(false),
+                        submitCt).ConfigureAwait(false);
+                }
 
-        if (parseResult.GetValue(noWaitOption))
-        {
-            Console.WriteLine(taskId);
-            return;
-        }
+                if (promptImages is { Length: > 0 } || lastImage is { Length: > 0 })
+                {
+                    var i2vRequest = await RunwayCliGeneration.CreateImageToVideoRequestAsync(
+                        prompt,
+                        model,
+                        promptImages,
+                        lastImage,
+                        ratio,
+                        duration,
+                        seed,
+                        !parseResult.GetValue(noAudioOption),
+                        publicFigureThreshold,
+                        submitCt).ConfigureAwait(false);
+                    var i2vResponse = await client.StartGenerating.CreateImageToVideoAsync(
+                        request: i2vRequest,
+                        xRunwayVersion: runwayVersion,
+                        cancellationToken: submitCt).ConfigureAwait(false);
+                    return i2vResponse.Id;
+                }
 
-        var task = await client.WaitForTaskAsync(
-            taskId,
-            xRunwayVersion: runwayVersion,
-            pollInterval: TimeSpan.FromSeconds(parseResult.GetValue(pollIntervalOption)),
-            progress: CreateConsoleProgress(),
-            cancellationToken: ct).ConfigureAwait(false);
-
-        var downloaded = await task.DownloadOutputsAsync(
-            output: parseResult.GetValue(outputOption),
-            defaultExtension: ".mp4",
-            stemPrefix: "runway-video",
-            cancellationToken: ct).ConfigureAwait(false);
-
-        foreach (var path in downloaded)
-        {
-            Console.WriteLine(path);
-        }
+                var t2vRequest = RunwayCliGeneration.CreateTextToVideoRequest(
+                    prompt,
+                    model,
+                    ratio,
+                    duration,
+                    seed,
+                    !parseResult.GetValue(noAudioOption),
+                    publicFigureThreshold);
+                var t2vResponse = await client.StartGenerating.CreateTextToVideoAsync(
+                    request: t2vRequest,
+                    xRunwayVersion: runwayVersion,
+                    cancellationToken: submitCt).ConfigureAwait(false);
+                return t2vResponse.Id;
+            },
+            parseResult,
+            ".mp4",
+            "runway-video",
+            ct).ConfigureAwait(false);
     }, cancellationToken));
 
 var shortVideoCommand = new Command("short-video", "Expand a scenario into keyframe prompts and generate a multi-shot short video.")
@@ -964,6 +974,8 @@ var shortVideoCommand = new Command("short-video", "Expand a scenario into keyfr
     ffmpegOption,
     noWaitOption,
     pollIntervalOption,
+    recipeRetryOnInternalErrorOption,
+    retryBackoffSecondsOption,
 };
 rootCommand.Subcommands.Add(shortVideoCommand);
 shortVideoCommand.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
@@ -1030,6 +1042,8 @@ var shortVideoRunCommand = new Command("run", "Generate a short video from an ed
     ffmpegOption,
     noWaitOption,
     pollIntervalOption,
+    recipeRetryOnInternalErrorOption,
+    retryBackoffSecondsOption,
 };
 shortVideoCommand.Subcommands.Add(shortVideoRunCommand);
 shortVideoRunCommand.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
@@ -1136,6 +1150,8 @@ var productPhotoshootCreateCommand = new Command("create", "Create product photo
     publicFigureThresholdOption,
     noWaitOption,
     pollIntervalOption,
+    recipeRetryOnInternalErrorOption,
+    retryBackoffSecondsOption,
 };
 productPhotoshootCommand.Subcommands.Add(productPhotoshootCreateCommand);
 productPhotoshootCreateCommand.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
@@ -1199,6 +1215,8 @@ var marketplaceCardsCreateCommand = new Command("create", "Create marketplace-st
     publicFigureThresholdOption,
     noWaitOption,
     pollIntervalOption,
+    recipeRetryOnInternalErrorOption,
+    retryBackoffSecondsOption,
 };
 marketplaceCardsCommand.Subcommands.Add(marketplaceCardsCreateCommand);
 marketplaceCardsCreateCommand.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
@@ -1262,6 +1280,8 @@ var adVideoCreateCommand = new Command("create", "Create ad video shot prompts a
     publicFigureThresholdOption,
     noWaitOption,
     pollIntervalOption,
+    recipeRetryOnInternalErrorOption,
+    retryBackoffSecondsOption,
 };
 adVideoCommand.Subcommands.Add(adVideoCreateCommand);
 adVideoCreateCommand.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
@@ -1323,6 +1343,8 @@ var generateImageCommand = new Command("image", "Generate an image locally from 
     jsonOption,
     noWaitOption,
     pollIntervalOption,
+    retryOnInternalErrorOption,
+    retryBackoffSecondsOption,
 };
 rootCommand.Subcommands.Add(generateImageCommand);
 generateImageCommand.SetAction((ParseResult parseResult, CancellationToken cancellationToken) =>
@@ -1344,74 +1366,57 @@ generateImageCommand.SetAction((ParseResult parseResult, CancellationToken cance
         });
         var seed = parseResult.GetValue(seedOption);
         var json = parseResult.GetValue(jsonOption);
-        Guid taskId;
-        if (json is { Length: > 0 })
-        {
-            taskId = await PostGenerationJsonAsync(
-                client,
-                runwayVersion,
-                "v1/text_to_image",
-                await RunwayCliGeneration.ReadJsonTextAsync(json, ct).ConfigureAwait(false),
-                ct).ConfigureAwait(false);
-        }
-        else if (normalizedImageModel == "gpt_image_2")
-        {
-            var response = await client.StartGenerating.CreateGptImage2TextToImageAsync(
-                request: await RunwayCliGeneration.CreateGptImage2TextToImageRequestAsync(
-                    prompt,
-                    ratio,
-                    referenceImages,
-                    parseResult.GetValue(imageResolutionOption),
-                    parseResult.GetValue(imageQualityOption),
-                    parseResult.GetValue(outputCountOption),
-                    ct).ConfigureAwait(false),
-                xRunwayVersion: runwayVersion,
-                cancellationToken: ct).ConfigureAwait(false);
-            taskId = response.Id;
-        }
-        else
-        {
-            var response = await client.StartGenerating.CreateTextToImageAsync(
-                request: await RunwayCliGeneration.CreateTextToImageRequestAsync(
-                    prompt,
-                    imageModel,
-                    ratio,
-                    referenceImages,
-                    parseResult.GetValue(referenceSubjectOption) ?? "object",
-                    seed,
-                    parseResult.GetValue(outputCountOption),
-                    parseResult.GetValue(publicFigureThresholdOption),
-                    ct).ConfigureAwait(false),
-                xRunwayVersion: runwayVersion,
-                cancellationToken: ct).ConfigureAwait(false);
-            taskId = response.Id;
-        }
 
-        await Console.Error.WriteLineAsync($"Task ID: {taskId}").ConfigureAwait(false);
+        await HandleGenerationTaskAsync(
+            client,
+            runwayVersion,
+            async submitCt =>
+            {
+                if (json is { Length: > 0 })
+                {
+                    return await PostGenerationJsonAsync(
+                        client,
+                        runwayVersion,
+                        "v1/text_to_image",
+                        await RunwayCliGeneration.ReadJsonTextAsync(json, submitCt).ConfigureAwait(false),
+                        submitCt).ConfigureAwait(false);
+                }
 
-        if (parseResult.GetValue(noWaitOption))
-        {
-            Console.WriteLine(taskId);
-            return;
-        }
+                if (normalizedImageModel == "gpt_image_2")
+                {
+                    var gptResponse = await client.StartGenerating.CreateGptImage2TextToImageAsync(
+                        request: await RunwayCliGeneration.CreateGptImage2TextToImageRequestAsync(
+                            prompt,
+                            ratio,
+                            referenceImages,
+                            parseResult.GetValue(imageResolutionOption),
+                            parseResult.GetValue(imageQualityOption),
+                            parseResult.GetValue(outputCountOption),
+                            submitCt).ConfigureAwait(false),
+                        xRunwayVersion: runwayVersion,
+                        cancellationToken: submitCt).ConfigureAwait(false);
+                    return gptResponse.Id;
+                }
 
-        var task = await client.WaitForTaskAsync(
-            taskId,
-            xRunwayVersion: runwayVersion,
-            pollInterval: TimeSpan.FromSeconds(parseResult.GetValue(pollIntervalOption)),
-            progress: CreateConsoleProgress(),
-            cancellationToken: ct).ConfigureAwait(false);
-
-        var downloaded = await task.DownloadOutputsAsync(
-            output: parseResult.GetValue(outputOption),
-            defaultExtension: ".png",
-            stemPrefix: "runway-image",
-            cancellationToken: ct).ConfigureAwait(false);
-
-        foreach (var path in downloaded)
-        {
-            Console.WriteLine(path);
-        }
+                var t2iResponse = await client.StartGenerating.CreateTextToImageAsync(
+                    request: await RunwayCliGeneration.CreateTextToImageRequestAsync(
+                        prompt,
+                        imageModel,
+                        ratio,
+                        referenceImages,
+                        parseResult.GetValue(referenceSubjectOption) ?? "object",
+                        seed,
+                        parseResult.GetValue(outputCountOption),
+                        parseResult.GetValue(publicFigureThresholdOption),
+                        submitCt).ConfigureAwait(false),
+                    xRunwayVersion: runwayVersion,
+                    cancellationToken: submitCt).ConfigureAwait(false);
+                return t2iResponse.Id;
+            },
+            parseResult,
+            ".png",
+            "runway-image",
+            ct).ConfigureAwait(false);
     }, cancellationToken));
 
 var textToVideoCommand = new Command("text-to-video", "Start a text-to-video generation task.")
@@ -1427,6 +1432,8 @@ var textToVideoCommand = new Command("text-to-video", "Start a text-to-video gen
     jsonOption,
     noWaitOption,
     pollIntervalOption,
+    retryOnInternalErrorOption,
+    retryBackoffSecondsOption,
 };
 rootCommand.Subcommands.Add(textToVideoCommand);
 textToVideoCommand.SetAction((ParseResult parseResult, CancellationToken cancellationToken) =>
@@ -1445,21 +1452,26 @@ textToVideoCommand.SetAction((ParseResult parseResult, CancellationToken cancell
             });
         }
 
-        var taskId = json is { Length: > 0 }
-            ? await PostGenerationJsonAsync(client, runwayVersion, "v1/text_to_video", await RunwayCliGeneration.ReadJsonTextAsync(json, ct).ConfigureAwait(false), ct).ConfigureAwait(false)
-            : (await client.StartGenerating.CreateTextToVideoAsync(
-                request: RunwayCliGeneration.CreateTextToVideoRequest(
-                    RunwayCliGeneration.JoinPrompt(parseResult.GetValue(textToVideoPromptArgument)),
-                    parseResult.GetValue(videoModelOption),
-                    parseResult.GetValue(videoRatioOption) ?? "1280:720",
-                    parseResult.GetValue(generationDurationOption),
-                    parseResult.GetValue(seedOption),
-                    !parseResult.GetValue(noAudioOption),
-                    parseResult.GetValue(publicFigureThresholdOption)),
-                xRunwayVersion: runwayVersion,
-                cancellationToken: ct).ConfigureAwait(false)).Id;
-
-        await HandleGenerationTaskAsync(client, runwayVersion, taskId, parseResult, ".mp4", "runway-video", ct).ConfigureAwait(false);
+        await HandleGenerationTaskAsync(
+            client,
+            runwayVersion,
+            async submitCt => json is { Length: > 0 }
+                ? await PostGenerationJsonAsync(client, runwayVersion, "v1/text_to_video", await RunwayCliGeneration.ReadJsonTextAsync(json, submitCt).ConfigureAwait(false), submitCt).ConfigureAwait(false)
+                : (await client.StartGenerating.CreateTextToVideoAsync(
+                    request: RunwayCliGeneration.CreateTextToVideoRequest(
+                        RunwayCliGeneration.JoinPrompt(parseResult.GetValue(textToVideoPromptArgument)),
+                        parseResult.GetValue(videoModelOption),
+                        parseResult.GetValue(videoRatioOption) ?? "1280:720",
+                        parseResult.GetValue(generationDurationOption),
+                        parseResult.GetValue(seedOption),
+                        !parseResult.GetValue(noAudioOption),
+                        parseResult.GetValue(publicFigureThresholdOption)),
+                    xRunwayVersion: runwayVersion,
+                    cancellationToken: submitCt).ConfigureAwait(false)).Id,
+            parseResult,
+            ".mp4",
+            "runway-video",
+            ct).ConfigureAwait(false);
     }, cancellationToken));
 
 var optionalVideoPromptArgument = new Argument<string[]>("prompt")
@@ -1484,6 +1496,8 @@ var imageToVideoCommand = new Command("image-to-video", "Start an image-to-video
     jsonOption,
     noWaitOption,
     pollIntervalOption,
+    retryOnInternalErrorOption,
+    retryBackoffSecondsOption,
 };
 rootCommand.Subcommands.Add(imageToVideoCommand);
 imageToVideoCommand.SetAction((ParseResult parseResult, CancellationToken cancellationToken) =>
@@ -1519,12 +1533,21 @@ imageToVideoCommand.SetAction((ParseResult parseResult, CancellationToken cancel
                 parseResult.GetValue(publicFigureThresholdOption),
                 ct).ConfigureAwait(false);
 
-        var response = await client.StartGenerating.CreateImageToVideoAsync(
-            request: request,
-            xRunwayVersion: runwayVersion,
-            cancellationToken: ct).ConfigureAwait(false);
-
-        await HandleGenerationTaskAsync(client, runwayVersion, response.Id, parseResult, ".mp4", "runway-video", ct).ConfigureAwait(false);
+        await HandleGenerationTaskAsync(
+            client,
+            runwayVersion,
+            async submitCt =>
+            {
+                var response = await client.StartGenerating.CreateImageToVideoAsync(
+                    request: request,
+                    xRunwayVersion: runwayVersion,
+                    cancellationToken: submitCt).ConfigureAwait(false);
+                return response.Id;
+            },
+            parseResult,
+            ".mp4",
+            "runway-video",
+            ct).ConfigureAwait(false);
     }, cancellationToken));
 
 var sourceVideoOption = new Option<string?>("--video")
@@ -1544,6 +1567,8 @@ var videoToVideoCommand = new Command("video-to-video", "Start a video-to-video 
     jsonOption,
     noWaitOption,
     pollIntervalOption,
+    retryOnInternalErrorOption,
+    retryBackoffSecondsOption,
 };
 rootCommand.Subcommands.Add(videoToVideoCommand);
 videoToVideoCommand.SetAction((ParseResult parseResult, CancellationToken cancellationToken) =>
@@ -1561,12 +1586,21 @@ videoToVideoCommand.SetAction((ParseResult parseResult, CancellationToken cancel
                 parseResult.GetValue(publicFigureThresholdOption),
                 ct).ConfigureAwait(false);
 
-        var response = await client.StartGenerating.CreateVideoToVideoAsync(
-            request: request,
-            xRunwayVersion: runwayVersion,
-            cancellationToken: ct).ConfigureAwait(false);
-
-        await HandleGenerationTaskAsync(client, runwayVersion, response.Id, parseResult, ".mp4", "runway-video", ct).ConfigureAwait(false);
+        await HandleGenerationTaskAsync(
+            client,
+            runwayVersion,
+            async submitCt =>
+            {
+                var response = await client.StartGenerating.CreateVideoToVideoAsync(
+                    request: request,
+                    xRunwayVersion: runwayVersion,
+                    cancellationToken: submitCt).ConfigureAwait(false);
+                return response.Id;
+            },
+            parseResult,
+            ".mp4",
+            "runway-video",
+            ct).ConfigureAwait(false);
     }, cancellationToken));
 
 var characterImageOption = new Option<string?>("--character-image")
@@ -1608,6 +1642,8 @@ var characterPerformanceCommand = new Command("character-performance", "Start an
     jsonOption,
     noWaitOption,
     pollIntervalOption,
+    retryOnInternalErrorOption,
+    retryBackoffSecondsOption,
 };
 rootCommand.Subcommands.Add(characterPerformanceCommand);
 characterPerformanceCommand.SetAction((ParseResult parseResult, CancellationToken cancellationToken) =>
@@ -1628,12 +1664,21 @@ characterPerformanceCommand.SetAction((ParseResult parseResult, CancellationToke
                 parseResult.GetValue(publicFigureThresholdOption),
                 ct).ConfigureAwait(false);
 
-        var response = await client.StartGenerating.CreateCharacterPerformanceAsync(
-            request: request,
-            xRunwayVersion: runwayVersion,
-            cancellationToken: ct).ConfigureAwait(false);
-
-        await HandleGenerationTaskAsync(client, runwayVersion, response.Id, parseResult, ".mp4", "runway-video", ct).ConfigureAwait(false);
+        await HandleGenerationTaskAsync(
+            client,
+            runwayVersion,
+            async submitCt =>
+            {
+                var response = await client.StartGenerating.CreateCharacterPerformanceAsync(
+                    request: request,
+                    xRunwayVersion: runwayVersion,
+                    cancellationToken: submitCt).ConfigureAwait(false);
+                return response.Id;
+            },
+            parseResult,
+            ".mp4",
+            "runway-video",
+            ct).ConfigureAwait(false);
     }, cancellationToken));
 
 var loopOption = new Option<bool>("--loop")
@@ -1650,6 +1695,8 @@ var soundEffectCommand = new Command("sound-effect", "Start an eleven_text_to_so
     jsonOption,
     noWaitOption,
     pollIntervalOption,
+    retryOnInternalErrorOption,
+    retryBackoffSecondsOption,
 };
 rootCommand.Subcommands.Add(soundEffectCommand);
 soundEffectCommand.SetAction((ParseResult parseResult, CancellationToken cancellationToken) =>
@@ -1664,12 +1711,21 @@ soundEffectCommand.SetAction((ParseResult parseResult, CancellationToken cancell
                 parseResult.GetValue(generationDurationOption),
                 parseResult.GetValue(loopOption));
 
-        var response = await client.StartGenerating.CreateSoundEffectAsync(
-            request: request,
-            xRunwayVersion: runwayVersion,
-            cancellationToken: ct).ConfigureAwait(false);
-
-        await HandleGenerationTaskAsync(client, runwayVersion, response.Id, parseResult, ".mp3", "runway-audio", ct).ConfigureAwait(false);
+        await HandleGenerationTaskAsync(
+            client,
+            runwayVersion,
+            async submitCt =>
+            {
+                var response = await client.StartGenerating.CreateSoundEffectAsync(
+                    request: request,
+                    xRunwayVersion: runwayVersion,
+                    cancellationToken: submitCt).ConfigureAwait(false);
+                return response.Id;
+            },
+            parseResult,
+            ".mp3",
+            "runway-audio",
+            ct).ConfigureAwait(false);
     }, cancellationToken));
 
 var mediaOption = new Option<string?>("--media")
@@ -1709,6 +1765,8 @@ var speechToSpeechCommand = new Command("speech-to-speech", "Start an eleven_mul
     jsonOption,
     noWaitOption,
     pollIntervalOption,
+    retryOnInternalErrorOption,
+    retryBackoffSecondsOption,
 };
 rootCommand.Subcommands.Add(speechToSpeechCommand);
 speechToSpeechCommand.SetAction((ParseResult parseResult, CancellationToken cancellationToken) =>
@@ -1726,12 +1784,21 @@ speechToSpeechCommand.SetAction((ParseResult parseResult, CancellationToken canc
                 parseResult.GetValue(removeBackgroundNoiseOption),
                 ct).ConfigureAwait(false);
 
-        var response = await client.StartGenerating.CreateSpeechToSpeechAsync(
-            request: request,
-            xRunwayVersion: runwayVersion,
-            cancellationToken: ct).ConfigureAwait(false);
-
-        await HandleGenerationTaskAsync(client, runwayVersion, response.Id, parseResult, ".mp3", "runway-speech", ct).ConfigureAwait(false);
+        await HandleGenerationTaskAsync(
+            client,
+            runwayVersion,
+            async submitCt =>
+            {
+                var response = await client.StartGenerating.CreateSpeechToSpeechAsync(
+                    request: request,
+                    xRunwayVersion: runwayVersion,
+                    cancellationToken: submitCt).ConfigureAwait(false);
+                return response.Id;
+            },
+            parseResult,
+            ".mp3",
+            "runway-speech",
+            ct).ConfigureAwait(false);
     }, cancellationToken));
 
 var textToSpeechCommand = new Command("text-to-speech", "Start an eleven_multilingual_v2 text-to-speech task.")
@@ -1742,6 +1809,8 @@ var textToSpeechCommand = new Command("text-to-speech", "Start an eleven_multili
     jsonOption,
     noWaitOption,
     pollIntervalOption,
+    retryOnInternalErrorOption,
+    retryBackoffSecondsOption,
 };
 rootCommand.Subcommands.Add(textToSpeechCommand);
 textToSpeechCommand.SetAction((ParseResult parseResult, CancellationToken cancellationToken) =>
@@ -1755,12 +1824,21 @@ textToSpeechCommand.SetAction((ParseResult parseResult, CancellationToken cancel
                 RunwayCliGeneration.JoinPrompt(parseResult.GetValue(textToSpeechPromptArgument)),
                 parseResult.GetValue(speechVoicePresetOption) ?? "clara");
 
-        var response = await client.StartGenerating.CreateTextToSpeechAsync(
-            request: request,
-            xRunwayVersion: runwayVersion,
-            cancellationToken: ct).ConfigureAwait(false);
-
-        await HandleGenerationTaskAsync(client, runwayVersion, response.Id, parseResult, ".mp3", "runway-speech", ct).ConfigureAwait(false);
+        await HandleGenerationTaskAsync(
+            client,
+            runwayVersion,
+            async submitCt =>
+            {
+                var response = await client.StartGenerating.CreateTextToSpeechAsync(
+                    request: request,
+                    xRunwayVersion: runwayVersion,
+                    cancellationToken: submitCt).ConfigureAwait(false);
+                return response.Id;
+            },
+            parseResult,
+            ".mp3",
+            "runway-speech",
+            ct).ConfigureAwait(false);
     }, cancellationToken));
 
 var audioOption = new Option<string?>("--audio")
@@ -1781,6 +1859,8 @@ var voiceDubbingCommand = new Command("voice-dubbing", "Start an eleven_voice_du
     jsonOption,
     noWaitOption,
     pollIntervalOption,
+    retryOnInternalErrorOption,
+    retryBackoffSecondsOption,
 };
 rootCommand.Subcommands.Add(voiceDubbingCommand);
 voiceDubbingCommand.SetAction((ParseResult parseResult, CancellationToken cancellationToken) =>
@@ -1795,12 +1875,21 @@ voiceDubbingCommand.SetAction((ParseResult parseResult, CancellationToken cancel
                 RequireOption(parseResult, targetLanguageOption),
                 ct).ConfigureAwait(false);
 
-        var response = await client.StartGenerating.CreateVoiceDubbingAsync(
-            request: request,
-            xRunwayVersion: runwayVersion,
-            cancellationToken: ct).ConfigureAwait(false);
-
-        await HandleGenerationTaskAsync(client, runwayVersion, response.Id, parseResult, ".mp3", "runway-dubbing", ct).ConfigureAwait(false);
+        await HandleGenerationTaskAsync(
+            client,
+            runwayVersion,
+            async submitCt =>
+            {
+                var response = await client.StartGenerating.CreateVoiceDubbingAsync(
+                    request: request,
+                    xRunwayVersion: runwayVersion,
+                    cancellationToken: submitCt).ConfigureAwait(false);
+                return response.Id;
+            },
+            parseResult,
+            ".mp3",
+            "runway-dubbing",
+            ct).ConfigureAwait(false);
     }, cancellationToken));
 
 var voiceIsolationCommand = new Command("voice-isolation", "Start an eleven_voice_isolation task.")
@@ -1810,6 +1899,8 @@ var voiceIsolationCommand = new Command("voice-isolation", "Start an eleven_voic
     jsonOption,
     noWaitOption,
     pollIntervalOption,
+    retryOnInternalErrorOption,
+    retryBackoffSecondsOption,
 };
 rootCommand.Subcommands.Add(voiceIsolationCommand);
 voiceIsolationCommand.SetAction((ParseResult parseResult, CancellationToken cancellationToken) =>
@@ -1823,12 +1914,21 @@ voiceIsolationCommand.SetAction((ParseResult parseResult, CancellationToken canc
                 RequireOption(parseResult, audioOption),
                 ct).ConfigureAwait(false);
 
-        var response = await client.StartGenerating.CreateVoiceIsolationAsync(
-            request: request,
-            xRunwayVersion: runwayVersion,
-            cancellationToken: ct).ConfigureAwait(false);
-
-        await HandleGenerationTaskAsync(client, runwayVersion, response.Id, parseResult, ".mp3", "runway-voice", ct).ConfigureAwait(false);
+        await HandleGenerationTaskAsync(
+            client,
+            runwayVersion,
+            async submitCt =>
+            {
+                var response = await client.StartGenerating.CreateVoiceIsolationAsync(
+                    request: request,
+                    xRunwayVersion: runwayVersion,
+                    cancellationToken: submitCt).ConfigureAwait(false);
+                return response.Id;
+            },
+            parseResult,
+            ".mp3",
+            "runway-voice",
+            ct).ConfigureAwait(false);
     }, cancellationToken));
 
 var modelsCommand = new Command("models", "List Runway API endpoint families and model IDs supported by the CLI.");
@@ -3184,26 +3284,40 @@ static Dictionary<string, IEnumerable<string>> ToHeaderDictionary(HttpResponseMe
 async Task HandleGenerationTaskAsync(
     RunwayClient client,
     string runwayVersion,
-    Guid taskId,
+    Func<CancellationToken, Task<Guid>> submitAsync,
     ParseResult parseResult,
     string defaultExtension,
     string stemPrefix,
-    CancellationToken cancellationToken)
+    CancellationToken cancellationToken,
+    int? retryOnInternalErrorOverride = null)
 {
-    await Console.Error.WriteLineAsync($"Task ID: {taskId}").ConfigureAwait(false);
-
     if (parseResult.GetValue(noWaitOption))
     {
+        var taskId = await submitAsync(cancellationToken).ConfigureAwait(false);
+        await Console.Error.WriteLineAsync($"Task ID: {taskId}").ConfigureAwait(false);
         Console.WriteLine(taskId);
         return;
     }
 
-    var task = await client.WaitForTaskAsync(
-        taskId,
-        xRunwayVersion: runwayVersion,
+    var retries = retryOnInternalErrorOverride ?? parseResult.GetValue(retryOnInternalErrorOption);
+    var task = await RunwayCliRetry.SubmitAndWaitAsync(
+        client,
+        runwayVersion,
+        submitAsync,
         pollInterval: TimeSpan.FromSeconds(parseResult.GetValue(pollIntervalOption)),
+        retryOnInternalError: retries,
+        retryBackoff: TimeSpan.FromSeconds(parseResult.GetValue(retryBackoffSecondsOption)),
         progress: CreateConsoleProgress(),
         cancellationToken: cancellationToken).ConfigureAwait(false);
+
+    if (task.IsFailed)
+    {
+        var failed = task.Failed;
+        throw new InvalidOperationException(
+            string.IsNullOrWhiteSpace(failed?.FailureCode)
+                ? $"Runway task {failed?.Id} failed: {failed?.Failure}"
+                : $"Runway task {failed?.Id} failed ({failed!.FailureCode}): {failed.Failure}");
+    }
 
     var downloaded = await task.DownloadOutputsAsync(
         output: parseResult.GetValue(outputOption),
@@ -3241,6 +3355,8 @@ RunwayShortVideoOptions CreateShortVideoOptions(
         DownloadOutputs = !parseResult.GetValue(noWaitOption),
         Output = segmentOutput,
         PollInterval = TimeSpan.FromSeconds(parseResult.GetValue(pollIntervalOption)),
+        RetryOnInternalError = parseResult.GetValue(recipeRetryOnInternalErrorOption),
+        RetryBackoff = TimeSpan.FromSeconds(parseResult.GetValue(retryBackoffSecondsOption)),
     };
 }
 
@@ -3309,6 +3425,8 @@ RunwayShortVideoOptions CreateShortVideoOptionsFromPlan(
         DownloadOutputs = !parseResult.GetValue(noWaitOption),
         Output = segmentOutput,
         PollInterval = TimeSpan.FromSeconds(parseResult.GetValue(pollIntervalOption)),
+        RetryOnInternalError = parseResult.GetValue(recipeRetryOnInternalErrorOption),
+        RetryBackoff = TimeSpan.FromSeconds(parseResult.GetValue(retryBackoffSecondsOption)),
     };
 }
 
@@ -3410,50 +3528,50 @@ Task<int> RunCreativeImageRecipeAsync(
     {
         WriteCreativeRecipePlan(plan);
 
+        var recipeRetries = parseResult.GetValue(recipeRetryOnInternalErrorOption);
         foreach (var job in plan.Jobs)
         {
-            Guid taskId;
-            if (RunwayCliGeneration.NormalizeTextToImageModel(job.Model) == "gpt_image_2")
-            {
-                var response = await client.StartGenerating.CreateGptImage2TextToImageAsync(
-                    request: await RunwayCliGeneration.CreateGptImage2TextToImageRequestAsync(
-                        job.Prompt,
-                        job.Ratio,
-                        job.ReferenceImages.ToArray(),
-                        job.Resolution,
-                        job.Quality,
-                        1,
-                        ct).ConfigureAwait(false),
-                    xRunwayVersion: runwayVersion,
-                    cancellationToken: ct).ConfigureAwait(false);
-                taskId = response.Id;
-            }
-            else
-            {
-                var response = await client.StartGenerating.CreateTextToImageAsync(
-                    request: await RunwayCliGeneration.CreateTextToImageRequestAsync(
-                        job.Prompt,
-                        job.Model,
-                        job.Ratio,
-                        job.ReferenceImages.ToArray(),
-                        "object",
-                        null,
-                        1,
-                        parseResult.GetValue(publicFigureThresholdOption),
-                        ct).ConfigureAwait(false),
-                    xRunwayVersion: runwayVersion,
-                    cancellationToken: ct).ConfigureAwait(false);
-                taskId = response.Id;
-            }
-
             await HandleGenerationTaskAsync(
                 client,
                 runwayVersion,
-                taskId,
+                async submitCt =>
+                {
+                    if (RunwayCliGeneration.NormalizeTextToImageModel(job.Model) == "gpt_image_2")
+                    {
+                        var response = await client.StartGenerating.CreateGptImage2TextToImageAsync(
+                            request: await RunwayCliGeneration.CreateGptImage2TextToImageRequestAsync(
+                                job.Prompt,
+                                job.Ratio,
+                                job.ReferenceImages.ToArray(),
+                                job.Resolution,
+                                job.Quality,
+                                1,
+                                submitCt).ConfigureAwait(false),
+                            xRunwayVersion: runwayVersion,
+                            cancellationToken: submitCt).ConfigureAwait(false);
+                        return response.Id;
+                    }
+
+                    var fallback = await client.StartGenerating.CreateTextToImageAsync(
+                        request: await RunwayCliGeneration.CreateTextToImageRequestAsync(
+                            job.Prompt,
+                            job.Model,
+                            job.Ratio,
+                            job.ReferenceImages.ToArray(),
+                            "object",
+                            null,
+                            1,
+                            parseResult.GetValue(publicFigureThresholdOption),
+                            submitCt).ConfigureAwait(false),
+                        xRunwayVersion: runwayVersion,
+                        cancellationToken: submitCt).ConfigureAwait(false);
+                    return fallback.Id;
+                },
                 parseResult,
                 ".png",
                 CreateRecipeStem(plan, job, name),
-                ct).ConfigureAwait(false);
+                ct,
+                retryOnInternalErrorOverride: recipeRetries).ConfigureAwait(false);
         }
     }, cancellationToken);
 }
@@ -3468,51 +3586,51 @@ Task<int> RunCreativeVideoRecipeAsync(
     {
         WriteCreativeRecipePlan(plan);
 
+        var recipeRetries = parseResult.GetValue(recipeRetryOnInternalErrorOption);
         foreach (var job in plan.Jobs)
         {
-            Guid taskId;
-            if (job.ReferenceImages.Count > 0)
-            {
-                var response = await client.StartGenerating.CreateImageToVideoAsync(
-                    request: await RunwayCliGeneration.CreateImageToVideoRequestAsync(
-                        job.Prompt,
-                        job.Model,
-                        job.ReferenceImages.ToArray(),
-                        null,
-                        job.Ratio,
-                        job.DurationSeconds,
-                        parseResult.GetValue(seedOption),
-                        job.Audio == true,
-                        parseResult.GetValue(publicFigureThresholdOption),
-                        ct).ConfigureAwait(false),
-                    xRunwayVersion: runwayVersion,
-                    cancellationToken: ct).ConfigureAwait(false);
-                taskId = response.Id;
-            }
-            else
-            {
-                var response = await client.StartGenerating.CreateTextToVideoAsync(
-                    request: RunwayCliGeneration.CreateTextToVideoRequest(
-                        job.Prompt,
-                        job.Model,
-                        job.Ratio,
-                        job.DurationSeconds,
-                        parseResult.GetValue(seedOption),
-                        job.Audio == true,
-                        parseResult.GetValue(publicFigureThresholdOption)),
-                    xRunwayVersion: runwayVersion,
-                    cancellationToken: ct).ConfigureAwait(false);
-                taskId = response.Id;
-            }
-
             await HandleGenerationTaskAsync(
                 client,
                 runwayVersion,
-                taskId,
+                async submitCt =>
+                {
+                    if (job.ReferenceImages.Count > 0)
+                    {
+                        var response = await client.StartGenerating.CreateImageToVideoAsync(
+                            request: await RunwayCliGeneration.CreateImageToVideoRequestAsync(
+                                job.Prompt,
+                                job.Model,
+                                job.ReferenceImages.ToArray(),
+                                null,
+                                job.Ratio,
+                                job.DurationSeconds,
+                                parseResult.GetValue(seedOption),
+                                job.Audio == true,
+                                parseResult.GetValue(publicFigureThresholdOption),
+                                submitCt).ConfigureAwait(false),
+                            xRunwayVersion: runwayVersion,
+                            cancellationToken: submitCt).ConfigureAwait(false);
+                        return response.Id;
+                    }
+
+                    var fallback = await client.StartGenerating.CreateTextToVideoAsync(
+                        request: RunwayCliGeneration.CreateTextToVideoRequest(
+                            job.Prompt,
+                            job.Model,
+                            job.Ratio,
+                            job.DurationSeconds,
+                            parseResult.GetValue(seedOption),
+                            job.Audio == true,
+                            parseResult.GetValue(publicFigureThresholdOption)),
+                        xRunwayVersion: runwayVersion,
+                        cancellationToken: submitCt).ConfigureAwait(false);
+                    return fallback.Id;
+                },
                 parseResult,
                 ".mp4",
                 CreateRecipeStem(plan, job, name),
-                ct).ConfigureAwait(false);
+                ct,
+                retryOnInternalErrorOverride: recipeRetries).ConfigureAwait(false);
         }
     }, cancellationToken);
 }

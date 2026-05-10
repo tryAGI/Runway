@@ -102,6 +102,9 @@ internal static class RunwayCliShortVideoKeyframes
 
         var shotResults = new List<RunwayCliShortVideoKeyframeShotResult>(plan.Shots.Count);
         var downloadedFiles = new List<string>();
+        var pollInterval = options.PollInterval ?? TimeSpan.FromSeconds(5);
+        var retryBackoff = options.RetryBackoff ?? TimeSpan.FromSeconds(5);
+        var maxRetries = Math.Max(0, options.RetryOnInternalError);
 
         foreach (var shot in plan.Shots)
         {
@@ -120,18 +123,34 @@ internal static class RunwayCliShortVideoKeyframes
                 publicFigureThreshold: options.PublicFigureThreshold,
                 cancellationToken).ConfigureAwait(false);
 
-            var imageResponse = await client.StartGenerating.CreateTextToImageAsync(
-                request: imageRequest,
-                xRunwayVersion: xRunwayVersion,
+            var imageOutcome = await RunwayCliRetry.SubmitAndWaitAsync(
+                client,
+                xRunwayVersion,
+                async submitCt =>
+                {
+                    var resp = await client.StartGenerating.CreateTextToImageAsync(
+                        request: imageRequest,
+                        xRunwayVersion: xRunwayVersion,
+                        cancellationToken: submitCt).ConfigureAwait(false);
+                    return resp.Id;
+                },
+                pollInterval: pollInterval,
+                retryOnInternalError: maxRetries,
+                retryBackoff: retryBackoff,
+                progress: null,
                 cancellationToken: cancellationToken).ConfigureAwait(false);
 
-            var imageTask = await client.WaitForTaskAsync(
-                imageResponse.Id,
-                xRunwayVersion: xRunwayVersion,
-                pollInterval: options.PollInterval,
-                cancellationToken: cancellationToken).ConfigureAwait(false);
+            if (imageOutcome.IsFailed)
+            {
+                var failed = imageOutcome.Failed;
+                throw new InvalidOperationException(string.Create(
+                    CultureInfo.InvariantCulture,
+                    $"Keyframe {shot.Index} failed ({failed?.FailureCode}): {failed?.Failure}"));
+            }
 
-            var keyframePaths = await imageTask.DownloadOutputsAsync(
+            var imageTaskId = imageOutcome.Succeeded?.Id ?? Guid.Empty;
+
+            var keyframePaths = await imageOutcome.DownloadOutputsAsync(
                 output: options.Output,
                 defaultExtension: ".png",
                 stemPrefix: string.Create(CultureInfo.InvariantCulture, $"keyframe-{shot.Index:00}"),
@@ -162,23 +181,40 @@ internal static class RunwayCliShortVideoKeyframes
                 publicFigureThreshold: options.PublicFigureThreshold,
                 cancellationToken).ConfigureAwait(false);
 
-            var videoResponse = await client.StartGenerating.CreateImageToVideoAsync(
-                request: videoRequest,
-                xRunwayVersion: xRunwayVersion,
-                cancellationToken: cancellationToken).ConfigureAwait(false);
-
             IReadOnlyList<string> shotFiles = [];
+            Guid videoTaskId = Guid.Empty;
             if (options.WaitForCompletion)
             {
-                var videoTask = await client.WaitForTaskAsync(
-                    videoResponse.Id,
-                    xRunwayVersion: xRunwayVersion,
-                    pollInterval: options.PollInterval,
+                var videoOutcome = await RunwayCliRetry.SubmitAndWaitAsync(
+                    client,
+                    xRunwayVersion,
+                    async submitCt =>
+                    {
+                        var resp = await client.StartGenerating.CreateImageToVideoAsync(
+                            request: videoRequest,
+                            xRunwayVersion: xRunwayVersion,
+                            cancellationToken: submitCt).ConfigureAwait(false);
+                        return resp.Id;
+                    },
+                    pollInterval: pollInterval,
+                    retryOnInternalError: maxRetries,
+                    retryBackoff: retryBackoff,
+                    progress: null,
                     cancellationToken: cancellationToken).ConfigureAwait(false);
+
+                if (videoOutcome.IsFailed)
+                {
+                    var failed = videoOutcome.Failed;
+                    throw new InvalidOperationException(string.Create(
+                        CultureInfo.InvariantCulture,
+                        $"Shot {shot.Index} failed ({failed?.FailureCode}): {failed?.Failure}"));
+                }
+
+                videoTaskId = videoOutcome.Succeeded?.Id ?? Guid.Empty;
 
                 if (options.DownloadOutputs)
                 {
-                    shotFiles = await videoTask.DownloadOutputsAsync(
+                    shotFiles = await videoOutcome.DownloadOutputsAsync(
                         output: options.Output,
                         defaultExtension: ".mp4",
                         stemPrefix: string.Create(CultureInfo.InvariantCulture, $"shot-{shot.Index:00}"),
@@ -187,12 +223,20 @@ internal static class RunwayCliShortVideoKeyframes
                     log?.Invoke(string.Create(CultureInfo.InvariantCulture, $"Shot {shot.Index} downloaded ({shotFiles.Count} file(s))"));
                 }
             }
+            else
+            {
+                var resp = await client.StartGenerating.CreateImageToVideoAsync(
+                    request: videoRequest,
+                    xRunwayVersion: xRunwayVersion,
+                    cancellationToken: cancellationToken).ConfigureAwait(false);
+                videoTaskId = resp.Id;
+            }
 
             shotResults.Add(new RunwayCliShortVideoKeyframeShotResult(
                 Index: shot.Index,
                 KeyframePath: keyframePath,
-                KeyframeTaskId: imageResponse.Id,
-                VideoTaskId: videoResponse.Id,
+                KeyframeTaskId: imageTaskId,
+                VideoTaskId: videoTaskId,
                 VideoFiles: shotFiles));
         }
 
