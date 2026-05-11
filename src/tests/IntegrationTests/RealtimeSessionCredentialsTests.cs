@@ -25,6 +25,8 @@ public partial class Tests
         handler.Authorization.Should().Be("Bearer session-key");
         handler.RunwayVersion.Should().Be("2024-11-06");
         handler.SessionScopedAuth.Should().BeTrue("consume uses a one-shot session-scoped bearer token (issue #116)");
+        handler.UniversalAuthorizationOverride.Should().BeTrue(
+            "consume should also stamp the universal AutoSDKHttpRequestOptions.AuthorizationOverride marker (AutoSDK #321) so cross-SDK rotation handlers can detect it without checking the Runway-specific key");
     }
 
     [TestMethod]
@@ -49,6 +51,8 @@ public partial class Tests
         handler.Authorization.Should().Be("Bearer api-key");
         handler.RunwayVersion.Should().Be("2024-11-06");
         handler.SessionScopedAuth.Should().BeFalse("connect_backend uses the account-level bearer (issue #116)");
+        handler.UniversalAuthorizationOverride.Should().BeFalse(
+            "connect_backend uses the account-level bearer; rotation handlers should be free to overwrite it");
     }
 
     private sealed class CaptureHandler : HttpMessageHandler
@@ -58,6 +62,7 @@ public partial class Tests
         public string? Authorization { get; private set; }
         public string? RunwayVersion { get; private set; }
         public bool SessionScopedAuth { get; private set; }
+        public bool UniversalAuthorizationOverride { get; private set; }
 
         protected override Task<HttpResponseMessage> SendAsync(
             HttpRequestMessage request,
@@ -69,9 +74,16 @@ public partial class Tests
             RunwayVersion = request.Headers.TryGetValues("X-Runway-Version", out var values)
                 ? values.SingleOrDefault()
                 : null;
+            // Read both markers so the test exercises both back-compat surfaces.
+            // The universal AutoSDK marker is the recommended check for new
+            // consumer code; the Runway-specific one stays for handlers wired
+            // before #321 landed.
+            UniversalAuthorizationOverride = AutoSDKHttpRequestOptions.HasAuthorizationOverride(request);
+#pragma warning disable CS0618 // RunwayHttpRequestOptions.SessionScopedAuthorization is obsolete; verifying back-compat stamping.
             SessionScopedAuth = request.Options.TryGetValue(
                 RunwayHttpRequestOptions.SessionScopedAuthorization,
                 out var marker) && marker;
+#pragma warning restore CS0618
 
             var response = new HttpResponseMessage(System.Net.HttpStatusCode.OK)
             {

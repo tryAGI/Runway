@@ -110,7 +110,14 @@ public sealed partial class RealtimeSessionsClient
 #endif
         if (sessionScopedAuth)
         {
+            // Stamp the universal AutoSDK marker so generic rotation-aware
+            // DelegatingHandlers (those that check AutoSDKHttpRequestOptions.HasAuthorizationOverride)
+            // skip the overwrite. Also stamp the legacy Runway-specific key for back-compat with
+            // handlers wired before the universal marker existed (#321 / tryAGI/Runway#116).
+            global::Runway.AutoSDKHttpRequestOptions.StampAuthorizationOverride(request);
+#pragma warning disable CS0618 // RunwayHttpRequestOptions.SessionScopedAuthorization is obsolete; kept for source-compat.
             request.Options.Set(global::Runway.RunwayHttpRequestOptions.SessionScopedAuthorization, true);
+#pragma warning restore CS0618
         }
         request.Headers.Authorization = new global::System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", bearerToken);
         request.Headers.TryAddWithoutValidation("X-Runway-Version", xRunwayVersion);
