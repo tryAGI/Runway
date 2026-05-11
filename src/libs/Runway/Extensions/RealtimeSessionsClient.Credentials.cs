@@ -39,6 +39,7 @@ public sealed partial class RealtimeSessionsClient
             id: id,
             action: "consume",
             bearerToken: sessionKey,
+            sessionScopedAuth: true,
             xRunwayVersion: xRunwayVersion,
             cancellationToken: cancellationToken).ConfigureAwait(false);
     }
@@ -75,6 +76,7 @@ public sealed partial class RealtimeSessionsClient
             id: id,
             action: "connect_backend",
             bearerToken: apiKey,
+            sessionScopedAuth: false,
             xRunwayVersion: xRunwayVersion,
             cancellationToken: cancellationToken).ConfigureAwait(false);
     }
@@ -83,6 +85,7 @@ public sealed partial class RealtimeSessionsClient
         global::System.Guid id,
         string action,
         string bearerToken,
+        bool sessionScopedAuth,
         string xRunwayVersion,
         global::System.Threading.CancellationToken cancellationToken)
     {
@@ -105,6 +108,10 @@ public sealed partial class RealtimeSessionsClient
         request.Version = global::System.Net.HttpVersion.Version11;
         request.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
+        if (sessionScopedAuth)
+        {
+            request.Options.Set(global::Runway.RunwayHttpRequestOptions.SessionScopedAuthorization, true);
+        }
         request.Headers.Authorization = new global::System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", bearerToken);
         request.Headers.TryAddWithoutValidation("X-Runway-Version", xRunwayVersion);
         request.Headers.Accept.Add(new global::System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));

@@ -24,6 +24,7 @@ public partial class Tests
         handler.RequestUri.Should().Be(new Uri($"https://api.dev.runwayml.com/v1/realtime_sessions/{sessionId:D}/consume"));
         handler.Authorization.Should().Be("Bearer session-key");
         handler.RunwayVersion.Should().Be("2024-11-06");
+        handler.SessionScopedAuth.Should().BeTrue("consume uses a one-shot session-scoped bearer token (issue #116)");
     }
 
     [TestMethod]
@@ -47,6 +48,7 @@ public partial class Tests
         handler.RequestUri.Should().Be(new Uri($"https://api.dev.runwayml.com/v1/realtime_sessions/{sessionId:D}/connect_backend"));
         handler.Authorization.Should().Be("Bearer api-key");
         handler.RunwayVersion.Should().Be("2024-11-06");
+        handler.SessionScopedAuth.Should().BeFalse("connect_backend uses the account-level bearer (issue #116)");
     }
 
     private sealed class CaptureHandler : HttpMessageHandler
@@ -55,6 +57,7 @@ public partial class Tests
         public Uri? RequestUri { get; private set; }
         public string? Authorization { get; private set; }
         public string? RunwayVersion { get; private set; }
+        public bool SessionScopedAuth { get; private set; }
 
         protected override Task<HttpResponseMessage> SendAsync(
             HttpRequestMessage request,
@@ -66,6 +69,9 @@ public partial class Tests
             RunwayVersion = request.Headers.TryGetValues("X-Runway-Version", out var values)
                 ? values.SingleOrDefault()
                 : null;
+            SessionScopedAuth = request.Options.TryGetValue(
+                RunwayHttpRequestOptions.SessionScopedAuthorization,
+                out var marker) && marker;
 
             var response = new HttpResponseMessage(System.Net.HttpStatusCode.OK)
             {
