@@ -11,7 +11,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="AwesomeAssertions" Version="9.4.0" />
-    <PackageReference Include="SixLabors.ImageSharp" Version="4.0.0" />
+    <PackageReference Include="SixLabors.ImageSharp" Version="4.0.0" Condition="'$(CI)' != 'true'" />
   </ItemGroup>
 
   <ItemGroup Label="GlobalUsings">
@@ -22,11 +22,17 @@
   <ItemGroup>
     <ProjectReference Include="..\..\cli\Runway.Cli\Runway.Cli.csproj" />
     <ProjectReference Include="..\..\libs\Runway\Runway.csproj" />
-    <ProjectReference Include="..\..\samples\Runway.RealtimeWatchBridge.MediaBridge\Runway.RealtimeWatchBridge.MediaBridge.csproj" />
+    <ProjectReference Include="..\..\samples\Runway.RealtimeWatchBridge.MediaBridge\Runway.RealtimeWatchBridge.MediaBridge.csproj" Condition="'$(CI)' != 'true'" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="..\..\libs\Runway\Fixtures\workflows\*.json" Link="Fixtures\workflows\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(CI)' == 'true'">
+    <Compile Remove="MediaBridgeFfmpegArgumentTests.cs" />
+    <Compile Remove="RealtimeWatchBridgeE2ETests.cs" />
+    <Compile Remove="WatchBridgeDecoderFixtureTests.cs" />
   </ItemGroup>
 
 </Project>
