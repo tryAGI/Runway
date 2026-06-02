@@ -4049,7 +4049,7 @@
                             "description": "Text script for speech-driven video generation.",
                             "type": "string",
                             "minLength": 1,
-                            "maxLength": 3000
+                            "maxLength": 5000
                           },
                           "voice": {
                             "description": "Optional voice override for TTS. If not provided, the avatar's configured voice is used.",
@@ -7050,6 +7050,258 @@
                       "model": { "type": "string", "const": "gen4_aleph" }
                     },
                     "required": ["videoUri", "promptText", "model"]
+                  },
+                  {
+                    "title": "aleph2",
+                    "type": "object",
+                    "properties": {
+                      "promptText": {
+                        "description": "A non-empty string up to 1000 characters describing what should appear in the output.",
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 1000
+                      },
+                      "keyframes": {
+                        "description": "Timed guidance images placed at specific points in the input video. Up to 5 keyframes.",
+                        "title": "Keyframes",
+                        "minItems": 1,
+                        "maxItems": 5,
+                        "type": "array",
+                        "items": {
+                          "title": "Keyframe",
+                          "x-stainless-variantName": "Keyframe",
+                          "anyOf": [
+                            {
+                              "type": "object",
+                              "properties": {
+                                "uri": {
+                                  "description": "A HTTPS URL, Runway or data URI containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                                  "example": "https://example.com/image.jpg",
+                                  "anyOf": [
+                                    {
+                                      "description": "A HTTPS URL.",
+                                      "example": "https://example.com/file",
+                                      "type": "string",
+                                      "minLength": 13,
+                                      "maxLength": 2048,
+                                      "pattern": "^https:\\/\\/.*"
+                                    },
+                                    {
+                                      "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                                      "example": "runway://<token>",
+                                      "type": "string",
+                                      "minLength": 13,
+                                      "maxLength": 5000,
+                                      "pattern": "^runway:\\/\\/.*"
+                                    },
+                                    {
+                                      "description": "A data URI containing encoded media.",
+                                      "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                                      "type": "string",
+                                      "minLength": 13,
+                                      "maxLength": 5242880,
+                                      "pattern": "^data:image\\/.*"
+                                    }
+                                  ]
+                                },
+                                "seconds": {
+                                  "description": "Absolute timestamp in seconds from the start of the input video when this guidance image should apply.",
+                                  "type": "number",
+                                  "minimum": 0,
+                                  "maximum": 30
+                                }
+                              },
+                              "required": ["uri", "seconds"],
+                              "additionalProperties": false
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "uri": {
+                                  "description": "A HTTPS URL, Runway or data URI containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                                  "example": "https://example.com/image.jpg",
+                                  "anyOf": [
+                                    {
+                                      "description": "A HTTPS URL.",
+                                      "example": "https://example.com/file",
+                                      "type": "string",
+                                      "minLength": 13,
+                                      "maxLength": 2048,
+                                      "pattern": "^https:\\/\\/.*"
+                                    },
+                                    {
+                                      "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                                      "example": "runway://<token>",
+                                      "type": "string",
+                                      "minLength": 13,
+                                      "maxLength": 5000,
+                                      "pattern": "^runway:\\/\\/.*"
+                                    },
+                                    {
+                                      "description": "A data URI containing encoded media.",
+                                      "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                                      "type": "string",
+                                      "minLength": 13,
+                                      "maxLength": 5242880,
+                                      "pattern": "^data:image\\/.*"
+                                    }
+                                  ]
+                                },
+                                "at": {
+                                  "description": "Position as a fraction [0.0, 1.0] of the input video duration when this guidance image should apply.",
+                                  "type": "number",
+                                  "minimum": 0,
+                                  "maximum": 1
+                                }
+                              },
+                              "required": ["uri", "at"],
+                              "additionalProperties": false
+                            }
+                          ]
+                        }
+                      },
+                      "promptImage": {
+                        "description": "A list of up to 5 image keyframes for guiding the edit at specific points in the video.",
+                        "title": "PromptImages",
+                        "minItems": 1,
+                        "maxItems": 5,
+                        "type": "array",
+                        "items": {
+                          "title": "PromptImage",
+                          "x-stainless-variantName": "PromptImage",
+                          "type": "object",
+                          "properties": {
+                            "uri": {
+                              "description": "A HTTPS URL, Runway or data URI containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                              "example": "https://example.com/image.jpg",
+                              "anyOf": [
+                                {
+                                  "description": "A HTTPS URL.",
+                                  "example": "https://example.com/file",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 2048,
+                                  "pattern": "^https:\\/\\/.*"
+                                },
+                                {
+                                  "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                                  "example": "runway://<token>",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 5000,
+                                  "pattern": "^runway:\\/\\/.*"
+                                },
+                                {
+                                  "description": "A data URI containing encoded media.",
+                                  "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 5242880,
+                                  "pattern": "^data:image\\/.*"
+                                }
+                              ]
+                            },
+                            "position": {
+                              "anyOf": [
+                                {
+                                  "description": "Places the image at the start of the output video (timestamp 0).",
+                                  "type": "string",
+                                  "const": "first"
+                                },
+                                {
+                                  "description": "Places the image at the end of the output video (timestamp = duration).",
+                                  "type": "string",
+                                  "const": "last"
+                                },
+                                {
+                                  "title": "TimestampPosition",
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "const": "timestamp"
+                                    },
+                                    "timestampSeconds": {
+                                      "description": "Absolute timestamp in seconds from the start of the output video.",
+                                      "type": "number",
+                                      "minimum": 0
+                                    }
+                                  },
+                                  "required": ["type", "timestampSeconds"]
+                                },
+                                {
+                                  "title": "RelativePosition",
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "const": "position"
+                                    },
+                                    "positionPercentage": {
+                                      "description": "Position as a fraction [0.0, 1.0] of the total video duration.",
+                                      "type": "number",
+                                      "minimum": 0,
+                                      "maximum": 1
+                                    }
+                                  },
+                                  "required": ["type", "positionPercentage"]
+                                }
+                              ]
+                            }
+                          },
+                          "required": ["uri", "position"]
+                        }
+                      },
+                      "videoUri": {
+                        "description": "The input video to edit. Must be 30 seconds or shorter.",
+                        "example": "https://example.com/video.mp4",
+                        "anyOf": [
+                          {
+                            "description": "A HTTPS URL.",
+                            "example": "https://example.com/file",
+                            "type": "string",
+                            "minLength": 13,
+                            "maxLength": 2048,
+                            "pattern": "^https:\\/\\/.*"
+                          },
+                          {
+                            "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                            "example": "runway://<token>",
+                            "type": "string",
+                            "minLength": 13,
+                            "maxLength": 5000,
+                            "pattern": "^runway:\\/\\/.*"
+                          },
+                          {
+                            "description": "A data URI containing encoded media.",
+                            "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                            "type": "string",
+                            "minLength": 13,
+                            "maxLength": 16777216,
+                            "pattern": "^data:video\\/.*"
+                          }
+                        ]
+                      },
+                      "seed": {
+                        "description": "If unspecified, a random number is chosen. Varying the seed integer is a way to get different results for the same other request parameters. Using the same seed integer for an identical request will produce similar results.",
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 4294967295
+                      },
+                      "contentModeration": {
+                        "description": "Settings that affect the behavior of the content moderation system.",
+                        "type": "object",
+                        "properties": {
+                          "publicFigureThreshold": {
+                            "description": "When set to `low`, the content moderation system will be less strict about preventing generations that include recognizable public figures.",
+                            "type": "string",
+                            "enum": ["auto", "low"]
+                          }
+                        }
+                      },
+                      "model": { "type": "string", "const": "aleph2" }
+                    },
+                    "required": ["promptText", "videoUri", "model"]
                   }
                 ],
                 "discriminator": { "propertyName": "model" }
@@ -7562,6 +7814,145 @@
                     "additionalProperties": false
                   },
                   {
+                    "title": "gemini_image3.1_flash",
+                    "type": "object",
+                    "properties": {
+                      "promptText": {
+                        "description": "A non-empty string up to 1000 characters (measured in UTF-16 code units). This should describe in detail what should appear in the output.",
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 1000
+                      },
+                      "ratio": {
+                        "description": "The resolution of the output image.",
+                        "type": "string",
+                        "enum": [
+                          "512:512",
+                          "416:624",
+                          "624:416",
+                          "432:592",
+                          "592:432",
+                          "448:576",
+                          "576:448",
+                          "384:672",
+                          "672:384",
+                          "768:336",
+                          "256:1024",
+                          "1024:256",
+                          "176:1408",
+                          "1408:176",
+                          "1024:1024",
+                          "832:1248",
+                          "1248:832",
+                          "864:1184",
+                          "1184:864",
+                          "896:1152",
+                          "1152:896",
+                          "768:1344",
+                          "1344:768",
+                          "1536:672",
+                          "512:2048",
+                          "2048:512",
+                          "352:2816",
+                          "2816:352",
+                          "2048:2048",
+                          "1696:2528",
+                          "2528:1696",
+                          "1792:2400",
+                          "2400:1792",
+                          "1856:2304",
+                          "2304:1856",
+                          "1536:2752",
+                          "2752:1536",
+                          "3168:1344",
+                          "1024:4096",
+                          "4096:1024",
+                          "704:5632",
+                          "5632:704",
+                          "4096:4096",
+                          "3392:5056",
+                          "5056:3392",
+                          "3584:4800",
+                          "4800:3584",
+                          "3712:4608",
+                          "4608:3712",
+                          "3072:5504",
+                          "5504:3072",
+                          "6336:2688",
+                          "2048:8192",
+                          "8192:2048",
+                          "1408:11264",
+                          "11264:1408"
+                        ]
+                      },
+                      "referenceImages": {
+                        "description": "An array of up to 14 images to be used as references for the generated image output. Up to five of those images can pass `subject: \"human\"` to maintain character consistency, and up to nine of those images can pass `subject: \"object\"` with high-fidelity images of objects to include in the output.",
+                        "maxItems": 14,
+                        "type": "array",
+                        "items": {
+                          "title": "Gemini31FlashReferenceImage",
+                          "type": "object",
+                          "properties": {
+                            "uri": {
+                              "description": "A HTTPS URL, Runway or data URI containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                              "example": "https://example.com/image.jpg",
+                              "anyOf": [
+                                {
+                                  "description": "A HTTPS URL.",
+                                  "example": "https://example.com/file",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 2048,
+                                  "pattern": "^https:\\/\\/.*"
+                                },
+                                {
+                                  "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                                  "example": "runway://<token>",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 5000,
+                                  "pattern": "^runway:\\/\\/.*"
+                                },
+                                {
+                                  "description": "A data URI containing encoded media.",
+                                  "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 5242880,
+                                  "pattern": "^data:image\\/.*"
+                                }
+                              ]
+                            },
+                            "tag": {
+                              "description": "A tag to identify the reference image. This is used to reference the image in prompt text.",
+                              "type": "string",
+                              "minLength": 3,
+                              "maxLength": 16,
+                              "pattern": "^[a-z][a-z0-9_]+$"
+                            },
+                            "subject": {
+                              "description": "Whether this is a reference of a human subject (for character consistency) or an object that appears in the output.",
+                              "default": "object",
+                              "type": "string",
+                              "enum": ["object", "human"]
+                            }
+                          },
+                          "required": ["uri"]
+                        }
+                      },
+                      "outputCount": {
+                        "description": "The number of images to generate. Increasing this number will affect the number of credits consumed by the generation. Up to four images can be generated at once.",
+                        "type": "number",
+                        "enum": [1, 4]
+                      },
+                      "model": {
+                        "type": "string",
+                        "const": "gemini_image3.1_flash"
+                      }
+                    },
+                    "required": ["promptText", "ratio", "model"]
+                  },
+                  {
                     "title": "gemini_2.5_flash",
                     "type": "object",
                     "properties": {
@@ -7639,6 +8030,143 @@
                       "model": { "type": "string", "const": "gemini_2.5_flash" }
                     },
                     "required": ["promptText", "ratio", "model"]
+                  }
+                ],
+                "discriminator": { "propertyName": "model" }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The task that was created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "description": "The ID of the task that was created. Use this to retrieve the task later.",
+                      "type": "string",
+                      "format": "uuid",
+                      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12})$"
+                    }
+                  },
+                  "required": ["id"],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "You have exceeded the rate limit for this endpoint.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": { "error": { "type": "string" } },
+                  "required": ["error"],
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/image_upscale": {
+      "post": {
+        "tags": ["Start generating"],
+        "summary": "Image upscale",
+        "description": "Upscale an image with Magnific precision upscaling. Each input dimension must be between 300px and 8000px. Output width and height are the input dimensions multiplied by `scaleFactor` (default 2). Output width times height cannot exceed 25,300,000 pixels (~25.3 million).",
+        "x-codeSamples": [
+          {
+            "lang": "TypeScript",
+            "label": "Node SDK",
+            "source": "// npm install --save @runwayml/sdk\nimport RunwayML from '@runwayml/sdk';\n\n// The env var RUNWAYML_API_SECRET is expected to contain your API key.\nconst client = new RunwayML();\n\nconst task = await client.imageUpscale\n  .create({\n    model: 'magnific_precision_upscaler_v2',\n    imageUri: 'https://example.com/photo.jpg',\n    scaleFactor: 2,\n  })\n  .waitForTaskOutput();\nconsole.log(task);"
+          },
+          {
+            "lang": "Python",
+            "label": "Python SDK",
+            "source": "# pip install runwayml\nfrom runwayml import RunwayML\n\n# The env var RUNWAYML_API_SECRET is expected to contain your API key.\nclient = RunwayML()\n\ntask = client.image_upscale.create(\n    model='magnific_precision_upscaler_v2',\n    image_uri='https://example.com/photo.jpg',\n    scale_factor=2,\n).wait_for_task_output()\n\nprint(task)"
+          }
+        ],
+        "parameters": [{ "$ref": "#/components/parameters/X-Runway-Version" }],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "oneOf": [
+                  {
+                    "title": "magnific_precision_upscaler_v2",
+                    "type": "object",
+                    "properties": {
+                      "imageUri": {
+                        "description": "Image to upscale. See [image inputs](/assets/inputs#images) for URL, upload, and file size limits.",
+                        "example": "https://example.com/image.jpg",
+                        "anyOf": [
+                          {
+                            "description": "A HTTPS URL.",
+                            "example": "https://example.com/file",
+                            "type": "string",
+                            "minLength": 13,
+                            "maxLength": 2048,
+                            "pattern": "^https:\\/\\/.*"
+                          },
+                          {
+                            "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                            "example": "runway://<token>",
+                            "type": "string",
+                            "minLength": 13,
+                            "maxLength": 5000,
+                            "pattern": "^runway:\\/\\/.*"
+                          },
+                          {
+                            "description": "A data URI containing encoded media.",
+                            "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                            "type": "string",
+                            "minLength": 13,
+                            "maxLength": 5242880,
+                            "pattern": "^data:image\\/.*"
+                          }
+                        ]
+                      },
+                      "scaleFactor": {
+                        "description": "Multiplies each input dimension to produce output width and height. Defaults to 2.",
+                        "type": "number",
+                        "enum": [2, 4, 8, 16]
+                      },
+                      "sharpen": {
+                        "description": "Sharpness intensity from 0 (none) to 100.",
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 100
+                      },
+                      "smartGrain": {
+                        "description": "Grain and texture enhancement from 0 to 100.",
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 100
+                      },
+                      "ultraDetail": {
+                        "description": "Fine detail enhancement from 0 to 100.",
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 100
+                      },
+                      "flavor": {
+                        "description": "Optimization preset: `sublime` (illustration), `photo` (photographic), or `photo_denoiser` (noisy photos).",
+                        "type": "string",
+                        "enum": ["sublime", "photo", "photo_denoiser"]
+                      },
+                      "model": {
+                        "type": "string",
+                        "const": "magnific_precision_upscaler_v2"
+                      }
+                    },
+                    "required": ["imageUri", "model"],
+                    "additionalProperties": false
                   }
                 ],
                 "discriminator": { "propertyName": "model" }
@@ -8759,7 +9287,17 @@
                               "gwm1_avatar_async_audio_to_video",
                               "gwm1_avatar_async_text_to_video",
                               "voice_processing",
-                              "seedance2"
+                              "seedance2",
+                              "magnific_precision_upscaler_v2",
+                              "kling2.5_turbo_pro",
+                              "kling3.0_pro",
+                              "kling3.0_4k",
+                              "kling3.0_standard",
+                              "klingO3_pro",
+                              "klingO3_standard",
+                              "klingO3_4k",
+                              "happyhorse_1_0",
+                              "aleph2"
                             ]
                           },
                           "additionalProperties": {
@@ -8833,7 +9371,17 @@
                               "gwm1_avatar_async_audio_to_video",
                               "gwm1_avatar_async_text_to_video",
                               "voice_processing",
-                              "seedance2"
+                              "seedance2",
+                              "magnific_precision_upscaler_v2",
+                              "kling2.5_turbo_pro",
+                              "kling3.0_pro",
+                              "kling3.0_4k",
+                              "kling3.0_standard",
+                              "klingO3_pro",
+                              "klingO3_standard",
+                              "klingO3_4k",
+                              "happyhorse_1_0",
+                              "aleph2"
                             ]
                           },
                           "additionalProperties": {
@@ -8964,7 +9512,17 @@
                                     "gwm1_avatar_async_audio_to_video",
                                     "gwm1_avatar_async_text_to_video",
                                     "voice_processing",
-                                    "seedance2"
+                                    "seedance2",
+                                    "magnific_precision_upscaler_v2",
+                                    "kling2.5_turbo_pro",
+                                    "kling3.0_pro",
+                                    "kling3.0_4k",
+                                    "kling3.0_standard",
+                                    "klingO3_pro",
+                                    "klingO3_standard",
+                                    "klingO3_4k",
+                                    "happyhorse_1_0",
+                                    "aleph2"
                                   ]
                                 },
                                 "amount": {
@@ -9016,7 +9574,17 @@
                           "gwm1_avatar_async_audio_to_video",
                           "gwm1_avatar_async_text_to_video",
                           "voice_processing",
-                          "seedance2"
+                          "seedance2",
+                          "magnific_precision_upscaler_v2",
+                          "kling2.5_turbo_pro",
+                          "kling3.0_pro",
+                          "kling3.0_4k",
+                          "kling3.0_standard",
+                          "klingO3_pro",
+                          "klingO3_standard",
+                          "klingO3_4k",
+                          "happyhorse_1_0",
+                          "aleph2"
                         ]
                       }
                     }
@@ -9104,7 +9672,17 @@
             }
           },
           "429": {
-            "description": "You have exceeded the rate limit for this endpoint."
+            "description": "You have exceeded the rate limit for this endpoint.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": { "error": { "type": "string" } },
+                  "required": ["error"],
+                  "additionalProperties": false
+                }
+              }
+            }
           }
         }
       }
@@ -9348,7 +9926,7 @@
                   "description": {
                     "description": "An optional description of the voice.",
                     "anyOf": [
-                      { "type": "string", "minLength": 1, "maxLength": 512 },
+                      { "type": "string", "minLength": 1, "maxLength": 1024 },
                       { "type": "null" }
                     ]
                   },
@@ -9660,7 +10238,7 @@
                   "description": {
                     "description": "An optional description of the voice.",
                     "anyOf": [
-                      { "type": "string", "minLength": 1, "maxLength": 512 },
+                      { "type": "string", "minLength": 1, "maxLength": 1024 },
                       { "type": "null" }
                     ]
                   }

@@ -15,6 +15,10 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        Aleph2,
+        /// <summary>
+        /// 
+        /// </summary>
         ElevenMultilingualStsV2,
         /// <summary>
         /// 
@@ -95,6 +99,42 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        Happyhorse10,
+        /// <summary>
+        /// 
+        /// </summary>
+        Kling25TurboPro,
+        /// <summary>
+        /// 
+        /// </summary>
+        Kling304k,
+        /// <summary>
+        /// 
+        /// </summary>
+        Kling30Pro,
+        /// <summary>
+        /// 
+        /// </summary>
+        Kling30Standard,
+        /// <summary>
+        /// 
+        /// </summary>
+        KlingO34k,
+        /// <summary>
+        /// 
+        /// </summary>
+        KlingO3Pro,
+        /// <summary>
+        /// 
+        /// </summary>
+        KlingO3Standard,
+        /// <summary>
+        /// 
+        /// </summary>
+        MagnificPrecisionUpscalerV2,
+        /// <summary>
+        /// 
+        /// </summary>
         Seedance2,
         /// <summary>
         /// 
@@ -127,6 +167,7 @@ namespace Runway
             return value switch
             {
                 CreateOrganizationUsageResponseResultUsedCreditModel.ActTwo => "act_two",
+                CreateOrganizationUsageResponseResultUsedCreditModel.Aleph2 => "aleph2",
                 CreateOrganizationUsageResponseResultUsedCreditModel.ElevenMultilingualStsV2 => "eleven_multilingual_sts_v2",
                 CreateOrganizationUsageResponseResultUsedCreditModel.ElevenMultilingualV2 => "eleven_multilingual_v2",
                 CreateOrganizationUsageResponseResultUsedCreditModel.ElevenScribeV2 => "eleven_scribe_v2",
@@ -147,6 +188,15 @@ namespace Runway
                 CreateOrganizationUsageResponseResultUsedCreditModel.Gwm1AvatarAsyncAudioToVideo => "gwm1_avatar_async_audio_to_video",
                 CreateOrganizationUsageResponseResultUsedCreditModel.Gwm1AvatarAsyncTextToVideo => "gwm1_avatar_async_text_to_video",
                 CreateOrganizationUsageResponseResultUsedCreditModel.Gwm1Avatars => "gwm1_avatars",
+                CreateOrganizationUsageResponseResultUsedCreditModel.Happyhorse10 => "happyhorse_1_0",
+                CreateOrganizationUsageResponseResultUsedCreditModel.Kling25TurboPro => "kling2.5_turbo_pro",
+                CreateOrganizationUsageResponseResultUsedCreditModel.Kling304k => "kling3.0_4k",
+                CreateOrganizationUsageResponseResultUsedCreditModel.Kling30Pro => "kling3.0_pro",
+                CreateOrganizationUsageResponseResultUsedCreditModel.Kling30Standard => "kling3.0_standard",
+                CreateOrganizationUsageResponseResultUsedCreditModel.KlingO34k => "klingO3_4k",
+                CreateOrganizationUsageResponseResultUsedCreditModel.KlingO3Pro => "klingO3_pro",
+                CreateOrganizationUsageResponseResultUsedCreditModel.KlingO3Standard => "klingO3_standard",
+                CreateOrganizationUsageResponseResultUsedCreditModel.MagnificPrecisionUpscalerV2 => "magnific_precision_upscaler_v2",
                 CreateOrganizationUsageResponseResultUsedCreditModel.Seedance2 => "seedance2",
                 CreateOrganizationUsageResponseResultUsedCreditModel.Veo3 => "veo3",
                 CreateOrganizationUsageResponseResultUsedCreditModel.Veo31 => "veo3.1",
@@ -163,6 +213,7 @@ namespace Runway
             return value switch
             {
                 "act_two" => CreateOrganizationUsageResponseResultUsedCreditModel.ActTwo,
+                "aleph2" => CreateOrganizationUsageResponseResultUsedCreditModel.Aleph2,
                 "eleven_multilingual_sts_v2" => CreateOrganizationUsageResponseResultUsedCreditModel.ElevenMultilingualStsV2,
                 "eleven_multilingual_v2" => CreateOrganizationUsageResponseResultUsedCreditModel.ElevenMultilingualV2,
                 "eleven_scribe_v2" => CreateOrganizationUsageResponseResultUsedCreditModel.ElevenScribeV2,
@@ -183,6 +234,15 @@ namespace Runway
                 "gwm1_avatar_async_audio_to_video" => CreateOrganizationUsageResponseResultUsedCreditModel.Gwm1AvatarAsyncAudioToVideo,
                 "gwm1_avatar_async_text_to_video" => CreateOrganizationUsageResponseResultUsedCreditModel.Gwm1AvatarAsyncTextToVideo,
                 "gwm1_avatars" => CreateOrganizationUsageResponseResultUsedCreditModel.Gwm1Avatars,
+                "happyhorse_1_0" => CreateOrganizationUsageResponseResultUsedCreditModel.Happyhorse10,
+                "kling2.5_turbo_pro" => CreateOrganizationUsageResponseResultUsedCreditModel.Kling25TurboPro,
+                "kling3.0_4k" => CreateOrganizationUsageResponseResultUsedCreditModel.Kling304k,
+                "kling3.0_pro" => CreateOrganizationUsageResponseResultUsedCreditModel.Kling30Pro,
+                "kling3.0_standard" => CreateOrganizationUsageResponseResultUsedCreditModel.Kling30Standard,
+                "klingO3_4k" => CreateOrganizationUsageResponseResultUsedCreditModel.KlingO34k,
+                "klingO3_pro" => CreateOrganizationUsageResponseResultUsedCreditModel.KlingO3Pro,
+                "klingO3_standard" => CreateOrganizationUsageResponseResultUsedCreditModel.KlingO3Standard,
+                "magnific_precision_upscaler_v2" => CreateOrganizationUsageResponseResultUsedCreditModel.MagnificPrecisionUpscalerV2,
                 "seedance2" => CreateOrganizationUsageResponseResultUsedCreditModel.Seedance2,
                 "veo3" => CreateOrganizationUsageResponseResultUsedCreditModel.Veo3,
                 "veo3.1" => CreateOrganizationUsageResponseResultUsedCreditModel.Veo31,

@@ -3,11 +3,11 @@
 
 namespace Runway
 {
-    public partial class UploadsClient
+    public partial class StartGeneratingClient
     {
 
 
-        private static readonly global::Runway.EndPointSecurityRequirement s_CreateUploadsSecurityRequirement0 =
+        private static readonly global::Runway.EndPointSecurityRequirement s_CreateImageUpscaleSecurityRequirement0 =
             new global::Runway.EndPointSecurityRequirement
             {
                 Authorizations = new global::Runway.EndPointAuthorizationRequirement[]
@@ -21,31 +21,31 @@ namespace Runway
                     },
                 },
             };
-        private static readonly global::Runway.EndPointSecurityRequirement[] s_CreateUploadsSecurityRequirements =
+        private static readonly global::Runway.EndPointSecurityRequirement[] s_CreateImageUpscaleSecurityRequirements =
             new global::Runway.EndPointSecurityRequirement[]
-            {                s_CreateUploadsSecurityRequirement0,
+            {                s_CreateImageUpscaleSecurityRequirement0,
             };
-        partial void PrepareCreateUploadsArguments(
+        partial void PrepareCreateImageUpscaleArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string xRunwayVersion,
-            global::Runway.CreateUploadsRequest request);
-        partial void PrepareCreateUploadsRequest(
+            global::Runway.CreateImageUpscaleRequest request);
+        partial void PrepareCreateImageUpscaleRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string xRunwayVersion,
-            global::Runway.CreateUploadsRequest request);
-        partial void ProcessCreateUploadsResponse(
+            global::Runway.CreateImageUpscaleRequest request);
+        partial void ProcessCreateImageUpscaleResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessCreateUploadsResponseContent(
+        partial void ProcessCreateImageUpscaleResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Upload a file<br/>
-        /// Uploads a temporary media file that can be referenced in API generation requests. The uploaded files will be automatically expired and deleted after a period of time. It is strongly recommended to use our SDKs for this which have a simplified interface that directly accepts file objects.
+        /// Image upscale<br/>
+        /// Upscale an image with Magnific precision upscaling. Each input dimension must be between 300px and 8000px. Output width and height are the input dimensions multiplied by `scaleFactor` (default 2). Output width times height cannot exceed 25,300,000 pixels (~25.3 million).
         /// </summary>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
@@ -57,38 +57,25 @@ namespace Runway
         /// <remarks>
         /// // npm install --save @runwayml/sdk<br/>
         /// import RunwayML from '@runwayml/sdk';<br/>
-        /// import fs from 'node:fs';<br/>
         /// // The env var RUNWAYML_API_SECRET is expected to contain your API key.<br/>
         /// const client = new RunwayML();<br/>
-        /// filename = './funny-cats.mp4';<br/>
-        /// const uploadUri = await client.uploads.createEphemeral(<br/>
-        ///   fs.createReadStream(filename),<br/>
-        /// );<br/>
-        /// // Use the runwayUri in generation requests<br/>
-        /// const task = await client.videoToVideo<br/>
+        /// const task = await client.imageUpscale<br/>
         ///   .create({<br/>
-        ///     model: 'gen4_aleph',<br/>
-        ///     videoUri: uploadUri,<br/>
-        ///     promptText: 'Add the easter elements to the cat video',<br/>
-        ///     references: [<br/>
-        ///       {<br/>
-        ///         type: 'image',<br/>
-        ///         uri: 'https://example.com/easter-scene.jpg',<br/>
-        ///       },<br/>
-        ///     ],<br/>
-        ///     ratio: '1280:720',<br/>
+        ///     model: 'magnific_precision_upscaler_v2',<br/>
+        ///     imageUri: 'https://example.com/photo.jpg',<br/>
+        ///     scaleFactor: 2,<br/>
         ///   })<br/>
         ///   .waitForTaskOutput();<br/>
         /// console.log(task);
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Runway.CreateUploadsResponse> CreateUploadsAsync(
+        public async global::System.Threading.Tasks.Task<global::Runway.CreateImageUpscaleResponse> CreateImageUpscaleAsync(
 
-            global::Runway.CreateUploadsRequest request,
+            global::Runway.CreateImageUpscaleRequest request,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __response = await CreateUploadsAsResponseAsync(
+            var __response = await CreateImageUpscaleAsResponseAsync(
 
                 request: request,
                 xRunwayVersion: xRunwayVersion,
@@ -99,8 +86,8 @@ namespace Runway
             return __response.Body;
         }
         /// <summary>
-        /// Upload a file<br/>
-        /// Uploads a temporary media file that can be referenced in API generation requests. The uploaded files will be automatically expired and deleted after a period of time. It is strongly recommended to use our SDKs for this which have a simplified interface that directly accepts file objects.
+        /// Image upscale<br/>
+        /// Upscale an image with Magnific precision upscaling. Each input dimension must be between 300px and 8000px. Output width and height are the input dimensions multiplied by `scaleFactor` (default 2). Output width times height cannot exceed 25,300,000 pixels (~25.3 million).
         /// </summary>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
@@ -112,42 +99,27 @@ namespace Runway
         /// <remarks>
         /// // npm install --save @runwayml/sdk<br/>
         /// import RunwayML from '@runwayml/sdk';<br/>
-        /// import fs from 'node:fs';<br/>
         /// // The env var RUNWAYML_API_SECRET is expected to contain your API key.<br/>
         /// const client = new RunwayML();<br/>
-        /// filename = './funny-cats.mp4';<br/>
-        /// const uploadUri = await client.uploads.createEphemeral(<br/>
-        ///   fs.createReadStream(filename),<br/>
-        /// );<br/>
-        /// // Use the runwayUri in generation requests<br/>
-        /// const task = await client.videoToVideo<br/>
+        /// const task = await client.imageUpscale<br/>
         ///   .create({<br/>
-        ///     model: 'gen4_aleph',<br/>
-        ///     videoUri: uploadUri,<br/>
-        ///     promptText: 'Add the easter elements to the cat video',<br/>
-        ///     references: [<br/>
-        ///       {<br/>
-        ///         type: 'image',<br/>
-        ///         uri: 'https://example.com/easter-scene.jpg',<br/>
-        ///       },<br/>
-        ///     ],<br/>
-        ///     ratio: '1280:720',<br/>
+        ///     model: 'magnific_precision_upscaler_v2',<br/>
+        ///     imageUri: 'https://example.com/photo.jpg',<br/>
+        ///     scaleFactor: 2,<br/>
         ///   })<br/>
         ///   .waitForTaskOutput();<br/>
         /// console.log(task);
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Runway.AutoSDKHttpResponse<global::Runway.CreateUploadsResponse>> CreateUploadsAsResponseAsync(
+        public async global::System.Threading.Tasks.Task<global::Runway.AutoSDKHttpResponse<global::Runway.CreateImageUpscaleResponse>> CreateImageUpscaleAsResponseAsync(
 
-            global::Runway.CreateUploadsRequest request,
+            global::Runway.CreateImageUpscaleRequest request,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            request = request ?? throw new global::System.ArgumentNullException(nameof(request));
-
             PrepareArguments(
                 client: HttpClient);
-            PrepareCreateUploadsArguments(
+            PrepareCreateImageUpscaleArguments(
                 httpClient: HttpClient,
                 xRunwayVersion: ref xRunwayVersion,
                 request: request);
@@ -155,8 +127,8 @@ namespace Runway
 
             var __authorizations = global::Runway.EndPointSecurityResolver.ResolveAuthorizations(
                 availableAuthorizations: Authorizations,
-                securityRequirements: s_CreateUploadsSecurityRequirements,
-                operationName: "CreateUploadsAsync");
+                securityRequirements: s_CreateImageUpscaleSecurityRequirements,
+                operationName: "CreateImageUpscaleAsync");
 
             using var __timeoutCancellationTokenSource = global::Runway.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
                 clientOptions: Options,
@@ -176,7 +148,7 @@ namespace Runway
             {
 
                             var __pathBuilder = new global::Runway.PathBuilder(
-                                path: "/v1/uploads",
+                                path: "/v1/image_upscale",
                                 baseUri: HttpClient.BaseAddress);
                             var __path = __pathBuilder.ToString();
                 __path = global::Runway.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -224,7 +196,7 @@ namespace Runway
                 PrepareRequest(
                     client: HttpClient,
                     request: __httpRequest);
-                PrepareCreateUploadsRequest(
+                PrepareCreateImageUpscaleRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
                     xRunwayVersion: xRunwayVersion!,
@@ -245,9 +217,9 @@ namespace Runway
                     await global::Runway.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
                             clientOptions: Options,
                             context: global::Runway.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createUploads",
-                                methodName: "CreateUploadsAsync",
-                                pathTemplate: "\"/v1/uploads\"",
+                                operationId: "createImageUpscale",
+                                methodName: "CreateImageUpscaleAsync",
+                                pathTemplate: "\"/v1/image_upscale\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -279,9 +251,9 @@ namespace Runway
                         await global::Runway.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Runway.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createUploads",
-                                methodName: "CreateUploadsAsync",
-                                pathTemplate: "\"/v1/uploads\"",
+                                operationId: "createImageUpscale",
+                                methodName: "CreateImageUpscaleAsync",
+                                pathTemplate: "\"/v1/image_upscale\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -320,9 +292,9 @@ namespace Runway
                         await global::Runway.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Runway.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createUploads",
-                                methodName: "CreateUploadsAsync",
-                                pathTemplate: "\"/v1/uploads\"",
+                                operationId: "createImageUpscale",
+                                methodName: "CreateImageUpscaleAsync",
+                                pathTemplate: "\"/v1/image_upscale\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -360,7 +332,7 @@ namespace Runway
                 ProcessResponse(
                     client: HttpClient,
                     response: __response);
-                ProcessCreateUploadsResponse(
+                ProcessCreateImageUpscaleResponse(
                     httpClient: HttpClient,
                     httpResponseMessage: __response);
                 if (__response.IsSuccessStatusCode)
@@ -368,9 +340,9 @@ namespace Runway
                     await global::Runway.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
                             clientOptions: Options,
                             context: global::Runway.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createUploads",
-                                methodName: "CreateUploadsAsync",
-                                pathTemplate: "\"/v1/uploads\"",
+                                operationId: "createImageUpscale",
+                                methodName: "CreateImageUpscaleAsync",
+                                pathTemplate: "\"/v1/image_upscale\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -390,9 +362,9 @@ namespace Runway
                     await global::Runway.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Runway.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createUploads",
-                                methodName: "CreateUploadsAsync",
-                                pathTemplate: "\"/v1/uploads\"",
+                                operationId: "createImageUpscale",
+                                methodName: "CreateImageUpscaleAsync",
+                                pathTemplate: "\"/v1/image_upscale\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -412,19 +384,19 @@ namespace Runway
                             {
                                 string? __content_429 = null;
                                 global::System.Exception? __exception_429 = null;
-                                global::Runway.CreateUploadsResponse2? __value_429 = null;
+                                global::Runway.CreateImageUpscaleResponse2? __value_429 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_429 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_429 = global::Runway.CreateUploadsResponse2.FromJson(__content_429, JsonSerializerContext);
+                                        __value_429 = global::Runway.CreateImageUpscaleResponse2.FromJson(__content_429, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_429 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_429 = global::Runway.CreateUploadsResponse2.FromJson(__content_429, JsonSerializerContext);
+                                        __value_429 = global::Runway.CreateImageUpscaleResponse2.FromJson(__content_429, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -433,7 +405,7 @@ namespace Runway
                                 }
 
 
-                                throw global::Runway.ApiException<global::Runway.CreateUploadsResponse2>.Create(
+                                throw global::Runway.ApiException<global::Runway.CreateImageUpscaleResponse2>.Create(
                                     statusCode: __response.StatusCode,
                                     message: __content_429 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_429,
@@ -457,7 +429,7 @@ namespace Runway
                                     client: HttpClient,
                                     response: __response,
                                     content: ref __content);
-                                ProcessCreateUploadsResponseContent(
+                                ProcessCreateImageUpscaleResponseContent(
                                     httpClient: HttpClient,
                                     httpResponseMessage: __response,
                                     content: ref __content);
@@ -466,9 +438,9 @@ namespace Runway
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    var __value = global::Runway.CreateUploadsResponse.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::Runway.CreateImageUpscaleResponse.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
-                                    return new global::Runway.AutoSDKHttpResponse<global::Runway.CreateUploadsResponse>(
+                                    return new global::Runway.AutoSDKHttpResponse<global::Runway.CreateImageUpscaleResponse>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Runway.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -498,9 +470,9 @@ namespace Runway
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    var __value = await global::Runway.CreateUploadsResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::Runway.CreateImageUpscaleResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
-                                    return new global::Runway.AutoSDKHttpResponse<global::Runway.CreateUploadsResponse>(
+                                    return new global::Runway.AutoSDKHttpResponse<global::Runway.CreateImageUpscaleResponse>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Runway.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -541,35 +513,25 @@ namespace Runway
             }
         }
         /// <summary>
-        /// Upload a file<br/>
-        /// Uploads a temporary media file that can be referenced in API generation requests. The uploaded files will be automatically expired and deleted after a period of time. It is strongly recommended to use our SDKs for this which have a simplified interface that directly accepts file objects.
+        /// Image upscale<br/>
+        /// Upscale an image with Magnific precision upscaling. Each input dimension must be between 300px and 8000px. Output width and height are the input dimensions multiplied by `scaleFactor` (default 2). Output width times height cannot exceed 25,300,000 pixels (~25.3 million).
         /// </summary>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
-        /// <param name="filename">
-        /// The filename of the file to upload. Must have a valid extension and be a supported media type (image, video, or audio).
-        /// </param>
-        /// <param name="type">
-        /// The type of upload to create
-        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Runway.CreateUploadsResponse> CreateUploadsAsync(
-            string filename,
+        public async global::System.Threading.Tasks.Task<global::Runway.CreateImageUpscaleResponse> CreateImageUpscaleAsync(
             string xRunwayVersion = "2024-11-06",
-            global::Runway.CreateUploadsRequestType type = default,
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::Runway.CreateUploadsRequest
+            var __request = new global::Runway.CreateImageUpscaleRequest
             {
-                Filename = filename,
-                Type = type,
             };
 
-            return await CreateUploadsAsync(
+            return await CreateImageUpscaleAsync(
                 xRunwayVersion: xRunwayVersion,
                 request: __request,
                 requestOptions: requestOptions,

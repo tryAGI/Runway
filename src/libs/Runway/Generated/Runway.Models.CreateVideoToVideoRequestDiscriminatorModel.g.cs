@@ -11,6 +11,10 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        Aleph2,
+        /// <summary>
+        /// 
+        /// </summary>
         Gen4Aleph,
     }
 
@@ -26,6 +30,7 @@ namespace Runway
         {
             return value switch
             {
+                CreateVideoToVideoRequestDiscriminatorModel.Aleph2 => "aleph2",
                 CreateVideoToVideoRequestDiscriminatorModel.Gen4Aleph => "gen4_aleph",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
@@ -37,6 +42,7 @@ namespace Runway
         {
             return value switch
             {
+                "aleph2" => CreateVideoToVideoRequestDiscriminatorModel.Aleph2,
                 "gen4_aleph" => CreateVideoToVideoRequestDiscriminatorModel.Gen4Aleph,
                 _ => null,
             };

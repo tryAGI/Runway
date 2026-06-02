@@ -50,6 +50,43 @@ namespace Runway
         public global::Runway.CreateVideoToVideoRequestGen4Aleph PickGen4Aleph() => IsGen4Aleph
             ? Gen4Aleph!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Gen4Aleph' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
+#if NET6_0_OR_GREATER
+        public global::Runway.CreateVideoToVideoRequestAleph2? Aleph2 { get; init; }
+#else
+        public global::Runway.CreateVideoToVideoRequestAleph2? Aleph2 { get; }
+#endif
+
+        /// <summary>
+        /// 
+        /// </summary>
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Aleph2))]
+#endif
+        public bool IsAleph2 => Aleph2 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickAleph2(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Runway.CreateVideoToVideoRequestAleph2? value)
+        {
+            value = Aleph2;
+            return IsAleph2;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.CreateVideoToVideoRequestAleph2 PickAleph2() => IsAleph2
+            ? Aleph2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Aleph2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -76,20 +113,46 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public static implicit operator CreateVideoToVideoRequest(global::Runway.CreateVideoToVideoRequestAleph2 value) => new CreateVideoToVideoRequest((global::Runway.CreateVideoToVideoRequestAleph2?)value);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static implicit operator global::Runway.CreateVideoToVideoRequestAleph2?(CreateVideoToVideoRequest @this) => @this.Aleph2;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public CreateVideoToVideoRequest(global::Runway.CreateVideoToVideoRequestAleph2? value)
+        {
+            Aleph2 = value;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static CreateVideoToVideoRequest FromAleph2(global::Runway.CreateVideoToVideoRequestAleph2? value) => new CreateVideoToVideoRequest(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public CreateVideoToVideoRequest(
             global::Runway.CreateVideoToVideoRequestDiscriminatorModel? model,
-            global::Runway.CreateVideoToVideoRequestGen4Aleph? gen4Aleph
+            global::Runway.CreateVideoToVideoRequestGen4Aleph? gen4Aleph,
+            global::Runway.CreateVideoToVideoRequestAleph2? aleph2
             )
         {
             Model = model;
 
             Gen4Aleph = gen4Aleph;
+            Aleph2 = aleph2;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public object? Object =>
+            Aleph2 as object ??
             Gen4Aleph as object 
             ;
 
@@ -97,7 +160,8 @@ namespace Runway
         /// 
         /// </summary>
         public override string? ToString() =>
-            Gen4Aleph?.ToString() 
+            Gen4Aleph?.ToString() ??
+            Aleph2?.ToString() 
             ;
 
         /// <summary>
@@ -105,7 +169,7 @@ namespace Runway
         /// </summary>
         public bool Validate()
         {
-            return IsGen4Aleph;
+            return IsGen4Aleph && !IsAleph2 || !IsGen4Aleph && IsAleph2;
         }
 
         /// <summary>
@@ -113,6 +177,7 @@ namespace Runway
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Runway.CreateVideoToVideoRequestGen4Aleph, TResult>? gen4Aleph = null,
+            global::System.Func<global::Runway.CreateVideoToVideoRequestAleph2, TResult>? aleph2 = null,
             bool validate = true)
         {
             if (validate)
@@ -124,6 +189,10 @@ namespace Runway
             {
                 return gen4Aleph(Gen4Aleph!);
             }
+            else if (IsAleph2 && aleph2 != null)
+            {
+                return aleph2(Aleph2!);
+            }
 
             return default(TResult);
         }
@@ -133,6 +202,8 @@ namespace Runway
         /// </summary>
         public void Match(
             global::System.Action<global::Runway.CreateVideoToVideoRequestGen4Aleph>? gen4Aleph = null,
+
+            global::System.Action<global::Runway.CreateVideoToVideoRequestAleph2>? aleph2 = null,
             bool validate = true)
         {
             if (validate)
@@ -143,6 +214,10 @@ namespace Runway
             if (IsGen4Aleph)
             {
                 gen4Aleph?.Invoke(Gen4Aleph!);
+            }
+            else if (IsAleph2)
+            {
+                aleph2?.Invoke(Aleph2!);
             }
         }
 
@@ -151,6 +226,7 @@ namespace Runway
         /// </summary>
         public void Switch(
             global::System.Action<global::Runway.CreateVideoToVideoRequestGen4Aleph>? gen4Aleph = null,
+            global::System.Action<global::Runway.CreateVideoToVideoRequestAleph2>? aleph2 = null,
             bool validate = true)
         {
             if (validate)
@@ -161,6 +237,10 @@ namespace Runway
             if (IsGen4Aleph)
             {
                 gen4Aleph?.Invoke(Gen4Aleph!);
+            }
+            else if (IsAleph2)
+            {
+                aleph2?.Invoke(Aleph2!);
             }
         }
 
@@ -173,6 +253,8 @@ namespace Runway
             {
                 Gen4Aleph,
                 typeof(global::Runway.CreateVideoToVideoRequestGen4Aleph),
+                Aleph2,
+                typeof(global::Runway.CreateVideoToVideoRequestAleph2),
             };
             const int offset = unchecked((int)2166136261);
             const int prime = 16777619;
@@ -189,7 +271,8 @@ namespace Runway
         public bool Equals(CreateVideoToVideoRequest other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateVideoToVideoRequestGen4Aleph?>.Default.Equals(Gen4Aleph, other.Gen4Aleph) 
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateVideoToVideoRequestGen4Aleph?>.Default.Equals(Gen4Aleph, other.Gen4Aleph) &&
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateVideoToVideoRequestAleph2?>.Default.Equals(Aleph2, other.Aleph2) 
                 ;
         }
 

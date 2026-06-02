@@ -15,6 +15,10 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        GeminiImage31Flash,
+        /// <summary>
+        /// 
+        /// </summary>
         GeminiImage3Pro,
         /// <summary>
         /// 
@@ -43,6 +47,7 @@ namespace Runway
             return value switch
             {
                 CreateTextToImageRequestDiscriminatorModel.Gemini25Flash => "gemini_2.5_flash",
+                CreateTextToImageRequestDiscriminatorModel.GeminiImage31Flash => "gemini_image3.1_flash",
                 CreateTextToImageRequestDiscriminatorModel.GeminiImage3Pro => "gemini_image3_pro",
                 CreateTextToImageRequestDiscriminatorModel.Gen4Image => "gen4_image",
                 CreateTextToImageRequestDiscriminatorModel.Gen4ImageTurbo => "gen4_image_turbo",
@@ -58,6 +63,7 @@ namespace Runway
             return value switch
             {
                 "gemini_2.5_flash" => CreateTextToImageRequestDiscriminatorModel.Gemini25Flash,
+                "gemini_image3.1_flash" => CreateTextToImageRequestDiscriminatorModel.GeminiImage31Flash,
                 "gemini_image3_pro" => CreateTextToImageRequestDiscriminatorModel.GeminiImage3Pro,
                 "gen4_image" => CreateTextToImageRequestDiscriminatorModel.Gen4Image,
                 "gen4_image_turbo" => CreateTextToImageRequestDiscriminatorModel.Gen4ImageTurbo,
