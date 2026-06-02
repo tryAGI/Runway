@@ -49,6 +49,13 @@ namespace Runway.JsonConverters
                                throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.CreateTextToImageRequestGeminiImage3Pro)}");
                 geminiImage3Pro = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
+            global::Runway.CreateTextToImageRequestGeminiImage31Flash? geminiImage31Flash = default;
+            if (discriminator?.Model == global::Runway.CreateTextToImageRequestDiscriminatorModel.GeminiImage31Flash)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateTextToImageRequestGeminiImage31Flash), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateTextToImageRequestGeminiImage31Flash> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.CreateTextToImageRequestGeminiImage31Flash)}");
+                geminiImage31Flash = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+            }
             global::Runway.CreateTextToImageRequestGemini25Flash? gemini25Flash = default;
             if (discriminator?.Model == global::Runway.CreateTextToImageRequestDiscriminatorModel.Gemini25Flash)
             {
@@ -66,6 +73,8 @@ namespace Runway.JsonConverters
                 gptImage2,
 
                 geminiImage3Pro,
+
+                geminiImage31Flash,
 
                 gemini25Flash
                 );
@@ -105,6 +114,12 @@ namespace Runway.JsonConverters
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateTextToImageRequestGeminiImage3Pro), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateTextToImageRequestGeminiImage3Pro?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateTextToImageRequestGeminiImage3Pro).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.GeminiImage3Pro!, typeInfo);
+            }
+            else if (value.IsGeminiImage31Flash)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateTextToImageRequestGeminiImage31Flash), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateTextToImageRequestGeminiImage31Flash?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateTextToImageRequestGeminiImage31Flash).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.GeminiImage31Flash!, typeInfo);
             }
             else if (value.IsGemini25Flash)
             {
