@@ -203,6 +203,80 @@ namespace Runway
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
+        public global::Runway.CreateImageToVideoRequestHappyhorse10? Happyhorse10 { get; init; }
+#else
+        public global::Runway.CreateImageToVideoRequestHappyhorse10? Happyhorse10 { get; }
+#endif
+
+        /// <summary>
+        /// 
+        /// </summary>
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Happyhorse10))]
+#endif
+        public bool IsHappyhorse10 => Happyhorse10 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickHappyhorse10(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Runway.CreateImageToVideoRequestHappyhorse10? value)
+        {
+            value = Happyhorse10;
+            return IsHappyhorse10;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.CreateImageToVideoRequestHappyhorse10 PickHappyhorse10() => IsHappyhorse10
+            ? Happyhorse10!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Happyhorse10' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
+#if NET6_0_OR_GREATER
+        public global::Runway.CreateImageToVideoRequestSeedance2? Seedance2 { get; init; }
+#else
+        public global::Runway.CreateImageToVideoRequestSeedance2? Seedance2 { get; }
+#endif
+
+        /// <summary>
+        /// 
+        /// </summary>
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Seedance2))]
+#endif
+        public bool IsSeedance2 => Seedance2 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickSeedance2(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Runway.CreateImageToVideoRequestSeedance2? value)
+        {
+            value = Seedance2;
+            return IsSeedance2;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.CreateImageToVideoRequestSeedance2 PickSeedance2() => IsSeedance2
+            ? Seedance2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Seedance2' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
+#if NET6_0_OR_GREATER
         public global::Runway.CreateImageToVideoRequestVeo3? Veo3 { get; init; }
 #else
         public global::Runway.CreateImageToVideoRequestVeo3? Veo3 { get; }
@@ -353,6 +427,52 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public static implicit operator CreateImageToVideoRequest(global::Runway.CreateImageToVideoRequestHappyhorse10 value) => new CreateImageToVideoRequest((global::Runway.CreateImageToVideoRequestHappyhorse10?)value);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static implicit operator global::Runway.CreateImageToVideoRequestHappyhorse10?(CreateImageToVideoRequest @this) => @this.Happyhorse10;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public CreateImageToVideoRequest(global::Runway.CreateImageToVideoRequestHappyhorse10? value)
+        {
+            Happyhorse10 = value;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static CreateImageToVideoRequest FromHappyhorse10(global::Runway.CreateImageToVideoRequestHappyhorse10? value) => new CreateImageToVideoRequest(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static implicit operator CreateImageToVideoRequest(global::Runway.CreateImageToVideoRequestSeedance2 value) => new CreateImageToVideoRequest((global::Runway.CreateImageToVideoRequestSeedance2?)value);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static implicit operator global::Runway.CreateImageToVideoRequestSeedance2?(CreateImageToVideoRequest @this) => @this.Seedance2;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public CreateImageToVideoRequest(global::Runway.CreateImageToVideoRequestSeedance2? value)
+        {
+            Seedance2 = value;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static CreateImageToVideoRequest FromSeedance2(global::Runway.CreateImageToVideoRequestSeedance2? value) => new CreateImageToVideoRequest(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator CreateImageToVideoRequest(global::Runway.CreateImageToVideoRequestVeo3 value) => new CreateImageToVideoRequest((global::Runway.CreateImageToVideoRequestVeo3?)value);
 
         /// <summary>
@@ -383,6 +503,8 @@ namespace Runway
             global::Runway.CreateImageToVideoRequestVeo31? veo31,
             global::Runway.CreateImageToVideoRequestGen3aTurbo? gen3aTurbo,
             global::Runway.CreateImageToVideoRequestVeo31Fast? veo31Fast,
+            global::Runway.CreateImageToVideoRequestHappyhorse10? happyhorse10,
+            global::Runway.CreateImageToVideoRequestSeedance2? seedance2,
             global::Runway.CreateImageToVideoRequestVeo3? veo3
             )
         {
@@ -393,6 +515,8 @@ namespace Runway
             Veo31 = veo31;
             Gen3aTurbo = gen3aTurbo;
             Veo31Fast = veo31Fast;
+            Happyhorse10 = happyhorse10;
+            Seedance2 = seedance2;
             Veo3 = veo3;
         }
 
@@ -401,6 +525,8 @@ namespace Runway
         /// </summary>
         public object? Object =>
             Veo3 as object ??
+            Seedance2 as object ??
+            Happyhorse10 as object ??
             Veo31Fast as object ??
             Gen3aTurbo as object ??
             Veo31 as object ??
@@ -417,6 +543,8 @@ namespace Runway
             Veo31?.ToString() ??
             Gen3aTurbo?.ToString() ??
             Veo31Fast?.ToString() ??
+            Happyhorse10?.ToString() ??
+            Seedance2?.ToString() ??
             Veo3?.ToString() 
             ;
 
@@ -425,7 +553,7 @@ namespace Runway
         /// </summary>
         public bool Validate()
         {
-            return IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsGen3aTurbo && !IsVeo31Fast && !IsVeo3 || !IsGen45 && IsGen4Turbo && !IsVeo31 && !IsGen3aTurbo && !IsVeo31Fast && !IsVeo3 || !IsGen45 && !IsGen4Turbo && IsVeo31 && !IsGen3aTurbo && !IsVeo31Fast && !IsVeo3 || !IsGen45 && !IsGen4Turbo && !IsVeo31 && IsGen3aTurbo && !IsVeo31Fast && !IsVeo3 || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsGen3aTurbo && IsVeo31Fast && !IsVeo3 || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsGen3aTurbo && !IsVeo31Fast && IsVeo3;
+            return IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsGen3aTurbo && !IsVeo31Fast && !IsHappyhorse10 && !IsSeedance2 && !IsVeo3 || !IsGen45 && IsGen4Turbo && !IsVeo31 && !IsGen3aTurbo && !IsVeo31Fast && !IsHappyhorse10 && !IsSeedance2 && !IsVeo3 || !IsGen45 && !IsGen4Turbo && IsVeo31 && !IsGen3aTurbo && !IsVeo31Fast && !IsHappyhorse10 && !IsSeedance2 && !IsVeo3 || !IsGen45 && !IsGen4Turbo && !IsVeo31 && IsGen3aTurbo && !IsVeo31Fast && !IsHappyhorse10 && !IsSeedance2 && !IsVeo3 || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsGen3aTurbo && IsVeo31Fast && !IsHappyhorse10 && !IsSeedance2 && !IsVeo3 || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsGen3aTurbo && !IsVeo31Fast && IsHappyhorse10 && !IsSeedance2 && !IsVeo3 || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsGen3aTurbo && !IsVeo31Fast && !IsHappyhorse10 && IsSeedance2 && !IsVeo3 || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsGen3aTurbo && !IsVeo31Fast && !IsHappyhorse10 && !IsSeedance2 && IsVeo3;
         }
 
         /// <summary>
@@ -437,6 +565,8 @@ namespace Runway
             global::System.Func<global::Runway.CreateImageToVideoRequestVeo31, TResult>? veo31 = null,
             global::System.Func<global::Runway.CreateImageToVideoRequestGen3aTurbo, TResult>? gen3aTurbo = null,
             global::System.Func<global::Runway.CreateImageToVideoRequestVeo31Fast, TResult>? veo31Fast = null,
+            global::System.Func<global::Runway.CreateImageToVideoRequestHappyhorse10, TResult>? happyhorse10 = null,
+            global::System.Func<global::Runway.CreateImageToVideoRequestSeedance2, TResult>? seedance2 = null,
             global::System.Func<global::Runway.CreateImageToVideoRequestVeo3, TResult>? veo3 = null,
             bool validate = true)
         {
@@ -465,6 +595,14 @@ namespace Runway
             {
                 return veo31Fast(Veo31Fast!);
             }
+            else if (IsHappyhorse10 && happyhorse10 != null)
+            {
+                return happyhorse10(Happyhorse10!);
+            }
+            else if (IsSeedance2 && seedance2 != null)
+            {
+                return seedance2(Seedance2!);
+            }
             else if (IsVeo3 && veo3 != null)
             {
                 return veo3(Veo3!);
@@ -487,6 +625,10 @@ namespace Runway
 
             global::System.Action<global::Runway.CreateImageToVideoRequestVeo31Fast>? veo31Fast = null,
 
+            global::System.Action<global::Runway.CreateImageToVideoRequestHappyhorse10>? happyhorse10 = null,
+
+            global::System.Action<global::Runway.CreateImageToVideoRequestSeedance2>? seedance2 = null,
+
             global::System.Action<global::Runway.CreateImageToVideoRequestVeo3>? veo3 = null,
             bool validate = true)
         {
@@ -514,6 +656,14 @@ namespace Runway
             else if (IsVeo31Fast)
             {
                 veo31Fast?.Invoke(Veo31Fast!);
+            }
+            else if (IsHappyhorse10)
+            {
+                happyhorse10?.Invoke(Happyhorse10!);
+            }
+            else if (IsSeedance2)
+            {
+                seedance2?.Invoke(Seedance2!);
             }
             else if (IsVeo3)
             {
@@ -530,6 +680,8 @@ namespace Runway
             global::System.Action<global::Runway.CreateImageToVideoRequestVeo31>? veo31 = null,
             global::System.Action<global::Runway.CreateImageToVideoRequestGen3aTurbo>? gen3aTurbo = null,
             global::System.Action<global::Runway.CreateImageToVideoRequestVeo31Fast>? veo31Fast = null,
+            global::System.Action<global::Runway.CreateImageToVideoRequestHappyhorse10>? happyhorse10 = null,
+            global::System.Action<global::Runway.CreateImageToVideoRequestSeedance2>? seedance2 = null,
             global::System.Action<global::Runway.CreateImageToVideoRequestVeo3>? veo3 = null,
             bool validate = true)
         {
@@ -557,6 +709,14 @@ namespace Runway
             else if (IsVeo31Fast)
             {
                 veo31Fast?.Invoke(Veo31Fast!);
+            }
+            else if (IsHappyhorse10)
+            {
+                happyhorse10?.Invoke(Happyhorse10!);
+            }
+            else if (IsSeedance2)
+            {
+                seedance2?.Invoke(Seedance2!);
             }
             else if (IsVeo3)
             {
@@ -581,6 +741,10 @@ namespace Runway
                 typeof(global::Runway.CreateImageToVideoRequestGen3aTurbo),
                 Veo31Fast,
                 typeof(global::Runway.CreateImageToVideoRequestVeo31Fast),
+                Happyhorse10,
+                typeof(global::Runway.CreateImageToVideoRequestHappyhorse10),
+                Seedance2,
+                typeof(global::Runway.CreateImageToVideoRequestSeedance2),
                 Veo3,
                 typeof(global::Runway.CreateImageToVideoRequestVeo3),
             };
@@ -604,6 +768,8 @@ namespace Runway
                 global::System.Collections.Generic.EqualityComparer<global::Runway.CreateImageToVideoRequestVeo31?>.Default.Equals(Veo31, other.Veo31) &&
                 global::System.Collections.Generic.EqualityComparer<global::Runway.CreateImageToVideoRequestGen3aTurbo?>.Default.Equals(Gen3aTurbo, other.Gen3aTurbo) &&
                 global::System.Collections.Generic.EqualityComparer<global::Runway.CreateImageToVideoRequestVeo31Fast?>.Default.Equals(Veo31Fast, other.Veo31Fast) &&
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateImageToVideoRequestHappyhorse10?>.Default.Equals(Happyhorse10, other.Happyhorse10) &&
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateImageToVideoRequestSeedance2?>.Default.Equals(Seedance2, other.Seedance2) &&
                 global::System.Collections.Generic.EqualityComparer<global::Runway.CreateImageToVideoRequestVeo3?>.Default.Equals(Veo3, other.Veo3) 
                 ;
         }

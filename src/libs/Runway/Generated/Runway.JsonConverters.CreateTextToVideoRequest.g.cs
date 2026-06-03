@@ -42,6 +42,20 @@ namespace Runway.JsonConverters
                                throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.CreateTextToVideoRequestVeo31Fast)}");
                 veo31Fast = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
+            global::Runway.CreateTextToVideoRequestHappyhorse10? happyhorse10 = default;
+            if (discriminator?.Model == global::Runway.CreateTextToVideoRequestDiscriminatorModel.Happyhorse10)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateTextToVideoRequestHappyhorse10), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateTextToVideoRequestHappyhorse10> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.CreateTextToVideoRequestHappyhorse10)}");
+                happyhorse10 = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+            }
+            global::Runway.CreateTextToVideoRequestSeedance2? seedance2 = default;
+            if (discriminator?.Model == global::Runway.CreateTextToVideoRequestDiscriminatorModel.Seedance2)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateTextToVideoRequestSeedance2), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateTextToVideoRequestSeedance2> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.CreateTextToVideoRequestSeedance2)}");
+                seedance2 = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+            }
             global::Runway.CreateTextToVideoRequestVeo3? veo3 = default;
             if (discriminator?.Model == global::Runway.CreateTextToVideoRequestDiscriminatorModel.Veo3)
             {
@@ -57,6 +71,10 @@ namespace Runway.JsonConverters
                 veo31,
 
                 veo31Fast,
+
+                happyhorse10,
+
+                seedance2,
 
                 veo3
                 );
@@ -90,6 +108,18 @@ namespace Runway.JsonConverters
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateTextToVideoRequestVeo31Fast), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateTextToVideoRequestVeo31Fast?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateTextToVideoRequestVeo31Fast).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.Veo31Fast!, typeInfo);
+            }
+            else if (value.IsHappyhorse10)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateTextToVideoRequestHappyhorse10), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateTextToVideoRequestHappyhorse10?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateTextToVideoRequestHappyhorse10).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Happyhorse10!, typeInfo);
+            }
+            else if (value.IsSeedance2)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateTextToVideoRequestSeedance2), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateTextToVideoRequestSeedance2?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateTextToVideoRequestSeedance2).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Seedance2!, typeInfo);
             }
             else if (value.IsVeo3)
             {

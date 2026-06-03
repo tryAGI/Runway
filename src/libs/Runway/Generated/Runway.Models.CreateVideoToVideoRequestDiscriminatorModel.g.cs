@@ -16,6 +16,10 @@ namespace Runway
         /// 
         /// </summary>
         Gen4Aleph,
+        /// <summary>
+        /// 
+        /// </summary>
+        Seedance2,
     }
 
     /// <summary>
@@ -32,6 +36,7 @@ namespace Runway
             {
                 CreateVideoToVideoRequestDiscriminatorModel.Aleph2 => "aleph2",
                 CreateVideoToVideoRequestDiscriminatorModel.Gen4Aleph => "gen4_aleph",
+                CreateVideoToVideoRequestDiscriminatorModel.Seedance2 => "seedance2",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -44,6 +49,7 @@ namespace Runway
             {
                 "aleph2" => CreateVideoToVideoRequestDiscriminatorModel.Aleph2,
                 "gen4_aleph" => CreateVideoToVideoRequestDiscriminatorModel.Gen4Aleph,
+                "seedance2" => CreateVideoToVideoRequestDiscriminatorModel.Seedance2,
                 _ => null,
             };
         }

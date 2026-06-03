@@ -56,6 +56,20 @@ namespace Runway.JsonConverters
                                throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.CreateImageToVideoRequestVeo31Fast)}");
                 veo31Fast = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
+            global::Runway.CreateImageToVideoRequestHappyhorse10? happyhorse10 = default;
+            if (discriminator?.Model == global::Runway.CreateImageToVideoRequestDiscriminatorModel.Happyhorse10)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateImageToVideoRequestHappyhorse10), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateImageToVideoRequestHappyhorse10> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.CreateImageToVideoRequestHappyhorse10)}");
+                happyhorse10 = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+            }
+            global::Runway.CreateImageToVideoRequestSeedance2? seedance2 = default;
+            if (discriminator?.Model == global::Runway.CreateImageToVideoRequestDiscriminatorModel.Seedance2)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateImageToVideoRequestSeedance2), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateImageToVideoRequestSeedance2> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.CreateImageToVideoRequestSeedance2)}");
+                seedance2 = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+            }
             global::Runway.CreateImageToVideoRequestVeo3? veo3 = default;
             if (discriminator?.Model == global::Runway.CreateImageToVideoRequestDiscriminatorModel.Veo3)
             {
@@ -75,6 +89,10 @@ namespace Runway.JsonConverters
                 gen3aTurbo,
 
                 veo31Fast,
+
+                happyhorse10,
+
+                seedance2,
 
                 veo3
                 );
@@ -120,6 +138,18 @@ namespace Runway.JsonConverters
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateImageToVideoRequestVeo31Fast), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateImageToVideoRequestVeo31Fast?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateImageToVideoRequestVeo31Fast).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.Veo31Fast!, typeInfo);
+            }
+            else if (value.IsHappyhorse10)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateImageToVideoRequestHappyhorse10), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateImageToVideoRequestHappyhorse10?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateImageToVideoRequestHappyhorse10).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Happyhorse10!, typeInfo);
+            }
+            else if (value.IsSeedance2)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateImageToVideoRequestSeedance2), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateImageToVideoRequestSeedance2?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateImageToVideoRequestSeedance2).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Seedance2!, typeInfo);
             }
             else if (value.IsVeo3)
             {
