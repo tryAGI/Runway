@@ -87,6 +87,43 @@ namespace Runway
         public global::Runway.CreateVideoToVideoRequestAleph2 PickAleph2() => IsAleph2
             ? Aleph2!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Aleph2' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
+#if NET6_0_OR_GREATER
+        public global::Runway.CreateVideoToVideoRequestSeedance2? Seedance2 { get; init; }
+#else
+        public global::Runway.CreateVideoToVideoRequestSeedance2? Seedance2 { get; }
+#endif
+
+        /// <summary>
+        /// 
+        /// </summary>
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Seedance2))]
+#endif
+        public bool IsSeedance2 => Seedance2 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickSeedance2(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Runway.CreateVideoToVideoRequestSeedance2? value)
+        {
+            value = Seedance2;
+            return IsSeedance2;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.CreateVideoToVideoRequestSeedance2 PickSeedance2() => IsSeedance2
+            ? Seedance2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Seedance2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -136,22 +173,48 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public static implicit operator CreateVideoToVideoRequest(global::Runway.CreateVideoToVideoRequestSeedance2 value) => new CreateVideoToVideoRequest((global::Runway.CreateVideoToVideoRequestSeedance2?)value);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static implicit operator global::Runway.CreateVideoToVideoRequestSeedance2?(CreateVideoToVideoRequest @this) => @this.Seedance2;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public CreateVideoToVideoRequest(global::Runway.CreateVideoToVideoRequestSeedance2? value)
+        {
+            Seedance2 = value;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static CreateVideoToVideoRequest FromSeedance2(global::Runway.CreateVideoToVideoRequestSeedance2? value) => new CreateVideoToVideoRequest(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public CreateVideoToVideoRequest(
             global::Runway.CreateVideoToVideoRequestDiscriminatorModel? model,
             global::Runway.CreateVideoToVideoRequestGen4Aleph? gen4Aleph,
-            global::Runway.CreateVideoToVideoRequestAleph2? aleph2
+            global::Runway.CreateVideoToVideoRequestAleph2? aleph2,
+            global::Runway.CreateVideoToVideoRequestSeedance2? seedance2
             )
         {
             Model = model;
 
             Gen4Aleph = gen4Aleph;
             Aleph2 = aleph2;
+            Seedance2 = seedance2;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public object? Object =>
+            Seedance2 as object ??
             Aleph2 as object ??
             Gen4Aleph as object 
             ;
@@ -161,7 +224,8 @@ namespace Runway
         /// </summary>
         public override string? ToString() =>
             Gen4Aleph?.ToString() ??
-            Aleph2?.ToString() 
+            Aleph2?.ToString() ??
+            Seedance2?.ToString() 
             ;
 
         /// <summary>
@@ -169,7 +233,7 @@ namespace Runway
         /// </summary>
         public bool Validate()
         {
-            return IsGen4Aleph && !IsAleph2 || !IsGen4Aleph && IsAleph2;
+            return IsGen4Aleph && !IsAleph2 && !IsSeedance2 || !IsGen4Aleph && IsAleph2 && !IsSeedance2 || !IsGen4Aleph && !IsAleph2 && IsSeedance2;
         }
 
         /// <summary>
@@ -178,6 +242,7 @@ namespace Runway
         public TResult? Match<TResult>(
             global::System.Func<global::Runway.CreateVideoToVideoRequestGen4Aleph, TResult>? gen4Aleph = null,
             global::System.Func<global::Runway.CreateVideoToVideoRequestAleph2, TResult>? aleph2 = null,
+            global::System.Func<global::Runway.CreateVideoToVideoRequestSeedance2, TResult>? seedance2 = null,
             bool validate = true)
         {
             if (validate)
@@ -193,6 +258,10 @@ namespace Runway
             {
                 return aleph2(Aleph2!);
             }
+            else if (IsSeedance2 && seedance2 != null)
+            {
+                return seedance2(Seedance2!);
+            }
 
             return default(TResult);
         }
@@ -204,6 +273,8 @@ namespace Runway
             global::System.Action<global::Runway.CreateVideoToVideoRequestGen4Aleph>? gen4Aleph = null,
 
             global::System.Action<global::Runway.CreateVideoToVideoRequestAleph2>? aleph2 = null,
+
+            global::System.Action<global::Runway.CreateVideoToVideoRequestSeedance2>? seedance2 = null,
             bool validate = true)
         {
             if (validate)
@@ -218,6 +289,10 @@ namespace Runway
             else if (IsAleph2)
             {
                 aleph2?.Invoke(Aleph2!);
+            }
+            else if (IsSeedance2)
+            {
+                seedance2?.Invoke(Seedance2!);
             }
         }
 
@@ -227,6 +302,7 @@ namespace Runway
         public void Switch(
             global::System.Action<global::Runway.CreateVideoToVideoRequestGen4Aleph>? gen4Aleph = null,
             global::System.Action<global::Runway.CreateVideoToVideoRequestAleph2>? aleph2 = null,
+            global::System.Action<global::Runway.CreateVideoToVideoRequestSeedance2>? seedance2 = null,
             bool validate = true)
         {
             if (validate)
@@ -241,6 +317,10 @@ namespace Runway
             else if (IsAleph2)
             {
                 aleph2?.Invoke(Aleph2!);
+            }
+            else if (IsSeedance2)
+            {
+                seedance2?.Invoke(Seedance2!);
             }
         }
 
@@ -255,6 +335,8 @@ namespace Runway
                 typeof(global::Runway.CreateVideoToVideoRequestGen4Aleph),
                 Aleph2,
                 typeof(global::Runway.CreateVideoToVideoRequestAleph2),
+                Seedance2,
+                typeof(global::Runway.CreateVideoToVideoRequestSeedance2),
             };
             const int offset = unchecked((int)2166136261);
             const int prime = 16777619;
@@ -272,7 +354,8 @@ namespace Runway
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::Runway.CreateVideoToVideoRequestGen4Aleph?>.Default.Equals(Gen4Aleph, other.Gen4Aleph) &&
-                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateVideoToVideoRequestAleph2?>.Default.Equals(Aleph2, other.Aleph2) 
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateVideoToVideoRequestAleph2?>.Default.Equals(Aleph2, other.Aleph2) &&
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateVideoToVideoRequestSeedance2?>.Default.Equals(Seedance2, other.Seedance2) 
                 ;
         }
 
