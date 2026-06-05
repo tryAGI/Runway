@@ -31,6 +31,10 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        Seedance2Fast,
+        /// <summary>
+        /// 
+        /// </summary>
         Veo3,
         /// <summary>
         /// 
@@ -59,6 +63,7 @@ namespace Runway
                 CreateImageToVideoRequestDiscriminatorModel.Gen4Turbo => "gen4_turbo",
                 CreateImageToVideoRequestDiscriminatorModel.Happyhorse10 => "happyhorse_1_0",
                 CreateImageToVideoRequestDiscriminatorModel.Seedance2 => "seedance2",
+                CreateImageToVideoRequestDiscriminatorModel.Seedance2Fast => "seedance2_fast",
                 CreateImageToVideoRequestDiscriminatorModel.Veo3 => "veo3",
                 CreateImageToVideoRequestDiscriminatorModel.Veo31 => "veo3.1",
                 CreateImageToVideoRequestDiscriminatorModel.Veo31Fast => "veo3.1_fast",
@@ -77,6 +82,7 @@ namespace Runway
                 "gen4_turbo" => CreateImageToVideoRequestDiscriminatorModel.Gen4Turbo,
                 "happyhorse_1_0" => CreateImageToVideoRequestDiscriminatorModel.Happyhorse10,
                 "seedance2" => CreateImageToVideoRequestDiscriminatorModel.Seedance2,
+                "seedance2_fast" => CreateImageToVideoRequestDiscriminatorModel.Seedance2Fast,
                 "veo3" => CreateImageToVideoRequestDiscriminatorModel.Veo3,
                 "veo3.1" => CreateImageToVideoRequestDiscriminatorModel.Veo31,
                 "veo3.1_fast" => CreateImageToVideoRequestDiscriminatorModel.Veo31Fast,

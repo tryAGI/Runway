@@ -124,6 +124,43 @@ namespace Runway
         public global::Runway.CreateVideoToVideoRequestSeedance2 PickSeedance2() => IsSeedance2
             ? Seedance2!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Seedance2' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
+#if NET6_0_OR_GREATER
+        public global::Runway.CreateVideoToVideoRequestSeedance2Fast? Seedance2Fast { get; init; }
+#else
+        public global::Runway.CreateVideoToVideoRequestSeedance2Fast? Seedance2Fast { get; }
+#endif
+
+        /// <summary>
+        /// 
+        /// </summary>
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Seedance2Fast))]
+#endif
+        public bool IsSeedance2Fast => Seedance2Fast != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickSeedance2Fast(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Runway.CreateVideoToVideoRequestSeedance2Fast? value)
+        {
+            value = Seedance2Fast;
+            return IsSeedance2Fast;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.CreateVideoToVideoRequestSeedance2Fast PickSeedance2Fast() => IsSeedance2Fast
+            ? Seedance2Fast!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Seedance2Fast' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -196,11 +233,35 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public static implicit operator CreateVideoToVideoRequest(global::Runway.CreateVideoToVideoRequestSeedance2Fast value) => new CreateVideoToVideoRequest((global::Runway.CreateVideoToVideoRequestSeedance2Fast?)value);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static implicit operator global::Runway.CreateVideoToVideoRequestSeedance2Fast?(CreateVideoToVideoRequest @this) => @this.Seedance2Fast;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public CreateVideoToVideoRequest(global::Runway.CreateVideoToVideoRequestSeedance2Fast? value)
+        {
+            Seedance2Fast = value;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static CreateVideoToVideoRequest FromSeedance2Fast(global::Runway.CreateVideoToVideoRequestSeedance2Fast? value) => new CreateVideoToVideoRequest(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public CreateVideoToVideoRequest(
             global::Runway.CreateVideoToVideoRequestDiscriminatorModel? model,
             global::Runway.CreateVideoToVideoRequestGen4Aleph? gen4Aleph,
             global::Runway.CreateVideoToVideoRequestAleph2? aleph2,
-            global::Runway.CreateVideoToVideoRequestSeedance2? seedance2
+            global::Runway.CreateVideoToVideoRequestSeedance2? seedance2,
+            global::Runway.CreateVideoToVideoRequestSeedance2Fast? seedance2Fast
             )
         {
             Model = model;
@@ -208,12 +269,14 @@ namespace Runway
             Gen4Aleph = gen4Aleph;
             Aleph2 = aleph2;
             Seedance2 = seedance2;
+            Seedance2Fast = seedance2Fast;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public object? Object =>
+            Seedance2Fast as object ??
             Seedance2 as object ??
             Aleph2 as object ??
             Gen4Aleph as object 
@@ -225,7 +288,8 @@ namespace Runway
         public override string? ToString() =>
             Gen4Aleph?.ToString() ??
             Aleph2?.ToString() ??
-            Seedance2?.ToString() 
+            Seedance2?.ToString() ??
+            Seedance2Fast?.ToString() 
             ;
 
         /// <summary>
@@ -233,7 +297,7 @@ namespace Runway
         /// </summary>
         public bool Validate()
         {
-            return IsGen4Aleph && !IsAleph2 && !IsSeedance2 || !IsGen4Aleph && IsAleph2 && !IsSeedance2 || !IsGen4Aleph && !IsAleph2 && IsSeedance2;
+            return IsGen4Aleph && !IsAleph2 && !IsSeedance2 && !IsSeedance2Fast || !IsGen4Aleph && IsAleph2 && !IsSeedance2 && !IsSeedance2Fast || !IsGen4Aleph && !IsAleph2 && IsSeedance2 && !IsSeedance2Fast || !IsGen4Aleph && !IsAleph2 && !IsSeedance2 && IsSeedance2Fast;
         }
 
         /// <summary>
@@ -243,6 +307,7 @@ namespace Runway
             global::System.Func<global::Runway.CreateVideoToVideoRequestGen4Aleph, TResult>? gen4Aleph = null,
             global::System.Func<global::Runway.CreateVideoToVideoRequestAleph2, TResult>? aleph2 = null,
             global::System.Func<global::Runway.CreateVideoToVideoRequestSeedance2, TResult>? seedance2 = null,
+            global::System.Func<global::Runway.CreateVideoToVideoRequestSeedance2Fast, TResult>? seedance2Fast = null,
             bool validate = true)
         {
             if (validate)
@@ -262,6 +327,10 @@ namespace Runway
             {
                 return seedance2(Seedance2!);
             }
+            else if (IsSeedance2Fast && seedance2Fast != null)
+            {
+                return seedance2Fast(Seedance2Fast!);
+            }
 
             return default(TResult);
         }
@@ -275,6 +344,8 @@ namespace Runway
             global::System.Action<global::Runway.CreateVideoToVideoRequestAleph2>? aleph2 = null,
 
             global::System.Action<global::Runway.CreateVideoToVideoRequestSeedance2>? seedance2 = null,
+
+            global::System.Action<global::Runway.CreateVideoToVideoRequestSeedance2Fast>? seedance2Fast = null,
             bool validate = true)
         {
             if (validate)
@@ -293,6 +364,10 @@ namespace Runway
             else if (IsSeedance2)
             {
                 seedance2?.Invoke(Seedance2!);
+            }
+            else if (IsSeedance2Fast)
+            {
+                seedance2Fast?.Invoke(Seedance2Fast!);
             }
         }
 
@@ -303,6 +378,7 @@ namespace Runway
             global::System.Action<global::Runway.CreateVideoToVideoRequestGen4Aleph>? gen4Aleph = null,
             global::System.Action<global::Runway.CreateVideoToVideoRequestAleph2>? aleph2 = null,
             global::System.Action<global::Runway.CreateVideoToVideoRequestSeedance2>? seedance2 = null,
+            global::System.Action<global::Runway.CreateVideoToVideoRequestSeedance2Fast>? seedance2Fast = null,
             bool validate = true)
         {
             if (validate)
@@ -321,6 +397,10 @@ namespace Runway
             else if (IsSeedance2)
             {
                 seedance2?.Invoke(Seedance2!);
+            }
+            else if (IsSeedance2Fast)
+            {
+                seedance2Fast?.Invoke(Seedance2Fast!);
             }
         }
 
@@ -337,6 +417,8 @@ namespace Runway
                 typeof(global::Runway.CreateVideoToVideoRequestAleph2),
                 Seedance2,
                 typeof(global::Runway.CreateVideoToVideoRequestSeedance2),
+                Seedance2Fast,
+                typeof(global::Runway.CreateVideoToVideoRequestSeedance2Fast),
             };
             const int offset = unchecked((int)2166136261);
             const int prime = 16777619;
@@ -355,7 +437,8 @@ namespace Runway
             return
                 global::System.Collections.Generic.EqualityComparer<global::Runway.CreateVideoToVideoRequestGen4Aleph?>.Default.Equals(Gen4Aleph, other.Gen4Aleph) &&
                 global::System.Collections.Generic.EqualityComparer<global::Runway.CreateVideoToVideoRequestAleph2?>.Default.Equals(Aleph2, other.Aleph2) &&
-                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateVideoToVideoRequestSeedance2?>.Default.Equals(Seedance2, other.Seedance2) 
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateVideoToVideoRequestSeedance2?>.Default.Equals(Seedance2, other.Seedance2) &&
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateVideoToVideoRequestSeedance2Fast?>.Default.Equals(Seedance2Fast, other.Seedance2Fast) 
                 ;
         }
 

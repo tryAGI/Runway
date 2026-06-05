@@ -139,6 +139,10 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        Seedance2Fast,
+        /// <summary>
+        /// 
+        /// </summary>
         Veo3,
         /// <summary>
         /// 
@@ -198,6 +202,7 @@ namespace Runway
                 CreateOrganizationUsageResponseModel.KlingO3Standard => "klingO3_standard",
                 CreateOrganizationUsageResponseModel.MagnificPrecisionUpscalerV2 => "magnific_precision_upscaler_v2",
                 CreateOrganizationUsageResponseModel.Seedance2 => "seedance2",
+                CreateOrganizationUsageResponseModel.Seedance2Fast => "seedance2_fast",
                 CreateOrganizationUsageResponseModel.Veo3 => "veo3",
                 CreateOrganizationUsageResponseModel.Veo31 => "veo3.1",
                 CreateOrganizationUsageResponseModel.Veo31Fast => "veo3.1_fast",
@@ -244,6 +249,7 @@ namespace Runway
                 "klingO3_standard" => CreateOrganizationUsageResponseModel.KlingO3Standard,
                 "magnific_precision_upscaler_v2" => CreateOrganizationUsageResponseModel.MagnificPrecisionUpscalerV2,
                 "seedance2" => CreateOrganizationUsageResponseModel.Seedance2,
+                "seedance2_fast" => CreateOrganizationUsageResponseModel.Seedance2Fast,
                 "veo3" => CreateOrganizationUsageResponseModel.Veo3,
                 "veo3.1" => CreateOrganizationUsageResponseModel.Veo31,
                 "veo3.1_fast" => CreateOrganizationUsageResponseModel.Veo31Fast,

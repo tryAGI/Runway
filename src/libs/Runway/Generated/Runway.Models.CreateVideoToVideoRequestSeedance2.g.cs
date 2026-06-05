@@ -18,7 +18,7 @@ namespace Runway
         public required string PromptVideo { get; set; }
 
         /// <summary>
-        /// An optional text prompt up to 3500 characters describing what should appear in the output video.
+        /// An optional text prompt up to 3500 characters describing what should appear in the output.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("promptText")]
         public string? PromptText { get; set; }
@@ -82,7 +82,7 @@ namespace Runway
         /// Example: https://example.com/video.mp4
         /// </param>
         /// <param name="promptText">
-        /// An optional text prompt up to 3500 characters describing what should appear in the output video.
+        /// An optional text prompt up to 3500 characters describing what should appear in the output.
         /// </param>
         /// <param name="audio">
         /// Whether to generate audio for the video. Audio inclusion affects pricing.<br/>
