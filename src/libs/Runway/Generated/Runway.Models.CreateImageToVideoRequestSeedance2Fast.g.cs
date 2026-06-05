@@ -6,15 +6,15 @@ namespace Runway
     /// <summary>
     /// 
     /// </summary>
-    public sealed partial class CreateImageToVideoRequestSeedance2
+    public sealed partial class CreateImageToVideoRequestSeedance2Fast
     {
         /// <summary>
         /// An image or array of images. Use position `first`/`last` for keyframe mode, or omit position for reference images. The two modes cannot be mixed.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("promptImage")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestSeedance2PromptImagePromptImage>>))]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestSeedance2FastPromptImagePromptImage>>))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestSeedance2PromptImagePromptImage>> PromptImage { get; set; }
+        public required global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestSeedance2FastPromptImagePromptImage>> PromptImage { get; set; }
 
         /// <summary>
         /// An optional text prompt up to 3500 characters describing what should appear in the output.
@@ -36,24 +36,24 @@ namespace Runway
         public int? Duration { get; set; }
 
         /// <summary>
-        /// The resolution of the output video.
+        /// The resolution of the output video. Seedance 2.0 Fast supports 480p and 720p only.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ratio")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2RatioJsonConverter))]
-        public global::Runway.CreateImageToVideoRequestSeedance2Ratio? Ratio { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2FastRatioJsonConverter))]
+        public global::Runway.CreateImageToVideoRequestSeedance2FastRatio? Ratio { get; set; }
 
         /// <summary>
         /// An optional array of audio references. Audio references require a text prompt, and the total combined duration must not exceed 15 seconds.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("referenceAudio")]
-        public global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestSeedance2ReferenceAudioItem>? ReferenceAudio { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestSeedance2FastReferenceAudioItem>? ReferenceAudio { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        /// <default>"seedance2"</default>
+        /// <default>"seedance2_fast"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
-        public string Model { get; set; } = "seedance2";
+        public string Model { get; set; } = "seedance2_fast";
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -62,7 +62,7 @@ namespace Runway
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CreateImageToVideoRequestSeedance2" /> class.
+        /// Initializes a new instance of the <see cref="CreateImageToVideoRequestSeedance2Fast" /> class.
         /// </summary>
         /// <param name="promptImage">
         /// An image or array of images. Use position `first`/`last` for keyframe mode, or omit position for reference images. The two modes cannot be mixed.
@@ -78,7 +78,7 @@ namespace Runway
         /// The number of seconds of duration for the output video.
         /// </param>
         /// <param name="ratio">
-        /// The resolution of the output video.
+        /// The resolution of the output video. Seedance 2.0 Fast supports 480p and 720p only.
         /// </param>
         /// <param name="referenceAudio">
         /// An optional array of audio references. Audio references require a text prompt, and the total combined duration must not exceed 15 seconds.
@@ -87,14 +87,14 @@ namespace Runway
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
-        public CreateImageToVideoRequestSeedance2(
-            global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestSeedance2PromptImagePromptImage>> promptImage,
+        public CreateImageToVideoRequestSeedance2Fast(
+            global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestSeedance2FastPromptImagePromptImage>> promptImage,
             string? promptText,
             bool? audio,
             int? duration,
-            global::Runway.CreateImageToVideoRequestSeedance2Ratio? ratio,
-            global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestSeedance2ReferenceAudioItem>? referenceAudio,
-            string model = "seedance2")
+            global::Runway.CreateImageToVideoRequestSeedance2FastRatio? ratio,
+            global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestSeedance2FastReferenceAudioItem>? referenceAudio,
+            string model = "seedance2_fast")
         {
             this.PromptImage = promptImage;
             this.PromptText = promptText;
@@ -106,9 +106,9 @@ namespace Runway
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CreateImageToVideoRequestSeedance2" /> class.
+        /// Initializes a new instance of the <see cref="CreateImageToVideoRequestSeedance2Fast" /> class.
         /// </summary>
-        public CreateImageToVideoRequestSeedance2()
+        public CreateImageToVideoRequestSeedance2Fast()
         {
         }
 

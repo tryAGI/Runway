@@ -6,14 +6,22 @@ namespace Runway
     /// <summary>
     /// 
     /// </summary>
-    public sealed partial class CreateTextToVideoRequestSeedance2
+    public sealed partial class CreateVideoToVideoRequestSeedance2Fast
     {
         /// <summary>
-        /// A non-empty text prompt up to 3500 characters describing what should appear in the output.
+        /// The input video to use as a reference for the output video. If additional video references are provided, the combined duration across all video references must not exceed 15 seconds.<br/>
+        /// Example: https://example.com/video.mp4
+        /// </summary>
+        /// <example>https://example.com/video.mp4</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("promptVideo")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string PromptVideo { get; set; }
+
+        /// <summary>
+        /// An optional text prompt up to 3500 characters describing what should appear in the output.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("promptText")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string PromptText { get; set; }
+        public string? PromptText { get; set; }
 
         /// <summary>
         /// Whether to generate audio for the video. Audio inclusion affects pricing.<br/>
@@ -29,36 +37,36 @@ namespace Runway
         public int? Duration { get; set; }
 
         /// <summary>
-        /// The resolution of the output video.
+        /// The resolution of the output video. Seedance 2.0 Fast supports 480p and 720p only.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ratio")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.CreateTextToVideoRequestSeedance2RatioJsonConverter))]
-        public global::Runway.CreateTextToVideoRequestSeedance2Ratio? Ratio { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance2FastRatioJsonConverter))]
+        public global::Runway.CreateVideoToVideoRequestSeedance2FastRatio? Ratio { get; set; }
 
         /// <summary>
         /// An optional array of image references (up to 9). See [our docs](/assets/inputs#images) on image inputs for more information.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("references")]
-        public global::System.Collections.Generic.IList<global::Runway.CreateTextToVideoRequestSeedance2Reference>? References { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.CreateVideoToVideoRequestSeedance2FastReference>? References { get; set; }
 
         /// <summary>
         /// An optional array of video references. The combined duration across all video references must not exceed 15 seconds. See [our docs](/assets/inputs#videos) on video inputs for more information.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("referenceVideos")]
-        public global::System.Collections.Generic.IList<global::Runway.CreateTextToVideoRequestSeedance2ReferenceVideo>? ReferenceVideos { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.CreateVideoToVideoRequestSeedance2FastReferenceVideo>? ReferenceVideos { get; set; }
 
         /// <summary>
         /// An optional array of audio references. Audio references require a text prompt, and the total combined duration must not exceed 15 seconds.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("referenceAudio")]
-        public global::System.Collections.Generic.IList<global::Runway.CreateTextToVideoRequestSeedance2ReferenceAudioItem>? ReferenceAudio { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.CreateVideoToVideoRequestSeedance2FastReferenceAudioItem>? ReferenceAudio { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        /// <default>"seedance2"</default>
+        /// <default>"seedance2_fast"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
-        public string Model { get; set; } = "seedance2";
+        public string Model { get; set; } = "seedance2_fast";
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -67,10 +75,14 @@ namespace Runway
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CreateTextToVideoRequestSeedance2" /> class.
+        /// Initializes a new instance of the <see cref="CreateVideoToVideoRequestSeedance2Fast" /> class.
         /// </summary>
+        /// <param name="promptVideo">
+        /// The input video to use as a reference for the output video. If additional video references are provided, the combined duration across all video references must not exceed 15 seconds.<br/>
+        /// Example: https://example.com/video.mp4
+        /// </param>
         /// <param name="promptText">
-        /// A non-empty text prompt up to 3500 characters describing what should appear in the output.
+        /// An optional text prompt up to 3500 characters describing what should appear in the output.
         /// </param>
         /// <param name="audio">
         /// Whether to generate audio for the video. Audio inclusion affects pricing.<br/>
@@ -80,7 +92,7 @@ namespace Runway
         /// The number of seconds of duration for the output video.
         /// </param>
         /// <param name="ratio">
-        /// The resolution of the output video.
+        /// The resolution of the output video. Seedance 2.0 Fast supports 480p and 720p only.
         /// </param>
         /// <param name="references">
         /// An optional array of image references (up to 9). See [our docs](/assets/inputs#images) on image inputs for more information.
@@ -95,17 +107,19 @@ namespace Runway
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
-        public CreateTextToVideoRequestSeedance2(
-            string promptText,
+        public CreateVideoToVideoRequestSeedance2Fast(
+            string promptVideo,
+            string? promptText,
             bool? audio,
             int? duration,
-            global::Runway.CreateTextToVideoRequestSeedance2Ratio? ratio,
-            global::System.Collections.Generic.IList<global::Runway.CreateTextToVideoRequestSeedance2Reference>? references,
-            global::System.Collections.Generic.IList<global::Runway.CreateTextToVideoRequestSeedance2ReferenceVideo>? referenceVideos,
-            global::System.Collections.Generic.IList<global::Runway.CreateTextToVideoRequestSeedance2ReferenceAudioItem>? referenceAudio,
-            string model = "seedance2")
+            global::Runway.CreateVideoToVideoRequestSeedance2FastRatio? ratio,
+            global::System.Collections.Generic.IList<global::Runway.CreateVideoToVideoRequestSeedance2FastReference>? references,
+            global::System.Collections.Generic.IList<global::Runway.CreateVideoToVideoRequestSeedance2FastReferenceVideo>? referenceVideos,
+            global::System.Collections.Generic.IList<global::Runway.CreateVideoToVideoRequestSeedance2FastReferenceAudioItem>? referenceAudio,
+            string model = "seedance2_fast")
         {
-            this.PromptText = promptText ?? throw new global::System.ArgumentNullException(nameof(promptText));
+            this.PromptVideo = promptVideo;
+            this.PromptText = promptText;
             this.Audio = audio;
             this.Duration = duration;
             this.Ratio = ratio;
@@ -116,21 +130,21 @@ namespace Runway
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CreateTextToVideoRequestSeedance2" /> class.
+        /// Initializes a new instance of the <see cref="CreateVideoToVideoRequestSeedance2Fast" /> class.
         /// </summary>
-        public CreateTextToVideoRequestSeedance2()
+        public CreateVideoToVideoRequestSeedance2Fast()
         {
         }
 
         /// <summary>
-        /// Creates a new <see cref="CreateTextToVideoRequestSeedance2"/> from its single non-const required field,
+        /// Creates a new <see cref="CreateVideoToVideoRequestSeedance2Fast"/> from its single non-const required field,
         /// hardcoding any const discriminator fields.
         /// </summary>
-        public static CreateTextToVideoRequestSeedance2 FromPromptText(string promptText)
+        public static CreateVideoToVideoRequestSeedance2Fast FromPromptVideo(string promptVideo)
         {
-            return new CreateTextToVideoRequestSeedance2
+            return new CreateVideoToVideoRequestSeedance2Fast
             {
-                PromptText = promptText,
+                PromptVideo = promptVideo,
             };
         }
 

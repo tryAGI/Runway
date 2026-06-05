@@ -42,6 +42,13 @@ namespace Runway.JsonConverters
                                throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.CreateVideoToVideoRequestSeedance2)}");
                 seedance2 = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
+            global::Runway.CreateVideoToVideoRequestSeedance2Fast? seedance2Fast = default;
+            if (discriminator?.Model == global::Runway.CreateVideoToVideoRequestDiscriminatorModel.Seedance2Fast)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateVideoToVideoRequestSeedance2Fast), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateVideoToVideoRequestSeedance2Fast> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.CreateVideoToVideoRequestSeedance2Fast)}");
+                seedance2Fast = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+            }
 
             var __value = new global::Runway.CreateVideoToVideoRequest(
                 discriminator?.Model,
@@ -49,7 +56,9 @@ namespace Runway.JsonConverters
 
                 aleph2,
 
-                seedance2
+                seedance2,
+
+                seedance2Fast
                 );
 
             return __value;
@@ -81,6 +90,12 @@ namespace Runway.JsonConverters
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateVideoToVideoRequestSeedance2), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateVideoToVideoRequestSeedance2?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateVideoToVideoRequestSeedance2).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.Seedance2!, typeInfo);
+            }
+            else if (value.IsSeedance2Fast)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateVideoToVideoRequestSeedance2Fast), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateVideoToVideoRequestSeedance2Fast?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateVideoToVideoRequestSeedance2Fast).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Seedance2Fast!, typeInfo);
             }
         }
     }

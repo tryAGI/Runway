@@ -203,6 +203,43 @@ namespace Runway
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
+        public global::Runway.CreateTextToVideoRequestSeedance2Fast? Seedance2Fast { get; init; }
+#else
+        public global::Runway.CreateTextToVideoRequestSeedance2Fast? Seedance2Fast { get; }
+#endif
+
+        /// <summary>
+        /// 
+        /// </summary>
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Seedance2Fast))]
+#endif
+        public bool IsSeedance2Fast => Seedance2Fast != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickSeedance2Fast(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Runway.CreateTextToVideoRequestSeedance2Fast? value)
+        {
+            value = Seedance2Fast;
+            return IsSeedance2Fast;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.CreateTextToVideoRequestSeedance2Fast PickSeedance2Fast() => IsSeedance2Fast
+            ? Seedance2Fast!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Seedance2Fast' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
+#if NET6_0_OR_GREATER
         public global::Runway.CreateTextToVideoRequestVeo3? Veo3 { get; init; }
 #else
         public global::Runway.CreateTextToVideoRequestVeo3? Veo3 { get; }
@@ -353,6 +390,29 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public static implicit operator CreateTextToVideoRequest(global::Runway.CreateTextToVideoRequestSeedance2Fast value) => new CreateTextToVideoRequest((global::Runway.CreateTextToVideoRequestSeedance2Fast?)value);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static implicit operator global::Runway.CreateTextToVideoRequestSeedance2Fast?(CreateTextToVideoRequest @this) => @this.Seedance2Fast;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public CreateTextToVideoRequest(global::Runway.CreateTextToVideoRequestSeedance2Fast? value)
+        {
+            Seedance2Fast = value;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static CreateTextToVideoRequest FromSeedance2Fast(global::Runway.CreateTextToVideoRequestSeedance2Fast? value) => new CreateTextToVideoRequest(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator CreateTextToVideoRequest(global::Runway.CreateTextToVideoRequestVeo3 value) => new CreateTextToVideoRequest((global::Runway.CreateTextToVideoRequestVeo3?)value);
 
         /// <summary>
@@ -383,6 +443,7 @@ namespace Runway
             global::Runway.CreateTextToVideoRequestVeo31Fast? veo31Fast,
             global::Runway.CreateTextToVideoRequestHappyhorse10? happyhorse10,
             global::Runway.CreateTextToVideoRequestSeedance2? seedance2,
+            global::Runway.CreateTextToVideoRequestSeedance2Fast? seedance2Fast,
             global::Runway.CreateTextToVideoRequestVeo3? veo3
             )
         {
@@ -393,6 +454,7 @@ namespace Runway
             Veo31Fast = veo31Fast;
             Happyhorse10 = happyhorse10;
             Seedance2 = seedance2;
+            Seedance2Fast = seedance2Fast;
             Veo3 = veo3;
         }
 
@@ -401,6 +463,7 @@ namespace Runway
         /// </summary>
         public object? Object =>
             Veo3 as object ??
+            Seedance2Fast as object ??
             Seedance2 as object ??
             Happyhorse10 as object ??
             Veo31Fast as object ??
@@ -417,6 +480,7 @@ namespace Runway
             Veo31Fast?.ToString() ??
             Happyhorse10?.ToString() ??
             Seedance2?.ToString() ??
+            Seedance2Fast?.ToString() ??
             Veo3?.ToString() 
             ;
 
@@ -425,7 +489,7 @@ namespace Runway
         /// </summary>
         public bool Validate()
         {
-            return IsGen45 && !IsVeo31 && !IsVeo31Fast && !IsHappyhorse10 && !IsSeedance2 && !IsVeo3 || !IsGen45 && IsVeo31 && !IsVeo31Fast && !IsHappyhorse10 && !IsSeedance2 && !IsVeo3 || !IsGen45 && !IsVeo31 && IsVeo31Fast && !IsHappyhorse10 && !IsSeedance2 && !IsVeo3 || !IsGen45 && !IsVeo31 && !IsVeo31Fast && IsHappyhorse10 && !IsSeedance2 && !IsVeo3 || !IsGen45 && !IsVeo31 && !IsVeo31Fast && !IsHappyhorse10 && IsSeedance2 && !IsVeo3 || !IsGen45 && !IsVeo31 && !IsVeo31Fast && !IsHappyhorse10 && !IsSeedance2 && IsVeo3;
+            return IsGen45 && !IsVeo31 && !IsVeo31Fast && !IsHappyhorse10 && !IsSeedance2 && !IsSeedance2Fast && !IsVeo3 || !IsGen45 && IsVeo31 && !IsVeo31Fast && !IsHappyhorse10 && !IsSeedance2 && !IsSeedance2Fast && !IsVeo3 || !IsGen45 && !IsVeo31 && IsVeo31Fast && !IsHappyhorse10 && !IsSeedance2 && !IsSeedance2Fast && !IsVeo3 || !IsGen45 && !IsVeo31 && !IsVeo31Fast && IsHappyhorse10 && !IsSeedance2 && !IsSeedance2Fast && !IsVeo3 || !IsGen45 && !IsVeo31 && !IsVeo31Fast && !IsHappyhorse10 && IsSeedance2 && !IsSeedance2Fast && !IsVeo3 || !IsGen45 && !IsVeo31 && !IsVeo31Fast && !IsHappyhorse10 && !IsSeedance2 && IsSeedance2Fast && !IsVeo3 || !IsGen45 && !IsVeo31 && !IsVeo31Fast && !IsHappyhorse10 && !IsSeedance2 && !IsSeedance2Fast && IsVeo3;
         }
 
         /// <summary>
@@ -437,6 +501,7 @@ namespace Runway
             global::System.Func<global::Runway.CreateTextToVideoRequestVeo31Fast, TResult>? veo31Fast = null,
             global::System.Func<global::Runway.CreateTextToVideoRequestHappyhorse10, TResult>? happyhorse10 = null,
             global::System.Func<global::Runway.CreateTextToVideoRequestSeedance2, TResult>? seedance2 = null,
+            global::System.Func<global::Runway.CreateTextToVideoRequestSeedance2Fast, TResult>? seedance2Fast = null,
             global::System.Func<global::Runway.CreateTextToVideoRequestVeo3, TResult>? veo3 = null,
             bool validate = true)
         {
@@ -465,6 +530,10 @@ namespace Runway
             {
                 return seedance2(Seedance2!);
             }
+            else if (IsSeedance2Fast && seedance2Fast != null)
+            {
+                return seedance2Fast(Seedance2Fast!);
+            }
             else if (IsVeo3 && veo3 != null)
             {
                 return veo3(Veo3!);
@@ -487,6 +556,8 @@ namespace Runway
 
             global::System.Action<global::Runway.CreateTextToVideoRequestSeedance2>? seedance2 = null,
 
+            global::System.Action<global::Runway.CreateTextToVideoRequestSeedance2Fast>? seedance2Fast = null,
+
             global::System.Action<global::Runway.CreateTextToVideoRequestVeo3>? veo3 = null,
             bool validate = true)
         {
@@ -514,6 +585,10 @@ namespace Runway
             else if (IsSeedance2)
             {
                 seedance2?.Invoke(Seedance2!);
+            }
+            else if (IsSeedance2Fast)
+            {
+                seedance2Fast?.Invoke(Seedance2Fast!);
             }
             else if (IsVeo3)
             {
@@ -530,6 +605,7 @@ namespace Runway
             global::System.Action<global::Runway.CreateTextToVideoRequestVeo31Fast>? veo31Fast = null,
             global::System.Action<global::Runway.CreateTextToVideoRequestHappyhorse10>? happyhorse10 = null,
             global::System.Action<global::Runway.CreateTextToVideoRequestSeedance2>? seedance2 = null,
+            global::System.Action<global::Runway.CreateTextToVideoRequestSeedance2Fast>? seedance2Fast = null,
             global::System.Action<global::Runway.CreateTextToVideoRequestVeo3>? veo3 = null,
             bool validate = true)
         {
@@ -557,6 +633,10 @@ namespace Runway
             else if (IsSeedance2)
             {
                 seedance2?.Invoke(Seedance2!);
+            }
+            else if (IsSeedance2Fast)
+            {
+                seedance2Fast?.Invoke(Seedance2Fast!);
             }
             else if (IsVeo3)
             {
@@ -581,6 +661,8 @@ namespace Runway
                 typeof(global::Runway.CreateTextToVideoRequestHappyhorse10),
                 Seedance2,
                 typeof(global::Runway.CreateTextToVideoRequestSeedance2),
+                Seedance2Fast,
+                typeof(global::Runway.CreateTextToVideoRequestSeedance2Fast),
                 Veo3,
                 typeof(global::Runway.CreateTextToVideoRequestVeo3),
             };
@@ -604,6 +686,7 @@ namespace Runway
                 global::System.Collections.Generic.EqualityComparer<global::Runway.CreateTextToVideoRequestVeo31Fast?>.Default.Equals(Veo31Fast, other.Veo31Fast) &&
                 global::System.Collections.Generic.EqualityComparer<global::Runway.CreateTextToVideoRequestHappyhorse10?>.Default.Equals(Happyhorse10, other.Happyhorse10) &&
                 global::System.Collections.Generic.EqualityComparer<global::Runway.CreateTextToVideoRequestSeedance2?>.Default.Equals(Seedance2, other.Seedance2) &&
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateTextToVideoRequestSeedance2Fast?>.Default.Equals(Seedance2Fast, other.Seedance2Fast) &&
                 global::System.Collections.Generic.EqualityComparer<global::Runway.CreateTextToVideoRequestVeo3?>.Default.Equals(Veo3, other.Veo3) 
                 ;
         }

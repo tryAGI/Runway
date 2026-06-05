@@ -5998,7 +5998,8 @@
                             "type": "string",
                             "enum": ["auto", "low"]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "model": { "type": "string", "const": "gen4.5" }
                     },
@@ -6137,7 +6138,8 @@
                             "type": "string",
                             "enum": ["auto", "low"]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "model": { "type": "string", "const": "gen4_turbo" }
                     },
@@ -6406,7 +6408,8 @@
                             "type": "string",
                             "enum": ["auto", "low"]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "model": { "type": "string", "const": "gen3a_turbo" }
                     },
@@ -6749,7 +6752,7 @@
                         ]
                       },
                       "promptText": {
-                        "description": "An optional text prompt up to 3500 characters (measured in UTF-16 code units). This should describe in detail what should appear in the output.",
+                        "description": "An optional text prompt up to 3500 characters describing what should appear in the output.",
                         "type": "string",
                         "minLength": 1,
                         "maxLength": 3500
@@ -6834,6 +6837,187 @@
                         }
                       },
                       "model": { "type": "string", "const": "seedance2" }
+                    },
+                    "required": ["promptImage", "model"],
+                    "additionalProperties": false
+                  },
+                  {
+                    "title": "seedance2_fast",
+                    "type": "object",
+                    "properties": {
+                      "promptImage": {
+                        "description": "An image or array of images. Use position `first`/`last` for keyframe mode, or omit position for reference images. The two modes cannot be mixed.",
+                        "anyOf": [
+                          {
+                            "description": "A HTTPS URL, Runway or data URI containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                            "example": "https://example.com/image.jpg",
+                            "anyOf": [
+                              {
+                                "description": "A HTTPS URL.",
+                                "example": "https://example.com/file",
+                                "type": "string",
+                                "minLength": 13,
+                                "maxLength": 2048,
+                                "pattern": "^https:\\/\\/.*"
+                              },
+                              {
+                                "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                                "example": "runway://<token>",
+                                "type": "string",
+                                "minLength": 13,
+                                "maxLength": 5000,
+                                "pattern": "^runway:\\/\\/.*"
+                              },
+                              {
+                                "description": "A data URI containing encoded media.",
+                                "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                                "type": "string",
+                                "minLength": 13,
+                                "maxLength": 5242880,
+                                "pattern": "^data:image\\/.*"
+                              }
+                            ]
+                          },
+                          {
+                            "title": "PromptImages",
+                            "description": "An array of image objects. Use position \"first\"/\"last\" for keyframe mode, or omit position for reference images. The two modes cannot be mixed.",
+                            "example": [
+                              {
+                                "uri": "https://example.com/firstFrame.jpg",
+                                "position": "first"
+                              },
+                              {
+                                "uri": "https://example.com/lastFrame.jpg",
+                                "position": "last"
+                              }
+                            ],
+                            "type": "array",
+                            "items": {
+                              "title": "PromptImage",
+                              "x-stainless-variantName": "PromptImage",
+                              "type": "object",
+                              "properties": {
+                                "uri": {
+                                  "description": "A HTTPS URL, Runway or data URI containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                                  "example": "https://example.com/image.jpg",
+                                  "anyOf": [
+                                    {
+                                      "description": "A HTTPS URL.",
+                                      "example": "https://example.com/file",
+                                      "type": "string",
+                                      "minLength": 13,
+                                      "maxLength": 2048,
+                                      "pattern": "^https:\\/\\/.*"
+                                    },
+                                    {
+                                      "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                                      "example": "runway://<token>",
+                                      "type": "string",
+                                      "minLength": 13,
+                                      "maxLength": 5000,
+                                      "pattern": "^runway:\\/\\/.*"
+                                    },
+                                    {
+                                      "description": "A data URI containing encoded media.",
+                                      "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                                      "type": "string",
+                                      "minLength": 13,
+                                      "maxLength": 5242880,
+                                      "pattern": "^data:image\\/.*"
+                                    }
+                                  ]
+                                },
+                                "position": {
+                                  "description": "The position of the image in the output video. \"first\" will use the image as the first frame, \"last\" as the last frame. Omit for a reference image.",
+                                  "type": "string",
+                                  "enum": ["first", "last"]
+                                }
+                              },
+                              "required": ["uri"]
+                            }
+                          }
+                        ]
+                      },
+                      "promptText": {
+                        "description": "An optional text prompt up to 3500 characters describing what should appear in the output.",
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 3500
+                      },
+                      "audio": {
+                        "description": "Whether to generate audio for the video. Audio inclusion affects pricing.",
+                        "default": true,
+                        "type": "boolean"
+                      },
+                      "duration": {
+                        "description": "The number of seconds of duration for the output video.",
+                        "type": "integer",
+                        "minimum": 4,
+                        "maximum": 15
+                      },
+                      "ratio": {
+                        "description": "The resolution of the output video. Seedance 2.0 Fast supports 480p and 720p only.",
+                        "type": "string",
+                        "enum": [
+                          "992:432",
+                          "864:496",
+                          "752:560",
+                          "640:640",
+                          "560:752",
+                          "496:864",
+                          "1470:630",
+                          "1280:720",
+                          "1112:834",
+                          "960:960",
+                          "834:1112",
+                          "720:1280"
+                        ]
+                      },
+                      "referenceAudio": {
+                        "description": "An optional array of audio references. Audio references require a text prompt, and the total combined duration must not exceed 15 seconds.",
+                        "maxItems": 3,
+                        "type": "array",
+                        "items": {
+                          "title": "AudioReference",
+                          "description": "An audio reference allows the model to use the audio as additional context for the output.",
+                          "type": "object",
+                          "properties": {
+                            "type": { "type": "string", "const": "audio" },
+                            "uri": {
+                              "description": "A HTTPS URL, Runway or data URI containing an encoded audio. See [our docs](/assets/inputs#audio) on audio inputs for more information.",
+                              "example": "https://example.com/audio.mp3",
+                              "anyOf": [
+                                {
+                                  "description": "A HTTPS URL.",
+                                  "example": "https://example.com/file",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 2048,
+                                  "pattern": "^https:\\/\\/.*"
+                                },
+                                {
+                                  "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                                  "example": "runway://<token>",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 5000,
+                                  "pattern": "^runway:\\/\\/.*"
+                                },
+                                {
+                                  "description": "A data URI containing encoded media.",
+                                  "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 16777216,
+                                  "pattern": "^data:audio\\/.*"
+                                }
+                              ]
+                            }
+                          },
+                          "required": ["type", "uri"]
+                        }
+                      },
+                      "model": { "type": "string", "const": "seedance2_fast" }
                     },
                     "required": ["promptImage", "model"],
                     "additionalProperties": false
@@ -7054,7 +7238,8 @@
                             "type": "string",
                             "enum": ["auto", "low"]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "model": { "type": "string", "const": "gen4.5" }
                     },
@@ -7170,7 +7355,7 @@
                     "type": "object",
                     "properties": {
                       "promptText": {
-                        "description": "A non-empty string up to 3500 characters (measured in UTF-16 code units). This should describe in detail what should appear in the output.",
+                        "description": "A non-empty text prompt up to 3500 characters describing what should appear in the output.",
                         "type": "string",
                         "minLength": 1,
                         "maxLength": 3500
@@ -7346,6 +7531,185 @@
                         }
                       },
                       "model": { "type": "string", "const": "seedance2" }
+                    },
+                    "required": ["promptText", "model"],
+                    "additionalProperties": false
+                  },
+                  {
+                    "title": "seedance2_fast",
+                    "type": "object",
+                    "properties": {
+                      "promptText": {
+                        "description": "A non-empty text prompt up to 3500 characters describing what should appear in the output.",
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 3500
+                      },
+                      "audio": {
+                        "description": "Whether to generate audio for the video. Audio inclusion affects pricing.",
+                        "default": true,
+                        "type": "boolean"
+                      },
+                      "duration": {
+                        "description": "The number of seconds of duration for the output video.",
+                        "type": "integer",
+                        "minimum": 4,
+                        "maximum": 15
+                      },
+                      "ratio": {
+                        "description": "The resolution of the output video. Seedance 2.0 Fast supports 480p and 720p only.",
+                        "type": "string",
+                        "enum": [
+                          "992:432",
+                          "864:496",
+                          "752:560",
+                          "640:640",
+                          "560:752",
+                          "496:864",
+                          "1470:630",
+                          "1280:720",
+                          "1112:834",
+                          "960:960",
+                          "834:1112",
+                          "720:1280"
+                        ]
+                      },
+                      "references": {
+                        "description": "An optional array of image references (up to 9). See [our docs](/assets/inputs#images) on image inputs for more information.",
+                        "type": "array",
+                        "items": {
+                          "title": "PromptImage",
+                          "x-stainless-variantName": "PromptImage",
+                          "type": "object",
+                          "properties": {
+                            "uri": {
+                              "description": "A HTTPS URL, Runway or data URI containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                              "example": "https://example.com/image.jpg",
+                              "anyOf": [
+                                {
+                                  "description": "A HTTPS URL.",
+                                  "example": "https://example.com/file",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 2048,
+                                  "pattern": "^https:\\/\\/.*"
+                                },
+                                {
+                                  "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                                  "example": "runway://<token>",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 5000,
+                                  "pattern": "^runway:\\/\\/.*"
+                                },
+                                {
+                                  "description": "A data URI containing encoded media.",
+                                  "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 5242880,
+                                  "pattern": "^data:image\\/.*"
+                                }
+                              ]
+                            },
+                            "position": {
+                              "description": "The position of the image in the output video. \"first\" will use the image as the first frame, \"last\" as the last frame. Omit for a reference image.",
+                              "type": "string",
+                              "enum": ["first", "last"]
+                            }
+                          },
+                          "required": ["uri"]
+                        }
+                      },
+                      "referenceVideos": {
+                        "description": "An optional array of video references. The combined duration across all video references must not exceed 15 seconds. See [our docs](/assets/inputs#videos) on video inputs for more information.",
+                        "maxItems": 3,
+                        "type": "array",
+                        "items": {
+                          "title": "VideoReference",
+                          "description": "A video reference allows the model to use the video as additional context for the output.",
+                          "type": "object",
+                          "properties": {
+                            "type": { "type": "string", "const": "video" },
+                            "uri": {
+                              "description": "A HTTPS URL, Runway or data URI containing an encoded video. See [our docs](/assets/inputs#videos) on video inputs for more information.",
+                              "example": "https://example.com/video.mp4",
+                              "anyOf": [
+                                {
+                                  "description": "A HTTPS URL.",
+                                  "example": "https://example.com/file",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 2048,
+                                  "pattern": "^https:\\/\\/.*"
+                                },
+                                {
+                                  "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                                  "example": "runway://<token>",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 5000,
+                                  "pattern": "^runway:\\/\\/.*"
+                                },
+                                {
+                                  "description": "A data URI containing encoded media.",
+                                  "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 16777216,
+                                  "pattern": "^data:video\\/.*"
+                                }
+                              ]
+                            }
+                          },
+                          "required": ["type", "uri"]
+                        }
+                      },
+                      "referenceAudio": {
+                        "description": "An optional array of audio references. Audio references require a text prompt, and the total combined duration must not exceed 15 seconds.",
+                        "maxItems": 3,
+                        "type": "array",
+                        "items": {
+                          "title": "AudioReference",
+                          "description": "An audio reference allows the model to use the audio as additional context for the output.",
+                          "type": "object",
+                          "properties": {
+                            "type": { "type": "string", "const": "audio" },
+                            "uri": {
+                              "description": "A HTTPS URL, Runway or data URI containing an encoded audio. See [our docs](/assets/inputs#audio) on audio inputs for more information.",
+                              "example": "https://example.com/audio.mp3",
+                              "anyOf": [
+                                {
+                                  "description": "A HTTPS URL.",
+                                  "example": "https://example.com/file",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 2048,
+                                  "pattern": "^https:\\/\\/.*"
+                                },
+                                {
+                                  "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                                  "example": "runway://<token>",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 5000,
+                                  "pattern": "^runway:\\/\\/.*"
+                                },
+                                {
+                                  "description": "A data URI containing encoded media.",
+                                  "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 16777216,
+                                  "pattern": "^data:audio\\/.*"
+                                }
+                              ]
+                            }
+                          },
+                          "required": ["type", "uri"]
+                        }
+                      },
+                      "model": { "type": "string", "const": "seedance2_fast" }
                     },
                     "required": ["promptText", "model"],
                     "additionalProperties": false
@@ -7564,7 +7928,8 @@
                             "type": "string",
                             "enum": ["auto", "low"]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "model": { "type": "string", "const": "gen4_aleph" }
                     },
@@ -7816,7 +8181,8 @@
                             "type": "string",
                             "enum": ["auto", "low"]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "model": { "type": "string", "const": "aleph2" }
                     },
@@ -7857,7 +8223,7 @@
                         ]
                       },
                       "promptText": {
-                        "description": "An optional text prompt up to 3500 characters describing what should appear in the output video.",
+                        "description": "An optional text prompt up to 3500 characters describing what should appear in the output.",
                         "type": "string",
                         "minLength": 1,
                         "maxLength": 3500
@@ -8036,6 +8402,215 @@
                     },
                     "required": ["promptVideo", "model"],
                     "additionalProperties": false
+                  },
+                  {
+                    "title": "seedance2_fast",
+                    "type": "object",
+                    "properties": {
+                      "promptVideo": {
+                        "description": "The input video to use as a reference for the output video. If additional video references are provided, the combined duration across all video references must not exceed 15 seconds.",
+                        "example": "https://example.com/video.mp4",
+                        "anyOf": [
+                          {
+                            "description": "A HTTPS URL.",
+                            "example": "https://example.com/file",
+                            "type": "string",
+                            "minLength": 13,
+                            "maxLength": 2048,
+                            "pattern": "^https:\\/\\/.*"
+                          },
+                          {
+                            "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                            "example": "runway://<token>",
+                            "type": "string",
+                            "minLength": 13,
+                            "maxLength": 5000,
+                            "pattern": "^runway:\\/\\/.*"
+                          },
+                          {
+                            "description": "A data URI containing encoded media.",
+                            "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                            "type": "string",
+                            "minLength": 13,
+                            "maxLength": 16777216,
+                            "pattern": "^data:video\\/.*"
+                          }
+                        ]
+                      },
+                      "promptText": {
+                        "description": "An optional text prompt up to 3500 characters describing what should appear in the output.",
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 3500
+                      },
+                      "audio": {
+                        "description": "Whether to generate audio for the video. Audio inclusion affects pricing.",
+                        "default": true,
+                        "type": "boolean"
+                      },
+                      "duration": {
+                        "description": "The number of seconds of duration for the output video.",
+                        "type": "integer",
+                        "minimum": 4,
+                        "maximum": 15
+                      },
+                      "ratio": {
+                        "description": "The resolution of the output video. Seedance 2.0 Fast supports 480p and 720p only.",
+                        "type": "string",
+                        "enum": [
+                          "992:432",
+                          "864:496",
+                          "752:560",
+                          "640:640",
+                          "560:752",
+                          "496:864",
+                          "1470:630",
+                          "1280:720",
+                          "1112:834",
+                          "960:960",
+                          "834:1112",
+                          "720:1280"
+                        ]
+                      },
+                      "references": {
+                        "description": "An optional array of image references (up to 9). See [our docs](/assets/inputs#images) on image inputs for more information.",
+                        "type": "array",
+                        "items": {
+                          "title": "PromptImage",
+                          "x-stainless-variantName": "PromptImage",
+                          "type": "object",
+                          "properties": {
+                            "uri": {
+                              "description": "A HTTPS URL, Runway or data URI containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                              "example": "https://example.com/image.jpg",
+                              "anyOf": [
+                                {
+                                  "description": "A HTTPS URL.",
+                                  "example": "https://example.com/file",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 2048,
+                                  "pattern": "^https:\\/\\/.*"
+                                },
+                                {
+                                  "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                                  "example": "runway://<token>",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 5000,
+                                  "pattern": "^runway:\\/\\/.*"
+                                },
+                                {
+                                  "description": "A data URI containing encoded media.",
+                                  "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 5242880,
+                                  "pattern": "^data:image\\/.*"
+                                }
+                              ]
+                            },
+                            "position": {
+                              "description": "The position of the image in the output video. \"first\" will use the image as the first frame, \"last\" as the last frame. Omit for a reference image.",
+                              "type": "string",
+                              "enum": ["first", "last"]
+                            }
+                          },
+                          "required": ["uri"]
+                        }
+                      },
+                      "referenceVideos": {
+                        "description": "An optional array of video references. The combined duration across all video references must not exceed 15 seconds. See [our docs](/assets/inputs#videos) on video inputs for more information.",
+                        "maxItems": 3,
+                        "type": "array",
+                        "items": {
+                          "title": "VideoReference",
+                          "description": "A video reference allows the model to use the video as additional context for the output.",
+                          "type": "object",
+                          "properties": {
+                            "type": { "type": "string", "const": "video" },
+                            "uri": {
+                              "description": "A HTTPS URL, Runway or data URI containing an encoded video. See [our docs](/assets/inputs#videos) on video inputs for more information.",
+                              "example": "https://example.com/video.mp4",
+                              "anyOf": [
+                                {
+                                  "description": "A HTTPS URL.",
+                                  "example": "https://example.com/file",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 2048,
+                                  "pattern": "^https:\\/\\/.*"
+                                },
+                                {
+                                  "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                                  "example": "runway://<token>",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 5000,
+                                  "pattern": "^runway:\\/\\/.*"
+                                },
+                                {
+                                  "description": "A data URI containing encoded media.",
+                                  "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 16777216,
+                                  "pattern": "^data:video\\/.*"
+                                }
+                              ]
+                            }
+                          },
+                          "required": ["type", "uri"]
+                        }
+                      },
+                      "referenceAudio": {
+                        "description": "An optional array of audio references. Audio references require a text prompt, and the total combined duration must not exceed 15 seconds.",
+                        "maxItems": 3,
+                        "type": "array",
+                        "items": {
+                          "title": "AudioReference",
+                          "description": "An audio reference allows the model to use the audio as additional context for the output.",
+                          "type": "object",
+                          "properties": {
+                            "type": { "type": "string", "const": "audio" },
+                            "uri": {
+                              "description": "A HTTPS URL, Runway or data URI containing an encoded audio. See [our docs](/assets/inputs#audio) on audio inputs for more information.",
+                              "example": "https://example.com/audio.mp3",
+                              "anyOf": [
+                                {
+                                  "description": "A HTTPS URL.",
+                                  "example": "https://example.com/file",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 2048,
+                                  "pattern": "^https:\\/\\/.*"
+                                },
+                                {
+                                  "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                                  "example": "runway://<token>",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 5000,
+                                  "pattern": "^runway:\\/\\/.*"
+                                },
+                                {
+                                  "description": "A data URI containing encoded media.",
+                                  "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 16777216,
+                                  "pattern": "^data:audio\\/.*"
+                                }
+                              ]
+                            }
+                          },
+                          "required": ["type", "uri"]
+                        }
+                      },
+                      "model": { "type": "string", "const": "seedance2_fast" }
+                    },
+                    "required": ["promptVideo", "model"],
+                    "additionalProperties": false
                   }
                 ],
                 "discriminator": { "propertyName": "model" }
@@ -8201,7 +8776,8 @@
                             "type": "string",
                             "enum": ["auto", "low"]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "model": { "type": "string", "const": "gen4_image_turbo" }
                     },
@@ -8308,7 +8884,8 @@
                             "type": "string",
                             "enum": ["auto", "low"]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "model": { "type": "string", "const": "gen4_image" }
                     },
@@ -9148,7 +9725,8 @@
                             "type": "string",
                             "enum": ["auto", "low"]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "model": { "type": "string", "const": "act_two" }
                     },
@@ -10022,6 +10600,7 @@
                               "gwm1_avatar_async_text_to_video",
                               "voice_processing",
                               "seedance2",
+                              "seedance2_fast",
                               "magnific_precision_upscaler_v2",
                               "kling2.5_turbo_pro",
                               "kling3.0_pro",
@@ -10106,6 +10685,7 @@
                               "gwm1_avatar_async_text_to_video",
                               "voice_processing",
                               "seedance2",
+                              "seedance2_fast",
                               "magnific_precision_upscaler_v2",
                               "kling2.5_turbo_pro",
                               "kling3.0_pro",
@@ -10247,6 +10827,7 @@
                                     "gwm1_avatar_async_text_to_video",
                                     "voice_processing",
                                     "seedance2",
+                                    "seedance2_fast",
                                     "magnific_precision_upscaler_v2",
                                     "kling2.5_turbo_pro",
                                     "kling3.0_pro",
@@ -10309,6 +10890,7 @@
                           "gwm1_avatar_async_text_to_video",
                           "voice_processing",
                           "seedance2",
+                          "seedance2_fast",
                           "magnific_precision_upscaler_v2",
                           "kling2.5_turbo_pro",
                           "kling3.0_pro",
