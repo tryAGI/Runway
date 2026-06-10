@@ -3,10 +3,10 @@
 namespace Runway.JsonConverters
 {
     /// <inheritdoc />
-    public sealed class CreateImageToVideoRequestGen3aTurboPromptImagePromptImagePositionJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Runway.CreateImageToVideoRequestGen3aTurboPromptImagePromptImagePosition>
+    public sealed class CreateVideoToVideoRequestVariant1ContentModerationPublicFigureThresholdNullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Runway.CreateVideoToVideoRequestVariant1ContentModerationPublicFigureThreshold?>
     {
         /// <inheritdoc />
-        public override global::Runway.CreateImageToVideoRequestGen3aTurboPromptImagePromptImagePosition Read(
+        public override global::Runway.CreateVideoToVideoRequestVariant1ContentModerationPublicFigureThreshold? Read(
             ref global::System.Text.Json.Utf8JsonReader reader,
             global::System.Type typeToConvert,
             global::System.Text.Json.JsonSerializerOptions options)
@@ -18,7 +18,7 @@ namespace Runway.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::Runway.CreateImageToVideoRequestGen3aTurboPromptImagePromptImagePositionExtensions.ToEnum(stringValue) ?? default;
+                        return global::Runway.CreateVideoToVideoRequestVariant1ContentModerationPublicFigureThresholdExtensions.ToEnum(stringValue);
                     }
                     
                     break;
@@ -26,11 +26,11 @@ namespace Runway.JsonConverters
                 case global::System.Text.Json.JsonTokenType.Number:
                 {
                     var numValue = reader.GetInt32();
-                    return (global::Runway.CreateImageToVideoRequestGen3aTurboPromptImagePromptImagePosition)numValue;
+                    return (global::Runway.CreateVideoToVideoRequestVariant1ContentModerationPublicFigureThreshold)numValue;
                 }
                 case global::System.Text.Json.JsonTokenType.Null:
                 {
-                    return default(global::Runway.CreateImageToVideoRequestGen3aTurboPromptImagePromptImagePosition);
+                    return default(global::Runway.CreateVideoToVideoRequestVariant1ContentModerationPublicFigureThreshold?);
                 }
                 default:
                     throw new global::System.ArgumentOutOfRangeException(nameof(reader));
@@ -42,12 +42,19 @@ namespace Runway.JsonConverters
         /// <inheritdoc />
         public override void Write(
             global::System.Text.Json.Utf8JsonWriter writer,
-            global::Runway.CreateImageToVideoRequestGen3aTurboPromptImagePromptImagePosition value,
+            global::Runway.CreateVideoToVideoRequestVariant1ContentModerationPublicFigureThreshold? value,
             global::System.Text.Json.JsonSerializerOptions options)
         {
             writer = writer ?? throw new global::System.ArgumentNullException(nameof(writer));
 
-            writer.WriteStringValue(global::Runway.CreateImageToVideoRequestGen3aTurboPromptImagePromptImagePositionExtensions.ToValueString(value));
+            if (value == null)
+            {
+                writer.WriteNullValue();
+            }
+            else
+            {
+                writer.WriteStringValue(global::Runway.CreateVideoToVideoRequestVariant1ContentModerationPublicFigureThresholdExtensions.ToValueString(value.Value));
+            }
         }
     }
 }

@@ -6,7 +6,7 @@ namespace Runway
     /// <summary>
     /// 
     /// </summary>
-    public sealed partial class CreateVideoToVideoRequestAleph2KeyframeVariant1
+    public sealed partial class CreateVideoToVideoRequestVariant1KeyframeVariant2
     {
         /// <summary>
         /// A HTTPS URL, Runway or data URI containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.<br/>
@@ -18,11 +18,11 @@ namespace Runway
         public required string Uri { get; set; }
 
         /// <summary>
-        /// Absolute timestamp in seconds from the start of the input video when this guidance image should apply.
+        /// Position as a fraction [0.0, 1.0] of the input video duration when this guidance image should apply.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("seconds")]
+        [global::System.Text.Json.Serialization.JsonPropertyName("at")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required double Seconds { get; set; }
+        public required double At { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -31,30 +31,30 @@ namespace Runway
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CreateVideoToVideoRequestAleph2KeyframeVariant1" /> class.
+        /// Initializes a new instance of the <see cref="CreateVideoToVideoRequestVariant1KeyframeVariant2" /> class.
         /// </summary>
         /// <param name="uri">
         /// A HTTPS URL, Runway or data URI containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.<br/>
         /// Example: https://example.com/image.jpg
         /// </param>
-        /// <param name="seconds">
-        /// Absolute timestamp in seconds from the start of the input video when this guidance image should apply.
+        /// <param name="at">
+        /// Position as a fraction [0.0, 1.0] of the input video duration when this guidance image should apply.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
-        public CreateVideoToVideoRequestAleph2KeyframeVariant1(
+        public CreateVideoToVideoRequestVariant1KeyframeVariant2(
             string uri,
-            double seconds)
+            double at)
         {
             this.Uri = uri;
-            this.Seconds = seconds;
+            this.At = at;
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CreateVideoToVideoRequestAleph2KeyframeVariant1" /> class.
+        /// Initializes a new instance of the <see cref="CreateVideoToVideoRequestVariant1KeyframeVariant2" /> class.
         /// </summary>
-        public CreateVideoToVideoRequestAleph2KeyframeVariant1()
+        public CreateVideoToVideoRequestVariant1KeyframeVariant2()
         {
         }
 

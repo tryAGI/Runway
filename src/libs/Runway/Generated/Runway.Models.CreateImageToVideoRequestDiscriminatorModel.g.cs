@@ -11,10 +11,6 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
-        Gen3aTurbo,
-        /// <summary>
-        /// 
-        /// </summary>
         Gen45,
         /// <summary>
         /// 
@@ -58,7 +54,6 @@ namespace Runway
         {
             return value switch
             {
-                CreateImageToVideoRequestDiscriminatorModel.Gen3aTurbo => "gen3a_turbo",
                 CreateImageToVideoRequestDiscriminatorModel.Gen45 => "gen4.5",
                 CreateImageToVideoRequestDiscriminatorModel.Gen4Turbo => "gen4_turbo",
                 CreateImageToVideoRequestDiscriminatorModel.Happyhorse10 => "happyhorse_1_0",
@@ -77,7 +72,6 @@ namespace Runway
         {
             return value switch
             {
-                "gen3a_turbo" => CreateImageToVideoRequestDiscriminatorModel.Gen3aTurbo,
                 "gen4.5" => CreateImageToVideoRequestDiscriminatorModel.Gen45,
                 "gen4_turbo" => CreateImageToVideoRequestDiscriminatorModel.Gen4Turbo,
                 "happyhorse_1_0" => CreateImageToVideoRequestDiscriminatorModel.Happyhorse10,

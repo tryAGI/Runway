@@ -15,10 +15,6 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
-        Gen4Aleph,
-        /// <summary>
-        /// 
-        /// </summary>
         Seedance2,
         /// <summary>
         /// 
@@ -39,7 +35,6 @@ namespace Runway
             return value switch
             {
                 CreateVideoToVideoRequestDiscriminatorModel.Aleph2 => "aleph2",
-                CreateVideoToVideoRequestDiscriminatorModel.Gen4Aleph => "gen4_aleph",
                 CreateVideoToVideoRequestDiscriminatorModel.Seedance2 => "seedance2",
                 CreateVideoToVideoRequestDiscriminatorModel.Seedance2Fast => "seedance2_fast",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
@@ -53,7 +48,6 @@ namespace Runway
             return value switch
             {
                 "aleph2" => CreateVideoToVideoRequestDiscriminatorModel.Aleph2,
-                "gen4_aleph" => CreateVideoToVideoRequestDiscriminatorModel.Gen4Aleph,
                 "seedance2" => CreateVideoToVideoRequestDiscriminatorModel.Seedance2,
                 "seedance2_fast" => CreateVideoToVideoRequestDiscriminatorModel.Seedance2Fast,
                 _ => null,

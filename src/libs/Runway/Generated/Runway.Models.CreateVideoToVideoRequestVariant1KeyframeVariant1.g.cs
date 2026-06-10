@@ -6,7 +6,7 @@ namespace Runway
     /// <summary>
     /// 
     /// </summary>
-    public sealed partial class CreateVideoToVideoRequestAleph2PromptImageItem
+    public sealed partial class CreateVideoToVideoRequestVariant1KeyframeVariant1
     {
         /// <summary>
         /// A HTTPS URL, Runway or data URI containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.<br/>
@@ -18,12 +18,11 @@ namespace Runway
         public required string Uri { get; set; }
 
         /// <summary>
-        /// 
+        /// Absolute timestamp in seconds from the start of the input video when this guidance image should apply.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("position")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, string, global::Runway.CreateVideoToVideoRequestAleph2PromptImageItemPositionTimestampPosition, global::Runway.CreateVideoToVideoRequestAleph2PromptImageItemPositionRelativePosition>))]
+        [global::System.Text.Json.Serialization.JsonPropertyName("seconds")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Runway.AnyOf<string, string, global::Runway.CreateVideoToVideoRequestAleph2PromptImageItemPositionTimestampPosition, global::Runway.CreateVideoToVideoRequestAleph2PromptImageItemPositionRelativePosition> Position { get; set; }
+        public required double Seconds { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -32,28 +31,30 @@ namespace Runway
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CreateVideoToVideoRequestAleph2PromptImageItem" /> class.
+        /// Initializes a new instance of the <see cref="CreateVideoToVideoRequestVariant1KeyframeVariant1" /> class.
         /// </summary>
         /// <param name="uri">
         /// A HTTPS URL, Runway or data URI containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.<br/>
         /// Example: https://example.com/image.jpg
         /// </param>
-        /// <param name="position"></param>
+        /// <param name="seconds">
+        /// Absolute timestamp in seconds from the start of the input video when this guidance image should apply.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
-        public CreateVideoToVideoRequestAleph2PromptImageItem(
+        public CreateVideoToVideoRequestVariant1KeyframeVariant1(
             string uri,
-            global::Runway.AnyOf<string, string, global::Runway.CreateVideoToVideoRequestAleph2PromptImageItemPositionTimestampPosition, global::Runway.CreateVideoToVideoRequestAleph2PromptImageItemPositionRelativePosition> position)
+            double seconds)
         {
             this.Uri = uri;
-            this.Position = position;
+            this.Seconds = seconds;
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CreateVideoToVideoRequestAleph2PromptImageItem" /> class.
+        /// Initializes a new instance of the <see cref="CreateVideoToVideoRequestVariant1KeyframeVariant1" /> class.
         /// </summary>
-        public CreateVideoToVideoRequestAleph2PromptImageItem()
+        public CreateVideoToVideoRequestVariant1KeyframeVariant1()
         {
         }
 

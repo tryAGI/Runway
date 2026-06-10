@@ -2,7 +2,7 @@
 
 namespace Runway
 {
-    public readonly partial struct ReferencesItem
+    public sealed partial class CreateVideoToVideoRequestVariant1KeyframeVariant2
     {
         /// <summary>
         /// Serializes the current instance to a JSON string using the provided JsonSerializerContext.
@@ -34,14 +34,14 @@ namespace Runway
         /// <summary>
         /// Deserializes a JSON string using the provided JsonSerializerContext.
         /// </summary>
-        public static global::Runway.ReferencesItem? FromJson(
+        public static global::Runway.CreateVideoToVideoRequestVariant1KeyframeVariant2? FromJson(
             string json,
             global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
         {
             return global::System.Text.Json.JsonSerializer.Deserialize(
                 json,
-                typeof(global::Runway.ReferencesItem),
-                jsonSerializerContext) as global::Runway.ReferencesItem?;
+                typeof(global::Runway.CreateVideoToVideoRequestVariant1KeyframeVariant2),
+                jsonSerializerContext) as global::Runway.CreateVideoToVideoRequestVariant1KeyframeVariant2;
         }
 
         /// <summary>
@@ -51,11 +51,11 @@ namespace Runway
         [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
         [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
 #endif
-        public static global::Runway.ReferencesItem? FromJson(
+        public static global::Runway.CreateVideoToVideoRequestVariant1KeyframeVariant2? FromJson(
             string json,
             global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
         {
-            return global::System.Text.Json.JsonSerializer.Deserialize<global::Runway.ReferencesItem>(
+            return global::System.Text.Json.JsonSerializer.Deserialize<global::Runway.CreateVideoToVideoRequestVariant1KeyframeVariant2>(
                 json,
                 jsonSerializerOptions);
         }
@@ -63,14 +63,14 @@ namespace Runway
         /// <summary>
         /// Deserializes a JSON stream using the provided JsonSerializerContext.
         /// </summary>
-        public static async global::System.Threading.Tasks.ValueTask<global::Runway.ReferencesItem?> FromJsonStreamAsync(
+        public static async global::System.Threading.Tasks.ValueTask<global::Runway.CreateVideoToVideoRequestVariant1KeyframeVariant2?> FromJsonStreamAsync(
             global::System.IO.Stream jsonStream,
             global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
         {
             return (await global::System.Text.Json.JsonSerializer.DeserializeAsync(
                 jsonStream,
-                typeof(global::Runway.ReferencesItem),
-                jsonSerializerContext).ConfigureAwait(false)) as global::Runway.ReferencesItem?;
+                typeof(global::Runway.CreateVideoToVideoRequestVariant1KeyframeVariant2),
+                jsonSerializerContext).ConfigureAwait(false)) as global::Runway.CreateVideoToVideoRequestVariant1KeyframeVariant2;
         }
 
         /// <summary>
@@ -80,11 +80,11 @@ namespace Runway
         [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
         [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
 #endif
-        public static global::System.Threading.Tasks.ValueTask<global::Runway.ReferencesItem?> FromJsonStreamAsync(
+        public static global::System.Threading.Tasks.ValueTask<global::Runway.CreateVideoToVideoRequestVariant1KeyframeVariant2?> FromJsonStreamAsync(
             global::System.IO.Stream jsonStream,
             global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
         {
-            return global::System.Text.Json.JsonSerializer.DeserializeAsync<global::Runway.ReferencesItem?>(
+            return global::System.Text.Json.JsonSerializer.DeserializeAsync<global::Runway.CreateVideoToVideoRequestVariant1KeyframeVariant2?>(
                 jsonStream,
                 jsonSerializerOptions);
         }
