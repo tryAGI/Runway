@@ -30,18 +30,18 @@ internal static partial class VoicesEditVoicesByIdCommandApiCommand
     {
         Description = @"An optional description of the voice.",
     };
-      private static Option<string?> Input { get; } = new(@"--input")
+      private static Option<string?> Input { get; } = new("--input")
       {
           Description = "Load request JSON from a file path, '-' for stdin, or an inline JSON object/array string.",
       };
 
-      private static Option<string?> RequestJson { get; } = new(@"--request-json")
+      private static Option<string?> RequestJson { get; } = new("--request-json")
       {
           Description = "Request body as JSON.",
           Hidden = true,
       };
 
-      private static Option<string?> RequestFile { get; } = new(@"--request-file")
+      private static Option<string?> RequestFile { get; } = new("--request-file")
       {
           Description = "Path to a JSON request file, or '-' for stdin.",
           Hidden = true,
@@ -86,7 +86,7 @@ Update the name and/or description of a custom voice.");
               var specifiedCount = (hasInput ? 1 : 0) + (hasRequestJson ? 1 : 0) + (hasRequestFile ? 1 : 0);
               if (specifiedCount > 1)
               {
-                  result.AddError(@"Specify at most one of --input, --request-json, or --request-file.");
+                  result.AddError("Specify at most one of --input, --request-json, or --request-file.");
               }
           });
 
@@ -102,8 +102,8 @@ Update the name and/or description of a custom voice.");
                             cancellationToken).ConfigureAwait(false);
                         var id = parseResult.GetRequiredValue(Id);
                         var xRunwayVersion = parseResult.GetRequiredValue(XRunwayVersion);
-                        var name = CliRuntime.WasSpecified(parseResult, NameOption) ? parseResult.GetValue(NameOption) : __requestBase is not null ? __requestBase.Name : default;
-                        var description = CliRuntime.WasSpecified(parseResult, DescriptionOption) ? parseResult.GetValue(DescriptionOption) : __requestBase is not null ? __requestBase.Description : default;
+                        var name = parseResult.GetValue(NameOption) ?? __requestBase?.Name;
+                        var description = parseResult.GetValue(DescriptionOption) ?? __requestBase?.Description;
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 

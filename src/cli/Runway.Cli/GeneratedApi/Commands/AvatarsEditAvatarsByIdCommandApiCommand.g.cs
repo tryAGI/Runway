@@ -60,18 +60,18 @@ internal static partial class AvatarsEditAvatarsByIdCommandApiCommand
     {
         Description = @"Controls image preprocessing. `optimize` improves the image for better avatar results. `none` uses the image as-is; quality not guaranteed.",
     };
-      private static Option<string?> Input { get; } = new(@"--input")
+      private static Option<string?> Input { get; } = new("--input")
       {
           Description = "Load request JSON from a file path, '-' for stdin, or an inline JSON object/array string.",
       };
 
-      private static Option<string?> RequestJson { get; } = new(@"--request-json")
+      private static Option<string?> RequestJson { get; } = new("--request-json")
       {
           Description = "Request body as JSON.",
           Hidden = true,
       };
 
-      private static Option<string?> RequestFile { get; } = new(@"--request-file")
+      private static Option<string?> RequestFile { get; } = new("--request-file")
       {
           Description = "Path to a JSON request file, or '-' for stdin.",
           Hidden = true,
@@ -121,7 +121,7 @@ Update an existing avatar. At least one field must be provided.");
               var specifiedCount = (hasInput ? 1 : 0) + (hasRequestJson ? 1 : 0) + (hasRequestFile ? 1 : 0);
               if (specifiedCount > 1)
               {
-                  result.AddError(@"Specify at most one of --input, --request-json, or --request-file.");
+                  result.AddError("Specify at most one of --input, --request-json, or --request-file.");
               }
           });
 
@@ -137,13 +137,13 @@ Update an existing avatar. At least one field must be provided.");
                             cancellationToken).ConfigureAwait(false);
                         var id = parseResult.GetRequiredValue(Id);
                         var xRunwayVersion = parseResult.GetRequiredValue(XRunwayVersion);
-                        var name = CliRuntime.WasSpecified(parseResult, NameOption) ? parseResult.GetValue(NameOption) : __requestBase is not null ? __requestBase.Name : default;
-                        var referenceImage = CliRuntime.WasSpecified(parseResult, ReferenceImage) ? parseResult.GetValue(ReferenceImage) : __requestBase is not null ? __requestBase.ReferenceImage : default;
-                        var personality = CliRuntime.WasSpecified(parseResult, Personality) ? parseResult.GetValue(Personality) : __requestBase is not null ? __requestBase.Personality : default;
-                        var startScript = CliRuntime.WasSpecified(parseResult, StartScript) ? parseResult.GetValue(StartScript) : __requestBase is not null ? __requestBase.StartScript : default;
-                        var voice = CliRuntime.WasSpecified(parseResult, Voice) ? parseResult.GetValue(Voice) : __requestBase is not null ? __requestBase.Voice : default;
-                        var documentIds = CliRuntime.WasSpecified(parseResult, DocumentIds) ? parseResult.GetValue(DocumentIds) : __requestBase is not null ? __requestBase.DocumentIds : default;
-                        var imageProcessing = CliRuntime.WasSpecified(parseResult, ImageProcessing) ? parseResult.GetValue(ImageProcessing) : __requestBase is not null ? __requestBase.ImageProcessing : default;
+                        var name = parseResult.GetValue(NameOption) ?? __requestBase?.Name;
+                        var referenceImage = parseResult.GetValue(ReferenceImage) ?? __requestBase?.ReferenceImage;
+                        var personality = parseResult.GetValue(Personality) ?? __requestBase?.Personality;
+                        var startScript = parseResult.GetValue(StartScript) ?? __requestBase?.StartScript;
+                        var voice = parseResult.GetValue(Voice) ?? __requestBase?.Voice;
+                        var documentIds = parseResult.GetValue(DocumentIds) ?? __requestBase?.DocumentIds;
+                        var imageProcessing = parseResult.GetValue(ImageProcessing) ?? __requestBase?.ImageProcessing;
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 

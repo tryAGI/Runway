@@ -50,18 +50,18 @@ internal static partial class RealtimeSessionsCreateRealtimeSessionsCommandApiCo
     {
         Description = @"Tools available to the avatar during the session.",
     };
-      private static Option<string?> Input { get; } = new(@"--input")
+      private static Option<string?> Input { get; } = new("--input")
       {
           Description = "Load request JSON from a file path, '-' for stdin, or an inline JSON object/array string.",
       };
 
-      private static Option<string?> RequestJson { get; } = new(@"--request-json")
+      private static Option<string?> RequestJson { get; } = new("--request-json")
       {
           Description = "Request body as JSON.",
           Hidden = true,
       };
 
-      private static Option<string?> RequestFile { get; } = new(@"--request-file")
+      private static Option<string?> RequestFile { get; } = new("--request-file")
       {
           Description = "Path to a JSON request file, or '-' for stdin.",
           Hidden = true,
@@ -109,7 +109,7 @@ Create a new realtime session with the specified model configuration. The return
               var specifiedCount = (hasInput ? 1 : 0) + (hasRequestJson ? 1 : 0) + (hasRequestFile ? 1 : 0);
               if (specifiedCount > 1)
               {
-                  result.AddError(@"Specify at most one of --input, --request-json, or --request-file.");
+                  result.AddError("Specify at most one of --input, --request-json, or --request-file.");
               }
           });
 
@@ -126,10 +126,10 @@ Create a new realtime session with the specified model configuration. The return
                         var xRunwayVersion = parseResult.GetRequiredValue(XRunwayVersion);
                         var model = parseResult.GetRequiredValue(Model);
                         var avatar = parseResult.GetRequiredValue(Avatar);
-                        var maxDuration = CliRuntime.WasSpecified(parseResult, MaxDuration) ? parseResult.GetValue(MaxDuration) : __requestBase is not null ? __requestBase.MaxDuration : default;
-                        var personality = CliRuntime.WasSpecified(parseResult, Personality) ? parseResult.GetValue(Personality) : __requestBase is not null ? __requestBase.Personality : default;
-                        var startScript = CliRuntime.WasSpecified(parseResult, StartScript) ? parseResult.GetValue(StartScript) : __requestBase is not null ? __requestBase.StartScript : default;
-                        var tools = CliRuntime.WasSpecified(parseResult, Tools) ? parseResult.GetValue(Tools) : __requestBase is not null ? __requestBase.Tools : default;
+                        var maxDuration = parseResult.GetValue(MaxDuration) ?? __requestBase?.MaxDuration;
+                        var personality = parseResult.GetValue(Personality) ?? __requestBase?.Personality;
+                        var startScript = parseResult.GetValue(StartScript) ?? __requestBase?.StartScript;
+                        var tools = parseResult.GetValue(Tools) ?? __requestBase?.Tools;
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
