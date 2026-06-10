@@ -6,7 +6,7 @@ namespace Runway
     /// <summary>
     /// 
     /// </summary>
-    public sealed partial class CreateVideoToVideoRequestAleph2
+    public sealed partial class CreateVideoToVideoRequestVariant1
     {
         /// <summary>
         /// A non-empty string up to 1000 characters describing what should appear in the output.
@@ -19,13 +19,7 @@ namespace Runway
         /// Timed guidance images placed at specific points in the input video. Up to 5 keyframes.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("keyframes")]
-        public global::System.Collections.Generic.IList<global::Runway.AnyOf<global::Runway.CreateVideoToVideoRequestAleph2KeyframeVariant1, global::Runway.CreateVideoToVideoRequestAleph2KeyframeVariant2>>? Keyframes { get; set; }
-
-        /// <summary>
-        /// A list of up to 5 image keyframes for guiding the edit at specific points in the video.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("promptImage")]
-        public global::System.Collections.Generic.IList<global::Runway.CreateVideoToVideoRequestAleph2PromptImageItem>? PromptImage { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.AnyOf<global::Runway.CreateVideoToVideoRequestVariant1KeyframeVariant1, global::Runway.CreateVideoToVideoRequestVariant1KeyframeVariant2>>? Keyframes { get; set; }
 
         /// <summary>
         /// The input video to edit. Must be 30 seconds or shorter.<br/>
@@ -46,7 +40,7 @@ namespace Runway
         /// Settings that affect the behavior of the content moderation system.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("contentModeration")]
-        public global::Runway.CreateVideoToVideoRequestAleph2ContentModeration? ContentModeration { get; set; }
+        public global::Runway.CreateVideoToVideoRequestVariant1ContentModeration? ContentModeration { get; set; }
 
         /// <summary>
         /// 
@@ -62,7 +56,7 @@ namespace Runway
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CreateVideoToVideoRequestAleph2" /> class.
+        /// Initializes a new instance of the <see cref="CreateVideoToVideoRequestVariant1" /> class.
         /// </summary>
         /// <param name="promptText">
         /// A non-empty string up to 1000 characters describing what should appear in the output.
@@ -74,9 +68,6 @@ namespace Runway
         /// <param name="keyframes">
         /// Timed guidance images placed at specific points in the input video. Up to 5 keyframes.
         /// </param>
-        /// <param name="promptImage">
-        /// A list of up to 5 image keyframes for guiding the edit at specific points in the video.
-        /// </param>
         /// <param name="seed">
         /// If unspecified, a random number is chosen. Varying the seed integer is a way to get different results for the same other request parameters. Using the same seed integer for an identical request will produce similar results.
         /// </param>
@@ -87,18 +78,16 @@ namespace Runway
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
-        public CreateVideoToVideoRequestAleph2(
+        public CreateVideoToVideoRequestVariant1(
             string promptText,
             string videoUri,
-            global::System.Collections.Generic.IList<global::Runway.AnyOf<global::Runway.CreateVideoToVideoRequestAleph2KeyframeVariant1, global::Runway.CreateVideoToVideoRequestAleph2KeyframeVariant2>>? keyframes,
-            global::System.Collections.Generic.IList<global::Runway.CreateVideoToVideoRequestAleph2PromptImageItem>? promptImage,
+            global::System.Collections.Generic.IList<global::Runway.AnyOf<global::Runway.CreateVideoToVideoRequestVariant1KeyframeVariant1, global::Runway.CreateVideoToVideoRequestVariant1KeyframeVariant2>>? keyframes,
             int? seed,
-            global::Runway.CreateVideoToVideoRequestAleph2ContentModeration? contentModeration,
+            global::Runway.CreateVideoToVideoRequestVariant1ContentModeration? contentModeration,
             string model = "aleph2")
         {
             this.PromptText = promptText ?? throw new global::System.ArgumentNullException(nameof(promptText));
             this.Keyframes = keyframes;
-            this.PromptImage = promptImage;
             this.VideoUri = videoUri;
             this.Seed = seed;
             this.ContentModeration = contentModeration;
@@ -106,9 +95,9 @@ namespace Runway
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CreateVideoToVideoRequestAleph2" /> class.
+        /// Initializes a new instance of the <see cref="CreateVideoToVideoRequestVariant1" /> class.
         /// </summary>
-        public CreateVideoToVideoRequestAleph2()
+        public CreateVideoToVideoRequestVariant1()
         {
         }
 

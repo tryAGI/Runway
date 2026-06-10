@@ -21,18 +21,11 @@ namespace Runway.JsonConverters
                             throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.CreateVideoToVideoRequestDiscriminator)}");
             var discriminator = global::System.Text.Json.JsonSerializer.Deserialize(ref readerCopy, discriminatorTypeInfo);
 
-            global::Runway.CreateVideoToVideoRequestGen4Aleph? gen4Aleph = default;
-            if (discriminator?.Model == global::Runway.CreateVideoToVideoRequestDiscriminatorModel.Gen4Aleph)
-            {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateVideoToVideoRequestGen4Aleph), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateVideoToVideoRequestGen4Aleph> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.CreateVideoToVideoRequestGen4Aleph)}");
-                gen4Aleph = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
-            }
-            global::Runway.CreateVideoToVideoRequestAleph2? aleph2 = default;
+            global::Runway.CreateVideoToVideoRequestVariant1? aleph2 = default;
             if (discriminator?.Model == global::Runway.CreateVideoToVideoRequestDiscriminatorModel.Aleph2)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateVideoToVideoRequestAleph2), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateVideoToVideoRequestAleph2> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.CreateVideoToVideoRequestAleph2)}");
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateVideoToVideoRequestVariant1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateVideoToVideoRequestVariant1> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.CreateVideoToVideoRequestVariant1)}");
                 aleph2 = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
             global::Runway.CreateVideoToVideoRequestSeedance2? seedance2 = default;
@@ -52,8 +45,6 @@ namespace Runway.JsonConverters
 
             var __value = new global::Runway.CreateVideoToVideoRequest(
                 discriminator?.Model,
-                gen4Aleph,
-
                 aleph2,
 
                 seedance2,
@@ -73,16 +64,10 @@ namespace Runway.JsonConverters
             options = options ?? throw new global::System.ArgumentNullException(nameof(options));
             var typeInfoResolver = options.TypeInfoResolver ?? throw new global::System.InvalidOperationException("TypeInfoResolver is not set.");
 
-            if (value.IsGen4Aleph)
+            if (value.IsAleph2)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateVideoToVideoRequestGen4Aleph), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateVideoToVideoRequestGen4Aleph?> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateVideoToVideoRequestGen4Aleph).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Gen4Aleph!, typeInfo);
-            }
-            else if (value.IsAleph2)
-            {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateVideoToVideoRequestAleph2), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateVideoToVideoRequestAleph2?> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateVideoToVideoRequestAleph2).Name}");
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateVideoToVideoRequestVariant1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateVideoToVideoRequestVariant1?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateVideoToVideoRequestVariant1).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.Aleph2!, typeInfo);
             }
             else if (value.IsSeedance2)

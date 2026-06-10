@@ -42,13 +42,6 @@ namespace Runway.JsonConverters
                                throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.CreateImageToVideoRequestVeo31)}");
                 veo31 = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
-            global::Runway.CreateImageToVideoRequestGen3aTurbo? gen3aTurbo = default;
-            if (discriminator?.Model == global::Runway.CreateImageToVideoRequestDiscriminatorModel.Gen3aTurbo)
-            {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateImageToVideoRequestGen3aTurbo), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateImageToVideoRequestGen3aTurbo> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.CreateImageToVideoRequestGen3aTurbo)}");
-                gen3aTurbo = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
-            }
             global::Runway.CreateImageToVideoRequestVeo31Fast? veo31Fast = default;
             if (discriminator?.Model == global::Runway.CreateImageToVideoRequestDiscriminatorModel.Veo31Fast)
             {
@@ -93,8 +86,6 @@ namespace Runway.JsonConverters
 
                 veo31,
 
-                gen3aTurbo,
-
                 veo31Fast,
 
                 happyhorse10,
@@ -135,12 +126,6 @@ namespace Runway.JsonConverters
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateImageToVideoRequestVeo31), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateImageToVideoRequestVeo31?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateImageToVideoRequestVeo31).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.Veo31!, typeInfo);
-            }
-            else if (value.IsGen3aTurbo)
-            {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateImageToVideoRequestGen3aTurbo), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateImageToVideoRequestGen3aTurbo?> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateImageToVideoRequestGen3aTurbo).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Gen3aTurbo!, typeInfo);
             }
             else if (value.IsVeo31Fast)
             {

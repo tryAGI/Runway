@@ -135,6 +135,10 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        ProductSwap,
+        /// <summary>
+        /// 
+        /// </summary>
         Seedance2,
         /// <summary>
         /// 
@@ -201,6 +205,7 @@ namespace Runway
                 CreateOrganizationUsageResponseResultUsedCreditModel.KlingO3Pro => "klingO3_pro",
                 CreateOrganizationUsageResponseResultUsedCreditModel.KlingO3Standard => "klingO3_standard",
                 CreateOrganizationUsageResponseResultUsedCreditModel.MagnificPrecisionUpscalerV2 => "magnific_precision_upscaler_v2",
+                CreateOrganizationUsageResponseResultUsedCreditModel.ProductSwap => "product_swap",
                 CreateOrganizationUsageResponseResultUsedCreditModel.Seedance2 => "seedance2",
                 CreateOrganizationUsageResponseResultUsedCreditModel.Seedance2Fast => "seedance2_fast",
                 CreateOrganizationUsageResponseResultUsedCreditModel.Veo3 => "veo3",
@@ -248,6 +253,7 @@ namespace Runway
                 "klingO3_pro" => CreateOrganizationUsageResponseResultUsedCreditModel.KlingO3Pro,
                 "klingO3_standard" => CreateOrganizationUsageResponseResultUsedCreditModel.KlingO3Standard,
                 "magnific_precision_upscaler_v2" => CreateOrganizationUsageResponseResultUsedCreditModel.MagnificPrecisionUpscalerV2,
+                "product_swap" => CreateOrganizationUsageResponseResultUsedCreditModel.ProductSwap,
                 "seedance2" => CreateOrganizationUsageResponseResultUsedCreditModel.Seedance2,
                 "seedance2_fast" => CreateOrganizationUsageResponseResultUsedCreditModel.Seedance2Fast,
                 "veo3" => CreateOrganizationUsageResponseResultUsedCreditModel.Veo3,

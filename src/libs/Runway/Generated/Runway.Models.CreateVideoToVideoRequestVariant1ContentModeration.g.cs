@@ -6,14 +6,14 @@ namespace Runway
     /// <summary>
     /// Settings that affect the behavior of the content moderation system.
     /// </summary>
-    public sealed partial class CreateVideoToVideoRequestGen4AlephContentModeration
+    public sealed partial class CreateVideoToVideoRequestVariant1ContentModeration
     {
         /// <summary>
         /// When set to `low`, the content moderation system will be less strict about preventing generations that include recognizable public figures.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("publicFigureThreshold")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestGen4AlephContentModerationPublicFigureThresholdJsonConverter))]
-        public global::Runway.CreateVideoToVideoRequestGen4AlephContentModerationPublicFigureThreshold? PublicFigureThreshold { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestVariant1ContentModerationPublicFigureThresholdJsonConverter))]
+        public global::Runway.CreateVideoToVideoRequestVariant1ContentModerationPublicFigureThreshold? PublicFigureThreshold { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -22,7 +22,7 @@ namespace Runway
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CreateVideoToVideoRequestGen4AlephContentModeration" /> class.
+        /// Initializes a new instance of the <see cref="CreateVideoToVideoRequestVariant1ContentModeration" /> class.
         /// </summary>
         /// <param name="publicFigureThreshold">
         /// When set to `low`, the content moderation system will be less strict about preventing generations that include recognizable public figures.
@@ -30,16 +30,16 @@ namespace Runway
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
-        public CreateVideoToVideoRequestGen4AlephContentModeration(
-            global::Runway.CreateVideoToVideoRequestGen4AlephContentModerationPublicFigureThreshold? publicFigureThreshold)
+        public CreateVideoToVideoRequestVariant1ContentModeration(
+            global::Runway.CreateVideoToVideoRequestVariant1ContentModerationPublicFigureThreshold? publicFigureThreshold)
         {
             this.PublicFigureThreshold = publicFigureThreshold;
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CreateVideoToVideoRequestGen4AlephContentModeration" /> class.
+        /// Initializes a new instance of the <see cref="CreateVideoToVideoRequestVariant1ContentModeration" /> class.
         /// </summary>
-        public CreateVideoToVideoRequestGen4AlephContentModeration()
+        public CreateVideoToVideoRequestVariant1ContentModeration()
         {
         }
 

@@ -135,6 +135,10 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        ProductSwap,
+        /// <summary>
+        /// 
+        /// </summary>
         Seedance2,
         /// <summary>
         /// 
@@ -201,6 +205,7 @@ namespace Runway
                 CreateOrganizationUsageResponseModel.KlingO3Pro => "klingO3_pro",
                 CreateOrganizationUsageResponseModel.KlingO3Standard => "klingO3_standard",
                 CreateOrganizationUsageResponseModel.MagnificPrecisionUpscalerV2 => "magnific_precision_upscaler_v2",
+                CreateOrganizationUsageResponseModel.ProductSwap => "product_swap",
                 CreateOrganizationUsageResponseModel.Seedance2 => "seedance2",
                 CreateOrganizationUsageResponseModel.Seedance2Fast => "seedance2_fast",
                 CreateOrganizationUsageResponseModel.Veo3 => "veo3",
@@ -248,6 +253,7 @@ namespace Runway
                 "klingO3_pro" => CreateOrganizationUsageResponseModel.KlingO3Pro,
                 "klingO3_standard" => CreateOrganizationUsageResponseModel.KlingO3Standard,
                 "magnific_precision_upscaler_v2" => CreateOrganizationUsageResponseModel.MagnificPrecisionUpscalerV2,
+                "product_swap" => CreateOrganizationUsageResponseModel.ProductSwap,
                 "seedance2" => CreateOrganizationUsageResponseModel.Seedance2,
                 "seedance2_fast" => CreateOrganizationUsageResponseModel.Seedance2Fast,
                 "veo3" => CreateOrganizationUsageResponseModel.Veo3,
