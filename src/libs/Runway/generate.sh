@@ -12,3 +12,21 @@ autosdk generate openapi.json \
   --targetFramework net10.0 \
   --output Generated \
   --exclude-deprecated-operations
+
+rm -rf ../../cli/Runway.Cli/GeneratedApi
+autosdk cli-project openapi.json \
+  --output ../../cli/Runway.Cli/GeneratedApi \
+  --api-only \
+  --sdk-project ../../libs/Runway/Runway.csproj \
+  --targetFramework net10.0 \
+  --namespace Runway \
+  --clientClassName RunwayClient \
+  --package-id Runway.Cli \
+  --root-namespace Runway.Cli.GeneratedApi \
+  --tool-command-name runway \
+  --user-secrets-id Runway.Cli \
+  --api-key-env-var RUNWAY_API_KEY \
+  --api-key-env-var RUNWAYML_API_SECRET \
+  --base-url-env-var RUNWAY_BASE_URL \
+  --cli-keep-api-group \
+  --exclude-deprecated-operations

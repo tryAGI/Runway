@@ -6,6 +6,7 @@ using System.Text;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using Runway;
+using Runway.Cli.GeneratedApi.Commands;
 
 // Historical CLI names → SDK types so the long-standing CLI surface stays callable.
 
@@ -29,6 +30,7 @@ var rootCommand = new RootCommand("Runway API CLI for generation, task, upload, 
     apiKeyOption,
     runwayVersionOption,
 };
+rootCommand.Subcommands.Add(ApiCommand.Create());
 
 var avatarCommand = new Command("avatar", "Manage avatars, avatar conversations, usage, and avatar videos.");
 rootCommand.Subcommands.Add(avatarCommand);
