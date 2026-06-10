@@ -25,18 +25,18 @@ internal static partial class UploadsCreateUploadsCommandApiCommand
     {
         Description = @"The type of upload to create",
     };
-      private static Option<string?> Input { get; } = new(@"--input")
+      private static Option<string?> Input { get; } = new("--input")
       {
           Description = "Load request JSON from a file path, '-' for stdin, or an inline JSON object/array string.",
       };
 
-      private static Option<string?> RequestJson { get; } = new(@"--request-json")
+      private static Option<string?> RequestJson { get; } = new("--request-json")
       {
           Description = "Request body as JSON.",
           Hidden = true,
       };
 
-      private static Option<string?> RequestFile { get; } = new(@"--request-file")
+      private static Option<string?> RequestFile { get; } = new("--request-file")
       {
           Description = "Path to a JSON request file, or '-' for stdin.",
           Hidden = true,
@@ -80,7 +80,7 @@ Uploads a temporary media file that can be referenced in API generation requests
               var specifiedCount = (hasInput ? 1 : 0) + (hasRequestJson ? 1 : 0) + (hasRequestFile ? 1 : 0);
               if (specifiedCount > 1)
               {
-                  result.AddError(@"Specify at most one of --input, --request-json, or --request-file.");
+                  result.AddError("Specify at most one of --input, --request-json, or --request-file.");
               }
           });
 
@@ -96,7 +96,7 @@ Uploads a temporary media file that can be referenced in API generation requests
                             cancellationToken).ConfigureAwait(false);
                         var xRunwayVersion = parseResult.GetRequiredValue(XRunwayVersion);
                         var filename = parseResult.GetRequiredValue(Filename);
-                        var type = CliRuntime.WasSpecified(parseResult, Type) ? parseResult.GetValue(Type) : __requestBase is not null ? __requestBase.Type : default;
+                        var type = parseResult.GetValue(Type) ?? __requestBase?.Type;
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 

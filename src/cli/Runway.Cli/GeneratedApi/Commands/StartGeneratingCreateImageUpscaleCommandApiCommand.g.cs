@@ -4,7 +4,7 @@ using System.CommandLine;
 
 namespace Runway.Cli.GeneratedApi.Commands;
 
-internal static partial class StartGeneratingCreateCharacterPerformanceCommandApiCommand
+internal static partial class StartGeneratingCreateImageUpscaleCommandApiCommand
 {
     private static Option<string> XRunwayVersion { get; } = new(
         name: @"--x-runway-version")
@@ -29,7 +29,7 @@ internal static partial class StartGeneratingCreateCharacterPerformanceCommandAp
           Hidden = true,
       };
 
-                    private static string FormatResponse(ParseResult parseResult, global::Runway.CreateCharacterPerformanceResponse value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
+                    private static string FormatResponse(ParseResult parseResult, global::Runway.CreateImageUpscaleResponse value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
                     {
                         string? text = null;
                         CustomizeResponseText(parseResult, value, ref text);
@@ -45,14 +45,14 @@ internal static partial class StartGeneratingCreateCharacterPerformanceCommandAp
                         return CliRuntime.FormatHumanReadable(value, context, truncateLongStrings, hints);
                     }
 
-                    static partial void CustomizeResponseText(ParseResult parseResult, global::Runway.CreateCharacterPerformanceResponse value, ref string? text);
+                    static partial void CustomizeResponseText(ParseResult parseResult, global::Runway.CreateImageUpscaleResponse value, ref string? text);
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
     public static Command Create()
     {
-        var command = new Command(@"create-character-performance", @"Control a character
-This endpoint will start a new task to control a character's facial expressions and body movements using a reference video.");
+        var command = new Command(@"create-image-upscale", @"Image upscale
+Upscale an image with Magnific precision upscaling. Each input dimension must be between 300px and 8000px. Output width and height are the input dimensions multiplied by `scaleFactor` (default 2). Output width times height cannot exceed 25,300,000 pixels (~25.3 million).");
                         command.Options.Add(XRunwayVersion);
           command.Options.Add(Input);
           command.Options.Add(RequestJson);
@@ -73,7 +73,7 @@ This endpoint will start a new task to control a character's facial expressions 
             await CliRuntime.RunAsync(async () =>
             {
                         var xRunwayVersion = parseResult.GetRequiredValue(XRunwayVersion);
-                        var request = await CliRuntime.ReadRequestAsync<global::Runway.CreateCharacterPerformanceRequest>(
+                        var request = await CliRuntime.ReadRequestAsync<global::Runway.CreateImageUpscaleRequest>(
                             parseResult,
                             Input,
                             RequestJson,
@@ -83,7 +83,7 @@ This endpoint will start a new task to control a character's facial expressions 
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
-                                var response = await client.StartGenerating.CreateCharacterPerformanceAsync(
+                                var response = await client.StartGenerating.CreateImageUpscaleAsync(
                                     xRunwayVersion: xRunwayVersion,
                                     request: request,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
