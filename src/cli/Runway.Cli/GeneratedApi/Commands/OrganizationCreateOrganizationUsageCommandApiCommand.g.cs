@@ -1,4 +1,5 @@
 #nullable enable
+#pragma warning disable CS0618
 
 using System.CommandLine;
 
@@ -24,18 +25,18 @@ internal static partial class OrganizationCreateOrganizationUsageCommandApiComma
     {
         Description = @"The end date of the usage data in ISO-8601 format (YYYY-MM-DD), not inclusive. If unspecified, it will default to thirty days after the start date. Must be less than or equal to 90 days after the start date. All dates are in UTC.",
     };
-      private static Option<string?> Input { get; } = new("--input")
+      private static Option<string?> Input { get; } = new(@"--input")
       {
           Description = "Load request JSON from a file path, '-' for stdin, or an inline JSON object/array string.",
       };
 
-      private static Option<string?> RequestJson { get; } = new("--request-json")
+      private static Option<string?> RequestJson { get; } = new(@"--request-json")
       {
           Description = "Request body as JSON.",
           Hidden = true,
       };
 
-      private static Option<string?> RequestFile { get; } = new("--request-file")
+      private static Option<string?> RequestFile { get; } = new(@"--request-file")
       {
           Description = "Path to a JSON request file, or '-' for stdin.",
           Hidden = true,
@@ -79,7 +80,7 @@ Fetch credit usage data broken down by model and day for the organization associ
               var specifiedCount = (hasInput ? 1 : 0) + (hasRequestJson ? 1 : 0) + (hasRequestFile ? 1 : 0);
               if (specifiedCount > 1)
               {
-                  result.AddError("Specify at most one of --input, --request-json, or --request-file.");
+                  result.AddError(@"Specify at most one of --input, --request-json, or --request-file.");
               }
           });
 
@@ -94,8 +95,8 @@ Fetch credit usage data broken down by model and day for the organization associ
                             global::Runway.SourceGenerationContext.Default,
                             cancellationToken).ConfigureAwait(false);
                         var xRunwayVersion = parseResult.GetRequiredValue(XRunwayVersion);
-                        var startDate = parseResult.GetValue(StartDate) ?? __requestBase?.StartDate;
-                        var beforeDate = parseResult.GetValue(BeforeDate) ?? __requestBase?.BeforeDate;
+                        var startDate = CliRuntime.WasSpecified(parseResult, StartDate) ? parseResult.GetValue(StartDate) : __requestBase is not null ? __requestBase.StartDate : default;
+                        var beforeDate = CliRuntime.WasSpecified(parseResult, BeforeDate) ? parseResult.GetValue(BeforeDate) : __requestBase is not null ? __requestBase.BeforeDate : default;
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
