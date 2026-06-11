@@ -1,4 +1,5 @@
 #nullable enable
+#pragma warning disable CS0618
 
 using System.CommandLine;
 
@@ -24,18 +25,18 @@ internal static partial class WorkflowsCreateWorkflowsByIdCommandApiCommand
     {
         Description = @"Optional node outputs to override default values. Keys are node IDs from the workflow graph, values are objects mapping output keys to typed values.",
     };
-      private static Option<string?> Input { get; } = new("--input")
+      private static Option<string?> Input { get; } = new(@"--input")
       {
           Description = "Load request JSON from a file path, '-' for stdin, or an inline JSON object/array string.",
       };
 
-      private static Option<string?> RequestJson { get; } = new("--request-json")
+      private static Option<string?> RequestJson { get; } = new(@"--request-json")
       {
           Description = "Request body as JSON.",
           Hidden = true,
       };
 
-      private static Option<string?> RequestFile { get; } = new("--request-file")
+      private static Option<string?> RequestFile { get; } = new(@"--request-file")
       {
           Description = "Path to a JSON request file, or '-' for stdin.",
           Hidden = true,
@@ -79,7 +80,7 @@ Start a new task to execute a published workflow. You can optionally provide cus
               var specifiedCount = (hasInput ? 1 : 0) + (hasRequestJson ? 1 : 0) + (hasRequestFile ? 1 : 0);
               if (specifiedCount > 1)
               {
-                  result.AddError("Specify at most one of --input, --request-json, or --request-file.");
+                  result.AddError(@"Specify at most one of --input, --request-json, or --request-file.");
               }
           });
 
@@ -95,7 +96,7 @@ Start a new task to execute a published workflow. You can optionally provide cus
                             cancellationToken).ConfigureAwait(false);
                         var id = parseResult.GetRequiredValue(Id);
                         var xRunwayVersion = parseResult.GetRequiredValue(XRunwayVersion);
-                        var nodeOutputs = parseResult.GetValue(NodeOutputs) ?? __requestBase?.NodeOutputs;
+                        var nodeOutputs = CliRuntime.WasSpecified(parseResult, NodeOutputs) ? parseResult.GetValue(NodeOutputs) : __requestBase is not null ? __requestBase.NodeOutputs : default;
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 

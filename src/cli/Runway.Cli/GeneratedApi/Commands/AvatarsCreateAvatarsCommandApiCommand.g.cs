@@ -1,4 +1,5 @@
 #nullable enable
+#pragma warning disable CS0618
 
 using System.CommandLine;
 
@@ -57,18 +58,18 @@ internal static partial class AvatarsCreateAvatarsCommandApiCommand
     {
         Description = @"Controls image preprocessing. `optimize` improves the image for better avatar results. `none` uses the image as-is; quality not guaranteed.",
     };
-      private static Option<string?> Input { get; } = new("--input")
+      private static Option<string?> Input { get; } = new(@"--input")
       {
           Description = "Load request JSON from a file path, '-' for stdin, or an inline JSON object/array string.",
       };
 
-      private static Option<string?> RequestJson { get; } = new("--request-json")
+      private static Option<string?> RequestJson { get; } = new(@"--request-json")
       {
           Description = "Request body as JSON.",
           Hidden = true,
       };
 
-      private static Option<string?> RequestFile { get; } = new("--request-file")
+      private static Option<string?> RequestFile { get; } = new(@"--request-file")
       {
           Description = "Path to a JSON request file, or '-' for stdin.",
           Hidden = true,
@@ -117,7 +118,7 @@ Create a new avatar with a reference image and voice.");
               var specifiedCount = (hasInput ? 1 : 0) + (hasRequestJson ? 1 : 0) + (hasRequestFile ? 1 : 0);
               if (specifiedCount > 1)
               {
-                  result.AddError("Specify at most one of --input, --request-json, or --request-file.");
+                  result.AddError(@"Specify at most one of --input, --request-json, or --request-file.");
               }
           });
 
@@ -135,10 +136,10 @@ Create a new avatar with a reference image and voice.");
                         var xRunwayVersion = parseResult.GetRequiredValue(XRunwayVersion);
                         var referenceImage = parseResult.GetRequiredValue(ReferenceImage);
                         var personality = parseResult.GetRequiredValue(Personality);
-                        var startScript = parseResult.GetValue(StartScript) ?? __requestBase?.StartScript;
+                        var startScript = CliRuntime.WasSpecified(parseResult, StartScript) ? parseResult.GetValue(StartScript) : __requestBase is not null ? __requestBase.StartScript : default;
                         var voice = parseResult.GetRequiredValue(Voice);
-                        var documentIds = parseResult.GetValue(DocumentIds) ?? __requestBase?.DocumentIds;
-                        var imageProcessing = parseResult.GetValue(ImageProcessing) ?? __requestBase?.ImageProcessing;
+                        var documentIds = CliRuntime.WasSpecified(parseResult, DocumentIds) ? parseResult.GetValue(DocumentIds) : __requestBase is not null ? __requestBase.DocumentIds : default;
+                        var imageProcessing = CliRuntime.WasSpecified(parseResult, ImageProcessing) ? parseResult.GetValue(ImageProcessing) : __requestBase is not null ? __requestBase.ImageProcessing : default;
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
