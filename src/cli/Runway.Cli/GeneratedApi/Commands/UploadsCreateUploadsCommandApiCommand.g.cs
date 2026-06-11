@@ -20,7 +20,7 @@ internal static partial class UploadsCreateUploadsCommandApiCommand
         Required = true,
     };
 
-    private static Option<global::Runway.CreateUploadsRequestType> Type { get; } = new(
+    private static Option<global::Runway.CreateUploadsRequestType?> Type { get; } = new(
         name: @"--type")
     {
         Description = @"The type of upload to create",
@@ -96,7 +96,7 @@ Uploads a temporary media file that can be referenced in API generation requests
                             cancellationToken).ConfigureAwait(false);
                         var xRunwayVersion = parseResult.GetRequiredValue(XRunwayVersion);
                         var filename = parseResult.GetRequiredValue(Filename);
-                        var type = parseResult.GetValue(Type) ?? __requestBase?.Type;
+                        var type = parseResult.GetValue(Type) ?? __requestBase?.Type ?? default;
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
