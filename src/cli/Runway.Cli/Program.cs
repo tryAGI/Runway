@@ -542,7 +542,7 @@ var imageQualityOption = new Option<string?>("--quality")
 
 var videoModelOption = new Option<string?>("--model")
 {
-    Description = "Video model. Text: gen4.5, veo3.1, veo3.1-fast, veo3. Image: gen4.5, gen4-turbo, gen3a-turbo, veo3.1, veo3.1-fast, veo3.",
+    Description = "Video model. Text: gen4.5, veo3.1, veo3.1-fast, veo3. Image: gen4.5, gen4-turbo, veo3.1, veo3.1-fast, happyhorse-1-0, seedance2, seedance2-fast, veo3.",
 };
 
 var generationDurationOption = new Option<double?>("--duration")
@@ -1564,7 +1564,7 @@ var sourceVideoOption = new Option<string?>("--video")
     Description = "Local path, HTTPS URL, Runway URI, or data URI video input.",
 };
 
-var videoToVideoCommand = new Command("video-to-video", "Start a video-to-video generation task with gen4_aleph.")
+var videoToVideoCommand = new Command("video-to-video", "Start a video-to-video generation task with aleph2.")
 {
     videoToVideoPromptArgument,
     sourceVideoOption,
@@ -1947,8 +1947,8 @@ modelsCommand.SetAction(_ =>
     Console.WriteLine("Video generation:");
     Console.WriteLine("  text-to-video: gen4.5, veo3.1, veo3.1_fast, veo3");
     Console.WriteLine("  short-video: multi-shot text-to-video orchestration over gen4.5, veo3.1, veo3.1_fast, veo3");
-    Console.WriteLine("  image-to-video: gen4.5, gen4_turbo, gen3a_turbo, veo3.1, veo3.1_fast, veo3");
-    Console.WriteLine("  video-to-video: gen4_aleph");
+    Console.WriteLine("  image-to-video: gen4.5, gen4_turbo, veo3.1, veo3.1_fast, happyhorse_1_0, seedance2, seedance2_fast, veo3");
+    Console.WriteLine("  video-to-video: aleph2, seedance2, seedance2_fast");
     Console.WriteLine("  character-performance: act_two");
     Console.WriteLine();
     Console.WriteLine("Image generation:");

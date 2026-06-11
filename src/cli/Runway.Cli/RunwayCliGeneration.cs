@@ -6,7 +6,7 @@ using Runway;
 internal static class RunwayCliGeneration
 {
     private static readonly string[] TextToVideoModels = ["gen4.5", "veo3.1", "veo3.1_fast", "veo3"];
-    private static readonly string[] ImageToVideoModels = ["gen4.5", "gen4_turbo", "veo3.1", "gen3a_turbo", "veo3.1_fast", "veo3"];
+    private static readonly string[] ImageToVideoModels = ["gen4.5", "gen4_turbo", "veo3.1", "veo3.1_fast", "happyhorse_1_0", "seedance2", "seedance2_fast", "veo3"];
     private static readonly string[] TextToImageModels = ["gen4_image_turbo", "gen4_image", "gemini_image3_pro", "gpt_image_2", "gemini_2.5_flash"];
 
     public static string JoinPrompt(string[]? values)
@@ -42,7 +42,7 @@ internal static class RunwayCliGeneration
         SetIfNotNull(body, "duration", duration);
         SetIfNotNull(body, "seed", seed);
 
-        if (normalizedModel is "veo3.1" or "veo3.1_fast")
+        if (normalizedModel is "veo3.1" or "veo3.1_fast" or "seedance2" or "seedance2_fast")
         {
             body["audio"] = audio;
         }
@@ -200,7 +200,7 @@ internal static class RunwayCliGeneration
     {
         var body = new JsonObject
         {
-            ["model"] = "gen4_aleph",
+            ["model"] = "aleph2",
             ["promptText"] = prompt,
             ["videoUri"] = await NormalizeInputAssetAsync(video, cancellationToken).ConfigureAwait(false),
         };
@@ -378,7 +378,8 @@ internal static class RunwayCliGeneration
         {
             "gen45" or "gen4_5" or "gen4-5" => "gen4.5",
             "gen4-turbo" => "gen4_turbo",
-            "gen3a-turbo" => "gen3a_turbo",
+            "happyhorse-1-0" or "happyhorse_1.0" => "happyhorse_1_0",
+            "seedance2-fast" or "seedance2_fast" => "seedance2_fast",
             "veo3.1-fast" or "veo3_1_fast" or "veo3-1-fast" => "veo3.1_fast",
             "veo3_1" or "veo3-1" => "veo3.1",
             "gemini-2.5-flash" => "gemini_2.5_flash",

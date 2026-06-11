@@ -21,13 +21,13 @@ public partial class Tests
 
         var response = await client.StartGenerating.CreateImageToVideoAsync(
             xRunwayVersion: "2024-11-06",
-            request: new CreateImageToVideoRequestGen3aTurbo
+            request: new CreateImageToVideoRequestSeedance2
             {
                 PromptImage = "https://example.com/photo.jpg",
                 PromptText = "A gentle zoom into the scene",
-                Model = "gen3a_turbo",
+                Model = "seedance2",
                 Duration = 5,
-                Ratio = CreateImageToVideoRequestGen3aTurboRatio.x1280_768,
+                Ratio = CreateImageToVideoRequestSeedance2Ratio.x1280_720,
             });
 
         Console.WriteLine($"Task ID: {response.Id}");

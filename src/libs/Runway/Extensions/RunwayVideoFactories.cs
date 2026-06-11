@@ -208,59 +208,94 @@ public static class RunwayImageToVideo
         });
     }
 
-    /// <summary>Builds a <c>gen3a_turbo</c> image-to-video request.</summary>
+    /// <summary>Builds a <c>seedance2</c> image-to-video request.</summary>
 #pragma warning disable CA1054
-    public static CreateImageToVideoRequest Gen3aTurbo(
+    public static CreateImageToVideoRequest Seedance2(
         string promptImageUri,
-        string promptText,
-        double? duration = null,
-        int? seed = null)
+        string? promptText = null,
+        bool? audio = null,
+        int? duration = null,
+        CreateImageToVideoRequestSeedance2Ratio? ratio = null,
+        global::System.Collections.Generic.IList<CreateImageToVideoRequestSeedance2ReferenceAudioItem>? referenceAudio = null)
 #pragma warning restore CA1054
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(promptImageUri);
-        ArgumentException.ThrowIfNullOrWhiteSpace(promptText);
 
-        return new CreateImageToVideoRequest(new CreateImageToVideoRequestGen3aTurbo
+        return new CreateImageToVideoRequest(new CreateImageToVideoRequestSeedance2
         {
-            PromptImage = new AnyOf<string?, global::System.Collections.Generic.IList<CreateImageToVideoRequestGen3aTurboPromptImagePromptImage>>(promptImageUri),
+            PromptImage = new AnyOf<string?, global::System.Collections.Generic.IList<CreateImageToVideoRequestSeedance2PromptImagePromptImage>>(promptImageUri),
             PromptText = promptText,
+            Audio = audio,
             Duration = duration,
-            Seed = seed,
+            Ratio = ratio,
+            ReferenceAudio = referenceAudio,
+        });
+    }
+
+    /// <summary>Builds a <c>seedance2_fast</c> image-to-video request.</summary>
+#pragma warning disable CA1054
+    public static CreateImageToVideoRequest Seedance2Fast(
+        string promptImageUri,
+        string? promptText = null,
+        bool? audio = null,
+        int? duration = null,
+        CreateImageToVideoRequestSeedance2FastRatio? ratio = null,
+        global::System.Collections.Generic.IList<CreateImageToVideoRequestSeedance2FastReferenceAudioItem>? referenceAudio = null)
+#pragma warning restore CA1054
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(promptImageUri);
+
+        return new CreateImageToVideoRequest(new CreateImageToVideoRequestSeedance2Fast
+        {
+            PromptImage = new AnyOf<string?, global::System.Collections.Generic.IList<CreateImageToVideoRequestSeedance2FastPromptImagePromptImage>>(promptImageUri),
+            PromptText = promptText,
+            Audio = audio,
+            Duration = duration,
+            Ratio = ratio,
+            ReferenceAudio = referenceAudio,
         });
     }
 }
 
 /// <summary>
-/// Short-named factory helpers for <c>POST /v1/video_to_video</c>. As of the current spec, only
-/// <c>gen4_aleph</c> is supported; the helper hides the verbose
-/// <c>CreateVideoToVideoRequestGen4Aleph</c> wrapping.
+/// Short-named factory helpers for <c>POST /v1/video_to_video</c>.
 /// </summary>
 public static class RunwayVideoToVideo
 {
     /// <summary>
-    /// Builds a <c>gen4_aleph</c> video-to-video request from an input video URI and a prompt.
-    /// The <c>ratio</c> field on the underlying spec is deprecated (output resolution is determined
-    /// by the input video) and intentionally omitted from this overload.
+    /// Builds an <c>aleph2</c> video-to-video request from an input video URI and a prompt.
+    /// </summary>
+#pragma warning disable CA1054 // Runway accepts HTTPS URLs, runway:// URIs, and data: URIs interchangeably.
+    public static CreateVideoToVideoRequest Aleph2(
+        string videoUri,
+        string promptText,
+        int? seed = null,
+        CreateVideoToVideoRequestVariant1ContentModeration? contentModeration = null)
+#pragma warning restore CA1054
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(videoUri);
+        ArgumentException.ThrowIfNullOrWhiteSpace(promptText);
+
+        return new CreateVideoToVideoRequest(new CreateVideoToVideoRequestVariant1
+        {
+            VideoUri = videoUri,
+            PromptText = promptText,
+            Seed = seed,
+            ContentModeration = contentModeration,
+        });
+    }
+
+    /// <summary>
+    /// Builds an <c>aleph2</c> video-to-video request from an input video URI and a prompt.
     /// </summary>
 #pragma warning disable CA1054 // Runway accepts HTTPS URLs, runway:// URIs, and data: URIs interchangeably.
     public static CreateVideoToVideoRequest Gen4Aleph(
         string videoUri,
         string promptText,
         int? seed = null,
-        global::System.Collections.Generic.IList<ReferencesItem>? references = null,
-        CreateVideoToVideoRequestGen4AlephContentModeration? contentModeration = null)
+        CreateVideoToVideoRequestVariant1ContentModeration? contentModeration = null)
 #pragma warning restore CA1054
     {
-        ArgumentException.ThrowIfNullOrWhiteSpace(videoUri);
-        ArgumentException.ThrowIfNullOrWhiteSpace(promptText);
-
-        return new CreateVideoToVideoRequest(new CreateVideoToVideoRequestGen4Aleph
-        {
-            VideoUri = videoUri,
-            PromptText = promptText,
-            Seed = seed,
-            References = references,
-            ContentModeration = contentModeration,
-        });
+        return Aleph2(videoUri, promptText, seed, contentModeration);
     }
 }

@@ -116,7 +116,7 @@ public static class RunwayBuiltInWorkflowExtensions
             foreach (var (innerKey, innerVal) in obj)
             {
                 if (innerVal is null) continue;
-                inner[innerKey] = innerVal;
+                inner[innerKey] = ToSerializerValue(innerVal);
             }
             nodeOutputsDict[key] = inner;
         }
@@ -160,6 +160,49 @@ public static class RunwayBuiltInWorkflowExtensions
 
     private static readonly IReadOnlyDictionary<Guid, IReadOnlyList<Uri>> EmptyOutputs =
         new Dictionary<Guid, IReadOnlyList<Uri>>();
+
+    private static object ToSerializerValue(JsonNode node)
+    {
+        if (node is JsonObject obj)
+        {
+            var dict = new Dictionary<string, object>(StringComparer.Ordinal);
+            foreach (var (key, child) in obj)
+            {
+                if (child is not null)
+                {
+                    dict[key] = ToSerializerValue(child);
+                }
+            }
+
+            return dict;
+        }
+
+        if (node is JsonArray array)
+        {
+            var list = new List<object>();
+            foreach (var value in array)
+            {
+                if (value is not null)
+                {
+                    list.Add(ToSerializerValue(value));
+                }
+            }
+
+            return list;
+        }
+
+        if (node is JsonValue jsonValue)
+        {
+            if (jsonValue.TryGetValue<string>(out var stringValue)) return stringValue;
+            if (jsonValue.TryGetValue<bool>(out var boolValue)) return boolValue;
+            if (jsonValue.TryGetValue<int>(out var intValue)) return intValue;
+            if (jsonValue.TryGetValue<long>(out var longValue)) return longValue;
+            if (jsonValue.TryGetValue<double>(out var doubleValue)) return doubleValue;
+            if (jsonValue.TryGetValue<decimal>(out var decimalValue)) return decimalValue;
+        }
+
+        return node.ToJsonString();
+    }
 
     private static string AssetTypeName(BuiltInWorkflowInputKind kind) => kind switch
     {

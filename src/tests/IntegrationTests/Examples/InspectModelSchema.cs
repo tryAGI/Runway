@@ -60,11 +60,10 @@ public partial class Tests
         // EnsureRequiredParametersProvided complains when a spec-required param is marked missing,
         // and translates spec property names to the CLI flag the user should add.
         var missingPromptImage = Action(() => RunwayModelSchema.EnsureRequiredParametersProvided(
-            "gen3a_turbo",
+            "gen4_turbo",
             "image_to_video",
             new Dictionary<string, bool>
             {
-                ["promptText"] = true,
                 ["promptImage"] = false,
                 ["ratio"] = true,
             }));

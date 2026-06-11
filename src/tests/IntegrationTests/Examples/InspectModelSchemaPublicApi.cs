@@ -41,13 +41,12 @@ public sealed class RunwayModelSchemaPublicApiTests
 
         Assert.ThrowsExactly<ArgumentException>(static () =>
             RunwayModelSchema.EnsureRequiredParametersProvided(
-                "gen3a_turbo",
+                "gen4_turbo",
                 "image_to_video",
                 new Dictionary<string, bool>
                 {
-                    ["promptText"] = false,
                     ["promptImage"] = true,
-                    ["ratio"] = true,
+                    ["ratio"] = false,
                 }));
 
         // Flag annotation renders the user-facing CLI flag.

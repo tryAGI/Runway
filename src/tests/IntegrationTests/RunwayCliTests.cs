@@ -104,6 +104,42 @@ public partial class Tests
     }
 
     [TestMethod]
+    public void RunwayWorkflowRequest_SerializesNestedNodeOutputs()
+    {
+        var request = new CreateWorkflowsRequest
+        {
+            NodeOutputs = new Dictionary<string, object>
+            {
+                ["d7b7f10e-4f4a-48e5-9b93-5d88c83f8f0a"] = new Dictionary<string, object>
+                {
+                    ["image"] = new Dictionary<string, object>
+                    {
+                        ["type"] = "image",
+                        ["uri"] = "runway://uploads/example",
+                    },
+                    ["strength"] = new Dictionary<string, object>
+                    {
+                        ["type"] = "primitive",
+                        ["value"] = 0.75,
+                    },
+                    ["enabled"] = new Dictionary<string, object>
+                    {
+                        ["type"] = "primitive",
+                        ["value"] = true,
+                    },
+                },
+            },
+        };
+
+        var json = request.ToJson();
+
+        json.Should().Contain("\"nodeOutputs\"");
+        json.Should().Contain("\"runway://uploads/example\"");
+        json.Should().Contain("0.75");
+        json.Should().Contain("true");
+    }
+
+    [TestMethod]
     public async Task RunwayCli_WorkflowBuiltIns_CategoryFilterByEnumName()
     {
         var result = await RunCliAsync("workflow built-ins --json --category PhotoRestyle", removeApiKey: true).ConfigureAwait(false);
@@ -155,7 +191,7 @@ public partial class Tests
         result.ExitCode.Should().Be(0);
         result.Stdout.Should().Contain("gen4.5");
         result.Stdout.Should().Contain("short-video");
-        result.Stdout.Should().Contain("gen4_aleph");
+        result.Stdout.Should().Contain("aleph2");
         result.Stdout.Should().Contain("gpt_image_2");
         result.Stdout.Should().Contain("eleven_voice_isolation");
         result.Stdout.Should().Contain("gwm1_avatars");
@@ -1512,19 +1548,19 @@ public partial class Tests
     }
 
     [TestMethod]
-    public void RunwayVideoToVideo_Gen4AlephWrapsAsGen4AlephVariant()
+    public void RunwayVideoToVideo_Aleph2WrapsAsAleph2Variant()
     {
-        var request = RunwayVideoToVideo.Gen4Aleph(
+        var request = RunwayVideoToVideo.Aleph2(
             "https://example.com/source.mp4",
             "Restyle as a watercolor painting.",
             seed: 7);
 
-        request.IsGen4Aleph.Should().BeTrue();
-        var body = request.Gen4Aleph!;
+        request.IsAleph2.Should().BeTrue();
+        var body = request.Aleph2!;
         body.VideoUri.Should().Be("https://example.com/source.mp4");
         body.PromptText.Should().Be("Restyle as a watercolor painting.");
         body.Seed.Should().Be(7);
-        body.Model.Should().Be("gen4_aleph");
+        body.Model.Should().Be("aleph2");
     }
 
     [TestMethod]
@@ -1547,8 +1583,7 @@ public partial class Tests
     {
         var supporters = RunwayRatioSupport.GetSupportingModels("1280:720");
 
-        // Every video-generating model accepts 1280:720.
-        supporters.Should().Contain(["veo3.1_fast", "veo3.1", "veo3", "gen4.5", "gen4_turbo", "gen4_aleph", "act_two"]);
+        supporters.Should().Contain(["veo3.1_fast", "veo3.1", "veo3", "gen4.5", "gen4_turbo", "seedance2", "seedance2_fast", "act_two"]);
     }
 
     [TestMethod]

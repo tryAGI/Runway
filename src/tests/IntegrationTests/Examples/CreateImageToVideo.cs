@@ -15,14 +15,14 @@ public partial class Tests
 
         var response = await client.StartGenerating.CreateImageToVideoAsync(
             xRunwayVersion: "2024-11-06",
-            request: new CreateImageToVideoRequestGen3aTurbo
+            request: new CreateImageToVideoRequestSeedance2
             {
                 PromptImage = "https://img.freepik.com/free-photo/beautiful-woman-with-long-blond-hair-looking-camera-outdoors-generated-by-artificial-intelligence_188544-240170.jpg",
                 PromptText = "The girl smiles a little",
-                Seed = 999999999,
-                Model = "gen3a_turbo",
+                Audio = true,
+                Model = "seedance2",
                 Duration = 5,
-                Ratio = CreateImageToVideoRequestGen3aTurboRatio.x1280_768,
+                Ratio = CreateImageToVideoRequestSeedance2Ratio.x1280_720,
             });
         response.Id.Should().NotBe(default(Guid));
 

@@ -169,14 +169,14 @@ using var client = new RunwayClient(apiKey);
 
 var response = await client.StartGenerating.CreateImageToVideoAsync(
     xRunwayVersion: "2024-11-06",
-    request: new CreateImageToVideoRequestGen3aTurbo
+    request: new CreateImageToVideoRequestSeedance2
     {
         PromptImage = "https://example.com/photo.jpg",
         PromptText = "The girl smiles a little",
-        Seed = 999999999,
-        Model = "gen3a_turbo",
+        Audio = true,
+        Model = "seedance2",
         Duration = 5,
-        Ratio = CreateImageToVideoRequestGen3aTurboRatio.x1280_768,
+        Ratio = CreateImageToVideoRequestSeedance2Ratio.x1280_720,
     });
 
 // Poll until complete
@@ -569,8 +569,8 @@ CLI endpoint and model coverage:
 | `video`, `text-to-video` | `POST /v1/text_to_video` | `gen4.5`, `veo3.1`, `veo3.1_fast`, `veo3` |
 | `short-video` | Multi-shot planner over `POST /v1/text_to_video`; `short-video run --plan` executes edited plan JSON; optionally concatenates downloaded clips with `ffmpeg` | `gen4.5`, `veo3.1`, `veo3.1_fast`, `veo3` |
 | `ad-video create` | Runway-native ad recipe planner over `POST /v1/text_to_video` or `POST /v1/image_to_video` when `--image` is supplied | `veo3.1_fast` by default; accepts video models |
-| `image-to-video` | `POST /v1/image_to_video` | `gen4.5`, `gen4_turbo`, `gen3a_turbo`, `veo3.1`, `veo3.1_fast`, `veo3` |
-| `video-to-video` | `POST /v1/video_to_video` | `gen4_aleph` |
+| `image-to-video` | `POST /v1/image_to_video` | `gen4.5`, `gen4_turbo`, `veo3.1`, `veo3.1_fast`, `happyhorse_1_0`, `seedance2`, `seedance2_fast`, `veo3` |
+| `video-to-video` | `POST /v1/video_to_video` | `aleph2`, `seedance2`, `seedance2_fast` |
 | `image` | `POST /v1/text_to_image` | `gen4_image_turbo`, `gen4_image`, `gemini_image3_pro`, `gpt_image_2`, `gemini_2.5_flash` |
 | `product-photoshoot create` | Runway-native product photoshoot recipe planner over `POST /v1/text_to_image` | `gpt_image_2` by default; accepts image models |
 | `marketplace-cards create` | Runway-native marketplace-style card recipe planner over `POST /v1/text_to_image` | `gpt_image_2` by default; accepts image models |
@@ -635,9 +635,9 @@ $ runway image "a poster" --model gen4_image_turbo
 # Model `gen4_image_turbo` on `text_to_image` requires referenceImages (--reference-image) per the Runway OpenAPI spec.
 # Run `runway models schema gen4_image_turbo` for the full parameter list.
 
-$ runway image-to-video --image ./pic.png --model gen3a_turbo
-# Model `gen3a_turbo` on `image_to_video` requires promptText (--prompt) per the Runway OpenAPI spec.
-# Run `runway models schema gen3a_turbo` for the full parameter list.
+$ runway image-to-video --image ./pic.png --model gen4_turbo
+# Model `gen4_turbo` on `image_to_video` requires ratio (--ratio) per the Runway OpenAPI spec.
+# Run `runway models schema gen4_turbo` for the full parameter list.
 
 $ runway text-to-video "a cinematic shot" --model gen4.5
 # Model `gen4.5` on `text_to_video` requires duration (--duration) per the Runway OpenAPI spec.
@@ -726,8 +726,8 @@ var characterRequest = RunwayCharacterPerformance.ActTwo(
     referenceVideoUri: "https://example.com/performance.mp4",
     bodyControl: true);
 
-// /v1/video_to_video — gen4_aleph passthrough (omits the deprecated `ratio` field)
-var restyle = RunwayVideoToVideo.Gen4Aleph(
+// /v1/video_to_video — aleph2 passthrough
+var restyle = RunwayVideoToVideo.Aleph2(
     "https://example.com/source.mp4",
     "Restyle as a watercolor painting.",
     seed: 7);
