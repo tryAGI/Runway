@@ -7813,6 +7813,20 @@
                         "minimum": 0,
                         "maximum": 4294967295
                       },
+                      "targetAspectRatio": {
+                        "description": "Target aspect ratio for expand/outpaint. Letterboxes the input video and keyframes before generation.",
+                        "type": "string",
+                        "enum": [
+                          "16:9",
+                          "4:3",
+                          "3:2",
+                          "1:1",
+                          "2:3",
+                          "3:4",
+                          "9:16",
+                          "21:9"
+                        ]
+                      },
                       "contentModeration": {
                         "description": "Settings that affect the behavior of the content moderation system.",
                         "type": "object",
