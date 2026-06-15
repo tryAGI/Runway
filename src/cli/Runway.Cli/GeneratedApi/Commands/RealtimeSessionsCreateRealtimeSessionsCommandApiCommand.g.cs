@@ -127,10 +127,10 @@ Create a new realtime session with the specified model configuration. The return
                         var xRunwayVersion = parseResult.GetRequiredValue(XRunwayVersion);
                         var model = parseResult.GetRequiredValue(Model);
                         var avatar = parseResult.GetRequiredValue(Avatar);
-                        var maxDuration = CliRuntime.WasSpecified(parseResult, MaxDuration) ? parseResult.GetValue(MaxDuration) : __requestBase is not null ? __requestBase.MaxDuration : default;
-                        var personality = CliRuntime.WasSpecified(parseResult, Personality) ? parseResult.GetValue(Personality) : __requestBase is not null ? __requestBase.Personality : default;
-                        var startScript = CliRuntime.WasSpecified(parseResult, StartScript) ? parseResult.GetValue(StartScript) : __requestBase is not null ? __requestBase.StartScript : default;
-                        var tools = CliRuntime.WasSpecified(parseResult, Tools) ? parseResult.GetValue(Tools) : __requestBase is not null ? __requestBase.Tools : default;
+                        var maxDuration = CliRuntime.WasSpecified(parseResult, MaxDuration) ? parseResult.GetValue(MaxDuration) : (__requestBase is { } __MaxDurationBaseValue ? __MaxDurationBaseValue.MaxDuration : default);
+                        var personality = CliRuntime.WasSpecified(parseResult, Personality) ? parseResult.GetValue(Personality) : (__requestBase is { } __PersonalityBaseValue ? __PersonalityBaseValue.Personality : default);
+                        var startScript = CliRuntime.WasSpecified(parseResult, StartScript) ? parseResult.GetValue(StartScript) : (__requestBase is { } __StartScriptBaseValue ? __StartScriptBaseValue.StartScript : default);
+                        var tools = CliRuntime.WasSpecified(parseResult, Tools) ? parseResult.GetValue(Tools) : (__requestBase is { } __ToolsBaseValue ? __ToolsBaseValue.Tools : default);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 

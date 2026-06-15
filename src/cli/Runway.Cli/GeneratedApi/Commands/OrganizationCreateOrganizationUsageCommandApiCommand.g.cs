@@ -95,8 +95,8 @@ Fetch credit usage data broken down by model and day for the organization associ
                             global::Runway.SourceGenerationContext.Default,
                             cancellationToken).ConfigureAwait(false);
                         var xRunwayVersion = parseResult.GetRequiredValue(XRunwayVersion);
-                        var startDate = CliRuntime.WasSpecified(parseResult, StartDate) ? parseResult.GetValue(StartDate) : __requestBase is not null ? __requestBase.StartDate : default;
-                        var beforeDate = CliRuntime.WasSpecified(parseResult, BeforeDate) ? parseResult.GetValue(BeforeDate) : __requestBase is not null ? __requestBase.BeforeDate : default;
+                        var startDate = CliRuntime.WasSpecified(parseResult, StartDate) ? parseResult.GetValue(StartDate) : (__requestBase is { } __StartDateBaseValue ? __StartDateBaseValue.StartDate : default);
+                        var beforeDate = CliRuntime.WasSpecified(parseResult, BeforeDate) ? parseResult.GetValue(BeforeDate) : (__requestBase is { } __BeforeDateBaseValue ? __BeforeDateBaseValue.BeforeDate : default);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
