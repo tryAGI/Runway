@@ -37,6 +37,13 @@ namespace Runway
         public int? Seed { get; set; }
 
         /// <summary>
+        /// Target aspect ratio for expand/outpaint. Letterboxes the input video and keyframes before generation.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("targetAspectRatio")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestVariant1TargetAspectRatioJsonConverter))]
+        public global::Runway.CreateVideoToVideoRequestVariant1TargetAspectRatio? TargetAspectRatio { get; set; }
+
+        /// <summary>
         /// Settings that affect the behavior of the content moderation system.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("contentModeration")]
@@ -71,6 +78,9 @@ namespace Runway
         /// <param name="seed">
         /// If unspecified, a random number is chosen. Varying the seed integer is a way to get different results for the same other request parameters. Using the same seed integer for an identical request will produce similar results.
         /// </param>
+        /// <param name="targetAspectRatio">
+        /// Target aspect ratio for expand/outpaint. Letterboxes the input video and keyframes before generation.
+        /// </param>
         /// <param name="contentModeration">
         /// Settings that affect the behavior of the content moderation system.
         /// </param>
@@ -83,6 +93,7 @@ namespace Runway
             string videoUri,
             global::System.Collections.Generic.IList<global::Runway.AnyOf<global::Runway.CreateVideoToVideoRequestVariant1KeyframeVariant1, global::Runway.CreateVideoToVideoRequestVariant1KeyframeVariant2>>? keyframes,
             int? seed,
+            global::Runway.CreateVideoToVideoRequestVariant1TargetAspectRatio? targetAspectRatio,
             global::Runway.CreateVideoToVideoRequestVariant1ContentModeration? contentModeration,
             string model = "aleph2")
         {
@@ -90,6 +101,7 @@ namespace Runway
             this.Keyframes = keyframes;
             this.VideoUri = videoUri;
             this.Seed = seed;
+            this.TargetAspectRatio = targetAspectRatio;
             this.ContentModeration = contentModeration;
             this.Model = model;
         }
