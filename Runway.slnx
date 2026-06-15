@@ -7,7 +7,6 @@
     <Project Path="src/libs/Runway/Runway.csproj" />
   </Folder>
   <Folder Name="/samples/">
-    <Project Path="src/samples/Runway.RealtimeWatchBridge.MediaBridge/Runway.RealtimeWatchBridge.MediaBridge.csproj" />
     <Project Path="src/samples/Runway.RealtimeWatchBridge/Runway.RealtimeWatchBridge.csproj" />
   </Folder>
   <Folder Name="/Solution Items/">

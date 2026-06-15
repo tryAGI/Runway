@@ -13,10 +13,18 @@ RUNWAY_API_KEY=... ASPNETCORE_URLS=http://127.0.0.1:5088 dotnet run
 
 Do not paste API keys into source files. Use `RUNWAY_API_KEY`, `RUNWAYML_API_SECRET`, or a `.env` file in this directory or a parent directory.
 
-The default media bridge is pure .NET and uses the sibling `Runway.RealtimeWatchBridge.MediaBridge` project. Build the full solution first if you want session startup to avoid the first-run `dotnet run --project` build cost:
+The default media bridge is pure .NET and uses the sibling `Runway.RealtimeWatchBridge.MediaBridge` project. That project depends on SixLabors ImageSharp 4.x and requires a SixLabors license (`SixLaborsLicenseKey`, `SixLaborsLicenseFile`, or `sixlabors.lic`) to build. It is intentionally not included in `Runway.slnx`, so the default solution build works without licensed sample dependencies.
+
+Build the media bridge directly when you have a SixLabors license and want session startup to avoid the first-run `dotnet run --project` build cost:
 
 ```bash
-dotnet build ../../../Runway.slnx
+dotnet build ../Runway.RealtimeWatchBridge.MediaBridge/Runway.RealtimeWatchBridge.MediaBridge.csproj
+```
+
+The integration tests that compile the media bridge are also opt-in:
+
+```bash
+dotnet test ../../tests/IntegrationTests/Runway.IntegrationTests.csproj -p:RunwayBuildLicensedSamples=true
 ```
 
 Set `RUNWAY_WATCH_BRIDGE_RUNTIME=node` to use the Node bridge in `media-bridge/` instead. The Node bridge requires `npm install` in that folder.

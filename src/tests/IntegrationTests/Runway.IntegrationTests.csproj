@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
+    <RunwayBuildLicensedSamples Condition="'$(RunwayBuildLicensedSamples)' == ''">false</RunwayBuildLicensedSamples>
   </PropertyGroup>
 
   <ItemGroup>
@@ -11,7 +12,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="AwesomeAssertions" Version="9.4.0" />
-    <PackageReference Include="SixLabors.ImageSharp" Version="4.0.0" Condition="'$(CI)' != 'true'" />
+    <PackageReference Include="SixLabors.ImageSharp" Version="4.0.0" Condition="'$(RunwayBuildLicensedSamples)' == 'true'" />
   </ItemGroup>
 
   <ItemGroup Label="GlobalUsings">
@@ -22,14 +23,14 @@
   <ItemGroup>
     <ProjectReference Include="..\..\cli\Runway.Cli\Runway.Cli.csproj" />
     <ProjectReference Include="..\..\libs\Runway\Runway.csproj" />
-    <ProjectReference Include="..\..\samples\Runway.RealtimeWatchBridge.MediaBridge\Runway.RealtimeWatchBridge.MediaBridge.csproj" Condition="'$(CI)' != 'true'" />
+    <ProjectReference Include="..\..\samples\Runway.RealtimeWatchBridge.MediaBridge\Runway.RealtimeWatchBridge.MediaBridge.csproj" Condition="'$(RunwayBuildLicensedSamples)' == 'true'" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="..\..\libs\Runway\Fixtures\workflows\*.json" Link="Fixtures\workflows\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
-  <ItemGroup Condition="'$(CI)' == 'true'">
+  <ItemGroup Condition="'$(RunwayBuildLicensedSamples)' != 'true'">
     <Compile Remove="MediaBridgeFfmpegArgumentTests.cs" />
     <Compile Remove="RealtimeWatchBridgeE2ETests.cs" />
     <Compile Remove="WatchBridgeDecoderFixtureTests.cs" />
