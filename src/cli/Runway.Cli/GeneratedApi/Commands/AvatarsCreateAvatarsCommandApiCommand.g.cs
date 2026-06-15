@@ -136,10 +136,10 @@ Create a new avatar with a reference image and voice.");
                         var xRunwayVersion = parseResult.GetRequiredValue(XRunwayVersion);
                         var referenceImage = parseResult.GetRequiredValue(ReferenceImage);
                         var personality = parseResult.GetRequiredValue(Personality);
-                        var startScript = CliRuntime.WasSpecified(parseResult, StartScript) ? parseResult.GetValue(StartScript) : __requestBase is not null ? __requestBase.StartScript : default;
+                        var startScript = CliRuntime.WasSpecified(parseResult, StartScript) ? parseResult.GetValue(StartScript) : (__requestBase is { } __StartScriptBaseValue ? __StartScriptBaseValue.StartScript : default);
                         var voice = parseResult.GetRequiredValue(Voice);
-                        var documentIds = CliRuntime.WasSpecified(parseResult, DocumentIds) ? parseResult.GetValue(DocumentIds) : __requestBase is not null ? __requestBase.DocumentIds : default;
-                        var imageProcessing = CliRuntime.WasSpecified(parseResult, ImageProcessing) ? parseResult.GetValue(ImageProcessing) : __requestBase is not null ? __requestBase.ImageProcessing : default;
+                        var documentIds = CliRuntime.WasSpecified(parseResult, DocumentIds) ? parseResult.GetValue(DocumentIds) : (__requestBase is { } __DocumentIdsBaseValue ? __DocumentIdsBaseValue.DocumentIds : default);
+                        var imageProcessing = CliRuntime.WasSpecified(parseResult, ImageProcessing) ? parseResult.GetValue(ImageProcessing) : (__requestBase is { } __ImageProcessingBaseValue ? __ImageProcessingBaseValue.ImageProcessing : default);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 

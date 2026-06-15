@@ -96,7 +96,7 @@ Start a new task to execute a published workflow. You can optionally provide cus
                             cancellationToken).ConfigureAwait(false);
                         var id = parseResult.GetRequiredValue(Id);
                         var xRunwayVersion = parseResult.GetRequiredValue(XRunwayVersion);
-                        var nodeOutputs = CliRuntime.WasSpecified(parseResult, NodeOutputs) ? parseResult.GetValue(NodeOutputs) : __requestBase is not null ? __requestBase.NodeOutputs : default;
+                        var nodeOutputs = CliRuntime.WasSpecified(parseResult, NodeOutputs) ? parseResult.GetValue(NodeOutputs) : (__requestBase is { } __NodeOutputsBaseValue ? __NodeOutputsBaseValue.NodeOutputs : default);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 

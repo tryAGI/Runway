@@ -138,13 +138,13 @@ Update an existing avatar. At least one field must be provided.");
                             cancellationToken).ConfigureAwait(false);
                         var id = parseResult.GetRequiredValue(Id);
                         var xRunwayVersion = parseResult.GetRequiredValue(XRunwayVersion);
-                        var name = CliRuntime.WasSpecified(parseResult, NameOption) ? parseResult.GetValue(NameOption) : __requestBase is not null ? __requestBase.Name : default;
-                        var referenceImage = CliRuntime.WasSpecified(parseResult, ReferenceImage) ? parseResult.GetValue(ReferenceImage) : __requestBase is not null ? __requestBase.ReferenceImage : default;
-                        var personality = CliRuntime.WasSpecified(parseResult, Personality) ? parseResult.GetValue(Personality) : __requestBase is not null ? __requestBase.Personality : default;
-                        var startScript = CliRuntime.WasSpecified(parseResult, StartScript) ? parseResult.GetValue(StartScript) : __requestBase is not null ? __requestBase.StartScript : default;
-                        var voice = CliRuntime.WasSpecified(parseResult, Voice) ? parseResult.GetValue(Voice) : __requestBase is not null ? __requestBase.Voice : default;
-                        var documentIds = CliRuntime.WasSpecified(parseResult, DocumentIds) ? parseResult.GetValue(DocumentIds) : __requestBase is not null ? __requestBase.DocumentIds : default;
-                        var imageProcessing = CliRuntime.WasSpecified(parseResult, ImageProcessing) ? parseResult.GetValue(ImageProcessing) : __requestBase is not null ? __requestBase.ImageProcessing : default;
+                        var name = CliRuntime.WasSpecified(parseResult, NameOption) ? parseResult.GetValue(NameOption) : (__requestBase is { } __NameBaseValue ? __NameBaseValue.Name : default);
+                        var referenceImage = CliRuntime.WasSpecified(parseResult, ReferenceImage) ? parseResult.GetValue(ReferenceImage) : (__requestBase is { } __ReferenceImageBaseValue ? __ReferenceImageBaseValue.ReferenceImage : default);
+                        var personality = CliRuntime.WasSpecified(parseResult, Personality) ? parseResult.GetValue(Personality) : (__requestBase is { } __PersonalityBaseValue ? __PersonalityBaseValue.Personality : default);
+                        var startScript = CliRuntime.WasSpecified(parseResult, StartScript) ? parseResult.GetValue(StartScript) : (__requestBase is { } __StartScriptBaseValue ? __StartScriptBaseValue.StartScript : default);
+                        var voice = CliRuntime.WasSpecified(parseResult, Voice) ? parseResult.GetValue(Voice) : (__requestBase is { } __VoiceBaseValue ? __VoiceBaseValue.Voice : default);
+                        var documentIds = CliRuntime.WasSpecified(parseResult, DocumentIds) ? parseResult.GetValue(DocumentIds) : (__requestBase is { } __DocumentIdsBaseValue ? __DocumentIdsBaseValue.DocumentIds : default);
+                        var imageProcessing = CliRuntime.WasSpecified(parseResult, ImageProcessing) ? parseResult.GetValue(ImageProcessing) : (__requestBase is { } __ImageProcessingBaseValue ? __ImageProcessingBaseValue.ImageProcessing : default);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
