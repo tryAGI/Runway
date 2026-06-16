@@ -97,7 +97,7 @@ Uploads a temporary media file that can be referenced in API generation requests
                             cancellationToken).ConfigureAwait(false);
                         var xRunwayVersion = parseResult.GetRequiredValue(XRunwayVersion);
                         var filename = parseResult.GetRequiredValue(Filename);
-                        var type = CliRuntime.WasSpecified(parseResult, Type) ? parseResult.GetValue(Type) : __requestBase is not null ? __requestBase.Type : default;
+                        var type = CliRuntime.WasSpecified(parseResult, Type) ? parseResult.GetValue(Type) : (__requestBase is { } __TypeBaseValue ? __TypeBaseValue.Type : default);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 

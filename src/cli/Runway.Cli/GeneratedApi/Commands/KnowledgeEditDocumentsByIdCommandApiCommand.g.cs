@@ -83,8 +83,8 @@ Update a knowledge document. At least one of `name` or `content` must be provide
                             cancellationToken).ConfigureAwait(false);
                         var id = parseResult.GetRequiredValue(Id);
                         var xRunwayVersion = parseResult.GetRequiredValue(XRunwayVersion);
-                        var name = CliRuntime.WasSpecified(parseResult, NameOption) ? parseResult.GetValue(NameOption) : __requestBase is not null ? __requestBase.Name : default;
-                        var content = CliRuntime.WasSpecified(parseResult, Content) ? parseResult.GetValue(Content) : __requestBase is not null ? __requestBase.Content : default;
+                        var name = CliRuntime.WasSpecified(parseResult, NameOption) ? parseResult.GetValue(NameOption) : (__requestBase is { } __NameBaseValue ? __NameBaseValue.Name : default);
+                        var content = CliRuntime.WasSpecified(parseResult, Content) ? parseResult.GetValue(Content) : (__requestBase is { } __ContentBaseValue ? __ContentBaseValue.Content : default);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
