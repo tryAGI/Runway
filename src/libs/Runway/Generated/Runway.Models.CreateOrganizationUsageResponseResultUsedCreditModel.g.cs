@@ -135,7 +135,27 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        MarketingStockImage,
+        /// <summary>
+        /// 
+        /// </summary>
+        MultiShotVideo,
+        /// <summary>
+        /// 
+        /// </summary>
+        ProductAd,
+        /// <summary>
+        /// 
+        /// </summary>
+        ProductCampaignImage,
+        /// <summary>
+        /// 
+        /// </summary>
         ProductSwap,
+        /// <summary>
+        /// 
+        /// </summary>
+        ProductUgc,
         /// <summary>
         /// 
         /// </summary>
@@ -205,7 +225,12 @@ namespace Runway
                 CreateOrganizationUsageResponseResultUsedCreditModel.KlingO3Pro => "klingO3_pro",
                 CreateOrganizationUsageResponseResultUsedCreditModel.KlingO3Standard => "klingO3_standard",
                 CreateOrganizationUsageResponseResultUsedCreditModel.MagnificPrecisionUpscalerV2 => "magnific_precision_upscaler_v2",
+                CreateOrganizationUsageResponseResultUsedCreditModel.MarketingStockImage => "marketing_stock_image",
+                CreateOrganizationUsageResponseResultUsedCreditModel.MultiShotVideo => "multi_shot_video",
+                CreateOrganizationUsageResponseResultUsedCreditModel.ProductAd => "product_ad",
+                CreateOrganizationUsageResponseResultUsedCreditModel.ProductCampaignImage => "product_campaign_image",
                 CreateOrganizationUsageResponseResultUsedCreditModel.ProductSwap => "product_swap",
+                CreateOrganizationUsageResponseResultUsedCreditModel.ProductUgc => "product_ugc",
                 CreateOrganizationUsageResponseResultUsedCreditModel.Seedance2 => "seedance2",
                 CreateOrganizationUsageResponseResultUsedCreditModel.Seedance2Fast => "seedance2_fast",
                 CreateOrganizationUsageResponseResultUsedCreditModel.Veo3 => "veo3",
@@ -253,7 +278,12 @@ namespace Runway
                 "klingO3_pro" => CreateOrganizationUsageResponseResultUsedCreditModel.KlingO3Pro,
                 "klingO3_standard" => CreateOrganizationUsageResponseResultUsedCreditModel.KlingO3Standard,
                 "magnific_precision_upscaler_v2" => CreateOrganizationUsageResponseResultUsedCreditModel.MagnificPrecisionUpscalerV2,
+                "marketing_stock_image" => CreateOrganizationUsageResponseResultUsedCreditModel.MarketingStockImage,
+                "multi_shot_video" => CreateOrganizationUsageResponseResultUsedCreditModel.MultiShotVideo,
+                "product_ad" => CreateOrganizationUsageResponseResultUsedCreditModel.ProductAd,
+                "product_campaign_image" => CreateOrganizationUsageResponseResultUsedCreditModel.ProductCampaignImage,
                 "product_swap" => CreateOrganizationUsageResponseResultUsedCreditModel.ProductSwap,
+                "product_ugc" => CreateOrganizationUsageResponseResultUsedCreditModel.ProductUgc,
                 "seedance2" => CreateOrganizationUsageResponseResultUsedCreditModel.Seedance2,
                 "seedance2_fast" => CreateOrganizationUsageResponseResultUsedCreditModel.Seedance2Fast,
                 "veo3" => CreateOrganizationUsageResponseResultUsedCreditModel.Veo3,

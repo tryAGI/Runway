@@ -135,7 +135,27 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        MarketingStockImage,
+        /// <summary>
+        /// 
+        /// </summary>
+        MultiShotVideo,
+        /// <summary>
+        /// 
+        /// </summary>
+        ProductAd,
+        /// <summary>
+        /// 
+        /// </summary>
+        ProductCampaignImage,
+        /// <summary>
+        /// 
+        /// </summary>
         ProductSwap,
+        /// <summary>
+        /// 
+        /// </summary>
+        ProductUgc,
         /// <summary>
         /// 
         /// </summary>
@@ -205,7 +225,12 @@ namespace Runway
                 CreateOrganizationUsageResponseModel.KlingO3Pro => "klingO3_pro",
                 CreateOrganizationUsageResponseModel.KlingO3Standard => "klingO3_standard",
                 CreateOrganizationUsageResponseModel.MagnificPrecisionUpscalerV2 => "magnific_precision_upscaler_v2",
+                CreateOrganizationUsageResponseModel.MarketingStockImage => "marketing_stock_image",
+                CreateOrganizationUsageResponseModel.MultiShotVideo => "multi_shot_video",
+                CreateOrganizationUsageResponseModel.ProductAd => "product_ad",
+                CreateOrganizationUsageResponseModel.ProductCampaignImage => "product_campaign_image",
                 CreateOrganizationUsageResponseModel.ProductSwap => "product_swap",
+                CreateOrganizationUsageResponseModel.ProductUgc => "product_ugc",
                 CreateOrganizationUsageResponseModel.Seedance2 => "seedance2",
                 CreateOrganizationUsageResponseModel.Seedance2Fast => "seedance2_fast",
                 CreateOrganizationUsageResponseModel.Veo3 => "veo3",
@@ -253,7 +278,12 @@ namespace Runway
                 "klingO3_pro" => CreateOrganizationUsageResponseModel.KlingO3Pro,
                 "klingO3_standard" => CreateOrganizationUsageResponseModel.KlingO3Standard,
                 "magnific_precision_upscaler_v2" => CreateOrganizationUsageResponseModel.MagnificPrecisionUpscalerV2,
+                "marketing_stock_image" => CreateOrganizationUsageResponseModel.MarketingStockImage,
+                "multi_shot_video" => CreateOrganizationUsageResponseModel.MultiShotVideo,
+                "product_ad" => CreateOrganizationUsageResponseModel.ProductAd,
+                "product_campaign_image" => CreateOrganizationUsageResponseModel.ProductCampaignImage,
                 "product_swap" => CreateOrganizationUsageResponseModel.ProductSwap,
+                "product_ugc" => CreateOrganizationUsageResponseModel.ProductUgc,
                 "seedance2" => CreateOrganizationUsageResponseModel.Seedance2,
                 "seedance2_fast" => CreateOrganizationUsageResponseModel.Seedance2Fast,
                 "veo3" => CreateOrganizationUsageResponseModel.Veo3,

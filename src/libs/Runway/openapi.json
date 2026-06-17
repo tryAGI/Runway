@@ -7673,7 +7673,7 @@
                     "type": "object",
                     "properties": {
                       "promptText": {
-                        "description": "A non-empty string up to 1000 characters describing what should appear in the output.",
+                        "description": "An optional string up to 1000 characters describing what should appear in the output.",
                         "type": "string",
                         "minLength": 1,
                         "maxLength": 1000
@@ -7813,6 +7813,7 @@
                         "minimum": 0,
                         "maximum": 4294967295
                       },
+                      "ratio": { "deprecated": true, "type": "string" },
                       "targetAspectRatio": {
                         "description": "Target aspect ratio for expand/outpaint. Letterboxes the input video and keyframes before generation.",
                         "type": "string",
@@ -7841,7 +7842,8 @@
                       },
                       "model": { "type": "string", "const": "aleph2" }
                     },
-                    "required": ["promptText", "videoUri", "model"]
+                    "required": ["videoUri", "model"],
+                    "additionalProperties": false
                   },
                   {
                     "title": "seedance2",
@@ -10266,7 +10268,12 @@
                               "klingO3_4k",
                               "happyhorse_1_0",
                               "aleph2",
-                              "product_swap"
+                              "product_swap",
+                              "product_ad",
+                              "multi_shot_video",
+                              "product_ugc",
+                              "marketing_stock_image",
+                              "product_campaign_image"
                             ]
                           },
                           "additionalProperties": {
@@ -10352,7 +10359,12 @@
                               "klingO3_4k",
                               "happyhorse_1_0",
                               "aleph2",
-                              "product_swap"
+                              "product_swap",
+                              "product_ad",
+                              "multi_shot_video",
+                              "product_ugc",
+                              "marketing_stock_image",
+                              "product_campaign_image"
                             ]
                           },
                           "additionalProperties": {
@@ -10495,7 +10507,12 @@
                                     "klingO3_4k",
                                     "happyhorse_1_0",
                                     "aleph2",
-                                    "product_swap"
+                                    "product_swap",
+                                    "product_ad",
+                                    "multi_shot_video",
+                                    "product_ugc",
+                                    "marketing_stock_image",
+                                    "product_campaign_image"
                                   ]
                                 },
                                 "amount": {
@@ -10559,7 +10576,12 @@
                           "klingO3_4k",
                           "happyhorse_1_0",
                           "aleph2",
-                          "product_swap"
+                          "product_swap",
+                          "product_ad",
+                          "multi_shot_video",
+                          "product_ugc",
+                          "marketing_stock_image",
+                          "product_campaign_image"
                         ]
                       }
                     }
@@ -10641,6 +10663,1087 @@
                     }
                   },
                   "required": ["uploadUrl", "fields", "runwayUri"],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "You have exceeded the rate limit for this endpoint.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": { "error": { "type": "string" } },
+                  "required": ["error"],
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/recipes/marketing_stock_image": {
+      "post": {
+        "tags": ["Recipes"],
+        "summary": "Create a marketing stock image",
+        "description": "Generate a polished marketing stock image from a text brief and optional brand logo image.",
+        "x-codeSamples": [
+          {
+            "lang": "TypeScript",
+            "label": "Node SDK",
+            "source": "// npm install --save @runwayml/sdk\nimport RunwayML from '@runwayml/sdk';\n\nconst client = new RunwayML();\n\nconst task = await client.recipes.marketingStockImage({\n  version: '2026-06',\n  prompt: 'Premium lifestyle photo for a sustainable travel backpack campaign, urban morning commute, natural copy space on the left',\n  referenceImage: { uri: 'https://example.com/brand-logo.png' },\n});\n\nconsole.log(task);"
+          },
+          {
+            "lang": "Python",
+            "label": "Python SDK",
+            "source": "# pip install runwayml\nfrom runwayml import RunwayML\n\nclient = RunwayML()\n\ntask = client.recipes.marketing_stock_image(\n    version='2026-06',\n    prompt='Premium lifestyle photo for a sustainable travel backpack campaign, urban morning commute, natural copy space on the left',\n    reference_image={'uri': 'https://example.com/brand-logo.png'},\n)\n\nprint(task)"
+          }
+        ],
+        "parameters": [{ "$ref": "#/components/parameters/X-Runway-Version" }],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "properties": {
+                  "version": {
+                    "description": "Workflow version. Use a dated version (e.g. \"2026-06\") to pin behavior, or \"unsafe-latest\" to track the newest stable version (may break without notice).",
+                    "type": "string",
+                    "enum": ["2026-06", "unsafe-latest"]
+                  },
+                  "prompt": {
+                    "description": "Marketing image brief. Describe the subject, audience, channel, desired mood, setting, and any constraints.",
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 3500
+                  },
+                  "referenceImage": {
+                    "description": "Optional brand logo image to guide the generated marketing stock image. See [our docs](/assets/inputs#images) on image inputs.",
+                    "type": "object",
+                    "properties": {
+                      "uri": {
+                        "description": "A HTTPS URL, Runway or data URI containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                        "example": "https://example.com/image.jpg",
+                        "anyOf": [
+                          {
+                            "description": "A HTTPS URL.",
+                            "example": "https://example.com/file",
+                            "type": "string",
+                            "minLength": 13,
+                            "maxLength": 2048,
+                            "pattern": "^https:\\/\\/.*"
+                          },
+                          {
+                            "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                            "example": "runway://<token>",
+                            "type": "string",
+                            "minLength": 13,
+                            "maxLength": 5000,
+                            "pattern": "^runway:\\/\\/.*"
+                          },
+                          {
+                            "description": "A data URI containing encoded media.",
+                            "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                            "type": "string",
+                            "minLength": 13,
+                            "maxLength": 5242880,
+                            "pattern": "^data:image\\/.*"
+                          }
+                        ]
+                      }
+                    },
+                    "required": ["uri"],
+                    "additionalProperties": false
+                  }
+                },
+                "required": ["version", "prompt"],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The task that was created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "description": "The ID of the task that was created. Use this to retrieve the task later.",
+                      "type": "string",
+                      "format": "uuid",
+                      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12})$"
+                    }
+                  },
+                  "required": ["id"],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "You have exceeded the rate limit for this endpoint.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": { "error": { "type": "string" } },
+                  "required": ["error"],
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/recipes/product_ad": {
+      "post": {
+        "tags": ["Recipes"],
+        "summary": "Create a product ad video",
+        "description": "Generate a cinematic product ad from product images, optional style references, product info, and creative direction.",
+        "x-codeSamples": [
+          {
+            "lang": "TypeScript",
+            "label": "Node SDK",
+            "source": "// npm install --save @runwayml/sdk\nimport RunwayML from '@runwayml/sdk';\n\nconst client = new RunwayML();\n\nconst task = await client.recipes.productAd({\n  version: '2026-06',\n  productImages: [\n    { uri: 'https://example.com/product-front.jpg' },\n    { uri: 'https://example.com/product-side.jpg' },\n  ],\n  productInfo: 'Organic cold-pressed juice, 12oz glass bottle',\n  userConcept: 'Bright, refreshing summer campaign with slow dolly moves',\n  duration: 10,\n});\n\nconsole.log(task);"
+          },
+          {
+            "lang": "Python",
+            "label": "Python SDK",
+            "source": "# pip install runwayml\nfrom runwayml import RunwayML\n\nclient = RunwayML()\n\ntask = client.recipes.product_ad(\n    version='2026-06',\n    product_images=[\n        {'uri': 'https://example.com/product-front.jpg'},\n        {'uri': 'https://example.com/product-side.jpg'},\n    ],\n    product_info='Organic cold-pressed juice, 12oz glass bottle',\n    user_concept='Bright, refreshing summer campaign with slow dolly moves',\n    duration=10,\n)\n\nprint(task)"
+          }
+        ],
+        "parameters": [{ "$ref": "#/components/parameters/X-Runway-Version" }],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "properties": {
+                  "version": {
+                    "description": "Workflow version. Use a dated version (e.g. \"2026-06\") to pin behavior, or \"unsafe-latest\" to track the newest stable version (may break without notice).",
+                    "type": "string",
+                    "enum": ["2026-06", "unsafe-latest"]
+                  },
+                  "productImages": {
+                    "description": "Product images (1–10). Multiple angles of the same product. All images inform product analysis and reference generation; only the first image is used as the primary product reference in the storyboard grid. See [our docs](/assets/inputs#images) on image inputs.",
+                    "minItems": 1,
+                    "maxItems": 10,
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "uri": {
+                          "description": "A HTTPS URL, Runway or data URI containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                          "example": "https://example.com/image.jpg",
+                          "anyOf": [
+                            {
+                              "description": "A HTTPS URL.",
+                              "example": "https://example.com/file",
+                              "type": "string",
+                              "minLength": 13,
+                              "maxLength": 2048,
+                              "pattern": "^https:\\/\\/.*"
+                            },
+                            {
+                              "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                              "example": "runway://<token>",
+                              "type": "string",
+                              "minLength": 13,
+                              "maxLength": 5000,
+                              "pattern": "^runway:\\/\\/.*"
+                            },
+                            {
+                              "description": "A data URI containing encoded media.",
+                              "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                              "type": "string",
+                              "minLength": 13,
+                              "maxLength": 5242880,
+                              "pattern": "^data:image\\/.*"
+                            }
+                          ]
+                        }
+                      },
+                      "required": ["uri"],
+                      "additionalProperties": false
+                    }
+                  },
+                  "styleImages": {
+                    "description": "Optional style reference images (0–4). Defines the visual treatment (lighting, palette, mood). Treated as a moodboard when multiple are provided.",
+                    "maxItems": 4,
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "uri": {
+                          "description": "A HTTPS URL, Runway or data URI containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                          "example": "https://example.com/image.jpg",
+                          "anyOf": [
+                            {
+                              "description": "A HTTPS URL.",
+                              "example": "https://example.com/file",
+                              "type": "string",
+                              "minLength": 13,
+                              "maxLength": 2048,
+                              "pattern": "^https:\\/\\/.*"
+                            },
+                            {
+                              "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                              "example": "runway://<token>",
+                              "type": "string",
+                              "minLength": 13,
+                              "maxLength": 5000,
+                              "pattern": "^runway:\\/\\/.*"
+                            },
+                            {
+                              "description": "A data URI containing encoded media.",
+                              "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                              "type": "string",
+                              "minLength": 13,
+                              "maxLength": 5242880,
+                              "pattern": "^data:image\\/.*"
+                            }
+                          ]
+                        }
+                      },
+                      "required": ["uri"],
+                      "additionalProperties": false
+                    }
+                  },
+                  "productInfo": {
+                    "description": "Optional product description and specifications to inform creative direction and which product elements to highlight.",
+                    "default": "",
+                    "type": "string",
+                    "maxLength": 2500
+                  },
+                  "userConcept": {
+                    "description": "Optional creative direction describing brand voice, product framing, scene specifics, lighting, camera motion, and narrative.",
+                    "default": "",
+                    "type": "string",
+                    "maxLength": 3500
+                  },
+                  "ratio": {
+                    "description": "The resolution of the output video.",
+                    "type": "string",
+                    "enum": [
+                      "1280:720",
+                      "720:1280",
+                      "960:960",
+                      "834:1112",
+                      "1920:1080",
+                      "1080:1920",
+                      "1440:1440",
+                      "1248:1664"
+                    ]
+                  },
+                  "duration": {
+                    "description": "Duration of the output video in seconds (4–15). Defaults to 10 seconds.",
+                    "type": "integer",
+                    "minimum": 4,
+                    "maximum": 15
+                  },
+                  "audio": {
+                    "description": "Whether to generate audio for the video.",
+                    "default": false,
+                    "type": "boolean"
+                  }
+                },
+                "required": ["version", "productImages"],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The task that was created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "description": "The ID of the task that was created. Use this to retrieve the task later.",
+                      "type": "string",
+                      "format": "uuid",
+                      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12})$"
+                    }
+                  },
+                  "required": ["id"],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "You have exceeded the rate limit for this endpoint.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": { "error": { "type": "string" } },
+                  "required": ["error"],
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/recipes/product_campaign_image": {
+      "post": {
+        "tags": ["Recipes"],
+        "summary": "Create product campaign images",
+        "description": "Generate four fashion campaign images from a product image and style brief.",
+        "x-codeSamples": [
+          {
+            "lang": "TypeScript",
+            "label": "Node SDK",
+            "source": "// npm install --save @runwayml/sdk\nimport RunwayML from '@runwayml/sdk';\n\nconst client = new RunwayML();\n\nconst task = await client.recipes.productCampaignImage({\n  version: '2026-06',\n  image: { uri: 'https://example.com/product.jpg' },\n  prompt: 'High-key fashion editorial, gorpcore-meets-blokecore-meets-Y2K',\n});\n\nconsole.log(task);"
+          },
+          {
+            "lang": "Python",
+            "label": "Python SDK",
+            "source": "# pip install runwayml\nfrom runwayml import RunwayML\n\nclient = RunwayML()\n\ntask = client.recipes.product_campaign_image(\n    version='2026-06',\n    image={'uri': 'https://example.com/product.jpg'},\n    prompt='High-key fashion editorial, gorpcore-meets-blokecore-meets-Y2K',\n)\n\nprint(task)"
+          }
+        ],
+        "parameters": [{ "$ref": "#/components/parameters/X-Runway-Version" }],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "properties": {
+                  "version": {
+                    "description": "Workflow version. Use a dated version (e.g. \"2026-06\") to pin behavior, or \"unsafe-latest\" to track the newest stable version (may break without notice).",
+                    "type": "string",
+                    "enum": ["2026-06", "unsafe-latest"]
+                  },
+                  "image": {
+                    "description": "Product image to preserve across the generated campaign. See [our docs](/assets/inputs#images) on image inputs.",
+                    "type": "object",
+                    "properties": {
+                      "uri": {
+                        "description": "A HTTPS URL, Runway or data URI containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                        "example": "https://example.com/image.jpg",
+                        "anyOf": [
+                          {
+                            "description": "A HTTPS URL.",
+                            "example": "https://example.com/file",
+                            "type": "string",
+                            "minLength": 13,
+                            "maxLength": 2048,
+                            "pattern": "^https:\\/\\/.*"
+                          },
+                          {
+                            "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                            "example": "runway://<token>",
+                            "type": "string",
+                            "minLength": 13,
+                            "maxLength": 5000,
+                            "pattern": "^runway:\\/\\/.*"
+                          },
+                          {
+                            "description": "A data URI containing encoded media.",
+                            "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                            "type": "string",
+                            "minLength": 13,
+                            "maxLength": 5242880,
+                            "pattern": "^data:image\\/.*"
+                          }
+                        ]
+                      }
+                    },
+                    "required": ["uri"],
+                    "additionalProperties": false
+                  },
+                  "prompt": {
+                    "description": "Style / creative brief for the fashion campaign, e.g. \"High-key fashion editorial, gorpcore-meets-blokecore-meets-Y2K\".",
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 3500
+                  }
+                },
+                "required": ["version", "image", "prompt"],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The task that was created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "description": "The ID of the task that was created. Use this to retrieve the task later.",
+                      "type": "string",
+                      "format": "uuid",
+                      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12})$"
+                    }
+                  },
+                  "required": ["id"],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "You have exceeded the rate limit for this endpoint.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": { "error": { "type": "string" } },
+                  "required": ["error"],
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/recipes/product_swap": {
+      "post": {
+        "tags": ["Recipes"],
+        "summary": "Swap a product in a reference video",
+        "description": "Replace the product in a reference video with a new product, preserving camera motion, lighting, and scene composition.",
+        "x-codeSamples": [
+          {
+            "lang": "TypeScript",
+            "label": "Node SDK",
+            "source": "// npm install --save @runwayml/sdk\nimport RunwayML from '@runwayml/sdk';\n\nconst client = new RunwayML();\n\nconst task = await client.recipes.productSwap({\n  version: '2026-06',\n  referenceVideo: { uri: 'https://example.com/reference-ad.mp4' },\n  originalProductImage: { uri: 'https://example.com/original-product.jpg' },\n  newProductImages: [\n    { uri: 'https://example.com/new-product-front.jpg', view: 'front' },\n    { uri: 'https://example.com/new-product-side.jpg', view: 'side' },\n  ],\n  duration: 10,\n});\n\nconsole.log(task);"
+          },
+          {
+            "lang": "Python",
+            "label": "Python SDK",
+            "source": "# pip install runwayml\nfrom runwayml import RunwayML\n\nclient = RunwayML()\n\ntask = client.recipes.product_swap(\n    version='2026-06',\n    reference_video={'uri': 'https://example.com/reference-ad.mp4'},\n    original_product_image={'uri': 'https://example.com/original-product.jpg'},\n    new_product_images=[\n        {'uri': 'https://example.com/new-product-front.jpg', 'view': 'front'},\n        {'uri': 'https://example.com/new-product-side.jpg', 'view': 'side'},\n    ],\n    duration=10,\n)\n\nprint(task)"
+          }
+        ],
+        "parameters": [{ "$ref": "#/components/parameters/X-Runway-Version" }],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "properties": {
+                  "version": {
+                    "description": "Workflow version. Use a dated version (e.g. \"2026-06\") to pin behavior, or \"unsafe-latest\" to track the newest stable version (may break without notice).",
+                    "type": "string",
+                    "enum": ["2026-06", "unsafe-latest"]
+                  },
+                  "referenceVideo": {
+                    "description": "Reference video containing the product to swap. Duration must be between 1.8 and 15 seconds. See [our docs](/assets/inputs#videos) on video inputs.",
+                    "type": "object",
+                    "properties": {
+                      "uri": {
+                        "description": "A HTTPS URL, Runway or data URI containing an encoded video. See [our docs](/assets/inputs#videos) on video inputs for more information.",
+                        "example": "https://example.com/video.mp4",
+                        "anyOf": [
+                          {
+                            "description": "A HTTPS URL.",
+                            "example": "https://example.com/file",
+                            "type": "string",
+                            "minLength": 13,
+                            "maxLength": 2048,
+                            "pattern": "^https:\\/\\/.*"
+                          },
+                          {
+                            "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                            "example": "runway://<token>",
+                            "type": "string",
+                            "minLength": 13,
+                            "maxLength": 5000,
+                            "pattern": "^runway:\\/\\/.*"
+                          },
+                          {
+                            "description": "A data URI containing encoded media.",
+                            "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                            "type": "string",
+                            "minLength": 13,
+                            "maxLength": 16777216,
+                            "pattern": "^data:video\\/.*"
+                          }
+                        ]
+                      }
+                    },
+                    "required": ["uri"],
+                    "additionalProperties": false
+                  },
+                  "originalProductImage": {
+                    "description": "Image of the original product being swapped out. See [our docs](/assets/inputs#images) on image inputs.",
+                    "type": "object",
+                    "properties": {
+                      "uri": {
+                        "description": "A HTTPS URL, Runway or data URI containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                        "example": "https://example.com/image.jpg",
+                        "anyOf": [
+                          {
+                            "description": "A HTTPS URL.",
+                            "example": "https://example.com/file",
+                            "type": "string",
+                            "minLength": 13,
+                            "maxLength": 2048,
+                            "pattern": "^https:\\/\\/.*"
+                          },
+                          {
+                            "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                            "example": "runway://<token>",
+                            "type": "string",
+                            "minLength": 13,
+                            "maxLength": 5000,
+                            "pattern": "^runway:\\/\\/.*"
+                          },
+                          {
+                            "description": "A data URI containing encoded media.",
+                            "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                            "type": "string",
+                            "minLength": 13,
+                            "maxLength": 5242880,
+                            "pattern": "^data:image\\/.*"
+                          }
+                        ]
+                      }
+                    },
+                    "required": ["uri"],
+                    "additionalProperties": false
+                  },
+                  "newProductImages": {
+                    "description": "Reference images of the new product (1–10). Supply multiple angles when the reference video shows the product from different views — optionally label each with `view` (\"front\", \"side\", or \"back\"). A single pre-composed reference sheet is also supported (omit `view`). See [our docs](/assets/inputs#images) on image inputs.",
+                    "minItems": 1,
+                    "maxItems": 10,
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "uri": {
+                          "description": "A HTTPS URL, Runway or data URI containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                          "example": "https://example.com/image.jpg",
+                          "anyOf": [
+                            {
+                              "description": "A HTTPS URL.",
+                              "example": "https://example.com/file",
+                              "type": "string",
+                              "minLength": 13,
+                              "maxLength": 2048,
+                              "pattern": "^https:\\/\\/.*"
+                            },
+                            {
+                              "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                              "example": "runway://<token>",
+                              "type": "string",
+                              "minLength": 13,
+                              "maxLength": 5000,
+                              "pattern": "^runway:\\/\\/.*"
+                            },
+                            {
+                              "description": "A data URI containing encoded media.",
+                              "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                              "type": "string",
+                              "minLength": 13,
+                              "maxLength": 5242880,
+                              "pattern": "^data:image\\/.*"
+                            }
+                          ]
+                        },
+                        "view": {
+                          "description": "Optional view label for this reference (front, side, or back). Omit when supplying a single reference sheet or when view labels are unknown.",
+                          "type": "string",
+                          "enum": ["front", "side", "back"]
+                        }
+                      },
+                      "required": ["uri"],
+                      "additionalProperties": false
+                    }
+                  },
+                  "duration": {
+                    "description": "Duration of the output video in seconds (4–15). Defaults to 10 seconds.",
+                    "type": "integer",
+                    "minimum": 4,
+                    "maximum": 15
+                  },
+                  "resolution": {
+                    "description": "Output video resolution. Defaults to 720p.",
+                    "type": "string",
+                    "enum": ["720p", "1080p"]
+                  },
+                  "audio": {
+                    "description": "Whether to generate audio for the video.",
+                    "default": true,
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "version",
+                  "referenceVideo",
+                  "originalProductImage",
+                  "newProductImages"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The task that was created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "description": "The ID of the task that was created. Use this to retrieve the task later.",
+                      "type": "string",
+                      "format": "uuid",
+                      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12})$"
+                    }
+                  },
+                  "required": ["id"],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "You have exceeded the rate limit for this endpoint.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": { "error": { "type": "string" } },
+                  "required": ["error"],
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/recipes/multi_shot_video": {
+      "post": {
+        "tags": ["Recipes"],
+        "summary": "Create a multi-shot video",
+        "description": "Generate a multi-cut video from a story prompt (auto mode) or a custom shot list (custom mode).",
+        "x-codeSamples": [
+          {
+            "lang": "TypeScript",
+            "label": "Node SDK",
+            "source": "// npm install --save @runwayml/sdk\nimport RunwayML from '@runwayml/sdk';\n\nconst client = new RunwayML();\n\nconst task = await client.recipes.multiShotVideo({\n  version: '2026-06',\n  prompt: 'A lone astronaut discovers a glowing forest on a distant planet',\n  duration: 10,\n  ratio: '1280:720',\n});\n\nconsole.log(task);"
+          },
+          {
+            "lang": "Python",
+            "label": "Python SDK",
+            "source": "# pip install runwayml\nfrom runwayml import RunwayML\n\nclient = RunwayML()\n\ntask = client.recipes.multi_shot_video(\n    version='2026-06',\n    prompt='A lone astronaut discovers a glowing forest on a distant planet',\n    duration=10,\n    ratio='1280:720',\n)\n\nprint(task)"
+          }
+        ],
+        "parameters": [{ "$ref": "#/components/parameters/X-Runway-Version" }],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "mode": {
+                        "description": "Workflow mode. `auto` decomposes a story prompt into exactly 5 shots.",
+                        "type": "string",
+                        "const": "auto"
+                      },
+                      "prompt": {
+                        "description": "Story prompt for auto mode.",
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 2500
+                      },
+                      "version": {
+                        "description": "Workflow version. Use a dated version (e.g. \"2026-06\") to pin behavior, or \"unsafe-latest\" to track the newest stable version (may break without notice).",
+                        "type": "string",
+                        "enum": ["2026-06", "unsafe-latest"]
+                      },
+                      "firstFrame": {
+                        "description": "Optional image used as the first frame of the output video. See [our docs](/assets/inputs#images) on image inputs.",
+                        "type": "object",
+                        "properties": {
+                          "uri": {
+                            "description": "A HTTPS URL, Runway or data URI containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                            "example": "https://example.com/image.jpg",
+                            "anyOf": [
+                              {
+                                "description": "A HTTPS URL.",
+                                "example": "https://example.com/file",
+                                "type": "string",
+                                "minLength": 13,
+                                "maxLength": 2048,
+                                "pattern": "^https:\\/\\/.*"
+                              },
+                              {
+                                "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                                "example": "runway://<token>",
+                                "type": "string",
+                                "minLength": 13,
+                                "maxLength": 5000,
+                                "pattern": "^runway:\\/\\/.*"
+                              },
+                              {
+                                "description": "A data URI containing encoded media.",
+                                "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                                "type": "string",
+                                "minLength": 13,
+                                "maxLength": 5242880,
+                                "pattern": "^data:image\\/.*"
+                              }
+                            ]
+                          }
+                        },
+                        "required": ["uri"],
+                        "additionalProperties": false
+                      },
+                      "ratio": {
+                        "description": "Output dimensions as width:height. 720p ratios (`1280:720`, `720:1280`, `960:960`) use the standard tier; 1080p ratios (`1920:1080`, `1080:1920`, `1440:1440`) use the pro tier. Defaults to `1280:720`.",
+                        "type": "string",
+                        "enum": [
+                          "1280:720",
+                          "720:1280",
+                          "960:960",
+                          "1920:1080",
+                          "1080:1920",
+                          "1440:1440"
+                        ]
+                      },
+                      "duration": {
+                        "description": "Total duration of the output video in seconds. Defaults to 10 seconds.",
+                        "type": "number",
+                        "enum": [5, 10, 15]
+                      },
+                      "audio": {
+                        "description": "Whether to generate audio for the video.",
+                        "default": true,
+                        "type": "boolean"
+                      }
+                    },
+                    "required": ["mode", "prompt", "version"],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "mode": {
+                        "description": "Workflow mode. `custom` polishes a user-provided shot list of 3–5 shots.",
+                        "type": "string",
+                        "const": "custom"
+                      },
+                      "shots": {
+                        "description": "Shot list for custom mode (3–5 shots). Per-shot durations must sum to `duration`.",
+                        "minItems": 3,
+                        "maxItems": 5,
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "prompt": {
+                              "description": "Shot description prompt.",
+                              "type": "string",
+                              "minLength": 3,
+                              "maxLength": 512
+                            },
+                            "duration": {
+                              "description": "Duration of this shot in seconds.",
+                              "type": "integer",
+                              "minimum": 1,
+                              "maximum": 15
+                            }
+                          },
+                          "required": ["prompt", "duration"],
+                          "additionalProperties": false
+                        }
+                      },
+                      "version": {
+                        "description": "Workflow version. Use a dated version (e.g. \"2026-06\") to pin behavior, or \"unsafe-latest\" to track the newest stable version (may break without notice).",
+                        "type": "string",
+                        "enum": ["2026-06", "unsafe-latest"]
+                      },
+                      "firstFrame": {
+                        "description": "Optional image used as the first frame of the output video. See [our docs](/assets/inputs#images) on image inputs.",
+                        "type": "object",
+                        "properties": {
+                          "uri": {
+                            "description": "A HTTPS URL, Runway or data URI containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                            "example": "https://example.com/image.jpg",
+                            "anyOf": [
+                              {
+                                "description": "A HTTPS URL.",
+                                "example": "https://example.com/file",
+                                "type": "string",
+                                "minLength": 13,
+                                "maxLength": 2048,
+                                "pattern": "^https:\\/\\/.*"
+                              },
+                              {
+                                "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                                "example": "runway://<token>",
+                                "type": "string",
+                                "minLength": 13,
+                                "maxLength": 5000,
+                                "pattern": "^runway:\\/\\/.*"
+                              },
+                              {
+                                "description": "A data URI containing encoded media.",
+                                "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                                "type": "string",
+                                "minLength": 13,
+                                "maxLength": 5242880,
+                                "pattern": "^data:image\\/.*"
+                              }
+                            ]
+                          }
+                        },
+                        "required": ["uri"],
+                        "additionalProperties": false
+                      },
+                      "ratio": {
+                        "description": "Output dimensions as width:height. 720p ratios (`1280:720`, `720:1280`, `960:960`) use the standard tier; 1080p ratios (`1920:1080`, `1080:1920`, `1440:1440`) use the pro tier. Defaults to `1280:720`.",
+                        "type": "string",
+                        "enum": [
+                          "1280:720",
+                          "720:1280",
+                          "960:960",
+                          "1920:1080",
+                          "1080:1920",
+                          "1440:1440"
+                        ]
+                      },
+                      "duration": {
+                        "description": "Total duration of the output video in seconds. Defaults to 10 seconds.",
+                        "type": "number",
+                        "enum": [5, 10, 15]
+                      },
+                      "audio": {
+                        "description": "Whether to generate audio for the video.",
+                        "default": true,
+                        "type": "boolean"
+                      }
+                    },
+                    "required": ["mode", "shots", "version"],
+                    "additionalProperties": false
+                  }
+                ],
+                "discriminator": { "propertyName": "mode" }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The task that was created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "description": "The ID of the task that was created. Use this to retrieve the task later.",
+                      "type": "string",
+                      "format": "uuid",
+                      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12})$"
+                    }
+                  },
+                  "required": ["id"],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "You have exceeded the rate limit for this endpoint.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": { "error": { "type": "string" } },
+                  "required": ["error"],
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/recipes/product_ugc": {
+      "post": {
+        "tags": ["Recipes"],
+        "summary": "Create a product UGC video",
+        "description": "Generate a vertical user-generated content ad from a character image, product image, product details, and optional creative direction.",
+        "x-codeSamples": [
+          {
+            "lang": "TypeScript",
+            "label": "Node SDK",
+            "source": "// npm install --save @runwayml/sdk\nimport RunwayML from '@runwayml/sdk';\n\nconst client = new RunwayML();\n\nconst task = await client.recipes.productUgc({\n  version: '2026-06',\n  characterImage: { uri: 'https://example.com/creator.jpg' },\n  productImage: { uri: 'https://example.com/product.jpg' },\n  productInfo: 'Wireless game controller with haptic feedback triggers',\n  userConcept: 'Enthusiastic creator tone, demonstrate the product in hand',\n  duration: 15,\n});\n\nconsole.log(task);"
+          },
+          {
+            "lang": "Python",
+            "label": "Python SDK",
+            "source": "# pip install runwayml\nfrom runwayml import RunwayML\n\nclient = RunwayML()\n\ntask = client.recipes.product_ugc(\n    version='2026-06',\n    character_image={'uri': 'https://example.com/creator.jpg'},\n    product_image={'uri': 'https://example.com/product.jpg'},\n    product_info='Wireless game controller with haptic feedback triggers',\n    user_concept='Enthusiastic creator tone, demonstrate the product in hand',\n    duration=15,\n)\n\nprint(task)"
+          }
+        ],
+        "parameters": [{ "$ref": "#/components/parameters/X-Runway-Version" }],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "properties": {
+                  "version": {
+                    "description": "Workflow version. Use a dated version (e.g. \"2026-06\") to pin behavior, or \"unsafe-latest\" to track the newest stable version (may break without notice).",
+                    "type": "string",
+                    "enum": ["2026-06", "unsafe-latest"]
+                  },
+                  "characterImage": {
+                    "description": "Image of the character who will appear on camera in the UGC video. Aspect ratio (width / height) must be between 0.4 and 4. See [our docs](/assets/inputs#images) for image input requirements.",
+                    "type": "object",
+                    "properties": {
+                      "uri": {
+                        "description": "A HTTPS URL, Runway or data URI containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                        "example": "https://example.com/image.jpg",
+                        "anyOf": [
+                          {
+                            "description": "A HTTPS URL.",
+                            "example": "https://example.com/file",
+                            "type": "string",
+                            "minLength": 13,
+                            "maxLength": 2048,
+                            "pattern": "^https:\\/\\/.*"
+                          },
+                          {
+                            "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                            "example": "runway://<token>",
+                            "type": "string",
+                            "minLength": 13,
+                            "maxLength": 5000,
+                            "pattern": "^runway:\\/\\/.*"
+                          },
+                          {
+                            "description": "A data URI containing encoded media.",
+                            "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                            "type": "string",
+                            "minLength": 13,
+                            "maxLength": 5242880,
+                            "pattern": "^data:image\\/.*"
+                          }
+                        ]
+                      }
+                    },
+                    "required": ["uri"],
+                    "additionalProperties": false
+                  },
+                  "productImage": {
+                    "description": "Image of the product being promoted. Aspect ratio (width / height) must be between 0.4 and 4. See [our docs](/assets/inputs#images) for image input requirements.",
+                    "type": "object",
+                    "properties": {
+                      "uri": {
+                        "description": "A HTTPS URL, Runway or data URI containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                        "example": "https://example.com/image.jpg",
+                        "anyOf": [
+                          {
+                            "description": "A HTTPS URL.",
+                            "example": "https://example.com/file",
+                            "type": "string",
+                            "minLength": 13,
+                            "maxLength": 2048,
+                            "pattern": "^https:\\/\\/.*"
+                          },
+                          {
+                            "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                            "example": "runway://<token>",
+                            "type": "string",
+                            "minLength": 13,
+                            "maxLength": 5000,
+                            "pattern": "^runway:\\/\\/.*"
+                          },
+                          {
+                            "description": "A data URI containing encoded media.",
+                            "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                            "type": "string",
+                            "minLength": 13,
+                            "maxLength": 5242880,
+                            "pattern": "^data:image\\/.*"
+                          }
+                        ]
+                      }
+                    },
+                    "required": ["uri"],
+                    "additionalProperties": false
+                  },
+                  "productInfo": {
+                    "description": "Product details and creative brief — what the product is, key benefits, and any specifics the script should reference.",
+                    "default": "",
+                    "type": "string",
+                    "maxLength": 2500
+                  },
+                  "userConcept": {
+                    "description": "Optional creative direction for the UGC video — tone, voice register, specific message, or an entire dialog script.",
+                    "default": "",
+                    "type": "string",
+                    "maxLength": 3500
+                  },
+                  "duration": {
+                    "description": "Duration of the output video in seconds (4–15). Defaults to 15 seconds.",
+                    "type": "integer",
+                    "minimum": 4,
+                    "maximum": 15
+                  },
+                  "ratio": {
+                    "description": "The resolution of the output video.",
+                    "type": "string",
+                    "enum": ["720:1280", "1080:1920"]
+                  },
+                  "audio": {
+                    "description": "Whether to generate audio for the video.",
+                    "default": true,
+                    "type": "boolean"
+                  }
+                },
+                "required": ["version", "characterImage", "productImage"],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The task that was created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "description": "The ID of the task that was created. Use this to retrieve the task later.",
+                      "type": "string",
+                      "format": "uuid",
+                      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12})$"
+                    }
+                  },
+                  "required": ["id"],
                   "additionalProperties": false
                 }
               }

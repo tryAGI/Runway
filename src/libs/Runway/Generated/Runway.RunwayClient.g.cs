@@ -86,6 +86,15 @@ namespace Runway
         };
 
         /// <summary>
+        /// 
+        /// </summary>
+        public RecipesClient Recipes => new RecipesClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
+        {
+            ReadResponseAsString = ReadResponseAsString,
+            JsonSerializerContext = JsonSerializerContext,
+        };
+
+        /// <summary>
         /// These endpoints all kick off tasks to create generations.
         /// </summary>
         public StartGeneratingClient StartGenerating => new StartGeneratingClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
