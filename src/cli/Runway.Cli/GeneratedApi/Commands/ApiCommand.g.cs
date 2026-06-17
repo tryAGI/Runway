@@ -19,6 +19,7 @@ internal static class ApiCommand
                          command.Subcommands.Add(KnowledgeApiGroupCommand.Create());
                          command.Subcommands.Add(OrganizationApiGroupCommand.Create());
                          command.Subcommands.Add(RealtimeSessionsApiGroupCommand.Create());
+                         command.Subcommands.Add(RecipesApiGroupCommand.Create());
                          command.Subcommands.Add(StartGeneratingApiGroupCommand.Create());
                          command.Subcommands.Add(TaskManagementApiGroupCommand.Create());
                          command.Subcommands.Add(UploadsApiGroupCommand.Create());

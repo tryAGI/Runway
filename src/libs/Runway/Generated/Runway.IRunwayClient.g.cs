@@ -71,6 +71,11 @@ namespace Runway
         public RealtimeSessionsClient RealtimeSessions { get; }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public RecipesClient Recipes { get; }
+
+        /// <summary>
         /// These endpoints all kick off tasks to create generations.
         /// </summary>
         public StartGeneratingClient StartGenerating { get; }

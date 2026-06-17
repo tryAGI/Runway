@@ -1,4 +1,6 @@
 
+#pragma warning disable CS0618 // Type or member is obsolete
+
 #nullable enable
 
 namespace Runway
@@ -9,11 +11,10 @@ namespace Runway
     public sealed partial class CreateVideoToVideoRequestVariant1
     {
         /// <summary>
-        /// A non-empty string up to 1000 characters describing what should appear in the output.
+        /// An optional string up to 1000 characters describing what should appear in the output.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("promptText")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string PromptText { get; set; }
+        public string? PromptText { get; set; }
 
         /// <summary>
         /// Timed guidance images placed at specific points in the input video. Up to 5 keyframes.
@@ -35,6 +36,13 @@ namespace Runway
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("seed")]
         public int? Seed { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("ratio")]
+        [global::System.Obsolete("This property marked as deprecated.")]
+        public string? Ratio { get; set; }
 
         /// <summary>
         /// Target aspect ratio for expand/outpaint. Letterboxes the input video and keyframes before generation.
@@ -65,12 +73,12 @@ namespace Runway
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateVideoToVideoRequestVariant1" /> class.
         /// </summary>
-        /// <param name="promptText">
-        /// A non-empty string up to 1000 characters describing what should appear in the output.
-        /// </param>
         /// <param name="videoUri">
         /// The input video to edit. Must be 30 seconds or shorter.<br/>
         /// Example: https://example.com/video.mp4
+        /// </param>
+        /// <param name="promptText">
+        /// An optional string up to 1000 characters describing what should appear in the output.
         /// </param>
         /// <param name="keyframes">
         /// Timed guidance images placed at specific points in the input video. Up to 5 keyframes.
@@ -89,15 +97,15 @@ namespace Runway
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public CreateVideoToVideoRequestVariant1(
-            string promptText,
             string videoUri,
+            string? promptText,
             global::System.Collections.Generic.IList<global::Runway.AnyOf<global::Runway.CreateVideoToVideoRequestVariant1KeyframeVariant1, global::Runway.CreateVideoToVideoRequestVariant1KeyframeVariant2>>? keyframes,
             int? seed,
             global::Runway.CreateVideoToVideoRequestVariant1TargetAspectRatio? targetAspectRatio,
             global::Runway.CreateVideoToVideoRequestVariant1ContentModeration? contentModeration,
             string model = "aleph2")
         {
-            this.PromptText = promptText ?? throw new global::System.ArgumentNullException(nameof(promptText));
+            this.PromptText = promptText;
             this.Keyframes = keyframes;
             this.VideoUri = videoUri;
             this.Seed = seed;
@@ -111,6 +119,18 @@ namespace Runway
         /// </summary>
         public CreateVideoToVideoRequestVariant1()
         {
+        }
+
+        /// <summary>
+        /// Creates a new <see cref="CreateVideoToVideoRequestVariant1"/> from its single non-const required field,
+        /// hardcoding any const discriminator fields.
+        /// </summary>
+        public static CreateVideoToVideoRequestVariant1 FromVideoUri(string videoUri)
+        {
+            return new CreateVideoToVideoRequestVariant1
+            {
+                VideoUri = videoUri,
+            };
         }
 
     }
