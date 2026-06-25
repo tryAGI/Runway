@@ -9,7 +9,7 @@ namespace Runway
     public sealed partial class CreateRecipesProductAdRequest
     {
         /// <summary>
-        /// Workflow version. Use a dated version (e.g. "2026-06") to pin behavior, or "unsafe-latest" to track the newest stable version (may break without notice).
+        /// Workflow version. Use a dated version (e.g. "2026-07") to pin behavior, or "unsafe-latest" to track the newest stable version (may break without notice).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("version")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.CreateRecipesProductAdRequestVersionJsonConverter))]
@@ -71,7 +71,7 @@ namespace Runway
         /// Initializes a new instance of the <see cref="CreateRecipesProductAdRequest" /> class.
         /// </summary>
         /// <param name="version">
-        /// Workflow version. Use a dated version (e.g. "2026-06") to pin behavior, or "unsafe-latest" to track the newest stable version (may break without notice).
+        /// Workflow version. Use a dated version (e.g. "2026-07") to pin behavior, or "unsafe-latest" to track the newest stable version (may break without notice).
         /// </param>
         /// <param name="productImages">
         /// Product images (1–10). Multiple angles of the same product. All images inform product analysis and reference generation; only the first image is used as the primary product reference in the storyboard grid. See [our docs](/assets/inputs#images) on image inputs.

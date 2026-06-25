@@ -18,13 +18,6 @@ namespace Runway
         public required string Uri { get; set; }
 
         /// <summary>
-        /// The position of the image in the output video. "first" will use the image as the first frame, "last" as the last frame. Omit for a reference image.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("position")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance2ReferencePositionJsonConverter))]
-        public global::Runway.CreateVideoToVideoRequestSeedance2ReferencePosition? Position { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -37,18 +30,13 @@ namespace Runway
         /// A HTTPS URL, Runway or data URI containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.<br/>
         /// Example: https://example.com/image.jpg
         /// </param>
-        /// <param name="position">
-        /// The position of the image in the output video. "first" will use the image as the first frame, "last" as the last frame. Omit for a reference image.
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public CreateVideoToVideoRequestSeedance2Reference(
-            string uri,
-            global::Runway.CreateVideoToVideoRequestSeedance2ReferencePosition? position)
+            string uri)
         {
             this.Uri = uri;
-            this.Position = position;
         }
 
         /// <summary>

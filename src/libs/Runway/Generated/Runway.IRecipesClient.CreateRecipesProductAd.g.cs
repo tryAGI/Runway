@@ -20,7 +20,7 @@ namespace Runway
         /// import RunwayML from '@runwayml/sdk';<br/>
         /// const client = new RunwayML();<br/>
         /// const task = await client.recipes.productAd({<br/>
-        ///   version: '2026-06',<br/>
+        ///   version: '2026-07',<br/>
         ///   productImages: [<br/>
         ///     { uri: 'https://example.com/product-front.jpg' },<br/>
         ///     { uri: 'https://example.com/product-side.jpg' },<br/>
@@ -53,7 +53,7 @@ namespace Runway
         /// import RunwayML from '@runwayml/sdk';<br/>
         /// const client = new RunwayML();<br/>
         /// const task = await client.recipes.productAd({<br/>
-        ///   version: '2026-06',<br/>
+        ///   version: '2026-07',<br/>
         ///   productImages: [<br/>
         ///     { uri: 'https://example.com/product-front.jpg' },<br/>
         ///     { uri: 'https://example.com/product-side.jpg' },<br/>
@@ -78,7 +78,7 @@ namespace Runway
         /// Default Value: 2024-11-06
         /// </param>
         /// <param name="version">
-        /// Workflow version. Use a dated version (e.g. "2026-06") to pin behavior, or "unsafe-latest" to track the newest stable version (may break without notice).
+        /// Workflow version. Use a dated version (e.g. "2026-07") to pin behavior, or "unsafe-latest" to track the newest stable version (may break without notice).
         /// </param>
         /// <param name="productImages">
         /// Product images (1–10). Multiple angles of the same product. All images inform product analysis and reference generation; only the first image is used as the primary product reference in the storyboard grid. See [our docs](/assets/inputs#images) on image inputs.
