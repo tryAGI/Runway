@@ -9,7 +9,7 @@ namespace Runway
     public sealed partial class CreateTextToImageRequestGeminiImage31Flash
     {
         /// <summary>
-        /// A non-empty string up to 1000 characters (measured in UTF-16 code units). This should describe in detail what should appear in the output.
+        /// This should describe in detail what should appear in the output.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("promptText")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -52,7 +52,7 @@ namespace Runway
         /// Initializes a new instance of the <see cref="CreateTextToImageRequestGeminiImage31Flash" /> class.
         /// </summary>
         /// <param name="promptText">
-        /// A non-empty string up to 1000 characters (measured in UTF-16 code units). This should describe in detail what should appear in the output.
+        /// This should describe in detail what should appear in the output.
         /// </param>
         /// <param name="ratio">
         /// The resolution of the output image.

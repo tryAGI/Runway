@@ -17,7 +17,7 @@ internal static partial class RecipesCreateRecipesProductAdCommandApiCommand
     private static Option<global::Runway.CreateRecipesProductAdRequestVersion> Version { get; } = new(
         name: @"--version")
     {
-        Description = @"Workflow version. Use a dated version (e.g. ""2026-06"") to pin behavior, or ""unsafe-latest"" to track the newest stable version (may break without notice).",
+        Description = @"Workflow version. Use a dated version (e.g. ""2026-07"") to pin behavior, or ""unsafe-latest"" to track the newest stable version (may break without notice).",
         Required = true,
     };
 

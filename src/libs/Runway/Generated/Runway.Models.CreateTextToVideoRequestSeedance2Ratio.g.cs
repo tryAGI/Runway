@@ -43,7 +43,31 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        x2160_3840,
+        /// <summary>
+        /// 
+        /// </summary>
         x2206_946,
+        /// <summary>
+        /// 
+        /// </summary>
+        x2880_3840,
+        /// <summary>
+        /// 
+        /// </summary>
+        x3840_1646,
+        /// <summary>
+        /// 
+        /// </summary>
+        x3840_2160,
+        /// <summary>
+        /// 
+        /// </summary>
+        x3840_2880,
+        /// <summary>
+        /// 
+        /// </summary>
+        x3840_3840,
         /// <summary>
         /// 
         /// </summary>
@@ -102,7 +126,13 @@ namespace Runway
                 CreateTextToVideoRequestSeedance2Ratio.x1470_630 => "1470:630",
                 CreateTextToVideoRequestSeedance2Ratio.x1664_1248 => "1664:1248",
                 CreateTextToVideoRequestSeedance2Ratio.x1920_1080 => "1920:1080",
+                CreateTextToVideoRequestSeedance2Ratio.x2160_3840 => "2160:3840",
                 CreateTextToVideoRequestSeedance2Ratio.x2206_946 => "2206:946",
+                CreateTextToVideoRequestSeedance2Ratio.x2880_3840 => "2880:3840",
+                CreateTextToVideoRequestSeedance2Ratio.x3840_1646 => "3840:1646",
+                CreateTextToVideoRequestSeedance2Ratio.x3840_2160 => "3840:2160",
+                CreateTextToVideoRequestSeedance2Ratio.x3840_2880 => "3840:2880",
+                CreateTextToVideoRequestSeedance2Ratio.x3840_3840 => "3840:3840",
                 CreateTextToVideoRequestSeedance2Ratio.x496_864 => "496:864",
                 CreateTextToVideoRequestSeedance2Ratio.x560_752 => "560:752",
                 CreateTextToVideoRequestSeedance2Ratio.x640_640 => "640:640",
@@ -130,7 +160,13 @@ namespace Runway
                 "1470:630" => CreateTextToVideoRequestSeedance2Ratio.x1470_630,
                 "1664:1248" => CreateTextToVideoRequestSeedance2Ratio.x1664_1248,
                 "1920:1080" => CreateTextToVideoRequestSeedance2Ratio.x1920_1080,
+                "2160:3840" => CreateTextToVideoRequestSeedance2Ratio.x2160_3840,
                 "2206:946" => CreateTextToVideoRequestSeedance2Ratio.x2206_946,
+                "2880:3840" => CreateTextToVideoRequestSeedance2Ratio.x2880_3840,
+                "3840:1646" => CreateTextToVideoRequestSeedance2Ratio.x3840_1646,
+                "3840:2160" => CreateTextToVideoRequestSeedance2Ratio.x3840_2160,
+                "3840:2880" => CreateTextToVideoRequestSeedance2Ratio.x3840_2880,
+                "3840:3840" => CreateTextToVideoRequestSeedance2Ratio.x3840_3840,
                 "496:864" => CreateTextToVideoRequestSeedance2Ratio.x496_864,
                 "560:752" => CreateTextToVideoRequestSeedance2Ratio.x560_752,
                 "640:640" => CreateTextToVideoRequestSeedance2Ratio.x640_640,

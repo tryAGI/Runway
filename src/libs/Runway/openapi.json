@@ -6648,7 +6648,13 @@
                           "1664:1248",
                           "1440:1440",
                           "1248:1664",
-                          "1080:1920"
+                          "1080:1920",
+                          "3840:1646",
+                          "3840:2160",
+                          "3840:2880",
+                          "3840:3840",
+                          "2880:3840",
+                          "2160:3840"
                         ]
                       },
                       "referenceAudio": {
@@ -7251,11 +7257,18 @@
                           "1664:1248",
                           "1440:1440",
                           "1248:1664",
-                          "1080:1920"
+                          "1080:1920",
+                          "3840:1646",
+                          "3840:2160",
+                          "3840:2880",
+                          "3840:3840",
+                          "2880:3840",
+                          "2160:3840"
                         ]
                       },
                       "references": {
                         "description": "An optional array of image references (up to 9). See [our docs](/assets/inputs#images) on image inputs for more information.",
+                        "maxItems": 9,
                         "type": "array",
                         "items": {
                           "title": "PromptImage",
@@ -7291,14 +7304,10 @@
                                   "pattern": "^data:image\\/.*"
                                 }
                               ]
-                            },
-                            "position": {
-                              "description": "The position of the image in the output video. \"first\" will use the image as the first frame, \"last\" as the last frame. Omit for a reference image.",
-                              "type": "string",
-                              "enum": ["first", "last"]
                             }
                           },
-                          "required": ["uri"]
+                          "required": ["uri"],
+                          "additionalProperties": false
                         }
                       },
                       "referenceVideos": {
@@ -7435,6 +7444,7 @@
                       },
                       "references": {
                         "description": "An optional array of image references (up to 9). See [our docs](/assets/inputs#images) on image inputs for more information.",
+                        "maxItems": 9,
                         "type": "array",
                         "items": {
                           "title": "PromptImage",
@@ -7470,14 +7480,10 @@
                                   "pattern": "^data:image\\/.*"
                                 }
                               ]
-                            },
-                            "position": {
-                              "description": "The position of the image in the output video. \"first\" will use the image as the first frame, \"last\" as the last frame. Omit for a reference image.",
-                              "type": "string",
-                              "enum": ["first", "last"]
                             }
                           },
-                          "required": ["uri"]
+                          "required": ["uri"],
+                          "additionalProperties": false
                         }
                       },
                       "referenceVideos": {
@@ -7917,11 +7923,18 @@
                           "1664:1248",
                           "1440:1440",
                           "1248:1664",
-                          "1080:1920"
+                          "1080:1920",
+                          "3840:1646",
+                          "3840:2160",
+                          "3840:2880",
+                          "3840:3840",
+                          "2880:3840",
+                          "2160:3840"
                         ]
                       },
                       "references": {
                         "description": "An optional array of image references (up to 9). See [our docs](/assets/inputs#images) on image inputs for more information.",
+                        "maxItems": 9,
                         "type": "array",
                         "items": {
                           "title": "PromptImage",
@@ -7957,14 +7970,10 @@
                                   "pattern": "^data:image\\/.*"
                                 }
                               ]
-                            },
-                            "position": {
-                              "description": "The position of the image in the output video. \"first\" will use the image as the first frame, \"last\" as the last frame. Omit for a reference image.",
-                              "type": "string",
-                              "enum": ["first", "last"]
                             }
                           },
-                          "required": ["uri"]
+                          "required": ["uri"],
+                          "additionalProperties": false
                         }
                       },
                       "referenceVideos": {
@@ -8131,6 +8140,7 @@
                       },
                       "references": {
                         "description": "An optional array of image references (up to 9). See [our docs](/assets/inputs#images) on image inputs for more information.",
+                        "maxItems": 9,
                         "type": "array",
                         "items": {
                           "title": "PromptImage",
@@ -8166,14 +8176,10 @@
                                   "pattern": "^data:image\\/.*"
                                 }
                               ]
-                            },
-                            "position": {
-                              "description": "The position of the image in the output video. \"first\" will use the image as the first frame, \"last\" as the last frame. Omit for a reference image.",
-                              "type": "string",
-                              "enum": ["first", "last"]
                             }
                           },
-                          "required": ["uri"]
+                          "required": ["uri"],
+                          "additionalProperties": false
                         }
                       },
                       "referenceVideos": {
@@ -8671,7 +8677,7 @@
                     "type": "object",
                     "properties": {
                       "promptText": {
-                        "description": "A non-empty string up to 5,500 characters (measured in UTF-16 code units). This should describe in detail what should appear in the output.",
+                        "description": "This should describe in detail what should appear in the output.",
                         "type": "string",
                         "minLength": 1,
                         "maxLength": 5500
@@ -8786,10 +8792,10 @@
                     "type": "object",
                     "properties": {
                       "promptText": {
-                        "description": "A non-empty string up to 1000 characters (measured in UTF-16 code units). This should describe in detail what should appear in the output.",
+                        "description": "This should describe in detail what should appear in the output.",
                         "type": "string",
                         "minLength": 1,
-                        "maxLength": 1000
+                        "maxLength": 5500
                       },
                       "ratio": {
                         "description": "The resolution of the output image.",
@@ -8925,10 +8931,10 @@
                     "type": "object",
                     "properties": {
                       "promptText": {
-                        "description": "A non-empty string up to 1000 characters (measured in UTF-16 code units). This should describe in detail what should appear in the output.",
+                        "description": "This should describe in detail what should appear in the output.",
                         "type": "string",
                         "minLength": 1,
-                        "maxLength": 1000
+                        "maxLength": 5500
                       },
                       "ratio": {
                         "description": "The resolution of the output image.",
@@ -10811,12 +10817,12 @@
           {
             "lang": "TypeScript",
             "label": "Node SDK",
-            "source": "// npm install --save @runwayml/sdk\nimport RunwayML from '@runwayml/sdk';\n\nconst client = new RunwayML();\n\nconst task = await client.recipes.productAd({\n  version: '2026-06',\n  productImages: [\n    { uri: 'https://example.com/product-front.jpg' },\n    { uri: 'https://example.com/product-side.jpg' },\n  ],\n  productInfo: 'Organic cold-pressed juice, 12oz glass bottle',\n  userConcept: 'Bright, refreshing summer campaign with slow dolly moves',\n  duration: 10,\n});\n\nconsole.log(task);"
+            "source": "// npm install --save @runwayml/sdk\nimport RunwayML from '@runwayml/sdk';\n\nconst client = new RunwayML();\n\nconst task = await client.recipes.productAd({\n  version: '2026-07',\n  productImages: [\n    { uri: 'https://example.com/product-front.jpg' },\n    { uri: 'https://example.com/product-side.jpg' },\n  ],\n  productInfo: 'Organic cold-pressed juice, 12oz glass bottle',\n  userConcept: 'Bright, refreshing summer campaign with slow dolly moves',\n  duration: 10,\n});\n\nconsole.log(task);"
           },
           {
             "lang": "Python",
             "label": "Python SDK",
-            "source": "# pip install runwayml\nfrom runwayml import RunwayML\n\nclient = RunwayML()\n\ntask = client.recipes.product_ad(\n    version='2026-06',\n    product_images=[\n        {'uri': 'https://example.com/product-front.jpg'},\n        {'uri': 'https://example.com/product-side.jpg'},\n    ],\n    product_info='Organic cold-pressed juice, 12oz glass bottle',\n    user_concept='Bright, refreshing summer campaign with slow dolly moves',\n    duration=10,\n)\n\nprint(task)"
+            "source": "# pip install runwayml\nfrom runwayml import RunwayML\n\nclient = RunwayML()\n\ntask = client.recipes.product_ad(\n    version='2026-07',\n    product_images=[\n        {'uri': 'https://example.com/product-front.jpg'},\n        {'uri': 'https://example.com/product-side.jpg'},\n    ],\n    product_info='Organic cold-pressed juice, 12oz glass bottle',\n    user_concept='Bright, refreshing summer campaign with slow dolly moves',\n    duration=10,\n)\n\nprint(task)"
           }
         ],
         "parameters": [{ "$ref": "#/components/parameters/X-Runway-Version" }],
@@ -10828,9 +10834,9 @@
                 "type": "object",
                 "properties": {
                   "version": {
-                    "description": "Workflow version. Use a dated version (e.g. \"2026-06\") to pin behavior, or \"unsafe-latest\" to track the newest stable version (may break without notice).",
+                    "description": "Workflow version. Use a dated version (e.g. \"2026-07\") to pin behavior, or \"unsafe-latest\" to track the newest stable version (may break without notice).",
                     "type": "string",
-                    "enum": ["2026-06", "unsafe-latest"]
+                    "enum": ["2026-06", "2026-07", "unsafe-latest"]
                   },
                   "productImages": {
                     "description": "Product images (1–10). Multiple angles of the same product. All images inform product analysis and reference generation; only the first image is used as the primary product reference in the storyboard grid. See [our docs](/assets/inputs#images) on image inputs.",

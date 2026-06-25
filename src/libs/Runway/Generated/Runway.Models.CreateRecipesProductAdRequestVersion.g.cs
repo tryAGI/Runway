@@ -4,7 +4,7 @@
 namespace Runway
 {
     /// <summary>
-    /// Workflow version. Use a dated version (e.g. "2026-06") to pin behavior, or "unsafe-latest" to track the newest stable version (may break without notice).
+    /// Workflow version. Use a dated version (e.g. "2026-07") to pin behavior, or "unsafe-latest" to track the newest stable version (may break without notice).
     /// </summary>
     public enum CreateRecipesProductAdRequestVersion
     {
@@ -12,6 +12,10 @@ namespace Runway
         /// 
         /// </summary>
         x202606,
+        /// <summary>
+        /// 
+        /// </summary>
+        x202607,
         /// <summary>
         /// 
         /// </summary>
@@ -31,6 +35,7 @@ namespace Runway
             return value switch
             {
                 CreateRecipesProductAdRequestVersion.x202606 => "2026-06",
+                CreateRecipesProductAdRequestVersion.x202607 => "2026-07",
                 CreateRecipesProductAdRequestVersion.UnsafeLatest => "unsafe-latest",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
@@ -43,6 +48,7 @@ namespace Runway
             return value switch
             {
                 "2026-06" => CreateRecipesProductAdRequestVersion.x202606,
+                "2026-07" => CreateRecipesProductAdRequestVersion.x202607,
                 "unsafe-latest" => CreateRecipesProductAdRequestVersion.UnsafeLatest,
                 _ => null,
             };
