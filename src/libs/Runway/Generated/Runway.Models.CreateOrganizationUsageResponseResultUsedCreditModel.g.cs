@@ -15,6 +15,10 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        AdLocalization,
+        /// <summary>
+        /// 
+        /// </summary>
         Aleph2,
         /// <summary>
         /// 
@@ -135,6 +139,10 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        MagnificVideoUpscalerCreative,
+        /// <summary>
+        /// 
+        /// </summary>
         MarketingStockImage,
         /// <summary>
         /// 
@@ -195,6 +203,7 @@ namespace Runway
             return value switch
             {
                 CreateOrganizationUsageResponseResultUsedCreditModel.ActTwo => "act_two",
+                CreateOrganizationUsageResponseResultUsedCreditModel.AdLocalization => "ad_localization",
                 CreateOrganizationUsageResponseResultUsedCreditModel.Aleph2 => "aleph2",
                 CreateOrganizationUsageResponseResultUsedCreditModel.ElevenMultilingualStsV2 => "eleven_multilingual_sts_v2",
                 CreateOrganizationUsageResponseResultUsedCreditModel.ElevenMultilingualV2 => "eleven_multilingual_v2",
@@ -225,6 +234,7 @@ namespace Runway
                 CreateOrganizationUsageResponseResultUsedCreditModel.KlingO3Pro => "klingO3_pro",
                 CreateOrganizationUsageResponseResultUsedCreditModel.KlingO3Standard => "klingO3_standard",
                 CreateOrganizationUsageResponseResultUsedCreditModel.MagnificPrecisionUpscalerV2 => "magnific_precision_upscaler_v2",
+                CreateOrganizationUsageResponseResultUsedCreditModel.MagnificVideoUpscalerCreative => "magnific_video_upscaler_creative",
                 CreateOrganizationUsageResponseResultUsedCreditModel.MarketingStockImage => "marketing_stock_image",
                 CreateOrganizationUsageResponseResultUsedCreditModel.MultiShotVideo => "multi_shot_video",
                 CreateOrganizationUsageResponseResultUsedCreditModel.ProductAd => "product_ad",
@@ -248,6 +258,7 @@ namespace Runway
             return value switch
             {
                 "act_two" => CreateOrganizationUsageResponseResultUsedCreditModel.ActTwo,
+                "ad_localization" => CreateOrganizationUsageResponseResultUsedCreditModel.AdLocalization,
                 "aleph2" => CreateOrganizationUsageResponseResultUsedCreditModel.Aleph2,
                 "eleven_multilingual_sts_v2" => CreateOrganizationUsageResponseResultUsedCreditModel.ElevenMultilingualStsV2,
                 "eleven_multilingual_v2" => CreateOrganizationUsageResponseResultUsedCreditModel.ElevenMultilingualV2,
@@ -278,6 +289,7 @@ namespace Runway
                 "klingO3_pro" => CreateOrganizationUsageResponseResultUsedCreditModel.KlingO3Pro,
                 "klingO3_standard" => CreateOrganizationUsageResponseResultUsedCreditModel.KlingO3Standard,
                 "magnific_precision_upscaler_v2" => CreateOrganizationUsageResponseResultUsedCreditModel.MagnificPrecisionUpscalerV2,
+                "magnific_video_upscaler_creative" => CreateOrganizationUsageResponseResultUsedCreditModel.MagnificVideoUpscalerCreative,
                 "marketing_stock_image" => CreateOrganizationUsageResponseResultUsedCreditModel.MarketingStockImage,
                 "multi_shot_video" => CreateOrganizationUsageResponseResultUsedCreditModel.MultiShotVideo,
                 "product_ad" => CreateOrganizationUsageResponseResultUsedCreditModel.ProductAd,

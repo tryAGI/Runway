@@ -11,7 +11,7 @@ namespace Runway
     public sealed partial class CreateVideoToVideoRequestVariant1
     {
         /// <summary>
-        /// An optional string up to 1000 characters describing what should appear in the output.
+        /// A non-empty and optional string describing what should appear in the output.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("promptText")]
         public string? PromptText { get; set; }
@@ -78,7 +78,7 @@ namespace Runway
         /// Example: https://example.com/video.mp4
         /// </param>
         /// <param name="promptText">
-        /// An optional string up to 1000 characters describing what should appear in the output.
+        /// A non-empty and optional string describing what should appear in the output.
         /// </param>
         /// <param name="keyframes">
         /// Timed guidance images placed at specific points in the input video. Up to 5 keyframes.

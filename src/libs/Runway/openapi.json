@@ -7679,7 +7679,7 @@
                     "type": "object",
                     "properties": {
                       "promptText": {
-                        "description": "An optional string up to 1000 characters describing what should appear in the output.",
+                        "description": "A non-empty and optional string describing what should appear in the output.",
                         "type": "string",
                         "minLength": 1,
                         "maxLength": 1000
@@ -9185,6 +9185,147 @@
         }
       }
     },
+    "/v1/video_upscale": {
+      "post": {
+        "tags": ["Start generating"],
+        "summary": "Video upscale",
+        "description": "This endpoint starts a task to upscale a video. Set `model` to choose the upscaler.",
+        "x-codeSamples": [
+          {
+            "lang": "TypeScript",
+            "label": "Node SDK",
+            "source": "// npm install --save @runwayml/sdk\nimport RunwayML from '@runwayml/sdk';\n\n// The env var RUNWAYML_API_SECRET is expected to contain your API key.\nconst client = new RunwayML();\n\nconst task = await client.videoUpscale\n  .create({\n    model: 'magnific_video_upscaler_creative',\n    videoUri: 'https://example.com/bunny.mp4',\n    resolution: '2k',\n  })\n  .waitForTaskOutput();\nconsole.log(task);"
+          },
+          {
+            "lang": "Python",
+            "label": "Python SDK",
+            "source": "# pip install runwayml\nfrom runwayml import RunwayML\n\n# The env var RUNWAYML_API_SECRET is expected to contain your API key.\nclient = RunwayML()\n\ntask = client.video_upscale.create(\n    model='magnific_video_upscaler_creative',\n    video_uri='https://example.com/bunny.mp4',\n    resolution='2k',\n).wait_for_task_output()\n\nprint(task)"
+          }
+        ],
+        "parameters": [{ "$ref": "#/components/parameters/X-Runway-Version" }],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "oneOf": [
+                  {
+                    "title": "magnific_video_upscaler_creative",
+                    "type": "object",
+                    "properties": {
+                      "videoUri": {
+                        "description": "Video to upscale. See [video inputs](/assets/inputs#videos) for URL, upload, and file size limits. Maximum duration is 30 seconds.",
+                        "example": "https://example.com/video.mp4",
+                        "anyOf": [
+                          {
+                            "description": "A HTTPS URL.",
+                            "example": "https://example.com/file",
+                            "type": "string",
+                            "minLength": 13,
+                            "maxLength": 2048,
+                            "pattern": "^https:\\/\\/.*"
+                          },
+                          {
+                            "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                            "example": "runway://<token>",
+                            "type": "string",
+                            "minLength": 13,
+                            "maxLength": 5000,
+                            "pattern": "^runway:\\/\\/.*"
+                          },
+                          {
+                            "description": "A data URI containing encoded media.",
+                            "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                            "type": "string",
+                            "minLength": 13,
+                            "maxLength": 16777216,
+                            "pattern": "^data:video\\/.*"
+                          }
+                        ]
+                      },
+                      "resolution": {
+                        "description": "Target output resolution from 720p to 4k. Defaults to `2k`.",
+                        "type": "string",
+                        "enum": ["720p", "1k", "2k", "4k"]
+                      },
+                      "creativity": {
+                        "description": "How much AI-generated detail to add during upscaling, from 0 (faithful) to 100.",
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 100
+                      },
+                      "sharpen": {
+                        "description": "Sharpness intensity from 0 (none) to 100.",
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 100
+                      },
+                      "smartGrain": {
+                        "description": "Grain and texture enhancement from 0 to 100.",
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 100
+                      },
+                      "flavor": {
+                        "description": "Processing style: `vivid` for enhanced color and detail, `natural` for faithful reproduction.",
+                        "type": "string",
+                        "enum": ["vivid", "natural"]
+                      },
+                      "fpsBoost": {
+                        "description": "Whether to increase the output frame rate.",
+                        "type": "boolean"
+                      },
+                      "model": {
+                        "type": "string",
+                        "const": "magnific_video_upscaler_creative"
+                      }
+                    },
+                    "required": ["videoUri", "model"],
+                    "additionalProperties": false
+                  }
+                ],
+                "discriminator": { "propertyName": "model" }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The task that was created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "description": "The ID of the task that was created. Use this to retrieve the task later.",
+                      "type": "string",
+                      "format": "uuid",
+                      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12})$"
+                    }
+                  },
+                  "required": ["id"],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "You have exceeded the rate limit for this endpoint.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": { "error": { "type": "string" } },
+                  "required": ["error"],
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/character_performance": {
       "post": {
         "tags": ["Start generating"],
@@ -10265,6 +10406,7 @@
                               "seedance2",
                               "seedance2_fast",
                               "magnific_precision_upscaler_v2",
+                              "magnific_video_upscaler_creative",
                               "kling2.5_turbo_pro",
                               "kling3.0_pro",
                               "kling3.0_4k",
@@ -10279,7 +10421,8 @@
                               "multi_shot_video",
                               "product_ugc",
                               "marketing_stock_image",
-                              "product_campaign_image"
+                              "product_campaign_image",
+                              "ad_localization"
                             ]
                           },
                           "additionalProperties": {
@@ -10356,6 +10499,7 @@
                               "seedance2",
                               "seedance2_fast",
                               "magnific_precision_upscaler_v2",
+                              "magnific_video_upscaler_creative",
                               "kling2.5_turbo_pro",
                               "kling3.0_pro",
                               "kling3.0_4k",
@@ -10370,7 +10514,8 @@
                               "multi_shot_video",
                               "product_ugc",
                               "marketing_stock_image",
-                              "product_campaign_image"
+                              "product_campaign_image",
+                              "ad_localization"
                             ]
                           },
                           "additionalProperties": {
@@ -10504,6 +10649,7 @@
                                     "seedance2",
                                     "seedance2_fast",
                                     "magnific_precision_upscaler_v2",
+                                    "magnific_video_upscaler_creative",
                                     "kling2.5_turbo_pro",
                                     "kling3.0_pro",
                                     "kling3.0_4k",
@@ -10518,7 +10664,8 @@
                                     "multi_shot_video",
                                     "product_ugc",
                                     "marketing_stock_image",
-                                    "product_campaign_image"
+                                    "product_campaign_image",
+                                    "ad_localization"
                                   ]
                                 },
                                 "amount": {
@@ -10573,6 +10720,7 @@
                           "seedance2",
                           "seedance2_fast",
                           "magnific_precision_upscaler_v2",
+                          "magnific_video_upscaler_creative",
                           "kling2.5_turbo_pro",
                           "kling3.0_pro",
                           "kling3.0_4k",
@@ -10587,7 +10735,8 @@
                           "multi_shot_video",
                           "product_ugc",
                           "marketing_stock_image",
-                          "product_campaign_image"
+                          "product_campaign_image",
+                          "ad_localization"
                         ]
                       }
                     }
