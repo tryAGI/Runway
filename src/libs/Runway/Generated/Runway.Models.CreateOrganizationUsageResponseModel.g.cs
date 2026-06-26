@@ -15,6 +15,10 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        AdLocalization,
+        /// <summary>
+        /// 
+        /// </summary>
         Aleph2,
         /// <summary>
         /// 
@@ -135,6 +139,10 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        MagnificVideoUpscalerCreative,
+        /// <summary>
+        /// 
+        /// </summary>
         MarketingStockImage,
         /// <summary>
         /// 
@@ -195,6 +203,7 @@ namespace Runway
             return value switch
             {
                 CreateOrganizationUsageResponseModel.ActTwo => "act_two",
+                CreateOrganizationUsageResponseModel.AdLocalization => "ad_localization",
                 CreateOrganizationUsageResponseModel.Aleph2 => "aleph2",
                 CreateOrganizationUsageResponseModel.ElevenMultilingualStsV2 => "eleven_multilingual_sts_v2",
                 CreateOrganizationUsageResponseModel.ElevenMultilingualV2 => "eleven_multilingual_v2",
@@ -225,6 +234,7 @@ namespace Runway
                 CreateOrganizationUsageResponseModel.KlingO3Pro => "klingO3_pro",
                 CreateOrganizationUsageResponseModel.KlingO3Standard => "klingO3_standard",
                 CreateOrganizationUsageResponseModel.MagnificPrecisionUpscalerV2 => "magnific_precision_upscaler_v2",
+                CreateOrganizationUsageResponseModel.MagnificVideoUpscalerCreative => "magnific_video_upscaler_creative",
                 CreateOrganizationUsageResponseModel.MarketingStockImage => "marketing_stock_image",
                 CreateOrganizationUsageResponseModel.MultiShotVideo => "multi_shot_video",
                 CreateOrganizationUsageResponseModel.ProductAd => "product_ad",
@@ -248,6 +258,7 @@ namespace Runway
             return value switch
             {
                 "act_two" => CreateOrganizationUsageResponseModel.ActTwo,
+                "ad_localization" => CreateOrganizationUsageResponseModel.AdLocalization,
                 "aleph2" => CreateOrganizationUsageResponseModel.Aleph2,
                 "eleven_multilingual_sts_v2" => CreateOrganizationUsageResponseModel.ElevenMultilingualStsV2,
                 "eleven_multilingual_v2" => CreateOrganizationUsageResponseModel.ElevenMultilingualV2,
@@ -278,6 +289,7 @@ namespace Runway
                 "klingO3_pro" => CreateOrganizationUsageResponseModel.KlingO3Pro,
                 "klingO3_standard" => CreateOrganizationUsageResponseModel.KlingO3Standard,
                 "magnific_precision_upscaler_v2" => CreateOrganizationUsageResponseModel.MagnificPrecisionUpscalerV2,
+                "magnific_video_upscaler_creative" => CreateOrganizationUsageResponseModel.MagnificVideoUpscalerCreative,
                 "marketing_stock_image" => CreateOrganizationUsageResponseModel.MarketingStockImage,
                 "multi_shot_video" => CreateOrganizationUsageResponseModel.MultiShotVideo,
                 "product_ad" => CreateOrganizationUsageResponseModel.ProductAd,
