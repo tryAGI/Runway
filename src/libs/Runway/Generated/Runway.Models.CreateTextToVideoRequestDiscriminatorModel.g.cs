@@ -11,6 +11,10 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        GeminiOmniFlash,
+        /// <summary>
+        /// 
+        /// </summary>
         Gen45,
         /// <summary>
         /// 
@@ -24,6 +28,10 @@ namespace Runway
         /// 
         /// </summary>
         Seedance2Fast,
+        /// <summary>
+        /// 
+        /// </summary>
+        Seedance2Mini,
         /// <summary>
         /// 
         /// </summary>
@@ -50,10 +58,12 @@ namespace Runway
         {
             return value switch
             {
+                CreateTextToVideoRequestDiscriminatorModel.GeminiOmniFlash => "gemini_omni_flash",
                 CreateTextToVideoRequestDiscriminatorModel.Gen45 => "gen4.5",
                 CreateTextToVideoRequestDiscriminatorModel.Happyhorse10 => "happyhorse_1_0",
                 CreateTextToVideoRequestDiscriminatorModel.Seedance2 => "seedance2",
                 CreateTextToVideoRequestDiscriminatorModel.Seedance2Fast => "seedance2_fast",
+                CreateTextToVideoRequestDiscriminatorModel.Seedance2Mini => "seedance2_mini",
                 CreateTextToVideoRequestDiscriminatorModel.Veo3 => "veo3",
                 CreateTextToVideoRequestDiscriminatorModel.Veo31 => "veo3.1",
                 CreateTextToVideoRequestDiscriminatorModel.Veo31Fast => "veo3.1_fast",
@@ -67,10 +77,12 @@ namespace Runway
         {
             return value switch
             {
+                "gemini_omni_flash" => CreateTextToVideoRequestDiscriminatorModel.GeminiOmniFlash,
                 "gen4.5" => CreateTextToVideoRequestDiscriminatorModel.Gen45,
                 "happyhorse_1_0" => CreateTextToVideoRequestDiscriminatorModel.Happyhorse10,
                 "seedance2" => CreateTextToVideoRequestDiscriminatorModel.Seedance2,
                 "seedance2_fast" => CreateTextToVideoRequestDiscriminatorModel.Seedance2Fast,
+                "seedance2_mini" => CreateTextToVideoRequestDiscriminatorModel.Seedance2Mini,
                 "veo3" => CreateTextToVideoRequestDiscriminatorModel.Veo3,
                 "veo3.1" => CreateTextToVideoRequestDiscriminatorModel.Veo31,
                 "veo3.1_fast" => CreateTextToVideoRequestDiscriminatorModel.Veo31Fast,

@@ -33,6 +33,18 @@ internal static partial class RecipesCreateRecipesMarketingStockImageCommandApiC
     {
         Description = @"Optional brand logo image to guide the generated marketing stock image. See [our docs](/assets/inputs#images) on image inputs.",
     };
+
+    private static Option<int?> OutputCount { get; } = new(
+        name: @"--output-count")
+    {
+        Description = @"The number of images to generate (1–4). Defaults to 4. Increasing this number affects credits consumed.",
+    };
+
+    private static Option<global::Runway.CreateRecipesMarketingStockImageRequestQuality?> Quality { get; } = new(
+        name: @"--quality")
+    {
+        Description = @"GPT Image 2 rendering quality (`low`, `medium`, or `high`). Lower settings are faster and use fewer credits; `high` (default) is slowest and highest fidelity.",
+    };
       private static Option<string?> Input { get; } = new(@"--input")
       {
           Description = "Load request JSON from a file path, '-' for stdin, or an inline JSON object/array string.",
@@ -78,6 +90,8 @@ Generate a polished marketing stock image from a text brief and optional brand l
                         command.Options.Add(Version);
                         command.Options.Add(Prompt);
                         command.Options.Add(ReferenceImage);
+                        command.Options.Add(OutputCount);
+                        command.Options.Add(Quality);
           command.Options.Add(Input);
           command.Options.Add(RequestJson);
           command.Options.Add(RequestFile);
@@ -107,6 +121,8 @@ Generate a polished marketing stock image from a text brief and optional brand l
                         var version = parseResult.GetRequiredValue(Version);
                         var prompt = parseResult.GetRequiredValue(Prompt);
                         var referenceImage = CliRuntime.WasSpecified(parseResult, ReferenceImage) ? parseResult.GetValue(ReferenceImage) : (__requestBase is { } __ReferenceImageBaseValue ? __ReferenceImageBaseValue.ReferenceImage : default);
+                        var outputCount = CliRuntime.WasSpecified(parseResult, OutputCount) ? parseResult.GetValue(OutputCount) : (__requestBase is { } __OutputCountBaseValue ? __OutputCountBaseValue.OutputCount : default);
+                        var quality = CliRuntime.WasSpecified(parseResult, Quality) ? parseResult.GetValue(Quality) : (__requestBase is { } __QualityBaseValue ? __QualityBaseValue.Quality : default);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
@@ -115,6 +131,8 @@ Generate a polished marketing stock image from a text brief and optional brand l
                                     version: version,
                                     prompt: prompt,
                                     referenceImage: referenceImage,
+                                    outputCount: outputCount,
+                                    quality: quality,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 

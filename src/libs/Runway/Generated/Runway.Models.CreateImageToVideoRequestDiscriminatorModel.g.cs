@@ -11,6 +11,10 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        GeminiOmniFlash,
+        /// <summary>
+        /// 
+        /// </summary>
         Gen45,
         /// <summary>
         /// 
@@ -28,6 +32,10 @@ namespace Runway
         /// 
         /// </summary>
         Seedance2Fast,
+        /// <summary>
+        /// 
+        /// </summary>
+        Seedance2Mini,
         /// <summary>
         /// 
         /// </summary>
@@ -54,11 +62,13 @@ namespace Runway
         {
             return value switch
             {
+                CreateImageToVideoRequestDiscriminatorModel.GeminiOmniFlash => "gemini_omni_flash",
                 CreateImageToVideoRequestDiscriminatorModel.Gen45 => "gen4.5",
                 CreateImageToVideoRequestDiscriminatorModel.Gen4Turbo => "gen4_turbo",
                 CreateImageToVideoRequestDiscriminatorModel.Happyhorse10 => "happyhorse_1_0",
                 CreateImageToVideoRequestDiscriminatorModel.Seedance2 => "seedance2",
                 CreateImageToVideoRequestDiscriminatorModel.Seedance2Fast => "seedance2_fast",
+                CreateImageToVideoRequestDiscriminatorModel.Seedance2Mini => "seedance2_mini",
                 CreateImageToVideoRequestDiscriminatorModel.Veo3 => "veo3",
                 CreateImageToVideoRequestDiscriminatorModel.Veo31 => "veo3.1",
                 CreateImageToVideoRequestDiscriminatorModel.Veo31Fast => "veo3.1_fast",
@@ -72,11 +82,13 @@ namespace Runway
         {
             return value switch
             {
+                "gemini_omni_flash" => CreateImageToVideoRequestDiscriminatorModel.GeminiOmniFlash,
                 "gen4.5" => CreateImageToVideoRequestDiscriminatorModel.Gen45,
                 "gen4_turbo" => CreateImageToVideoRequestDiscriminatorModel.Gen4Turbo,
                 "happyhorse_1_0" => CreateImageToVideoRequestDiscriminatorModel.Happyhorse10,
                 "seedance2" => CreateImageToVideoRequestDiscriminatorModel.Seedance2,
                 "seedance2_fast" => CreateImageToVideoRequestDiscriminatorModel.Seedance2Fast,
+                "seedance2_mini" => CreateImageToVideoRequestDiscriminatorModel.Seedance2Mini,
                 "veo3" => CreateImageToVideoRequestDiscriminatorModel.Veo3,
                 "veo3.1" => CreateImageToVideoRequestDiscriminatorModel.Veo31,
                 "veo3.1_fast" => CreateImageToVideoRequestDiscriminatorModel.Veo31Fast,

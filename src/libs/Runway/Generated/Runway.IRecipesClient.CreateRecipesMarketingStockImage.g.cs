@@ -76,6 +76,14 @@ namespace Runway
         /// <param name="referenceImage">
         /// Optional brand logo image to guide the generated marketing stock image. See [our docs](/assets/inputs#images) on image inputs.
         /// </param>
+        /// <param name="outputCount">
+        /// The number of images to generate (1–4). Defaults to 4. Increasing this number affects credits consumed.<br/>
+        /// Default Value: 4
+        /// </param>
+        /// <param name="quality">
+        /// GPT Image 2 rendering quality (`low`, `medium`, or `high`). Lower settings are faster and use fewer credits; `high` (default) is slowest and highest fidelity.<br/>
+        /// Default Value: high
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -84,6 +92,8 @@ namespace Runway
             string prompt,
             string xRunwayVersion = "2024-11-06",
             global::Runway.CreateRecipesMarketingStockImageRequestReferenceImage? referenceImage = default,
+            int? outputCount = default,
+            global::Runway.CreateRecipesMarketingStockImageRequestQuality? quality = default,
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

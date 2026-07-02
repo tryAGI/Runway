@@ -240,6 +240,80 @@ namespace Runway
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
+        public global::Runway.CreateTextToVideoRequestSeedance2Mini? Seedance2Mini { get; init; }
+#else
+        public global::Runway.CreateTextToVideoRequestSeedance2Mini? Seedance2Mini { get; }
+#endif
+
+        /// <summary>
+        /// 
+        /// </summary>
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Seedance2Mini))]
+#endif
+        public bool IsSeedance2Mini => Seedance2Mini != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickSeedance2Mini(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Runway.CreateTextToVideoRequestSeedance2Mini? value)
+        {
+            value = Seedance2Mini;
+            return IsSeedance2Mini;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.CreateTextToVideoRequestSeedance2Mini PickSeedance2Mini() => IsSeedance2Mini
+            ? Seedance2Mini!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Seedance2Mini' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
+#if NET6_0_OR_GREATER
+        public global::Runway.CreateTextToVideoRequestGeminiOmniFlash? GeminiOmniFlash { get; init; }
+#else
+        public global::Runway.CreateTextToVideoRequestGeminiOmniFlash? GeminiOmniFlash { get; }
+#endif
+
+        /// <summary>
+        /// 
+        /// </summary>
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(GeminiOmniFlash))]
+#endif
+        public bool IsGeminiOmniFlash => GeminiOmniFlash != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickGeminiOmniFlash(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Runway.CreateTextToVideoRequestGeminiOmniFlash? value)
+        {
+            value = GeminiOmniFlash;
+            return IsGeminiOmniFlash;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.CreateTextToVideoRequestGeminiOmniFlash PickGeminiOmniFlash() => IsGeminiOmniFlash
+            ? GeminiOmniFlash!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'GeminiOmniFlash' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
+#if NET6_0_OR_GREATER
         public global::Runway.CreateTextToVideoRequestVeo3? Veo3 { get; init; }
 #else
         public global::Runway.CreateTextToVideoRequestVeo3? Veo3 { get; }
@@ -413,6 +487,52 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public static implicit operator CreateTextToVideoRequest(global::Runway.CreateTextToVideoRequestSeedance2Mini value) => new CreateTextToVideoRequest((global::Runway.CreateTextToVideoRequestSeedance2Mini?)value);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static implicit operator global::Runway.CreateTextToVideoRequestSeedance2Mini?(CreateTextToVideoRequest @this) => @this.Seedance2Mini;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public CreateTextToVideoRequest(global::Runway.CreateTextToVideoRequestSeedance2Mini? value)
+        {
+            Seedance2Mini = value;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static CreateTextToVideoRequest FromSeedance2Mini(global::Runway.CreateTextToVideoRequestSeedance2Mini? value) => new CreateTextToVideoRequest(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static implicit operator CreateTextToVideoRequest(global::Runway.CreateTextToVideoRequestGeminiOmniFlash value) => new CreateTextToVideoRequest((global::Runway.CreateTextToVideoRequestGeminiOmniFlash?)value);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static implicit operator global::Runway.CreateTextToVideoRequestGeminiOmniFlash?(CreateTextToVideoRequest @this) => @this.GeminiOmniFlash;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public CreateTextToVideoRequest(global::Runway.CreateTextToVideoRequestGeminiOmniFlash? value)
+        {
+            GeminiOmniFlash = value;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static CreateTextToVideoRequest FromGeminiOmniFlash(global::Runway.CreateTextToVideoRequestGeminiOmniFlash? value) => new CreateTextToVideoRequest(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator CreateTextToVideoRequest(global::Runway.CreateTextToVideoRequestVeo3 value) => new CreateTextToVideoRequest((global::Runway.CreateTextToVideoRequestVeo3?)value);
 
         /// <summary>
@@ -444,6 +564,8 @@ namespace Runway
             global::Runway.CreateTextToVideoRequestHappyhorse10? happyhorse10,
             global::Runway.CreateTextToVideoRequestSeedance2? seedance2,
             global::Runway.CreateTextToVideoRequestSeedance2Fast? seedance2Fast,
+            global::Runway.CreateTextToVideoRequestSeedance2Mini? seedance2Mini,
+            global::Runway.CreateTextToVideoRequestGeminiOmniFlash? geminiOmniFlash,
             global::Runway.CreateTextToVideoRequestVeo3? veo3
             )
         {
@@ -455,6 +577,8 @@ namespace Runway
             Happyhorse10 = happyhorse10;
             Seedance2 = seedance2;
             Seedance2Fast = seedance2Fast;
+            Seedance2Mini = seedance2Mini;
+            GeminiOmniFlash = geminiOmniFlash;
             Veo3 = veo3;
         }
 
@@ -463,6 +587,8 @@ namespace Runway
         /// </summary>
         public object? Object =>
             Veo3 as object ??
+            GeminiOmniFlash as object ??
+            Seedance2Mini as object ??
             Seedance2Fast as object ??
             Seedance2 as object ??
             Happyhorse10 as object ??
@@ -481,6 +607,8 @@ namespace Runway
             Happyhorse10?.ToString() ??
             Seedance2?.ToString() ??
             Seedance2Fast?.ToString() ??
+            Seedance2Mini?.ToString() ??
+            GeminiOmniFlash?.ToString() ??
             Veo3?.ToString() 
             ;
 
@@ -489,7 +617,7 @@ namespace Runway
         /// </summary>
         public bool Validate()
         {
-            return IsGen45 && !IsVeo31 && !IsVeo31Fast && !IsHappyhorse10 && !IsSeedance2 && !IsSeedance2Fast && !IsVeo3 || !IsGen45 && IsVeo31 && !IsVeo31Fast && !IsHappyhorse10 && !IsSeedance2 && !IsSeedance2Fast && !IsVeo3 || !IsGen45 && !IsVeo31 && IsVeo31Fast && !IsHappyhorse10 && !IsSeedance2 && !IsSeedance2Fast && !IsVeo3 || !IsGen45 && !IsVeo31 && !IsVeo31Fast && IsHappyhorse10 && !IsSeedance2 && !IsSeedance2Fast && !IsVeo3 || !IsGen45 && !IsVeo31 && !IsVeo31Fast && !IsHappyhorse10 && IsSeedance2 && !IsSeedance2Fast && !IsVeo3 || !IsGen45 && !IsVeo31 && !IsVeo31Fast && !IsHappyhorse10 && !IsSeedance2 && IsSeedance2Fast && !IsVeo3 || !IsGen45 && !IsVeo31 && !IsVeo31Fast && !IsHappyhorse10 && !IsSeedance2 && !IsSeedance2Fast && IsVeo3;
+            return IsGen45 && !IsVeo31 && !IsVeo31Fast && !IsHappyhorse10 && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsVeo3 || !IsGen45 && IsVeo31 && !IsVeo31Fast && !IsHappyhorse10 && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsVeo3 || !IsGen45 && !IsVeo31 && IsVeo31Fast && !IsHappyhorse10 && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsVeo3 || !IsGen45 && !IsVeo31 && !IsVeo31Fast && IsHappyhorse10 && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsVeo3 || !IsGen45 && !IsVeo31 && !IsVeo31Fast && !IsHappyhorse10 && IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsVeo3 || !IsGen45 && !IsVeo31 && !IsVeo31Fast && !IsHappyhorse10 && !IsSeedance2 && IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsVeo3 || !IsGen45 && !IsVeo31 && !IsVeo31Fast && !IsHappyhorse10 && !IsSeedance2 && !IsSeedance2Fast && IsSeedance2Mini && !IsGeminiOmniFlash && !IsVeo3 || !IsGen45 && !IsVeo31 && !IsVeo31Fast && !IsHappyhorse10 && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && IsGeminiOmniFlash && !IsVeo3 || !IsGen45 && !IsVeo31 && !IsVeo31Fast && !IsHappyhorse10 && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && IsVeo3;
         }
 
         /// <summary>
@@ -502,6 +630,8 @@ namespace Runway
             global::System.Func<global::Runway.CreateTextToVideoRequestHappyhorse10, TResult>? happyhorse10 = null,
             global::System.Func<global::Runway.CreateTextToVideoRequestSeedance2, TResult>? seedance2 = null,
             global::System.Func<global::Runway.CreateTextToVideoRequestSeedance2Fast, TResult>? seedance2Fast = null,
+            global::System.Func<global::Runway.CreateTextToVideoRequestSeedance2Mini, TResult>? seedance2Mini = null,
+            global::System.Func<global::Runway.CreateTextToVideoRequestGeminiOmniFlash, TResult>? geminiOmniFlash = null,
             global::System.Func<global::Runway.CreateTextToVideoRequestVeo3, TResult>? veo3 = null,
             bool validate = true)
         {
@@ -534,6 +664,14 @@ namespace Runway
             {
                 return seedance2Fast(Seedance2Fast!);
             }
+            else if (IsSeedance2Mini && seedance2Mini != null)
+            {
+                return seedance2Mini(Seedance2Mini!);
+            }
+            else if (IsGeminiOmniFlash && geminiOmniFlash != null)
+            {
+                return geminiOmniFlash(GeminiOmniFlash!);
+            }
             else if (IsVeo3 && veo3 != null)
             {
                 return veo3(Veo3!);
@@ -558,6 +696,10 @@ namespace Runway
 
             global::System.Action<global::Runway.CreateTextToVideoRequestSeedance2Fast>? seedance2Fast = null,
 
+            global::System.Action<global::Runway.CreateTextToVideoRequestSeedance2Mini>? seedance2Mini = null,
+
+            global::System.Action<global::Runway.CreateTextToVideoRequestGeminiOmniFlash>? geminiOmniFlash = null,
+
             global::System.Action<global::Runway.CreateTextToVideoRequestVeo3>? veo3 = null,
             bool validate = true)
         {
@@ -589,6 +731,14 @@ namespace Runway
             else if (IsSeedance2Fast)
             {
                 seedance2Fast?.Invoke(Seedance2Fast!);
+            }
+            else if (IsSeedance2Mini)
+            {
+                seedance2Mini?.Invoke(Seedance2Mini!);
+            }
+            else if (IsGeminiOmniFlash)
+            {
+                geminiOmniFlash?.Invoke(GeminiOmniFlash!);
             }
             else if (IsVeo3)
             {
@@ -606,6 +756,8 @@ namespace Runway
             global::System.Action<global::Runway.CreateTextToVideoRequestHappyhorse10>? happyhorse10 = null,
             global::System.Action<global::Runway.CreateTextToVideoRequestSeedance2>? seedance2 = null,
             global::System.Action<global::Runway.CreateTextToVideoRequestSeedance2Fast>? seedance2Fast = null,
+            global::System.Action<global::Runway.CreateTextToVideoRequestSeedance2Mini>? seedance2Mini = null,
+            global::System.Action<global::Runway.CreateTextToVideoRequestGeminiOmniFlash>? geminiOmniFlash = null,
             global::System.Action<global::Runway.CreateTextToVideoRequestVeo3>? veo3 = null,
             bool validate = true)
         {
@@ -637,6 +789,14 @@ namespace Runway
             else if (IsSeedance2Fast)
             {
                 seedance2Fast?.Invoke(Seedance2Fast!);
+            }
+            else if (IsSeedance2Mini)
+            {
+                seedance2Mini?.Invoke(Seedance2Mini!);
+            }
+            else if (IsGeminiOmniFlash)
+            {
+                geminiOmniFlash?.Invoke(GeminiOmniFlash!);
             }
             else if (IsVeo3)
             {
@@ -663,6 +823,10 @@ namespace Runway
                 typeof(global::Runway.CreateTextToVideoRequestSeedance2),
                 Seedance2Fast,
                 typeof(global::Runway.CreateTextToVideoRequestSeedance2Fast),
+                Seedance2Mini,
+                typeof(global::Runway.CreateTextToVideoRequestSeedance2Mini),
+                GeminiOmniFlash,
+                typeof(global::Runway.CreateTextToVideoRequestGeminiOmniFlash),
                 Veo3,
                 typeof(global::Runway.CreateTextToVideoRequestVeo3),
             };
@@ -687,6 +851,8 @@ namespace Runway
                 global::System.Collections.Generic.EqualityComparer<global::Runway.CreateTextToVideoRequestHappyhorse10?>.Default.Equals(Happyhorse10, other.Happyhorse10) &&
                 global::System.Collections.Generic.EqualityComparer<global::Runway.CreateTextToVideoRequestSeedance2?>.Default.Equals(Seedance2, other.Seedance2) &&
                 global::System.Collections.Generic.EqualityComparer<global::Runway.CreateTextToVideoRequestSeedance2Fast?>.Default.Equals(Seedance2Fast, other.Seedance2Fast) &&
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateTextToVideoRequestSeedance2Mini?>.Default.Equals(Seedance2Mini, other.Seedance2Mini) &&
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateTextToVideoRequestGeminiOmniFlash?>.Default.Equals(GeminiOmniFlash, other.GeminiOmniFlash) &&
                 global::System.Collections.Generic.EqualityComparer<global::Runway.CreateTextToVideoRequestVeo3?>.Default.Equals(Veo3, other.Veo3) 
                 ;
         }
