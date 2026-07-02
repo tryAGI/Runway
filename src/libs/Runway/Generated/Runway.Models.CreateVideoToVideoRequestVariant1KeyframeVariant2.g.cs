@@ -25,6 +25,12 @@ namespace Runway
         public required double At { get; set; }
 
         /// <summary>
+        /// Optional edit window. When set, the edit applies only to this time range and the keyframe timestamp must fall within it. All keyframes must either set a range or none may.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("range")]
+        public global::Runway.CreateVideoToVideoRequestVariant1KeyframeVariant2Range? Range { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -40,15 +46,20 @@ namespace Runway
         /// <param name="at">
         /// Position as a fraction [0.0, 1.0] of the input video duration when this guidance image should apply.
         /// </param>
+        /// <param name="range">
+        /// Optional edit window. When set, the edit applies only to this time range and the keyframe timestamp must fall within it. All keyframes must either set a range or none may.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public CreateVideoToVideoRequestVariant1KeyframeVariant2(
             string uri,
-            double at)
+            double at,
+            global::Runway.CreateVideoToVideoRequestVariant1KeyframeVariant2Range? range)
         {
             this.Uri = uri;
             this.At = at;
+            this.Range = range;
         }
 
         /// <summary>

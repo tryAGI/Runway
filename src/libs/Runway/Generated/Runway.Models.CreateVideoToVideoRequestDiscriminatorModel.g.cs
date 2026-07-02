@@ -15,11 +15,19 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        GeminiOmniFlash,
+        /// <summary>
+        /// 
+        /// </summary>
         Seedance2,
         /// <summary>
         /// 
         /// </summary>
         Seedance2Fast,
+        /// <summary>
+        /// 
+        /// </summary>
+        Seedance2Mini,
     }
 
     /// <summary>
@@ -35,8 +43,10 @@ namespace Runway
             return value switch
             {
                 CreateVideoToVideoRequestDiscriminatorModel.Aleph2 => "aleph2",
+                CreateVideoToVideoRequestDiscriminatorModel.GeminiOmniFlash => "gemini_omni_flash",
                 CreateVideoToVideoRequestDiscriminatorModel.Seedance2 => "seedance2",
                 CreateVideoToVideoRequestDiscriminatorModel.Seedance2Fast => "seedance2_fast",
+                CreateVideoToVideoRequestDiscriminatorModel.Seedance2Mini => "seedance2_mini",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -48,8 +58,10 @@ namespace Runway
             return value switch
             {
                 "aleph2" => CreateVideoToVideoRequestDiscriminatorModel.Aleph2,
+                "gemini_omni_flash" => CreateVideoToVideoRequestDiscriminatorModel.GeminiOmniFlash,
                 "seedance2" => CreateVideoToVideoRequestDiscriminatorModel.Seedance2,
                 "seedance2_fast" => CreateVideoToVideoRequestDiscriminatorModel.Seedance2Fast,
+                "seedance2_mini" => CreateVideoToVideoRequestDiscriminatorModel.Seedance2Mini,
                 _ => null,
             };
         }

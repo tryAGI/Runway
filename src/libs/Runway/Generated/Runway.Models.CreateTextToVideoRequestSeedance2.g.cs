@@ -16,7 +16,7 @@ namespace Runway
         public required string PromptText { get; set; }
 
         /// <summary>
-        /// Whether to generate audio for the video. Audio inclusion affects pricing.<br/>
+        /// Whether to generate audio for the video.<br/>
         /// Default Value: true
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("audio")]
@@ -73,7 +73,7 @@ namespace Runway
         /// A non-empty text prompt up to 3500 characters describing what should appear in the output.
         /// </param>
         /// <param name="audio">
-        /// Whether to generate audio for the video. Audio inclusion affects pricing.<br/>
+        /// Whether to generate audio for the video.<br/>
         /// Default Value: true
         /// </param>
         /// <param name="duration">
