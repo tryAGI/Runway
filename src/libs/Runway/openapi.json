@@ -14683,6 +14683,146 @@
           }
         }
       }
+    },
+    "/v1/recipes/ad_localization": {
+      "post": {
+        "tags": ["Recipes"],
+        "summary": "Localize an ad image",
+        "description": "Localize an existing ad image for a target language, preserving visual creative while adapting on-screen messaging.",
+        "x-codeSamples": [
+          {
+            "lang": "TypeScript",
+            "label": "Node SDK",
+            "source": "// npm install --save @runwayml/sdk\nimport RunwayML from '@runwayml/sdk';\n\nconst client = new RunwayML();\n\nconst task = await client.recipes.adLocalization({\n  version: '2026-06',\n  referenceImage: { uri: 'https://example.com/source-ad.jpg' },\n  targetLanguage: 'ja',\n});\n\nconsole.log(task);"
+          },
+          {
+            "lang": "Python",
+            "label": "Python SDK",
+            "source": "# pip install runwayml\nfrom runwayml import RunwayML\n\nclient = RunwayML()\n\ntask = client.recipes.ad_localization(\n    version='2026-06',\n    reference_image={'uri': 'https://example.com/source-ad.jpg'},\n    target_language='ja',\n)\n\nprint(task)"
+          }
+        ],
+        "parameters": [{ "$ref": "#/components/parameters/X-Runway-Version" }],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "properties": {
+                  "version": {
+                    "description": "Workflow version. Use a dated version (e.g. \"2026-06\") to pin behavior, or \"unsafe-latest\" to track the newest stable version (may break without notice).",
+                    "type": "string",
+                    "enum": ["2026-06", "unsafe-latest"]
+                  },
+                  "referenceImage": {
+                    "description": "Reference ad image to localize. See [our docs](/assets/inputs#images) on image inputs.",
+                    "type": "object",
+                    "properties": {
+                      "uri": {
+                        "description": "A HTTPS URL, Runway or data URI containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                        "example": "https://example.com/image.jpg",
+                        "anyOf": [
+                          {
+                            "description": "A HTTPS URL.",
+                            "example": "https://example.com/file",
+                            "type": "string",
+                            "minLength": 13,
+                            "maxLength": 2048,
+                            "pattern": "^https:\\/\\/.*"
+                          },
+                          {
+                            "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                            "example": "runway://<token>",
+                            "type": "string",
+                            "minLength": 13,
+                            "maxLength": 5000,
+                            "pattern": "^runway:\\/\\/.*"
+                          },
+                          {
+                            "description": "A data URI containing encoded media.",
+                            "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                            "type": "string",
+                            "minLength": 13,
+                            "maxLength": 5242880,
+                            "pattern": "^data:image\\/.*"
+                          }
+                        ]
+                      }
+                    },
+                    "required": ["uri"],
+                    "additionalProperties": false
+                  },
+                  "targetLanguage": {
+                    "description": "Target language for the localized ad. Use ISO-style codes (e.g. \"ja\" for Japanese, \"es\" for Spanish).",
+                    "type": "string",
+                    "enum": [
+                      "ar",
+                      "zh",
+                      "zh-Hant",
+                      "nl",
+                      "en",
+                      "fr",
+                      "de",
+                      "hi",
+                      "id",
+                      "it",
+                      "ja",
+                      "ko",
+                      "pl",
+                      "pt",
+                      "ru",
+                      "es",
+                      "sv",
+                      "th",
+                      "tr",
+                      "uk",
+                      "vi",
+                      "el"
+                    ]
+                  }
+                },
+                "required": ["version", "referenceImage", "targetLanguage"],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The task that was created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "description": "The ID of the task that was created. Use this to retrieve the task later.",
+                      "type": "string",
+                      "format": "uuid",
+                      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12})$"
+                    }
+                  },
+                  "required": ["id"],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "You have exceeded the rate limit for this endpoint.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": { "error": { "type": "string" } },
+                  "required": ["error"],
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
