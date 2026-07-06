@@ -1,4 +1,6 @@
 
+#pragma warning disable CS0618 // Type or member is obsolete
+
 #nullable enable
 
 namespace Runway
@@ -50,6 +52,20 @@ namespace Runway
         public global::System.Collections.Generic.IList<global::Runway.ToolsItem>? Tools { get; set; }
 
         /// <summary>
+        /// External integration. Runway renders the avatar; the integration owns conversation or audio.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("integration")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.IntegrationJsonConverter))]
+        public global::Runway.Integration? Integration { get; set; }
+
+        /// <summary>
+        /// Use integration with type "livekit" instead.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("livekit")]
+        [global::System.Obsolete("This property marked as deprecated.")]
+        public global::Runway.CreateRealtimeSessionsRequestLivekit? Livekit { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -75,6 +91,9 @@ namespace Runway
         /// Tools available to the avatar during the session.<br/>
         /// Default Value: []
         /// </param>
+        /// <param name="integration">
+        /// External integration. Runway renders the avatar; the integration owns conversation or audio.
+        /// </param>
         /// <param name="model">
         /// The realtime session model type.
         /// </param>
@@ -87,6 +106,7 @@ namespace Runway
             string? personality,
             string? startScript,
             global::System.Collections.Generic.IList<global::Runway.ToolsItem>? tools,
+            global::Runway.Integration? integration,
             string model = "gwm1_avatars")
         {
             this.Model = model;
@@ -95,6 +115,7 @@ namespace Runway
             this.Personality = personality;
             this.StartScript = startScript;
             this.Tools = tools;
+            this.Integration = integration;
         }
 
         /// <summary>
