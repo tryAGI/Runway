@@ -1,5 +1,7 @@
 #nullable enable
 
+#pragma warning disable CS0618 // Type or member is obsolete
+
 namespace Runway
 {
     public partial interface IRealtimeSessionsClient
@@ -93,6 +95,9 @@ namespace Runway
         /// Tools available to the avatar during the session.<br/>
         /// Default Value: []
         /// </param>
+        /// <param name="integration">
+        /// External integration. Runway renders the avatar; the integration owns conversation or audio.
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -104,6 +109,7 @@ namespace Runway
             string? personality = default,
             string? startScript = default,
             global::System.Collections.Generic.IList<global::Runway.ToolsItem>? tools = default,
+            global::Runway.Integration? integration = default,
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

@@ -5271,6 +5271,89 @@
                       ],
                       "discriminator": { "propertyName": "type" }
                     }
+                  },
+                  "integration": {
+                    "description": "External integration. Runway renders the avatar; the integration owns conversation or audio.",
+                    "oneOf": [
+                      {
+                        "title": "ElevenLabsIntegration",
+                        "description": "ElevenLabs handles conversation; Runway renders the avatar video.",
+                        "type": "object",
+                        "properties": {
+                          "type": { "type": "string", "const": "elevenlabs" },
+                          "signedUrl": {
+                            "description": "ConvAI signed WebSocket URL (~15 min lifetime).",
+                            "type": "string",
+                            "format": "uri"
+                          }
+                        },
+                        "required": ["type", "signedUrl"]
+                      },
+                      {
+                        "title": "LiveKitIntegration",
+                        "description": "Join an external LiveKit room; Runway publishes video, your agent supplies audio.",
+                        "type": "object",
+                        "properties": {
+                          "type": { "type": "string", "const": "livekit" },
+                          "url": {
+                            "description": "WebSocket URL of the external LiveKit server the avatar worker should join.",
+                            "type": "string",
+                            "format": "uri"
+                          },
+                          "token": {
+                            "description": "LiveKit access token granting the avatar worker publish rights in the external room.",
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 2048
+                          },
+                          "roomName": {
+                            "description": "Name of the external LiveKit room.",
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 256
+                          },
+                          "agentIdentity": {
+                            "description": "The participant identity of the customer agent already in the room. When provided, the avatar worker trusts audio published by this identity.",
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 256
+                          }
+                        },
+                        "required": ["type", "url", "token", "roomName"]
+                      }
+                    ],
+                    "discriminator": { "propertyName": "type" }
+                  },
+                  "livekit": {
+                    "deprecated": true,
+                    "description": "Use integration with type \"livekit\" instead.",
+                    "type": "object",
+                    "properties": {
+                      "url": {
+                        "description": "WebSocket URL of the external LiveKit server the avatar worker should join.",
+                        "type": "string",
+                        "format": "uri"
+                      },
+                      "token": {
+                        "description": "LiveKit access token granting the avatar worker publish rights in the external room.",
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 2048
+                      },
+                      "roomName": {
+                        "description": "Name of the external LiveKit room.",
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 256
+                      },
+                      "agentIdentity": {
+                        "description": "The participant identity of the customer agent already in the room. When provided, the avatar worker trusts audio published by this identity.",
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 256
+                      }
+                    },
+                    "required": ["url", "token", "roomName"]
                   }
                 },
                 "required": ["model", "avatar"]
@@ -10442,6 +10525,84 @@
                 "$schema": "https://json-schema.org/draft/2020-12/schema",
                 "oneOf": [
                   {
+                    "title": "seed_audio",
+                    "type": "object",
+                    "properties": {
+                      "promptText": {
+                        "description": "A non-empty text prompt. For text-to-speech, the words to speak. For text-to-audio, a scene description that can include voice direction, dialogue, music, and sound effects.",
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 2048
+                      },
+                      "referenceAudios": {
+                        "description": "Up to three reference audio clips. When provided, reference them in promptText as @Audio1, @Audio2, and @Audio3 in order.",
+                        "maxItems": 3,
+                        "type": "array",
+                        "items": {
+                          "description": "A HTTPS URL, Runway or data URI containing an encoded audio. See [our docs](/assets/inputs#audio) on audio inputs for more information.",
+                          "example": "https://example.com/audio.mp3",
+                          "anyOf": [
+                            {
+                              "description": "A HTTPS URL.",
+                              "example": "https://example.com/file",
+                              "type": "string",
+                              "minLength": 13,
+                              "maxLength": 2048,
+                              "pattern": "^https:\\/\\/.*"
+                            },
+                            {
+                              "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                              "example": "runway://<token>",
+                              "type": "string",
+                              "minLength": 13,
+                              "maxLength": 5000,
+                              "pattern": "^runway:\\/\\/.*"
+                            },
+                            {
+                              "description": "A data URI containing encoded media.",
+                              "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                              "type": "string",
+                              "minLength": 13,
+                              "maxLength": 16777216,
+                              "pattern": "^data:audio\\/.*"
+                            }
+                          ]
+                        }
+                      },
+                      "speechRate": {
+                        "description": "Relative speech speed. Negative is slower, positive is faster; 0 is normal.",
+                        "type": "integer",
+                        "minimum": -50,
+                        "maximum": 100
+                      },
+                      "loudnessRate": {
+                        "description": "Relative output loudness. Negative is quieter, positive is louder; 0 is normal.",
+                        "type": "integer",
+                        "minimum": -50,
+                        "maximum": 100
+                      },
+                      "pitchRate": {
+                        "description": "Pitch shift in semitones. Negative lowers, positive raises; 0 is unchanged.",
+                        "type": "integer",
+                        "minimum": -12,
+                        "maximum": 12
+                      },
+                      "sampleRate": {
+                        "description": "Output sample rate in Hz.",
+                        "type": "number",
+                        "enum": [8000, 16000, 24000, 32000, 44100, 48000]
+                      },
+                      "outputFormat": {
+                        "description": "Output audio container/format.",
+                        "type": "string",
+                        "enum": ["wav", "mp3", "ogg_opus"]
+                      },
+                      "model": { "type": "string", "const": "seed_audio" }
+                    },
+                    "required": ["promptText", "model"],
+                    "additionalProperties": false
+                  },
+                  {
                     "title": "eleven_text_to_sound_v2",
                     "type": "object",
                     "properties": {
@@ -10774,6 +10935,97 @@
               "schema": {
                 "$schema": "https://json-schema.org/draft/2020-12/schema",
                 "oneOf": [
+                  {
+                    "title": "seed_audio",
+                    "type": "object",
+                    "properties": {
+                      "promptText": {
+                        "description": "A non-empty text prompt. For text-to-speech, the words to speak. For text-to-audio, a scene description that can include voice direction, dialogue, music, and sound effects.",
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 2048
+                      },
+                      "voice": {
+                        "description": "The voice to use for text-to-speech generation. If omitted, a default voice is used.",
+                        "oneOf": [
+                          {
+                            "title": "SeedReferenceVoice",
+                            "description": "Clone from a single reference audio clip, then speak promptText in that voice.",
+                            "type": "object",
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "const": "reference-audio"
+                              },
+                              "audioUri": {
+                                "description": "A HTTPS URL, Runway or data URI containing an encoded audio. See [our docs](/assets/inputs#audio) on audio inputs for more information.",
+                                "example": "https://example.com/audio.mp3",
+                                "anyOf": [
+                                  {
+                                    "description": "A HTTPS URL.",
+                                    "example": "https://example.com/file",
+                                    "type": "string",
+                                    "minLength": 13,
+                                    "maxLength": 2048,
+                                    "pattern": "^https:\\/\\/.*"
+                                  },
+                                  {
+                                    "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                                    "example": "runway://<token>",
+                                    "type": "string",
+                                    "minLength": 13,
+                                    "maxLength": 5000,
+                                    "pattern": "^runway:\\/\\/.*"
+                                  },
+                                  {
+                                    "description": "A data URI containing encoded media.",
+                                    "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                                    "type": "string",
+                                    "minLength": 13,
+                                    "maxLength": 16777216,
+                                    "pattern": "^data:audio\\/.*"
+                                  }
+                                ]
+                              }
+                            },
+                            "required": ["type", "audioUri"]
+                          }
+                        ],
+                        "discriminator": { "propertyName": "type" }
+                      },
+                      "speechRate": {
+                        "description": "Relative speech speed. Negative is slower, positive is faster; 0 is normal.",
+                        "type": "integer",
+                        "minimum": -50,
+                        "maximum": 100
+                      },
+                      "loudnessRate": {
+                        "description": "Relative output loudness. Negative is quieter, positive is louder; 0 is normal.",
+                        "type": "integer",
+                        "minimum": -50,
+                        "maximum": 100
+                      },
+                      "pitchRate": {
+                        "description": "Pitch shift in semitones. Negative lowers, positive raises; 0 is unchanged.",
+                        "type": "integer",
+                        "minimum": -12,
+                        "maximum": 12
+                      },
+                      "sampleRate": {
+                        "description": "Output sample rate in Hz.",
+                        "type": "number",
+                        "enum": [8000, 16000, 24000, 32000, 44100, 48000]
+                      },
+                      "outputFormat": {
+                        "description": "Output audio container/format.",
+                        "type": "string",
+                        "enum": ["wav", "mp3", "ogg_opus"]
+                      },
+                      "model": { "type": "string", "const": "seed_audio" }
+                    },
+                    "required": ["promptText", "model"],
+                    "additionalProperties": false
+                  },
                   {
                     "title": "eleven_multilingual_v2",
                     "type": "object",

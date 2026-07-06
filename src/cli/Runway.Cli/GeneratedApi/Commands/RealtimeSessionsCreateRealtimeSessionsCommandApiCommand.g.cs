@@ -51,6 +51,12 @@ internal static partial class RealtimeSessionsCreateRealtimeSessionsCommandApiCo
     {
         Description = @"Tools available to the avatar during the session.",
     };
+
+    private static Option<global::Runway.Integration?> Integration { get; } = new(
+        name: @"--integration")
+    {
+        Description = @"External integration. Runway renders the avatar; the integration owns conversation or audio.",
+    };
       private static Option<string?> Input { get; } = new(@"--input")
       {
           Description = "Load request JSON from a file path, '-' for stdin, or an inline JSON object/array string.",
@@ -99,6 +105,7 @@ Create a new realtime session with the specified model configuration. The return
                         command.Options.Add(Personality);
                         command.Options.Add(StartScript);
                         command.Options.Add(Tools);
+                        command.Options.Add(Integration);
           command.Options.Add(Input);
           command.Options.Add(RequestJson);
           command.Options.Add(RequestFile);
@@ -131,6 +138,7 @@ Create a new realtime session with the specified model configuration. The return
                         var personality = CliRuntime.WasSpecified(parseResult, Personality) ? parseResult.GetValue(Personality) : (__requestBase is { } __PersonalityBaseValue ? __PersonalityBaseValue.Personality : default);
                         var startScript = CliRuntime.WasSpecified(parseResult, StartScript) ? parseResult.GetValue(StartScript) : (__requestBase is { } __StartScriptBaseValue ? __StartScriptBaseValue.StartScript : default);
                         var tools = CliRuntime.WasSpecified(parseResult, Tools) ? parseResult.GetValue(Tools) : (__requestBase is { } __ToolsBaseValue ? __ToolsBaseValue.Tools : default);
+                        var integration = CliRuntime.WasSpecified(parseResult, Integration) ? parseResult.GetValue(Integration) : (__requestBase is { } __IntegrationBaseValue ? __IntegrationBaseValue.Integration : default);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
@@ -142,6 +150,7 @@ Create a new realtime session with the specified model configuration. The return
                                     personality: personality,
                                     startScript: startScript,
                                     tools: tools,
+                                    integration: integration,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 
