@@ -12,10 +12,6 @@ namespace Runway
         /// 
         /// </summary>
         ElevenTextToSoundV2,
-        /// <summary>
-        /// 
-        /// </summary>
-        SeedAudio,
     }
 
     /// <summary>
@@ -31,7 +27,6 @@ namespace Runway
             return value switch
             {
                 CreateSoundEffectRequestDiscriminatorModel.ElevenTextToSoundV2 => "eleven_text_to_sound_v2",
-                CreateSoundEffectRequestDiscriminatorModel.SeedAudio => "seed_audio",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -43,7 +38,6 @@ namespace Runway
             return value switch
             {
                 "eleven_text_to_sound_v2" => CreateSoundEffectRequestDiscriminatorModel.ElevenTextToSoundV2,
-                "seed_audio" => CreateSoundEffectRequestDiscriminatorModel.SeedAudio,
                 _ => null,
             };
         }

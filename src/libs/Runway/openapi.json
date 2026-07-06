@@ -10442,84 +10442,6 @@
                 "$schema": "https://json-schema.org/draft/2020-12/schema",
                 "oneOf": [
                   {
-                    "title": "seed_audio",
-                    "type": "object",
-                    "properties": {
-                      "promptText": {
-                        "description": "A non-empty text prompt. For text-to-speech, the words to speak. For text-to-audio, a scene description that can include voice direction, dialogue, music, and sound effects.",
-                        "type": "string",
-                        "minLength": 1,
-                        "maxLength": 2048
-                      },
-                      "referenceAudios": {
-                        "description": "Up to three reference audio clips. When provided, reference them in promptText as @Audio1, @Audio2, and @Audio3 in order.",
-                        "maxItems": 3,
-                        "type": "array",
-                        "items": {
-                          "description": "A HTTPS URL, Runway or data URI containing an encoded audio. See [our docs](/assets/inputs#audio) on audio inputs for more information.",
-                          "example": "https://example.com/audio.mp3",
-                          "anyOf": [
-                            {
-                              "description": "A HTTPS URL.",
-                              "example": "https://example.com/file",
-                              "type": "string",
-                              "minLength": 13,
-                              "maxLength": 2048,
-                              "pattern": "^https:\\/\\/.*"
-                            },
-                            {
-                              "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
-                              "example": "runway://<token>",
-                              "type": "string",
-                              "minLength": 13,
-                              "maxLength": 5000,
-                              "pattern": "^runway:\\/\\/.*"
-                            },
-                            {
-                              "description": "A data URI containing encoded media.",
-                              "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
-                              "type": "string",
-                              "minLength": 13,
-                              "maxLength": 16777216,
-                              "pattern": "^data:audio\\/.*"
-                            }
-                          ]
-                        }
-                      },
-                      "speechRate": {
-                        "description": "Relative speech speed. Negative is slower, positive is faster; 0 is normal.",
-                        "type": "integer",
-                        "minimum": -50,
-                        "maximum": 100
-                      },
-                      "loudnessRate": {
-                        "description": "Relative output loudness. Negative is quieter, positive is louder; 0 is normal.",
-                        "type": "integer",
-                        "minimum": -50,
-                        "maximum": 100
-                      },
-                      "pitchRate": {
-                        "description": "Pitch shift in semitones. Negative lowers, positive raises; 0 is unchanged.",
-                        "type": "integer",
-                        "minimum": -12,
-                        "maximum": 12
-                      },
-                      "sampleRate": {
-                        "description": "Output sample rate in Hz.",
-                        "type": "number",
-                        "enum": [8000, 16000, 24000, 32000, 44100, 48000]
-                      },
-                      "outputFormat": {
-                        "description": "Output audio container/format.",
-                        "type": "string",
-                        "enum": ["wav", "mp3", "ogg_opus"]
-                      },
-                      "model": { "type": "string", "const": "seed_audio" }
-                    },
-                    "required": ["promptText", "model"],
-                    "additionalProperties": false
-                  },
-                  {
                     "title": "eleven_text_to_sound_v2",
                     "type": "object",
                     "properties": {
@@ -10852,97 +10774,6 @@
               "schema": {
                 "$schema": "https://json-schema.org/draft/2020-12/schema",
                 "oneOf": [
-                  {
-                    "title": "seed_audio",
-                    "type": "object",
-                    "properties": {
-                      "promptText": {
-                        "description": "A non-empty text prompt. For text-to-speech, the words to speak. For text-to-audio, a scene description that can include voice direction, dialogue, music, and sound effects.",
-                        "type": "string",
-                        "minLength": 1,
-                        "maxLength": 2048
-                      },
-                      "voice": {
-                        "description": "The voice to use for text-to-speech generation. If omitted, a default voice is used.",
-                        "oneOf": [
-                          {
-                            "title": "SeedReferenceVoice",
-                            "description": "Clone from a single reference audio clip, then speak promptText in that voice.",
-                            "type": "object",
-                            "properties": {
-                              "type": {
-                                "type": "string",
-                                "const": "reference-audio"
-                              },
-                              "audioUri": {
-                                "description": "A HTTPS URL, Runway or data URI containing an encoded audio. See [our docs](/assets/inputs#audio) on audio inputs for more information.",
-                                "example": "https://example.com/audio.mp3",
-                                "anyOf": [
-                                  {
-                                    "description": "A HTTPS URL.",
-                                    "example": "https://example.com/file",
-                                    "type": "string",
-                                    "minLength": 13,
-                                    "maxLength": 2048,
-                                    "pattern": "^https:\\/\\/.*"
-                                  },
-                                  {
-                                    "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
-                                    "example": "runway://<token>",
-                                    "type": "string",
-                                    "minLength": 13,
-                                    "maxLength": 5000,
-                                    "pattern": "^runway:\\/\\/.*"
-                                  },
-                                  {
-                                    "description": "A data URI containing encoded media.",
-                                    "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
-                                    "type": "string",
-                                    "minLength": 13,
-                                    "maxLength": 16777216,
-                                    "pattern": "^data:audio\\/.*"
-                                  }
-                                ]
-                              }
-                            },
-                            "required": ["type", "audioUri"]
-                          }
-                        ],
-                        "discriminator": { "propertyName": "type" }
-                      },
-                      "speechRate": {
-                        "description": "Relative speech speed. Negative is slower, positive is faster; 0 is normal.",
-                        "type": "integer",
-                        "minimum": -50,
-                        "maximum": 100
-                      },
-                      "loudnessRate": {
-                        "description": "Relative output loudness. Negative is quieter, positive is louder; 0 is normal.",
-                        "type": "integer",
-                        "minimum": -50,
-                        "maximum": 100
-                      },
-                      "pitchRate": {
-                        "description": "Pitch shift in semitones. Negative lowers, positive raises; 0 is unchanged.",
-                        "type": "integer",
-                        "minimum": -12,
-                        "maximum": 12
-                      },
-                      "sampleRate": {
-                        "description": "Output sample rate in Hz.",
-                        "type": "number",
-                        "enum": [8000, 16000, 24000, 32000, 44100, 48000]
-                      },
-                      "outputFormat": {
-                        "description": "Output audio container/format.",
-                        "type": "string",
-                        "enum": ["wav", "mp3", "ogg_opus"]
-                      },
-                      "model": { "type": "string", "const": "seed_audio" }
-                    },
-                    "required": ["promptText", "model"],
-                    "additionalProperties": false
-                  },
                   {
                     "title": "eleven_multilingual_v2",
                     "type": "object",
@@ -11400,7 +11231,6 @@
                               "gemini_image3_pro",
                               "gemini_image3.1_flash",
                               "eleven_multilingual_v2",
-                              "seed_audio",
                               "eleven_v3",
                               "eleven_text_to_sound_v2",
                               "eleven_voice_isolation",
@@ -11413,7 +11243,6 @@
                               "voice_processing",
                               "seedance2",
                               "seedance2_fast",
-                              "seedance2_mini",
                               "magnific_precision_upscaler_v2",
                               "magnific_video_upscaler_creative",
                               "kling2.5_turbo_pro",
@@ -11430,7 +11259,8 @@
                               "multi_shot_video",
                               "product_ugc",
                               "marketing_stock_image",
-                              "product_campaign_image"
+                              "product_campaign_image",
+                              "ad_localization"
                             ]
                           },
                           "additionalProperties": {
@@ -11494,7 +11324,6 @@
                               "gemini_image3_pro",
                               "gemini_image3.1_flash",
                               "eleven_multilingual_v2",
-                              "seed_audio",
                               "eleven_v3",
                               "eleven_text_to_sound_v2",
                               "eleven_voice_isolation",
@@ -11507,7 +11336,6 @@
                               "voice_processing",
                               "seedance2",
                               "seedance2_fast",
-                              "seedance2_mini",
                               "magnific_precision_upscaler_v2",
                               "magnific_video_upscaler_creative",
                               "kling2.5_turbo_pro",
@@ -11524,7 +11352,8 @@
                               "multi_shot_video",
                               "product_ugc",
                               "marketing_stock_image",
-                              "product_campaign_image"
+                              "product_campaign_image",
+                              "ad_localization"
                             ]
                           },
                           "additionalProperties": {
@@ -11645,7 +11474,6 @@
                                     "gemini_image3_pro",
                                     "gemini_image3.1_flash",
                                     "eleven_multilingual_v2",
-                                    "seed_audio",
                                     "eleven_v3",
                                     "eleven_text_to_sound_v2",
                                     "eleven_voice_isolation",
@@ -11658,7 +11486,6 @@
                                     "voice_processing",
                                     "seedance2",
                                     "seedance2_fast",
-                                    "seedance2_mini",
                                     "magnific_precision_upscaler_v2",
                                     "magnific_video_upscaler_creative",
                                     "kling2.5_turbo_pro",
@@ -11675,7 +11502,8 @@
                                     "multi_shot_video",
                                     "product_ugc",
                                     "marketing_stock_image",
-                                    "product_campaign_image"
+                                    "product_campaign_image",
+                                    "ad_localization"
                                   ]
                                 },
                                 "amount": {
@@ -11717,7 +11545,6 @@
                           "gemini_image3_pro",
                           "gemini_image3.1_flash",
                           "eleven_multilingual_v2",
-                          "seed_audio",
                           "eleven_v3",
                           "eleven_text_to_sound_v2",
                           "eleven_voice_isolation",
@@ -11730,7 +11557,6 @@
                           "voice_processing",
                           "seedance2",
                           "seedance2_fast",
-                          "seedance2_mini",
                           "magnific_precision_upscaler_v2",
                           "magnific_video_upscaler_creative",
                           "kling2.5_turbo_pro",
@@ -11747,53 +11573,9 @@
                           "multi_shot_video",
                           "product_ugc",
                           "marketing_stock_image",
-                          "product_campaign_image"
+                          "product_campaign_image",
+                          "ad_localization"
                         ]
-                      }
-                    },
-                    "apiKeys": {
-                      "description": "Reserved for future use.",
-                      "type": "array",
-                      "items": {
-                        "type": "string",
-                        "format": "uuid",
-                        "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
-                      }
-                    },
-                    "resultsByApiKey": {
-                      "description": "Reserved for future use.",
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "date": {
-                            "type": "string",
-                            "format": "date",
-                            "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))$"
-                          },
-                          "usedCredits": {
-                            "type": "array",
-                            "items": {
-                              "type": "object",
-                              "properties": {
-                                "apiKeyId": {
-                                  "type": "string",
-                                  "format": "uuid",
-                                  "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
-                                },
-                                "amount": {
-                                  "type": "integer",
-                                  "minimum": -9007199254740991,
-                                  "maximum": 9007199254740991
-                                }
-                              },
-                              "required": ["apiKeyId", "amount"],
-                              "additionalProperties": false
-                            }
-                          }
-                        },
-                        "required": ["date", "usedCredits"],
-                        "additionalProperties": false
                       }
                     }
                   },

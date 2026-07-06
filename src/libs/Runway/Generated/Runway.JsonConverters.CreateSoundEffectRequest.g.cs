@@ -21,13 +21,6 @@ namespace Runway.JsonConverters
                             throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.CreateSoundEffectRequestDiscriminator)}");
             var discriminator = global::System.Text.Json.JsonSerializer.Deserialize(ref readerCopy, discriminatorTypeInfo);
 
-            global::Runway.CreateSoundEffectRequestSeedAudio? seedAudio = default;
-            if (discriminator?.Model == global::Runway.CreateSoundEffectRequestDiscriminatorModel.SeedAudio)
-            {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateSoundEffectRequestSeedAudio), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateSoundEffectRequestSeedAudio> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.CreateSoundEffectRequestSeedAudio)}");
-                seedAudio = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
-            }
             global::Runway.CreateSoundEffectRequestElevenTextToSoundV2? elevenTextToSoundV2 = default;
             if (discriminator?.Model == global::Runway.CreateSoundEffectRequestDiscriminatorModel.ElevenTextToSoundV2)
             {
@@ -38,8 +31,6 @@ namespace Runway.JsonConverters
 
             var __value = new global::Runway.CreateSoundEffectRequest(
                 discriminator?.Model,
-                seedAudio,
-
                 elevenTextToSoundV2
                 );
 
@@ -55,13 +46,7 @@ namespace Runway.JsonConverters
             options = options ?? throw new global::System.ArgumentNullException(nameof(options));
             var typeInfoResolver = options.TypeInfoResolver ?? throw new global::System.InvalidOperationException("TypeInfoResolver is not set.");
 
-            if (value.IsSeedAudio)
-            {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateSoundEffectRequestSeedAudio), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateSoundEffectRequestSeedAudio?> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateSoundEffectRequestSeedAudio).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.SeedAudio!, typeInfo);
-            }
-            else if (value.IsElevenTextToSoundV2)
+            if (value.IsElevenTextToSoundV2)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateSoundEffectRequestElevenTextToSoundV2), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateSoundEffectRequestElevenTextToSoundV2?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateSoundEffectRequestElevenTextToSoundV2).Name}");
