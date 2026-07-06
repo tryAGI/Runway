@@ -9,6 +9,7 @@ internal static class RecipesApiGroupCommand
     public static Command Create()
     {
         var command = new Command(@"recipes", @"Recipes endpoint commands.");
+                         command.Subcommands.Add(RecipesCreateRecipesAdLocalizationCommandApiCommand.Create());
                          command.Subcommands.Add(RecipesCreateRecipesMarketingStockImageCommandApiCommand.Create());
                          command.Subcommands.Add(RecipesCreateRecipesMultiShotVideoCommandApiCommand.Create());
                          command.Subcommands.Add(RecipesCreateRecipesProductAdCommandApiCommand.Create());
