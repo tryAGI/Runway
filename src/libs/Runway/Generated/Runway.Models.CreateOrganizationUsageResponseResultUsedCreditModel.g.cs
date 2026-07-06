@@ -15,6 +15,10 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        AdLocalization,
+        /// <summary>
+        /// 
+        /// </summary>
         Aleph2,
         /// <summary>
         /// 
@@ -163,19 +167,11 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
-        SeedAudio,
-        /// <summary>
-        /// 
-        /// </summary>
         Seedance2,
         /// <summary>
         /// 
         /// </summary>
         Seedance2Fast,
-        /// <summary>
-        /// 
-        /// </summary>
-        Seedance2Mini,
         /// <summary>
         /// 
         /// </summary>
@@ -207,6 +203,7 @@ namespace Runway
             return value switch
             {
                 CreateOrganizationUsageResponseResultUsedCreditModel.ActTwo => "act_two",
+                CreateOrganizationUsageResponseResultUsedCreditModel.AdLocalization => "ad_localization",
                 CreateOrganizationUsageResponseResultUsedCreditModel.Aleph2 => "aleph2",
                 CreateOrganizationUsageResponseResultUsedCreditModel.ElevenMultilingualStsV2 => "eleven_multilingual_sts_v2",
                 CreateOrganizationUsageResponseResultUsedCreditModel.ElevenMultilingualV2 => "eleven_multilingual_v2",
@@ -244,10 +241,8 @@ namespace Runway
                 CreateOrganizationUsageResponseResultUsedCreditModel.ProductCampaignImage => "product_campaign_image",
                 CreateOrganizationUsageResponseResultUsedCreditModel.ProductSwap => "product_swap",
                 CreateOrganizationUsageResponseResultUsedCreditModel.ProductUgc => "product_ugc",
-                CreateOrganizationUsageResponseResultUsedCreditModel.SeedAudio => "seed_audio",
                 CreateOrganizationUsageResponseResultUsedCreditModel.Seedance2 => "seedance2",
                 CreateOrganizationUsageResponseResultUsedCreditModel.Seedance2Fast => "seedance2_fast",
-                CreateOrganizationUsageResponseResultUsedCreditModel.Seedance2Mini => "seedance2_mini",
                 CreateOrganizationUsageResponseResultUsedCreditModel.Veo3 => "veo3",
                 CreateOrganizationUsageResponseResultUsedCreditModel.Veo31 => "veo3.1",
                 CreateOrganizationUsageResponseResultUsedCreditModel.Veo31Fast => "veo3.1_fast",
@@ -263,6 +258,7 @@ namespace Runway
             return value switch
             {
                 "act_two" => CreateOrganizationUsageResponseResultUsedCreditModel.ActTwo,
+                "ad_localization" => CreateOrganizationUsageResponseResultUsedCreditModel.AdLocalization,
                 "aleph2" => CreateOrganizationUsageResponseResultUsedCreditModel.Aleph2,
                 "eleven_multilingual_sts_v2" => CreateOrganizationUsageResponseResultUsedCreditModel.ElevenMultilingualStsV2,
                 "eleven_multilingual_v2" => CreateOrganizationUsageResponseResultUsedCreditModel.ElevenMultilingualV2,
@@ -300,10 +296,8 @@ namespace Runway
                 "product_campaign_image" => CreateOrganizationUsageResponseResultUsedCreditModel.ProductCampaignImage,
                 "product_swap" => CreateOrganizationUsageResponseResultUsedCreditModel.ProductSwap,
                 "product_ugc" => CreateOrganizationUsageResponseResultUsedCreditModel.ProductUgc,
-                "seed_audio" => CreateOrganizationUsageResponseResultUsedCreditModel.SeedAudio,
                 "seedance2" => CreateOrganizationUsageResponseResultUsedCreditModel.Seedance2,
                 "seedance2_fast" => CreateOrganizationUsageResponseResultUsedCreditModel.Seedance2Fast,
-                "seedance2_mini" => CreateOrganizationUsageResponseResultUsedCreditModel.Seedance2Mini,
                 "veo3" => CreateOrganizationUsageResponseResultUsedCreditModel.Veo3,
                 "veo3.1" => CreateOrganizationUsageResponseResultUsedCreditModel.Veo31,
                 "veo3.1_fast" => CreateOrganizationUsageResponseResultUsedCreditModel.Veo31Fast,
