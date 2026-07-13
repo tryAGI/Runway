@@ -38,6 +38,12 @@ namespace Runway
         public bool? Audio { get; set; }
 
         /// <summary>
+        /// Text describing what should not appear in the output video.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("negativePrompt")]
+        public string? NegativePrompt { get; set; }
+
+        /// <summary>
         /// The number of seconds of duration for the output video.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("duration")]
@@ -72,6 +78,9 @@ namespace Runway
         /// Whether to generate audio for the video. Audio inclusion affects pricing.<br/>
         /// Default Value: true
         /// </param>
+        /// <param name="negativePrompt">
+        /// Text describing what should not appear in the output video.
+        /// </param>
         /// <param name="duration">
         /// The number of seconds of duration for the output video.
         /// </param>
@@ -84,6 +93,7 @@ namespace Runway
             global::Runway.CreateImageToVideoRequestVeo31FastRatio ratio,
             string? promptText,
             bool? audio,
+            string? negativePrompt,
             double? duration,
             string model = "veo3.1_fast")
         {
@@ -91,6 +101,7 @@ namespace Runway
             this.PromptImage = promptImage;
             this.Ratio = ratio;
             this.Audio = audio;
+            this.NegativePrompt = negativePrompt;
             this.Duration = duration;
             this.Model = model;
         }
