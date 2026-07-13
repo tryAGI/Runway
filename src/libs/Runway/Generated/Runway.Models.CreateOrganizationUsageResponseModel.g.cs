@@ -63,6 +63,10 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        GeminiOmniFlash,
+        /// <summary>
+        /// 
+        /// </summary>
         Gen3aTurbo,
         /// <summary>
         /// 
@@ -167,11 +171,23 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        SeedAudio,
+        /// <summary>
+        /// 
+        /// </summary>
         Seedance2,
         /// <summary>
         /// 
         /// </summary>
         Seedance2Fast,
+        /// <summary>
+        /// 
+        /// </summary>
+        Seedance2Mini,
+        /// <summary>
+        /// 
+        /// </summary>
+        Seedream5Pro,
         /// <summary>
         /// 
         /// </summary>
@@ -215,6 +231,7 @@ namespace Runway
                 CreateOrganizationUsageResponseModel.Gemini25Flash => "gemini_2.5_flash",
                 CreateOrganizationUsageResponseModel.GeminiImage31Flash => "gemini_image3.1_flash",
                 CreateOrganizationUsageResponseModel.GeminiImage3Pro => "gemini_image3_pro",
+                CreateOrganizationUsageResponseModel.GeminiOmniFlash => "gemini_omni_flash",
                 CreateOrganizationUsageResponseModel.Gen3aTurbo => "gen3a_turbo",
                 CreateOrganizationUsageResponseModel.Gen45 => "gen4.5",
                 CreateOrganizationUsageResponseModel.Gen4Aleph => "gen4_aleph",
@@ -241,8 +258,11 @@ namespace Runway
                 CreateOrganizationUsageResponseModel.ProductCampaignImage => "product_campaign_image",
                 CreateOrganizationUsageResponseModel.ProductSwap => "product_swap",
                 CreateOrganizationUsageResponseModel.ProductUgc => "product_ugc",
+                CreateOrganizationUsageResponseModel.SeedAudio => "seed_audio",
                 CreateOrganizationUsageResponseModel.Seedance2 => "seedance2",
                 CreateOrganizationUsageResponseModel.Seedance2Fast => "seedance2_fast",
+                CreateOrganizationUsageResponseModel.Seedance2Mini => "seedance2_mini",
+                CreateOrganizationUsageResponseModel.Seedream5Pro => "seedream5_pro",
                 CreateOrganizationUsageResponseModel.Veo3 => "veo3",
                 CreateOrganizationUsageResponseModel.Veo31 => "veo3.1",
                 CreateOrganizationUsageResponseModel.Veo31Fast => "veo3.1_fast",
@@ -270,6 +290,7 @@ namespace Runway
                 "gemini_2.5_flash" => CreateOrganizationUsageResponseModel.Gemini25Flash,
                 "gemini_image3.1_flash" => CreateOrganizationUsageResponseModel.GeminiImage31Flash,
                 "gemini_image3_pro" => CreateOrganizationUsageResponseModel.GeminiImage3Pro,
+                "gemini_omni_flash" => CreateOrganizationUsageResponseModel.GeminiOmniFlash,
                 "gen3a_turbo" => CreateOrganizationUsageResponseModel.Gen3aTurbo,
                 "gen4.5" => CreateOrganizationUsageResponseModel.Gen45,
                 "gen4_aleph" => CreateOrganizationUsageResponseModel.Gen4Aleph,
@@ -296,8 +317,11 @@ namespace Runway
                 "product_campaign_image" => CreateOrganizationUsageResponseModel.ProductCampaignImage,
                 "product_swap" => CreateOrganizationUsageResponseModel.ProductSwap,
                 "product_ugc" => CreateOrganizationUsageResponseModel.ProductUgc,
+                "seed_audio" => CreateOrganizationUsageResponseModel.SeedAudio,
                 "seedance2" => CreateOrganizationUsageResponseModel.Seedance2,
                 "seedance2_fast" => CreateOrganizationUsageResponseModel.Seedance2Fast,
+                "seedance2_mini" => CreateOrganizationUsageResponseModel.Seedance2Mini,
+                "seedream5_pro" => CreateOrganizationUsageResponseModel.Seedream5Pro,
                 "veo3" => CreateOrganizationUsageResponseModel.Veo3,
                 "veo3.1" => CreateOrganizationUsageResponseModel.Veo31,
                 "veo3.1_fast" => CreateOrganizationUsageResponseModel.Veo31Fast,

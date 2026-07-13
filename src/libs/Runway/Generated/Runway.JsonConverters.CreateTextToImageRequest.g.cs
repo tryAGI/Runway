@@ -56,6 +56,20 @@ namespace Runway.JsonConverters
                                throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.CreateTextToImageRequestGeminiImage31Flash)}");
                 geminiImage31Flash = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
+            global::Runway.CreateTextToImageRequestSeedream5Pro? seedream5Pro = default;
+            if (discriminator?.Model == global::Runway.CreateTextToImageRequestDiscriminatorModel.Seedream5Pro)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateTextToImageRequestSeedream5Pro), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateTextToImageRequestSeedream5Pro> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.CreateTextToImageRequestSeedream5Pro)}");
+                seedream5Pro = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+            }
+            global::Runway.CreateTextToImageRequestSeedream5Lite? seedream5Lite = default;
+            if (discriminator?.Model == global::Runway.CreateTextToImageRequestDiscriminatorModel.Seedream5Lite)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateTextToImageRequestSeedream5Lite), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateTextToImageRequestSeedream5Lite> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.CreateTextToImageRequestSeedream5Lite)}");
+                seedream5Lite = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+            }
             global::Runway.CreateTextToImageRequestGemini25Flash? gemini25Flash = default;
             if (discriminator?.Model == global::Runway.CreateTextToImageRequestDiscriminatorModel.Gemini25Flash)
             {
@@ -75,6 +89,10 @@ namespace Runway.JsonConverters
                 geminiImage3Pro,
 
                 geminiImage31Flash,
+
+                seedream5Pro,
+
+                seedream5Lite,
 
                 gemini25Flash
                 );
@@ -120,6 +138,18 @@ namespace Runway.JsonConverters
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateTextToImageRequestGeminiImage31Flash), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateTextToImageRequestGeminiImage31Flash?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateTextToImageRequestGeminiImage31Flash).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.GeminiImage31Flash!, typeInfo);
+            }
+            else if (value.IsSeedream5Pro)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateTextToImageRequestSeedream5Pro), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateTextToImageRequestSeedream5Pro?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateTextToImageRequestSeedream5Pro).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Seedream5Pro!, typeInfo);
+            }
+            else if (value.IsSeedream5Lite)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateTextToImageRequestSeedream5Lite), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateTextToImageRequestSeedream5Lite?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateTextToImageRequestSeedream5Lite).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Seedream5Lite!, typeInfo);
             }
             else if (value.IsGemini25Flash)
             {

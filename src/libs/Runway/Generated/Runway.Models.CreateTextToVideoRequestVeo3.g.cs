@@ -31,6 +31,12 @@ namespace Runway
         public required global::Runway.CreateTextToVideoRequestVeo3Ratio Ratio { get; set; }
 
         /// <summary>
+        /// Text describing what should not appear in the output video.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("negativePrompt")]
+        public string? NegativePrompt { get; set; }
+
+        /// <summary>
         /// 
         /// </summary>
         /// <default>"veo3"</default>
@@ -52,6 +58,9 @@ namespace Runway
         /// <param name="ratio">
         /// The resolution of the output video.
         /// </param>
+        /// <param name="negativePrompt">
+        /// Text describing what should not appear in the output video.
+        /// </param>
         /// <param name="duration">
         /// The number of seconds of duration for the output video.
         /// </param>
@@ -62,12 +71,14 @@ namespace Runway
         public CreateTextToVideoRequestVeo3(
             string promptText,
             global::Runway.CreateTextToVideoRequestVeo3Ratio ratio,
+            string? negativePrompt,
             double duration = 8,
             string model = "veo3")
         {
             this.PromptText = promptText ?? throw new global::System.ArgumentNullException(nameof(promptText));
             this.Duration = duration;
             this.Ratio = ratio;
+            this.NegativePrompt = negativePrompt;
             this.Model = model;
         }
 
