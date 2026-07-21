@@ -43,6 +43,12 @@ namespace Runway
         public int? OutputCount { get; set; }
 
         /// <summary>
+        /// When true, enable live web search so the model can use current brand, trend, or event context. Default false for deterministic output.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("grounding")]
+        public bool? Grounding { get; set; }
+
+        /// <summary>
         /// 
         /// </summary>
         /// <default>"seedream5_pro"</default>
@@ -73,6 +79,9 @@ namespace Runway
         /// <param name="outputCount">
         /// The number of images to generate. Increasing this number will affect the number of credits consumed by the generation.
         /// </param>
+        /// <param name="grounding">
+        /// When true, enable live web search so the model can use current brand, trend, or event context. Default false for deterministic output.
+        /// </param>
         /// <param name="model"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -83,6 +92,7 @@ namespace Runway
             global::Runway.CreateTextToImageRequestSeedream5ProOutputFormat? outputFormat,
             global::System.Collections.Generic.IList<global::Runway.CreateTextToImageRequestSeedream5ProReferenceImage>? referenceImages,
             int? outputCount,
+            bool? grounding,
             string model = "seedream5_pro")
         {
             this.PromptText = promptText ?? throw new global::System.ArgumentNullException(nameof(promptText));
@@ -90,6 +100,7 @@ namespace Runway
             this.OutputFormat = outputFormat;
             this.ReferenceImages = referenceImages;
             this.OutputCount = outputCount;
+            this.Grounding = grounding;
             this.Model = model;
         }
 

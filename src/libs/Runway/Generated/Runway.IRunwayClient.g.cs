@@ -58,7 +58,17 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public GenerateClient Generate { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public KnowledgeClient Knowledge { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public ModelRouterClient ModelRouter { get; }
 
         /// <summary>
         /// 

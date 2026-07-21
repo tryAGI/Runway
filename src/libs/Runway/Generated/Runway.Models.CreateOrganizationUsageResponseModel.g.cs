@@ -187,6 +187,10 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        Seedream5Lite,
+        /// <summary>
+        /// 
+        /// </summary>
         Seedream5Pro,
         /// <summary>
         /// 
@@ -262,6 +266,7 @@ namespace Runway
                 CreateOrganizationUsageResponseModel.Seedance2 => "seedance2",
                 CreateOrganizationUsageResponseModel.Seedance2Fast => "seedance2_fast",
                 CreateOrganizationUsageResponseModel.Seedance2Mini => "seedance2_mini",
+                CreateOrganizationUsageResponseModel.Seedream5Lite => "seedream5_lite",
                 CreateOrganizationUsageResponseModel.Seedream5Pro => "seedream5_pro",
                 CreateOrganizationUsageResponseModel.Veo3 => "veo3",
                 CreateOrganizationUsageResponseModel.Veo31 => "veo3.1",
@@ -321,6 +326,7 @@ namespace Runway
                 "seedance2" => CreateOrganizationUsageResponseModel.Seedance2,
                 "seedance2_fast" => CreateOrganizationUsageResponseModel.Seedance2Fast,
                 "seedance2_mini" => CreateOrganizationUsageResponseModel.Seedance2Mini,
+                "seedream5_lite" => CreateOrganizationUsageResponseModel.Seedream5Lite,
                 "seedream5_pro" => CreateOrganizationUsageResponseModel.Seedream5Pro,
                 "veo3" => CreateOrganizationUsageResponseModel.Veo3,
                 "veo3.1" => CreateOrganizationUsageResponseModel.Veo31,
