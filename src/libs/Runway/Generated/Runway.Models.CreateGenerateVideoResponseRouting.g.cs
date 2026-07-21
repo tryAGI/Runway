@@ -6,7 +6,7 @@ namespace Runway
     /// <summary>
     /// Metadata describing which model the router selected and why.
     /// </summary>
-    public sealed partial class CreateGenerateVideoResponseRoutedVideoTaskCreatedRouting
+    public sealed partial class CreateGenerateVideoResponseRouting
     {
         /// <summary>
         /// The public name of the model the router selected.
@@ -34,21 +34,21 @@ namespace Runway
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("resolvedSettings")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Runway.CreateGenerateVideoResponseRoutedVideoTaskCreatedRoutingResolvedSettings ResolvedSettings { get; set; }
+        public required global::Runway.CreateGenerateVideoResponseRoutingResolvedSettings ResolvedSettings { get; set; }
 
         /// <summary>
         /// Request-side defaults resolved for the routing response. Not necessarily identical to prepared model options.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("resolvedInput")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Runway.CreateGenerateVideoResponseRoutedVideoTaskCreatedRoutingResolvedInput ResolvedInput { get; set; }
+        public required global::Runway.CreateGenerateVideoResponseRoutingResolvedInput ResolvedInput { get; set; }
 
         /// <summary>
         /// Estimated cost, computed against current pricing.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("estimatedCost")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Runway.CreateGenerateVideoResponseRoutedVideoTaskCreatedRoutingEstimatedCost EstimatedCost { get; set; }
+        public required global::Runway.CreateGenerateVideoResponseRoutingEstimatedCost EstimatedCost { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -57,7 +57,7 @@ namespace Runway
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CreateGenerateVideoResponseRoutedVideoTaskCreatedRouting" /> class.
+        /// Initializes a new instance of the <see cref="CreateGenerateVideoResponseRouting" /> class.
         /// </summary>
         /// <param name="model">
         /// The public name of the model the router selected.
@@ -80,13 +80,13 @@ namespace Runway
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
-        public CreateGenerateVideoResponseRoutedVideoTaskCreatedRouting(
+        public CreateGenerateVideoResponseRouting(
             string model,
             string provider,
             string configId,
-            global::Runway.CreateGenerateVideoResponseRoutedVideoTaskCreatedRoutingResolvedSettings resolvedSettings,
-            global::Runway.CreateGenerateVideoResponseRoutedVideoTaskCreatedRoutingResolvedInput resolvedInput,
-            global::Runway.CreateGenerateVideoResponseRoutedVideoTaskCreatedRoutingEstimatedCost estimatedCost)
+            global::Runway.CreateGenerateVideoResponseRoutingResolvedSettings resolvedSettings,
+            global::Runway.CreateGenerateVideoResponseRoutingResolvedInput resolvedInput,
+            global::Runway.CreateGenerateVideoResponseRoutingEstimatedCost estimatedCost)
         {
             this.Model = model ?? throw new global::System.ArgumentNullException(nameof(model));
             this.Provider = provider ?? throw new global::System.ArgumentNullException(nameof(provider));
@@ -97,9 +97,9 @@ namespace Runway
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CreateGenerateVideoResponseRoutedVideoTaskCreatedRouting" /> class.
+        /// Initializes a new instance of the <see cref="CreateGenerateVideoResponseRouting" /> class.
         /// </summary>
-        public CreateGenerateVideoResponseRoutedVideoTaskCreatedRouting()
+        public CreateGenerateVideoResponseRouting()
         {
         }
 

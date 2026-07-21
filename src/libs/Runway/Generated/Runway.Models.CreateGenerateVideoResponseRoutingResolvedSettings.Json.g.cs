@@ -2,7 +2,7 @@
 
 namespace Runway
 {
-    public sealed partial class CreateGenerateVideoResponseRoutedVideoDryRunRoutingResolvedSettingsPriceCeiling
+    public sealed partial class CreateGenerateVideoResponseRoutingResolvedSettings
     {
         /// <summary>
         /// Serializes the current instance to a JSON string using the provided JsonSerializerContext.
@@ -47,20 +47,20 @@ namespace Runway
         /// <summary>
         /// Deserializes a JSON string using the provided JsonSerializerContext.
         /// </summary>
-        public static global::Runway.CreateGenerateVideoResponseRoutedVideoDryRunRoutingResolvedSettingsPriceCeiling? FromJson(
+        public static global::Runway.CreateGenerateVideoResponseRoutingResolvedSettings? FromJson(
             string json,
             global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
         {
             return global::System.Text.Json.JsonSerializer.Deserialize(
                 json,
-                typeof(global::Runway.CreateGenerateVideoResponseRoutedVideoDryRunRoutingResolvedSettingsPriceCeiling),
-                jsonSerializerContext) as global::Runway.CreateGenerateVideoResponseRoutedVideoDryRunRoutingResolvedSettingsPriceCeiling;
+                typeof(global::Runway.CreateGenerateVideoResponseRoutingResolvedSettings),
+                jsonSerializerContext) as global::Runway.CreateGenerateVideoResponseRoutingResolvedSettings;
         }
 
         /// <summary>
         /// Deserializes a JSON string using the generated default JsonSerializerContext.
         /// </summary>
-        public static global::Runway.CreateGenerateVideoResponseRoutedVideoDryRunRoutingResolvedSettingsPriceCeiling? FromJson(
+        public static global::Runway.CreateGenerateVideoResponseRoutingResolvedSettings? FromJson(
             string json)
         {
             return FromJson(
@@ -75,7 +75,7 @@ namespace Runway
         [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
         [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
 #endif
-        public static global::Runway.CreateGenerateVideoResponseRoutedVideoDryRunRoutingResolvedSettingsPriceCeiling? FromJson(
+        public static global::Runway.CreateGenerateVideoResponseRoutingResolvedSettings? FromJson(
             string json,
             global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
         {
@@ -86,7 +86,7 @@ namespace Runway
                     global::Runway.SourceGenerationContext.Default);
             }
 
-            return global::System.Text.Json.JsonSerializer.Deserialize<global::Runway.CreateGenerateVideoResponseRoutedVideoDryRunRoutingResolvedSettingsPriceCeiling>(
+            return global::System.Text.Json.JsonSerializer.Deserialize<global::Runway.CreateGenerateVideoResponseRoutingResolvedSettings>(
                 json,
                 jsonSerializerOptions);
         }
@@ -94,20 +94,20 @@ namespace Runway
         /// <summary>
         /// Deserializes a JSON stream using the provided JsonSerializerContext.
         /// </summary>
-        public static async global::System.Threading.Tasks.ValueTask<global::Runway.CreateGenerateVideoResponseRoutedVideoDryRunRoutingResolvedSettingsPriceCeiling?> FromJsonStreamAsync(
+        public static async global::System.Threading.Tasks.ValueTask<global::Runway.CreateGenerateVideoResponseRoutingResolvedSettings?> FromJsonStreamAsync(
             global::System.IO.Stream jsonStream,
             global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
         {
             return (await global::System.Text.Json.JsonSerializer.DeserializeAsync(
                 jsonStream,
-                typeof(global::Runway.CreateGenerateVideoResponseRoutedVideoDryRunRoutingResolvedSettingsPriceCeiling),
-                jsonSerializerContext).ConfigureAwait(false)) as global::Runway.CreateGenerateVideoResponseRoutedVideoDryRunRoutingResolvedSettingsPriceCeiling;
+                typeof(global::Runway.CreateGenerateVideoResponseRoutingResolvedSettings),
+                jsonSerializerContext).ConfigureAwait(false)) as global::Runway.CreateGenerateVideoResponseRoutingResolvedSettings;
         }
 
         /// <summary>
         /// Deserializes a JSON stream using the generated default JsonSerializerContext.
         /// </summary>
-        public static global::System.Threading.Tasks.ValueTask<global::Runway.CreateGenerateVideoResponseRoutedVideoDryRunRoutingResolvedSettingsPriceCeiling?> FromJsonStreamAsync(
+        public static global::System.Threading.Tasks.ValueTask<global::Runway.CreateGenerateVideoResponseRoutingResolvedSettings?> FromJsonStreamAsync(
             global::System.IO.Stream jsonStream)
         {
             return FromJsonStreamAsync(
@@ -122,7 +122,7 @@ namespace Runway
         [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
         [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
 #endif
-        public static global::System.Threading.Tasks.ValueTask<global::Runway.CreateGenerateVideoResponseRoutedVideoDryRunRoutingResolvedSettingsPriceCeiling?> FromJsonStreamAsync(
+        public static global::System.Threading.Tasks.ValueTask<global::Runway.CreateGenerateVideoResponseRoutingResolvedSettings?> FromJsonStreamAsync(
             global::System.IO.Stream jsonStream,
             global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
         {
@@ -133,7 +133,7 @@ namespace Runway
                     global::Runway.SourceGenerationContext.Default);
             }
 
-            return global::System.Text.Json.JsonSerializer.DeserializeAsync<global::Runway.CreateGenerateVideoResponseRoutedVideoDryRunRoutingResolvedSettingsPriceCeiling?>(
+            return global::System.Text.Json.JsonSerializer.DeserializeAsync<global::Runway.CreateGenerateVideoResponseRoutingResolvedSettings?>(
                 jsonStream,
                 jsonSerializerOptions);
         }

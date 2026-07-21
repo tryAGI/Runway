@@ -11665,10 +11665,6 @@
                     "type": "string",
                     "pattern": "^[a-z][a-z0-9_-]{0,63}$"
                   },
-                  "dryRun": {
-                    "description": "When true, run the full routing pipeline and return the decision and estimated cost without generating. No task is created, nothing is billed, and no asset is produced.",
-                    "type": "boolean"
-                  },
                   "input": {
                     "title": "UniversalVideoInput",
                     "description": "Model-agnostic video generation input. Fields are optional; the router selects a model and maps these options to it.",
@@ -12000,201 +11996,107 @@
         },
         "responses": {
           "200": {
-            "description": "The routing decision. Includes a task `id` for real requests; dry runs return the decision only.",
+            "description": "The created task and routing decision. Poll GET /v1/tasks/:id for the result.",
             "content": {
               "application/json": {
                 "schema": {
-                  "oneOf": [
-                    {
-                      "title": "RoutedVideoTaskCreated",
-                      "type": "object",
-                      "properties": {
-                        "dryRun": { "type": "boolean", "const": false },
-                        "id": {
-                          "description": "The ID of the created task. Poll GET /v1/tasks/:id for the result.",
-                          "type": "string",
-                          "format": "uuid",
-                          "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12})$"
-                        },
-                        "routing": {
-                          "description": "Metadata describing which model the router selected and why.",
-                          "type": "object",
-                          "properties": {
-                            "model": {
-                              "description": "The public name of the model the router selected.",
-                              "type": "string"
-                            },
-                            "provider": {
-                              "description": "The provider of the selected model.",
-                              "type": "string"
-                            },
-                            "configId": {
-                              "description": "The slug of the router config that was applied to this request.",
-                              "type": "string"
-                            },
-                            "resolvedSettings": {
-                              "description": "The resolved config settings the router used for this request.",
-                              "type": "object",
-                              "properties": {
-                                "optimizeFor": {
-                                  "description": "The single optimization preference the config selected, used as the soft weighting when scoring eligible models.",
-                                  "type": "string",
-                                  "enum": ["cost", "latency", "quality"]
-                                },
-                                "priceCeiling": {
-                                  "description": "The applied maximum credits per generation for this request’s modality, or null if the config sets no ceiling.",
-                                  "anyOf": [
-                                    { "type": "number" },
-                                    { "type": "null" }
-                                  ]
-                                }
-                              },
-                              "required": ["optimizeFor", "priceCeiling"],
-                              "additionalProperties": false
-                            },
-                            "resolvedInput": {
-                              "description": "Request-side defaults resolved for the routing response. Not necessarily identical to prepared model options.",
-                              "type": "object",
-                              "properties": {
-                                "duration": {
-                                  "description": "Duration in seconds used for routing display (request value or router default).",
-                                  "type": "number"
-                                },
-                                "ratio": {
-                                  "description": "Concrete output ratio derived from aspectRatio (e.g. \"1280:720\"), or the router default.",
-                                  "type": "string"
-                                },
-                                "resolution": {
-                                  "description": "Resolution tier from the request, or the router default when omitted.",
-                                  "type": "string"
-                                }
-                              },
-                              "required": ["duration", "ratio", "resolution"],
-                              "additionalProperties": false
-                            },
-                            "estimatedCost": {
-                              "description": "Estimated cost, computed against current pricing.",
-                              "type": "object",
-                              "properties": {
-                                "credits": {
-                                  "description": "Estimated cost of the generation in credits.",
-                                  "type": "number"
-                                }
-                              },
-                              "required": ["credits"],
-                              "additionalProperties": false
-                            }
-                          },
-                          "required": [
-                            "model",
-                            "provider",
-                            "configId",
-                            "resolvedSettings",
-                            "resolvedInput",
-                            "estimatedCost"
-                          ],
-                          "additionalProperties": false
-                        }
-                      },
-                      "required": ["dryRun", "id", "routing"],
-                      "additionalProperties": false
+                  "title": "RoutedVideoTaskCreated",
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "description": "The ID of the created task. Poll GET /v1/tasks/:id for the result.",
+                      "type": "string",
+                      "format": "uuid",
+                      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12})$"
                     },
-                    {
-                      "title": "RoutedVideoDryRun",
+                    "routing": {
+                      "description": "Metadata describing which model the router selected and why.",
                       "type": "object",
                       "properties": {
-                        "dryRun": { "type": "boolean", "const": true },
-                        "routing": {
-                          "description": "Metadata describing which model the router selected and why.",
+                        "model": {
+                          "description": "The public name of the model the router selected.",
+                          "type": "string"
+                        },
+                        "provider": {
+                          "description": "The provider of the selected model.",
+                          "type": "string"
+                        },
+                        "configId": {
+                          "description": "The slug of the router config that was applied to this request.",
+                          "type": "string"
+                        },
+                        "resolvedSettings": {
+                          "description": "The resolved config settings the router used for this request.",
                           "type": "object",
                           "properties": {
-                            "model": {
-                              "description": "The public name of the model the router selected.",
-                              "type": "string"
+                            "optimizeFor": {
+                              "description": "The single optimization preference the config selected, used as the soft weighting when scoring eligible models.",
+                              "type": "string",
+                              "enum": ["cost", "latency", "quality"]
                             },
-                            "provider": {
-                              "description": "The provider of the selected model.",
-                              "type": "string"
-                            },
-                            "configId": {
-                              "description": "The slug of the router config that was applied to this request.",
-                              "type": "string"
-                            },
-                            "resolvedSettings": {
-                              "description": "The resolved config settings the router used for this request.",
-                              "type": "object",
-                              "properties": {
-                                "optimizeFor": {
-                                  "description": "The single optimization preference the config selected, used as the soft weighting when scoring eligible models.",
-                                  "type": "string",
-                                  "enum": ["cost", "latency", "quality"]
-                                },
-                                "priceCeiling": {
-                                  "description": "The applied maximum credits per generation for this request’s modality, or null if the config sets no ceiling.",
-                                  "anyOf": [
-                                    { "type": "number" },
-                                    { "type": "null" }
-                                  ]
-                                }
-                              },
-                              "required": ["optimizeFor", "priceCeiling"],
-                              "additionalProperties": false
-                            },
-                            "resolvedInput": {
-                              "description": "Request-side defaults resolved for the routing response. Not necessarily identical to prepared model options.",
-                              "type": "object",
-                              "properties": {
-                                "duration": {
-                                  "description": "Duration in seconds used for routing display (request value or router default).",
-                                  "type": "number"
-                                },
-                                "ratio": {
-                                  "description": "Concrete output ratio derived from aspectRatio (e.g. \"1280:720\"), or the router default.",
-                                  "type": "string"
-                                },
-                                "resolution": {
-                                  "description": "Resolution tier from the request, or the router default when omitted.",
-                                  "type": "string"
-                                }
-                              },
-                              "required": ["duration", "ratio", "resolution"],
-                              "additionalProperties": false
-                            },
-                            "estimatedCost": {
-                              "description": "Estimated cost, computed against current pricing.",
-                              "type": "object",
-                              "properties": {
-                                "credits": {
-                                  "description": "Estimated cost of the generation in credits.",
-                                  "type": "number"
-                                }
-                              },
-                              "required": ["credits"],
-                              "additionalProperties": false
+                            "priceCeiling": {
+                              "description": "The applied maximum credits per generation for this request’s modality, or null if the config sets no ceiling.",
+                              "anyOf": [
+                                { "type": "number" },
+                                { "type": "null" }
+                              ]
                             }
                           },
-                          "required": [
-                            "model",
-                            "provider",
-                            "configId",
-                            "resolvedSettings",
-                            "resolvedInput",
-                            "estimatedCost"
-                          ],
+                          "required": ["optimizeFor", "priceCeiling"],
+                          "additionalProperties": false
+                        },
+                        "resolvedInput": {
+                          "description": "Request-side defaults resolved for the routing response. Not necessarily identical to prepared model options.",
+                          "type": "object",
+                          "properties": {
+                            "duration": {
+                              "description": "Duration in seconds used for routing display (request value or router default).",
+                              "type": "number"
+                            },
+                            "ratio": {
+                              "description": "Concrete output ratio derived from aspectRatio (e.g. \"1280:720\"), or the router default.",
+                              "type": "string"
+                            },
+                            "resolution": {
+                              "description": "Resolution tier from the request, or the router default when omitted.",
+                              "type": "string"
+                            }
+                          },
+                          "required": ["duration", "ratio", "resolution"],
+                          "additionalProperties": false
+                        },
+                        "estimatedCost": {
+                          "description": "Estimated cost, computed against current pricing.",
+                          "type": "object",
+                          "properties": {
+                            "credits": {
+                              "description": "Estimated cost of the generation in credits.",
+                              "type": "number"
+                            }
+                          },
+                          "required": ["credits"],
                           "additionalProperties": false
                         }
                       },
-                      "required": ["dryRun", "routing"],
+                      "required": [
+                        "model",
+                        "provider",
+                        "configId",
+                        "resolvedSettings",
+                        "resolvedInput",
+                        "estimatedCost"
+                      ],
                       "additionalProperties": false
                     }
-                  ],
-                  "discriminator": { "propertyName": "dryRun" }
+                  },
+                  "required": ["id", "routing"],
+                  "additionalProperties": false
                 }
               }
             }
           },
           "400": {
-            "description": "No model satisfies the config and request together. Returned identically for real and dry-run requests.",
+            "description": "No model satisfies the config and request together.",
             "content": {
               "application/json": {
                 "schema": {
@@ -12696,6 +12598,51 @@
                           "product_campaign_image",
                           "ad_localization"
                         ]
+                      }
+                    },
+                    "apiKeys": {
+                      "description": "Reserved for future use.",
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "format": "uuid",
+                        "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                      }
+                    },
+                    "resultsByApiKey": {
+                      "description": "Reserved for future use.",
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "date": {
+                            "type": "string",
+                            "format": "date",
+                            "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))$"
+                          },
+                          "usedCredits": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "apiKeyId": {
+                                  "type": "string",
+                                  "format": "uuid",
+                                  "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                                },
+                                "amount": {
+                                  "type": "integer",
+                                  "minimum": -9007199254740991,
+                                  "maximum": 9007199254740991
+                                }
+                              },
+                              "required": ["apiKeyId", "amount"],
+                              "additionalProperties": false
+                            }
+                          }
+                        },
+                        "required": ["date", "usedCredits"],
+                        "additionalProperties": false
                       }
                     }
                   },

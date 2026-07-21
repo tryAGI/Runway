@@ -353,7 +353,7 @@ namespace Runway
                                 retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
-                            // No model satisfies the config and request together. Returned identically for real and dry-run requests.
+                            // No model satisfies the config and request together.
                             if ((int)__response.StatusCode == 400)
                             {
                                 string? __content_400 = null;
@@ -533,9 +533,6 @@ namespace Runway
         /// <param name="configId">
         /// The slug of a saved Model Router config to route this request with.
         /// </param>
-        /// <param name="dryRun">
-        /// When true, run the full routing pipeline and return the decision and estimated cost without generating. No task is created, nothing is billed, and no asset is produced.
-        /// </param>
         /// <param name="input">
         /// Model-agnostic video generation input. Fields are optional; the router selects a model and maps these options to it.
         /// </param>
@@ -546,14 +543,12 @@ namespace Runway
             string configId,
             global::Runway.CreateGenerateVideoRequestInput input,
             string xRunwayVersion = "2024-11-06",
-            bool? dryRun = default,
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Runway.CreateGenerateVideoRequest
             {
                 ConfigId = configId,
-                DryRun = dryRun,
                 Input = input,
             };
 
