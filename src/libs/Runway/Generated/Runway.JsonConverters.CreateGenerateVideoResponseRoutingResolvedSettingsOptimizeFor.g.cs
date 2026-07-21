@@ -3,10 +3,10 @@
 namespace Runway.JsonConverters
 {
     /// <inheritdoc />
-    public sealed class CreateGenerateVideoResponseRoutedVideoTaskCreatedRoutingResolvedSettingsOptimizeForNullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Runway.CreateGenerateVideoResponseRoutedVideoTaskCreatedRoutingResolvedSettingsOptimizeFor?>
+    public sealed class CreateGenerateVideoResponseRoutingResolvedSettingsOptimizeForJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Runway.CreateGenerateVideoResponseRoutingResolvedSettingsOptimizeFor>
     {
         /// <inheritdoc />
-        public override global::Runway.CreateGenerateVideoResponseRoutedVideoTaskCreatedRoutingResolvedSettingsOptimizeFor? Read(
+        public override global::Runway.CreateGenerateVideoResponseRoutingResolvedSettingsOptimizeFor Read(
             ref global::System.Text.Json.Utf8JsonReader reader,
             global::System.Type typeToConvert,
             global::System.Text.Json.JsonSerializerOptions options)
@@ -18,7 +18,7 @@ namespace Runway.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::Runway.CreateGenerateVideoResponseRoutedVideoTaskCreatedRoutingResolvedSettingsOptimizeForExtensions.ToEnum(stringValue);
+                        return global::Runway.CreateGenerateVideoResponseRoutingResolvedSettingsOptimizeForExtensions.ToEnum(stringValue) ?? default;
                     }
                     
                     break;
@@ -26,11 +26,11 @@ namespace Runway.JsonConverters
                 case global::System.Text.Json.JsonTokenType.Number:
                 {
                     var numValue = reader.GetInt32();
-                    return (global::Runway.CreateGenerateVideoResponseRoutedVideoTaskCreatedRoutingResolvedSettingsOptimizeFor)numValue;
+                    return (global::Runway.CreateGenerateVideoResponseRoutingResolvedSettingsOptimizeFor)numValue;
                 }
                 case global::System.Text.Json.JsonTokenType.Null:
                 {
-                    return default(global::Runway.CreateGenerateVideoResponseRoutedVideoTaskCreatedRoutingResolvedSettingsOptimizeFor?);
+                    return default(global::Runway.CreateGenerateVideoResponseRoutingResolvedSettingsOptimizeFor);
                 }
                 default:
                     throw new global::System.ArgumentOutOfRangeException(nameof(reader));
@@ -42,19 +42,12 @@ namespace Runway.JsonConverters
         /// <inheritdoc />
         public override void Write(
             global::System.Text.Json.Utf8JsonWriter writer,
-            global::Runway.CreateGenerateVideoResponseRoutedVideoTaskCreatedRoutingResolvedSettingsOptimizeFor? value,
+            global::Runway.CreateGenerateVideoResponseRoutingResolvedSettingsOptimizeFor value,
             global::System.Text.Json.JsonSerializerOptions options)
         {
             writer = writer ?? throw new global::System.ArgumentNullException(nameof(writer));
 
-            if (value == null)
-            {
-                writer.WriteNullValue();
-            }
-            else
-            {
-                writer.WriteStringValue(global::Runway.CreateGenerateVideoResponseRoutedVideoTaskCreatedRoutingResolvedSettingsOptimizeForExtensions.ToValueString(value.Value));
-            }
+            writer.WriteStringValue(global::Runway.CreateGenerateVideoResponseRoutingResolvedSettingsOptimizeForExtensions.ToValueString(value));
         }
     }
 }

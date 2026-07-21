@@ -6,7 +6,7 @@ namespace Runway
     /// <summary>
     /// Request-side defaults resolved for the routing response. Not necessarily identical to prepared model options.
     /// </summary>
-    public sealed partial class CreateGenerateVideoResponseRoutedVideoDryRunRoutingResolvedInput
+    public sealed partial class CreateGenerateVideoResponseRoutingResolvedInput
     {
         /// <summary>
         /// Duration in seconds used for routing display (request value or router default).
@@ -36,7 +36,7 @@ namespace Runway
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CreateGenerateVideoResponseRoutedVideoDryRunRoutingResolvedInput" /> class.
+        /// Initializes a new instance of the <see cref="CreateGenerateVideoResponseRoutingResolvedInput" /> class.
         /// </summary>
         /// <param name="duration">
         /// Duration in seconds used for routing display (request value or router default).
@@ -50,7 +50,7 @@ namespace Runway
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
-        public CreateGenerateVideoResponseRoutedVideoDryRunRoutingResolvedInput(
+        public CreateGenerateVideoResponseRoutingResolvedInput(
             double duration,
             string ratio,
             string resolution)
@@ -61,9 +61,9 @@ namespace Runway
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CreateGenerateVideoResponseRoutedVideoDryRunRoutingResolvedInput" /> class.
+        /// Initializes a new instance of the <see cref="CreateGenerateVideoResponseRoutingResolvedInput" /> class.
         /// </summary>
-        public CreateGenerateVideoResponseRoutedVideoDryRunRoutingResolvedInput()
+        public CreateGenerateVideoResponseRoutingResolvedInput()
         {
         }
 
