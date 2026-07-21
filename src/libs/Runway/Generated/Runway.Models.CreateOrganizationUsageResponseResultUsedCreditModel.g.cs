@@ -187,6 +187,10 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        Seedream5Lite,
+        /// <summary>
+        /// 
+        /// </summary>
         Seedream5Pro,
         /// <summary>
         /// 
@@ -262,6 +266,7 @@ namespace Runway
                 CreateOrganizationUsageResponseResultUsedCreditModel.Seedance2 => "seedance2",
                 CreateOrganizationUsageResponseResultUsedCreditModel.Seedance2Fast => "seedance2_fast",
                 CreateOrganizationUsageResponseResultUsedCreditModel.Seedance2Mini => "seedance2_mini",
+                CreateOrganizationUsageResponseResultUsedCreditModel.Seedream5Lite => "seedream5_lite",
                 CreateOrganizationUsageResponseResultUsedCreditModel.Seedream5Pro => "seedream5_pro",
                 CreateOrganizationUsageResponseResultUsedCreditModel.Veo3 => "veo3",
                 CreateOrganizationUsageResponseResultUsedCreditModel.Veo31 => "veo3.1",
@@ -321,6 +326,7 @@ namespace Runway
                 "seedance2" => CreateOrganizationUsageResponseResultUsedCreditModel.Seedance2,
                 "seedance2_fast" => CreateOrganizationUsageResponseResultUsedCreditModel.Seedance2Fast,
                 "seedance2_mini" => CreateOrganizationUsageResponseResultUsedCreditModel.Seedance2Mini,
+                "seedream5_lite" => CreateOrganizationUsageResponseResultUsedCreditModel.Seedream5Lite,
                 "seedream5_pro" => CreateOrganizationUsageResponseResultUsedCreditModel.Seedream5Pro,
                 "veo3" => CreateOrganizationUsageResponseResultUsedCreditModel.Veo3,
                 "veo3.1" => CreateOrganizationUsageResponseResultUsedCreditModel.Veo31,

@@ -9969,6 +9969,10 @@
                         "minimum": 1,
                         "maximum": 4
                       },
+                      "grounding": {
+                        "description": "When true, enable live web search so the model can use current brand, trend, or event context. Default false for deterministic output.",
+                        "type": "boolean"
+                      },
                       "model": { "type": "string", "const": "seedream5_pro" }
                     },
                     "required": ["promptText", "ratio", "model"],
@@ -11642,6 +11646,632 @@
         }
       }
     },
+    "/v1/generate/video": {
+      "post": {
+        "tags": ["Generate"],
+        "summary": "Routed video generation",
+        "description": "Start a video generation task using a saved Model Router config instead of naming a model.",
+        "parameters": [{ "$ref": "#/components/parameters/X-Runway-Version" }],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "title": "RoutedVideoRequest",
+                "type": "object",
+                "properties": {
+                  "configId": {
+                    "description": "The slug of a saved Model Router config to route this request with.",
+                    "type": "string",
+                    "pattern": "^[a-z][a-z0-9_-]{0,63}$"
+                  },
+                  "dryRun": {
+                    "description": "When true, run the full routing pipeline and return the decision and estimated cost without generating. No task is created, nothing is billed, and no asset is produced.",
+                    "type": "boolean"
+                  },
+                  "input": {
+                    "title": "UniversalVideoInput",
+                    "description": "Model-agnostic video generation input. Fields are optional; the router selects a model and maps these options to it.",
+                    "type": "object",
+                    "properties": {
+                      "promptText": {
+                        "description": "A text prompt describing the desired video.",
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 4000
+                      },
+                      "negativePrompt": {
+                        "description": "A text description of what to avoid in the output.",
+                        "type": "string",
+                        "maxLength": 1000
+                      },
+                      "referenceImages": {
+                        "description": "Optional image inputs. Each entry requires a `role`. At most one `first` and one `last` are allowed; multiple `reference` images are allowed.",
+                        "maxItems": 4,
+                        "type": "array",
+                        "items": {
+                          "title": "VideoReferenceImage",
+                          "type": "object",
+                          "properties": {
+                            "uri": {
+                              "description": "A HTTPS URL, Runway or data URI containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                              "example": "https://example.com/image.jpg",
+                              "anyOf": [
+                                {
+                                  "description": "A HTTPS URL.",
+                                  "example": "https://example.com/file",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 2048,
+                                  "pattern": "^https:\\/\\/.*"
+                                },
+                                {
+                                  "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                                  "example": "runway://<token>",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 5000,
+                                  "pattern": "^runway:\\/\\/.*"
+                                },
+                                {
+                                  "description": "A data URI containing encoded media.",
+                                  "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 5242880,
+                                  "pattern": "^data:image\\/.*"
+                                }
+                              ]
+                            },
+                            "role": {
+                              "description": "How the image is used. `first` is the starting frame; `last` is an end frame; `reference` is additional image context.",
+                              "type": "string",
+                              "enum": ["first", "last", "reference"]
+                            }
+                          },
+                          "required": ["uri", "role"]
+                        }
+                      },
+                      "referenceVideos": {
+                        "description": "Optional video inputs. Each entry requires a `role`. Use `source` for video-to-video; use `reference` for additional context videos (only models that support them remain eligible). At most one `source` is allowed.",
+                        "maxItems": 2,
+                        "type": "array",
+                        "items": {
+                          "title": "VideoReferenceVideo",
+                          "type": "object",
+                          "properties": {
+                            "uri": {
+                              "description": "A HTTPS URL, Runway or data URI containing an encoded video. See [our docs](/assets/inputs#videos) on video inputs for more information.",
+                              "example": "https://example.com/video.mp4",
+                              "anyOf": [
+                                {
+                                  "description": "A HTTPS URL.",
+                                  "example": "https://example.com/file",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 2048,
+                                  "pattern": "^https:\\/\\/.*"
+                                },
+                                {
+                                  "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                                  "example": "runway://<token>",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 5000,
+                                  "pattern": "^runway:\\/\\/.*"
+                                },
+                                {
+                                  "description": "A data URI containing encoded media.",
+                                  "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 16777216,
+                                  "pattern": "^data:video\\/.*"
+                                }
+                              ]
+                            },
+                            "role": {
+                              "description": "How the video is used. `source` is the primary video-to-video input; `reference` is additional video context.",
+                              "type": "string",
+                              "enum": ["source", "reference"]
+                            }
+                          },
+                          "required": ["uri", "role"]
+                        }
+                      },
+                      "referenceAudio": {
+                        "description": "Optional audio inputs for the generation.",
+                        "maxItems": 1,
+                        "type": "array",
+                        "items": {
+                          "title": "VideoReferenceAudio",
+                          "type": "object",
+                          "properties": {
+                            "uri": {
+                              "description": "A HTTPS URL, Runway or data URI containing an encoded audio. See [our docs](/assets/inputs#audio) on audio inputs for more information.",
+                              "example": "https://example.com/audio.mp3",
+                              "anyOf": [
+                                {
+                                  "description": "A HTTPS URL.",
+                                  "example": "https://example.com/file",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 2048,
+                                  "pattern": "^https:\\/\\/.*"
+                                },
+                                {
+                                  "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                                  "example": "runway://<token>",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 5000,
+                                  "pattern": "^runway:\\/\\/.*"
+                                },
+                                {
+                                  "description": "A data URI containing encoded media.",
+                                  "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 16777216,
+                                  "pattern": "^data:audio\\/.*"
+                                }
+                              ]
+                            }
+                          },
+                          "required": ["uri"]
+                        }
+                      },
+                      "keyframes": {
+                        "description": "Timed guidance images for video restyle. Requires a source video; unsupported models are excluded.",
+                        "maxItems": 5,
+                        "type": "array",
+                        "items": {
+                          "title": "VideoKeyframe",
+                          "description": "Timed guidance image for video-to-video restyle. Provide either absolute `seconds` or fractional `at`.",
+                          "anyOf": [
+                            {
+                              "type": "object",
+                              "properties": {
+                                "uri": {
+                                  "description": "A HTTPS URL, Runway or data URI containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                                  "example": "https://example.com/image.jpg",
+                                  "anyOf": [
+                                    {
+                                      "description": "A HTTPS URL.",
+                                      "example": "https://example.com/file",
+                                      "type": "string",
+                                      "minLength": 13,
+                                      "maxLength": 2048,
+                                      "pattern": "^https:\\/\\/.*"
+                                    },
+                                    {
+                                      "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                                      "example": "runway://<token>",
+                                      "type": "string",
+                                      "minLength": 13,
+                                      "maxLength": 5000,
+                                      "pattern": "^runway:\\/\\/.*"
+                                    },
+                                    {
+                                      "description": "A data URI containing encoded media.",
+                                      "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                                      "type": "string",
+                                      "minLength": 13,
+                                      "maxLength": 5242880,
+                                      "pattern": "^data:image\\/.*"
+                                    }
+                                  ]
+                                },
+                                "seconds": {
+                                  "type": "number",
+                                  "minimum": 0,
+                                  "maximum": 30
+                                },
+                                "range": {
+                                  "type": "object",
+                                  "properties": {
+                                    "start_seconds": {
+                                      "type": "integer",
+                                      "minimum": 0,
+                                      "maximum": 9007199254740991
+                                    },
+                                    "end_seconds": {
+                                      "type": "integer",
+                                      "exclusiveMinimum": 0,
+                                      "maximum": 9007199254740991
+                                    }
+                                  },
+                                  "required": ["start_seconds", "end_seconds"],
+                                  "additionalProperties": false
+                                }
+                              },
+                              "required": ["uri", "seconds"],
+                              "additionalProperties": false
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "uri": {
+                                  "description": "A HTTPS URL, Runway or data URI containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                                  "example": "https://example.com/image.jpg",
+                                  "anyOf": [
+                                    {
+                                      "description": "A HTTPS URL.",
+                                      "example": "https://example.com/file",
+                                      "type": "string",
+                                      "minLength": 13,
+                                      "maxLength": 2048,
+                                      "pattern": "^https:\\/\\/.*"
+                                    },
+                                    {
+                                      "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                                      "example": "runway://<token>",
+                                      "type": "string",
+                                      "minLength": 13,
+                                      "maxLength": 5000,
+                                      "pattern": "^runway:\\/\\/.*"
+                                    },
+                                    {
+                                      "description": "A data URI containing encoded media.",
+                                      "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                                      "type": "string",
+                                      "minLength": 13,
+                                      "maxLength": 5242880,
+                                      "pattern": "^data:image\\/.*"
+                                    }
+                                  ]
+                                },
+                                "at": {
+                                  "type": "number",
+                                  "minimum": 0,
+                                  "maximum": 1
+                                },
+                                "range": {
+                                  "type": "object",
+                                  "properties": {
+                                    "start_seconds": {
+                                      "type": "integer",
+                                      "minimum": 0,
+                                      "maximum": 9007199254740991
+                                    },
+                                    "end_seconds": {
+                                      "type": "integer",
+                                      "exclusiveMinimum": 0,
+                                      "maximum": 9007199254740991
+                                    }
+                                  },
+                                  "required": ["start_seconds", "end_seconds"],
+                                  "additionalProperties": false
+                                }
+                              },
+                              "required": ["uri", "at"],
+                              "additionalProperties": false
+                            }
+                          ]
+                        }
+                      },
+                      "duration": {
+                        "description": "Desired duration of the output video, in seconds. Unsupported values exclude models; with a source video, V2V duration support applies.",
+                        "type": "integer",
+                        "minimum": 2,
+                        "maximum": 15
+                      },
+                      "aspectRatio": {
+                        "description": "Desired aspect ratio. Models that do not support the requested aspect are excluded.",
+                        "type": "string",
+                        "enum": ["16:9", "9:16", "1:1", "4:3", "3:4", "21:9"]
+                      },
+                      "resolution": {
+                        "description": "Desired output resolution tier. Models that do not support the requested tier are excluded.",
+                        "type": "string",
+                        "enum": ["480p", "720p", "1080p", "4k"]
+                      },
+                      "audio": {
+                        "description": "Whether to generate native audio with the video. When true, only models that output audio remain eligible; when false, silent models and models with an audio toggle remain eligible (always-on native-audio models are excluded). When omitted, the selected model’s default applies.",
+                        "type": "boolean"
+                      },
+                      "seed": {
+                        "description": "A seed for reproducible generation. Random if omitted.",
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 4294967295
+                      },
+                      "contentModeration": {
+                        "description": "Settings that affect the behavior of the content moderation system.",
+                        "type": "object",
+                        "properties": {
+                          "publicFigureThreshold": {
+                            "description": "When set to `low`, the content moderation system will be less strict about preventing generations that include recognizable public figures.",
+                            "type": "string",
+                            "enum": ["auto", "low"]
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                },
+                "required": ["configId", "input"],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The routing decision. Includes a task `id` for real requests; dry runs return the decision only.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "title": "RoutedVideoTaskCreated",
+                      "type": "object",
+                      "properties": {
+                        "dryRun": { "type": "boolean", "const": false },
+                        "id": {
+                          "description": "The ID of the created task. Poll GET /v1/tasks/:id for the result.",
+                          "type": "string",
+                          "format": "uuid",
+                          "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12})$"
+                        },
+                        "routing": {
+                          "description": "Metadata describing which model the router selected and why.",
+                          "type": "object",
+                          "properties": {
+                            "model": {
+                              "description": "The public name of the model the router selected.",
+                              "type": "string"
+                            },
+                            "provider": {
+                              "description": "The provider of the selected model.",
+                              "type": "string"
+                            },
+                            "configId": {
+                              "description": "The slug of the router config that was applied to this request.",
+                              "type": "string"
+                            },
+                            "resolvedSettings": {
+                              "description": "The resolved config settings the router used for this request.",
+                              "type": "object",
+                              "properties": {
+                                "optimizeFor": {
+                                  "description": "The single optimization preference the config selected, used as the soft weighting when scoring eligible models.",
+                                  "type": "string",
+                                  "enum": ["cost", "latency", "quality"]
+                                },
+                                "priceCeiling": {
+                                  "description": "The applied maximum credits per generation for this request’s modality, or null if the config sets no ceiling.",
+                                  "anyOf": [
+                                    { "type": "number" },
+                                    { "type": "null" }
+                                  ]
+                                }
+                              },
+                              "required": ["optimizeFor", "priceCeiling"],
+                              "additionalProperties": false
+                            },
+                            "resolvedInput": {
+                              "description": "Request-side defaults resolved for the routing response. Not necessarily identical to prepared model options.",
+                              "type": "object",
+                              "properties": {
+                                "duration": {
+                                  "description": "Duration in seconds used for routing display (request value or router default).",
+                                  "type": "number"
+                                },
+                                "ratio": {
+                                  "description": "Concrete output ratio derived from aspectRatio (e.g. \"1280:720\"), or the router default.",
+                                  "type": "string"
+                                },
+                                "resolution": {
+                                  "description": "Resolution tier from the request, or the router default when omitted.",
+                                  "type": "string"
+                                }
+                              },
+                              "required": ["duration", "ratio", "resolution"],
+                              "additionalProperties": false
+                            },
+                            "estimatedCost": {
+                              "description": "Estimated cost, computed against current pricing.",
+                              "type": "object",
+                              "properties": {
+                                "credits": {
+                                  "description": "Estimated cost of the generation in credits.",
+                                  "type": "number"
+                                }
+                              },
+                              "required": ["credits"],
+                              "additionalProperties": false
+                            }
+                          },
+                          "required": [
+                            "model",
+                            "provider",
+                            "configId",
+                            "resolvedSettings",
+                            "resolvedInput",
+                            "estimatedCost"
+                          ],
+                          "additionalProperties": false
+                        }
+                      },
+                      "required": ["dryRun", "id", "routing"],
+                      "additionalProperties": false
+                    },
+                    {
+                      "title": "RoutedVideoDryRun",
+                      "type": "object",
+                      "properties": {
+                        "dryRun": { "type": "boolean", "const": true },
+                        "routing": {
+                          "description": "Metadata describing which model the router selected and why.",
+                          "type": "object",
+                          "properties": {
+                            "model": {
+                              "description": "The public name of the model the router selected.",
+                              "type": "string"
+                            },
+                            "provider": {
+                              "description": "The provider of the selected model.",
+                              "type": "string"
+                            },
+                            "configId": {
+                              "description": "The slug of the router config that was applied to this request.",
+                              "type": "string"
+                            },
+                            "resolvedSettings": {
+                              "description": "The resolved config settings the router used for this request.",
+                              "type": "object",
+                              "properties": {
+                                "optimizeFor": {
+                                  "description": "The single optimization preference the config selected, used as the soft weighting when scoring eligible models.",
+                                  "type": "string",
+                                  "enum": ["cost", "latency", "quality"]
+                                },
+                                "priceCeiling": {
+                                  "description": "The applied maximum credits per generation for this request’s modality, or null if the config sets no ceiling.",
+                                  "anyOf": [
+                                    { "type": "number" },
+                                    { "type": "null" }
+                                  ]
+                                }
+                              },
+                              "required": ["optimizeFor", "priceCeiling"],
+                              "additionalProperties": false
+                            },
+                            "resolvedInput": {
+                              "description": "Request-side defaults resolved for the routing response. Not necessarily identical to prepared model options.",
+                              "type": "object",
+                              "properties": {
+                                "duration": {
+                                  "description": "Duration in seconds used for routing display (request value or router default).",
+                                  "type": "number"
+                                },
+                                "ratio": {
+                                  "description": "Concrete output ratio derived from aspectRatio (e.g. \"1280:720\"), or the router default.",
+                                  "type": "string"
+                                },
+                                "resolution": {
+                                  "description": "Resolution tier from the request, or the router default when omitted.",
+                                  "type": "string"
+                                }
+                              },
+                              "required": ["duration", "ratio", "resolution"],
+                              "additionalProperties": false
+                            },
+                            "estimatedCost": {
+                              "description": "Estimated cost, computed against current pricing.",
+                              "type": "object",
+                              "properties": {
+                                "credits": {
+                                  "description": "Estimated cost of the generation in credits.",
+                                  "type": "number"
+                                }
+                              },
+                              "required": ["credits"],
+                              "additionalProperties": false
+                            }
+                          },
+                          "required": [
+                            "model",
+                            "provider",
+                            "configId",
+                            "resolvedSettings",
+                            "resolvedInput",
+                            "estimatedCost"
+                          ],
+                          "additionalProperties": false
+                        }
+                      },
+                      "required": ["dryRun", "routing"],
+                      "additionalProperties": false
+                    }
+                  ],
+                  "discriminator": { "propertyName": "dryRun" }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "No model satisfies the config and request together. Returned identically for real and dry-run requests.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": { "type": "string" },
+                    "code": { "type": "string", "const": "no_eligible_model" },
+                    "pipeline": {
+                      "description": "The hard-filter pipeline in execution order with survivor counts at each stage.",
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "filter": {
+                            "type": "string",
+                            "enum": [
+                              "capability",
+                              "prompt_length",
+                              "input_support",
+                              "allow_deny",
+                              "price"
+                            ]
+                          },
+                          "remaining": {
+                            "description": "How many models remained eligible after this filter ran.",
+                            "type": "integer",
+                            "minimum": -9007199254740991,
+                            "maximum": 9007199254740991
+                          }
+                        },
+                        "required": ["filter", "remaining"],
+                        "additionalProperties": false
+                      }
+                    },
+                    "emptiedBy": {
+                      "description": "The filter(s) that reduced the eligible pool to zero.",
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "enum": [
+                          "capability",
+                          "prompt_length",
+                          "input_support",
+                          "allow_deny",
+                          "price"
+                        ]
+                      }
+                    }
+                  },
+                  "required": ["error", "code", "pipeline", "emptiedBy"],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "The referenced router config does not exist or is not accessible to this account.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": { "type": "string" },
+                    "code": {
+                      "type": "string",
+                      "const": "router_config_not_found"
+                    }
+                  },
+                  "required": ["error", "code"],
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/organization": {
       "get": {
         "tags": ["Organization"],
@@ -11701,6 +12331,7 @@
                               "gemini_image3_pro",
                               "gemini_image3.1_flash",
                               "seedream5_pro",
+                              "seedream5_lite",
                               "gemini_omni_flash",
                               "eleven_multilingual_v2",
                               "seed_audio",
@@ -11798,6 +12429,7 @@
                               "gemini_image3_pro",
                               "gemini_image3.1_flash",
                               "seedream5_pro",
+                              "seedream5_lite",
                               "gemini_omni_flash",
                               "eleven_multilingual_v2",
                               "seed_audio",
@@ -11952,6 +12584,7 @@
                                     "gemini_image3_pro",
                                     "gemini_image3.1_flash",
                                     "seedream5_pro",
+                                    "seedream5_lite",
                                     "gemini_omni_flash",
                                     "eleven_multilingual_v2",
                                     "seed_audio",
@@ -12027,6 +12660,7 @@
                           "gemini_image3_pro",
                           "gemini_image3.1_flash",
                           "seedream5_pro",
+                          "seedream5_lite",
                           "gemini_omni_flash",
                           "eleven_multilingual_v2",
                           "seed_audio",
@@ -13395,6 +14029,786 @@
             }
           }
         }
+      }
+    },
+    "/v1/routers": {
+      "get": {
+        "tags": ["Model Router"],
+        "summary": "List Model Routers",
+        "description": "List Model Router configurations for the authenticated organization with cursor-based pagination.",
+        "x-codeSamples": [
+          {
+            "lang": "TypeScript",
+            "label": "Node SDK",
+            "source": "// npm install --save @runwayml/sdk\nimport RunwayML from '@runwayml/sdk';\n\nconst client = new RunwayML();\nconst routers = await client.routers.list();\nfor await (const router of routers) {\n  console.log(router);\n}"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "string", "minLength": 1, "maxLength": 1000 },
+            "description": "Cursor from a previous response for fetching the next page of results."
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "default": 50,
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100
+            },
+            "description": "The maximum number of items to return per page."
+          },
+          { "$ref": "#/components/parameters/X-Runway-Version" }
+        ],
+        "responses": {
+          "200": {
+            "description": "A paginated list of Model Router configurations.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "ModelRouterList",
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "description": "The list of items for the current page.",
+                      "type": "array",
+                      "items": {
+                        "title": "ModelRouter",
+                        "description": "A named Model Router configuration.",
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "description": "The Model Router's primary key ID (UUID). Use it to manage this router via the API; use the slug to reference the router in generation requests.",
+                            "type": "string",
+                            "format": "uuid",
+                            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                          },
+                          "slug": {
+                            "description": "Immutable slug used to reference this Model Router in generation requests (for example, production-video). Unique within the API project. The UUID id remains the canonical management identifier.",
+                            "type": "string",
+                            "pattern": "^[a-z][a-z0-9_-]{0,63}$"
+                          },
+                          "name": {
+                            "description": "Human-friendly Model Router display name shown in the dev portal. Mutable, and not used to reference the router in requests.",
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 255
+                          },
+                          "description": {
+                            "description": "An optional Model Router description.",
+                            "anyOf": [{ "type": "string" }, { "type": "null" }]
+                          },
+                          "version": {
+                            "description": "Current settings version. Increments when settings change; name and description updates do not create a new version.",
+                            "type": "integer",
+                            "exclusiveMinimum": 0,
+                            "maximum": 9007199254740991
+                          },
+                          "settings": {
+                            "type": "object",
+                            "properties": {
+                              "schemaVersion": {
+                                "description": "Settings JSON schema version used when this snapshot was written.",
+                                "type": "number",
+                                "const": 1
+                              },
+                              "models": {
+                                "description": "When mode is allow_new_except, ids are excluded; when allowlist_only, ids are the only allowed values. Each id must be a known public video model name (unknown ids are rejected on create/update).",
+                                "type": "object",
+                                "properties": {
+                                  "mode": {
+                                    "type": "string",
+                                    "enum": [
+                                      "allow_new_except",
+                                      "allowlist_only"
+                                    ]
+                                  },
+                                  "ids": {
+                                    "type": "array",
+                                    "items": { "type": "string" }
+                                  }
+                                },
+                                "required": ["mode", "ids"],
+                                "additionalProperties": false
+                              },
+                              "maxCreditsPerGeneration": {
+                                "description": "Optional per-modality hard caps on credits for one generation. Models whose estimated cost for that modality exceeds the cap are excluded.",
+                                "type": "object",
+                                "properties": {
+                                  "video": {
+                                    "type": "integer",
+                                    "exclusiveMinimum": 0,
+                                    "maximum": 9007199254740991
+                                  },
+                                  "image": {
+                                    "type": "integer",
+                                    "exclusiveMinimum": 0,
+                                    "maximum": 9007199254740991
+                                  },
+                                  "audio": {
+                                    "type": "integer",
+                                    "exclusiveMinimum": 0,
+                                    "maximum": 9007199254740991
+                                  }
+                                },
+                                "additionalProperties": false
+                              },
+                              "optimizeFor": {
+                                "description": "Soft preference among eligible models: cost, latency, or quality.",
+                                "type": "string",
+                                "enum": ["cost", "latency", "quality"]
+                              }
+                            },
+                            "required": ["schemaVersion"],
+                            "additionalProperties": false
+                          },
+                          "createdAt": {
+                            "description": "When the Model Router was created.",
+                            "type": "string",
+                            "format": "date-time",
+                            "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+                          },
+                          "updatedAt": {
+                            "description": "When the Model Router was last updated.",
+                            "type": "string",
+                            "format": "date-time",
+                            "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "slug",
+                          "name",
+                          "description",
+                          "version",
+                          "settings",
+                          "createdAt",
+                          "updatedAt"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "hasMore": {
+                      "description": "Whether there are more items available after this page.",
+                      "type": "boolean"
+                    },
+                    "nextCursor": {
+                      "description": "Cursor to use for fetching the next page, or null if there are no more pages.",
+                      "anyOf": [{ "type": "string" }, { "type": "null" }]
+                    }
+                  },
+                  "required": ["data", "hasMore", "nextCursor"],
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Model Router"],
+        "summary": "Create Model Router",
+        "description": "Create a Model Router configuration.",
+        "x-codeSamples": [
+          {
+            "lang": "TypeScript",
+            "label": "Node SDK",
+            "source": "import RunwayML from '@runwayml/sdk';\n\nconst client = new RunwayML();\nconst router = await client.routers.create({\n  slug: 'preview-fast',\n  name: 'Preview (fast)',\n  settings: {\n    optimizeFor: 'cost',\n  },\n});"
+          }
+        ],
+        "parameters": [{ "$ref": "#/components/parameters/X-Runway-Version" }],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "title": "ModelRouterCreateRequest",
+                "type": "object",
+                "properties": {
+                  "slug": {
+                    "description": "Immutable slug used to reference this Model Router in generation requests (for example, production-video). Unique within the API project. The UUID id remains the canonical management identifier.",
+                    "type": "string",
+                    "pattern": "^[a-z][a-z0-9_-]{0,63}$"
+                  },
+                  "name": {
+                    "description": "Optional human-readable display name for this router. Defaults to the slug when omitted.",
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255
+                  },
+                  "description": {
+                    "description": "An optional Model Router description.",
+                    "type": "string",
+                    "maxLength": 2000
+                  },
+                  "settings": {
+                    "description": "Model Router routing preferences. Defaults to cost-optimized allow-all when omitted. Modality is implied by the generate endpoint used with this Model Router.",
+                    "title": "ModelRouterSettings",
+                    "type": "object",
+                    "properties": {
+                      "schemaVersion": {
+                        "description": "Settings JSON schema version. Omit on write to use the current version; responses and stored snapshots always include it.",
+                        "type": "number",
+                        "const": 1
+                      },
+                      "models": {
+                        "description": "When mode is allow_new_except, ids are excluded; when allowlist_only, ids are the only allowed values. Each id must be a known public video model name (unknown ids are rejected on create/update).",
+                        "type": "object",
+                        "properties": {
+                          "mode": {
+                            "type": "string",
+                            "enum": ["allow_new_except", "allowlist_only"]
+                          },
+                          "ids": {
+                            "type": "array",
+                            "items": { "type": "string" }
+                          }
+                        },
+                        "required": ["mode", "ids"],
+                        "additionalProperties": false
+                      },
+                      "maxCreditsPerGeneration": {
+                        "description": "Optional per-modality hard caps on credits for one generation. Models whose estimated cost for that modality exceeds the cap are excluded.",
+                        "type": "object",
+                        "properties": {
+                          "video": {
+                            "type": "integer",
+                            "exclusiveMinimum": 0,
+                            "maximum": 9007199254740991
+                          },
+                          "image": {
+                            "type": "integer",
+                            "exclusiveMinimum": 0,
+                            "maximum": 9007199254740991
+                          },
+                          "audio": {
+                            "type": "integer",
+                            "exclusiveMinimum": 0,
+                            "maximum": 9007199254740991
+                          }
+                        },
+                        "additionalProperties": false
+                      },
+                      "optimizeFor": {
+                        "description": "Soft preference among eligible models: cost, latency, or quality.",
+                        "type": "string",
+                        "enum": ["cost", "latency", "quality"]
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                },
+                "required": ["slug"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "A named Model Router configuration.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "ModelRouter",
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "description": "The Model Router's primary key ID (UUID). Use it to manage this router via the API; use the slug to reference the router in generation requests.",
+                      "type": "string",
+                      "format": "uuid",
+                      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                    },
+                    "slug": {
+                      "description": "Immutable slug used to reference this Model Router in generation requests (for example, production-video). Unique within the API project. The UUID id remains the canonical management identifier.",
+                      "type": "string",
+                      "pattern": "^[a-z][a-z0-9_-]{0,63}$"
+                    },
+                    "name": {
+                      "description": "Human-friendly Model Router display name shown in the dev portal. Mutable, and not used to reference the router in requests.",
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 255
+                    },
+                    "description": {
+                      "description": "An optional Model Router description.",
+                      "anyOf": [{ "type": "string" }, { "type": "null" }]
+                    },
+                    "version": {
+                      "description": "Current settings version. Increments when settings change; name and description updates do not create a new version.",
+                      "type": "integer",
+                      "exclusiveMinimum": 0,
+                      "maximum": 9007199254740991
+                    },
+                    "settings": {
+                      "type": "object",
+                      "properties": {
+                        "schemaVersion": {
+                          "description": "Settings JSON schema version used when this snapshot was written.",
+                          "type": "number",
+                          "const": 1
+                        },
+                        "models": {
+                          "description": "When mode is allow_new_except, ids are excluded; when allowlist_only, ids are the only allowed values. Each id must be a known public video model name (unknown ids are rejected on create/update).",
+                          "type": "object",
+                          "properties": {
+                            "mode": {
+                              "type": "string",
+                              "enum": ["allow_new_except", "allowlist_only"]
+                            },
+                            "ids": {
+                              "type": "array",
+                              "items": { "type": "string" }
+                            }
+                          },
+                          "required": ["mode", "ids"],
+                          "additionalProperties": false
+                        },
+                        "maxCreditsPerGeneration": {
+                          "description": "Optional per-modality hard caps on credits for one generation. Models whose estimated cost for that modality exceeds the cap are excluded.",
+                          "type": "object",
+                          "properties": {
+                            "video": {
+                              "type": "integer",
+                              "exclusiveMinimum": 0,
+                              "maximum": 9007199254740991
+                            },
+                            "image": {
+                              "type": "integer",
+                              "exclusiveMinimum": 0,
+                              "maximum": 9007199254740991
+                            },
+                            "audio": {
+                              "type": "integer",
+                              "exclusiveMinimum": 0,
+                              "maximum": 9007199254740991
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "optimizeFor": {
+                          "description": "Soft preference among eligible models: cost, latency, or quality.",
+                          "type": "string",
+                          "enum": ["cost", "latency", "quality"]
+                        }
+                      },
+                      "required": ["schemaVersion"],
+                      "additionalProperties": false
+                    },
+                    "createdAt": {
+                      "description": "When the Model Router was created.",
+                      "type": "string",
+                      "format": "date-time",
+                      "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+                    },
+                    "updatedAt": {
+                      "description": "When the Model Router was last updated.",
+                      "type": "string",
+                      "format": "date-time",
+                      "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "slug",
+                    "name",
+                    "description",
+                    "version",
+                    "settings",
+                    "createdAt",
+                    "updatedAt"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/routers/{id}": {
+      "get": {
+        "tags": ["Model Router"],
+        "summary": "Retrieve Model Router",
+        "description": "Retrieve a Model Router configuration by ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12})$"
+            },
+            "description": "The Model Router's primary key ID (UUID)."
+          },
+          { "$ref": "#/components/parameters/X-Runway-Version" }
+        ],
+        "responses": {
+          "200": {
+            "description": "A named Model Router configuration.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "ModelRouter",
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "description": "The Model Router's primary key ID (UUID). Use it to manage this router via the API; use the slug to reference the router in generation requests.",
+                      "type": "string",
+                      "format": "uuid",
+                      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                    },
+                    "slug": {
+                      "description": "Immutable slug used to reference this Model Router in generation requests (for example, production-video). Unique within the API project. The UUID id remains the canonical management identifier.",
+                      "type": "string",
+                      "pattern": "^[a-z][a-z0-9_-]{0,63}$"
+                    },
+                    "name": {
+                      "description": "Human-friendly Model Router display name shown in the dev portal. Mutable, and not used to reference the router in requests.",
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 255
+                    },
+                    "description": {
+                      "description": "An optional Model Router description.",
+                      "anyOf": [{ "type": "string" }, { "type": "null" }]
+                    },
+                    "version": {
+                      "description": "Current settings version. Increments when settings change; name and description updates do not create a new version.",
+                      "type": "integer",
+                      "exclusiveMinimum": 0,
+                      "maximum": 9007199254740991
+                    },
+                    "settings": {
+                      "type": "object",
+                      "properties": {
+                        "schemaVersion": {
+                          "description": "Settings JSON schema version used when this snapshot was written.",
+                          "type": "number",
+                          "const": 1
+                        },
+                        "models": {
+                          "description": "When mode is allow_new_except, ids are excluded; when allowlist_only, ids are the only allowed values. Each id must be a known public video model name (unknown ids are rejected on create/update).",
+                          "type": "object",
+                          "properties": {
+                            "mode": {
+                              "type": "string",
+                              "enum": ["allow_new_except", "allowlist_only"]
+                            },
+                            "ids": {
+                              "type": "array",
+                              "items": { "type": "string" }
+                            }
+                          },
+                          "required": ["mode", "ids"],
+                          "additionalProperties": false
+                        },
+                        "maxCreditsPerGeneration": {
+                          "description": "Optional per-modality hard caps on credits for one generation. Models whose estimated cost for that modality exceeds the cap are excluded.",
+                          "type": "object",
+                          "properties": {
+                            "video": {
+                              "type": "integer",
+                              "exclusiveMinimum": 0,
+                              "maximum": 9007199254740991
+                            },
+                            "image": {
+                              "type": "integer",
+                              "exclusiveMinimum": 0,
+                              "maximum": 9007199254740991
+                            },
+                            "audio": {
+                              "type": "integer",
+                              "exclusiveMinimum": 0,
+                              "maximum": 9007199254740991
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "optimizeFor": {
+                          "description": "Soft preference among eligible models: cost, latency, or quality.",
+                          "type": "string",
+                          "enum": ["cost", "latency", "quality"]
+                        }
+                      },
+                      "required": ["schemaVersion"],
+                      "additionalProperties": false
+                    },
+                    "createdAt": {
+                      "description": "When the Model Router was created.",
+                      "type": "string",
+                      "format": "date-time",
+                      "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+                    },
+                    "updatedAt": {
+                      "description": "When the Model Router was last updated.",
+                      "type": "string",
+                      "format": "date-time",
+                      "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "slug",
+                    "name",
+                    "description",
+                    "version",
+                    "settings",
+                    "createdAt",
+                    "updatedAt"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": ["Model Router"],
+        "summary": "Update Model Router",
+        "description": "Update a Model Router configuration. Settings changes append a new version; name and description updates do not. Settings are merged with the current snapshot — omitted fields keep their existing values.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12})$"
+            },
+            "description": "The Model Router's primary key ID (UUID)."
+          },
+          { "$ref": "#/components/parameters/X-Runway-Version" }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "title": "ModelRouterUpdateRequest",
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "description": "Display name. The slug is immutable and cannot be changed after creation.",
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255
+                  },
+                  "description": {
+                    "anyOf": [
+                      { "type": "string", "maxLength": 2000 },
+                      { "type": "null" }
+                    ]
+                  },
+                  "settings": {
+                    "description": "Nested merge: omitted settings fields keep their current values. When models is present, omitted models.mode or models.ids are preserved (sending only optimizeFor does not clear the model allowlist or credit ceiling).",
+                    "title": "ModelRouterSettings",
+                    "type": "object",
+                    "properties": {
+                      "schemaVersion": {
+                        "description": "Settings JSON schema version. Omit on write to use the current version; responses and stored snapshots always include it.",
+                        "type": "number",
+                        "const": 1
+                      },
+                      "models": {
+                        "description": "When mode is allow_new_except, ids are excluded; when allowlist_only, ids are the only allowed values. Each id must be a known public video model name (unknown ids are rejected on create/update).",
+                        "type": "object",
+                        "properties": {
+                          "mode": {
+                            "type": "string",
+                            "enum": ["allow_new_except", "allowlist_only"]
+                          },
+                          "ids": {
+                            "type": "array",
+                            "items": { "type": "string" }
+                          }
+                        },
+                        "required": ["mode", "ids"],
+                        "additionalProperties": false
+                      },
+                      "maxCreditsPerGeneration": {
+                        "description": "Optional per-modality hard caps on credits for one generation. Models whose estimated cost for that modality exceeds the cap are excluded.",
+                        "type": "object",
+                        "properties": {
+                          "video": {
+                            "type": "integer",
+                            "exclusiveMinimum": 0,
+                            "maximum": 9007199254740991
+                          },
+                          "image": {
+                            "type": "integer",
+                            "exclusiveMinimum": 0,
+                            "maximum": 9007199254740991
+                          },
+                          "audio": {
+                            "type": "integer",
+                            "exclusiveMinimum": 0,
+                            "maximum": 9007199254740991
+                          }
+                        },
+                        "additionalProperties": false
+                      },
+                      "optimizeFor": {
+                        "description": "Soft preference among eligible models: cost, latency, or quality.",
+                        "type": "string",
+                        "enum": ["cost", "latency", "quality"]
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "A named Model Router configuration.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "ModelRouter",
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "description": "The Model Router's primary key ID (UUID). Use it to manage this router via the API; use the slug to reference the router in generation requests.",
+                      "type": "string",
+                      "format": "uuid",
+                      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                    },
+                    "slug": {
+                      "description": "Immutable slug used to reference this Model Router in generation requests (for example, production-video). Unique within the API project. The UUID id remains the canonical management identifier.",
+                      "type": "string",
+                      "pattern": "^[a-z][a-z0-9_-]{0,63}$"
+                    },
+                    "name": {
+                      "description": "Human-friendly Model Router display name shown in the dev portal. Mutable, and not used to reference the router in requests.",
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 255
+                    },
+                    "description": {
+                      "description": "An optional Model Router description.",
+                      "anyOf": [{ "type": "string" }, { "type": "null" }]
+                    },
+                    "version": {
+                      "description": "Current settings version. Increments when settings change; name and description updates do not create a new version.",
+                      "type": "integer",
+                      "exclusiveMinimum": 0,
+                      "maximum": 9007199254740991
+                    },
+                    "settings": {
+                      "type": "object",
+                      "properties": {
+                        "schemaVersion": {
+                          "description": "Settings JSON schema version used when this snapshot was written.",
+                          "type": "number",
+                          "const": 1
+                        },
+                        "models": {
+                          "description": "When mode is allow_new_except, ids are excluded; when allowlist_only, ids are the only allowed values. Each id must be a known public video model name (unknown ids are rejected on create/update).",
+                          "type": "object",
+                          "properties": {
+                            "mode": {
+                              "type": "string",
+                              "enum": ["allow_new_except", "allowlist_only"]
+                            },
+                            "ids": {
+                              "type": "array",
+                              "items": { "type": "string" }
+                            }
+                          },
+                          "required": ["mode", "ids"],
+                          "additionalProperties": false
+                        },
+                        "maxCreditsPerGeneration": {
+                          "description": "Optional per-modality hard caps on credits for one generation. Models whose estimated cost for that modality exceeds the cap are excluded.",
+                          "type": "object",
+                          "properties": {
+                            "video": {
+                              "type": "integer",
+                              "exclusiveMinimum": 0,
+                              "maximum": 9007199254740991
+                            },
+                            "image": {
+                              "type": "integer",
+                              "exclusiveMinimum": 0,
+                              "maximum": 9007199254740991
+                            },
+                            "audio": {
+                              "type": "integer",
+                              "exclusiveMinimum": 0,
+                              "maximum": 9007199254740991
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "optimizeFor": {
+                          "description": "Soft preference among eligible models: cost, latency, or quality.",
+                          "type": "string",
+                          "enum": ["cost", "latency", "quality"]
+                        }
+                      },
+                      "required": ["schemaVersion"],
+                      "additionalProperties": false
+                    },
+                    "createdAt": {
+                      "description": "When the Model Router was created.",
+                      "type": "string",
+                      "format": "date-time",
+                      "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+                    },
+                    "updatedAt": {
+                      "description": "When the Model Router was last updated.",
+                      "type": "string",
+                      "format": "date-time",
+                      "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "slug",
+                    "name",
+                    "description",
+                    "version",
+                    "settings",
+                    "createdAt",
+                    "updatedAt"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Model Router"],
+        "summary": "Delete Model Router",
+        "description": "Delete a Model Router configuration. Deleted Model Routers cannot be used for generation.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12})$"
+            },
+            "description": "The Model Router's primary key ID (UUID)."
+          },
+          { "$ref": "#/components/parameters/X-Runway-Version" }
+        ],
+        "responses": { "204": { "description": "Success" } }
       }
     },
     "/v1/voices": {
