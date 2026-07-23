@@ -16,7 +16,7 @@ namespace Runway
         public double SchemaVersion { get; set; } = 1;
 
         /// <summary>
-        /// When mode is allow_new_except, ids are excluded; when allowlist_only, ids are the only allowed values. Each id must be a known public video model name (unknown ids are rejected on create/update).
+        /// When mode is allow_new_except, ids are excluded; when allowlist_only, ids are the only allowed values. Each id must be a known public video or image model name (unknown ids are rejected on create/update).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("models")]
         public global::Runway.PatchRoutersResponseSettingsModels? Models { get; set; }
@@ -44,7 +44,7 @@ namespace Runway
         /// Initializes a new instance of the <see cref="PatchRoutersResponseSettings" /> class.
         /// </summary>
         /// <param name="models">
-        /// When mode is allow_new_except, ids are excluded; when allowlist_only, ids are the only allowed values. Each id must be a known public video model name (unknown ids are rejected on create/update).
+        /// When mode is allow_new_except, ids are excluded; when allowlist_only, ids are the only allowed values. Each id must be a known public video or image model name (unknown ids are rejected on create/update).
         /// </param>
         /// <param name="maxCreditsPerGeneration">
         /// Optional per-modality hard caps on credits for one generation. Models whose estimated cost for that modality exceeds the cap are excluded.

@@ -4,7 +4,7 @@
 namespace Runway
 {
     /// <summary>
-    /// When mode is allow_new_except, ids are excluded; when allowlist_only, ids are the only allowed values. Each id must be a known public video model name (unknown ids are rejected on create/update).
+    /// When mode is allow_new_except, ids are excluded; when allowlist_only, ids are the only allowed values. Each id must be a known public video or image model name (unknown ids are rejected on create/update).
     /// </summary>
     public sealed partial class GetRoutersResponseSettingsModels
     {
