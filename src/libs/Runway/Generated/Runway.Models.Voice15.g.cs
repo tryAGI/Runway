@@ -12,15 +12,15 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
-        public global::Runway.PatchAvatarsResponseAvatarFailedVoiceDiscriminatorType? Type { get; }
+        public global::Runway.PatchAvatarsResponseAvatarReadyVoiceDiscriminatorType? Type { get; }
 
         /// <summary>
         /// A preset voice from the Runway API.
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Runway.PatchAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponse? RunwayLivePreset { get; init; }
+        public global::Runway.PatchAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponse? RunwayLivePreset { get; init; }
 #else
-        public global::Runway.PatchAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponse? RunwayLivePreset { get; }
+        public global::Runway.PatchAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponse? RunwayLivePreset { get; }
 #endif
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace Runway
 #if NET6_0_OR_GREATER
             [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
 #endif
-            out global::Runway.PatchAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponse? value)
+            out global::Runway.PatchAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponse? value)
         {
             value = RunwayLivePreset;
             return IsRunwayLivePreset;
@@ -47,7 +47,7 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
-        public global::Runway.PatchAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponse PickRunwayLivePreset() => IsRunwayLivePreset
+        public global::Runway.PatchAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponse PickRunwayLivePreset() => IsRunwayLivePreset
             ? RunwayLivePreset!
             : throw new global::System.InvalidOperationException($"Expected union variant 'RunwayLivePreset' but the value was {ToString()}.");
 
@@ -55,9 +55,9 @@ namespace Runway
         /// A custom voice created via the Voices API.
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Runway.PatchAvatarsResponseAvatarFailedVoiceCustomVoiceResponse? Custom { get; init; }
+        public global::Runway.PatchAvatarsResponseAvatarReadyVoiceCustomVoiceResponse? Custom { get; init; }
 #else
-        public global::Runway.PatchAvatarsResponseAvatarFailedVoiceCustomVoiceResponse? Custom { get; }
+        public global::Runway.PatchAvatarsResponseAvatarReadyVoiceCustomVoiceResponse? Custom { get; }
 #endif
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace Runway
 #if NET6_0_OR_GREATER
             [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
 #endif
-            out global::Runway.PatchAvatarsResponseAvatarFailedVoiceCustomVoiceResponse? value)
+            out global::Runway.PatchAvatarsResponseAvatarReadyVoiceCustomVoiceResponse? value)
         {
             value = Custom;
             return IsCustom;
@@ -84,23 +84,23 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
-        public global::Runway.PatchAvatarsResponseAvatarFailedVoiceCustomVoiceResponse PickCustom() => IsCustom
+        public global::Runway.PatchAvatarsResponseAvatarReadyVoiceCustomVoiceResponse PickCustom() => IsCustom
             ? Custom!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Custom' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator Voice15(global::Runway.PatchAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponse value) => new Voice15((global::Runway.PatchAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponse?)value);
+        public static implicit operator Voice15(global::Runway.PatchAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponse value) => new Voice15((global::Runway.PatchAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponse?)value);
 
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::Runway.PatchAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponse?(Voice15 @this) => @this.RunwayLivePreset;
+        public static implicit operator global::Runway.PatchAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponse?(Voice15 @this) => @this.RunwayLivePreset;
 
         /// <summary>
         /// 
         /// </summary>
-        public Voice15(global::Runway.PatchAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponse? value)
+        public Voice15(global::Runway.PatchAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponse? value)
         {
             RunwayLivePreset = value;
         }
@@ -108,22 +108,22 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
-        public static Voice15 FromRunwayLivePreset(global::Runway.PatchAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponse? value) => new Voice15(value);
+        public static Voice15 FromRunwayLivePreset(global::Runway.PatchAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponse? value) => new Voice15(value);
 
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator Voice15(global::Runway.PatchAvatarsResponseAvatarFailedVoiceCustomVoiceResponse value) => new Voice15((global::Runway.PatchAvatarsResponseAvatarFailedVoiceCustomVoiceResponse?)value);
+        public static implicit operator Voice15(global::Runway.PatchAvatarsResponseAvatarReadyVoiceCustomVoiceResponse value) => new Voice15((global::Runway.PatchAvatarsResponseAvatarReadyVoiceCustomVoiceResponse?)value);
 
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::Runway.PatchAvatarsResponseAvatarFailedVoiceCustomVoiceResponse?(Voice15 @this) => @this.Custom;
+        public static implicit operator global::Runway.PatchAvatarsResponseAvatarReadyVoiceCustomVoiceResponse?(Voice15 @this) => @this.Custom;
 
         /// <summary>
         /// 
         /// </summary>
-        public Voice15(global::Runway.PatchAvatarsResponseAvatarFailedVoiceCustomVoiceResponse? value)
+        public Voice15(global::Runway.PatchAvatarsResponseAvatarReadyVoiceCustomVoiceResponse? value)
         {
             Custom = value;
         }
@@ -131,15 +131,15 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
-        public static Voice15 FromCustom(global::Runway.PatchAvatarsResponseAvatarFailedVoiceCustomVoiceResponse? value) => new Voice15(value);
+        public static Voice15 FromCustom(global::Runway.PatchAvatarsResponseAvatarReadyVoiceCustomVoiceResponse? value) => new Voice15(value);
 
         /// <summary>
         /// 
         /// </summary>
         public Voice15(
-            global::Runway.PatchAvatarsResponseAvatarFailedVoiceDiscriminatorType? type,
-            global::Runway.PatchAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponse? runwayLivePreset,
-            global::Runway.PatchAvatarsResponseAvatarFailedVoiceCustomVoiceResponse? custom
+            global::Runway.PatchAvatarsResponseAvatarReadyVoiceDiscriminatorType? type,
+            global::Runway.PatchAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponse? runwayLivePreset,
+            global::Runway.PatchAvatarsResponseAvatarReadyVoiceCustomVoiceResponse? custom
             )
         {
             Type = type;
@@ -176,8 +176,8 @@ namespace Runway
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Runway.PatchAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponse, TResult>? runwayLivePreset = null,
-            global::System.Func<global::Runway.PatchAvatarsResponseAvatarFailedVoiceCustomVoiceResponse, TResult>? custom = null,
+            global::System.Func<global::Runway.PatchAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponse, TResult>? runwayLivePreset = null,
+            global::System.Func<global::Runway.PatchAvatarsResponseAvatarReadyVoiceCustomVoiceResponse, TResult>? custom = null,
             bool validate = true)
         {
             if (validate)
@@ -201,9 +201,9 @@ namespace Runway
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Runway.PatchAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponse>? runwayLivePreset = null,
+            global::System.Action<global::Runway.PatchAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponse>? runwayLivePreset = null,
 
-            global::System.Action<global::Runway.PatchAvatarsResponseAvatarFailedVoiceCustomVoiceResponse>? custom = null,
+            global::System.Action<global::Runway.PatchAvatarsResponseAvatarReadyVoiceCustomVoiceResponse>? custom = null,
             bool validate = true)
         {
             if (validate)
@@ -225,8 +225,8 @@ namespace Runway
         /// 
         /// </summary>
         public void Switch(
-            global::System.Action<global::Runway.PatchAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponse>? runwayLivePreset = null,
-            global::System.Action<global::Runway.PatchAvatarsResponseAvatarFailedVoiceCustomVoiceResponse>? custom = null,
+            global::System.Action<global::Runway.PatchAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponse>? runwayLivePreset = null,
+            global::System.Action<global::Runway.PatchAvatarsResponseAvatarReadyVoiceCustomVoiceResponse>? custom = null,
             bool validate = true)
         {
             if (validate)
@@ -252,9 +252,9 @@ namespace Runway
             var fields = new object?[]
             {
                 RunwayLivePreset,
-                typeof(global::Runway.PatchAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponse),
+                typeof(global::Runway.PatchAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponse),
                 Custom,
-                typeof(global::Runway.PatchAvatarsResponseAvatarFailedVoiceCustomVoiceResponse),
+                typeof(global::Runway.PatchAvatarsResponseAvatarReadyVoiceCustomVoiceResponse),
             };
             const int offset = unchecked((int)2166136261);
             const int prime = 16777619;
@@ -271,8 +271,8 @@ namespace Runway
         public bool Equals(Voice15 other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::Runway.PatchAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponse?>.Default.Equals(RunwayLivePreset, other.RunwayLivePreset) &&
-                global::System.Collections.Generic.EqualityComparer<global::Runway.PatchAvatarsResponseAvatarFailedVoiceCustomVoiceResponse?>.Default.Equals(Custom, other.Custom) 
+                global::System.Collections.Generic.EqualityComparer<global::Runway.PatchAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponse?>.Default.Equals(RunwayLivePreset, other.RunwayLivePreset) &&
+                global::System.Collections.Generic.EqualityComparer<global::Runway.PatchAvatarsResponseAvatarReadyVoiceCustomVoiceResponse?>.Default.Equals(Custom, other.Custom) 
                 ;
         }
 

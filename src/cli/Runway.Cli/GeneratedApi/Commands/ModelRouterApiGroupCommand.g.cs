@@ -9,6 +9,9 @@ internal static class ModelRouterApiGroupCommand
     public static Command Create()
     {
         var command = new Command(@"model-router", @"Model Router endpoint commands.");
+                         command.Subcommands.Add(ModelRouterCreateGenerateAudioCommandApiCommand.Create());
+                         command.Subcommands.Add(ModelRouterCreateGenerateImageCommandApiCommand.Create());
+                         command.Subcommands.Add(ModelRouterCreateGenerateVideoCommandApiCommand.Create());
                          command.Subcommands.Add(ModelRouterCreateRoutersCommandApiCommand.Create());
                          command.Subcommands.Add(ModelRouterDeleteRoutersByIdCommandApiCommand.Create());
                          command.Subcommands.Add(ModelRouterEditRoutersByIdCommandApiCommand.Create());

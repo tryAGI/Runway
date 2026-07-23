@@ -39,9 +39,9 @@ namespace Runway
         /// The voice configured for this avatar.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("voice")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.Voice12JsonConverter))]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.Voice13JsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Runway.Voice12 Voice { get; set; }
+        public required global::Runway.Voice13 Voice { get; set; }
 
         /// <summary>
         /// A URI pointing to a low-resolution preview of the avatar's reference image.
@@ -140,7 +140,7 @@ namespace Runway
             global::System.Guid id,
             string name,
             string personality,
-            global::Runway.Voice12 voice,
+            global::Runway.Voice13 voice,
             global::System.Collections.Generic.IList<global::System.Guid> documentIds,
             global::System.DateTime createdAt,
             global::System.DateTime updatedAt,

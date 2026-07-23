@@ -15,7 +15,7 @@ namespace Runway
         public double? SchemaVersion { get; set; }
 
         /// <summary>
-        /// When mode is allow_new_except, ids are excluded; when allowlist_only, ids are the only allowed values. Each id must be a known public video model name (unknown ids are rejected on create/update).
+        /// When mode is allow_new_except, ids are excluded; when allowlist_only, ids are the only allowed values. Each id must be a known public video or image model name (unknown ids are rejected on create/update).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("models")]
         public global::Runway.CreateRoutersRequestSettingsModels? Models { get; set; }
@@ -46,7 +46,7 @@ namespace Runway
         /// Settings JSON schema version. Omit on write to use the current version; responses and stored snapshots always include it.
         /// </param>
         /// <param name="models">
-        /// When mode is allow_new_except, ids are excluded; when allowlist_only, ids are the only allowed values. Each id must be a known public video model name (unknown ids are rejected on create/update).
+        /// When mode is allow_new_except, ids are excluded; when allowlist_only, ids are the only allowed values. Each id must be a known public video or image model name (unknown ids are rejected on create/update).
         /// </param>
         /// <param name="maxCreditsPerGeneration">
         /// Optional per-modality hard caps on credits for one generation. Models whose estimated cost for that modality exceeds the cap are excluded.

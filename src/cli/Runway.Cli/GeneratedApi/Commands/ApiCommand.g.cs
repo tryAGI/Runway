@@ -16,7 +16,6 @@ internal static class ApiCommand
           command.Options.Add(CliOptions.OutputDirectory);
                          command.Subcommands.Add(AvatarVideosApiGroupCommand.Create());
                          command.Subcommands.Add(AvatarsApiGroupCommand.Create());
-                         command.Subcommands.Add(GenerateApiGroupCommand.Create());
                          command.Subcommands.Add(KnowledgeApiGroupCommand.Create());
                          command.Subcommands.Add(ModelRouterApiGroupCommand.Create());
                          command.Subcommands.Add(OrganizationApiGroupCommand.Create());

@@ -5,163 +5,163 @@
 namespace Runway
 {
     /// <summary>
-    /// The voice configured for this avatar.
+    /// The voice to speak with. When omitted, models that support a default voice remain eligible.
     /// </summary>
     public readonly partial struct Voice4 : global::System.IEquatable<Voice4>
     {
         /// <summary>
         /// 
         /// </summary>
-        public global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceDiscriminatorType? Type { get; }
+        public global::Runway.CreateGenerateAudioRequestInputVoiceDiscriminatorType? Type { get; }
 
         /// <summary>
-        /// A preset voice from the Runway API.
+        /// A preset voice.
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceRunwayLivePresetVoiceResponse? RunwayLivePreset { get; init; }
+        public global::Runway.CreateGenerateAudioRequestInputVoiceAudioPresetVoice? Preset { get; init; }
 #else
-        public global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceRunwayLivePresetVoiceResponse? RunwayLivePreset { get; }
+        public global::Runway.CreateGenerateAudioRequestInputVoiceAudioPresetVoice? Preset { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(RunwayLivePreset))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Preset))]
 #endif
-        public bool IsRunwayLivePreset => RunwayLivePreset != null;
+        public bool IsPreset => Preset != null;
 
         /// <summary>
         /// 
         /// </summary>
-        public bool TryPickRunwayLivePreset(
+        public bool TryPickPreset(
 #if NET6_0_OR_GREATER
             [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
 #endif
-            out global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceRunwayLivePresetVoiceResponse? value)
+            out global::Runway.CreateGenerateAudioRequestInputVoiceAudioPresetVoice? value)
         {
-            value = RunwayLivePreset;
-            return IsRunwayLivePreset;
+            value = Preset;
+            return IsPreset;
         }
 
         /// <summary>
         /// 
         /// </summary>
-        public global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceRunwayLivePresetVoiceResponse PickRunwayLivePreset() => IsRunwayLivePreset
-            ? RunwayLivePreset!
-            : throw new global::System.InvalidOperationException($"Expected union variant 'RunwayLivePreset' but the value was {ToString()}.");
+        public global::Runway.CreateGenerateAudioRequestInputVoiceAudioPresetVoice PickPreset() => IsPreset
+            ? Preset!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Preset' but the value was {ToString()}.");
 
         /// <summary>
-        /// A custom voice created via the Voices API.
+        /// Clone a voice from a reference audio clip, then speak promptText in that voice. Routes only to models that support voice cloning.
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceCustomVoiceResponse? Custom { get; init; }
+        public global::Runway.CreateGenerateAudioRequestInputVoiceAudioReferenceVoice? ReferenceAudio { get; init; }
 #else
-        public global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceCustomVoiceResponse? Custom { get; }
+        public global::Runway.CreateGenerateAudioRequestInputVoiceAudioReferenceVoice? ReferenceAudio { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Custom))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ReferenceAudio))]
 #endif
-        public bool IsCustom => Custom != null;
+        public bool IsReferenceAudio => ReferenceAudio != null;
 
         /// <summary>
         /// 
         /// </summary>
-        public bool TryPickCustom(
+        public bool TryPickReferenceAudio(
 #if NET6_0_OR_GREATER
             [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
 #endif
-            out global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceCustomVoiceResponse? value)
+            out global::Runway.CreateGenerateAudioRequestInputVoiceAudioReferenceVoice? value)
         {
-            value = Custom;
-            return IsCustom;
+            value = ReferenceAudio;
+            return IsReferenceAudio;
         }
 
         /// <summary>
         /// 
         /// </summary>
-        public global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceCustomVoiceResponse PickCustom() => IsCustom
-            ? Custom!
-            : throw new global::System.InvalidOperationException($"Expected union variant 'Custom' but the value was {ToString()}.");
+        public global::Runway.CreateGenerateAudioRequestInputVoiceAudioReferenceVoice PickReferenceAudio() => IsReferenceAudio
+            ? ReferenceAudio!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'ReferenceAudio' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator Voice4(global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceRunwayLivePresetVoiceResponse value) => new Voice4((global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceRunwayLivePresetVoiceResponse?)value);
+        public static implicit operator Voice4(global::Runway.CreateGenerateAudioRequestInputVoiceAudioPresetVoice value) => new Voice4((global::Runway.CreateGenerateAudioRequestInputVoiceAudioPresetVoice?)value);
 
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceRunwayLivePresetVoiceResponse?(Voice4 @this) => @this.RunwayLivePreset;
+        public static implicit operator global::Runway.CreateGenerateAudioRequestInputVoiceAudioPresetVoice?(Voice4 @this) => @this.Preset;
 
         /// <summary>
         /// 
         /// </summary>
-        public Voice4(global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceRunwayLivePresetVoiceResponse? value)
+        public Voice4(global::Runway.CreateGenerateAudioRequestInputVoiceAudioPresetVoice? value)
         {
-            RunwayLivePreset = value;
+            Preset = value;
         }
 
         /// <summary>
         /// 
         /// </summary>
-        public static Voice4 FromRunwayLivePreset(global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceRunwayLivePresetVoiceResponse? value) => new Voice4(value);
+        public static Voice4 FromPreset(global::Runway.CreateGenerateAudioRequestInputVoiceAudioPresetVoice? value) => new Voice4(value);
 
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator Voice4(global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceCustomVoiceResponse value) => new Voice4((global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceCustomVoiceResponse?)value);
+        public static implicit operator Voice4(global::Runway.CreateGenerateAudioRequestInputVoiceAudioReferenceVoice value) => new Voice4((global::Runway.CreateGenerateAudioRequestInputVoiceAudioReferenceVoice?)value);
 
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceCustomVoiceResponse?(Voice4 @this) => @this.Custom;
+        public static implicit operator global::Runway.CreateGenerateAudioRequestInputVoiceAudioReferenceVoice?(Voice4 @this) => @this.ReferenceAudio;
 
         /// <summary>
         /// 
         /// </summary>
-        public Voice4(global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceCustomVoiceResponse? value)
+        public Voice4(global::Runway.CreateGenerateAudioRequestInputVoiceAudioReferenceVoice? value)
         {
-            Custom = value;
+            ReferenceAudio = value;
         }
 
         /// <summary>
         /// 
         /// </summary>
-        public static Voice4 FromCustom(global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceCustomVoiceResponse? value) => new Voice4(value);
+        public static Voice4 FromReferenceAudio(global::Runway.CreateGenerateAudioRequestInputVoiceAudioReferenceVoice? value) => new Voice4(value);
 
         /// <summary>
         /// 
         /// </summary>
         public Voice4(
-            global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceDiscriminatorType? type,
-            global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceRunwayLivePresetVoiceResponse? runwayLivePreset,
-            global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceCustomVoiceResponse? custom
+            global::Runway.CreateGenerateAudioRequestInputVoiceDiscriminatorType? type,
+            global::Runway.CreateGenerateAudioRequestInputVoiceAudioPresetVoice? preset,
+            global::Runway.CreateGenerateAudioRequestInputVoiceAudioReferenceVoice? referenceAudio
             )
         {
             Type = type;
 
-            RunwayLivePreset = runwayLivePreset;
-            Custom = custom;
+            Preset = preset;
+            ReferenceAudio = referenceAudio;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public object? Object =>
-            Custom as object ??
-            RunwayLivePreset as object 
+            ReferenceAudio as object ??
+            Preset as object 
             ;
 
         /// <summary>
         /// 
         /// </summary>
         public override string? ToString() =>
-            RunwayLivePreset?.ToString() ??
-            Custom?.ToString() 
+            Preset?.ToString() ??
+            ReferenceAudio?.ToString() 
             ;
 
         /// <summary>
@@ -169,15 +169,15 @@ namespace Runway
         /// </summary>
         public bool Validate()
         {
-            return IsRunwayLivePreset && !IsCustom || !IsRunwayLivePreset && IsCustom;
+            return IsPreset && !IsReferenceAudio || !IsPreset && IsReferenceAudio;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceRunwayLivePresetVoiceResponse, TResult>? runwayLivePreset = null,
-            global::System.Func<global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceCustomVoiceResponse, TResult>? custom = null,
+            global::System.Func<global::Runway.CreateGenerateAudioRequestInputVoiceAudioPresetVoice, TResult>? preset = null,
+            global::System.Func<global::Runway.CreateGenerateAudioRequestInputVoiceAudioReferenceVoice, TResult>? referenceAudio = null,
             bool validate = true)
         {
             if (validate)
@@ -185,13 +185,13 @@ namespace Runway
                 Validate();
             }
 
-            if (IsRunwayLivePreset && runwayLivePreset != null)
+            if (IsPreset && preset != null)
             {
-                return runwayLivePreset(RunwayLivePreset!);
+                return preset(Preset!);
             }
-            else if (IsCustom && custom != null)
+            else if (IsReferenceAudio && referenceAudio != null)
             {
-                return custom(Custom!);
+                return referenceAudio(ReferenceAudio!);
             }
 
             return default(TResult);
@@ -201,9 +201,9 @@ namespace Runway
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceRunwayLivePresetVoiceResponse>? runwayLivePreset = null,
+            global::System.Action<global::Runway.CreateGenerateAudioRequestInputVoiceAudioPresetVoice>? preset = null,
 
-            global::System.Action<global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceCustomVoiceResponse>? custom = null,
+            global::System.Action<global::Runway.CreateGenerateAudioRequestInputVoiceAudioReferenceVoice>? referenceAudio = null,
             bool validate = true)
         {
             if (validate)
@@ -211,13 +211,13 @@ namespace Runway
                 Validate();
             }
 
-            if (IsRunwayLivePreset)
+            if (IsPreset)
             {
-                runwayLivePreset?.Invoke(RunwayLivePreset!);
+                preset?.Invoke(Preset!);
             }
-            else if (IsCustom)
+            else if (IsReferenceAudio)
             {
-                custom?.Invoke(Custom!);
+                referenceAudio?.Invoke(ReferenceAudio!);
             }
         }
 
@@ -225,8 +225,8 @@ namespace Runway
         /// 
         /// </summary>
         public void Switch(
-            global::System.Action<global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceRunwayLivePresetVoiceResponse>? runwayLivePreset = null,
-            global::System.Action<global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceCustomVoiceResponse>? custom = null,
+            global::System.Action<global::Runway.CreateGenerateAudioRequestInputVoiceAudioPresetVoice>? preset = null,
+            global::System.Action<global::Runway.CreateGenerateAudioRequestInputVoiceAudioReferenceVoice>? referenceAudio = null,
             bool validate = true)
         {
             if (validate)
@@ -234,13 +234,13 @@ namespace Runway
                 Validate();
             }
 
-            if (IsRunwayLivePreset)
+            if (IsPreset)
             {
-                runwayLivePreset?.Invoke(RunwayLivePreset!);
+                preset?.Invoke(Preset!);
             }
-            else if (IsCustom)
+            else if (IsReferenceAudio)
             {
-                custom?.Invoke(Custom!);
+                referenceAudio?.Invoke(ReferenceAudio!);
             }
         }
 
@@ -251,10 +251,10 @@ namespace Runway
         {
             var fields = new object?[]
             {
-                RunwayLivePreset,
-                typeof(global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceRunwayLivePresetVoiceResponse),
-                Custom,
-                typeof(global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceCustomVoiceResponse),
+                Preset,
+                typeof(global::Runway.CreateGenerateAudioRequestInputVoiceAudioPresetVoice),
+                ReferenceAudio,
+                typeof(global::Runway.CreateGenerateAudioRequestInputVoiceAudioReferenceVoice),
             };
             const int offset = unchecked((int)2166136261);
             const int prime = 16777619;
@@ -271,8 +271,8 @@ namespace Runway
         public bool Equals(Voice4 other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceRunwayLivePresetVoiceResponse?>.Default.Equals(RunwayLivePreset, other.RunwayLivePreset) &&
-                global::System.Collections.Generic.EqualityComparer<global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceCustomVoiceResponse?>.Default.Equals(Custom, other.Custom) 
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateGenerateAudioRequestInputVoiceAudioPresetVoice?>.Default.Equals(Preset, other.Preset) &&
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateGenerateAudioRequestInputVoiceAudioReferenceVoice?>.Default.Equals(ReferenceAudio, other.ReferenceAudio) 
                 ;
         }
 

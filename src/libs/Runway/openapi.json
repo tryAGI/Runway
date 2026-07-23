@@ -11648,7 +11648,7 @@
     },
     "/v1/generate/video": {
       "post": {
-        "tags": ["Generate"],
+        "tags": ["Model Router"],
         "summary": "Routed video generation",
         "description": "Start a video generation task using a saved Model Router config instead of naming a model.",
         "parameters": [{ "$ref": "#/components/parameters/X-Runway-Version" }],
@@ -12096,21 +12096,51 @@
             }
           },
           "400": {
-            "description": "No model satisfies the config and request together.",
+            "description": "Error",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "error": { "type": "string" },
-                    "code": { "type": "string", "const": "no_eligible_model" },
-                    "pipeline": {
-                      "description": "The hard-filter pipeline in execution order with survivor counts at each stage.",
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "filter": {
+                  "anyOf": [
+                    {
+                      "description": "No model satisfies the config and request together.",
+                      "type": "object",
+                      "properties": {
+                        "error": { "type": "string" },
+                        "code": {
+                          "type": "string",
+                          "const": "no_eligible_model"
+                        },
+                        "pipeline": {
+                          "description": "The hard-filter pipeline in execution order with survivor counts at each stage.",
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "filter": {
+                                "type": "string",
+                                "enum": [
+                                  "capability",
+                                  "prompt_length",
+                                  "input_support",
+                                  "allow_deny",
+                                  "price"
+                                ]
+                              },
+                              "remaining": {
+                                "description": "How many models remained eligible after this filter ran.",
+                                "type": "integer",
+                                "minimum": -9007199254740991,
+                                "maximum": 9007199254740991
+                              }
+                            },
+                            "required": ["filter", "remaining"],
+                            "additionalProperties": false
+                          }
+                        },
+                        "emptiedBy": {
+                          "description": "The filter(s) that reduced the eligible pool to zero.",
+                          "type": "array",
+                          "items": {
                             "type": "string",
                             "enum": [
                               "capability",
@@ -12119,35 +12149,797 @@
                               "allow_deny",
                               "price"
                             ]
+                          }
+                        }
+                      },
+                      "required": ["error", "code", "pipeline", "emptiedBy"],
+                      "additionalProperties": false
+                    },
+                    {
+                      "description": "The request was invalid — e.g. an input failed validation for the routed model.",
+                      "type": "object",
+                      "properties": {
+                        "error": {
+                          "description": "A message describing why the request was rejected.",
+                          "type": "string"
+                        },
+                        "issues": {
+                          "description": "Field-level validation issues, when available.",
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {},
+                            "additionalProperties": {}
+                          }
+                        }
+                      },
+                      "required": ["error"],
+                      "additionalProperties": false
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "The referenced router config does not exist or is not accessible to this account.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": { "type": "string" },
+                    "code": {
+                      "type": "string",
+                      "const": "router_config_not_found"
+                    }
+                  },
+                  "required": ["error", "code"],
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/generate/image": {
+      "post": {
+        "tags": ["Model Router"],
+        "summary": "Routed image generation",
+        "description": "Start an image generation task using a saved Model Router config instead of naming a model.",
+        "parameters": [{ "$ref": "#/components/parameters/X-Runway-Version" }],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "title": "RoutedImageRequest",
+                "type": "object",
+                "properties": {
+                  "configId": {
+                    "description": "The slug of a saved Model Router config to route this request with.",
+                    "type": "string",
+                    "pattern": "^[a-z][a-z0-9_-]{0,63}$"
+                  },
+                  "input": {
+                    "title": "UniversalImageInput",
+                    "description": "Model-agnostic image generation input. The router selects a model and maps these options to it.",
+                    "type": "object",
+                    "properties": {
+                      "promptText": {
+                        "description": "A text prompt describing the desired image.",
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 32000
+                      },
+                      "referenceImages": {
+                        "description": "Optional reference images for models that support them. Tags are assigned per model when omitted.",
+                        "maxItems": 16,
+                        "type": "array",
+                        "items": {
+                          "title": "ImageReferenceImage",
+                          "type": "object",
+                          "properties": {
+                            "uri": {
+                              "description": "A HTTPS URL, Runway or data URI containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                              "example": "https://example.com/image.jpg",
+                              "anyOf": [
+                                {
+                                  "description": "A HTTPS URL.",
+                                  "example": "https://example.com/file",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 2048,
+                                  "pattern": "^https:\\/\\/.*"
+                                },
+                                {
+                                  "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                                  "example": "runway://<token>",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 5000,
+                                  "pattern": "^runway:\\/\\/.*"
+                                },
+                                {
+                                  "description": "A data URI containing encoded media.",
+                                  "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 5242880,
+                                  "pattern": "^data:image\\/.*"
+                                }
+                              ]
+                            }
                           },
-                          "remaining": {
-                            "description": "How many models remained eligible after this filter ran.",
-                            "type": "integer",
-                            "minimum": -9007199254740991,
-                            "maximum": 9007199254740991
+                          "required": ["uri"],
+                          "additionalProperties": false
+                        }
+                      },
+                      "aspectRatio": {
+                        "description": "Desired aspect ratio. Models that do not support the requested aspect are excluded.",
+                        "type": "string",
+                        "enum": [
+                          "16:9",
+                          "9:16",
+                          "1:1",
+                          "4:3",
+                          "3:4",
+                          "21:9",
+                          "2:3",
+                          "3:2",
+                          "4:5",
+                          "5:4"
+                        ]
+                      },
+                      "resolution": {
+                        "description": "Desired megapixel tier. Models that do not support the requested tier are excluded.",
+                        "type": "string",
+                        "enum": ["1k", "2k", "4k"]
+                      },
+                      "outputCount": {
+                        "description": "Number of images to generate (1–10). Models that cannot produce the exact count are excluded and cost scales with this value.",
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 10
+                      },
+                      "seed": {
+                        "description": "A seed for reproducible generation. Only gen4_image and gen4_image_turbo accept this field.",
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 4294967295
+                      },
+                      "contentModeration": {
+                        "description": "Settings that affect the behavior of the content moderation system.",
+                        "type": "object",
+                        "properties": {
+                          "publicFigureThreshold": {
+                            "description": "When set to `low`, the content moderation system will be less strict about preventing generations that include recognizable public figures.",
+                            "type": "string",
+                            "enum": ["auto", "low"]
                           }
                         },
-                        "required": ["filter", "remaining"],
                         "additionalProperties": false
                       }
                     },
-                    "emptiedBy": {
-                      "description": "The filter(s) that reduced the eligible pool to zero.",
-                      "type": "array",
-                      "items": {
-                        "type": "string",
-                        "enum": [
-                          "capability",
-                          "prompt_length",
-                          "input_support",
-                          "allow_deny",
-                          "price"
-                        ]
-                      }
+                    "required": ["promptText"],
+                    "additionalProperties": false
+                  }
+                },
+                "required": ["configId", "input"],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The created task and routing decision. Poll GET /v1/tasks/:id for the result.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "RoutedImageTaskCreated",
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "description": "The ID of the created task. Poll GET /v1/tasks/:id for the result.",
+                      "type": "string",
+                      "format": "uuid",
+                      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12})$"
+                    },
+                    "routing": {
+                      "description": "Metadata describing which model the router selected and why.",
+                      "type": "object",
+                      "properties": {
+                        "model": {
+                          "description": "The public name of the model the router selected.",
+                          "type": "string"
+                        },
+                        "provider": {
+                          "description": "The provider of the selected model.",
+                          "type": "string"
+                        },
+                        "configId": {
+                          "description": "The slug of the router config that was applied to this request.",
+                          "type": "string"
+                        },
+                        "resolvedSettings": {
+                          "description": "The resolved config settings the router used for this request.",
+                          "type": "object",
+                          "properties": {
+                            "optimizeFor": {
+                              "description": "The single optimization preference the config selected, used as the soft weighting when scoring eligible models.",
+                              "type": "string",
+                              "enum": ["cost", "latency", "quality"]
+                            },
+                            "priceCeiling": {
+                              "description": "The applied maximum credits per generation for this request’s modality, or null if the config sets no ceiling.",
+                              "anyOf": [
+                                { "type": "number" },
+                                { "type": "null" }
+                              ]
+                            }
+                          },
+                          "required": ["optimizeFor", "priceCeiling"],
+                          "additionalProperties": false
+                        },
+                        "resolvedInput": {
+                          "description": "Request-side defaults resolved for the routing response. Not necessarily identical to prepared model options.",
+                          "type": "object",
+                          "properties": {
+                            "ratio": {
+                              "description": "Concrete output ratio derived from aspectRatio and resolution for the selected model.",
+                              "type": "string"
+                            },
+                            "aspectRatio": {
+                              "description": "Aspect ratio used for routing display.",
+                              "type": "string"
+                            },
+                            "resolution": {
+                              "description": "Megapixel tier used for routing display.",
+                              "type": "string"
+                            }
+                          },
+                          "required": ["ratio", "aspectRatio", "resolution"],
+                          "additionalProperties": false
+                        },
+                        "estimatedCost": {
+                          "description": "Estimated cost, computed against current pricing.",
+                          "type": "object",
+                          "properties": {
+                            "credits": {
+                              "description": "Estimated cost of the generation in credits.",
+                              "type": "number"
+                            }
+                          },
+                          "required": ["credits"],
+                          "additionalProperties": false
+                        }
+                      },
+                      "required": [
+                        "model",
+                        "provider",
+                        "configId",
+                        "resolvedSettings",
+                        "resolvedInput",
+                        "estimatedCost"
+                      ],
+                      "additionalProperties": false
                     }
                   },
-                  "required": ["error", "code", "pipeline", "emptiedBy"],
+                  "required": ["id", "routing"],
                   "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "description": "No model satisfies the config and request together.",
+                      "type": "object",
+                      "properties": {
+                        "error": { "type": "string" },
+                        "code": {
+                          "type": "string",
+                          "const": "no_eligible_model"
+                        },
+                        "pipeline": {
+                          "description": "The hard-filter pipeline in execution order with survivor counts at each stage.",
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "filter": {
+                                "type": "string",
+                                "enum": [
+                                  "capability",
+                                  "prompt_length",
+                                  "input_support",
+                                  "allow_deny",
+                                  "price"
+                                ]
+                              },
+                              "remaining": {
+                                "description": "How many models remained eligible after this filter ran.",
+                                "type": "integer",
+                                "minimum": -9007199254740991,
+                                "maximum": 9007199254740991
+                              }
+                            },
+                            "required": ["filter", "remaining"],
+                            "additionalProperties": false
+                          }
+                        },
+                        "emptiedBy": {
+                          "description": "The filter(s) that reduced the eligible pool to zero.",
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "enum": [
+                              "capability",
+                              "prompt_length",
+                              "input_support",
+                              "allow_deny",
+                              "price"
+                            ]
+                          }
+                        }
+                      },
+                      "required": ["error", "code", "pipeline", "emptiedBy"],
+                      "additionalProperties": false
+                    },
+                    {
+                      "description": "The request was invalid — e.g. an input failed validation for the routed model.",
+                      "type": "object",
+                      "properties": {
+                        "error": {
+                          "description": "A message describing why the request was rejected.",
+                          "type": "string"
+                        },
+                        "issues": {
+                          "description": "Field-level validation issues, when available.",
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {},
+                            "additionalProperties": {}
+                          }
+                        }
+                      },
+                      "required": ["error"],
+                      "additionalProperties": false
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "The referenced router config does not exist or is not accessible to this account.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": { "type": "string" },
+                    "code": {
+                      "type": "string",
+                      "const": "router_config_not_found"
+                    }
+                  },
+                  "required": ["error", "code"],
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/generate/audio": {
+      "post": {
+        "tags": ["Model Router"],
+        "summary": "Routed audio generation",
+        "description": "Start an audio generation task using a saved Model Router config instead of naming a model. Set input.type to speech to speak promptText verbatim, or audio to generate audio described by promptText.",
+        "parameters": [{ "$ref": "#/components/parameters/X-Runway-Version" }],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "title": "RoutedAudioRequest",
+                "type": "object",
+                "properties": {
+                  "configId": {
+                    "description": "The slug of a saved Model Router config to route this request with.",
+                    "type": "string",
+                    "pattern": "^[a-z][a-z0-9_-]{0,63}$"
+                  },
+                  "input": {
+                    "title": "UniversalAudioInput",
+                    "description": "Model-agnostic audio generation input. The router selects a model and maps these options to it.",
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "description": "How promptText is interpreted: `speech` speaks it verbatim as a script; `audio` treats it as a description of the desired audio, which may combine speech, music, ambience, and sound effects.",
+                        "type": "string",
+                        "enum": ["speech", "audio"]
+                      },
+                      "promptText": {
+                        "description": "For `speech`, the words to speak. For `audio`, a description of the desired output.",
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 3000
+                      },
+                      "voice": {
+                        "description": "The voice to speak with. When omitted, models that support a default voice remain eligible.",
+                        "oneOf": [
+                          {
+                            "title": "AudioPresetVoice",
+                            "description": "A preset voice.",
+                            "type": "object",
+                            "properties": {
+                              "type": { "type": "string", "const": "preset" },
+                              "presetId": {
+                                "description": "A Runway preset voice id. Choosing a preset routes only to models that support preset voices.",
+                                "type": "string",
+                                "enum": [
+                                  "Maya",
+                                  "Arjun",
+                                  "Serene",
+                                  "Bernard",
+                                  "Billy",
+                                  "Mark",
+                                  "Clint",
+                                  "Mabel",
+                                  "Chad",
+                                  "Leslie",
+                                  "Eleanor",
+                                  "Elias",
+                                  "Elliot",
+                                  "Grungle",
+                                  "Brodie",
+                                  "Sandra",
+                                  "Kirk",
+                                  "Kylie",
+                                  "Lara",
+                                  "Lisa",
+                                  "Malachi",
+                                  "Marlene",
+                                  "Martin",
+                                  "Miriam",
+                                  "Monster",
+                                  "Paula",
+                                  "Pip",
+                                  "Rusty",
+                                  "Ragnar",
+                                  "Xylar",
+                                  "Maggie",
+                                  "Jack",
+                                  "Katie",
+                                  "Noah",
+                                  "James",
+                                  "Rina",
+                                  "Ella",
+                                  "Mariah",
+                                  "Frank",
+                                  "Claudia",
+                                  "Niki",
+                                  "Vincent",
+                                  "Kendrick",
+                                  "Myrna",
+                                  "Tom",
+                                  "Wanda",
+                                  "Benjamin",
+                                  "Kiana",
+                                  "Rachel"
+                                ]
+                              }
+                            },
+                            "required": ["type", "presetId"],
+                            "additionalProperties": false
+                          },
+                          {
+                            "title": "AudioReferenceVoice",
+                            "description": "Clone a voice from a reference audio clip, then speak promptText in that voice. Routes only to models that support voice cloning.",
+                            "type": "object",
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "const": "reference-audio"
+                              },
+                              "audioUri": {
+                                "description": "A 1–30 second clip to clone the voice from.",
+                                "example": "https://example.com/audio.mp3",
+                                "anyOf": [
+                                  {
+                                    "description": "A HTTPS URL.",
+                                    "example": "https://example.com/file",
+                                    "type": "string",
+                                    "minLength": 13,
+                                    "maxLength": 2048,
+                                    "pattern": "^https:\\/\\/.*"
+                                  },
+                                  {
+                                    "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                                    "example": "runway://<token>",
+                                    "type": "string",
+                                    "minLength": 13,
+                                    "maxLength": 5000,
+                                    "pattern": "^runway:\\/\\/.*"
+                                  },
+                                  {
+                                    "description": "A data URI containing encoded media.",
+                                    "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                                    "type": "string",
+                                    "minLength": 13,
+                                    "maxLength": 16777216,
+                                    "pattern": "^data:audio\\/.*"
+                                  }
+                                ]
+                              }
+                            },
+                            "required": ["type", "audioUri"],
+                            "additionalProperties": false
+                          }
+                        ],
+                        "discriminator": { "propertyName": "type" }
+                      },
+                      "referenceAudios": {
+                        "description": "Optional reference audio clips guiding `audio` generation, for models that support them. Reference each clip in promptText as @Audio1, @Audio2, and @Audio3 in order.",
+                        "maxItems": 3,
+                        "type": "array",
+                        "items": {
+                          "title": "AudioReferenceAudio",
+                          "type": "object",
+                          "properties": {
+                            "uri": {
+                              "description": "A HTTPS URL, Runway or data URI containing an encoded audio. See [our docs](/assets/inputs#audio) on audio inputs for more information.",
+                              "example": "https://example.com/audio.mp3",
+                              "anyOf": [
+                                {
+                                  "description": "A HTTPS URL.",
+                                  "example": "https://example.com/file",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 2048,
+                                  "pattern": "^https:\\/\\/.*"
+                                },
+                                {
+                                  "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                                  "example": "runway://<token>",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 5000,
+                                  "pattern": "^runway:\\/\\/.*"
+                                },
+                                {
+                                  "description": "A data URI containing encoded media.",
+                                  "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 16777216,
+                                  "pattern": "^data:audio\\/.*"
+                                }
+                              ]
+                            }
+                          },
+                          "required": ["uri"],
+                          "additionalProperties": false
+                        }
+                      },
+                      "duration": {
+                        "description": "Desired output duration in seconds for `audio` generation. Models that cannot honor an explicit duration are excluded.",
+                        "type": "number",
+                        "minimum": 0.5,
+                        "maximum": 30
+                      },
+                      "loop": {
+                        "description": "When true, the `audio` output is designed to loop seamlessly. Models without loop support are excluded.",
+                        "type": "boolean"
+                      }
+                    },
+                    "required": ["type", "promptText"],
+                    "additionalProperties": false
+                  }
+                },
+                "required": ["configId", "input"],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The created task and routing decision. Poll GET /v1/tasks/:id for the result.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "RoutedAudioTaskCreated",
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "description": "The ID of the created task. Poll GET /v1/tasks/:id for the result.",
+                      "type": "string",
+                      "format": "uuid",
+                      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12})$"
+                    },
+                    "routing": {
+                      "description": "Metadata describing which model the router selected and why.",
+                      "type": "object",
+                      "properties": {
+                        "model": {
+                          "description": "The public name of the model the router selected.",
+                          "type": "string"
+                        },
+                        "provider": {
+                          "description": "The provider of the selected model.",
+                          "type": "string"
+                        },
+                        "configId": {
+                          "description": "The slug of the router config that was applied to this request.",
+                          "type": "string"
+                        },
+                        "resolvedSettings": {
+                          "description": "The resolved config settings the router used for this request.",
+                          "type": "object",
+                          "properties": {
+                            "optimizeFor": {
+                              "description": "The single optimization preference the config selected, used as the soft weighting when scoring eligible models.",
+                              "type": "string",
+                              "enum": ["cost", "latency", "quality"]
+                            },
+                            "priceCeiling": {
+                              "description": "The applied maximum credits per generation for this request’s modality, or null if the config sets no ceiling.",
+                              "anyOf": [
+                                { "type": "number" },
+                                { "type": "null" }
+                              ]
+                            }
+                          },
+                          "required": ["optimizeFor", "priceCeiling"],
+                          "additionalProperties": false
+                        },
+                        "resolvedInput": {
+                          "description": "Request-side defaults resolved for the routing response. Not necessarily identical to prepared model options.",
+                          "type": "object",
+                          "properties": {
+                            "type": {
+                              "description": "The prompt mode the router routed for.",
+                              "type": "string",
+                              "enum": ["speech", "audio"]
+                            },
+                            "voice": {
+                              "description": "How the selected model resolves the voice: the requested preset or reference-audio clone, the model default for voiceless speech, or none for general audio.",
+                              "type": "string",
+                              "enum": [
+                                "preset",
+                                "reference-audio",
+                                "default",
+                                "none"
+                              ]
+                            }
+                          },
+                          "required": ["type", "voice"],
+                          "additionalProperties": false
+                        },
+                        "estimatedCost": {
+                          "description": "Estimated cost, computed against current pricing.",
+                          "type": "object",
+                          "properties": {
+                            "credits": {
+                              "description": "Estimated cost of the generation in credits.",
+                              "type": "number"
+                            }
+                          },
+                          "required": ["credits"],
+                          "additionalProperties": false
+                        }
+                      },
+                      "required": [
+                        "model",
+                        "provider",
+                        "configId",
+                        "resolvedSettings",
+                        "resolvedInput",
+                        "estimatedCost"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": ["id", "routing"],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "description": "No model satisfies the config and request together.",
+                      "type": "object",
+                      "properties": {
+                        "error": { "type": "string" },
+                        "code": {
+                          "type": "string",
+                          "const": "no_eligible_model"
+                        },
+                        "pipeline": {
+                          "description": "The hard-filter pipeline in execution order with survivor counts at each stage.",
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "filter": {
+                                "type": "string",
+                                "enum": [
+                                  "capability",
+                                  "prompt_length",
+                                  "input_support",
+                                  "allow_deny",
+                                  "price"
+                                ]
+                              },
+                              "remaining": {
+                                "description": "How many models remained eligible after this filter ran.",
+                                "type": "integer",
+                                "minimum": -9007199254740991,
+                                "maximum": 9007199254740991
+                              }
+                            },
+                            "required": ["filter", "remaining"],
+                            "additionalProperties": false
+                          }
+                        },
+                        "emptiedBy": {
+                          "description": "The filter(s) that reduced the eligible pool to zero.",
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "enum": [
+                              "capability",
+                              "prompt_length",
+                              "input_support",
+                              "allow_deny",
+                              "price"
+                            ]
+                          }
+                        }
+                      },
+                      "required": ["error", "code", "pipeline", "emptiedBy"],
+                      "additionalProperties": false
+                    },
+                    {
+                      "description": "The request was invalid — e.g. an input failed validation for the routed model.",
+                      "type": "object",
+                      "properties": {
+                        "error": {
+                          "description": "A message describing why the request was rejected.",
+                          "type": "string"
+                        },
+                        "issues": {
+                          "description": "Field-level validation issues, when available.",
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {},
+                            "additionalProperties": {}
+                          }
+                        }
+                      },
+                      "required": ["error"],
+                      "additionalProperties": false
+                    }
+                  ]
                 }
               }
             }
@@ -14065,7 +14857,7 @@
                                 "const": 1
                               },
                               "models": {
-                                "description": "When mode is allow_new_except, ids are excluded; when allowlist_only, ids are the only allowed values. Each id must be a known public video model name (unknown ids are rejected on create/update).",
+                                "description": "When mode is allow_new_except, ids are excluded; when allowlist_only, ids are the only allowed values. Each id must be a known public video or image model name (unknown ids are rejected on create/update).",
                                 "type": "object",
                                 "properties": {
                                   "mode": {
@@ -14204,7 +14996,7 @@
                         "const": 1
                       },
                       "models": {
-                        "description": "When mode is allow_new_except, ids are excluded; when allowlist_only, ids are the only allowed values. Each id must be a known public video model name (unknown ids are rejected on create/update).",
+                        "description": "When mode is allow_new_except, ids are excluded; when allowlist_only, ids are the only allowed values. Each id must be a known public video or image model name (unknown ids are rejected on create/update).",
                         "type": "object",
                         "properties": {
                           "mode": {
@@ -14300,7 +15092,7 @@
                           "const": 1
                         },
                         "models": {
-                          "description": "When mode is allow_new_except, ids are excluded; when allowlist_only, ids are the only allowed values. Each id must be a known public video model name (unknown ids are rejected on create/update).",
+                          "description": "When mode is allow_new_except, ids are excluded; when allowlist_only, ids are the only allowed values. Each id must be a known public video or image model name (unknown ids are rejected on create/update).",
                           "type": "object",
                           "properties": {
                             "mode": {
@@ -14441,7 +15233,7 @@
                           "const": 1
                         },
                         "models": {
-                          "description": "When mode is allow_new_except, ids are excluded; when allowlist_only, ids are the only allowed values. Each id must be a known public video model name (unknown ids are rejected on create/update).",
+                          "description": "When mode is allow_new_except, ids are excluded; when allowlist_only, ids are the only allowed values. Each id must be a known public video or image model name (unknown ids are rejected on create/update).",
                           "type": "object",
                           "properties": {
                             "mode": {
@@ -14566,7 +15358,7 @@
                         "const": 1
                       },
                       "models": {
-                        "description": "When mode is allow_new_except, ids are excluded; when allowlist_only, ids are the only allowed values. Each id must be a known public video model name (unknown ids are rejected on create/update).",
+                        "description": "When mode is allow_new_except, ids are excluded; when allowlist_only, ids are the only allowed values. Each id must be a known public video or image model name (unknown ids are rejected on create/update).",
                         "type": "object",
                         "properties": {
                           "mode": {
@@ -14661,7 +15453,7 @@
                           "const": 1
                         },
                         "models": {
-                          "description": "When mode is allow_new_except, ids are excluded; when allowlist_only, ids are the only allowed values. Each id must be a known public video model name (unknown ids are rejected on create/update).",
+                          "description": "When mode is allow_new_except, ids are excluded; when allowlist_only, ids are the only allowed values. Each id must be a known public video or image model name (unknown ids are rejected on create/update).",
                           "type": "object",
                           "properties": {
                             "mode": {
