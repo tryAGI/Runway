@@ -4,7 +4,7 @@
 namespace Runway
 {
     /// <summary>
-    /// The request was invalid — e.g. an input failed validation for the routed model.
+    /// The request was invalid - e.g. an input failed validation for the routed model.
     /// </summary>
     public sealed partial class CreateGenerateImageResponseVariant2
     {

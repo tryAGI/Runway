@@ -9,14 +9,14 @@ namespace Runway
     public sealed partial class CreateRecipesMultiShotVideoRequestVariant2
     {
         /// <summary>
-        /// Workflow mode. `custom` polishes a user-provided shot list of 3–5 shots.
+        /// Workflow mode. `custom` polishes a user-provided shot list of 3-5 shots.
         /// </summary>
         /// <default>"custom"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("mode")]
         public string Mode { get; set; } = "custom";
 
         /// <summary>
-        /// Shot list for custom mode (3–5 shots). Per-shot durations must sum to `duration`.
+        /// Shot list for custom mode (3-5 shots). Per-shot durations must sum to `duration`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("shots")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -66,7 +66,7 @@ namespace Runway
         /// Initializes a new instance of the <see cref="CreateRecipesMultiShotVideoRequestVariant2" /> class.
         /// </summary>
         /// <param name="shots">
-        /// Shot list for custom mode (3–5 shots). Per-shot durations must sum to `duration`.
+        /// Shot list for custom mode (3-5 shots). Per-shot durations must sum to `duration`.
         /// </param>
         /// <param name="version">
         /// Workflow version. Use a dated version (e.g. "2026-06") to pin behavior, or "unsafe-latest" to track the newest stable version (may break without notice).
@@ -85,7 +85,7 @@ namespace Runway
         /// Default Value: true
         /// </param>
         /// <param name="mode">
-        /// Workflow mode. `custom` polishes a user-provided shot list of 3–5 shots.
+        /// Workflow mode. `custom` polishes a user-provided shot list of 3-5 shots.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

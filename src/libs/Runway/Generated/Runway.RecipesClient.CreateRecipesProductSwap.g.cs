@@ -535,10 +535,10 @@ namespace Runway
         /// Image of the original product being swapped out. See [our docs](/assets/inputs#images) on image inputs.
         /// </param>
         /// <param name="newProductImages">
-        /// Reference images of the new product (1–10). Supply multiple angles when the reference video shows the product from different views — optionally label each with `view` ("front", "side", or "back"). A single pre-composed reference sheet is also supported (omit `view`). See [our docs](/assets/inputs#images) on image inputs.
+        /// Reference images of the new product (1-10). Supply multiple angles when the reference video shows the product from different views - optionally label each with `view` ("front", "side", or "back"). A single pre-composed reference sheet is also supported (omit `view`). See [our docs](/assets/inputs#images) on image inputs.
         /// </param>
         /// <param name="duration">
-        /// Duration of the output video in seconds (4–15). Defaults to 10 seconds.
+        /// Duration of the output video in seconds (4-15). Defaults to 10 seconds.
         /// </param>
         /// <param name="resolution">
         /// Output video resolution. Defaults to 720p.

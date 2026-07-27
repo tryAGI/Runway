@@ -47,7 +47,7 @@ namespace Runway
 
         /// <summary>
         /// Update Model Router<br/>
-        /// Update a Model Router configuration. Settings changes append a new version; name and description updates do not. Settings are merged with the current snapshot — omitted fields keep their existing values.
+        /// Update a Model Router configuration. Settings changes append a new version; name and description updates do not. Settings are merged with the current snapshot - omitted fields keep their existing values.
         /// </summary>
         /// <param name="id"></param>
         /// <param name="xRunwayVersion">
@@ -78,7 +78,7 @@ namespace Runway
         }
         /// <summary>
         /// Update Model Router<br/>
-        /// Update a Model Router configuration. Settings changes append a new version; name and description updates do not. Settings are merged with the current snapshot — omitted fields keep their existing values.
+        /// Update a Model Router configuration. Settings changes append a new version; name and description updates do not. Settings are merged with the current snapshot - omitted fields keep their existing values.
         /// </summary>
         /// <param name="id"></param>
         /// <param name="xRunwayVersion">
@@ -460,7 +460,7 @@ namespace Runway
         }
         /// <summary>
         /// Update Model Router<br/>
-        /// Update a Model Router configuration. Settings changes append a new version; name and description updates do not. Settings are merged with the current snapshot — omitted fields keep their existing values.
+        /// Update a Model Router configuration. Settings changes append a new version; name and description updates do not. Settings are merged with the current snapshot - omitted fields keep their existing values.
         /// </summary>
         /// <param name="id"></param>
         /// <param name="xRunwayVersion">

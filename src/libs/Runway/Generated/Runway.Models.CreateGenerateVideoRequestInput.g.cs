@@ -65,7 +65,7 @@ namespace Runway
         public global::Runway.CreateGenerateVideoRequestInputResolution? Resolution { get; set; }
 
         /// <summary>
-        /// Whether to generate native audio with the video. When true, only models that output audio remain eligible; when false, silent models and models with an audio toggle remain eligible (always-on native-audio models are excluded). When omitted, the selected model’s default applies.
+        /// Whether to generate native audio with the video. When true, only models that output audio remain eligible; when false, silent models and models with an audio toggle remain eligible (always-on native-audio models are excluded). When omitted, the selected model's default applies.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("audio")]
         public bool? Audio { get; set; }
@@ -119,7 +119,7 @@ namespace Runway
         /// Desired output resolution tier. Models that do not support the requested tier are excluded.
         /// </param>
         /// <param name="audio">
-        /// Whether to generate native audio with the video. When true, only models that output audio remain eligible; when false, silent models and models with an audio toggle remain eligible (always-on native-audio models are excluded). When omitted, the selected model’s default applies.
+        /// Whether to generate native audio with the video. When true, only models that output audio remain eligible; when false, silent models and models with an audio toggle remain eligible (always-on native-audio models are excluded). When omitted, the selected model's default applies.
         /// </param>
         /// <param name="seed">
         /// A seed for reproducible generation. Random if omitted.

@@ -17,14 +17,14 @@ namespace Runway
         public required global::Runway.CreateRecipesProductAdRequestVersion Version { get; set; }
 
         /// <summary>
-        /// Product images (1–10). Multiple angles of the same product. All images inform product analysis and reference generation; only the first image is used as the primary product reference in the storyboard grid. See [our docs](/assets/inputs#images) on image inputs.
+        /// Product images (1-10). Multiple angles of the same product. All images inform product analysis and reference generation; only the first image is used as the primary product reference in the storyboard grid. See [our docs](/assets/inputs#images) on image inputs.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("productImages")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::System.Collections.Generic.IList<global::Runway.CreateRecipesProductAdRequestProductImage> ProductImages { get; set; }
 
         /// <summary>
-        /// Optional style reference images (0–4). Defines the visual treatment (lighting, palette, mood). Treated as a moodboard when multiple are provided.
+        /// Optional style reference images (0-4). Defines the visual treatment (lighting, palette, mood). Treated as a moodboard when multiple are provided.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("styleImages")]
         public global::System.Collections.Generic.IList<global::Runway.CreateRecipesProductAdRequestStyleImage>? StyleImages { get; set; }
@@ -49,7 +49,7 @@ namespace Runway
         public global::Runway.CreateRecipesProductAdRequestRatio? Ratio { get; set; }
 
         /// <summary>
-        /// Duration of the output video in seconds (4–15). Defaults to 10 seconds.
+        /// Duration of the output video in seconds (4-15). Defaults to 10 seconds.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("duration")]
         public int? Duration { get; set; }
@@ -74,10 +74,10 @@ namespace Runway
         /// Workflow version. Use a dated version (e.g. "2026-07") to pin behavior, or "unsafe-latest" to track the newest stable version (may break without notice).
         /// </param>
         /// <param name="productImages">
-        /// Product images (1–10). Multiple angles of the same product. All images inform product analysis and reference generation; only the first image is used as the primary product reference in the storyboard grid. See [our docs](/assets/inputs#images) on image inputs.
+        /// Product images (1-10). Multiple angles of the same product. All images inform product analysis and reference generation; only the first image is used as the primary product reference in the storyboard grid. See [our docs](/assets/inputs#images) on image inputs.
         /// </param>
         /// <param name="styleImages">
-        /// Optional style reference images (0–4). Defines the visual treatment (lighting, palette, mood). Treated as a moodboard when multiple are provided.
+        /// Optional style reference images (0-4). Defines the visual treatment (lighting, palette, mood). Treated as a moodboard when multiple are provided.
         /// </param>
         /// <param name="productInfo">
         /// Optional product description and specifications to inform creative direction and which product elements to highlight.
@@ -89,7 +89,7 @@ namespace Runway
         /// The resolution of the output video.
         /// </param>
         /// <param name="duration">
-        /// Duration of the output video in seconds (4–15). Defaults to 10 seconds.
+        /// Duration of the output video in seconds (4-15). Defaults to 10 seconds.
         /// </param>
         /// <param name="audio">
         /// Whether to generate audio for the video.<br/>

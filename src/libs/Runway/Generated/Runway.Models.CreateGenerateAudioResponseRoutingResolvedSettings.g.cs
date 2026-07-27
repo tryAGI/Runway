@@ -17,7 +17,7 @@ namespace Runway
         public required global::Runway.CreateGenerateAudioResponseRoutingResolvedSettingsOptimizeFor OptimizeFor { get; set; }
 
         /// <summary>
-        /// The applied maximum credits per generation for this request’s modality, or null if the config sets no ceiling.
+        /// The applied maximum credits per generation for this request's modality, or null if the config sets no ceiling.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("priceCeiling")]
         public double? PriceCeiling { get; set; }
@@ -35,7 +35,7 @@ namespace Runway
         /// The single optimization preference the config selected, used as the soft weighting when scoring eligible models.
         /// </param>
         /// <param name="priceCeiling">
-        /// The applied maximum credits per generation for this request’s modality, or null if the config sets no ceiling.
+        /// The applied maximum credits per generation for this request's modality, or null if the config sets no ceiling.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

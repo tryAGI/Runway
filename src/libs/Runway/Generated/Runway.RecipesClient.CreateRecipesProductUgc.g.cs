@@ -531,13 +531,13 @@ namespace Runway
         /// Image of the product being promoted. Aspect ratio (width / height) must be between 0.4 and 4. See [our docs](/assets/inputs#images) for image input requirements.
         /// </param>
         /// <param name="productInfo">
-        /// Product details and creative brief — what the product is, key benefits, and any specifics the script should reference.
+        /// Product details and creative brief - what the product is, key benefits, and any specifics the script should reference.
         /// </param>
         /// <param name="userConcept">
-        /// Optional creative direction for the UGC video — tone, voice register, specific message, or an entire dialog script.
+        /// Optional creative direction for the UGC video - tone, voice register, specific message, or an entire dialog script.
         /// </param>
         /// <param name="duration">
-        /// Duration of the output video in seconds (4–15). Defaults to 15 seconds.
+        /// Duration of the output video in seconds (4-15). Defaults to 15 seconds.
         /// </param>
         /// <param name="ratio">
         /// The resolution of the output video.

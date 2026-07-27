@@ -37,7 +37,7 @@ internal static partial class RecipesCreateRecipesMarketingStockImageCommandApiC
     private static Option<int?> OutputCount { get; } = new(
         name: @"--output-count")
     {
-        Description = @"The number of images to generate (1–4). Defaults to 4. Increasing this number affects credits consumed.",
+        Description = @"The number of images to generate (1-4). Defaults to 4. Increasing this number affects credits consumed.",
     };
 
     private static Option<global::Runway.CreateRecipesMarketingStockImageRequestQuality?> Quality { get; } = new(

@@ -38,14 +38,14 @@ internal static partial class RecipesCreateRecipesProductSwapCommandApiCommand
     private static Option<global::System.Collections.Generic.IList<global::Runway.CreateRecipesProductSwapRequestNewProductImage>> NewProductImages { get; } = new(
         name: @"--new-product-images")
     {
-        Description = @"Reference images of the new product (1–10). Supply multiple angles when the reference video shows the product from different views — optionally label each with `view` (""front"", ""side"", or ""back""). A single pre-composed reference sheet is also supported (omit `view`). See [our docs](/assets/inputs#images) on image inputs.",
+        Description = @"Reference images of the new product (1-10). Supply multiple angles when the reference video shows the product from different views - optionally label each with `view` (""front"", ""side"", or ""back""). A single pre-composed reference sheet is also supported (omit `view`). See [our docs](/assets/inputs#images) on image inputs.",
         Required = true,
     };
 
     private static Option<int?> Duration { get; } = new(
         name: @"--duration")
     {
-        Description = @"Duration of the output video in seconds (4–15). Defaults to 10 seconds.",
+        Description = @"Duration of the output video in seconds (4-15). Defaults to 10 seconds.",
     };
 
     private static Option<global::Runway.CreateRecipesProductSwapRequestResolution?> Resolution { get; } = new(

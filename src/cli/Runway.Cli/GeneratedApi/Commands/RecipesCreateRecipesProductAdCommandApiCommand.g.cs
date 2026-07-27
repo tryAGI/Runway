@@ -24,14 +24,14 @@ internal static partial class RecipesCreateRecipesProductAdCommandApiCommand
     private static Option<global::System.Collections.Generic.IList<global::Runway.CreateRecipesProductAdRequestProductImage>> ProductImages { get; } = new(
         name: @"--product-images")
     {
-        Description = @"Product images (1–10). Multiple angles of the same product. All images inform product analysis and reference generation; only the first image is used as the primary product reference in the storyboard grid. See [our docs](/assets/inputs#images) on image inputs.",
+        Description = @"Product images (1-10). Multiple angles of the same product. All images inform product analysis and reference generation; only the first image is used as the primary product reference in the storyboard grid. See [our docs](/assets/inputs#images) on image inputs.",
         Required = true,
     };
 
     private static Option<global::System.Collections.Generic.IList<global::Runway.CreateRecipesProductAdRequestStyleImage>?> StyleImages { get; } = new(
         name: @"--style-images")
     {
-        Description = @"Optional style reference images (0–4). Defines the visual treatment (lighting, palette, mood). Treated as a moodboard when multiple are provided.",
+        Description = @"Optional style reference images (0-4). Defines the visual treatment (lighting, palette, mood). Treated as a moodboard when multiple are provided.",
     };
 
     private static Option<string?> ProductInfo { get; } = new(
@@ -55,7 +55,7 @@ internal static partial class RecipesCreateRecipesProductAdCommandApiCommand
     private static Option<int?> Duration { get; } = new(
         name: @"--duration")
     {
-        Description = @"Duration of the output video in seconds (4–15). Defaults to 10 seconds.",
+        Description = @"Duration of the output video in seconds (4-15). Defaults to 10 seconds.",
     };
 
     private static Option<bool?> Audio { get; } = CliRuntime.CreateNullableBoolOption(

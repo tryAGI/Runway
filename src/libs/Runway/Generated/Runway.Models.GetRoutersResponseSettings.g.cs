@@ -22,7 +22,7 @@ namespace Runway
         public global::Runway.GetRoutersResponseSettingsModels? Models { get; set; }
 
         /// <summary>
-        /// Optional per-modality hard caps on credits for one generation. Models whose estimated cost for that modality exceeds the cap are excluded.
+        /// Optional per-modality credit caps, applied per generated output. Models whose estimated per-output cost exceeds the cap are excluded.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("maxCreditsPerGeneration")]
         public global::Runway.GetRoutersResponseSettingsMaxCreditsPerGeneration? MaxCreditsPerGeneration { get; set; }
@@ -47,7 +47,7 @@ namespace Runway
         /// When mode is allow_new_except, ids are excluded; when allowlist_only, ids are the only allowed values. Each id must be a known public video or image model name (unknown ids are rejected on create/update).
         /// </param>
         /// <param name="maxCreditsPerGeneration">
-        /// Optional per-modality hard caps on credits for one generation. Models whose estimated cost for that modality exceeds the cap are excluded.
+        /// Optional per-modality credit caps, applied per generated output. Models whose estimated per-output cost exceeds the cap are excluded.
         /// </param>
         /// <param name="optimizeFor">
         /// Soft preference among eligible models: cost, latency, or quality.
