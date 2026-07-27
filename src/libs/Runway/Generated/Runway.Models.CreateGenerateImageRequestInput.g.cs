@@ -36,7 +36,7 @@ namespace Runway
         public global::Runway.CreateGenerateImageRequestInputResolution? Resolution { get; set; }
 
         /// <summary>
-        /// Number of images to generate (1–10). Models that cannot produce the exact count are excluded and cost scales with this value.
+        /// Number of images to generate (1-10). Models that cannot produce the exact count are excluded and cost scales with this value.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("outputCount")]
         public int? OutputCount { get; set; }
@@ -75,7 +75,7 @@ namespace Runway
         /// Desired megapixel tier. Models that do not support the requested tier are excluded.
         /// </param>
         /// <param name="outputCount">
-        /// Number of images to generate (1–10). Models that cannot produce the exact count are excluded and cost scales with this value.
+        /// Number of images to generate (1-10). Models that cannot produce the exact count are excluded and cost scales with this value.
         /// </param>
         /// <param name="seed">
         /// A seed for reproducible generation. Only gen4_image and gen4_image_turbo accept this field.

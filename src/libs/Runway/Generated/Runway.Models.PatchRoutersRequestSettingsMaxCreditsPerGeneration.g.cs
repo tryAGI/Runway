@@ -4,7 +4,7 @@
 namespace Runway
 {
     /// <summary>
-    /// Optional per-modality hard caps on credits for one generation. Models whose estimated cost for that modality exceeds the cap are excluded.
+    /// Optional per-modality credit caps, applied per generated output. Models whose estimated per-output cost exceeds the cap are excluded.
     /// </summary>
     public sealed partial class PatchRoutersRequestSettingsMaxCreditsPerGeneration
     {

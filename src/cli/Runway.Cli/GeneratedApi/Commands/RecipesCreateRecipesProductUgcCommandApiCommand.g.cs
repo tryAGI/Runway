@@ -38,19 +38,19 @@ internal static partial class RecipesCreateRecipesProductUgcCommandApiCommand
     private static Option<string?> ProductInfo { get; } = new(
         name: @"--product-info")
     {
-        Description = @"Product details and creative brief — what the product is, key benefits, and any specifics the script should reference.",
+        Description = @"Product details and creative brief - what the product is, key benefits, and any specifics the script should reference.",
     };
 
     private static Option<string?> UserConcept { get; } = new(
         name: @"--user-concept")
     {
-        Description = @"Optional creative direction for the UGC video — tone, voice register, specific message, or an entire dialog script.",
+        Description = @"Optional creative direction for the UGC video - tone, voice register, specific message, or an entire dialog script.",
     };
 
     private static Option<int?> Duration { get; } = new(
         name: @"--duration")
     {
-        Description = @"Duration of the output video in seconds (4–15). Defaults to 15 seconds.",
+        Description = @"Duration of the output video in seconds (4-15). Defaults to 15 seconds.",
     };
 
     private static Option<global::Runway.CreateRecipesProductUgcRequestRatio?> Ratio { get; } = new(

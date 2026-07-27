@@ -77,7 +77,7 @@ internal static partial class ModelRouterEditRoutersByIdCommandApiCommand
     public static Command Create()
     {
         var command = new Command(@"edit-routers-by-id", @"Update Model Router
-Update a Model Router configuration. Settings changes append a new version; name and description updates do not. Settings are merged with the current snapshot — omitted fields keep their existing values.");
+Update a Model Router configuration. Settings changes append a new version; name and description updates do not. Settings are merged with the current snapshot - omitted fields keep their existing values.");
                         command.Arguments.Add(Id);
                         command.Options.Add(XRunwayVersion);
                         command.Options.Add(NameOption);

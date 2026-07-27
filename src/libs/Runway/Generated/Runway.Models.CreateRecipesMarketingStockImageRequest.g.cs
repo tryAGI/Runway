@@ -30,7 +30,7 @@ namespace Runway
         public global::Runway.CreateRecipesMarketingStockImageRequestReferenceImage? ReferenceImage { get; set; }
 
         /// <summary>
-        /// The number of images to generate (1–4). Defaults to 4. Increasing this number affects credits consumed.<br/>
+        /// The number of images to generate (1-4). Defaults to 4. Increasing this number affects credits consumed.<br/>
         /// Default Value: 4
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("outputCount")]
@@ -63,7 +63,7 @@ namespace Runway
         /// Optional brand logo image to guide the generated marketing stock image. See [our docs](/assets/inputs#images) on image inputs.
         /// </param>
         /// <param name="outputCount">
-        /// The number of images to generate (1–4). Defaults to 4. Increasing this number affects credits consumed.<br/>
+        /// The number of images to generate (1-4). Defaults to 4. Increasing this number affects credits consumed.<br/>
         /// Default Value: 4
         /// </param>
         /// <param name="quality">

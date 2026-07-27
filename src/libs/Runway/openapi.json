@@ -662,8 +662,8 @@
                     "example": "https://example.com/reference.jpg",
                     "anyOf": [
                       {
-                        "description": "A HTTPS URL.",
-                        "example": "https://example.com/file",
+                        "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:image/png;base64,...`, up to 5MB) containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                        "example": "https://example.com/image.jpg",
                         "type": "string",
                         "minLength": 13,
                         "maxLength": 2048,
@@ -3211,8 +3211,8 @@
                     "example": "https://example.com/reference.jpg",
                     "anyOf": [
                       {
-                        "description": "A HTTPS URL.",
-                        "example": "https://example.com/file",
+                        "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:image/png;base64,...`, up to 5MB) containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                        "example": "https://example.com/image.jpg",
                         "type": "string",
                         "minLength": 13,
                         "maxLength": 2048,
@@ -4011,8 +4011,8 @@
                             "example": "https://example.com/audio.mp3",
                             "anyOf": [
                               {
-                                "description": "A HTTPS URL.",
-                                "example": "https://example.com/file",
+                                "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:audio/mp3;base64,...`, up to 16MB) containing an encoded audio. See [our docs](/assets/inputs#audio) on audio inputs for more information.",
+                                "example": "https://example.com/audio.mp3",
                                 "type": "string",
                                 "minLength": 13,
                                 "maxLength": 2048,
@@ -5327,6 +5327,8 @@
                   "livekit": {
                     "deprecated": true,
                     "description": "Use integration with type \"livekit\" instead.",
+                    "title": "DeprecatedLiveKit",
+                    "x-stainless-model": "realtime_sessions.deprecated_livekit",
                     "type": "object",
                     "properties": {
                       "url": {
@@ -5971,8 +5973,8 @@
                             "example": "https://example.com/image.jpg",
                             "anyOf": [
                               {
-                                "description": "A HTTPS URL.",
-                                "example": "https://example.com/file",
+                                "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:image/png;base64,...`, up to 5MB) containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                                "example": "https://example.com/image.jpg",
                                 "type": "string",
                                 "minLength": 13,
                                 "maxLength": 2048,
@@ -6012,8 +6014,8 @@
                                   "example": "https://example.com/image.jpg",
                                   "anyOf": [
                                     {
-                                      "description": "A HTTPS URL.",
-                                      "example": "https://example.com/file",
+                                      "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:image/png;base64,...`, up to 5MB) containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                                      "example": "https://example.com/image.jpg",
                                       "type": "string",
                                       "minLength": 13,
                                       "maxLength": 2048,
@@ -6111,8 +6113,8 @@
                             "example": "https://example.com/image.jpg",
                             "anyOf": [
                               {
-                                "description": "A HTTPS URL.",
-                                "example": "https://example.com/file",
+                                "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:image/png;base64,...`, up to 5MB) containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                                "example": "https://example.com/image.jpg",
                                 "type": "string",
                                 "minLength": 13,
                                 "maxLength": 2048,
@@ -6152,8 +6154,8 @@
                                   "example": "https://example.com/image.jpg",
                                   "anyOf": [
                                     {
-                                      "description": "A HTTPS URL.",
-                                      "example": "https://example.com/file",
+                                      "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:image/png;base64,...`, up to 5MB) containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                                      "example": "https://example.com/image.jpg",
                                       "type": "string",
                                       "minLength": 13,
                                       "maxLength": 2048,
@@ -6246,8 +6248,8 @@
                             "example": "https://example.com/image.jpg",
                             "anyOf": [
                               {
-                                "description": "A HTTPS URL.",
-                                "example": "https://example.com/file",
+                                "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:image/png;base64,...`, up to 5MB) containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                                "example": "https://example.com/image.jpg",
                                 "type": "string",
                                 "minLength": 13,
                                 "maxLength": 2048,
@@ -6297,8 +6299,8 @@
                                   "example": "https://example.com/image.jpg",
                                   "anyOf": [
                                     {
-                                      "description": "A HTTPS URL.",
-                                      "example": "https://example.com/file",
+                                      "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:image/png;base64,...`, up to 5MB) containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                                      "example": "https://example.com/image.jpg",
                                       "type": "string",
                                       "minLength": 13,
                                       "maxLength": 2048,
@@ -6381,8 +6383,8 @@
                             "example": "https://example.com/image.jpg",
                             "anyOf": [
                               {
-                                "description": "A HTTPS URL.",
-                                "example": "https://example.com/file",
+                                "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:image/png;base64,...`, up to 5MB) containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                                "example": "https://example.com/image.jpg",
                                 "type": "string",
                                 "minLength": 13,
                                 "maxLength": 2048,
@@ -6432,8 +6434,8 @@
                                   "example": "https://example.com/image.jpg",
                                   "anyOf": [
                                     {
-                                      "description": "A HTTPS URL.",
-                                      "example": "https://example.com/file",
+                                      "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:image/png;base64,...`, up to 5MB) containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                                      "example": "https://example.com/image.jpg",
                                       "type": "string",
                                       "minLength": 13,
                                       "maxLength": 2048,
@@ -6515,8 +6517,8 @@
                             "example": "https://example.com/image.jpg",
                             "anyOf": [
                               {
-                                "description": "A HTTPS URL.",
-                                "example": "https://example.com/file",
+                                "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:image/png;base64,...`, up to 5MB) containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                                "example": "https://example.com/image.jpg",
                                 "type": "string",
                                 "minLength": 13,
                                 "maxLength": 2048,
@@ -6556,8 +6558,8 @@
                                   "example": "https://example.com/image.jpg",
                                   "anyOf": [
                                     {
-                                      "description": "A HTTPS URL.",
-                                      "example": "https://example.com/file",
+                                      "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:image/png;base64,...`, up to 5MB) containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                                      "example": "https://example.com/image.jpg",
                                       "type": "string",
                                       "minLength": 13,
                                       "maxLength": 2048,
@@ -6620,8 +6622,8 @@
                             "example": "https://example.com/image.jpg",
                             "anyOf": [
                               {
-                                "description": "A HTTPS URL.",
-                                "example": "https://example.com/file",
+                                "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:image/png;base64,...`, up to 5MB) containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                                "example": "https://example.com/image.jpg",
                                 "type": "string",
                                 "minLength": 13,
                                 "maxLength": 2048,
@@ -6669,8 +6671,8 @@
                                   "example": "https://example.com/image.jpg",
                                   "anyOf": [
                                     {
-                                      "description": "A HTTPS URL.",
-                                      "example": "https://example.com/file",
+                                      "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:image/png;base64,...`, up to 5MB) containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                                      "example": "https://example.com/image.jpg",
                                       "type": "string",
                                       "minLength": 13,
                                       "maxLength": 2048,
@@ -6767,8 +6769,8 @@
                               "example": "https://example.com/audio.mp3",
                               "anyOf": [
                                 {
-                                  "description": "A HTTPS URL.",
-                                  "example": "https://example.com/file",
+                                  "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:audio/mp3;base64,...`, up to 16MB) containing an encoded audio. See [our docs](/assets/inputs#audio) on audio inputs for more information.",
+                                  "example": "https://example.com/audio.mp3",
                                   "type": "string",
                                   "minLength": 13,
                                   "maxLength": 2048,
@@ -6813,8 +6815,8 @@
                             "example": "https://example.com/image.jpg",
                             "anyOf": [
                               {
-                                "description": "A HTTPS URL.",
-                                "example": "https://example.com/file",
+                                "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:image/png;base64,...`, up to 5MB) containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                                "example": "https://example.com/image.jpg",
                                 "type": "string",
                                 "minLength": 13,
                                 "maxLength": 2048,
@@ -6862,8 +6864,8 @@
                                   "example": "https://example.com/image.jpg",
                                   "anyOf": [
                                     {
-                                      "description": "A HTTPS URL.",
-                                      "example": "https://example.com/file",
+                                      "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:image/png;base64,...`, up to 5MB) containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                                      "example": "https://example.com/image.jpg",
                                       "type": "string",
                                       "minLength": 13,
                                       "maxLength": 2048,
@@ -6948,8 +6950,8 @@
                               "example": "https://example.com/audio.mp3",
                               "anyOf": [
                                 {
-                                  "description": "A HTTPS URL.",
-                                  "example": "https://example.com/file",
+                                  "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:audio/mp3;base64,...`, up to 16MB) containing an encoded audio. See [our docs](/assets/inputs#audio) on audio inputs for more information.",
+                                  "example": "https://example.com/audio.mp3",
                                   "type": "string",
                                   "minLength": 13,
                                   "maxLength": 2048,
@@ -6994,8 +6996,8 @@
                             "example": "https://example.com/image.jpg",
                             "anyOf": [
                               {
-                                "description": "A HTTPS URL.",
-                                "example": "https://example.com/file",
+                                "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:image/png;base64,...`, up to 5MB) containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                                "example": "https://example.com/image.jpg",
                                 "type": "string",
                                 "minLength": 13,
                                 "maxLength": 2048,
@@ -7043,8 +7045,8 @@
                                   "example": "https://example.com/image.jpg",
                                   "anyOf": [
                                     {
-                                      "description": "A HTTPS URL.",
-                                      "example": "https://example.com/file",
+                                      "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:image/png;base64,...`, up to 5MB) containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                                      "example": "https://example.com/image.jpg",
                                       "type": "string",
                                       "minLength": 13,
                                       "maxLength": 2048,
@@ -7129,8 +7131,8 @@
                               "example": "https://example.com/audio.mp3",
                               "anyOf": [
                                 {
-                                  "description": "A HTTPS URL.",
-                                  "example": "https://example.com/file",
+                                  "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:audio/mp3;base64,...`, up to 16MB) containing an encoded audio. See [our docs](/assets/inputs#audio) on audio inputs for more information.",
+                                  "example": "https://example.com/audio.mp3",
                                   "type": "string",
                                   "minLength": 13,
                                   "maxLength": 2048,
@@ -7175,8 +7177,8 @@
                             "example": "https://example.com/image.jpg",
                             "anyOf": [
                               {
-                                "description": "A HTTPS URL.",
-                                "example": "https://example.com/file",
+                                "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:image/png;base64,...`, up to 5MB) containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                                "example": "https://example.com/image.jpg",
                                 "type": "string",
                                 "minLength": 13,
                                 "maxLength": 2048,
@@ -7216,8 +7218,8 @@
                                   "example": "https://example.com/image.jpg",
                                   "anyOf": [
                                     {
-                                      "description": "A HTTPS URL.",
-                                      "example": "https://example.com/file",
+                                      "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:image/png;base64,...`, up to 5MB) containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                                      "example": "https://example.com/image.jpg",
                                       "type": "string",
                                       "minLength": 13,
                                       "maxLength": 2048,
@@ -7293,8 +7295,8 @@
                             "example": "https://example.com/image.jpg",
                             "anyOf": [
                               {
-                                "description": "A HTTPS URL.",
-                                "example": "https://example.com/file",
+                                "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:image/png;base64,...`, up to 5MB) containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                                "example": "https://example.com/image.jpg",
                                 "type": "string",
                                 "minLength": 13,
                                 "maxLength": 2048,
@@ -7334,8 +7336,8 @@
                                   "example": "https://example.com/image.jpg",
                                   "anyOf": [
                                     {
-                                      "description": "A HTTPS URL.",
-                                      "example": "https://example.com/file",
+                                      "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:image/png;base64,...`, up to 5MB) containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                                      "example": "https://example.com/image.jpg",
                                       "type": "string",
                                       "minLength": 13,
                                       "maxLength": 2048,
@@ -7687,8 +7689,8 @@
                               "example": "https://example.com/image.jpg",
                               "anyOf": [
                                 {
-                                  "description": "A HTTPS URL.",
-                                  "example": "https://example.com/file",
+                                  "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:image/png;base64,...`, up to 5MB) containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                                  "example": "https://example.com/image.jpg",
                                   "type": "string",
                                   "minLength": 13,
                                   "maxLength": 2048,
@@ -7732,8 +7734,8 @@
                               "example": "https://example.com/video.mp4",
                               "anyOf": [
                                 {
-                                  "description": "A HTTPS URL.",
-                                  "example": "https://example.com/file",
+                                  "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:video/mp4;base64,...`, up to 16MB) containing an encoded video. See [our docs](/assets/inputs#videos) on video inputs for more information.",
+                                  "example": "https://example.com/video.mp4",
                                   "type": "string",
                                   "minLength": 13,
                                   "maxLength": 2048,
@@ -7776,8 +7778,8 @@
                               "example": "https://example.com/audio.mp3",
                               "anyOf": [
                                 {
-                                  "description": "A HTTPS URL.",
-                                  "example": "https://example.com/file",
+                                  "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:audio/mp3;base64,...`, up to 16MB) containing an encoded audio. See [our docs](/assets/inputs#audio) on audio inputs for more information.",
+                                  "example": "https://example.com/audio.mp3",
                                   "type": "string",
                                   "minLength": 13,
                                   "maxLength": 2048,
@@ -7863,8 +7865,8 @@
                               "example": "https://example.com/image.jpg",
                               "anyOf": [
                                 {
-                                  "description": "A HTTPS URL.",
-                                  "example": "https://example.com/file",
+                                  "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:image/png;base64,...`, up to 5MB) containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                                  "example": "https://example.com/image.jpg",
                                   "type": "string",
                                   "minLength": 13,
                                   "maxLength": 2048,
@@ -7908,8 +7910,8 @@
                               "example": "https://example.com/video.mp4",
                               "anyOf": [
                                 {
-                                  "description": "A HTTPS URL.",
-                                  "example": "https://example.com/file",
+                                  "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:video/mp4;base64,...`, up to 16MB) containing an encoded video. See [our docs](/assets/inputs#videos) on video inputs for more information.",
+                                  "example": "https://example.com/video.mp4",
                                   "type": "string",
                                   "minLength": 13,
                                   "maxLength": 2048,
@@ -7952,8 +7954,8 @@
                               "example": "https://example.com/audio.mp3",
                               "anyOf": [
                                 {
-                                  "description": "A HTTPS URL.",
-                                  "example": "https://example.com/file",
+                                  "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:audio/mp3;base64,...`, up to 16MB) containing an encoded audio. See [our docs](/assets/inputs#audio) on audio inputs for more information.",
+                                  "example": "https://example.com/audio.mp3",
                                   "type": "string",
                                   "minLength": 13,
                                   "maxLength": 2048,
@@ -8039,8 +8041,8 @@
                               "example": "https://example.com/image.jpg",
                               "anyOf": [
                                 {
-                                  "description": "A HTTPS URL.",
-                                  "example": "https://example.com/file",
+                                  "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:image/png;base64,...`, up to 5MB) containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                                  "example": "https://example.com/image.jpg",
                                   "type": "string",
                                   "minLength": 13,
                                   "maxLength": 2048,
@@ -8084,8 +8086,8 @@
                               "example": "https://example.com/video.mp4",
                               "anyOf": [
                                 {
-                                  "description": "A HTTPS URL.",
-                                  "example": "https://example.com/file",
+                                  "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:video/mp4;base64,...`, up to 16MB) containing an encoded video. See [our docs](/assets/inputs#videos) on video inputs for more information.",
+                                  "example": "https://example.com/video.mp4",
                                   "type": "string",
                                   "minLength": 13,
                                   "maxLength": 2048,
@@ -8128,8 +8130,8 @@
                               "example": "https://example.com/audio.mp3",
                               "anyOf": [
                                 {
-                                  "description": "A HTTPS URL.",
-                                  "example": "https://example.com/file",
+                                  "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:audio/mp3;base64,...`, up to 16MB) containing an encoded audio. See [our docs](/assets/inputs#audio) on audio inputs for more information.",
+                                  "example": "https://example.com/audio.mp3",
                                   "type": "string",
                                   "minLength": 13,
                                   "maxLength": 2048,
@@ -8319,8 +8321,8 @@
                                   "example": "https://example.com/image.jpg",
                                   "anyOf": [
                                     {
-                                      "description": "A HTTPS URL.",
-                                      "example": "https://example.com/file",
+                                      "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:image/png;base64,...`, up to 5MB) containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                                      "example": "https://example.com/image.jpg",
                                       "type": "string",
                                       "minLength": 13,
                                       "maxLength": 2048,
@@ -8383,8 +8385,8 @@
                                   "example": "https://example.com/image.jpg",
                                   "anyOf": [
                                     {
-                                      "description": "A HTTPS URL.",
-                                      "example": "https://example.com/file",
+                                      "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:image/png;base64,...`, up to 5MB) containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                                      "example": "https://example.com/image.jpg",
                                       "type": "string",
                                       "minLength": 13,
                                       "maxLength": 2048,
@@ -8447,8 +8449,8 @@
                         "example": "https://example.com/video.mp4",
                         "anyOf": [
                           {
-                            "description": "A HTTPS URL.",
-                            "example": "https://example.com/file",
+                            "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:video/mp4;base64,...`, up to 16MB) containing an encoded video. See [our docs](/assets/inputs#videos) on video inputs for more information.",
+                            "example": "https://example.com/video.mp4",
                             "type": "string",
                             "minLength": 13,
                             "maxLength": 2048,
@@ -8519,8 +8521,8 @@
                         "example": "https://example.com/video.mp4",
                         "anyOf": [
                           {
-                            "description": "A HTTPS URL.",
-                            "example": "https://example.com/file",
+                            "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:video/mp4;base64,...`, up to 16MB) containing an encoded video. See [our docs](/assets/inputs#videos) on video inputs for more information.",
+                            "example": "https://example.com/video.mp4",
                             "type": "string",
                             "minLength": 13,
                             "maxLength": 2048,
@@ -8605,8 +8607,8 @@
                               "example": "https://example.com/image.jpg",
                               "anyOf": [
                                 {
-                                  "description": "A HTTPS URL.",
-                                  "example": "https://example.com/file",
+                                  "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:image/png;base64,...`, up to 5MB) containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                                  "example": "https://example.com/image.jpg",
                                   "type": "string",
                                   "minLength": 13,
                                   "maxLength": 2048,
@@ -8650,8 +8652,8 @@
                               "example": "https://example.com/video.mp4",
                               "anyOf": [
                                 {
-                                  "description": "A HTTPS URL.",
-                                  "example": "https://example.com/file",
+                                  "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:video/mp4;base64,...`, up to 16MB) containing an encoded video. See [our docs](/assets/inputs#videos) on video inputs for more information.",
+                                  "example": "https://example.com/video.mp4",
                                   "type": "string",
                                   "minLength": 13,
                                   "maxLength": 2048,
@@ -8694,8 +8696,8 @@
                               "example": "https://example.com/audio.mp3",
                               "anyOf": [
                                 {
-                                  "description": "A HTTPS URL.",
-                                  "example": "https://example.com/file",
+                                  "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:audio/mp3;base64,...`, up to 16MB) containing an encoded audio. See [our docs](/assets/inputs#audio) on audio inputs for more information.",
+                                  "example": "https://example.com/audio.mp3",
                                   "type": "string",
                                   "minLength": 13,
                                   "maxLength": 2048,
@@ -8737,8 +8739,8 @@
                         "example": "https://example.com/video.mp4",
                         "anyOf": [
                           {
-                            "description": "A HTTPS URL.",
-                            "example": "https://example.com/file",
+                            "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:video/mp4;base64,...`, up to 16MB) containing an encoded video. See [our docs](/assets/inputs#videos) on video inputs for more information.",
+                            "example": "https://example.com/video.mp4",
                             "type": "string",
                             "minLength": 13,
                             "maxLength": 2048,
@@ -8811,8 +8813,8 @@
                               "example": "https://example.com/image.jpg",
                               "anyOf": [
                                 {
-                                  "description": "A HTTPS URL.",
-                                  "example": "https://example.com/file",
+                                  "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:image/png;base64,...`, up to 5MB) containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                                  "example": "https://example.com/image.jpg",
                                   "type": "string",
                                   "minLength": 13,
                                   "maxLength": 2048,
@@ -8856,8 +8858,8 @@
                               "example": "https://example.com/video.mp4",
                               "anyOf": [
                                 {
-                                  "description": "A HTTPS URL.",
-                                  "example": "https://example.com/file",
+                                  "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:video/mp4;base64,...`, up to 16MB) containing an encoded video. See [our docs](/assets/inputs#videos) on video inputs for more information.",
+                                  "example": "https://example.com/video.mp4",
                                   "type": "string",
                                   "minLength": 13,
                                   "maxLength": 2048,
@@ -8900,8 +8902,8 @@
                               "example": "https://example.com/audio.mp3",
                               "anyOf": [
                                 {
-                                  "description": "A HTTPS URL.",
-                                  "example": "https://example.com/file",
+                                  "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:audio/mp3;base64,...`, up to 16MB) containing an encoded audio. See [our docs](/assets/inputs#audio) on audio inputs for more information.",
+                                  "example": "https://example.com/audio.mp3",
                                   "type": "string",
                                   "minLength": 13,
                                   "maxLength": 2048,
@@ -8943,8 +8945,8 @@
                         "example": "https://example.com/video.mp4",
                         "anyOf": [
                           {
-                            "description": "A HTTPS URL.",
-                            "example": "https://example.com/file",
+                            "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:video/mp4;base64,...`, up to 16MB) containing an encoded video. See [our docs](/assets/inputs#videos) on video inputs for more information.",
+                            "example": "https://example.com/video.mp4",
                             "type": "string",
                             "minLength": 13,
                             "maxLength": 2048,
@@ -9017,8 +9019,8 @@
                               "example": "https://example.com/image.jpg",
                               "anyOf": [
                                 {
-                                  "description": "A HTTPS URL.",
-                                  "example": "https://example.com/file",
+                                  "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:image/png;base64,...`, up to 5MB) containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                                  "example": "https://example.com/image.jpg",
                                   "type": "string",
                                   "minLength": 13,
                                   "maxLength": 2048,
@@ -9062,8 +9064,8 @@
                               "example": "https://example.com/video.mp4",
                               "anyOf": [
                                 {
-                                  "description": "A HTTPS URL.",
-                                  "example": "https://example.com/file",
+                                  "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:video/mp4;base64,...`, up to 16MB) containing an encoded video. See [our docs](/assets/inputs#videos) on video inputs for more information.",
+                                  "example": "https://example.com/video.mp4",
                                   "type": "string",
                                   "minLength": 13,
                                   "maxLength": 2048,
@@ -9106,8 +9108,8 @@
                               "example": "https://example.com/audio.mp3",
                               "anyOf": [
                                 {
-                                  "description": "A HTTPS URL.",
-                                  "example": "https://example.com/file",
+                                  "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:audio/mp3;base64,...`, up to 16MB) containing an encoded audio. See [our docs](/assets/inputs#audio) on audio inputs for more information.",
+                                  "example": "https://example.com/audio.mp3",
                                   "type": "string",
                                   "minLength": 13,
                                   "maxLength": 2048,
@@ -9149,8 +9151,8 @@
                         "example": "https://example.com/video.mp4",
                         "anyOf": [
                           {
-                            "description": "A HTTPS URL.",
-                            "example": "https://example.com/file",
+                            "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:video/mp4;base64,...`, up to 16MB) containing an encoded video. See [our docs](/assets/inputs#videos) on video inputs for more information.",
+                            "example": "https://example.com/video.mp4",
                             "type": "string",
                             "minLength": 13,
                             "maxLength": 2048,
@@ -9194,8 +9196,8 @@
                               "example": "https://example.com/image.jpg",
                               "anyOf": [
                                 {
-                                  "description": "A HTTPS URL.",
-                                  "example": "https://example.com/file",
+                                  "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:image/png;base64,...`, up to 5MB) containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                                  "example": "https://example.com/image.jpg",
                                   "type": "string",
                                   "minLength": 13,
                                   "maxLength": 2048,
@@ -9351,8 +9353,8 @@
                               "example": "https://example.com/image.jpg",
                               "anyOf": [
                                 {
-                                  "description": "A HTTPS URL.",
-                                  "example": "https://example.com/file",
+                                  "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:image/png;base64,...`, up to 5MB) containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                                  "example": "https://example.com/image.jpg",
                                   "type": "string",
                                   "minLength": 13,
                                   "maxLength": 2048,
@@ -9377,7 +9379,7 @@
                               ]
                             },
                             "tag": {
-                              "description": "A tag to identify the reference image. This is used to reference the image in prompt text.",
+                              "description": "A tag to identify the reference image. This is used to reference the image in prompt text. Must be 3-16 characters, start with a letter, and use only letters, digits, and underscores (no hyphens or other punctuation).",
                               "type": "string",
                               "minLength": 3,
                               "maxLength": 16,
@@ -9459,8 +9461,8 @@
                               "example": "https://example.com/image.jpg",
                               "anyOf": [
                                 {
-                                  "description": "A HTTPS URL.",
-                                  "example": "https://example.com/file",
+                                  "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:image/png;base64,...`, up to 5MB) containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                                  "example": "https://example.com/image.jpg",
                                   "type": "string",
                                   "minLength": 13,
                                   "maxLength": 2048,
@@ -9485,7 +9487,7 @@
                               ]
                             },
                             "tag": {
-                              "description": "A tag to identify the reference image. This is used to reference the image in prompt text.",
+                              "description": "A tag to identify the reference image. This is used to reference the image in prompt text. Must be 3-16 characters, start with a letter, and use only letters, digits, and underscores (no hyphens or other punctuation).",
                               "type": "string",
                               "minLength": 3,
                               "maxLength": 16,
@@ -9581,8 +9583,8 @@
                               "example": "https://example.com/image.jpg",
                               "anyOf": [
                                 {
-                                  "description": "A HTTPS URL.",
-                                  "example": "https://example.com/file",
+                                  "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:image/png;base64,...`, up to 5MB) containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                                  "example": "https://example.com/image.jpg",
                                   "type": "string",
                                   "minLength": 13,
                                   "maxLength": 2048,
@@ -9607,7 +9609,7 @@
                               ]
                             },
                             "tag": {
-                              "description": "A tag to identify the reference image. This may be used to reference the image in prompt text.",
+                              "description": "A tag to identify the reference image. This may be used to reference the image in prompt text. Must be 3-16 characters, start with a letter, and use only letters, digits, and underscores (no hyphens or other punctuation).",
                               "type": "string",
                               "minLength": 3,
                               "maxLength": 16,
@@ -9688,8 +9690,8 @@
                               "example": "https://example.com/image.jpg",
                               "anyOf": [
                                 {
-                                  "description": "A HTTPS URL.",
-                                  "example": "https://example.com/file",
+                                  "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:image/png;base64,...`, up to 5MB) containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                                  "example": "https://example.com/image.jpg",
                                   "type": "string",
                                   "minLength": 13,
                                   "maxLength": 2048,
@@ -9714,7 +9716,7 @@
                               ]
                             },
                             "tag": {
-                              "description": "A tag to identify the reference image. This is used to reference the image in prompt text.",
+                              "description": "A tag to identify the reference image. This is used to reference the image in prompt text. Must be 3-16 characters, start with a letter, and use only letters, digits, and underscores (no hyphens or other punctuation).",
                               "type": "string",
                               "minLength": 3,
                               "maxLength": 16,
@@ -9829,8 +9831,8 @@
                               "example": "https://example.com/image.jpg",
                               "anyOf": [
                                 {
-                                  "description": "A HTTPS URL.",
-                                  "example": "https://example.com/file",
+                                  "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:image/png;base64,...`, up to 5MB) containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                                  "example": "https://example.com/image.jpg",
                                   "type": "string",
                                   "minLength": 13,
                                   "maxLength": 2048,
@@ -9855,7 +9857,7 @@
                               ]
                             },
                             "tag": {
-                              "description": "A tag to identify the reference image. This is used to reference the image in prompt text.",
+                              "description": "A tag to identify the reference image. This is used to reference the image in prompt text. Must be 3-16 characters, start with a letter, and use only letters, digits, and underscores (no hyphens or other punctuation).",
                               "type": "string",
                               "minLength": 3,
                               "maxLength": 16,
@@ -9933,8 +9935,8 @@
                               "example": "https://example.com/image.jpg",
                               "anyOf": [
                                 {
-                                  "description": "A HTTPS URL.",
-                                  "example": "https://example.com/file",
+                                  "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:image/png;base64,...`, up to 5MB) containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                                  "example": "https://example.com/image.jpg",
                                   "type": "string",
                                   "minLength": 13,
                                   "maxLength": 2048,
@@ -10028,8 +10030,8 @@
                               "example": "https://example.com/image.jpg",
                               "anyOf": [
                                 {
-                                  "description": "A HTTPS URL.",
-                                  "example": "https://example.com/file",
+                                  "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:image/png;base64,...`, up to 5MB) containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                                  "example": "https://example.com/image.jpg",
                                   "type": "string",
                                   "minLength": 13,
                                   "maxLength": 2048,
@@ -10108,8 +10110,8 @@
                               "example": "https://example.com/image.jpg",
                               "anyOf": [
                                 {
-                                  "description": "A HTTPS URL.",
-                                  "example": "https://example.com/file",
+                                  "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:image/png;base64,...`, up to 5MB) containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                                  "example": "https://example.com/image.jpg",
                                   "type": "string",
                                   "minLength": 13,
                                   "maxLength": 2048,
@@ -10134,7 +10136,7 @@
                               ]
                             },
                             "tag": {
-                              "description": "A tag to identify the reference image. This is used to reference the image in prompt text.",
+                              "description": "A tag to identify the reference image. This is used to reference the image in prompt text. Must be 3-16 characters, start with a letter, and use only letters, digits, and underscores (no hyphens or other punctuation).",
                               "type": "string",
                               "minLength": 3,
                               "maxLength": 16,
@@ -10224,8 +10226,8 @@
                         "example": "https://example.com/image.jpg",
                         "anyOf": [
                           {
-                            "description": "A HTTPS URL.",
-                            "example": "https://example.com/file",
+                            "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:image/png;base64,...`, up to 5MB) containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                            "example": "https://example.com/image.jpg",
                             "type": "string",
                             "minLength": 13,
                             "maxLength": 2048,
@@ -10361,8 +10363,8 @@
                         "example": "https://example.com/video.mp4",
                         "anyOf": [
                           {
-                            "description": "A HTTPS URL.",
-                            "example": "https://example.com/file",
+                            "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:video/mp4;base64,...`, up to 16MB) containing an encoded video. See [our docs](/assets/inputs#videos) on video inputs for more information.",
+                            "example": "https://example.com/video.mp4",
                             "type": "string",
                             "minLength": 13,
                             "maxLength": 2048,
@@ -10517,8 +10519,8 @@
                                 "example": "https://example.com/image.jpg",
                                 "anyOf": [
                                   {
-                                    "description": "A HTTPS URL.",
-                                    "example": "https://example.com/file",
+                                    "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:image/png;base64,...`, up to 5MB) containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                                    "example": "https://example.com/image.jpg",
                                     "type": "string",
                                     "minLength": 13,
                                     "maxLength": 2048,
@@ -10556,8 +10558,8 @@
                                 "example": "https://example.com/video.mp4",
                                 "anyOf": [
                                   {
-                                    "description": "A HTTPS URL.",
-                                    "example": "https://example.com/file",
+                                    "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:video/mp4;base64,...`, up to 16MB) containing an encoded video. See [our docs](/assets/inputs#videos) on video inputs for more information.",
+                                    "example": "https://example.com/video.mp4",
                                     "type": "string",
                                     "minLength": 13,
                                     "maxLength": 2048,
@@ -10605,8 +10607,8 @@
                                 "example": "https://example.com/reference-performance.mp4",
                                 "anyOf": [
                                   {
-                                    "description": "A HTTPS URL.",
-                                    "example": "https://example.com/file",
+                                    "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:video/mp4;base64,...`, up to 16MB) containing an encoded video. See [our docs](/assets/inputs#videos) on video inputs for more information.",
+                                    "example": "https://example.com/video.mp4",
                                     "type": "string",
                                     "minLength": 13,
                                     "maxLength": 2048,
@@ -10765,8 +10767,8 @@
                           "example": "https://example.com/audio.mp3",
                           "anyOf": [
                             {
-                              "description": "A HTTPS URL.",
-                              "example": "https://example.com/file",
+                              "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:audio/mp3;base64,...`, up to 16MB) containing an encoded audio. See [our docs](/assets/inputs#audio) on audio inputs for more information.",
+                              "example": "https://example.com/audio.mp3",
                               "type": "string",
                               "minLength": 13,
                               "maxLength": 2048,
@@ -10940,8 +10942,8 @@
                                 "example": "https://example.com/audio.mp3",
                                 "anyOf": [
                                   {
-                                    "description": "A HTTPS URL.",
-                                    "example": "https://example.com/file",
+                                    "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:audio/mp3;base64,...`, up to 16MB) containing an encoded audio. See [our docs](/assets/inputs#audio) on audio inputs for more information.",
+                                    "example": "https://example.com/audio.mp3",
                                     "type": "string",
                                     "minLength": 13,
                                     "maxLength": 2048,
@@ -10979,8 +10981,8 @@
                                 "example": "https://example.com/video.mp4",
                                 "anyOf": [
                                   {
-                                    "description": "A HTTPS URL.",
-                                    "example": "https://example.com/file",
+                                    "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:video/mp4;base64,...`, up to 16MB) containing an encoded video. See [our docs](/assets/inputs#videos) on video inputs for more information.",
+                                    "example": "https://example.com/video.mp4",
                                     "type": "string",
                                     "minLength": 13,
                                     "maxLength": 2048,
@@ -11184,8 +11186,8 @@
                                 "example": "https://example.com/audio.mp3",
                                 "anyOf": [
                                   {
-                                    "description": "A HTTPS URL.",
-                                    "example": "https://example.com/file",
+                                    "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:audio/mp3;base64,...`, up to 16MB) containing an encoded audio. See [our docs](/assets/inputs#audio) on audio inputs for more information.",
+                                    "example": "https://example.com/audio.mp3",
                                     "type": "string",
                                     "minLength": 13,
                                     "maxLength": 2048,
@@ -11414,8 +11416,8 @@
                         "example": "https://example.com/audio.mp3",
                         "anyOf": [
                           {
-                            "description": "A HTTPS URL.",
-                            "example": "https://example.com/file",
+                            "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:audio/mp3;base64,...`, up to 16MB) containing an encoded audio. See [our docs](/assets/inputs#audio) on audio inputs for more information.",
+                            "example": "https://example.com/audio.mp3",
                             "type": "string",
                             "minLength": 13,
                             "maxLength": 2048,
@@ -11571,8 +11573,8 @@
                         "example": "https://example.com/audio.mp3",
                         "anyOf": [
                           {
-                            "description": "A HTTPS URL.",
-                            "example": "https://example.com/file",
+                            "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:audio/mp3;base64,...`, up to 16MB) containing an encoded audio. See [our docs](/assets/inputs#audio) on audio inputs for more information.",
+                            "example": "https://example.com/audio.mp3",
                             "type": "string",
                             "minLength": 13,
                             "maxLength": 2048,
@@ -11694,8 +11696,8 @@
                               "example": "https://example.com/image.jpg",
                               "anyOf": [
                                 {
-                                  "description": "A HTTPS URL.",
-                                  "example": "https://example.com/file",
+                                  "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:image/png;base64,...`, up to 5MB) containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                                  "example": "https://example.com/image.jpg",
                                   "type": "string",
                                   "minLength": 13,
                                   "maxLength": 2048,
@@ -11741,8 +11743,8 @@
                               "example": "https://example.com/video.mp4",
                               "anyOf": [
                                 {
-                                  "description": "A HTTPS URL.",
-                                  "example": "https://example.com/file",
+                                  "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:video/mp4;base64,...`, up to 16MB) containing an encoded video. See [our docs](/assets/inputs#videos) on video inputs for more information.",
+                                  "example": "https://example.com/video.mp4",
                                   "type": "string",
                                   "minLength": 13,
                                   "maxLength": 2048,
@@ -11788,8 +11790,8 @@
                               "example": "https://example.com/audio.mp3",
                               "anyOf": [
                                 {
-                                  "description": "A HTTPS URL.",
-                                  "example": "https://example.com/file",
+                                  "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:audio/mp3;base64,...`, up to 16MB) containing an encoded audio. See [our docs](/assets/inputs#audio) on audio inputs for more information.",
+                                  "example": "https://example.com/audio.mp3",
                                   "type": "string",
                                   "minLength": 13,
                                   "maxLength": 2048,
@@ -11833,8 +11835,8 @@
                                   "example": "https://example.com/image.jpg",
                                   "anyOf": [
                                     {
-                                      "description": "A HTTPS URL.",
-                                      "example": "https://example.com/file",
+                                      "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:image/png;base64,...`, up to 5MB) containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                                      "example": "https://example.com/image.jpg",
                                       "type": "string",
                                       "minLength": 13,
                                       "maxLength": 2048,
@@ -11892,8 +11894,8 @@
                                   "example": "https://example.com/image.jpg",
                                   "anyOf": [
                                     {
-                                      "description": "A HTTPS URL.",
-                                      "example": "https://example.com/file",
+                                      "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:image/png;base64,...`, up to 5MB) containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                                      "example": "https://example.com/image.jpg",
                                       "type": "string",
                                       "minLength": 13,
                                       "maxLength": 2048,
@@ -11963,7 +11965,7 @@
                         "enum": ["480p", "720p", "1080p", "4k"]
                       },
                       "audio": {
-                        "description": "Whether to generate native audio with the video. When true, only models that output audio remain eligible; when false, silent models and models with an audio toggle remain eligible (always-on native-audio models are excluded). When omitted, the selected model’s default applies.",
+                        "description": "Whether to generate native audio with the video. When true, only models that output audio remain eligible; when false, silent models and models with an audio toggle remain eligible (always-on native-audio models are excluded). When omitted, the selected model's default applies.",
                         "type": "boolean"
                       },
                       "seed": {
@@ -11996,7 +11998,7 @@
         },
         "responses": {
           "200": {
-            "description": "The created task and routing decision. Poll GET /v1/tasks/:id for the result.",
+            "description": "The routing decision. Includes a task `id` for real requests; dry runs return the decision only.",
             "content": {
               "application/json": {
                 "schema": {
@@ -12035,7 +12037,7 @@
                               "enum": ["cost", "latency", "quality"]
                             },
                             "priceCeiling": {
-                              "description": "The applied maximum credits per generation for this request’s modality, or null if the config sets no ceiling.",
+                              "description": "The applied maximum credits per generation for this request's modality, or null if the config sets no ceiling.",
                               "anyOf": [
                                 { "type": "number" },
                                 { "type": "null" }
@@ -12102,7 +12104,7 @@
                 "schema": {
                   "anyOf": [
                     {
-                      "description": "No model satisfies the config and request together.",
+                      "description": "No model satisfies the config and request together. Returned identically for real and dry-run requests.",
                       "type": "object",
                       "properties": {
                         "error": { "type": "string" },
@@ -12156,7 +12158,7 @@
                       "additionalProperties": false
                     },
                     {
-                      "description": "The request was invalid — e.g. an input failed validation for the routed model.",
+                      "description": "The request was invalid - e.g. an input failed validation for the routed model.",
                       "type": "object",
                       "properties": {
                         "error": {
@@ -12246,8 +12248,8 @@
                               "example": "https://example.com/image.jpg",
                               "anyOf": [
                                 {
-                                  "description": "A HTTPS URL.",
-                                  "example": "https://example.com/file",
+                                  "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:image/png;base64,...`, up to 5MB) containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                                  "example": "https://example.com/image.jpg",
                                   "type": "string",
                                   "minLength": 13,
                                   "maxLength": 2048,
@@ -12298,7 +12300,7 @@
                         "enum": ["1k", "2k", "4k"]
                       },
                       "outputCount": {
-                        "description": "Number of images to generate (1–10). Models that cannot produce the exact count are excluded and cost scales with this value.",
+                        "description": "Number of images to generate (1-10). Models that cannot produce the exact count are excluded and cost scales with this value.",
                         "type": "integer",
                         "minimum": 1,
                         "maximum": 10
@@ -12334,7 +12336,7 @@
         },
         "responses": {
           "200": {
-            "description": "The created task and routing decision. Poll GET /v1/tasks/:id for the result.",
+            "description": "The routing decision. Includes a task `id` for real requests; dry runs return the decision only.",
             "content": {
               "application/json": {
                 "schema": {
@@ -12373,7 +12375,7 @@
                               "enum": ["cost", "latency", "quality"]
                             },
                             "priceCeiling": {
-                              "description": "The applied maximum credits per generation for this request’s modality, or null if the config sets no ceiling.",
+                              "description": "The applied maximum credits per generation for this request's modality, or null if the config sets no ceiling.",
                               "anyOf": [
                                 { "type": "number" },
                                 { "type": "null" }
@@ -12440,7 +12442,7 @@
                 "schema": {
                   "anyOf": [
                     {
-                      "description": "No model satisfies the config and request together.",
+                      "description": "No model satisfies the config and request together. Returned identically for real and dry-run requests.",
                       "type": "object",
                       "properties": {
                         "error": { "type": "string" },
@@ -12494,7 +12496,7 @@
                       "additionalProperties": false
                     },
                     {
-                      "description": "The request was invalid — e.g. an input failed validation for the routed model.",
+                      "description": "The request was invalid - e.g. an input failed validation for the routed model.",
                       "type": "object",
                       "properties": {
                         "error": {
@@ -12654,12 +12656,12 @@
                                 "const": "reference-audio"
                               },
                               "audioUri": {
-                                "description": "A 1–30 second clip to clone the voice from.",
+                                "description": "A 1-30 second clip to clone the voice from.",
                                 "example": "https://example.com/audio.mp3",
                                 "anyOf": [
                                   {
-                                    "description": "A HTTPS URL.",
-                                    "example": "https://example.com/file",
+                                    "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:audio/mp3;base64,...`, up to 16MB) containing an encoded audio. See [our docs](/assets/inputs#audio) on audio inputs for more information.",
+                                    "example": "https://example.com/audio.mp3",
                                     "type": "string",
                                     "minLength": 13,
                                     "maxLength": 2048,
@@ -12703,8 +12705,8 @@
                               "example": "https://example.com/audio.mp3",
                               "anyOf": [
                                 {
-                                  "description": "A HTTPS URL.",
-                                  "example": "https://example.com/file",
+                                  "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:audio/mp3;base64,...`, up to 16MB) containing an encoded audio. See [our docs](/assets/inputs#audio) on audio inputs for more information.",
+                                  "example": "https://example.com/audio.mp3",
                                   "type": "string",
                                   "minLength": 13,
                                   "maxLength": 2048,
@@ -12756,7 +12758,7 @@
         },
         "responses": {
           "200": {
-            "description": "The created task and routing decision. Poll GET /v1/tasks/:id for the result.",
+            "description": "The routing decision. Includes a task `id` for real requests; dry runs return the decision only.",
             "content": {
               "application/json": {
                 "schema": {
@@ -12795,7 +12797,7 @@
                               "enum": ["cost", "latency", "quality"]
                             },
                             "priceCeiling": {
-                              "description": "The applied maximum credits per generation for this request’s modality, or null if the config sets no ceiling.",
+                              "description": "The applied maximum credits per generation for this request's modality, or null if the config sets no ceiling.",
                               "anyOf": [
                                 { "type": "number" },
                                 { "type": "null" }
@@ -12865,7 +12867,7 @@
                 "schema": {
                   "anyOf": [
                     {
-                      "description": "No model satisfies the config and request together.",
+                      "description": "No model satisfies the config and request together. Returned identically for real and dry-run requests.",
                       "type": "object",
                       "properties": {
                         "error": { "type": "string" },
@@ -12919,7 +12921,7 @@
                       "additionalProperties": false
                     },
                     {
-                      "description": "The request was invalid — e.g. an input failed validation for the routed model.",
+                      "description": "The request was invalid - e.g. an input failed validation for the routed model.",
                       "type": "object",
                       "properties": {
                         "error": {
@@ -13575,8 +13577,8 @@
                         "example": "https://example.com/image.jpg",
                         "anyOf": [
                           {
-                            "description": "A HTTPS URL.",
-                            "example": "https://example.com/file",
+                            "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:image/png;base64,...`, up to 5MB) containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                            "example": "https://example.com/image.jpg",
                             "type": "string",
                             "minLength": 13,
                             "maxLength": 2048,
@@ -13721,8 +13723,8 @@
                         "example": "https://example.com/image.jpg",
                         "anyOf": [
                           {
-                            "description": "A HTTPS URL.",
-                            "example": "https://example.com/file",
+                            "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:image/png;base64,...`, up to 5MB) containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                            "example": "https://example.com/image.jpg",
                             "type": "string",
                             "minLength": 13,
                             "maxLength": 2048,
@@ -13751,7 +13753,7 @@
                     "additionalProperties": false
                   },
                   "outputCount": {
-                    "description": "The number of images to generate (1–4). Defaults to 4. Increasing this number affects credits consumed.",
+                    "description": "The number of images to generate (1-4). Defaults to 4. Increasing this number affects credits consumed.",
                     "default": 4,
                     "type": "integer",
                     "minimum": 1,
@@ -13838,7 +13840,7 @@
                     "enum": ["2026-06", "2026-07", "unsafe-latest"]
                   },
                   "productImages": {
-                    "description": "Product images (1–10). Multiple angles of the same product. All images inform product analysis and reference generation; only the first image is used as the primary product reference in the storyboard grid. See [our docs](/assets/inputs#images) on image inputs.",
+                    "description": "Product images (1-10). Multiple angles of the same product. All images inform product analysis and reference generation; only the first image is used as the primary product reference in the storyboard grid. See [our docs](/assets/inputs#images) on image inputs.",
                     "minItems": 1,
                     "maxItems": 10,
                     "type": "array",
@@ -13850,8 +13852,8 @@
                           "example": "https://example.com/image.jpg",
                           "anyOf": [
                             {
-                              "description": "A HTTPS URL.",
-                              "example": "https://example.com/file",
+                              "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:image/png;base64,...`, up to 5MB) containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                              "example": "https://example.com/image.jpg",
                               "type": "string",
                               "minLength": 13,
                               "maxLength": 2048,
@@ -13881,7 +13883,7 @@
                     }
                   },
                   "styleImages": {
-                    "description": "Optional style reference images (0–4). Defines the visual treatment (lighting, palette, mood). Treated as a moodboard when multiple are provided.",
+                    "description": "Optional style reference images (0-4). Defines the visual treatment (lighting, palette, mood). Treated as a moodboard when multiple are provided.",
                     "maxItems": 4,
                     "type": "array",
                     "items": {
@@ -13892,8 +13894,8 @@
                           "example": "https://example.com/image.jpg",
                           "anyOf": [
                             {
-                              "description": "A HTTPS URL.",
-                              "example": "https://example.com/file",
+                              "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:image/png;base64,...`, up to 5MB) containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                              "example": "https://example.com/image.jpg",
                               "type": "string",
                               "minLength": 13,
                               "maxLength": 2048,
@@ -13949,7 +13951,7 @@
                     ]
                   },
                   "duration": {
-                    "description": "Duration of the output video in seconds (4–15). Defaults to 10 seconds.",
+                    "description": "Duration of the output video in seconds (4-15). Defaults to 10 seconds.",
                     "type": "integer",
                     "minimum": 4,
                     "maximum": 15
@@ -14042,8 +14044,8 @@
                         "example": "https://example.com/image.jpg",
                         "anyOf": [
                           {
-                            "description": "A HTTPS URL.",
-                            "example": "https://example.com/file",
+                            "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:image/png;base64,...`, up to 5MB) containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                            "example": "https://example.com/image.jpg",
                             "type": "string",
                             "minLength": 13,
                             "maxLength": 2048,
@@ -14160,8 +14162,8 @@
                         "example": "https://example.com/video.mp4",
                         "anyOf": [
                           {
-                            "description": "A HTTPS URL.",
-                            "example": "https://example.com/file",
+                            "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:video/mp4;base64,...`, up to 16MB) containing an encoded video. See [our docs](/assets/inputs#videos) on video inputs for more information.",
+                            "example": "https://example.com/video.mp4",
                             "type": "string",
                             "minLength": 13,
                             "maxLength": 2048,
@@ -14198,8 +14200,8 @@
                         "example": "https://example.com/image.jpg",
                         "anyOf": [
                           {
-                            "description": "A HTTPS URL.",
-                            "example": "https://example.com/file",
+                            "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:image/png;base64,...`, up to 5MB) containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                            "example": "https://example.com/image.jpg",
                             "type": "string",
                             "minLength": 13,
                             "maxLength": 2048,
@@ -14228,7 +14230,7 @@
                     "additionalProperties": false
                   },
                   "newProductImages": {
-                    "description": "Reference images of the new product (1–10). Supply multiple angles when the reference video shows the product from different views — optionally label each with `view` (\"front\", \"side\", or \"back\"). A single pre-composed reference sheet is also supported (omit `view`). See [our docs](/assets/inputs#images) on image inputs.",
+                    "description": "Reference images of the new product (1-10). Supply multiple angles when the reference video shows the product from different views - optionally label each with `view` (\"front\", \"side\", or \"back\"). A single pre-composed reference sheet is also supported (omit `view`). See [our docs](/assets/inputs#images) on image inputs.",
                     "minItems": 1,
                     "maxItems": 10,
                     "type": "array",
@@ -14240,8 +14242,8 @@
                           "example": "https://example.com/image.jpg",
                           "anyOf": [
                             {
-                              "description": "A HTTPS URL.",
-                              "example": "https://example.com/file",
+                              "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:image/png;base64,...`, up to 5MB) containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                              "example": "https://example.com/image.jpg",
                               "type": "string",
                               "minLength": 13,
                               "maxLength": 2048,
@@ -14276,7 +14278,7 @@
                     }
                   },
                   "duration": {
-                    "description": "Duration of the output video in seconds (4–15). Defaults to 10 seconds.",
+                    "description": "Duration of the output video in seconds (4-15). Defaults to 10 seconds.",
                     "type": "integer",
                     "minimum": 4,
                     "maximum": 15
@@ -14392,8 +14394,8 @@
                             "example": "https://example.com/image.jpg",
                             "anyOf": [
                               {
-                                "description": "A HTTPS URL.",
-                                "example": "https://example.com/file",
+                                "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:image/png;base64,...`, up to 5MB) containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                                "example": "https://example.com/image.jpg",
                                 "type": "string",
                                 "minLength": 13,
                                 "maxLength": 2048,
@@ -14451,12 +14453,12 @@
                     "type": "object",
                     "properties": {
                       "mode": {
-                        "description": "Workflow mode. `custom` polishes a user-provided shot list of 3–5 shots.",
+                        "description": "Workflow mode. `custom` polishes a user-provided shot list of 3-5 shots.",
                         "type": "string",
                         "const": "custom"
                       },
                       "shots": {
-                        "description": "Shot list for custom mode (3–5 shots). Per-shot durations must sum to `duration`.",
+                        "description": "Shot list for custom mode (3-5 shots). Per-shot durations must sum to `duration`.",
                         "minItems": 3,
                         "maxItems": 5,
                         "type": "array",
@@ -14494,8 +14496,8 @@
                             "example": "https://example.com/image.jpg",
                             "anyOf": [
                               {
-                                "description": "A HTTPS URL.",
-                                "example": "https://example.com/file",
+                                "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:image/png;base64,...`, up to 5MB) containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                                "example": "https://example.com/image.jpg",
                                 "type": "string",
                                 "minLength": 13,
                                 "maxLength": 2048,
@@ -14631,8 +14633,8 @@
                         "example": "https://example.com/image.jpg",
                         "anyOf": [
                           {
-                            "description": "A HTTPS URL.",
-                            "example": "https://example.com/file",
+                            "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:image/png;base64,...`, up to 5MB) containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                            "example": "https://example.com/image.jpg",
                             "type": "string",
                             "minLength": 13,
                             "maxLength": 2048,
@@ -14669,8 +14671,8 @@
                         "example": "https://example.com/image.jpg",
                         "anyOf": [
                           {
-                            "description": "A HTTPS URL.",
-                            "example": "https://example.com/file",
+                            "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:image/png;base64,...`, up to 5MB) containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                            "example": "https://example.com/image.jpg",
                             "type": "string",
                             "minLength": 13,
                             "maxLength": 2048,
@@ -14699,19 +14701,19 @@
                     "additionalProperties": false
                   },
                   "productInfo": {
-                    "description": "Product details and creative brief — what the product is, key benefits, and any specifics the script should reference.",
+                    "description": "Product details and creative brief - what the product is, key benefits, and any specifics the script should reference.",
                     "default": "",
                     "type": "string",
                     "maxLength": 2500
                   },
                   "userConcept": {
-                    "description": "Optional creative direction for the UGC video — tone, voice register, specific message, or an entire dialog script.",
+                    "description": "Optional creative direction for the UGC video - tone, voice register, specific message, or an entire dialog script.",
                     "default": "",
                     "type": "string",
                     "maxLength": 3500
                   },
                   "duration": {
-                    "description": "Duration of the output video in seconds (4–15). Defaults to 15 seconds.",
+                    "description": "Duration of the output video in seconds (4-15). Defaults to 15 seconds.",
                     "type": "integer",
                     "minimum": 4,
                     "maximum": 15
@@ -14876,7 +14878,7 @@
                                 "additionalProperties": false
                               },
                               "maxCreditsPerGeneration": {
-                                "description": "Optional per-modality hard caps on credits for one generation. Models whose estimated cost for that modality exceeds the cap are excluded.",
+                                "description": "Optional per-modality credit caps, applied per generated output. Models whose estimated per-output cost exceeds the cap are excluded.",
                                 "type": "object",
                                 "properties": {
                                   "video": {
@@ -15012,7 +15014,7 @@
                         "additionalProperties": false
                       },
                       "maxCreditsPerGeneration": {
-                        "description": "Optional per-modality hard caps on credits for one generation. Models whose estimated cost for that modality exceeds the cap are excluded.",
+                        "description": "Optional per-modality credit caps, applied per generated output. Models whose estimated per-output cost exceeds the cap are excluded.",
                         "type": "object",
                         "properties": {
                           "video": {
@@ -15108,7 +15110,7 @@
                           "additionalProperties": false
                         },
                         "maxCreditsPerGeneration": {
-                          "description": "Optional per-modality hard caps on credits for one generation. Models whose estimated cost for that modality exceeds the cap are excluded.",
+                          "description": "Optional per-modality credit caps, applied per generated output. Models whose estimated per-output cost exceeds the cap are excluded.",
                           "type": "object",
                           "properties": {
                             "video": {
@@ -15249,7 +15251,7 @@
                           "additionalProperties": false
                         },
                         "maxCreditsPerGeneration": {
-                          "description": "Optional per-modality hard caps on credits for one generation. Models whose estimated cost for that modality exceeds the cap are excluded.",
+                          "description": "Optional per-modality credit caps, applied per generated output. Models whose estimated per-output cost exceeds the cap are excluded.",
                           "type": "object",
                           "properties": {
                             "video": {
@@ -15312,7 +15314,7 @@
       "patch": {
         "tags": ["Model Router"],
         "summary": "Update Model Router",
-        "description": "Update a Model Router configuration. Settings changes append a new version; name and description updates do not. Settings are merged with the current snapshot — omitted fields keep their existing values.",
+        "description": "Update a Model Router configuration. Settings changes append a new version; name and description updates do not. Settings are merged with the current snapshot - omitted fields keep their existing values.",
         "parameters": [
           {
             "name": "id",
@@ -15374,7 +15376,7 @@
                         "additionalProperties": false
                       },
                       "maxCreditsPerGeneration": {
-                        "description": "Optional per-modality hard caps on credits for one generation. Models whose estimated cost for that modality exceeds the cap are excluded.",
+                        "description": "Optional per-modality credit caps, applied per generated output. Models whose estimated per-output cost exceeds the cap are excluded.",
                         "type": "object",
                         "properties": {
                           "video": {
@@ -15469,7 +15471,7 @@
                           "additionalProperties": false
                         },
                         "maxCreditsPerGeneration": {
-                          "description": "Optional per-modality hard caps on credits for one generation. Models whose estimated cost for that modality exceeds the cap are excluded.",
+                          "description": "Optional per-modality credit caps, applied per generated output. Models whose estimated per-output cost exceeds the cap are excluded.",
                           "type": "object",
                           "properties": {
                             "video": {
@@ -15805,8 +15807,8 @@
                             "example": "https://example.com/audio.mp3",
                             "anyOf": [
                               {
-                                "description": "A HTTPS URL.",
-                                "example": "https://example.com/file",
+                                "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:audio/mp3;base64,...`, up to 16MB) containing an encoded audio. See [our docs](/assets/inputs#audio) on audio inputs for more information.",
+                                "example": "https://example.com/audio.mp3",
                                 "type": "string",
                                 "minLength": 13,
                                 "maxLength": 2048,
@@ -16436,8 +16438,8 @@
                                 "example": "https://example.com/image.jpg",
                                 "anyOf": [
                                   {
-                                    "description": "A HTTPS URL.",
-                                    "example": "https://example.com/file",
+                                    "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:image/png;base64,...`, up to 5MB) containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                                    "example": "https://example.com/image.jpg",
                                     "type": "string",
                                     "minLength": 13,
                                     "maxLength": 2048,
@@ -16475,8 +16477,8 @@
                                 "example": "https://example.com/video.mp4",
                                 "anyOf": [
                                   {
-                                    "description": "A HTTPS URL.",
-                                    "example": "https://example.com/file",
+                                    "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:video/mp4;base64,...`, up to 16MB) containing an encoded video. See [our docs](/assets/inputs#videos) on video inputs for more information.",
+                                    "example": "https://example.com/video.mp4",
                                     "type": "string",
                                     "minLength": 13,
                                     "maxLength": 2048,
@@ -16514,8 +16516,8 @@
                                 "example": "https://example.com/audio.mp3",
                                 "anyOf": [
                                   {
-                                    "description": "A HTTPS URL.",
-                                    "example": "https://example.com/file",
+                                    "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:audio/mp3;base64,...`, up to 16MB) containing an encoded audio. See [our docs](/assets/inputs#audio) on audio inputs for more information.",
+                                    "example": "https://example.com/audio.mp3",
                                     "type": "string",
                                     "minLength": 13,
                                     "maxLength": 2048,

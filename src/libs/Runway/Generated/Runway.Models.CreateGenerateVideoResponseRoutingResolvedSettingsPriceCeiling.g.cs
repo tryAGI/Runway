@@ -4,7 +4,7 @@
 namespace Runway
 {
     /// <summary>
-    /// The applied maximum credits per generation for this request’s modality, or null if the config sets no ceiling.
+    /// The applied maximum credits per generation for this request's modality, or null if the config sets no ceiling.
     /// </summary>
     public sealed partial class CreateGenerateVideoResponseRoutingResolvedSettingsPriceCeiling
     {

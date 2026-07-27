@@ -18,7 +18,7 @@ namespace Runway
         public required string Uri { get; set; }
 
         /// <summary>
-        /// A tag to identify the reference image. This is used to reference the image in prompt text.
+        /// A tag to identify the reference image. This is used to reference the image in prompt text. Must be 3-16 characters, start with a letter, and use only letters, digits, and underscores (no hyphens or other punctuation).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("tag")]
         public string? Tag { get; set; }
@@ -45,7 +45,7 @@ namespace Runway
         /// Example: https://example.com/image.jpg
         /// </param>
         /// <param name="tag">
-        /// A tag to identify the reference image. This is used to reference the image in prompt text.
+        /// A tag to identify the reference image. This is used to reference the image in prompt text. Must be 3-16 characters, start with a letter, and use only letters, digits, and underscores (no hyphens or other punctuation).
         /// </param>
         /// <param name="subject">
         /// Whether this is a reference of a human subject (for character consistency) or an object that appears in the output.<br/>

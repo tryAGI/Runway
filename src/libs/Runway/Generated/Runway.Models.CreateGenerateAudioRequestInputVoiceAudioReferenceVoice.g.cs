@@ -16,7 +16,7 @@ namespace Runway
         public string Type { get; set; } = "reference-audio";
 
         /// <summary>
-        /// A 1–30 second clip to clone the voice from.<br/>
+        /// A 1-30 second clip to clone the voice from.<br/>
         /// Example: https://example.com/audio.mp3
         /// </summary>
         /// <example>https://example.com/audio.mp3</example>
@@ -34,7 +34,7 @@ namespace Runway
         /// Initializes a new instance of the <see cref="CreateGenerateAudioRequestInputVoiceAudioReferenceVoice" /> class.
         /// </summary>
         /// <param name="audioUri">
-        /// A 1–30 second clip to clone the voice from.<br/>
+        /// A 1-30 second clip to clone the voice from.<br/>
         /// Example: https://example.com/audio.mp3
         /// </param>
         /// <param name="type"></param>
