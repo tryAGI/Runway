@@ -48,7 +48,7 @@ namespace Runway
         public global::System.Collections.Generic.IList<global::Runway.CreateTextToVideoRequestSeedance2FastReferenceVideo>? ReferenceVideos { get; set; }
 
         /// <summary>
-        /// An optional array of audio references. Audio references require a text prompt, and the total combined duration must not exceed 15 seconds.
+        /// An optional array of audio references. The total combined duration must not exceed 15 seconds.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("referenceAudio")]
         public global::System.Collections.Generic.IList<global::Runway.CreateTextToVideoRequestSeedance2FastReferenceAudioItem>? ReferenceAudio { get; set; }
@@ -89,7 +89,7 @@ namespace Runway
         /// An optional array of video references. The combined duration across all video references must not exceed 15 seconds. See [our docs](/assets/inputs#videos) on video inputs for more information.
         /// </param>
         /// <param name="referenceAudio">
-        /// An optional array of audio references. Audio references require a text prompt, and the total combined duration must not exceed 15 seconds.
+        /// An optional array of audio references. The total combined duration must not exceed 15 seconds.
         /// </param>
         /// <param name="model"></param>
 #if NET7_0_OR_GREATER

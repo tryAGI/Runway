@@ -35,12 +35,21 @@ namespace Runway.JsonConverters
                                throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.CreateTextToSpeechRequestElevenMultilingualV2)}");
                 elevenMultilingualV2 = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
+            global::Runway.CreateTextToSpeechRequestElevenV3? elevenV3 = default;
+            if (discriminator?.Model == global::Runway.CreateTextToSpeechRequestDiscriminatorModel.ElevenV3)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateTextToSpeechRequestElevenV3), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateTextToSpeechRequestElevenV3> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.CreateTextToSpeechRequestElevenV3)}");
+                elevenV3 = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+            }
 
             var __value = new global::Runway.CreateTextToSpeechRequest(
                 discriminator?.Model,
                 seedAudio,
 
-                elevenMultilingualV2
+                elevenMultilingualV2,
+
+                elevenV3
                 );
 
             return __value;
@@ -66,6 +75,12 @@ namespace Runway.JsonConverters
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateTextToSpeechRequestElevenMultilingualV2), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateTextToSpeechRequestElevenMultilingualV2?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateTextToSpeechRequestElevenMultilingualV2).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.ElevenMultilingualV2!, typeInfo);
+            }
+            else if (value.IsElevenV3)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateTextToSpeechRequestElevenV3), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateTextToSpeechRequestElevenV3?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateTextToSpeechRequestElevenV3).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ElevenV3!, typeInfo);
             }
         }
     }

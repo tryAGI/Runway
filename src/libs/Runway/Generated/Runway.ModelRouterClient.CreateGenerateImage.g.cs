@@ -427,6 +427,43 @@ namespace Runway
                                         h => h.Key,
                                         h => h.Value));
                             }
+                            // You have exceeded the rate limit for this endpoint.
+                            if ((int)__response.StatusCode == 429)
+                            {
+                                string? __content_429 = null;
+                                global::System.Exception? __exception_429 = null;
+                                global::Runway.CreateGenerateImageResponse4? __value_429 = null;
+                                try
+                                {
+                                    if (__effectiveReadResponseAsString)
+                                    {
+                                        __content_429 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                        __value_429 = global::Runway.CreateGenerateImageResponse4.FromJson(__content_429, JsonSerializerContext);
+                                    }
+                                    else
+                                    {
+                                        __content_429 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+
+                                        __value_429 = global::Runway.CreateGenerateImageResponse4.FromJson(__content_429, JsonSerializerContext);
+                                    }
+                                }
+                                catch (global::System.Exception __ex)
+                                {
+                                    __exception_429 = __ex;
+                                }
+
+
+                                throw global::Runway.ApiException<global::Runway.CreateGenerateImageResponse4>.Create(
+                                    statusCode: __response.StatusCode,
+                                    message: __content_429 ?? __response.ReasonPhrase ?? string.Empty,
+                                    innerException: __exception_429,
+                                    responseBody: __content_429,
+                                    responseObject: __value_429,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
+                                        __response.Headers,
+                                        h => h.Key,
+                                        h => h.Value));
+                            }
 
                             if (__effectiveReadResponseAsString)
                             {
@@ -533,6 +570,9 @@ namespace Runway
         /// <param name="configId">
         /// The slug of a saved Model Router config to route this request with.
         /// </param>
+        /// <param name="dryRun">
+        /// When true, run the full routing pipeline and return the decision and estimated cost without generating. No task is created, nothing is billed, and no asset is produced.
+        /// </param>
         /// <param name="input">
         /// Model-agnostic image generation input. The router selects a model and maps these options to it.
         /// </param>
@@ -543,12 +583,14 @@ namespace Runway
             string configId,
             global::Runway.CreateGenerateImageRequestInput input,
             string xRunwayVersion = "2024-11-06",
+            bool? dryRun = default,
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Runway.CreateGenerateImageRequest
             {
                 ConfigId = configId,
+                DryRun = dryRun,
                 Input = input,
             };
 

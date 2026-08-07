@@ -107,6 +107,10 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        Hailuo3,
+        /// <summary>
+        /// 
+        /// </summary>
         Happyhorse10,
         /// <summary>
         /// 
@@ -179,6 +183,10 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        Seedance25,
+        /// <summary>
+        /// 
+        /// </summary>
         Seedance2Fast,
         /// <summary>
         /// 
@@ -246,6 +254,7 @@ namespace Runway
                 CreateOrganizationUsageResponseResultUsedCreditModel.Gwm1AvatarAsyncAudioToVideo => "gwm1_avatar_async_audio_to_video",
                 CreateOrganizationUsageResponseResultUsedCreditModel.Gwm1AvatarAsyncTextToVideo => "gwm1_avatar_async_text_to_video",
                 CreateOrganizationUsageResponseResultUsedCreditModel.Gwm1Avatars => "gwm1_avatars",
+                CreateOrganizationUsageResponseResultUsedCreditModel.Hailuo3 => "hailuo3",
                 CreateOrganizationUsageResponseResultUsedCreditModel.Happyhorse10 => "happyhorse_1_0",
                 CreateOrganizationUsageResponseResultUsedCreditModel.Kling25TurboPro => "kling2.5_turbo_pro",
                 CreateOrganizationUsageResponseResultUsedCreditModel.Kling304k => "kling3.0_4k",
@@ -264,6 +273,7 @@ namespace Runway
                 CreateOrganizationUsageResponseResultUsedCreditModel.ProductUgc => "product_ugc",
                 CreateOrganizationUsageResponseResultUsedCreditModel.SeedAudio => "seed_audio",
                 CreateOrganizationUsageResponseResultUsedCreditModel.Seedance2 => "seedance2",
+                CreateOrganizationUsageResponseResultUsedCreditModel.Seedance25 => "seedance2_5",
                 CreateOrganizationUsageResponseResultUsedCreditModel.Seedance2Fast => "seedance2_fast",
                 CreateOrganizationUsageResponseResultUsedCreditModel.Seedance2Mini => "seedance2_mini",
                 CreateOrganizationUsageResponseResultUsedCreditModel.Seedream5Lite => "seedream5_lite",
@@ -306,6 +316,7 @@ namespace Runway
                 "gwm1_avatar_async_audio_to_video" => CreateOrganizationUsageResponseResultUsedCreditModel.Gwm1AvatarAsyncAudioToVideo,
                 "gwm1_avatar_async_text_to_video" => CreateOrganizationUsageResponseResultUsedCreditModel.Gwm1AvatarAsyncTextToVideo,
                 "gwm1_avatars" => CreateOrganizationUsageResponseResultUsedCreditModel.Gwm1Avatars,
+                "hailuo3" => CreateOrganizationUsageResponseResultUsedCreditModel.Hailuo3,
                 "happyhorse_1_0" => CreateOrganizationUsageResponseResultUsedCreditModel.Happyhorse10,
                 "kling2.5_turbo_pro" => CreateOrganizationUsageResponseResultUsedCreditModel.Kling25TurboPro,
                 "kling3.0_4k" => CreateOrganizationUsageResponseResultUsedCreditModel.Kling304k,
@@ -324,6 +335,7 @@ namespace Runway
                 "product_ugc" => CreateOrganizationUsageResponseResultUsedCreditModel.ProductUgc,
                 "seed_audio" => CreateOrganizationUsageResponseResultUsedCreditModel.SeedAudio,
                 "seedance2" => CreateOrganizationUsageResponseResultUsedCreditModel.Seedance2,
+                "seedance2_5" => CreateOrganizationUsageResponseResultUsedCreditModel.Seedance25,
                 "seedance2_fast" => CreateOrganizationUsageResponseResultUsedCreditModel.Seedance2Fast,
                 "seedance2_mini" => CreateOrganizationUsageResponseResultUsedCreditModel.Seedance2Mini,
                 "seedream5_lite" => CreateOrganizationUsageResponseResultUsedCreditModel.Seedream5Lite,

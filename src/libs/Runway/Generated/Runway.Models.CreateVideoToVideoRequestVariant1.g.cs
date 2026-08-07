@@ -58,6 +58,20 @@ namespace Runway
         public global::Runway.CreateVideoToVideoRequestVariant1ContentModeration? ContentModeration { get; set; }
 
         /// <summary>
+        /// The container/encoding of the output. `mp4` (default) returns an H.264 .mp4. `prores` returns a ProRes .mov. `png_sequence` returns a .zip of PNG frames (plus a separate .wav artifact when the output has audio). Non-mp4 formats incur an additional surcharge of 5 credits per second of output.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("outputFormat")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestVariant1OutputFormatJsonConverter))]
+        public global::Runway.CreateVideoToVideoRequestVariant1OutputFormat? OutputFormat { get; set; }
+
+        /// <summary>
+        /// The ProRes profile to use. Only valid when `outputFormat` is `prores`. Defaults to `4444`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("proresProfile")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestVariant1ProresProfileJsonConverter))]
+        public global::Runway.CreateVideoToVideoRequestVariant1ProresProfile? ProresProfile { get; set; }
+
+        /// <summary>
         /// 
         /// </summary>
         /// <default>"aleph2"</default>
@@ -92,6 +106,12 @@ namespace Runway
         /// <param name="contentModeration">
         /// Settings that affect the behavior of the content moderation system.
         /// </param>
+        /// <param name="outputFormat">
+        /// The container/encoding of the output. `mp4` (default) returns an H.264 .mp4. `prores` returns a ProRes .mov. `png_sequence` returns a .zip of PNG frames (plus a separate .wav artifact when the output has audio). Non-mp4 formats incur an additional surcharge of 5 credits per second of output.
+        /// </param>
+        /// <param name="proresProfile">
+        /// The ProRes profile to use. Only valid when `outputFormat` is `prores`. Defaults to `4444`.
+        /// </param>
         /// <param name="model"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -103,6 +123,8 @@ namespace Runway
             int? seed,
             global::Runway.CreateVideoToVideoRequestVariant1TargetAspectRatio? targetAspectRatio,
             global::Runway.CreateVideoToVideoRequestVariant1ContentModeration? contentModeration,
+            global::Runway.CreateVideoToVideoRequestVariant1OutputFormat? outputFormat,
+            global::Runway.CreateVideoToVideoRequestVariant1ProresProfile? proresProfile,
             string model = "aleph2")
         {
             this.PromptText = promptText;
@@ -111,6 +133,8 @@ namespace Runway
             this.Seed = seed;
             this.TargetAspectRatio = targetAspectRatio;
             this.ContentModeration = contentModeration;
+            this.OutputFormat = outputFormat;
+            this.ProresProfile = proresProfile;
             this.Model = model;
         }
 

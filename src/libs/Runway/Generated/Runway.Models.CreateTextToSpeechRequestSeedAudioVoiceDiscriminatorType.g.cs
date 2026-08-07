@@ -12,6 +12,10 @@ namespace Runway
         /// 
         /// </summary>
         ReferenceAudio,
+        /// <summary>
+        /// 
+        /// </summary>
+        SeedPreset,
     }
 
     /// <summary>
@@ -27,6 +31,7 @@ namespace Runway
             return value switch
             {
                 CreateTextToSpeechRequestSeedAudioVoiceDiscriminatorType.ReferenceAudio => "reference-audio",
+                CreateTextToSpeechRequestSeedAudioVoiceDiscriminatorType.SeedPreset => "seed-preset",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -38,6 +43,7 @@ namespace Runway
             return value switch
             {
                 "reference-audio" => CreateTextToSpeechRequestSeedAudioVoiceDiscriminatorType.ReferenceAudio,
+                "seed-preset" => CreateTextToSpeechRequestSeedAudioVoiceDiscriminatorType.SeedPreset,
                 _ => null,
             };
         }

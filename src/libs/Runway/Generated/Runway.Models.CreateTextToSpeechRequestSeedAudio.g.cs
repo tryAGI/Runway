@@ -19,7 +19,8 @@ namespace Runway
         /// The voice to use for text-to-speech generation. If omitted, a default voice is used.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("voice")]
-        public global::Runway.CreateTextToSpeechRequestSeedAudioVoiceSeedReferenceVoice? Voice { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.Voice4JsonConverter))]
+        public global::Runway.Voice4? Voice { get; set; }
 
         /// <summary>
         /// Relative speech speed. Negative is slower, positive is faster; 0 is normal.
@@ -95,7 +96,7 @@ namespace Runway
 #endif
         public CreateTextToSpeechRequestSeedAudio(
             string promptText,
-            global::Runway.CreateTextToSpeechRequestSeedAudioVoiceSeedReferenceVoice? voice,
+            global::Runway.Voice4? voice,
             int? speechRate,
             int? loudnessRate,
             int? pitchRate,

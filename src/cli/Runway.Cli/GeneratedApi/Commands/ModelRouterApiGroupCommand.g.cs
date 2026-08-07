@@ -17,6 +17,7 @@ internal static class ModelRouterApiGroupCommand
                          command.Subcommands.Add(ModelRouterEditRoutersByIdCommandApiCommand.Create());
                          command.Subcommands.Add(ModelRouterGetRoutersCommandApiCommand.Create());
                          command.Subcommands.Add(ModelRouterGetRoutersByIdCommandApiCommand.Create());
+                         command.Subcommands.Add(ModelRouterGetRoutersByIdRequestsCommandApiCommand.Create());
         return command;
     }
 }

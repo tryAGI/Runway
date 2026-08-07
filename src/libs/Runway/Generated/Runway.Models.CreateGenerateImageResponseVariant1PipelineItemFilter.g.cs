@@ -4,28 +4,28 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    /// Hard-filter stage that ran: capability (modality/feature fit), prompt_length (prompt within model limits), input_support (requested inputs/assets), allow_deny (router model allowlist/denylist), or price (credit ceiling).
     /// </summary>
     public enum CreateGenerateImageResponseVariant1PipelineItemFilter
     {
         /// <summary>
-        /// 
+        /// capability (modality/feature fit), prompt_length (prompt within model limits), input_support (requested inputs/assets), allow_deny (router model allowlist/denylist), or price (credit ceiling).
         /// </summary>
         AllowDeny,
         /// <summary>
-        /// 
+        /// capability (modality/feature fit), prompt_length (prompt within model limits), input_support (requested inputs/assets), allow_deny (router model allowlist/denylist), or price (credit ceiling).
         /// </summary>
         Capability,
         /// <summary>
-        /// 
+        /// capability (modality/feature fit), prompt_length (prompt within model limits), input_support (requested inputs/assets), allow_deny (router model allowlist/denylist), or price (credit ceiling).
         /// </summary>
         InputSupport,
         /// <summary>
-        /// 
+        /// capability (modality/feature fit), prompt_length (prompt within model limits), input_support (requested inputs/assets), allow_deny (router model allowlist/denylist), or price (credit ceiling).
         /// </summary>
         Price,
         /// <summary>
-        /// 
+        /// capability (modality/feature fit), prompt_length (prompt within model limits), input_support (requested inputs/assets), allow_deny (router model allowlist/denylist), or price (credit ceiling).
         /// </summary>
         PromptLength,
     }
