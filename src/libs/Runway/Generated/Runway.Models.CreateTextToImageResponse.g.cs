@@ -16,6 +16,13 @@ namespace Runway
         public required global::System.Guid Id { get; set; }
 
         /// <summary>
+        /// The maximum credits this task may charge. The final amount may be lower after the task completes.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("estimatedCost")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::Runway.CreateTextToImageResponseEstimatedCost EstimatedCost { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -27,13 +34,18 @@ namespace Runway
         /// <param name="id">
         /// The ID of the task that was created. Use this to retrieve the task later.
         /// </param>
+        /// <param name="estimatedCost">
+        /// The maximum credits this task may charge. The final amount may be lower after the task completes.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public CreateTextToImageResponse(
-            global::System.Guid id)
+            global::System.Guid id,
+            global::Runway.CreateTextToImageResponseEstimatedCost estimatedCost)
         {
             this.Id = id;
+            this.EstimatedCost = estimatedCost ?? throw new global::System.ArgumentNullException(nameof(estimatedCost));
         }
 
         /// <summary>

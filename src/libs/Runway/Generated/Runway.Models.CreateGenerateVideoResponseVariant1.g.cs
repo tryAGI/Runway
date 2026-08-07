@@ -23,7 +23,7 @@ namespace Runway
         public string Code { get; set; } = "no_eligible_model";
 
         /// <summary>
-        /// The hard-filter pipeline in execution order with survivor counts at each stage.
+        /// The hard-filter pipeline in execution order with surviving model ids at each stage.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("pipeline")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -47,7 +47,7 @@ namespace Runway
         /// </summary>
         /// <param name="error"></param>
         /// <param name="pipeline">
-        /// The hard-filter pipeline in execution order with survivor counts at each stage.
+        /// The hard-filter pipeline in execution order with surviving model ids at each stage.
         /// </param>
         /// <param name="emptiedBy">
         /// The filter(s) that reduced the eligible pool to zero.

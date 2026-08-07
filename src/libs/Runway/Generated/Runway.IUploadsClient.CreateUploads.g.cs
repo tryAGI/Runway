@@ -28,16 +28,15 @@ namespace Runway
         /// // Use the runwayUri in generation requests<br/>
         /// const task = await client.videoToVideo<br/>
         ///   .create({<br/>
-        ///     model: 'gen4_aleph',<br/>
+        ///     model: 'aleph2',<br/>
         ///     videoUri: uploadUri,<br/>
         ///     promptText: 'Add the easter elements to the cat video',<br/>
-        ///     references: [<br/>
+        ///     keyframes: [<br/>
         ///       {<br/>
-        ///         type: 'image',<br/>
         ///         uri: 'https://example.com/easter-scene.jpg',<br/>
+        ///         at: 0,<br/>
         ///       },<br/>
         ///     ],<br/>
-        ///     ratio: '1280:720',<br/>
         ///   })<br/>
         ///   .waitForTaskOutput();<br/>
         /// console.log(task);
@@ -72,16 +71,15 @@ namespace Runway
         /// // Use the runwayUri in generation requests<br/>
         /// const task = await client.videoToVideo<br/>
         ///   .create({<br/>
-        ///     model: 'gen4_aleph',<br/>
+        ///     model: 'aleph2',<br/>
         ///     videoUri: uploadUri,<br/>
         ///     promptText: 'Add the easter elements to the cat video',<br/>
-        ///     references: [<br/>
+        ///     keyframes: [<br/>
         ///       {<br/>
-        ///         type: 'image',<br/>
         ///         uri: 'https://example.com/easter-scene.jpg',<br/>
+        ///         at: 0,<br/>
         ///       },<br/>
         ///     ],<br/>
-        ///     ratio: '1280:720',<br/>
         ///   })<br/>
         ///   .waitForTaskOutput();<br/>
         /// console.log(task);

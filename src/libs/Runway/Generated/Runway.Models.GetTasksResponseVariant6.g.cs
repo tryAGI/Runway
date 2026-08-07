@@ -37,6 +37,13 @@ namespace Runway
         public required global::System.Collections.Generic.IList<string> Output { get; set; }
 
         /// <summary>
+        /// Final cost in credits for a terminal task. A refunded task reports 0.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("cost")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::Runway.GetTasksResponseVariant6Cost Cost { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -54,6 +61,9 @@ namespace Runway
         /// <param name="output">
         /// An array of URLs that return the output of the task. These URLs will expire within 24-48 hours; fetch the task again to get fresh URLs. It is expected that you download the assets at these URLs and store them in your own storage system.
         /// </param>
+        /// <param name="cost">
+        /// Final cost in credits for a terminal task. A refunded task reports 0.
+        /// </param>
         /// <param name="status"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -62,12 +72,14 @@ namespace Runway
             global::System.Guid id,
             global::System.DateTime createdAt,
             global::System.Collections.Generic.IList<string> output,
+            global::Runway.GetTasksResponseVariant6Cost cost,
             string status = "SUCCEEDED")
         {
             this.Id = id;
             this.CreatedAt = createdAt;
             this.Status = status;
             this.Output = output ?? throw new global::System.ArgumentNullException(nameof(output));
+            this.Cost = cost ?? throw new global::System.ArgumentNullException(nameof(cost));
         }
 
         /// <summary>

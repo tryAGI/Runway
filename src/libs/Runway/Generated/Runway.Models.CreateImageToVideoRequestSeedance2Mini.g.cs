@@ -43,7 +43,7 @@ namespace Runway
         public global::Runway.CreateImageToVideoRequestSeedance2MiniRatio? Ratio { get; set; }
 
         /// <summary>
-        /// An optional array of audio references. Audio references require a text prompt, and the total combined duration must not exceed 15 seconds.
+        /// An optional array of audio references. The total combined duration must not exceed 15 seconds.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("referenceAudio")]
         public global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestSeedance2MiniReferenceAudioItem>? ReferenceAudio { get; set; }
@@ -81,7 +81,7 @@ namespace Runway
         /// The resolution of the output video. Seedance 2.0 Mini supports 480p and 720p only.
         /// </param>
         /// <param name="referenceAudio">
-        /// An optional array of audio references. Audio references require a text prompt, and the total combined duration must not exceed 15 seconds.
+        /// An optional array of audio references. The total combined duration must not exceed 15 seconds.
         /// </param>
         /// <param name="model"></param>
 #if NET7_0_OR_GREATER

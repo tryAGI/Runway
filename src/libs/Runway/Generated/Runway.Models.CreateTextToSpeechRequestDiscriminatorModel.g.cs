@@ -15,6 +15,10 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        ElevenV3,
+        /// <summary>
+        /// 
+        /// </summary>
         SeedAudio,
     }
 
@@ -31,6 +35,7 @@ namespace Runway
             return value switch
             {
                 CreateTextToSpeechRequestDiscriminatorModel.ElevenMultilingualV2 => "eleven_multilingual_v2",
+                CreateTextToSpeechRequestDiscriminatorModel.ElevenV3 => "eleven_v3",
                 CreateTextToSpeechRequestDiscriminatorModel.SeedAudio => "seed_audio",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
@@ -43,6 +48,7 @@ namespace Runway
             return value switch
             {
                 "eleven_multilingual_v2" => CreateTextToSpeechRequestDiscriminatorModel.ElevenMultilingualV2,
+                "eleven_v3" => CreateTextToSpeechRequestDiscriminatorModel.ElevenV3,
                 "seed_audio" => CreateTextToSpeechRequestDiscriminatorModel.SeedAudio,
                 _ => null,
             };

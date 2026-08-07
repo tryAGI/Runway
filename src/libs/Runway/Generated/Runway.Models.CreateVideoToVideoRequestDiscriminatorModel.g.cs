@@ -19,7 +19,15 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        Hailuo3,
+        /// <summary>
+        /// 
+        /// </summary>
         Seedance2,
+        /// <summary>
+        /// 
+        /// </summary>
+        Seedance25,
         /// <summary>
         /// 
         /// </summary>
@@ -44,7 +52,9 @@ namespace Runway
             {
                 CreateVideoToVideoRequestDiscriminatorModel.Aleph2 => "aleph2",
                 CreateVideoToVideoRequestDiscriminatorModel.GeminiOmniFlash => "gemini_omni_flash",
+                CreateVideoToVideoRequestDiscriminatorModel.Hailuo3 => "hailuo3",
                 CreateVideoToVideoRequestDiscriminatorModel.Seedance2 => "seedance2",
+                CreateVideoToVideoRequestDiscriminatorModel.Seedance25 => "seedance2_5",
                 CreateVideoToVideoRequestDiscriminatorModel.Seedance2Fast => "seedance2_fast",
                 CreateVideoToVideoRequestDiscriminatorModel.Seedance2Mini => "seedance2_mini",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
@@ -59,7 +69,9 @@ namespace Runway
             {
                 "aleph2" => CreateVideoToVideoRequestDiscriminatorModel.Aleph2,
                 "gemini_omni_flash" => CreateVideoToVideoRequestDiscriminatorModel.GeminiOmniFlash,
+                "hailuo3" => CreateVideoToVideoRequestDiscriminatorModel.Hailuo3,
                 "seedance2" => CreateVideoToVideoRequestDiscriminatorModel.Seedance2,
+                "seedance2_5" => CreateVideoToVideoRequestDiscriminatorModel.Seedance25,
                 "seedance2_fast" => CreateVideoToVideoRequestDiscriminatorModel.Seedance2Fast,
                 "seedance2_mini" => CreateVideoToVideoRequestDiscriminatorModel.Seedance2Mini,
                 _ => null,

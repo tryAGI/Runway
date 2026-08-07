@@ -34,6 +34,12 @@ namespace Runway
         public global::Runway.CreateRoutersRequestSettingsOptimizeFor? OptimizeFor { get; set; }
 
         /// <summary>
+        /// Opt-in behavior for what routing should do when the preferred model cannot start immediately.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("fallback")]
+        public global::Runway.CreateRoutersRequestSettingsFallback? Fallback { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -54,6 +60,9 @@ namespace Runway
         /// <param name="optimizeFor">
         /// Soft preference among eligible models: cost, latency, or quality.
         /// </param>
+        /// <param name="fallback">
+        /// Opt-in behavior for what routing should do when the preferred model cannot start immediately.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -61,12 +70,14 @@ namespace Runway
             double? schemaVersion,
             global::Runway.CreateRoutersRequestSettingsModels? models,
             global::Runway.CreateRoutersRequestSettingsMaxCreditsPerGeneration? maxCreditsPerGeneration,
-            global::Runway.CreateRoutersRequestSettingsOptimizeFor? optimizeFor)
+            global::Runway.CreateRoutersRequestSettingsOptimizeFor? optimizeFor,
+            global::Runway.CreateRoutersRequestSettingsFallback? fallback)
         {
             this.SchemaVersion = schemaVersion;
             this.Models = models;
             this.MaxCreditsPerGeneration = maxCreditsPerGeneration;
             this.OptimizeFor = optimizeFor;
+            this.Fallback = fallback;
         }
 
         /// <summary>

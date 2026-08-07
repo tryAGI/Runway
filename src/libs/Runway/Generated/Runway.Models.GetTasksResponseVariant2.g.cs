@@ -30,6 +30,13 @@ namespace Runway
         public string Status { get; set; } = "THROTTLED";
 
         /// <summary>
+        /// Estimated cost, computed against current pricing.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("estimatedCost")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::Runway.GetTasksResponseVariant2EstimatedCost EstimatedCost { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -44,6 +51,9 @@ namespace Runway
         /// <param name="createdAt">
         /// The timestamp that the task was submitted at.
         /// </param>
+        /// <param name="estimatedCost">
+        /// Estimated cost, computed against current pricing.
+        /// </param>
         /// <param name="status"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -51,11 +61,13 @@ namespace Runway
         public GetTasksResponseVariant2(
             global::System.Guid id,
             global::System.DateTime createdAt,
+            global::Runway.GetTasksResponseVariant2EstimatedCost estimatedCost,
             string status = "THROTTLED")
         {
             this.Id = id;
             this.CreatedAt = createdAt;
             this.Status = status;
+            this.EstimatedCost = estimatedCost ?? throw new global::System.ArgumentNullException(nameof(estimatedCost));
         }
 
         /// <summary>

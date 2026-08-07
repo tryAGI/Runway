@@ -43,6 +43,13 @@ namespace Runway
         public string? FailureCode { get; set; }
 
         /// <summary>
+        /// Final cost in credits for a terminal task. A refunded task reports 0.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("cost")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::Runway.GetTasksResponseVariant5Cost Cost { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -60,6 +67,9 @@ namespace Runway
         /// <param name="failure">
         /// A human-friendly reason for the failure. We do not recommend returning this to users directly without adding context.
         /// </param>
+        /// <param name="cost">
+        /// Final cost in credits for a terminal task. A refunded task reports 0.
+        /// </param>
         /// <param name="failureCode">
         /// A machine-readable error code for the failure. See https://docs.dev.runwayml.com/errors/task-failures/ for more information.
         /// </param>
@@ -71,6 +81,7 @@ namespace Runway
             global::System.Guid id,
             global::System.DateTime createdAt,
             string failure,
+            global::Runway.GetTasksResponseVariant5Cost cost,
             string? failureCode,
             string status = "FAILED")
         {
@@ -79,6 +90,7 @@ namespace Runway
             this.Status = status;
             this.Failure = failure ?? throw new global::System.ArgumentNullException(nameof(failure));
             this.FailureCode = failureCode;
+            this.Cost = cost ?? throw new global::System.ArgumentNullException(nameof(cost));
         }
 
         /// <summary>

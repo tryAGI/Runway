@@ -30,6 +30,13 @@ namespace Runway
         public string Status { get; set; } = "CANCELLED";
 
         /// <summary>
+        /// Final cost in credits for a terminal task. A refunded task reports 0.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("cost")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::Runway.GetTasksResponseVariant3Cost Cost { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -44,6 +51,9 @@ namespace Runway
         /// <param name="createdAt">
         /// The timestamp that the task was submitted at.
         /// </param>
+        /// <param name="cost">
+        /// Final cost in credits for a terminal task. A refunded task reports 0.
+        /// </param>
         /// <param name="status"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -51,11 +61,13 @@ namespace Runway
         public GetTasksResponseVariant3(
             global::System.Guid id,
             global::System.DateTime createdAt,
+            global::Runway.GetTasksResponseVariant3Cost cost,
             string status = "CANCELLED")
         {
             this.Id = id;
             this.CreatedAt = createdAt;
             this.Status = status;
+            this.Cost = cost ?? throw new global::System.ArgumentNullException(nameof(cost));
         }
 
         /// <summary>

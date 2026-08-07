@@ -107,6 +107,10 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        Hailuo3,
+        /// <summary>
+        /// 
+        /// </summary>
         Happyhorse10,
         /// <summary>
         /// 
@@ -179,6 +183,10 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        Seedance25,
+        /// <summary>
+        /// 
+        /// </summary>
         Seedance2Fast,
         /// <summary>
         /// 
@@ -246,6 +254,7 @@ namespace Runway
                 CreateOrganizationUsageResponseModel.Gwm1AvatarAsyncAudioToVideo => "gwm1_avatar_async_audio_to_video",
                 CreateOrganizationUsageResponseModel.Gwm1AvatarAsyncTextToVideo => "gwm1_avatar_async_text_to_video",
                 CreateOrganizationUsageResponseModel.Gwm1Avatars => "gwm1_avatars",
+                CreateOrganizationUsageResponseModel.Hailuo3 => "hailuo3",
                 CreateOrganizationUsageResponseModel.Happyhorse10 => "happyhorse_1_0",
                 CreateOrganizationUsageResponseModel.Kling25TurboPro => "kling2.5_turbo_pro",
                 CreateOrganizationUsageResponseModel.Kling304k => "kling3.0_4k",
@@ -264,6 +273,7 @@ namespace Runway
                 CreateOrganizationUsageResponseModel.ProductUgc => "product_ugc",
                 CreateOrganizationUsageResponseModel.SeedAudio => "seed_audio",
                 CreateOrganizationUsageResponseModel.Seedance2 => "seedance2",
+                CreateOrganizationUsageResponseModel.Seedance25 => "seedance2_5",
                 CreateOrganizationUsageResponseModel.Seedance2Fast => "seedance2_fast",
                 CreateOrganizationUsageResponseModel.Seedance2Mini => "seedance2_mini",
                 CreateOrganizationUsageResponseModel.Seedream5Lite => "seedream5_lite",
@@ -306,6 +316,7 @@ namespace Runway
                 "gwm1_avatar_async_audio_to_video" => CreateOrganizationUsageResponseModel.Gwm1AvatarAsyncAudioToVideo,
                 "gwm1_avatar_async_text_to_video" => CreateOrganizationUsageResponseModel.Gwm1AvatarAsyncTextToVideo,
                 "gwm1_avatars" => CreateOrganizationUsageResponseModel.Gwm1Avatars,
+                "hailuo3" => CreateOrganizationUsageResponseModel.Hailuo3,
                 "happyhorse_1_0" => CreateOrganizationUsageResponseModel.Happyhorse10,
                 "kling2.5_turbo_pro" => CreateOrganizationUsageResponseModel.Kling25TurboPro,
                 "kling3.0_4k" => CreateOrganizationUsageResponseModel.Kling304k,
@@ -324,6 +335,7 @@ namespace Runway
                 "product_ugc" => CreateOrganizationUsageResponseModel.ProductUgc,
                 "seed_audio" => CreateOrganizationUsageResponseModel.SeedAudio,
                 "seedance2" => CreateOrganizationUsageResponseModel.Seedance2,
+                "seedance2_5" => CreateOrganizationUsageResponseModel.Seedance25,
                 "seedance2_fast" => CreateOrganizationUsageResponseModel.Seedance2Fast,
                 "seedance2_mini" => CreateOrganizationUsageResponseModel.Seedance2Mini,
                 "seedream5_lite" => CreateOrganizationUsageResponseModel.Seedream5Lite,

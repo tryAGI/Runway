@@ -61,12 +61,14 @@ namespace Runway
         /// const client = new RunwayML();<br/>
         /// const task = await client.textToSpeech<br/>
         ///   .create({<br/>
-        ///     model: 'eleven_multilingual_v2',<br/>
-        ///     promptText: 'The quick brown fox jumps over the lazy dog',<br/>
+        ///     model: 'eleven_v3',<br/>
+        ///     promptText: '[laughs] The quick brown fox jumps over the lazy dog',<br/>
         ///     voice: {<br/>
         ///       type: 'runway-preset',<br/>
         ///       presetId: 'Leslie',<br/>
         ///     },<br/>
+        ///     stability: 0.5,<br/>
+        ///     languageCode: 'en',<br/>
         ///   })<br/>
         ///   .waitForTaskOutput();<br/>
         /// console.log(task);
@@ -106,12 +108,14 @@ namespace Runway
         /// const client = new RunwayML();<br/>
         /// const task = await client.textToSpeech<br/>
         ///   .create({<br/>
-        ///     model: 'eleven_multilingual_v2',<br/>
-        ///     promptText: 'The quick brown fox jumps over the lazy dog',<br/>
+        ///     model: 'eleven_v3',<br/>
+        ///     promptText: '[laughs] The quick brown fox jumps over the lazy dog',<br/>
         ///     voice: {<br/>
         ///       type: 'runway-preset',<br/>
         ///       presetId: 'Leslie',<br/>
         ///     },<br/>
+        ///     stability: 0.5,<br/>
+        ///     languageCode: 'en',<br/>
         ///   })<br/>
         ///   .waitForTaskOutput();<br/>
         /// console.log(task);
@@ -385,24 +389,61 @@ namespace Runway
                                 retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
+                            // The request was rejected. Inspect `error` or `issues` (when present) and retry with a corrected request.
+                            if ((int)__response.StatusCode == 400)
+                            {
+                                string? __content_400 = null;
+                                global::System.Exception? __exception_400 = null;
+                                global::Runway.CreateTextToSpeechResponse2? __value_400 = null;
+                                try
+                                {
+                                    if (__effectiveReadResponseAsString)
+                                    {
+                                        __content_400 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                        __value_400 = global::Runway.CreateTextToSpeechResponse2.FromJson(__content_400, JsonSerializerContext);
+                                    }
+                                    else
+                                    {
+                                        __content_400 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+
+                                        __value_400 = global::Runway.CreateTextToSpeechResponse2.FromJson(__content_400, JsonSerializerContext);
+                                    }
+                                }
+                                catch (global::System.Exception __ex)
+                                {
+                                    __exception_400 = __ex;
+                                }
+
+
+                                throw global::Runway.ApiException<global::Runway.CreateTextToSpeechResponse2>.Create(
+                                    statusCode: __response.StatusCode,
+                                    message: __content_400 ?? __response.ReasonPhrase ?? string.Empty,
+                                    innerException: __exception_400,
+                                    responseBody: __content_400,
+                                    responseObject: __value_400,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
+                                        __response.Headers,
+                                        h => h.Key,
+                                        h => h.Value));
+                            }
                             // You have exceeded the rate limit for this endpoint.
                             if ((int)__response.StatusCode == 429)
                             {
                                 string? __content_429 = null;
                                 global::System.Exception? __exception_429 = null;
-                                global::Runway.CreateTextToSpeechResponse2? __value_429 = null;
+                                global::Runway.CreateTextToSpeechResponse3? __value_429 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_429 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_429 = global::Runway.CreateTextToSpeechResponse2.FromJson(__content_429, JsonSerializerContext);
+                                        __value_429 = global::Runway.CreateTextToSpeechResponse3.FromJson(__content_429, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_429 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_429 = global::Runway.CreateTextToSpeechResponse2.FromJson(__content_429, JsonSerializerContext);
+                                        __value_429 = global::Runway.CreateTextToSpeechResponse3.FromJson(__content_429, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -411,7 +452,7 @@ namespace Runway
                                 }
 
 
-                                throw global::Runway.ApiException<global::Runway.CreateTextToSpeechResponse2>.Create(
+                                throw global::Runway.ApiException<global::Runway.CreateTextToSpeechResponse3>.Create(
                                     statusCode: __response.StatusCode,
                                     message: __content_429 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_429,

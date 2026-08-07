@@ -11,6 +11,9 @@ internal static class OrganizationApiGroupCommand
         var command = new Command(@"organization", @"Organization endpoint commands.");
                          command.Subcommands.Add(OrganizationCreateOrganizationUsageCommandApiCommand.Create());
                          command.Subcommands.Add(OrganizationGetOrganizationCommandApiCommand.Create());
+                         command.Subcommands.Add(OrganizationGetOrganizationWebappAuditLogsCommandApiCommand.Create());
+                         command.Subcommands.Add(OrganizationGetOrganizationWebappAuditLogsByEventIdCommandApiCommand.Create());
+                         command.Subcommands.Add(OrganizationGetOrganizationWebappUsageCommandApiCommand.Create());
         return command;
     }
 }

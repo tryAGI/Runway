@@ -22,12 +22,14 @@ namespace Runway
         /// const client = new RunwayML();<br/>
         /// const task = await client.textToSpeech<br/>
         ///   .create({<br/>
-        ///     model: 'eleven_multilingual_v2',<br/>
-        ///     promptText: 'The quick brown fox jumps over the lazy dog',<br/>
+        ///     model: 'eleven_v3',<br/>
+        ///     promptText: '[laughs] The quick brown fox jumps over the lazy dog',<br/>
         ///     voice: {<br/>
         ///       type: 'runway-preset',<br/>
         ///       presetId: 'Leslie',<br/>
         ///     },<br/>
+        ///     stability: 0.5,<br/>
+        ///     languageCode: 'en',<br/>
         ///   })<br/>
         ///   .waitForTaskOutput();<br/>
         /// console.log(task);
@@ -56,12 +58,14 @@ namespace Runway
         /// const client = new RunwayML();<br/>
         /// const task = await client.textToSpeech<br/>
         ///   .create({<br/>
-        ///     model: 'eleven_multilingual_v2',<br/>
-        ///     promptText: 'The quick brown fox jumps over the lazy dog',<br/>
+        ///     model: 'eleven_v3',<br/>
+        ///     promptText: '[laughs] The quick brown fox jumps over the lazy dog',<br/>
         ///     voice: {<br/>
         ///       type: 'runway-preset',<br/>
         ///       presetId: 'Leslie',<br/>
         ///     },<br/>
+        ///     stability: 0.5,<br/>
+        ///     languageCode: 'en',<br/>
         ///   })<br/>
         ///   .waitForTaskOutput();<br/>
         /// console.log(task);

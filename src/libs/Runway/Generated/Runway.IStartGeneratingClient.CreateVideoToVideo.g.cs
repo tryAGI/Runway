@@ -22,16 +22,15 @@ namespace Runway
         /// const client = new RunwayML();<br/>
         /// const task = await client.videoToVideo<br/>
         ///   .create({<br/>
-        ///     model: 'gen4_aleph',<br/>
+        ///     model: 'aleph2',<br/>
         ///     videoUri: 'https://example.com/bunny.mp4',<br/>
         ///     promptText: 'string',<br/>
-        ///     references: [<br/>
+        ///     keyframes: [<br/>
         ///       {<br/>
-        ///         type: 'image',<br/>
         ///         uri: 'https://example.com/easter-scene.jpg',<br/>
+        ///         at: 0,<br/>
         ///       },<br/>
         ///     ],<br/>
-        ///     ratio: '1280:720',<br/>
         ///   })<br/>
         ///   .waitForTaskOutput();<br/>
         /// console.log(task);
@@ -60,16 +59,15 @@ namespace Runway
         /// const client = new RunwayML();<br/>
         /// const task = await client.videoToVideo<br/>
         ///   .create({<br/>
-        ///     model: 'gen4_aleph',<br/>
+        ///     model: 'aleph2',<br/>
         ///     videoUri: 'https://example.com/bunny.mp4',<br/>
         ///     promptText: 'string',<br/>
-        ///     references: [<br/>
+        ///     keyframes: [<br/>
         ///       {<br/>
-        ///         type: 'image',<br/>
         ///         uri: 'https://example.com/easter-scene.jpg',<br/>
+        ///         at: 0,<br/>
         ///       },<br/>
         ///     ],<br/>
-        ///     ratio: '1280:720',<br/>
         ///   })<br/>
         ///   .waitForTaskOutput();<br/>
         /// console.log(task);
