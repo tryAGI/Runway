@@ -5,59 +5,59 @@
 namespace Runway
 {
     /// <summary>
-    /// The voice to use for text-to-speech generation. If omitted, a default voice is used.
+    /// The voice to speak with. When omitted, models that support a default voice remain eligible.
     /// </summary>
     public readonly partial struct Voice4 : global::System.IEquatable<Voice4>
     {
         /// <summary>
         /// 
         /// </summary>
-        public global::Runway.CreateTextToSpeechRequestSeedAudioVoiceDiscriminatorType? Type { get; }
+        public global::Runway.CreateGenerateAudioRequestInputVoiceDiscriminatorType? Type { get; }
 
         /// <summary>
-        /// A preset voice for Seed Audio text-to-speech.
+        /// A preset voice.
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Runway.CreateTextToSpeechRequestSeedAudioVoiceSeedPresetVoice? SeedPreset { get; init; }
+        public global::Runway.CreateGenerateAudioRequestInputVoiceAudioPresetVoice? Preset { get; init; }
 #else
-        public global::Runway.CreateTextToSpeechRequestSeedAudioVoiceSeedPresetVoice? SeedPreset { get; }
+        public global::Runway.CreateGenerateAudioRequestInputVoiceAudioPresetVoice? Preset { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(SeedPreset))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Preset))]
 #endif
-        public bool IsSeedPreset => SeedPreset != null;
+        public bool IsPreset => Preset != null;
 
         /// <summary>
         /// 
         /// </summary>
-        public bool TryPickSeedPreset(
+        public bool TryPickPreset(
 #if NET6_0_OR_GREATER
             [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
 #endif
-            out global::Runway.CreateTextToSpeechRequestSeedAudioVoiceSeedPresetVoice? value)
+            out global::Runway.CreateGenerateAudioRequestInputVoiceAudioPresetVoice? value)
         {
-            value = SeedPreset;
-            return IsSeedPreset;
+            value = Preset;
+            return IsPreset;
         }
 
         /// <summary>
         /// 
         /// </summary>
-        public global::Runway.CreateTextToSpeechRequestSeedAudioVoiceSeedPresetVoice PickSeedPreset() => IsSeedPreset
-            ? SeedPreset!
-            : throw new global::System.InvalidOperationException($"Expected union variant 'SeedPreset' but the value was {ToString()}.");
+        public global::Runway.CreateGenerateAudioRequestInputVoiceAudioPresetVoice PickPreset() => IsPreset
+            ? Preset!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Preset' but the value was {ToString()}.");
 
         /// <summary>
-        /// Clone from a single reference audio clip, then speak promptText in that voice.
+        /// Clone a voice from a reference audio clip, then speak promptText in that voice. Routes only to models that support voice cloning.
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Runway.CreateTextToSpeechRequestSeedAudioVoiceSeedReferenceVoice? ReferenceAudio { get; init; }
+        public global::Runway.CreateGenerateAudioRequestInputVoiceAudioReferenceVoice? ReferenceAudio { get; init; }
 #else
-        public global::Runway.CreateTextToSpeechRequestSeedAudioVoiceSeedReferenceVoice? ReferenceAudio { get; }
+        public global::Runway.CreateGenerateAudioRequestInputVoiceAudioReferenceVoice? ReferenceAudio { get; }
 #endif
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace Runway
 #if NET6_0_OR_GREATER
             [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
 #endif
-            out global::Runway.CreateTextToSpeechRequestSeedAudioVoiceSeedReferenceVoice? value)
+            out global::Runway.CreateGenerateAudioRequestInputVoiceAudioReferenceVoice? value)
         {
             value = ReferenceAudio;
             return IsReferenceAudio;
@@ -84,46 +84,46 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
-        public global::Runway.CreateTextToSpeechRequestSeedAudioVoiceSeedReferenceVoice PickReferenceAudio() => IsReferenceAudio
+        public global::Runway.CreateGenerateAudioRequestInputVoiceAudioReferenceVoice PickReferenceAudio() => IsReferenceAudio
             ? ReferenceAudio!
             : throw new global::System.InvalidOperationException($"Expected union variant 'ReferenceAudio' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator Voice4(global::Runway.CreateTextToSpeechRequestSeedAudioVoiceSeedPresetVoice value) => new Voice4((global::Runway.CreateTextToSpeechRequestSeedAudioVoiceSeedPresetVoice?)value);
+        public static implicit operator Voice4(global::Runway.CreateGenerateAudioRequestInputVoiceAudioPresetVoice value) => new Voice4((global::Runway.CreateGenerateAudioRequestInputVoiceAudioPresetVoice?)value);
 
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::Runway.CreateTextToSpeechRequestSeedAudioVoiceSeedPresetVoice?(Voice4 @this) => @this.SeedPreset;
+        public static implicit operator global::Runway.CreateGenerateAudioRequestInputVoiceAudioPresetVoice?(Voice4 @this) => @this.Preset;
 
         /// <summary>
         /// 
         /// </summary>
-        public Voice4(global::Runway.CreateTextToSpeechRequestSeedAudioVoiceSeedPresetVoice? value)
+        public Voice4(global::Runway.CreateGenerateAudioRequestInputVoiceAudioPresetVoice? value)
         {
-            SeedPreset = value;
+            Preset = value;
         }
 
         /// <summary>
         /// 
         /// </summary>
-        public static Voice4 FromSeedPreset(global::Runway.CreateTextToSpeechRequestSeedAudioVoiceSeedPresetVoice? value) => new Voice4(value);
+        public static Voice4 FromPreset(global::Runway.CreateGenerateAudioRequestInputVoiceAudioPresetVoice? value) => new Voice4(value);
 
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator Voice4(global::Runway.CreateTextToSpeechRequestSeedAudioVoiceSeedReferenceVoice value) => new Voice4((global::Runway.CreateTextToSpeechRequestSeedAudioVoiceSeedReferenceVoice?)value);
+        public static implicit operator Voice4(global::Runway.CreateGenerateAudioRequestInputVoiceAudioReferenceVoice value) => new Voice4((global::Runway.CreateGenerateAudioRequestInputVoiceAudioReferenceVoice?)value);
 
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::Runway.CreateTextToSpeechRequestSeedAudioVoiceSeedReferenceVoice?(Voice4 @this) => @this.ReferenceAudio;
+        public static implicit operator global::Runway.CreateGenerateAudioRequestInputVoiceAudioReferenceVoice?(Voice4 @this) => @this.ReferenceAudio;
 
         /// <summary>
         /// 
         /// </summary>
-        public Voice4(global::Runway.CreateTextToSpeechRequestSeedAudioVoiceSeedReferenceVoice? value)
+        public Voice4(global::Runway.CreateGenerateAudioRequestInputVoiceAudioReferenceVoice? value)
         {
             ReferenceAudio = value;
         }
@@ -131,20 +131,20 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
-        public static Voice4 FromReferenceAudio(global::Runway.CreateTextToSpeechRequestSeedAudioVoiceSeedReferenceVoice? value) => new Voice4(value);
+        public static Voice4 FromReferenceAudio(global::Runway.CreateGenerateAudioRequestInputVoiceAudioReferenceVoice? value) => new Voice4(value);
 
         /// <summary>
         /// 
         /// </summary>
         public Voice4(
-            global::Runway.CreateTextToSpeechRequestSeedAudioVoiceDiscriminatorType? type,
-            global::Runway.CreateTextToSpeechRequestSeedAudioVoiceSeedPresetVoice? seedPreset,
-            global::Runway.CreateTextToSpeechRequestSeedAudioVoiceSeedReferenceVoice? referenceAudio
+            global::Runway.CreateGenerateAudioRequestInputVoiceDiscriminatorType? type,
+            global::Runway.CreateGenerateAudioRequestInputVoiceAudioPresetVoice? preset,
+            global::Runway.CreateGenerateAudioRequestInputVoiceAudioReferenceVoice? referenceAudio
             )
         {
             Type = type;
 
-            SeedPreset = seedPreset;
+            Preset = preset;
             ReferenceAudio = referenceAudio;
         }
 
@@ -153,14 +153,14 @@ namespace Runway
         /// </summary>
         public object? Object =>
             ReferenceAudio as object ??
-            SeedPreset as object 
+            Preset as object 
             ;
 
         /// <summary>
         /// 
         /// </summary>
         public override string? ToString() =>
-            SeedPreset?.ToString() ??
+            Preset?.ToString() ??
             ReferenceAudio?.ToString() 
             ;
 
@@ -169,15 +169,15 @@ namespace Runway
         /// </summary>
         public bool Validate()
         {
-            return IsSeedPreset && !IsReferenceAudio || !IsSeedPreset && IsReferenceAudio;
+            return IsPreset && !IsReferenceAudio || !IsPreset && IsReferenceAudio;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Runway.CreateTextToSpeechRequestSeedAudioVoiceSeedPresetVoice, TResult>? seedPreset = null,
-            global::System.Func<global::Runway.CreateTextToSpeechRequestSeedAudioVoiceSeedReferenceVoice, TResult>? referenceAudio = null,
+            global::System.Func<global::Runway.CreateGenerateAudioRequestInputVoiceAudioPresetVoice, TResult>? preset = null,
+            global::System.Func<global::Runway.CreateGenerateAudioRequestInputVoiceAudioReferenceVoice, TResult>? referenceAudio = null,
             bool validate = true)
         {
             if (validate)
@@ -185,9 +185,9 @@ namespace Runway
                 Validate();
             }
 
-            if (IsSeedPreset && seedPreset != null)
+            if (IsPreset && preset != null)
             {
-                return seedPreset(SeedPreset!);
+                return preset(Preset!);
             }
             else if (IsReferenceAudio && referenceAudio != null)
             {
@@ -201,9 +201,9 @@ namespace Runway
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Runway.CreateTextToSpeechRequestSeedAudioVoiceSeedPresetVoice>? seedPreset = null,
+            global::System.Action<global::Runway.CreateGenerateAudioRequestInputVoiceAudioPresetVoice>? preset = null,
 
-            global::System.Action<global::Runway.CreateTextToSpeechRequestSeedAudioVoiceSeedReferenceVoice>? referenceAudio = null,
+            global::System.Action<global::Runway.CreateGenerateAudioRequestInputVoiceAudioReferenceVoice>? referenceAudio = null,
             bool validate = true)
         {
             if (validate)
@@ -211,9 +211,9 @@ namespace Runway
                 Validate();
             }
 
-            if (IsSeedPreset)
+            if (IsPreset)
             {
-                seedPreset?.Invoke(SeedPreset!);
+                preset?.Invoke(Preset!);
             }
             else if (IsReferenceAudio)
             {
@@ -225,8 +225,8 @@ namespace Runway
         /// 
         /// </summary>
         public void Switch(
-            global::System.Action<global::Runway.CreateTextToSpeechRequestSeedAudioVoiceSeedPresetVoice>? seedPreset = null,
-            global::System.Action<global::Runway.CreateTextToSpeechRequestSeedAudioVoiceSeedReferenceVoice>? referenceAudio = null,
+            global::System.Action<global::Runway.CreateGenerateAudioRequestInputVoiceAudioPresetVoice>? preset = null,
+            global::System.Action<global::Runway.CreateGenerateAudioRequestInputVoiceAudioReferenceVoice>? referenceAudio = null,
             bool validate = true)
         {
             if (validate)
@@ -234,9 +234,9 @@ namespace Runway
                 Validate();
             }
 
-            if (IsSeedPreset)
+            if (IsPreset)
             {
-                seedPreset?.Invoke(SeedPreset!);
+                preset?.Invoke(Preset!);
             }
             else if (IsReferenceAudio)
             {
@@ -251,10 +251,10 @@ namespace Runway
         {
             var fields = new object?[]
             {
-                SeedPreset,
-                typeof(global::Runway.CreateTextToSpeechRequestSeedAudioVoiceSeedPresetVoice),
+                Preset,
+                typeof(global::Runway.CreateGenerateAudioRequestInputVoiceAudioPresetVoice),
                 ReferenceAudio,
-                typeof(global::Runway.CreateTextToSpeechRequestSeedAudioVoiceSeedReferenceVoice),
+                typeof(global::Runway.CreateGenerateAudioRequestInputVoiceAudioReferenceVoice),
             };
             const int offset = unchecked((int)2166136261);
             const int prime = 16777619;
@@ -271,8 +271,8 @@ namespace Runway
         public bool Equals(Voice4 other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateTextToSpeechRequestSeedAudioVoiceSeedPresetVoice?>.Default.Equals(SeedPreset, other.SeedPreset) &&
-                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateTextToSpeechRequestSeedAudioVoiceSeedReferenceVoice?>.Default.Equals(ReferenceAudio, other.ReferenceAudio) 
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateGenerateAudioRequestInputVoiceAudioPresetVoice?>.Default.Equals(Preset, other.Preset) &&
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateGenerateAudioRequestInputVoiceAudioReferenceVoice?>.Default.Equals(ReferenceAudio, other.ReferenceAudio) 
                 ;
         }
 

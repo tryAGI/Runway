@@ -2,7 +2,7 @@
 
 namespace Runway
 {
-    public readonly partial struct CreateGenerateAudioResponse
+    public sealed partial class CreateGenerateAudioResponse
     {
         /// <summary>
         /// Serializes the current instance to a JSON string using the provided JsonSerializerContext.
@@ -54,7 +54,7 @@ namespace Runway
             return global::System.Text.Json.JsonSerializer.Deserialize(
                 json,
                 typeof(global::Runway.CreateGenerateAudioResponse),
-                jsonSerializerContext) as global::Runway.CreateGenerateAudioResponse?;
+                jsonSerializerContext) as global::Runway.CreateGenerateAudioResponse;
         }
 
         /// <summary>
@@ -101,7 +101,7 @@ namespace Runway
             return (await global::System.Text.Json.JsonSerializer.DeserializeAsync(
                 jsonStream,
                 typeof(global::Runway.CreateGenerateAudioResponse),
-                jsonSerializerContext).ConfigureAwait(false)) as global::Runway.CreateGenerateAudioResponse?;
+                jsonSerializerContext).ConfigureAwait(false)) as global::Runway.CreateGenerateAudioResponse;
         }
 
         /// <summary>

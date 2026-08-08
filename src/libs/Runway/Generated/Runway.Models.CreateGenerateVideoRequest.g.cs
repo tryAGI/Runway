@@ -16,12 +16,6 @@ namespace Runway
         public required string ConfigId { get; set; }
 
         /// <summary>
-        /// When true, run the full routing pipeline and return the decision and estimated cost without generating. No task is created, nothing is billed, and no asset is produced.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("dryRun")]
-        public bool? DryRun { get; set; }
-
-        /// <summary>
         /// Model-agnostic video generation input. Fields are optional; the router selects a model and maps these options to it.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("input")]
@@ -43,19 +37,14 @@ namespace Runway
         /// <param name="input">
         /// Model-agnostic video generation input. Fields are optional; the router selects a model and maps these options to it.
         /// </param>
-        /// <param name="dryRun">
-        /// When true, run the full routing pipeline and return the decision and estimated cost without generating. No task is created, nothing is billed, and no asset is produced.
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public CreateGenerateVideoRequest(
             string configId,
-            global::Runway.CreateGenerateVideoRequestInput input,
-            bool? dryRun)
+            global::Runway.CreateGenerateVideoRequestInput input)
         {
             this.ConfigId = configId ?? throw new global::System.ArgumentNullException(nameof(configId));
-            this.DryRun = dryRun;
             this.Input = input ?? throw new global::System.ArgumentNullException(nameof(input));
         }
 

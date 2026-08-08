@@ -27,8 +27,8 @@ namespace Runway
         /// The voice to speak with. When omitted, models that support a default voice remain eligible.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("voice")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.Voice5JsonConverter))]
-        public global::Runway.Voice5? Voice { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.Voice4JsonConverter))]
+        public global::Runway.Voice4? Voice { get; set; }
 
         /// <summary>
         /// Optional reference audio clips guiding `audio` generation, for models that support them. Reference each clip in promptText as @Audio1, @Audio2, and @Audio3 in order.
@@ -81,7 +81,7 @@ namespace Runway
         public CreateGenerateAudioRequestInput(
             global::Runway.CreateGenerateAudioRequestInputType type,
             string promptText,
-            global::Runway.Voice5? voice,
+            global::Runway.Voice4? voice,
             global::System.Collections.Generic.IList<global::Runway.CreateGenerateAudioRequestInputReferenceAudio>? referenceAudios,
             double? duration,
             bool? loop)

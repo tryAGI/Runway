@@ -421,10 +421,6 @@ namespace Runway
 
             typeof(global::Runway.JsonConverters.CreateSpeechToSpeechRequestDiscriminatorModelNullableJsonConverter),
 
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestSeedAudioVoiceSeedPresetVoicePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestSeedAudioVoiceSeedPresetVoicePresetIdNullableJsonConverter),
-
             typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestSeedAudioVoiceDiscriminatorTypeJsonConverter),
 
             typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestSeedAudioVoiceDiscriminatorTypeNullableJsonConverter),
@@ -805,17 +801,9 @@ namespace Runway
 
             typeof(global::Runway.JsonConverters.GetTasksResponseDiscriminatorStatusNullableJsonConverter),
 
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoResponseRoutedVideoTaskCreatedRoutingResolvedSettingsOptimizeForJsonConverter),
+            typeof(global::Runway.JsonConverters.CreateGenerateVideoResponseRoutingResolvedSettingsOptimizeForJsonConverter),
 
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoResponseRoutedVideoTaskCreatedRoutingResolvedSettingsOptimizeForNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoResponseRoutedVideoDryRunRoutingResolvedSettingsOptimizeForJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoResponseRoutedVideoDryRunRoutingResolvedSettingsOptimizeForNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoResponseDiscriminatorDryRunJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoResponseDiscriminatorDryRunNullableJsonConverter),
+            typeof(global::Runway.JsonConverters.CreateGenerateVideoResponseRoutingResolvedSettingsOptimizeForNullableJsonConverter),
 
             typeof(global::Runway.JsonConverters.CreateGenerateVideoResponseVariant1PipelineItemFilterJsonConverter),
 
@@ -825,17 +813,9 @@ namespace Runway
 
             typeof(global::Runway.JsonConverters.CreateGenerateVideoResponseVariant1EmptiedByItemNullableJsonConverter),
 
-            typeof(global::Runway.JsonConverters.CreateGenerateImageResponseRoutedImageTaskCreatedRoutingResolvedSettingsOptimizeForJsonConverter),
+            typeof(global::Runway.JsonConverters.CreateGenerateImageResponseRoutingResolvedSettingsOptimizeForJsonConverter),
 
-            typeof(global::Runway.JsonConverters.CreateGenerateImageResponseRoutedImageTaskCreatedRoutingResolvedSettingsOptimizeForNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateImageResponseRoutedImageDryRunRoutingResolvedSettingsOptimizeForJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateImageResponseRoutedImageDryRunRoutingResolvedSettingsOptimizeForNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateImageResponseDiscriminatorDryRunJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateImageResponseDiscriminatorDryRunNullableJsonConverter),
+            typeof(global::Runway.JsonConverters.CreateGenerateImageResponseRoutingResolvedSettingsOptimizeForNullableJsonConverter),
 
             typeof(global::Runway.JsonConverters.CreateGenerateImageResponseVariant1PipelineItemFilterJsonConverter),
 
@@ -845,33 +825,17 @@ namespace Runway
 
             typeof(global::Runway.JsonConverters.CreateGenerateImageResponseVariant1EmptiedByItemNullableJsonConverter),
 
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutedAudioTaskCreatedRoutingResolvedSettingsOptimizeForJsonConverter),
+            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutingResolvedSettingsOptimizeForJsonConverter),
 
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutedAudioTaskCreatedRoutingResolvedSettingsOptimizeForNullableJsonConverter),
+            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutingResolvedSettingsOptimizeForNullableJsonConverter),
 
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutedAudioTaskCreatedRoutingResolvedInputTypeJsonConverter),
+            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutingResolvedInputTypeJsonConverter),
 
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutedAudioTaskCreatedRoutingResolvedInputTypeNullableJsonConverter),
+            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutingResolvedInputTypeNullableJsonConverter),
 
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutedAudioTaskCreatedRoutingResolvedInputVoiceJsonConverter),
+            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutingResolvedInputVoiceJsonConverter),
 
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutedAudioTaskCreatedRoutingResolvedInputVoiceNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutedAudioDryRunRoutingResolvedSettingsOptimizeForJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutedAudioDryRunRoutingResolvedSettingsOptimizeForNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutedAudioDryRunRoutingResolvedInputTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutedAudioDryRunRoutingResolvedInputTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutedAudioDryRunRoutingResolvedInputVoiceJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutedAudioDryRunRoutingResolvedInputVoiceNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseDiscriminatorDryRunJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseDiscriminatorDryRunNullableJsonConverter),
+            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutingResolvedInputVoiceNullableJsonConverter),
 
             typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseVariant1PipelineItemFilterJsonConverter),
 
@@ -1017,13 +981,11 @@ namespace Runway
 
             typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestJsonConverter),
 
-            typeof(global::Runway.JsonConverters.Voice4JsonConverter),
-
             typeof(global::Runway.JsonConverters.CreateVoiceDubbingRequestJsonConverter),
 
             typeof(global::Runway.JsonConverters.CreateVoiceIsolationRequestJsonConverter),
 
-            typeof(global::Runway.JsonConverters.Voice5JsonConverter),
+            typeof(global::Runway.JsonConverters.Voice4JsonConverter),
 
             typeof(global::Runway.JsonConverters.CreateRecipesMultiShotVideoRequestJsonConverter),
 
@@ -1033,19 +995,19 @@ namespace Runway
 
             typeof(global::Runway.JsonConverters.DataItemJsonConverter),
 
+            typeof(global::Runway.JsonConverters.Voice5JsonConverter),
+
             typeof(global::Runway.JsonConverters.Voice6JsonConverter),
 
             typeof(global::Runway.JsonConverters.Voice7JsonConverter),
 
-            typeof(global::Runway.JsonConverters.Voice8JsonConverter),
-
             typeof(global::Runway.JsonConverters.CreateAvatarsResponseJsonConverter),
+
+            typeof(global::Runway.JsonConverters.Voice8JsonConverter),
 
             typeof(global::Runway.JsonConverters.Voice9JsonConverter),
 
             typeof(global::Runway.JsonConverters.Voice10JsonConverter),
-
-            typeof(global::Runway.JsonConverters.Voice11JsonConverter),
 
             typeof(global::Runway.JsonConverters.AvatarVariant1JsonConverter),
 
@@ -1059,29 +1021,23 @@ namespace Runway
 
             typeof(global::Runway.JsonConverters.GetAvatarsResponse2JsonConverter),
 
+            typeof(global::Runway.JsonConverters.Voice11JsonConverter),
+
             typeof(global::Runway.JsonConverters.Voice12JsonConverter),
 
             typeof(global::Runway.JsonConverters.Voice13JsonConverter),
 
-            typeof(global::Runway.JsonConverters.Voice14JsonConverter),
-
             typeof(global::Runway.JsonConverters.PatchAvatarsResponseJsonConverter),
+
+            typeof(global::Runway.JsonConverters.Voice14JsonConverter),
 
             typeof(global::Runway.JsonConverters.Voice15JsonConverter),
 
             typeof(global::Runway.JsonConverters.Voice16JsonConverter),
 
-            typeof(global::Runway.JsonConverters.Voice17JsonConverter),
-
             typeof(global::Runway.JsonConverters.GetRealtimeSessionsResponseJsonConverter),
 
             typeof(global::Runway.JsonConverters.GetTasksResponseJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoResponseJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateImageResponseJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseJsonConverter),
 
             typeof(global::Runway.JsonConverters.PipelineItemJsonConverter),
 
@@ -1553,9 +1509,6 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateSpeechToSpeechRequestDiscriminatorModel), TypeInfoPropertyName = "CreateSpeechToSpeechRequestDiscriminatorModel2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToSpeechRequest), TypeInfoPropertyName = "CreateTextToSpeechRequest2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToSpeechRequestSeedAudio))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.Voice4), TypeInfoPropertyName = "Voice42")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToSpeechRequestSeedAudioVoiceSeedPresetVoice))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToSpeechRequestSeedAudioVoiceSeedPresetVoicePresetId), TypeInfoPropertyName = "CreateTextToSpeechRequestSeedAudioVoiceSeedPresetVoicePresetId2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToSpeechRequestSeedAudioVoiceSeedReferenceVoice))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToSpeechRequestSeedAudioVoiceDiscriminator))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToSpeechRequestSeedAudioVoiceDiscriminatorType), TypeInfoPropertyName = "CreateTextToSpeechRequestSeedAudioVoiceDiscriminatorType2")]
@@ -1613,7 +1566,7 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateAudioRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateAudioRequestInput))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateAudioRequestInputType), TypeInfoPropertyName = "CreateGenerateAudioRequestInputType2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.Voice5), TypeInfoPropertyName = "Voice52")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.Voice4), TypeInfoPropertyName = "Voice42")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateAudioRequestInputVoiceAudioPresetVoice))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateAudioRequestInputVoiceAudioPresetVoicePresetId), TypeInfoPropertyName = "CreateGenerateAudioRequestInputVoiceAudioPresetVoicePresetId2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateAudioRequestInputVoiceAudioReferenceVoice))]
@@ -1673,6 +1626,9 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRoutersRequestSettings))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRoutersRequestSettingsModels))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRoutersRequestSettingsModelsMode), TypeInfoPropertyName = "CreateRoutersRequestSettingsModelsMode2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRoutersRequestSettingsMaxCreditsPerGeneration))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRoutersRequestSettingsOptimizeFor), TypeInfoPropertyName = "CreateRoutersRequestSettingsOptimizeFor2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRoutersRequestSettingsFallback))]
     internal sealed partial class SourceGenerationContextChunk0 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }
@@ -2092,10 +2048,6 @@ namespace Runway
 
             typeof(global::Runway.JsonConverters.CreateSpeechToSpeechRequestDiscriminatorModelNullableJsonConverter),
 
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestSeedAudioVoiceSeedPresetVoicePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestSeedAudioVoiceSeedPresetVoicePresetIdNullableJsonConverter),
-
             typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestSeedAudioVoiceDiscriminatorTypeJsonConverter),
 
             typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestSeedAudioVoiceDiscriminatorTypeNullableJsonConverter),
@@ -2476,17 +2428,9 @@ namespace Runway
 
             typeof(global::Runway.JsonConverters.GetTasksResponseDiscriminatorStatusNullableJsonConverter),
 
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoResponseRoutedVideoTaskCreatedRoutingResolvedSettingsOptimizeForJsonConverter),
+            typeof(global::Runway.JsonConverters.CreateGenerateVideoResponseRoutingResolvedSettingsOptimizeForJsonConverter),
 
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoResponseRoutedVideoTaskCreatedRoutingResolvedSettingsOptimizeForNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoResponseRoutedVideoDryRunRoutingResolvedSettingsOptimizeForJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoResponseRoutedVideoDryRunRoutingResolvedSettingsOptimizeForNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoResponseDiscriminatorDryRunJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoResponseDiscriminatorDryRunNullableJsonConverter),
+            typeof(global::Runway.JsonConverters.CreateGenerateVideoResponseRoutingResolvedSettingsOptimizeForNullableJsonConverter),
 
             typeof(global::Runway.JsonConverters.CreateGenerateVideoResponseVariant1PipelineItemFilterJsonConverter),
 
@@ -2496,17 +2440,9 @@ namespace Runway
 
             typeof(global::Runway.JsonConverters.CreateGenerateVideoResponseVariant1EmptiedByItemNullableJsonConverter),
 
-            typeof(global::Runway.JsonConverters.CreateGenerateImageResponseRoutedImageTaskCreatedRoutingResolvedSettingsOptimizeForJsonConverter),
+            typeof(global::Runway.JsonConverters.CreateGenerateImageResponseRoutingResolvedSettingsOptimizeForJsonConverter),
 
-            typeof(global::Runway.JsonConverters.CreateGenerateImageResponseRoutedImageTaskCreatedRoutingResolvedSettingsOptimizeForNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateImageResponseRoutedImageDryRunRoutingResolvedSettingsOptimizeForJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateImageResponseRoutedImageDryRunRoutingResolvedSettingsOptimizeForNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateImageResponseDiscriminatorDryRunJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateImageResponseDiscriminatorDryRunNullableJsonConverter),
+            typeof(global::Runway.JsonConverters.CreateGenerateImageResponseRoutingResolvedSettingsOptimizeForNullableJsonConverter),
 
             typeof(global::Runway.JsonConverters.CreateGenerateImageResponseVariant1PipelineItemFilterJsonConverter),
 
@@ -2516,33 +2452,17 @@ namespace Runway
 
             typeof(global::Runway.JsonConverters.CreateGenerateImageResponseVariant1EmptiedByItemNullableJsonConverter),
 
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutedAudioTaskCreatedRoutingResolvedSettingsOptimizeForJsonConverter),
+            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutingResolvedSettingsOptimizeForJsonConverter),
 
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutedAudioTaskCreatedRoutingResolvedSettingsOptimizeForNullableJsonConverter),
+            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutingResolvedSettingsOptimizeForNullableJsonConverter),
 
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutedAudioTaskCreatedRoutingResolvedInputTypeJsonConverter),
+            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutingResolvedInputTypeJsonConverter),
 
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutedAudioTaskCreatedRoutingResolvedInputTypeNullableJsonConverter),
+            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutingResolvedInputTypeNullableJsonConverter),
 
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutedAudioTaskCreatedRoutingResolvedInputVoiceJsonConverter),
+            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutingResolvedInputVoiceJsonConverter),
 
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutedAudioTaskCreatedRoutingResolvedInputVoiceNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutedAudioDryRunRoutingResolvedSettingsOptimizeForJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutedAudioDryRunRoutingResolvedSettingsOptimizeForNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutedAudioDryRunRoutingResolvedInputTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutedAudioDryRunRoutingResolvedInputTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutedAudioDryRunRoutingResolvedInputVoiceJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutedAudioDryRunRoutingResolvedInputVoiceNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseDiscriminatorDryRunJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseDiscriminatorDryRunNullableJsonConverter),
+            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutingResolvedInputVoiceNullableJsonConverter),
 
             typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseVariant1PipelineItemFilterJsonConverter),
 
@@ -2688,13 +2608,11 @@ namespace Runway
 
             typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestJsonConverter),
 
-            typeof(global::Runway.JsonConverters.Voice4JsonConverter),
-
             typeof(global::Runway.JsonConverters.CreateVoiceDubbingRequestJsonConverter),
 
             typeof(global::Runway.JsonConverters.CreateVoiceIsolationRequestJsonConverter),
 
-            typeof(global::Runway.JsonConverters.Voice5JsonConverter),
+            typeof(global::Runway.JsonConverters.Voice4JsonConverter),
 
             typeof(global::Runway.JsonConverters.CreateRecipesMultiShotVideoRequestJsonConverter),
 
@@ -2704,19 +2622,19 @@ namespace Runway
 
             typeof(global::Runway.JsonConverters.DataItemJsonConverter),
 
+            typeof(global::Runway.JsonConverters.Voice5JsonConverter),
+
             typeof(global::Runway.JsonConverters.Voice6JsonConverter),
 
             typeof(global::Runway.JsonConverters.Voice7JsonConverter),
 
-            typeof(global::Runway.JsonConverters.Voice8JsonConverter),
-
             typeof(global::Runway.JsonConverters.CreateAvatarsResponseJsonConverter),
+
+            typeof(global::Runway.JsonConverters.Voice8JsonConverter),
 
             typeof(global::Runway.JsonConverters.Voice9JsonConverter),
 
             typeof(global::Runway.JsonConverters.Voice10JsonConverter),
-
-            typeof(global::Runway.JsonConverters.Voice11JsonConverter),
 
             typeof(global::Runway.JsonConverters.AvatarVariant1JsonConverter),
 
@@ -2730,29 +2648,23 @@ namespace Runway
 
             typeof(global::Runway.JsonConverters.GetAvatarsResponse2JsonConverter),
 
+            typeof(global::Runway.JsonConverters.Voice11JsonConverter),
+
             typeof(global::Runway.JsonConverters.Voice12JsonConverter),
 
             typeof(global::Runway.JsonConverters.Voice13JsonConverter),
 
-            typeof(global::Runway.JsonConverters.Voice14JsonConverter),
-
             typeof(global::Runway.JsonConverters.PatchAvatarsResponseJsonConverter),
+
+            typeof(global::Runway.JsonConverters.Voice14JsonConverter),
 
             typeof(global::Runway.JsonConverters.Voice15JsonConverter),
 
             typeof(global::Runway.JsonConverters.Voice16JsonConverter),
 
-            typeof(global::Runway.JsonConverters.Voice17JsonConverter),
-
             typeof(global::Runway.JsonConverters.GetRealtimeSessionsResponseJsonConverter),
 
             typeof(global::Runway.JsonConverters.GetTasksResponseJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoResponseJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateImageResponseJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseJsonConverter),
 
             typeof(global::Runway.JsonConverters.PipelineItemJsonConverter),
 
@@ -2844,9 +2756,6 @@ namespace Runway
 
             typeof(global::Runway.JsonConverters.UnixTimestampJsonConverter),
         })]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRoutersRequestSettingsMaxCreditsPerGeneration))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRoutersRequestSettingsOptimizeFor), TypeInfoPropertyName = "CreateRoutersRequestSettingsOptimizeFor2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRoutersRequestSettingsFallback))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.PatchRoutersRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.PatchRoutersRequestSettings))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.PatchRoutersRequestSettingsModels))]
@@ -2879,21 +2788,21 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.DataItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.DataItem), TypeInfoPropertyName = "DataItem2_3")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetAvatarsResponseDataItemAvatarProcessing))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.Voice6), TypeInfoPropertyName = "Voice62")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.Voice5), TypeInfoPropertyName = "Voice52")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceRunwayLivePresetVoiceResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetId), TypeInfoPropertyName = "GetAvatarsResponseDataItemAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetId2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceCustomVoiceResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceDiscriminator))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceDiscriminatorType), TypeInfoPropertyName = "GetAvatarsResponseDataItemAvatarProcessingVoiceDiscriminatorType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetAvatarsResponseDataItemAvatarReady))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.Voice7), TypeInfoPropertyName = "Voice72")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.Voice6), TypeInfoPropertyName = "Voice62")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetAvatarsResponseDataItemAvatarReadyVoiceRunwayLivePresetVoiceResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetAvatarsResponseDataItemAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetId), TypeInfoPropertyName = "GetAvatarsResponseDataItemAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetId2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetAvatarsResponseDataItemAvatarReadyVoiceCustomVoiceResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetAvatarsResponseDataItemAvatarReadyVoiceDiscriminator))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetAvatarsResponseDataItemAvatarReadyVoiceDiscriminatorType), TypeInfoPropertyName = "GetAvatarsResponseDataItemAvatarReadyVoiceDiscriminatorType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetAvatarsResponseDataItemAvatarFailed))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.Voice8), TypeInfoPropertyName = "Voice82")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.Voice7), TypeInfoPropertyName = "Voice72")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetAvatarsResponseDataItemAvatarFailedVoiceRunwayLivePresetVoiceResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetAvatarsResponseDataItemAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetId), TypeInfoPropertyName = "GetAvatarsResponseDataItemAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetId2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetAvatarsResponseDataItemAvatarFailedVoiceCustomVoiceResponse))]
@@ -2903,21 +2812,21 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetAvatarsResponseDataItemDiscriminatorStatus), TypeInfoPropertyName = "GetAvatarsResponseDataItemDiscriminatorStatus2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateAvatarsResponse), TypeInfoPropertyName = "CreateAvatarsResponse2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateAvatarsResponseAvatarProcessing))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.Voice9), TypeInfoPropertyName = "Voice92")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.Voice8), TypeInfoPropertyName = "Voice82")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetId), TypeInfoPropertyName = "CreateAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetId2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateAvatarsResponseAvatarProcessingVoiceCustomVoiceResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateAvatarsResponseAvatarProcessingVoiceDiscriminator))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateAvatarsResponseAvatarProcessingVoiceDiscriminatorType), TypeInfoPropertyName = "CreateAvatarsResponseAvatarProcessingVoiceDiscriminatorType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateAvatarsResponseAvatarReady))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.Voice10), TypeInfoPropertyName = "Voice102")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.Voice9), TypeInfoPropertyName = "Voice92")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetId), TypeInfoPropertyName = "CreateAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetId2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateAvatarsResponseAvatarReadyVoiceCustomVoiceResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateAvatarsResponseAvatarReadyVoiceDiscriminator))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateAvatarsResponseAvatarReadyVoiceDiscriminatorType), TypeInfoPropertyName = "CreateAvatarsResponseAvatarReadyVoiceDiscriminatorType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateAvatarsResponseAvatarFailed))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.Voice11), TypeInfoPropertyName = "Voice112")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.Voice10), TypeInfoPropertyName = "Voice102")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetId), TypeInfoPropertyName = "CreateAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetId2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateAvatarsResponseAvatarFailedVoiceCustomVoiceResponse))]
@@ -2991,21 +2900,21 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetAvatarConversationsResponseDiscriminatorStatus), TypeInfoPropertyName = "GetAvatarConversationsResponseDiscriminatorStatus2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetAvatarsResponse2), TypeInfoPropertyName = "GetAvatarsResponse22")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetAvatarsResponseAvatarProcessing))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.Voice12), TypeInfoPropertyName = "Voice122")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.Voice11), TypeInfoPropertyName = "Voice112")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetId), TypeInfoPropertyName = "GetAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetId2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetAvatarsResponseAvatarProcessingVoiceCustomVoiceResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetAvatarsResponseAvatarProcessingVoiceDiscriminator))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetAvatarsResponseAvatarProcessingVoiceDiscriminatorType), TypeInfoPropertyName = "GetAvatarsResponseAvatarProcessingVoiceDiscriminatorType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetAvatarsResponseAvatarReady))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.Voice13), TypeInfoPropertyName = "Voice132")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.Voice12), TypeInfoPropertyName = "Voice122")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetId), TypeInfoPropertyName = "GetAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetId2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetAvatarsResponseAvatarReadyVoiceCustomVoiceResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetAvatarsResponseAvatarReadyVoiceDiscriminator))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetAvatarsResponseAvatarReadyVoiceDiscriminatorType), TypeInfoPropertyName = "GetAvatarsResponseAvatarReadyVoiceDiscriminatorType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetAvatarsResponseAvatarFailed))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.Voice14), TypeInfoPropertyName = "Voice142")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.Voice13), TypeInfoPropertyName = "Voice132")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetId), TypeInfoPropertyName = "GetAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetId2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetAvatarsResponseAvatarFailedVoiceCustomVoiceResponse))]
@@ -3015,21 +2924,21 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetAvatarsResponseDiscriminatorStatus), TypeInfoPropertyName = "GetAvatarsResponseDiscriminatorStatus2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.PatchAvatarsResponse), TypeInfoPropertyName = "PatchAvatarsResponse2_3")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.PatchAvatarsResponseAvatarProcessing))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.Voice15), TypeInfoPropertyName = "Voice152")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.Voice14), TypeInfoPropertyName = "Voice142")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.PatchAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.PatchAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetId), TypeInfoPropertyName = "PatchAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetId2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.PatchAvatarsResponseAvatarProcessingVoiceCustomVoiceResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.PatchAvatarsResponseAvatarProcessingVoiceDiscriminator))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.PatchAvatarsResponseAvatarProcessingVoiceDiscriminatorType), TypeInfoPropertyName = "PatchAvatarsResponseAvatarProcessingVoiceDiscriminatorType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.PatchAvatarsResponseAvatarReady))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.Voice16), TypeInfoPropertyName = "Voice162")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.Voice15), TypeInfoPropertyName = "Voice152")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.PatchAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.PatchAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetId), TypeInfoPropertyName = "PatchAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetId2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.PatchAvatarsResponseAvatarReadyVoiceCustomVoiceResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.PatchAvatarsResponseAvatarReadyVoiceDiscriminator))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.PatchAvatarsResponseAvatarReadyVoiceDiscriminatorType), TypeInfoPropertyName = "PatchAvatarsResponseAvatarReadyVoiceDiscriminatorType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.PatchAvatarsResponseAvatarFailed))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.Voice17), TypeInfoPropertyName = "Voice172")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.Voice16), TypeInfoPropertyName = "Voice162")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.PatchAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.PatchAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetId), TypeInfoPropertyName = "PatchAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetId2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.PatchAvatarsResponseAvatarFailedVoiceCustomVoiceResponse))]
@@ -3153,23 +3062,13 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateVoiceIsolationResponseIssue>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVoiceIsolationResponseIssue))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVoiceIsolationResponse3))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateVideoResponse), TypeInfoPropertyName = "CreateGenerateVideoResponse2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateVideoResponseRoutedVideoTaskCreated))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateVideoResponseRoutedVideoTaskCreatedRouting))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateVideoResponseRoutedVideoTaskCreatedRoutingResolvedSettings))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateVideoResponseRoutedVideoTaskCreatedRoutingResolvedSettingsOptimizeFor), TypeInfoPropertyName = "CreateGenerateVideoResponseRoutedVideoTaskCreatedRoutingResolvedSettingsOptimizeFor2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateVideoResponseRoutedVideoTaskCreatedRoutingResolvedInput))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateVideoResponseRoutedVideoTaskCreatedRoutingEstimatedCost))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateVideoResponseRoutedVideoTaskCreatedRoutingCapacityFallback))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateVideoResponseRoutedVideoDryRun))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateVideoResponseRoutedVideoDryRunRouting))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateVideoResponseRoutedVideoDryRunRoutingResolvedSettings))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateVideoResponseRoutedVideoDryRunRoutingResolvedSettingsOptimizeFor), TypeInfoPropertyName = "CreateGenerateVideoResponseRoutedVideoDryRunRoutingResolvedSettingsOptimizeFor2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateVideoResponseRoutedVideoDryRunRoutingResolvedInput))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateVideoResponseRoutedVideoDryRunRoutingEstimatedCost))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateVideoResponseRoutedVideoDryRunRoutingCapacityFallback))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateVideoResponseDiscriminator))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateVideoResponseDiscriminatorDryRun), TypeInfoPropertyName = "CreateGenerateVideoResponseDiscriminatorDryRun2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateVideoResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateVideoResponseRouting))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateVideoResponseRoutingResolvedSettings))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateVideoResponseRoutingResolvedSettingsOptimizeFor), TypeInfoPropertyName = "CreateGenerateVideoResponseRoutingResolvedSettingsOptimizeFor2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateVideoResponseRoutingResolvedInput))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateVideoResponseRoutingEstimatedCost))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateVideoResponseRoutingCapacityFallback))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<global::Runway.CreateGenerateVideoResponseVariant1, global::Runway.CreateGenerateVideoResponseVariant2>), TypeInfoPropertyName = "AnyOfCreateGenerateVideoResponseVariant1CreateGenerateVideoResponseVariant22")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateVideoResponseVariant1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateGenerateVideoResponseVariant1PipelineItem>))]
@@ -3180,23 +3079,13 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateVideoResponseVariant2))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateVideoResponse3))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateVideoResponse4))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateImageResponse), TypeInfoPropertyName = "CreateGenerateImageResponse2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateImageResponseRoutedImageTaskCreated))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateImageResponseRoutedImageTaskCreatedRouting))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateImageResponseRoutedImageTaskCreatedRoutingResolvedSettings))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateImageResponseRoutedImageTaskCreatedRoutingResolvedSettingsOptimizeFor), TypeInfoPropertyName = "CreateGenerateImageResponseRoutedImageTaskCreatedRoutingResolvedSettingsOptimizeFor2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateImageResponseRoutedImageTaskCreatedRoutingResolvedInput))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateImageResponseRoutedImageTaskCreatedRoutingEstimatedCost))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateImageResponseRoutedImageTaskCreatedRoutingCapacityFallback))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateImageResponseRoutedImageDryRun))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateImageResponseRoutedImageDryRunRouting))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateImageResponseRoutedImageDryRunRoutingResolvedSettings))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateImageResponseRoutedImageDryRunRoutingResolvedSettingsOptimizeFor), TypeInfoPropertyName = "CreateGenerateImageResponseRoutedImageDryRunRoutingResolvedSettingsOptimizeFor2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateImageResponseRoutedImageDryRunRoutingResolvedInput))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateImageResponseRoutedImageDryRunRoutingEstimatedCost))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateImageResponseRoutedImageDryRunRoutingCapacityFallback))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateImageResponseDiscriminator))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateImageResponseDiscriminatorDryRun), TypeInfoPropertyName = "CreateGenerateImageResponseDiscriminatorDryRun2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateImageResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateImageResponseRouting))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateImageResponseRoutingResolvedSettings))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateImageResponseRoutingResolvedSettingsOptimizeFor), TypeInfoPropertyName = "CreateGenerateImageResponseRoutingResolvedSettingsOptimizeFor2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateImageResponseRoutingResolvedInput))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateImageResponseRoutingEstimatedCost))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateImageResponseRoutingCapacityFallback))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<global::Runway.CreateGenerateImageResponseVariant1, global::Runway.CreateGenerateImageResponseVariant2>), TypeInfoPropertyName = "AnyOfCreateGenerateImageResponseVariant1CreateGenerateImageResponseVariant22")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateImageResponseVariant1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateGenerateImageResponseVariant1PipelineItem>))]
@@ -3207,27 +3096,15 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateImageResponseVariant2))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateImageResponse3))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateImageResponse4))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateAudioResponse), TypeInfoPropertyName = "CreateGenerateAudioResponse2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateAudioResponseRoutedAudioTaskCreated))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateAudioResponseRoutedAudioTaskCreatedRouting))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateAudioResponseRoutedAudioTaskCreatedRoutingResolvedSettings))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateAudioResponseRoutedAudioTaskCreatedRoutingResolvedSettingsOptimizeFor), TypeInfoPropertyName = "CreateGenerateAudioResponseRoutedAudioTaskCreatedRoutingResolvedSettingsOptimizeFor2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateAudioResponseRoutedAudioTaskCreatedRoutingResolvedInput))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateAudioResponseRoutedAudioTaskCreatedRoutingResolvedInputType), TypeInfoPropertyName = "CreateGenerateAudioResponseRoutedAudioTaskCreatedRoutingResolvedInputType2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateAudioResponseRoutedAudioTaskCreatedRoutingResolvedInputVoice), TypeInfoPropertyName = "CreateGenerateAudioResponseRoutedAudioTaskCreatedRoutingResolvedInputVoice2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateAudioResponseRoutedAudioTaskCreatedRoutingEstimatedCost))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateAudioResponseRoutedAudioTaskCreatedRoutingCapacityFallback))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateAudioResponseRoutedAudioDryRun))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateAudioResponseRoutedAudioDryRunRouting))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateAudioResponseRoutedAudioDryRunRoutingResolvedSettings))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateAudioResponseRoutedAudioDryRunRoutingResolvedSettingsOptimizeFor), TypeInfoPropertyName = "CreateGenerateAudioResponseRoutedAudioDryRunRoutingResolvedSettingsOptimizeFor2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateAudioResponseRoutedAudioDryRunRoutingResolvedInput))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateAudioResponseRoutedAudioDryRunRoutingResolvedInputType), TypeInfoPropertyName = "CreateGenerateAudioResponseRoutedAudioDryRunRoutingResolvedInputType2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateAudioResponseRoutedAudioDryRunRoutingResolvedInputVoice), TypeInfoPropertyName = "CreateGenerateAudioResponseRoutedAudioDryRunRoutingResolvedInputVoice2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateAudioResponseRoutedAudioDryRunRoutingEstimatedCost))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateAudioResponseRoutedAudioDryRunRoutingCapacityFallback))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateAudioResponseDiscriminator))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateAudioResponseDiscriminatorDryRun), TypeInfoPropertyName = "CreateGenerateAudioResponseDiscriminatorDryRun2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateAudioResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateAudioResponseRouting))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateAudioResponseRoutingResolvedSettings))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateAudioResponseRoutingResolvedSettingsOptimizeFor), TypeInfoPropertyName = "CreateGenerateAudioResponseRoutingResolvedSettingsOptimizeFor2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateAudioResponseRoutingResolvedInput))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateAudioResponseRoutingResolvedInputType), TypeInfoPropertyName = "CreateGenerateAudioResponseRoutingResolvedInputType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateAudioResponseRoutingResolvedInputVoice), TypeInfoPropertyName = "CreateGenerateAudioResponseRoutingResolvedInputVoice2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateAudioResponseRoutingEstimatedCost))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateAudioResponseRoutingCapacityFallback))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<global::Runway.CreateGenerateAudioResponseVariant1, global::Runway.CreateGenerateAudioResponseVariant2>), TypeInfoPropertyName = "AnyOfCreateGenerateAudioResponseVariant1CreateGenerateAudioResponseVariant22")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateAudioResponseVariant1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateGenerateAudioResponseVariant1PipelineItem>))]
@@ -3344,6 +3221,41 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.PatchRoutersResponseSettingsOptimizeFor), TypeInfoPropertyName = "PatchRoutersResponseSettingsOptimizeFor2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.PatchRoutersResponseSettingsFallback))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetRoutersRequestsResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.GetRoutersRequestsResponseDataItem>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetRoutersRequestsResponseDataItem))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetRoutersRequestsResponseDataItemStatus), TypeInfoPropertyName = "GetRoutersRequestsResponseDataItemStatus2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetRoutersRequestsResponseDataItemReasonCode2))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.PipelineItem>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.PipelineItem), TypeInfoPropertyName = "PipelineItem2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant1Filter), TypeInfoPropertyName = "GetRoutersRequestsResponseDataItemPipelineItemVariant1Filter2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant2))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant3))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant3Outcome), TypeInfoPropertyName = "GetRoutersRequestsResponseDataItemPipelineItemVariant3Outcome2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetRoutersRequestsResponseDataItemPipelineItemDiscriminator))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetRoutersRequestsResponseDataItemPipelineItemDiscriminatorType), TypeInfoPropertyName = "GetRoutersRequestsResponseDataItemPipelineItemDiscriminatorType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.GetRoutersRequestsResponseDataItemEmptiedByItem>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetRoutersRequestsResponseDataItemEmptiedByItem), TypeInfoPropertyName = "GetRoutersRequestsResponseDataItemEmptiedByItem2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetVoicesResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.DataItem2>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.DataItem2), TypeInfoPropertyName = "DataItem22")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetVoicesResponseDataItemVoiceProcessing))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetVoicesResponseDataItemVoiceReady))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetVoicesResponseDataItemVoiceFailed))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetVoicesResponseDataItemDiscriminator))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetVoicesResponseDataItemDiscriminatorStatus), TypeInfoPropertyName = "GetVoicesResponseDataItemDiscriminatorStatus2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVoicesResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetVoicesResponse2), TypeInfoPropertyName = "GetVoicesResponse22")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetVoicesResponseVoiceProcessing))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetVoicesResponseVoiceReady))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetVoicesResponseVoiceFailed))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetVoicesResponseDiscriminator))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetVoicesResponseDiscriminatorStatus), TypeInfoPropertyName = "GetVoicesResponseDiscriminatorStatus2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.PatchVoicesResponse), TypeInfoPropertyName = "PatchVoicesResponse2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.PatchVoicesResponseVoiceProcessing))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.PatchVoicesResponseVoiceReady))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.PatchVoicesResponseVoiceFailed))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.PatchVoicesResponseDiscriminator))]
     internal sealed partial class SourceGenerationContextChunk1 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }
@@ -3763,10 +3675,6 @@ namespace Runway
 
             typeof(global::Runway.JsonConverters.CreateSpeechToSpeechRequestDiscriminatorModelNullableJsonConverter),
 
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestSeedAudioVoiceSeedPresetVoicePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestSeedAudioVoiceSeedPresetVoicePresetIdNullableJsonConverter),
-
             typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestSeedAudioVoiceDiscriminatorTypeJsonConverter),
 
             typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestSeedAudioVoiceDiscriminatorTypeNullableJsonConverter),
@@ -4147,17 +4055,9 @@ namespace Runway
 
             typeof(global::Runway.JsonConverters.GetTasksResponseDiscriminatorStatusNullableJsonConverter),
 
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoResponseRoutedVideoTaskCreatedRoutingResolvedSettingsOptimizeForJsonConverter),
+            typeof(global::Runway.JsonConverters.CreateGenerateVideoResponseRoutingResolvedSettingsOptimizeForJsonConverter),
 
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoResponseRoutedVideoTaskCreatedRoutingResolvedSettingsOptimizeForNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoResponseRoutedVideoDryRunRoutingResolvedSettingsOptimizeForJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoResponseRoutedVideoDryRunRoutingResolvedSettingsOptimizeForNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoResponseDiscriminatorDryRunJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoResponseDiscriminatorDryRunNullableJsonConverter),
+            typeof(global::Runway.JsonConverters.CreateGenerateVideoResponseRoutingResolvedSettingsOptimizeForNullableJsonConverter),
 
             typeof(global::Runway.JsonConverters.CreateGenerateVideoResponseVariant1PipelineItemFilterJsonConverter),
 
@@ -4167,17 +4067,9 @@ namespace Runway
 
             typeof(global::Runway.JsonConverters.CreateGenerateVideoResponseVariant1EmptiedByItemNullableJsonConverter),
 
-            typeof(global::Runway.JsonConverters.CreateGenerateImageResponseRoutedImageTaskCreatedRoutingResolvedSettingsOptimizeForJsonConverter),
+            typeof(global::Runway.JsonConverters.CreateGenerateImageResponseRoutingResolvedSettingsOptimizeForJsonConverter),
 
-            typeof(global::Runway.JsonConverters.CreateGenerateImageResponseRoutedImageTaskCreatedRoutingResolvedSettingsOptimizeForNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateImageResponseRoutedImageDryRunRoutingResolvedSettingsOptimizeForJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateImageResponseRoutedImageDryRunRoutingResolvedSettingsOptimizeForNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateImageResponseDiscriminatorDryRunJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateImageResponseDiscriminatorDryRunNullableJsonConverter),
+            typeof(global::Runway.JsonConverters.CreateGenerateImageResponseRoutingResolvedSettingsOptimizeForNullableJsonConverter),
 
             typeof(global::Runway.JsonConverters.CreateGenerateImageResponseVariant1PipelineItemFilterJsonConverter),
 
@@ -4187,33 +4079,17 @@ namespace Runway
 
             typeof(global::Runway.JsonConverters.CreateGenerateImageResponseVariant1EmptiedByItemNullableJsonConverter),
 
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutedAudioTaskCreatedRoutingResolvedSettingsOptimizeForJsonConverter),
+            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutingResolvedSettingsOptimizeForJsonConverter),
 
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutedAudioTaskCreatedRoutingResolvedSettingsOptimizeForNullableJsonConverter),
+            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutingResolvedSettingsOptimizeForNullableJsonConverter),
 
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutedAudioTaskCreatedRoutingResolvedInputTypeJsonConverter),
+            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutingResolvedInputTypeJsonConverter),
 
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutedAudioTaskCreatedRoutingResolvedInputTypeNullableJsonConverter),
+            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutingResolvedInputTypeNullableJsonConverter),
 
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutedAudioTaskCreatedRoutingResolvedInputVoiceJsonConverter),
+            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutingResolvedInputVoiceJsonConverter),
 
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutedAudioTaskCreatedRoutingResolvedInputVoiceNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutedAudioDryRunRoutingResolvedSettingsOptimizeForJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutedAudioDryRunRoutingResolvedSettingsOptimizeForNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutedAudioDryRunRoutingResolvedInputTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutedAudioDryRunRoutingResolvedInputTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutedAudioDryRunRoutingResolvedInputVoiceJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutedAudioDryRunRoutingResolvedInputVoiceNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseDiscriminatorDryRunJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseDiscriminatorDryRunNullableJsonConverter),
+            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutingResolvedInputVoiceNullableJsonConverter),
 
             typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseVariant1PipelineItemFilterJsonConverter),
 
@@ -4359,13 +4235,11 @@ namespace Runway
 
             typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestJsonConverter),
 
-            typeof(global::Runway.JsonConverters.Voice4JsonConverter),
-
             typeof(global::Runway.JsonConverters.CreateVoiceDubbingRequestJsonConverter),
 
             typeof(global::Runway.JsonConverters.CreateVoiceIsolationRequestJsonConverter),
 
-            typeof(global::Runway.JsonConverters.Voice5JsonConverter),
+            typeof(global::Runway.JsonConverters.Voice4JsonConverter),
 
             typeof(global::Runway.JsonConverters.CreateRecipesMultiShotVideoRequestJsonConverter),
 
@@ -4375,19 +4249,19 @@ namespace Runway
 
             typeof(global::Runway.JsonConverters.DataItemJsonConverter),
 
+            typeof(global::Runway.JsonConverters.Voice5JsonConverter),
+
             typeof(global::Runway.JsonConverters.Voice6JsonConverter),
 
             typeof(global::Runway.JsonConverters.Voice7JsonConverter),
 
-            typeof(global::Runway.JsonConverters.Voice8JsonConverter),
-
             typeof(global::Runway.JsonConverters.CreateAvatarsResponseJsonConverter),
+
+            typeof(global::Runway.JsonConverters.Voice8JsonConverter),
 
             typeof(global::Runway.JsonConverters.Voice9JsonConverter),
 
             typeof(global::Runway.JsonConverters.Voice10JsonConverter),
-
-            typeof(global::Runway.JsonConverters.Voice11JsonConverter),
 
             typeof(global::Runway.JsonConverters.AvatarVariant1JsonConverter),
 
@@ -4401,29 +4275,23 @@ namespace Runway
 
             typeof(global::Runway.JsonConverters.GetAvatarsResponse2JsonConverter),
 
+            typeof(global::Runway.JsonConverters.Voice11JsonConverter),
+
             typeof(global::Runway.JsonConverters.Voice12JsonConverter),
 
             typeof(global::Runway.JsonConverters.Voice13JsonConverter),
 
-            typeof(global::Runway.JsonConverters.Voice14JsonConverter),
-
             typeof(global::Runway.JsonConverters.PatchAvatarsResponseJsonConverter),
+
+            typeof(global::Runway.JsonConverters.Voice14JsonConverter),
 
             typeof(global::Runway.JsonConverters.Voice15JsonConverter),
 
             typeof(global::Runway.JsonConverters.Voice16JsonConverter),
 
-            typeof(global::Runway.JsonConverters.Voice17JsonConverter),
-
             typeof(global::Runway.JsonConverters.GetRealtimeSessionsResponseJsonConverter),
 
             typeof(global::Runway.JsonConverters.GetTasksResponseJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoResponseJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateImageResponseJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseJsonConverter),
 
             typeof(global::Runway.JsonConverters.PipelineItemJsonConverter),
 
@@ -4515,41 +4383,6 @@ namespace Runway
 
             typeof(global::Runway.JsonConverters.UnixTimestampJsonConverter),
         })]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.GetRoutersRequestsResponseDataItem>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetRoutersRequestsResponseDataItem))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetRoutersRequestsResponseDataItemStatus), TypeInfoPropertyName = "GetRoutersRequestsResponseDataItemStatus2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetRoutersRequestsResponseDataItemReasonCode2))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.PipelineItem>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.PipelineItem), TypeInfoPropertyName = "PipelineItem2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant1Filter), TypeInfoPropertyName = "GetRoutersRequestsResponseDataItemPipelineItemVariant1Filter2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant2))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant3))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant3Outcome), TypeInfoPropertyName = "GetRoutersRequestsResponseDataItemPipelineItemVariant3Outcome2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetRoutersRequestsResponseDataItemPipelineItemDiscriminator))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetRoutersRequestsResponseDataItemPipelineItemDiscriminatorType), TypeInfoPropertyName = "GetRoutersRequestsResponseDataItemPipelineItemDiscriminatorType2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.GetRoutersRequestsResponseDataItemEmptiedByItem>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetRoutersRequestsResponseDataItemEmptiedByItem), TypeInfoPropertyName = "GetRoutersRequestsResponseDataItemEmptiedByItem2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetVoicesResponse))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.DataItem2>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.DataItem2), TypeInfoPropertyName = "DataItem22")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetVoicesResponseDataItemVoiceProcessing))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetVoicesResponseDataItemVoiceReady))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetVoicesResponseDataItemVoiceFailed))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetVoicesResponseDataItemDiscriminator))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetVoicesResponseDataItemDiscriminatorStatus), TypeInfoPropertyName = "GetVoicesResponseDataItemDiscriminatorStatus2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVoicesResponse))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetVoicesResponse2), TypeInfoPropertyName = "GetVoicesResponse22")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetVoicesResponseVoiceProcessing))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetVoicesResponseVoiceReady))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetVoicesResponseVoiceFailed))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetVoicesResponseDiscriminator))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetVoicesResponseDiscriminatorStatus), TypeInfoPropertyName = "GetVoicesResponseDiscriminatorStatus2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.PatchVoicesResponse), TypeInfoPropertyName = "PatchVoicesResponse2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.PatchVoicesResponseVoiceProcessing))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.PatchVoicesResponseVoiceReady))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.PatchVoicesResponseVoiceFailed))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.PatchVoicesResponseDiscriminator))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.PatchVoicesResponseDiscriminatorStatus), TypeInfoPropertyName = "PatchVoicesResponseDiscriminatorStatus2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVoicesPreviewResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateWorkflowsResponse))]
@@ -4719,8 +4552,6 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2VoiceDiscriminatorType?), TypeInfoPropertyName = "NullableCreateSpeechToSpeechRequestElevenMultilingualStsV2VoiceDiscriminatorType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateSpeechToSpeechRequestDiscriminatorModel?), TypeInfoPropertyName = "NullableCreateSpeechToSpeechRequestDiscriminatorModel2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToSpeechRequest?), TypeInfoPropertyName = "NullableCreateTextToSpeechRequest2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.Voice4?), TypeInfoPropertyName = "NullableVoice42")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToSpeechRequestSeedAudioVoiceSeedPresetVoicePresetId?), TypeInfoPropertyName = "NullableCreateTextToSpeechRequestSeedAudioVoiceSeedPresetVoicePresetId2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToSpeechRequestSeedAudioVoiceDiscriminatorType?), TypeInfoPropertyName = "NullableCreateTextToSpeechRequestSeedAudioVoiceDiscriminatorType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToSpeechRequestSeedAudioOutputFormat?), TypeInfoPropertyName = "NullableCreateTextToSpeechRequestSeedAudioOutputFormat2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToSpeechRequestElevenMultilingualV2VoiceRunwayPresetVoicePresetId?), TypeInfoPropertyName = "NullableCreateTextToSpeechRequestElevenMultilingualV2VoiceRunwayPresetVoicePresetId2")]
@@ -4744,7 +4575,7 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateImageRequestInputResolution?), TypeInfoPropertyName = "NullableCreateGenerateImageRequestInputResolution2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateImageRequestInputContentModerationPublicFigureThreshold?), TypeInfoPropertyName = "NullableCreateGenerateImageRequestInputContentModerationPublicFigureThreshold2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateAudioRequestInputType?), TypeInfoPropertyName = "NullableCreateGenerateAudioRequestInputType2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.Voice5?), TypeInfoPropertyName = "NullableVoice52")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.Voice4?), TypeInfoPropertyName = "NullableVoice42")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateAudioRequestInputVoiceAudioPresetVoicePresetId?), TypeInfoPropertyName = "NullableCreateGenerateAudioRequestInputVoiceAudioPresetVoicePresetId2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateAudioRequestInputVoiceDiscriminatorType?), TypeInfoPropertyName = "NullableCreateGenerateAudioRequestInputVoiceDiscriminatorType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.DateTime?))]
@@ -4781,24 +4612,24 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetDocumentsSort?), TypeInfoPropertyName = "NullableGetDocumentsSort2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetDocumentsOrder?), TypeInfoPropertyName = "NullableGetDocumentsOrder2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.DataItem?), TypeInfoPropertyName = "NullableDataItem2_3")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.Voice6?), TypeInfoPropertyName = "NullableVoice62")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.Voice5?), TypeInfoPropertyName = "NullableVoice52")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetId?), TypeInfoPropertyName = "NullableGetAvatarsResponseDataItemAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetId2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceDiscriminatorType?), TypeInfoPropertyName = "NullableGetAvatarsResponseDataItemAvatarProcessingVoiceDiscriminatorType2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.Voice7?), TypeInfoPropertyName = "NullableVoice72")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.Voice6?), TypeInfoPropertyName = "NullableVoice62")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetAvatarsResponseDataItemAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetId?), TypeInfoPropertyName = "NullableGetAvatarsResponseDataItemAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetId2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetAvatarsResponseDataItemAvatarReadyVoiceDiscriminatorType?), TypeInfoPropertyName = "NullableGetAvatarsResponseDataItemAvatarReadyVoiceDiscriminatorType2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.Voice8?), TypeInfoPropertyName = "NullableVoice82")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.Voice7?), TypeInfoPropertyName = "NullableVoice72")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetAvatarsResponseDataItemAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetId?), TypeInfoPropertyName = "NullableGetAvatarsResponseDataItemAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetId2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetAvatarsResponseDataItemAvatarFailedVoiceDiscriminatorType?), TypeInfoPropertyName = "NullableGetAvatarsResponseDataItemAvatarFailedVoiceDiscriminatorType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetAvatarsResponseDataItemDiscriminatorStatus?), TypeInfoPropertyName = "NullableGetAvatarsResponseDataItemDiscriminatorStatus2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateAvatarsResponse?), TypeInfoPropertyName = "NullableCreateAvatarsResponse2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.Voice9?), TypeInfoPropertyName = "NullableVoice92")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.Voice8?), TypeInfoPropertyName = "NullableVoice82")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetId?), TypeInfoPropertyName = "NullableCreateAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetId2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateAvatarsResponseAvatarProcessingVoiceDiscriminatorType?), TypeInfoPropertyName = "NullableCreateAvatarsResponseAvatarProcessingVoiceDiscriminatorType2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.Voice10?), TypeInfoPropertyName = "NullableVoice102")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.Voice9?), TypeInfoPropertyName = "NullableVoice92")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetId?), TypeInfoPropertyName = "NullableCreateAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetId2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateAvatarsResponseAvatarReadyVoiceDiscriminatorType?), TypeInfoPropertyName = "NullableCreateAvatarsResponseAvatarReadyVoiceDiscriminatorType2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.Voice11?), TypeInfoPropertyName = "NullableVoice112")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.Voice10?), TypeInfoPropertyName = "NullableVoice102")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetId?), TypeInfoPropertyName = "NullableCreateAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetId2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateAvatarsResponseAvatarFailedVoiceDiscriminatorType?), TypeInfoPropertyName = "NullableCreateAvatarsResponseAvatarFailedVoiceDiscriminatorType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateAvatarsResponseDiscriminatorStatus?), TypeInfoPropertyName = "NullableCreateAvatarsResponseDiscriminatorStatus2")]
@@ -4817,24 +4648,24 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetAvatarConversationsResponseVariant3ToolType?), TypeInfoPropertyName = "NullableGetAvatarConversationsResponseVariant3ToolType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetAvatarConversationsResponseDiscriminatorStatus?), TypeInfoPropertyName = "NullableGetAvatarConversationsResponseDiscriminatorStatus2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetAvatarsResponse2?), TypeInfoPropertyName = "NullableGetAvatarsResponse22")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.Voice12?), TypeInfoPropertyName = "NullableVoice122")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.Voice11?), TypeInfoPropertyName = "NullableVoice112")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetId?), TypeInfoPropertyName = "NullableGetAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetId2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetAvatarsResponseAvatarProcessingVoiceDiscriminatorType?), TypeInfoPropertyName = "NullableGetAvatarsResponseAvatarProcessingVoiceDiscriminatorType2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.Voice13?), TypeInfoPropertyName = "NullableVoice132")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.Voice12?), TypeInfoPropertyName = "NullableVoice122")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetId?), TypeInfoPropertyName = "NullableGetAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetId2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetAvatarsResponseAvatarReadyVoiceDiscriminatorType?), TypeInfoPropertyName = "NullableGetAvatarsResponseAvatarReadyVoiceDiscriminatorType2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.Voice14?), TypeInfoPropertyName = "NullableVoice142")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.Voice13?), TypeInfoPropertyName = "NullableVoice132")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetId?), TypeInfoPropertyName = "NullableGetAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetId2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetAvatarsResponseAvatarFailedVoiceDiscriminatorType?), TypeInfoPropertyName = "NullableGetAvatarsResponseAvatarFailedVoiceDiscriminatorType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetAvatarsResponseDiscriminatorStatus?), TypeInfoPropertyName = "NullableGetAvatarsResponseDiscriminatorStatus2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.PatchAvatarsResponse?), TypeInfoPropertyName = "NullablePatchAvatarsResponse2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.Voice15?), TypeInfoPropertyName = "NullableVoice152")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.Voice14?), TypeInfoPropertyName = "NullableVoice142")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.PatchAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetId?), TypeInfoPropertyName = "NullablePatchAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetId2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.PatchAvatarsResponseAvatarProcessingVoiceDiscriminatorType?), TypeInfoPropertyName = "NullablePatchAvatarsResponseAvatarProcessingVoiceDiscriminatorType2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.Voice16?), TypeInfoPropertyName = "NullableVoice162")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.Voice15?), TypeInfoPropertyName = "NullableVoice152")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.PatchAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetId?), TypeInfoPropertyName = "NullablePatchAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetId2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.PatchAvatarsResponseAvatarReadyVoiceDiscriminatorType?), TypeInfoPropertyName = "NullablePatchAvatarsResponseAvatarReadyVoiceDiscriminatorType2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.Voice17?), TypeInfoPropertyName = "NullableVoice172")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.Voice16?), TypeInfoPropertyName = "NullableVoice162")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.PatchAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetId?), TypeInfoPropertyName = "NullablePatchAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetId2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.PatchAvatarsResponseAvatarFailedVoiceDiscriminatorType?), TypeInfoPropertyName = "NullablePatchAvatarsResponseAvatarFailedVoiceDiscriminatorType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.PatchAvatarsResponseDiscriminatorStatus?), TypeInfoPropertyName = "NullablePatchAvatarsResponseDiscriminatorStatus2")]
@@ -4846,28 +4677,17 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetTasksResponse?), TypeInfoPropertyName = "NullableGetTasksResponse2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetTasksResponseDiscriminatorStatus?), TypeInfoPropertyName = "NullableGetTasksResponseDiscriminatorStatus2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string, double?>?), TypeInfoPropertyName = "NullableAnyOfStringDouble2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateVideoResponse?), TypeInfoPropertyName = "NullableCreateGenerateVideoResponse2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateVideoResponseRoutedVideoTaskCreatedRoutingResolvedSettingsOptimizeFor?), TypeInfoPropertyName = "NullableCreateGenerateVideoResponseRoutedVideoTaskCreatedRoutingResolvedSettingsOptimizeFor2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateVideoResponseRoutedVideoDryRunRoutingResolvedSettingsOptimizeFor?), TypeInfoPropertyName = "NullableCreateGenerateVideoResponseRoutedVideoDryRunRoutingResolvedSettingsOptimizeFor2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateVideoResponseDiscriminatorDryRun?), TypeInfoPropertyName = "NullableCreateGenerateVideoResponseDiscriminatorDryRun2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateVideoResponseRoutingResolvedSettingsOptimizeFor?), TypeInfoPropertyName = "NullableCreateGenerateVideoResponseRoutingResolvedSettingsOptimizeFor2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<global::Runway.CreateGenerateVideoResponseVariant1, global::Runway.CreateGenerateVideoResponseVariant2>?), TypeInfoPropertyName = "NullableAnyOfCreateGenerateVideoResponseVariant1CreateGenerateVideoResponseVariant22")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateVideoResponseVariant1PipelineItemFilter?), TypeInfoPropertyName = "NullableCreateGenerateVideoResponseVariant1PipelineItemFilter2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateVideoResponseVariant1EmptiedByItem?), TypeInfoPropertyName = "NullableCreateGenerateVideoResponseVariant1EmptiedByItem2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateImageResponse?), TypeInfoPropertyName = "NullableCreateGenerateImageResponse2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateImageResponseRoutedImageTaskCreatedRoutingResolvedSettingsOptimizeFor?), TypeInfoPropertyName = "NullableCreateGenerateImageResponseRoutedImageTaskCreatedRoutingResolvedSettingsOptimizeFor2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateImageResponseRoutedImageDryRunRoutingResolvedSettingsOptimizeFor?), TypeInfoPropertyName = "NullableCreateGenerateImageResponseRoutedImageDryRunRoutingResolvedSettingsOptimizeFor2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateImageResponseDiscriminatorDryRun?), TypeInfoPropertyName = "NullableCreateGenerateImageResponseDiscriminatorDryRun2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateImageResponseRoutingResolvedSettingsOptimizeFor?), TypeInfoPropertyName = "NullableCreateGenerateImageResponseRoutingResolvedSettingsOptimizeFor2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<global::Runway.CreateGenerateImageResponseVariant1, global::Runway.CreateGenerateImageResponseVariant2>?), TypeInfoPropertyName = "NullableAnyOfCreateGenerateImageResponseVariant1CreateGenerateImageResponseVariant22")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateImageResponseVariant1PipelineItemFilter?), TypeInfoPropertyName = "NullableCreateGenerateImageResponseVariant1PipelineItemFilter2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateImageResponseVariant1EmptiedByItem?), TypeInfoPropertyName = "NullableCreateGenerateImageResponseVariant1EmptiedByItem2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateAudioResponse?), TypeInfoPropertyName = "NullableCreateGenerateAudioResponse2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateAudioResponseRoutedAudioTaskCreatedRoutingResolvedSettingsOptimizeFor?), TypeInfoPropertyName = "NullableCreateGenerateAudioResponseRoutedAudioTaskCreatedRoutingResolvedSettingsOptimizeFor2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateAudioResponseRoutedAudioTaskCreatedRoutingResolvedInputType?), TypeInfoPropertyName = "NullableCreateGenerateAudioResponseRoutedAudioTaskCreatedRoutingResolvedInputType2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateAudioResponseRoutedAudioTaskCreatedRoutingResolvedInputVoice?), TypeInfoPropertyName = "NullableCreateGenerateAudioResponseRoutedAudioTaskCreatedRoutingResolvedInputVoice2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateAudioResponseRoutedAudioDryRunRoutingResolvedSettingsOptimizeFor?), TypeInfoPropertyName = "NullableCreateGenerateAudioResponseRoutedAudioDryRunRoutingResolvedSettingsOptimizeFor2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateAudioResponseRoutedAudioDryRunRoutingResolvedInputType?), TypeInfoPropertyName = "NullableCreateGenerateAudioResponseRoutedAudioDryRunRoutingResolvedInputType2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateAudioResponseRoutedAudioDryRunRoutingResolvedInputVoice?), TypeInfoPropertyName = "NullableCreateGenerateAudioResponseRoutedAudioDryRunRoutingResolvedInputVoice2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateAudioResponseDiscriminatorDryRun?), TypeInfoPropertyName = "NullableCreateGenerateAudioResponseDiscriminatorDryRun2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateAudioResponseRoutingResolvedSettingsOptimizeFor?), TypeInfoPropertyName = "NullableCreateGenerateAudioResponseRoutingResolvedSettingsOptimizeFor2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateAudioResponseRoutingResolvedInputType?), TypeInfoPropertyName = "NullableCreateGenerateAudioResponseRoutingResolvedInputType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateAudioResponseRoutingResolvedInputVoice?), TypeInfoPropertyName = "NullableCreateGenerateAudioResponseRoutingResolvedInputVoice2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<global::Runway.CreateGenerateAudioResponseVariant1, global::Runway.CreateGenerateAudioResponseVariant2>?), TypeInfoPropertyName = "NullableAnyOfCreateGenerateAudioResponseVariant1CreateGenerateAudioResponseVariant22")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateAudioResponseVariant1PipelineItemFilter?), TypeInfoPropertyName = "NullableCreateGenerateAudioResponseVariant1PipelineItemFilter2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateAudioResponseVariant1EmptiedByItem?), TypeInfoPropertyName = "NullableCreateGenerateAudioResponseVariant1EmptiedByItem2")]
@@ -5015,1177 +4835,6 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateGenerateVideoResponseVariant1PipelineItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateGenerateVideoResponseVariant1EmptiedByItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateGenerateImageResponseVariant1PipelineItem>))]
-    internal sealed partial class SourceGenerationContextChunk2 : global::System.Text.Json.Serialization.JsonSerializerContext
-    {
-    }
-
-    /// <summary>
-    /// 
-    /// </summary>
-    [global::System.Text.Json.Serialization.JsonSourceGenerationOptions(
-        DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull,
-        Converters = new global::System.Type[]
-        {
-            typeof(global::Runway.JsonConverters.CreateAvatarsRequestVoiceRunwayLivePresetVoicePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsRequestVoiceRunwayLivePresetVoicePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsRequestVoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsRequestVoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsRequestImageProcessingJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsRequestImageProcessingNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsRequestVoiceRunwayLivePresetVoicePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsRequestVoiceRunwayLivePresetVoicePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsRequestVoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsRequestVoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsRequestImageProcessingJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsRequestImageProcessingNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarVideosRequestAvatarRunwayPresetAvatarPresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarVideosRequestAvatarRunwayPresetAvatarPresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarVideosRequestAvatarDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarVideosRequestAvatarDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarVideosRequestSpeechTextInputVoiceRunwayPresetVoicePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarVideosRequestSpeechTextInputVoiceRunwayPresetVoicePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarVideosRequestSpeechTextInputVoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarVideosRequestSpeechTextInputVoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarVideosRequestSpeechDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarVideosRequestSpeechDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRealtimeSessionsRequestAvatarRunwayPresetAvatarPresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRealtimeSessionsRequestAvatarRunwayPresetAvatarPresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRealtimeSessionsRequestAvatarDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRealtimeSessionsRequestAvatarDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolClientEventToolParameterArrayParameterItemsTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolClientEventToolParameterArrayParameterItemsTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolClientEventToolParameterDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolClientEventToolParameterDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolBackendRPCToolParameterArrayParameterItemsTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolBackendRPCToolParameterArrayParameterItemsTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolBackendRPCToolParameterDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolBackendRPCToolParameterDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRealtimeSessionsRequestIntegrationDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRealtimeSessionsRequestIntegrationDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestGen45RatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestGen45RatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestGen45ContentModerationPublicFigureThresholdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestGen45ContentModerationPublicFigureThresholdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestGen45OutputFormatJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestGen45OutputFormatNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestGen45ProresProfileJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestGen45ProresProfileNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestGen4TurboRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestGen4TurboRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestGen4TurboContentModerationPublicFigureThresholdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestGen4TurboContentModerationPublicFigureThresholdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestVeo31PromptImagePromptImagePositionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestVeo31PromptImagePromptImagePositionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestVeo31RatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestVeo31RatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestVeo31FastPromptImagePromptImagePositionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestVeo31FastPromptImagePromptImagePositionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestVeo31FastRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestVeo31FastRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestHailuo3ResolutionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestHailuo3ResolutionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestHailuo3RatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestHailuo3RatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestHappyhorse10ResolutionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestHappyhorse10ResolutionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2PromptImagePromptImagePositionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2PromptImagePromptImagePositionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2RatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2RatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2FastPromptImagePromptImagePositionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2FastPromptImagePromptImagePositionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2FastRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2FastRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2MiniPromptImagePromptImagePositionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2MiniPromptImagePromptImagePositionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2MiniRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2MiniRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestGeminiOmniFlashRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestGeminiOmniFlashRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestSeedance25PromptImagePromptImagePositionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestSeedance25PromptImagePromptImagePositionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestSeedance25RatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestSeedance25RatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestDiscriminatorModelJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestDiscriminatorModelNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestGen45RatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestGen45RatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestGen45ContentModerationPublicFigureThresholdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestGen45ContentModerationPublicFigureThresholdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestGen45OutputFormatJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestGen45OutputFormatNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestGen45ProresProfileJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestGen45ProresProfileNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestVeo31RatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestVeo31RatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestVeo31FastRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestVeo31FastRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestHailuo3ResolutionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestHailuo3ResolutionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestHailuo3RatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestHailuo3RatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestHappyhorse10RatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestHappyhorse10RatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestSeedance2RatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestSeedance2RatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestSeedance2FastRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestSeedance2FastRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestSeedance2MiniRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestSeedance2MiniRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestGeminiOmniFlashRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestGeminiOmniFlashRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestSeedance25RatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestSeedance25RatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestDiscriminatorModelJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestDiscriminatorModelNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestVariant1TargetAspectRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestVariant1TargetAspectRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestVariant1ContentModerationPublicFigureThresholdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestVariant1ContentModerationPublicFigureThresholdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestVariant1OutputFormatJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestVariant1OutputFormatNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestVariant1ProresProfileJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestVariant1ProresProfileNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestHailuo3ResolutionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestHailuo3ResolutionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestHailuo3RatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestHailuo3RatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance2RatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance2RatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance2FastRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance2FastRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance2MiniRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance2MiniRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance25ModeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance25ModeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance25RatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance25RatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestDiscriminatorModelJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestDiscriminatorModelNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGen4ImageTurboRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGen4ImageTurboRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGen4ImageTurboContentModerationPublicFigureThresholdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGen4ImageTurboContentModerationPublicFigureThresholdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGen4ImageRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGen4ImageRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGen4ImageContentModerationPublicFigureThresholdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGen4ImageContentModerationPublicFigureThresholdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGptImage2RatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGptImage2RatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGptImage2QualityJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGptImage2QualityNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGptImage2BackgroundJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGptImage2BackgroundNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGeminiImage3ProRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGeminiImage3ProRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGeminiImage3ProReferenceImageSubjectJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGeminiImage3ProReferenceImageSubjectNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGeminiImage31FlashRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGeminiImage31FlashRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGeminiImage31FlashReferenceImageSubjectJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGeminiImage31FlashReferenceImageSubjectNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestSeedream5ProRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestSeedream5ProRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestSeedream5ProOutputFormatJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestSeedream5ProOutputFormatNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestSeedream5LiteRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestSeedream5LiteRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestSeedream5LiteOutputFormatJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestSeedream5LiteOutputFormatNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGemini25FlashRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGemini25FlashRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestDiscriminatorModelJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestDiscriminatorModelNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageUpscaleRequestMagnificPrecisionUpscalerV2FlavorJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageUpscaleRequestMagnificPrecisionUpscalerV2FlavorNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageUpscaleRequestDiscriminatorModelJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageUpscaleRequestDiscriminatorModelNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoUpscaleRequestMagnificVideoUpscalerCreativeResolutionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoUpscaleRequestMagnificVideoUpscalerCreativeResolutionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoUpscaleRequestMagnificVideoUpscalerCreativeFlavorJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoUpscaleRequestMagnificVideoUpscalerCreativeFlavorNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoUpscaleRequestDiscriminatorModelJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoUpscaleRequestDiscriminatorModelNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateCharacterPerformanceRequestActTwoCharacterDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateCharacterPerformanceRequestActTwoCharacterDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateCharacterPerformanceRequestActTwoReferenceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateCharacterPerformanceRequestActTwoReferenceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateCharacterPerformanceRequestActTwoRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateCharacterPerformanceRequestActTwoRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateCharacterPerformanceRequestActTwoContentModerationPublicFigureThresholdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateCharacterPerformanceRequestActTwoContentModerationPublicFigureThresholdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateCharacterPerformanceRequestDiscriminatorModelJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateCharacterPerformanceRequestDiscriminatorModelNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateSoundEffectRequestSeedAudioOutputFormatJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateSoundEffectRequestSeedAudioOutputFormatNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateSoundEffectRequestDiscriminatorModelJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateSoundEffectRequestDiscriminatorModelNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateSpeechToSpeechRequestElevenMultilingualStsV2VoiceRunwayPresetVoicePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateSpeechToSpeechRequestElevenMultilingualStsV2VoiceRunwayPresetVoicePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateSpeechToSpeechRequestElevenMultilingualStsV2VoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateSpeechToSpeechRequestElevenMultilingualStsV2VoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateSpeechToSpeechRequestDiscriminatorModelJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateSpeechToSpeechRequestDiscriminatorModelNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestSeedAudioVoiceSeedPresetVoicePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestSeedAudioVoiceSeedPresetVoicePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestSeedAudioVoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestSeedAudioVoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestSeedAudioOutputFormatJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestSeedAudioOutputFormatNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestElevenMultilingualV2VoiceRunwayPresetVoicePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestElevenMultilingualV2VoiceRunwayPresetVoicePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestElevenMultilingualV2VoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestElevenMultilingualV2VoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestElevenV3VoiceRunwayPresetVoicePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestElevenV3VoiceRunwayPresetVoicePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestElevenV3VoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestElevenV3VoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestElevenV3ApplyTextNormalizationJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestElevenV3ApplyTextNormalizationNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestDiscriminatorModelJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestDiscriminatorModelNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVoiceDubbingRequestElevenVoiceDubbingTargetLangJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVoiceDubbingRequestElevenVoiceDubbingTargetLangNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVoiceDubbingRequestDiscriminatorModelJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVoiceDubbingRequestDiscriminatorModelNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVoiceIsolationRequestDiscriminatorModelJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVoiceIsolationRequestDiscriminatorModelNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoRequestInputReferenceImageRoleJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoRequestInputReferenceImageRoleNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoRequestInputReferenceVideoRoleJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoRequestInputReferenceVideoRoleNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoRequestInputAspectRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoRequestInputAspectRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoRequestInputResolutionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoRequestInputResolutionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoRequestInputContentModerationPublicFigureThresholdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoRequestInputContentModerationPublicFigureThresholdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateImageRequestInputAspectRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateImageRequestInputAspectRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateImageRequestInputResolutionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateImageRequestInputResolutionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateImageRequestInputContentModerationPublicFigureThresholdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateImageRequestInputContentModerationPublicFigureThresholdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioRequestInputTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioRequestInputTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioRequestInputVoiceAudioPresetVoicePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioRequestInputVoiceAudioPresetVoicePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioRequestInputVoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioRequestInputVoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateUploadsRequestTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateUploadsRequestTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesAdLocalizationRequestVersionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesAdLocalizationRequestVersionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesAdLocalizationRequestTargetLanguageJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesAdLocalizationRequestTargetLanguageNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesMarketingStockImageRequestVersionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesMarketingStockImageRequestVersionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesMarketingStockImageRequestQualityJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesMarketingStockImageRequestQualityNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesProductAdRequestVersionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesProductAdRequestVersionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesProductAdRequestRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesProductAdRequestRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesProductCampaignImageRequestVersionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesProductCampaignImageRequestVersionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesProductSwapRequestVersionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesProductSwapRequestVersionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesProductSwapRequestNewProductImageViewJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesProductSwapRequestNewProductImageViewNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesProductSwapRequestResolutionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesProductSwapRequestResolutionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesMultiShotVideoRequestVariant1VersionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesMultiShotVideoRequestVariant1VersionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesMultiShotVideoRequestVariant1RatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesMultiShotVideoRequestVariant1RatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesMultiShotVideoRequestVariant2VersionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesMultiShotVideoRequestVariant2VersionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesMultiShotVideoRequestVariant2RatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesMultiShotVideoRequestVariant2RatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesMultiShotVideoRequestDiscriminatorModeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesMultiShotVideoRequestDiscriminatorModeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesProductUgcRequestVersionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesProductUgcRequestVersionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesProductUgcRequestRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesProductUgcRequestRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRoutersRequestSettingsModelsModeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRoutersRequestSettingsModelsModeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRoutersRequestSettingsOptimizeForJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRoutersRequestSettingsOptimizeForNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchRoutersRequestSettingsModelsModeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchRoutersRequestSettingsModelsModeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchRoutersRequestSettingsOptimizeForJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchRoutersRequestSettingsOptimizeForNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVoicesRequestFromVoiceFromTextModelJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVoicesRequestFromVoiceFromTextModelNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVoicesRequestFromDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVoicesRequestFromDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVoicesPreviewRequestModelJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVoicesPreviewRequestModelNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateWorkflowsRequestNodeOutputsDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateWorkflowsRequestNodeOutputsDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetDocumentsSortJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetDocumentsSortNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetDocumentsOrderJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetDocumentsOrderNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarProcessingVoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarProcessingVoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarReadyVoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarReadyVoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarFailedVoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarFailedVoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseDataItemDiscriminatorStatusJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseDataItemDiscriminatorStatusNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsResponseAvatarProcessingVoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsResponseAvatarProcessingVoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsResponseAvatarReadyVoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsResponseAvatarReadyVoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsResponseAvatarFailedVoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsResponseAvatarFailedVoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsResponseDiscriminatorStatusJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsResponseDiscriminatorStatusNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseDataItemStatusJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseDataItemStatusNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseDataItemAvatarVariant1DiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseDataItemAvatarVariant1DiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant1AvatarVariant1DiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant1AvatarVariant1DiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant1TranscriptItemRoleJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant1TranscriptItemRoleNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant1ToolTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant1ToolTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant2AvatarVariant1DiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant2AvatarVariant1DiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant2TranscriptItemRoleJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant2TranscriptItemRoleNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant2ToolTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant2ToolTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant3AvatarVariant1DiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant3AvatarVariant1DiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant3TranscriptItemRoleJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant3TranscriptItemRoleNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant3ToolTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant3ToolTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseDiscriminatorStatusJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseDiscriminatorStatusNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseAvatarProcessingVoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseAvatarProcessingVoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseAvatarReadyVoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseAvatarReadyVoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseAvatarFailedVoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseAvatarFailedVoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseDiscriminatorStatusJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseDiscriminatorStatusNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsResponseAvatarProcessingVoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsResponseAvatarProcessingVoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsResponseAvatarReadyVoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsResponseAvatarReadyVoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsResponseAvatarFailedVoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsResponseAvatarFailedVoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsResponseDiscriminatorStatusJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsResponseDiscriminatorStatusNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateDocumentsResponseTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateDocumentsResponseTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetDocumentsResponseDataItemTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetDocumentsResponseDataItemTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetDocumentsResponseTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetDocumentsResponseTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRealtimeSessionsResponseDiscriminatorStatusJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRealtimeSessionsResponseDiscriminatorStatusNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetTasksResponseDiscriminatorStatusJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetTasksResponseDiscriminatorStatusNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoResponseRoutedVideoTaskCreatedRoutingResolvedSettingsOptimizeForJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoResponseRoutedVideoTaskCreatedRoutingResolvedSettingsOptimizeForNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoResponseRoutedVideoDryRunRoutingResolvedSettingsOptimizeForJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoResponseRoutedVideoDryRunRoutingResolvedSettingsOptimizeForNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoResponseDiscriminatorDryRunJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoResponseDiscriminatorDryRunNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoResponseVariant1PipelineItemFilterJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoResponseVariant1PipelineItemFilterNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoResponseVariant1EmptiedByItemJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoResponseVariant1EmptiedByItemNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateImageResponseRoutedImageTaskCreatedRoutingResolvedSettingsOptimizeForJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateImageResponseRoutedImageTaskCreatedRoutingResolvedSettingsOptimizeForNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateImageResponseRoutedImageDryRunRoutingResolvedSettingsOptimizeForJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateImageResponseRoutedImageDryRunRoutingResolvedSettingsOptimizeForNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateImageResponseDiscriminatorDryRunJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateImageResponseDiscriminatorDryRunNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateImageResponseVariant1PipelineItemFilterJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateImageResponseVariant1PipelineItemFilterNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateImageResponseVariant1EmptiedByItemJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateImageResponseVariant1EmptiedByItemNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutedAudioTaskCreatedRoutingResolvedSettingsOptimizeForJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutedAudioTaskCreatedRoutingResolvedSettingsOptimizeForNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutedAudioTaskCreatedRoutingResolvedInputTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutedAudioTaskCreatedRoutingResolvedInputTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutedAudioTaskCreatedRoutingResolvedInputVoiceJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutedAudioTaskCreatedRoutingResolvedInputVoiceNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutedAudioDryRunRoutingResolvedSettingsOptimizeForJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutedAudioDryRunRoutingResolvedSettingsOptimizeForNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutedAudioDryRunRoutingResolvedInputTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutedAudioDryRunRoutingResolvedInputTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutedAudioDryRunRoutingResolvedInputVoiceJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutedAudioDryRunRoutingResolvedInputVoiceNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseDiscriminatorDryRunJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseDiscriminatorDryRunNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseVariant1PipelineItemFilterJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseVariant1PipelineItemFilterNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseVariant1EmptiedByItemJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseVariant1EmptiedByItemNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetOrganizationWebappUsageResponseDataItemTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetOrganizationWebappUsageResponseDataItemTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetOrganizationWebappAuditLogsResponseDataItemActionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetOrganizationWebappAuditLogsResponseDataItemActionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetOrganizationWebappAuditLogsResponseActionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetOrganizationWebappAuditLogsResponseActionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateOrganizationUsageResponseResultUsedCreditModelJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateOrganizationUsageResponseResultUsedCreditModelNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateOrganizationUsageResponseModelJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateOrganizationUsageResponseModelNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersResponseDataItemSettingsModelsModeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersResponseDataItemSettingsModelsModeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersResponseDataItemSettingsOptimizeForJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersResponseDataItemSettingsOptimizeForNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRoutersResponseSettingsModelsModeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRoutersResponseSettingsModelsModeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRoutersResponseSettingsOptimizeForJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRoutersResponseSettingsOptimizeForNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersResponseSettingsModelsModeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersResponseSettingsModelsModeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersResponseSettingsOptimizeForJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersResponseSettingsOptimizeForNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchRoutersResponseSettingsModelsModeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchRoutersResponseSettingsModelsModeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchRoutersResponseSettingsOptimizeForJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchRoutersResponseSettingsOptimizeForNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemStatusJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemStatusNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemReasonCode2JsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemReasonCode2NullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemPipelineItemVariant1FilterJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemPipelineItemVariant1FilterNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemPipelineItemVariant3OutcomeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemPipelineItemVariant3OutcomeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemPipelineItemDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemPipelineItemDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemEmptiedByItemJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemEmptiedByItemNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetVoicesResponseDataItemDiscriminatorStatusJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetVoicesResponseDataItemDiscriminatorStatusNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetVoicesResponseDiscriminatorStatusJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetVoicesResponseDiscriminatorStatusNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchVoicesResponseDiscriminatorStatusJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchVoicesResponseDiscriminatorStatusNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetWorkflowInvocationsResponseDiscriminatorStatusJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetWorkflowInvocationsResponseDiscriminatorStatusNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.VoiceJsonConverter),
-
-            typeof(global::Runway.JsonConverters.Voice2JsonConverter),
-
-            typeof(global::Runway.JsonConverters.AvatarJsonConverter),
-
-            typeof(global::Runway.JsonConverters.SpeechJsonConverter),
-
-            typeof(global::Runway.JsonConverters.Voice3JsonConverter),
-
-            typeof(global::Runway.JsonConverters.Avatar2JsonConverter),
-
-            typeof(global::Runway.JsonConverters.ToolsItemJsonConverter),
-
-            typeof(global::Runway.JsonConverters.ParametersItemJsonConverter),
-
-            typeof(global::Runway.JsonConverters.ParametersItem2JsonConverter),
-
-            typeof(global::Runway.JsonConverters.IntegrationJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageUpscaleRequestJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoUpscaleRequestJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateCharacterPerformanceRequestJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CharacterJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateSoundEffectRequestJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateSpeechToSpeechRequestJsonConverter),
-
-            typeof(global::Runway.JsonConverters.MediaJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestJsonConverter),
-
-            typeof(global::Runway.JsonConverters.Voice4JsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVoiceDubbingRequestJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVoiceIsolationRequestJsonConverter),
-
-            typeof(global::Runway.JsonConverters.Voice5JsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesMultiShotVideoRequestJsonConverter),
-
-            typeof(global::Runway.JsonConverters.FromJsonConverter),
-
-            typeof(global::Runway.JsonConverters.NodeOutputsJsonConverter),
-
-            typeof(global::Runway.JsonConverters.DataItemJsonConverter),
-
-            typeof(global::Runway.JsonConverters.Voice6JsonConverter),
-
-            typeof(global::Runway.JsonConverters.Voice7JsonConverter),
-
-            typeof(global::Runway.JsonConverters.Voice8JsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsResponseJsonConverter),
-
-            typeof(global::Runway.JsonConverters.Voice9JsonConverter),
-
-            typeof(global::Runway.JsonConverters.Voice10JsonConverter),
-
-            typeof(global::Runway.JsonConverters.Voice11JsonConverter),
-
-            typeof(global::Runway.JsonConverters.AvatarVariant1JsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponse2JsonConverter),
-
-            typeof(global::Runway.JsonConverters.AvatarVariant12JsonConverter),
-
-            typeof(global::Runway.JsonConverters.AvatarVariant13JsonConverter),
-
-            typeof(global::Runway.JsonConverters.AvatarVariant14JsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponse2JsonConverter),
-
-            typeof(global::Runway.JsonConverters.Voice12JsonConverter),
-
-            typeof(global::Runway.JsonConverters.Voice13JsonConverter),
-
-            typeof(global::Runway.JsonConverters.Voice14JsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsResponseJsonConverter),
-
-            typeof(global::Runway.JsonConverters.Voice15JsonConverter),
-
-            typeof(global::Runway.JsonConverters.Voice16JsonConverter),
-
-            typeof(global::Runway.JsonConverters.Voice17JsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRealtimeSessionsResponseJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetTasksResponseJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoResponseJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateImageResponseJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PipelineItemJsonConverter),
-
-            typeof(global::Runway.JsonConverters.DataItem2JsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetVoicesResponse2JsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchVoicesResponseJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetWorkflowInvocationsResponseJsonConverter),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestGen45PromptImagePromptImage>>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestGen4TurboPromptImagePromptImage>>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestVeo31PromptImagePromptImage>>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestVeo31FastPromptImagePromptImage>>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<object>>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestHappyhorse10PromptImagePromptImage>>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestSeedance2PromptImagePromptImage>>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestSeedance2FastPromptImagePromptImage>>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestSeedance2MiniPromptImagePromptImage>>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestGeminiOmniFlashPromptImagePromptImage>>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestSeedance25PromptImagePromptImage>>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<global::Runway.CreateVideoToVideoRequestVariant1KeyframeVariant1, global::Runway.CreateVideoToVideoRequestVariant1KeyframeVariant2>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<global::Runway.CreateGenerateVideoRequestInputKeyframeVariant1, global::Runway.CreateGenerateVideoRequestInputKeyframeVariant2>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?, bool?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<object, string, object>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<object, string, object>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<object, string, object>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<global::Runway.CreateGenerateVideoResponseVariant1, global::Runway.CreateGenerateVideoResponseVariant2>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<global::Runway.CreateGenerateImageResponseVariant1, global::Runway.CreateGenerateImageResponseVariant2>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<global::Runway.CreateGenerateAudioResponseVariant1, global::Runway.CreateGenerateAudioResponseVariant2>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.UnixTimestampJsonConverter),
-        })]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateGenerateImageResponseVariant1EmptiedByItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateGenerateAudioResponseVariant1PipelineItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateGenerateAudioResponseVariant1EmptiedByItem>))]
@@ -6211,7 +4860,7 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.GetWorkflowsResponseDataItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.GetWorkflowsResponseDataItemVersion>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.Dictionary<string, global::System.Collections.Generic.List<string>>))]
-    internal sealed partial class SourceGenerationContextChunk3 : global::System.Text.Json.Serialization.JsonSerializerContext
+    internal sealed partial class SourceGenerationContextChunk2 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }
     /// <summary>
@@ -6224,9 +4873,7 @@ namespace Runway
 
             SourceGenerationContextChunk1.Default,
 
-            SourceGenerationContextChunk2.Default,
-
-            SourceGenerationContextChunk3.Default
+            SourceGenerationContextChunk2.Default
             );
 
         private static readonly global::System.Text.Json.JsonSerializerOptions DefaultOptions = CreateDefaultOptions();
@@ -6461,8 +5108,6 @@ namespace Runway
             options.Converters.Add(new global::Runway.JsonConverters.CreateSpeechToSpeechRequestElevenMultilingualStsV2VoiceDiscriminatorTypeNullableJsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.CreateSpeechToSpeechRequestDiscriminatorModelJsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.CreateSpeechToSpeechRequestDiscriminatorModelNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToSpeechRequestSeedAudioVoiceSeedPresetVoicePresetIdJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToSpeechRequestSeedAudioVoiceSeedPresetVoicePresetIdNullableJsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.CreateTextToSpeechRequestSeedAudioVoiceDiscriminatorTypeJsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.CreateTextToSpeechRequestSeedAudioVoiceDiscriminatorTypeNullableJsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.CreateTextToSpeechRequestSeedAudioOutputFormatJsonConverter());
@@ -6653,40 +5298,24 @@ namespace Runway
             options.Converters.Add(new global::Runway.JsonConverters.GetRealtimeSessionsResponseDiscriminatorStatusNullableJsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.GetTasksResponseDiscriminatorStatusJsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.GetTasksResponseDiscriminatorStatusNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateVideoResponseRoutedVideoTaskCreatedRoutingResolvedSettingsOptimizeForJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateVideoResponseRoutedVideoTaskCreatedRoutingResolvedSettingsOptimizeForNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateVideoResponseRoutedVideoDryRunRoutingResolvedSettingsOptimizeForJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateVideoResponseRoutedVideoDryRunRoutingResolvedSettingsOptimizeForNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateVideoResponseDiscriminatorDryRunJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateVideoResponseDiscriminatorDryRunNullableJsonConverter());
+            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateVideoResponseRoutingResolvedSettingsOptimizeForJsonConverter());
+            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateVideoResponseRoutingResolvedSettingsOptimizeForNullableJsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateVideoResponseVariant1PipelineItemFilterJsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateVideoResponseVariant1PipelineItemFilterNullableJsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateVideoResponseVariant1EmptiedByItemJsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateVideoResponseVariant1EmptiedByItemNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateImageResponseRoutedImageTaskCreatedRoutingResolvedSettingsOptimizeForJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateImageResponseRoutedImageTaskCreatedRoutingResolvedSettingsOptimizeForNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateImageResponseRoutedImageDryRunRoutingResolvedSettingsOptimizeForJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateImageResponseRoutedImageDryRunRoutingResolvedSettingsOptimizeForNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateImageResponseDiscriminatorDryRunJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateImageResponseDiscriminatorDryRunNullableJsonConverter());
+            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateImageResponseRoutingResolvedSettingsOptimizeForJsonConverter());
+            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateImageResponseRoutingResolvedSettingsOptimizeForNullableJsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateImageResponseVariant1PipelineItemFilterJsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateImageResponseVariant1PipelineItemFilterNullableJsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateImageResponseVariant1EmptiedByItemJsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateImageResponseVariant1EmptiedByItemNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateAudioResponseRoutedAudioTaskCreatedRoutingResolvedSettingsOptimizeForJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateAudioResponseRoutedAudioTaskCreatedRoutingResolvedSettingsOptimizeForNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateAudioResponseRoutedAudioTaskCreatedRoutingResolvedInputTypeJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateAudioResponseRoutedAudioTaskCreatedRoutingResolvedInputTypeNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateAudioResponseRoutedAudioTaskCreatedRoutingResolvedInputVoiceJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateAudioResponseRoutedAudioTaskCreatedRoutingResolvedInputVoiceNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateAudioResponseRoutedAudioDryRunRoutingResolvedSettingsOptimizeForJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateAudioResponseRoutedAudioDryRunRoutingResolvedSettingsOptimizeForNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateAudioResponseRoutedAudioDryRunRoutingResolvedInputTypeJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateAudioResponseRoutedAudioDryRunRoutingResolvedInputTypeNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateAudioResponseRoutedAudioDryRunRoutingResolvedInputVoiceJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateAudioResponseRoutedAudioDryRunRoutingResolvedInputVoiceNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateAudioResponseDiscriminatorDryRunJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateAudioResponseDiscriminatorDryRunNullableJsonConverter());
+            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateAudioResponseRoutingResolvedSettingsOptimizeForJsonConverter());
+            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateAudioResponseRoutingResolvedSettingsOptimizeForNullableJsonConverter());
+            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateAudioResponseRoutingResolvedInputTypeJsonConverter());
+            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateAudioResponseRoutingResolvedInputTypeNullableJsonConverter());
+            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateAudioResponseRoutingResolvedInputVoiceJsonConverter());
+            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateAudioResponseRoutingResolvedInputVoiceNullableJsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateAudioResponseVariant1PipelineItemFilterJsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateAudioResponseVariant1PipelineItemFilterNullableJsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateAudioResponseVariant1EmptiedByItemJsonConverter());
@@ -6759,39 +5388,35 @@ namespace Runway
             options.Converters.Add(new global::Runway.JsonConverters.CreateSpeechToSpeechRequestJsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.MediaJsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.CreateTextToSpeechRequestJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.Voice4JsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.CreateVoiceDubbingRequestJsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.CreateVoiceIsolationRequestJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.Voice5JsonConverter());
+            options.Converters.Add(new global::Runway.JsonConverters.Voice4JsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.CreateRecipesMultiShotVideoRequestJsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.FromJsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.NodeOutputsJsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.DataItemJsonConverter());
+            options.Converters.Add(new global::Runway.JsonConverters.Voice5JsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.Voice6JsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.Voice7JsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.Voice8JsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.CreateAvatarsResponseJsonConverter());
+            options.Converters.Add(new global::Runway.JsonConverters.Voice8JsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.Voice9JsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.Voice10JsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.Voice11JsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.AvatarVariant1JsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.GetAvatarConversationsResponse2JsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.AvatarVariant12JsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.AvatarVariant13JsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.AvatarVariant14JsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.GetAvatarsResponse2JsonConverter());
+            options.Converters.Add(new global::Runway.JsonConverters.Voice11JsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.Voice12JsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.Voice13JsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.Voice14JsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.PatchAvatarsResponseJsonConverter());
+            options.Converters.Add(new global::Runway.JsonConverters.Voice14JsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.Voice15JsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.Voice16JsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.Voice17JsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.GetRealtimeSessionsResponseJsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.GetTasksResponseJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateVideoResponseJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateImageResponseJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateAudioResponseJsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.PipelineItemJsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.DataItem2JsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.GetVoicesResponse2JsonConverter());
