@@ -570,9 +570,6 @@ namespace Runway
         /// <param name="configId">
         /// The slug of a saved Model Router config to route this request with.
         /// </param>
-        /// <param name="dryRun">
-        /// When true, run the full routing pipeline and return the decision and estimated cost without generating. No task is created, nothing is billed, and no asset is produced.
-        /// </param>
         /// <param name="input">
         /// Model-agnostic image generation input. The router selects a model and maps these options to it.
         /// </param>
@@ -583,14 +580,12 @@ namespace Runway
             string configId,
             global::Runway.CreateGenerateImageRequestInput input,
             string xRunwayVersion = "2024-11-06",
-            bool? dryRun = default,
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Runway.CreateGenerateImageRequest
             {
                 ConfigId = configId,
-                DryRun = dryRun,
                 Input = input,
             };
 

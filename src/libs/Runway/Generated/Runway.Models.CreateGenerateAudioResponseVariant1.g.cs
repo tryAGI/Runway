@@ -4,7 +4,7 @@
 namespace Runway
 {
     /// <summary>
-    /// No model satisfies the config and request together. Returned identically for real and dry-run requests.
+    /// No model satisfies the config and request together. 
     /// </summary>
     public sealed partial class CreateGenerateAudioResponseVariant1
     {
