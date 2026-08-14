@@ -13,1121 +13,6 @@ namespace Runway
         DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull,
         Converters = new global::System.Type[]
         {
-            typeof(global::Runway.JsonConverters.CreateAvatarsRequestVoiceRunwayLivePresetVoicePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsRequestVoiceRunwayLivePresetVoicePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsRequestVoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsRequestVoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsRequestImageProcessingJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsRequestImageProcessingNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsRequestVoiceRunwayLivePresetVoicePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsRequestVoiceRunwayLivePresetVoicePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsRequestVoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsRequestVoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsRequestImageProcessingJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsRequestImageProcessingNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarVideosRequestAvatarRunwayPresetAvatarPresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarVideosRequestAvatarRunwayPresetAvatarPresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarVideosRequestAvatarDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarVideosRequestAvatarDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarVideosRequestSpeechTextInputVoiceRunwayPresetVoicePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarVideosRequestSpeechTextInputVoiceRunwayPresetVoicePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarVideosRequestSpeechTextInputVoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarVideosRequestSpeechTextInputVoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarVideosRequestSpeechDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarVideosRequestSpeechDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRealtimeSessionsRequestAvatarRunwayPresetAvatarPresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRealtimeSessionsRequestAvatarRunwayPresetAvatarPresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRealtimeSessionsRequestAvatarDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRealtimeSessionsRequestAvatarDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolClientEventToolParameterArrayParameterItemsTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolClientEventToolParameterArrayParameterItemsTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolClientEventToolParameterDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolClientEventToolParameterDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolBackendRPCToolParameterArrayParameterItemsTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolBackendRPCToolParameterArrayParameterItemsTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolBackendRPCToolParameterDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolBackendRPCToolParameterDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRealtimeSessionsRequestIntegrationDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRealtimeSessionsRequestIntegrationDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestGen45RatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestGen45RatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestGen45ContentModerationPublicFigureThresholdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestGen45ContentModerationPublicFigureThresholdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestGen45OutputFormatJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestGen45OutputFormatNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestGen45ProresProfileJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestGen45ProresProfileNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestGen4TurboRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestGen4TurboRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestGen4TurboContentModerationPublicFigureThresholdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestGen4TurboContentModerationPublicFigureThresholdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestVeo31PromptImagePromptImagePositionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestVeo31PromptImagePromptImagePositionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestVeo31RatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestVeo31RatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestVeo31FastPromptImagePromptImagePositionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestVeo31FastPromptImagePromptImagePositionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestVeo31FastRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestVeo31FastRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestHailuo3ResolutionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestHailuo3ResolutionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestHailuo3RatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestHailuo3RatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestHappyhorse10ResolutionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestHappyhorse10ResolutionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2PromptImagePromptImagePositionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2PromptImagePromptImagePositionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2RatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2RatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2FastPromptImagePromptImagePositionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2FastPromptImagePromptImagePositionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2FastRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2FastRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2MiniPromptImagePromptImagePositionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2MiniPromptImagePromptImagePositionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2MiniRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2MiniRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestGeminiOmniFlashRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestGeminiOmniFlashRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestSeedance25PromptImagePromptImagePositionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestSeedance25PromptImagePromptImagePositionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestSeedance25RatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestSeedance25RatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestDiscriminatorModelJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestDiscriminatorModelNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestGen45RatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestGen45RatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestGen45ContentModerationPublicFigureThresholdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestGen45ContentModerationPublicFigureThresholdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestGen45OutputFormatJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestGen45OutputFormatNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestGen45ProresProfileJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestGen45ProresProfileNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestVeo31RatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestVeo31RatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestVeo31FastRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestVeo31FastRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestHailuo3ResolutionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestHailuo3ResolutionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestHailuo3RatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestHailuo3RatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestHappyhorse10RatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestHappyhorse10RatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestSeedance2RatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestSeedance2RatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestSeedance2FastRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestSeedance2FastRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestSeedance2MiniRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestSeedance2MiniRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestGeminiOmniFlashRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestGeminiOmniFlashRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestSeedance25RatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestSeedance25RatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestDiscriminatorModelJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestDiscriminatorModelNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestVariant1TargetAspectRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestVariant1TargetAspectRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestVariant1ContentModerationPublicFigureThresholdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestVariant1ContentModerationPublicFigureThresholdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestVariant1OutputFormatJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestVariant1OutputFormatNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestVariant1ProresProfileJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestVariant1ProresProfileNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestHailuo3ResolutionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestHailuo3ResolutionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestHailuo3RatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestHailuo3RatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance2RatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance2RatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance2FastRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance2FastRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance2MiniRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance2MiniRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance25ModeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance25ModeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance25RatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance25RatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestDiscriminatorModelJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestDiscriminatorModelNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGen4ImageTurboRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGen4ImageTurboRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGen4ImageTurboContentModerationPublicFigureThresholdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGen4ImageTurboContentModerationPublicFigureThresholdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGen4ImageRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGen4ImageRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGen4ImageContentModerationPublicFigureThresholdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGen4ImageContentModerationPublicFigureThresholdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGptImage2RatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGptImage2RatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGptImage2QualityJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGptImage2QualityNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGptImage2BackgroundJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGptImage2BackgroundNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGeminiImage3ProRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGeminiImage3ProRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGeminiImage3ProReferenceImageSubjectJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGeminiImage3ProReferenceImageSubjectNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGeminiImage31FlashRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGeminiImage31FlashRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGeminiImage31FlashReferenceImageSubjectJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGeminiImage31FlashReferenceImageSubjectNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestSeedream5ProRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestSeedream5ProRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestSeedream5ProOutputFormatJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestSeedream5ProOutputFormatNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestSeedream5LiteRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestSeedream5LiteRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestSeedream5LiteOutputFormatJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestSeedream5LiteOutputFormatNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGemini25FlashRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGemini25FlashRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestDiscriminatorModelJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestDiscriminatorModelNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageUpscaleRequestMagnificPrecisionUpscalerV2FlavorJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageUpscaleRequestMagnificPrecisionUpscalerV2FlavorNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageUpscaleRequestDiscriminatorModelJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageUpscaleRequestDiscriminatorModelNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoUpscaleRequestMagnificVideoUpscalerCreativeResolutionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoUpscaleRequestMagnificVideoUpscalerCreativeResolutionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoUpscaleRequestMagnificVideoUpscalerCreativeFlavorJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoUpscaleRequestMagnificVideoUpscalerCreativeFlavorNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoUpscaleRequestDiscriminatorModelJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoUpscaleRequestDiscriminatorModelNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateCharacterPerformanceRequestActTwoCharacterDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateCharacterPerformanceRequestActTwoCharacterDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateCharacterPerformanceRequestActTwoReferenceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateCharacterPerformanceRequestActTwoReferenceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateCharacterPerformanceRequestActTwoRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateCharacterPerformanceRequestActTwoRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateCharacterPerformanceRequestActTwoContentModerationPublicFigureThresholdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateCharacterPerformanceRequestActTwoContentModerationPublicFigureThresholdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateCharacterPerformanceRequestDiscriminatorModelJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateCharacterPerformanceRequestDiscriminatorModelNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateSoundEffectRequestSeedAudioOutputFormatJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateSoundEffectRequestSeedAudioOutputFormatNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateSoundEffectRequestDiscriminatorModelJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateSoundEffectRequestDiscriminatorModelNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateSpeechToSpeechRequestElevenMultilingualStsV2VoiceRunwayPresetVoicePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateSpeechToSpeechRequestElevenMultilingualStsV2VoiceRunwayPresetVoicePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateSpeechToSpeechRequestElevenMultilingualStsV2VoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateSpeechToSpeechRequestElevenMultilingualStsV2VoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateSpeechToSpeechRequestDiscriminatorModelJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateSpeechToSpeechRequestDiscriminatorModelNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestSeedAudioVoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestSeedAudioVoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestSeedAudioOutputFormatJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestSeedAudioOutputFormatNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestElevenMultilingualV2VoiceRunwayPresetVoicePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestElevenMultilingualV2VoiceRunwayPresetVoicePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestElevenMultilingualV2VoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestElevenMultilingualV2VoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestElevenV3VoiceRunwayPresetVoicePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestElevenV3VoiceRunwayPresetVoicePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestElevenV3VoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestElevenV3VoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestElevenV3ApplyTextNormalizationJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestElevenV3ApplyTextNormalizationNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestDiscriminatorModelJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestDiscriminatorModelNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVoiceDubbingRequestElevenVoiceDubbingTargetLangJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVoiceDubbingRequestElevenVoiceDubbingTargetLangNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVoiceDubbingRequestDiscriminatorModelJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVoiceDubbingRequestDiscriminatorModelNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVoiceIsolationRequestDiscriminatorModelJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVoiceIsolationRequestDiscriminatorModelNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoRequestInputReferenceImageRoleJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoRequestInputReferenceImageRoleNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoRequestInputReferenceVideoRoleJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoRequestInputReferenceVideoRoleNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoRequestInputAspectRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoRequestInputAspectRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoRequestInputResolutionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoRequestInputResolutionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoRequestInputContentModerationPublicFigureThresholdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoRequestInputContentModerationPublicFigureThresholdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateImageRequestInputAspectRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateImageRequestInputAspectRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateImageRequestInputResolutionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateImageRequestInputResolutionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateImageRequestInputContentModerationPublicFigureThresholdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateImageRequestInputContentModerationPublicFigureThresholdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioRequestInputTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioRequestInputTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioRequestInputVoiceAudioPresetVoicePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioRequestInputVoiceAudioPresetVoicePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioRequestInputVoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioRequestInputVoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateUploadsRequestTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateUploadsRequestTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesAdLocalizationRequestVersionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesAdLocalizationRequestVersionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesAdLocalizationRequestTargetLanguageJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesAdLocalizationRequestTargetLanguageNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesMarketingStockImageRequestVersionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesMarketingStockImageRequestVersionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesMarketingStockImageRequestQualityJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesMarketingStockImageRequestQualityNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesProductAdRequestVersionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesProductAdRequestVersionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesProductAdRequestRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesProductAdRequestRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesProductCampaignImageRequestVersionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesProductCampaignImageRequestVersionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesProductSwapRequestVersionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesProductSwapRequestVersionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesProductSwapRequestNewProductImageViewJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesProductSwapRequestNewProductImageViewNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesProductSwapRequestResolutionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesProductSwapRequestResolutionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesMultiShotVideoRequestVariant1VersionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesMultiShotVideoRequestVariant1VersionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesMultiShotVideoRequestVariant1RatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesMultiShotVideoRequestVariant1RatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesMultiShotVideoRequestVariant2VersionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesMultiShotVideoRequestVariant2VersionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesMultiShotVideoRequestVariant2RatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesMultiShotVideoRequestVariant2RatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesMultiShotVideoRequestDiscriminatorModeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesMultiShotVideoRequestDiscriminatorModeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesProductUgcRequestVersionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesProductUgcRequestVersionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesProductUgcRequestRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesProductUgcRequestRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRoutersRequestSettingsModelsModeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRoutersRequestSettingsModelsModeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRoutersRequestSettingsOptimizeForJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRoutersRequestSettingsOptimizeForNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchRoutersRequestSettingsModelsModeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchRoutersRequestSettingsModelsModeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchRoutersRequestSettingsOptimizeForJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchRoutersRequestSettingsOptimizeForNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVoicesRequestFromVoiceFromTextModelJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVoicesRequestFromVoiceFromTextModelNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVoicesRequestFromDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVoicesRequestFromDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVoicesPreviewRequestModelJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVoicesPreviewRequestModelNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateWorkflowsRequestNodeOutputsDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateWorkflowsRequestNodeOutputsDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetDocumentsSortJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetDocumentsSortNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetDocumentsOrderJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetDocumentsOrderNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarProcessingVoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarProcessingVoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarReadyVoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarReadyVoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarFailedVoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarFailedVoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseDataItemDiscriminatorStatusJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseDataItemDiscriminatorStatusNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsResponseAvatarProcessingVoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsResponseAvatarProcessingVoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsResponseAvatarReadyVoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsResponseAvatarReadyVoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsResponseAvatarFailedVoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsResponseAvatarFailedVoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsResponseDiscriminatorStatusJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsResponseDiscriminatorStatusNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseDataItemStatusJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseDataItemStatusNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseDataItemAvatarVariant1DiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseDataItemAvatarVariant1DiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant1AvatarVariant1DiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant1AvatarVariant1DiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant1TranscriptItemRoleJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant1TranscriptItemRoleNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant1ToolTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant1ToolTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant2AvatarVariant1DiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant2AvatarVariant1DiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant2TranscriptItemRoleJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant2TranscriptItemRoleNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant2ToolTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant2ToolTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant3AvatarVariant1DiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant3AvatarVariant1DiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant3TranscriptItemRoleJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant3TranscriptItemRoleNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant3ToolTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant3ToolTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseDiscriminatorStatusJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseDiscriminatorStatusNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseAvatarProcessingVoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseAvatarProcessingVoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseAvatarReadyVoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseAvatarReadyVoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseAvatarFailedVoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseAvatarFailedVoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseDiscriminatorStatusJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseDiscriminatorStatusNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsResponseAvatarProcessingVoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsResponseAvatarProcessingVoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsResponseAvatarReadyVoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsResponseAvatarReadyVoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsResponseAvatarFailedVoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsResponseAvatarFailedVoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsResponseDiscriminatorStatusJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsResponseDiscriminatorStatusNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateDocumentsResponseTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateDocumentsResponseTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetDocumentsResponseDataItemTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetDocumentsResponseDataItemTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetDocumentsResponseTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetDocumentsResponseTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRealtimeSessionsResponseDiscriminatorStatusJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRealtimeSessionsResponseDiscriminatorStatusNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetTasksResponseDiscriminatorStatusJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetTasksResponseDiscriminatorStatusNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoResponseRoutingResolvedSettingsOptimizeForJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoResponseRoutingResolvedSettingsOptimizeForNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoResponseVariant1PipelineItemFilterJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoResponseVariant1PipelineItemFilterNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoResponseVariant1EmptiedByItemJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoResponseVariant1EmptiedByItemNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateImageResponseRoutingResolvedSettingsOptimizeForJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateImageResponseRoutingResolvedSettingsOptimizeForNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateImageResponseVariant1PipelineItemFilterJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateImageResponseVariant1PipelineItemFilterNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateImageResponseVariant1EmptiedByItemJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateImageResponseVariant1EmptiedByItemNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutingResolvedSettingsOptimizeForJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutingResolvedSettingsOptimizeForNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutingResolvedInputTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutingResolvedInputTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutingResolvedInputVoiceJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutingResolvedInputVoiceNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseVariant1PipelineItemFilterJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseVariant1PipelineItemFilterNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseVariant1EmptiedByItemJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseVariant1EmptiedByItemNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetOrganizationWebappUsageResponseDataItemTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetOrganizationWebappUsageResponseDataItemTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetOrganizationWebappAuditLogsResponseDataItemActionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetOrganizationWebappAuditLogsResponseDataItemActionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetOrganizationWebappAuditLogsResponseActionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetOrganizationWebappAuditLogsResponseActionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateOrganizationUsageResponseResultUsedCreditModelJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateOrganizationUsageResponseResultUsedCreditModelNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateOrganizationUsageResponseModelJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateOrganizationUsageResponseModelNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersResponseDataItemSettingsModelsModeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersResponseDataItemSettingsModelsModeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersResponseDataItemSettingsOptimizeForJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersResponseDataItemSettingsOptimizeForNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRoutersResponseSettingsModelsModeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRoutersResponseSettingsModelsModeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRoutersResponseSettingsOptimizeForJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRoutersResponseSettingsOptimizeForNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersResponseSettingsModelsModeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersResponseSettingsModelsModeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersResponseSettingsOptimizeForJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersResponseSettingsOptimizeForNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchRoutersResponseSettingsModelsModeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchRoutersResponseSettingsModelsModeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchRoutersResponseSettingsOptimizeForJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchRoutersResponseSettingsOptimizeForNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemStatusJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemStatusNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemReasonCode2JsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemReasonCode2NullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemPipelineItemVariant1FilterJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemPipelineItemVariant1FilterNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemPipelineItemVariant3OutcomeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemPipelineItemVariant3OutcomeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemPipelineItemDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemPipelineItemDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemEmptiedByItemJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemEmptiedByItemNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetVoicesResponseDataItemDiscriminatorStatusJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetVoicesResponseDataItemDiscriminatorStatusNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetVoicesResponseDiscriminatorStatusJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetVoicesResponseDiscriminatorStatusNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchVoicesResponseDiscriminatorStatusJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchVoicesResponseDiscriminatorStatusNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetWorkflowInvocationsResponseDiscriminatorStatusJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetWorkflowInvocationsResponseDiscriminatorStatusNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.VoiceJsonConverter),
-
-            typeof(global::Runway.JsonConverters.Voice2JsonConverter),
-
-            typeof(global::Runway.JsonConverters.AvatarJsonConverter),
-
-            typeof(global::Runway.JsonConverters.SpeechJsonConverter),
-
-            typeof(global::Runway.JsonConverters.Voice3JsonConverter),
-
-            typeof(global::Runway.JsonConverters.Avatar2JsonConverter),
-
-            typeof(global::Runway.JsonConverters.ToolsItemJsonConverter),
-
-            typeof(global::Runway.JsonConverters.ParametersItemJsonConverter),
-
-            typeof(global::Runway.JsonConverters.ParametersItem2JsonConverter),
-
-            typeof(global::Runway.JsonConverters.IntegrationJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageUpscaleRequestJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoUpscaleRequestJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateCharacterPerformanceRequestJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CharacterJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateSoundEffectRequestJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateSpeechToSpeechRequestJsonConverter),
-
-            typeof(global::Runway.JsonConverters.MediaJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVoiceDubbingRequestJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVoiceIsolationRequestJsonConverter),
-
-            typeof(global::Runway.JsonConverters.Voice4JsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesMultiShotVideoRequestJsonConverter),
-
-            typeof(global::Runway.JsonConverters.FromJsonConverter),
-
-            typeof(global::Runway.JsonConverters.NodeOutputsJsonConverter),
-
-            typeof(global::Runway.JsonConverters.DataItemJsonConverter),
-
-            typeof(global::Runway.JsonConverters.Voice5JsonConverter),
-
-            typeof(global::Runway.JsonConverters.Voice6JsonConverter),
-
-            typeof(global::Runway.JsonConverters.Voice7JsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsResponseJsonConverter),
-
-            typeof(global::Runway.JsonConverters.Voice8JsonConverter),
-
-            typeof(global::Runway.JsonConverters.Voice9JsonConverter),
-
-            typeof(global::Runway.JsonConverters.Voice10JsonConverter),
-
-            typeof(global::Runway.JsonConverters.AvatarVariant1JsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponse2JsonConverter),
-
-            typeof(global::Runway.JsonConverters.AvatarVariant12JsonConverter),
-
-            typeof(global::Runway.JsonConverters.AvatarVariant13JsonConverter),
-
-            typeof(global::Runway.JsonConverters.AvatarVariant14JsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponse2JsonConverter),
-
-            typeof(global::Runway.JsonConverters.Voice11JsonConverter),
-
-            typeof(global::Runway.JsonConverters.Voice12JsonConverter),
-
-            typeof(global::Runway.JsonConverters.Voice13JsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsResponseJsonConverter),
-
-            typeof(global::Runway.JsonConverters.Voice14JsonConverter),
-
-            typeof(global::Runway.JsonConverters.Voice15JsonConverter),
-
-            typeof(global::Runway.JsonConverters.Voice16JsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRealtimeSessionsResponseJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetTasksResponseJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PipelineItemJsonConverter),
-
-            typeof(global::Runway.JsonConverters.DataItem2JsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetVoicesResponse2JsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchVoicesResponseJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetWorkflowInvocationsResponseJsonConverter),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestGen45PromptImagePromptImage>>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestGen4TurboPromptImagePromptImage>>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestVeo31PromptImagePromptImage>>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestVeo31FastPromptImagePromptImage>>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<object>>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestHappyhorse10PromptImagePromptImage>>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestSeedance2PromptImagePromptImage>>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestSeedance2FastPromptImagePromptImage>>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestSeedance2MiniPromptImagePromptImage>>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestGeminiOmniFlashPromptImagePromptImage>>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestSeedance25PromptImagePromptImage>>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<global::Runway.CreateVideoToVideoRequestVariant1KeyframeVariant1, global::Runway.CreateVideoToVideoRequestVariant1KeyframeVariant2>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<global::Runway.CreateGenerateVideoRequestInputKeyframeVariant1, global::Runway.CreateGenerateVideoRequestInputKeyframeVariant2>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?, bool?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<object, string, object>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<object, string, object>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<object, string, object>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<global::Runway.CreateGenerateVideoResponseVariant1, global::Runway.CreateGenerateVideoResponseVariant2>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<global::Runway.CreateGenerateImageResponseVariant1, global::Runway.CreateGenerateImageResponseVariant2>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<global::Runway.CreateGenerateAudioResponseVariant1, global::Runway.CreateGenerateAudioResponseVariant2>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.UnixTimestampJsonConverter),
         })]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.Dictionary<string, string>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.Dictionary<string, object>))]
@@ -1640,1121 +525,6 @@ namespace Runway
         DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull,
         Converters = new global::System.Type[]
         {
-            typeof(global::Runway.JsonConverters.CreateAvatarsRequestVoiceRunwayLivePresetVoicePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsRequestVoiceRunwayLivePresetVoicePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsRequestVoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsRequestVoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsRequestImageProcessingJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsRequestImageProcessingNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsRequestVoiceRunwayLivePresetVoicePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsRequestVoiceRunwayLivePresetVoicePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsRequestVoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsRequestVoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsRequestImageProcessingJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsRequestImageProcessingNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarVideosRequestAvatarRunwayPresetAvatarPresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarVideosRequestAvatarRunwayPresetAvatarPresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarVideosRequestAvatarDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarVideosRequestAvatarDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarVideosRequestSpeechTextInputVoiceRunwayPresetVoicePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarVideosRequestSpeechTextInputVoiceRunwayPresetVoicePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarVideosRequestSpeechTextInputVoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarVideosRequestSpeechTextInputVoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarVideosRequestSpeechDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarVideosRequestSpeechDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRealtimeSessionsRequestAvatarRunwayPresetAvatarPresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRealtimeSessionsRequestAvatarRunwayPresetAvatarPresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRealtimeSessionsRequestAvatarDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRealtimeSessionsRequestAvatarDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolClientEventToolParameterArrayParameterItemsTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolClientEventToolParameterArrayParameterItemsTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolClientEventToolParameterDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolClientEventToolParameterDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolBackendRPCToolParameterArrayParameterItemsTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolBackendRPCToolParameterArrayParameterItemsTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolBackendRPCToolParameterDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolBackendRPCToolParameterDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRealtimeSessionsRequestIntegrationDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRealtimeSessionsRequestIntegrationDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestGen45RatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestGen45RatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestGen45ContentModerationPublicFigureThresholdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestGen45ContentModerationPublicFigureThresholdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestGen45OutputFormatJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestGen45OutputFormatNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestGen45ProresProfileJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestGen45ProresProfileNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestGen4TurboRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestGen4TurboRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestGen4TurboContentModerationPublicFigureThresholdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestGen4TurboContentModerationPublicFigureThresholdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestVeo31PromptImagePromptImagePositionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestVeo31PromptImagePromptImagePositionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestVeo31RatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestVeo31RatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestVeo31FastPromptImagePromptImagePositionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestVeo31FastPromptImagePromptImagePositionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestVeo31FastRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestVeo31FastRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestHailuo3ResolutionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestHailuo3ResolutionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestHailuo3RatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestHailuo3RatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestHappyhorse10ResolutionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestHappyhorse10ResolutionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2PromptImagePromptImagePositionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2PromptImagePromptImagePositionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2RatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2RatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2FastPromptImagePromptImagePositionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2FastPromptImagePromptImagePositionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2FastRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2FastRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2MiniPromptImagePromptImagePositionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2MiniPromptImagePromptImagePositionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2MiniRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2MiniRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestGeminiOmniFlashRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestGeminiOmniFlashRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestSeedance25PromptImagePromptImagePositionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestSeedance25PromptImagePromptImagePositionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestSeedance25RatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestSeedance25RatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestDiscriminatorModelJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestDiscriminatorModelNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestGen45RatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestGen45RatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestGen45ContentModerationPublicFigureThresholdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestGen45ContentModerationPublicFigureThresholdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestGen45OutputFormatJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestGen45OutputFormatNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestGen45ProresProfileJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestGen45ProresProfileNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestVeo31RatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestVeo31RatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestVeo31FastRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestVeo31FastRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestHailuo3ResolutionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestHailuo3ResolutionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestHailuo3RatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestHailuo3RatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestHappyhorse10RatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestHappyhorse10RatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestSeedance2RatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestSeedance2RatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestSeedance2FastRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestSeedance2FastRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestSeedance2MiniRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestSeedance2MiniRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestGeminiOmniFlashRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestGeminiOmniFlashRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestSeedance25RatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestSeedance25RatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestDiscriminatorModelJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestDiscriminatorModelNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestVariant1TargetAspectRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestVariant1TargetAspectRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestVariant1ContentModerationPublicFigureThresholdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestVariant1ContentModerationPublicFigureThresholdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestVariant1OutputFormatJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestVariant1OutputFormatNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestVariant1ProresProfileJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestVariant1ProresProfileNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestHailuo3ResolutionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestHailuo3ResolutionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestHailuo3RatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestHailuo3RatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance2RatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance2RatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance2FastRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance2FastRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance2MiniRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance2MiniRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance25ModeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance25ModeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance25RatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance25RatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestDiscriminatorModelJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestDiscriminatorModelNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGen4ImageTurboRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGen4ImageTurboRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGen4ImageTurboContentModerationPublicFigureThresholdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGen4ImageTurboContentModerationPublicFigureThresholdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGen4ImageRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGen4ImageRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGen4ImageContentModerationPublicFigureThresholdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGen4ImageContentModerationPublicFigureThresholdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGptImage2RatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGptImage2RatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGptImage2QualityJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGptImage2QualityNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGptImage2BackgroundJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGptImage2BackgroundNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGeminiImage3ProRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGeminiImage3ProRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGeminiImage3ProReferenceImageSubjectJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGeminiImage3ProReferenceImageSubjectNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGeminiImage31FlashRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGeminiImage31FlashRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGeminiImage31FlashReferenceImageSubjectJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGeminiImage31FlashReferenceImageSubjectNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestSeedream5ProRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestSeedream5ProRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestSeedream5ProOutputFormatJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestSeedream5ProOutputFormatNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestSeedream5LiteRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestSeedream5LiteRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestSeedream5LiteOutputFormatJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestSeedream5LiteOutputFormatNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGemini25FlashRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGemini25FlashRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestDiscriminatorModelJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestDiscriminatorModelNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageUpscaleRequestMagnificPrecisionUpscalerV2FlavorJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageUpscaleRequestMagnificPrecisionUpscalerV2FlavorNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageUpscaleRequestDiscriminatorModelJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageUpscaleRequestDiscriminatorModelNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoUpscaleRequestMagnificVideoUpscalerCreativeResolutionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoUpscaleRequestMagnificVideoUpscalerCreativeResolutionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoUpscaleRequestMagnificVideoUpscalerCreativeFlavorJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoUpscaleRequestMagnificVideoUpscalerCreativeFlavorNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoUpscaleRequestDiscriminatorModelJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoUpscaleRequestDiscriminatorModelNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateCharacterPerformanceRequestActTwoCharacterDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateCharacterPerformanceRequestActTwoCharacterDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateCharacterPerformanceRequestActTwoReferenceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateCharacterPerformanceRequestActTwoReferenceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateCharacterPerformanceRequestActTwoRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateCharacterPerformanceRequestActTwoRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateCharacterPerformanceRequestActTwoContentModerationPublicFigureThresholdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateCharacterPerformanceRequestActTwoContentModerationPublicFigureThresholdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateCharacterPerformanceRequestDiscriminatorModelJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateCharacterPerformanceRequestDiscriminatorModelNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateSoundEffectRequestSeedAudioOutputFormatJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateSoundEffectRequestSeedAudioOutputFormatNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateSoundEffectRequestDiscriminatorModelJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateSoundEffectRequestDiscriminatorModelNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateSpeechToSpeechRequestElevenMultilingualStsV2VoiceRunwayPresetVoicePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateSpeechToSpeechRequestElevenMultilingualStsV2VoiceRunwayPresetVoicePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateSpeechToSpeechRequestElevenMultilingualStsV2VoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateSpeechToSpeechRequestElevenMultilingualStsV2VoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateSpeechToSpeechRequestDiscriminatorModelJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateSpeechToSpeechRequestDiscriminatorModelNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestSeedAudioVoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestSeedAudioVoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestSeedAudioOutputFormatJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestSeedAudioOutputFormatNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestElevenMultilingualV2VoiceRunwayPresetVoicePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestElevenMultilingualV2VoiceRunwayPresetVoicePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestElevenMultilingualV2VoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestElevenMultilingualV2VoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestElevenV3VoiceRunwayPresetVoicePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestElevenV3VoiceRunwayPresetVoicePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestElevenV3VoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestElevenV3VoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestElevenV3ApplyTextNormalizationJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestElevenV3ApplyTextNormalizationNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestDiscriminatorModelJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestDiscriminatorModelNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVoiceDubbingRequestElevenVoiceDubbingTargetLangJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVoiceDubbingRequestElevenVoiceDubbingTargetLangNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVoiceDubbingRequestDiscriminatorModelJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVoiceDubbingRequestDiscriminatorModelNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVoiceIsolationRequestDiscriminatorModelJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVoiceIsolationRequestDiscriminatorModelNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoRequestInputReferenceImageRoleJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoRequestInputReferenceImageRoleNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoRequestInputReferenceVideoRoleJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoRequestInputReferenceVideoRoleNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoRequestInputAspectRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoRequestInputAspectRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoRequestInputResolutionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoRequestInputResolutionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoRequestInputContentModerationPublicFigureThresholdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoRequestInputContentModerationPublicFigureThresholdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateImageRequestInputAspectRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateImageRequestInputAspectRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateImageRequestInputResolutionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateImageRequestInputResolutionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateImageRequestInputContentModerationPublicFigureThresholdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateImageRequestInputContentModerationPublicFigureThresholdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioRequestInputTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioRequestInputTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioRequestInputVoiceAudioPresetVoicePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioRequestInputVoiceAudioPresetVoicePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioRequestInputVoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioRequestInputVoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateUploadsRequestTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateUploadsRequestTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesAdLocalizationRequestVersionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesAdLocalizationRequestVersionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesAdLocalizationRequestTargetLanguageJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesAdLocalizationRequestTargetLanguageNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesMarketingStockImageRequestVersionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesMarketingStockImageRequestVersionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesMarketingStockImageRequestQualityJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesMarketingStockImageRequestQualityNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesProductAdRequestVersionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesProductAdRequestVersionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesProductAdRequestRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesProductAdRequestRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesProductCampaignImageRequestVersionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesProductCampaignImageRequestVersionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesProductSwapRequestVersionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesProductSwapRequestVersionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesProductSwapRequestNewProductImageViewJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesProductSwapRequestNewProductImageViewNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesProductSwapRequestResolutionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesProductSwapRequestResolutionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesMultiShotVideoRequestVariant1VersionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesMultiShotVideoRequestVariant1VersionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesMultiShotVideoRequestVariant1RatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesMultiShotVideoRequestVariant1RatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesMultiShotVideoRequestVariant2VersionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesMultiShotVideoRequestVariant2VersionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesMultiShotVideoRequestVariant2RatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesMultiShotVideoRequestVariant2RatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesMultiShotVideoRequestDiscriminatorModeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesMultiShotVideoRequestDiscriminatorModeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesProductUgcRequestVersionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesProductUgcRequestVersionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesProductUgcRequestRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesProductUgcRequestRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRoutersRequestSettingsModelsModeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRoutersRequestSettingsModelsModeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRoutersRequestSettingsOptimizeForJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRoutersRequestSettingsOptimizeForNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchRoutersRequestSettingsModelsModeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchRoutersRequestSettingsModelsModeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchRoutersRequestSettingsOptimizeForJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchRoutersRequestSettingsOptimizeForNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVoicesRequestFromVoiceFromTextModelJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVoicesRequestFromVoiceFromTextModelNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVoicesRequestFromDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVoicesRequestFromDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVoicesPreviewRequestModelJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVoicesPreviewRequestModelNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateWorkflowsRequestNodeOutputsDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateWorkflowsRequestNodeOutputsDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetDocumentsSortJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetDocumentsSortNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetDocumentsOrderJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetDocumentsOrderNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarProcessingVoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarProcessingVoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarReadyVoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarReadyVoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarFailedVoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarFailedVoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseDataItemDiscriminatorStatusJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseDataItemDiscriminatorStatusNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsResponseAvatarProcessingVoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsResponseAvatarProcessingVoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsResponseAvatarReadyVoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsResponseAvatarReadyVoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsResponseAvatarFailedVoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsResponseAvatarFailedVoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsResponseDiscriminatorStatusJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsResponseDiscriminatorStatusNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseDataItemStatusJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseDataItemStatusNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseDataItemAvatarVariant1DiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseDataItemAvatarVariant1DiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant1AvatarVariant1DiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant1AvatarVariant1DiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant1TranscriptItemRoleJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant1TranscriptItemRoleNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant1ToolTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant1ToolTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant2AvatarVariant1DiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant2AvatarVariant1DiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant2TranscriptItemRoleJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant2TranscriptItemRoleNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant2ToolTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant2ToolTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant3AvatarVariant1DiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant3AvatarVariant1DiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant3TranscriptItemRoleJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant3TranscriptItemRoleNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant3ToolTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant3ToolTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseDiscriminatorStatusJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseDiscriminatorStatusNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseAvatarProcessingVoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseAvatarProcessingVoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseAvatarReadyVoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseAvatarReadyVoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseAvatarFailedVoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseAvatarFailedVoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseDiscriminatorStatusJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseDiscriminatorStatusNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsResponseAvatarProcessingVoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsResponseAvatarProcessingVoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsResponseAvatarReadyVoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsResponseAvatarReadyVoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsResponseAvatarFailedVoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsResponseAvatarFailedVoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsResponseDiscriminatorStatusJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsResponseDiscriminatorStatusNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateDocumentsResponseTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateDocumentsResponseTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetDocumentsResponseDataItemTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetDocumentsResponseDataItemTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetDocumentsResponseTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetDocumentsResponseTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRealtimeSessionsResponseDiscriminatorStatusJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRealtimeSessionsResponseDiscriminatorStatusNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetTasksResponseDiscriminatorStatusJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetTasksResponseDiscriminatorStatusNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoResponseRoutingResolvedSettingsOptimizeForJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoResponseRoutingResolvedSettingsOptimizeForNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoResponseVariant1PipelineItemFilterJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoResponseVariant1PipelineItemFilterNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoResponseVariant1EmptiedByItemJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoResponseVariant1EmptiedByItemNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateImageResponseRoutingResolvedSettingsOptimizeForJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateImageResponseRoutingResolvedSettingsOptimizeForNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateImageResponseVariant1PipelineItemFilterJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateImageResponseVariant1PipelineItemFilterNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateImageResponseVariant1EmptiedByItemJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateImageResponseVariant1EmptiedByItemNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutingResolvedSettingsOptimizeForJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutingResolvedSettingsOptimizeForNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutingResolvedInputTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutingResolvedInputTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutingResolvedInputVoiceJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutingResolvedInputVoiceNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseVariant1PipelineItemFilterJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseVariant1PipelineItemFilterNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseVariant1EmptiedByItemJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseVariant1EmptiedByItemNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetOrganizationWebappUsageResponseDataItemTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetOrganizationWebappUsageResponseDataItemTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetOrganizationWebappAuditLogsResponseDataItemActionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetOrganizationWebappAuditLogsResponseDataItemActionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetOrganizationWebappAuditLogsResponseActionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetOrganizationWebappAuditLogsResponseActionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateOrganizationUsageResponseResultUsedCreditModelJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateOrganizationUsageResponseResultUsedCreditModelNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateOrganizationUsageResponseModelJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateOrganizationUsageResponseModelNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersResponseDataItemSettingsModelsModeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersResponseDataItemSettingsModelsModeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersResponseDataItemSettingsOptimizeForJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersResponseDataItemSettingsOptimizeForNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRoutersResponseSettingsModelsModeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRoutersResponseSettingsModelsModeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRoutersResponseSettingsOptimizeForJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRoutersResponseSettingsOptimizeForNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersResponseSettingsModelsModeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersResponseSettingsModelsModeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersResponseSettingsOptimizeForJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersResponseSettingsOptimizeForNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchRoutersResponseSettingsModelsModeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchRoutersResponseSettingsModelsModeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchRoutersResponseSettingsOptimizeForJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchRoutersResponseSettingsOptimizeForNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemStatusJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemStatusNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemReasonCode2JsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemReasonCode2NullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemPipelineItemVariant1FilterJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemPipelineItemVariant1FilterNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemPipelineItemVariant3OutcomeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemPipelineItemVariant3OutcomeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemPipelineItemDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemPipelineItemDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemEmptiedByItemJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemEmptiedByItemNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetVoicesResponseDataItemDiscriminatorStatusJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetVoicesResponseDataItemDiscriminatorStatusNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetVoicesResponseDiscriminatorStatusJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetVoicesResponseDiscriminatorStatusNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchVoicesResponseDiscriminatorStatusJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchVoicesResponseDiscriminatorStatusNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetWorkflowInvocationsResponseDiscriminatorStatusJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetWorkflowInvocationsResponseDiscriminatorStatusNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.VoiceJsonConverter),
-
-            typeof(global::Runway.JsonConverters.Voice2JsonConverter),
-
-            typeof(global::Runway.JsonConverters.AvatarJsonConverter),
-
-            typeof(global::Runway.JsonConverters.SpeechJsonConverter),
-
-            typeof(global::Runway.JsonConverters.Voice3JsonConverter),
-
-            typeof(global::Runway.JsonConverters.Avatar2JsonConverter),
-
-            typeof(global::Runway.JsonConverters.ToolsItemJsonConverter),
-
-            typeof(global::Runway.JsonConverters.ParametersItemJsonConverter),
-
-            typeof(global::Runway.JsonConverters.ParametersItem2JsonConverter),
-
-            typeof(global::Runway.JsonConverters.IntegrationJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageUpscaleRequestJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoUpscaleRequestJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateCharacterPerformanceRequestJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CharacterJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateSoundEffectRequestJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateSpeechToSpeechRequestJsonConverter),
-
-            typeof(global::Runway.JsonConverters.MediaJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVoiceDubbingRequestJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVoiceIsolationRequestJsonConverter),
-
-            typeof(global::Runway.JsonConverters.Voice4JsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesMultiShotVideoRequestJsonConverter),
-
-            typeof(global::Runway.JsonConverters.FromJsonConverter),
-
-            typeof(global::Runway.JsonConverters.NodeOutputsJsonConverter),
-
-            typeof(global::Runway.JsonConverters.DataItemJsonConverter),
-
-            typeof(global::Runway.JsonConverters.Voice5JsonConverter),
-
-            typeof(global::Runway.JsonConverters.Voice6JsonConverter),
-
-            typeof(global::Runway.JsonConverters.Voice7JsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsResponseJsonConverter),
-
-            typeof(global::Runway.JsonConverters.Voice8JsonConverter),
-
-            typeof(global::Runway.JsonConverters.Voice9JsonConverter),
-
-            typeof(global::Runway.JsonConverters.Voice10JsonConverter),
-
-            typeof(global::Runway.JsonConverters.AvatarVariant1JsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponse2JsonConverter),
-
-            typeof(global::Runway.JsonConverters.AvatarVariant12JsonConverter),
-
-            typeof(global::Runway.JsonConverters.AvatarVariant13JsonConverter),
-
-            typeof(global::Runway.JsonConverters.AvatarVariant14JsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponse2JsonConverter),
-
-            typeof(global::Runway.JsonConverters.Voice11JsonConverter),
-
-            typeof(global::Runway.JsonConverters.Voice12JsonConverter),
-
-            typeof(global::Runway.JsonConverters.Voice13JsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsResponseJsonConverter),
-
-            typeof(global::Runway.JsonConverters.Voice14JsonConverter),
-
-            typeof(global::Runway.JsonConverters.Voice15JsonConverter),
-
-            typeof(global::Runway.JsonConverters.Voice16JsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRealtimeSessionsResponseJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetTasksResponseJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PipelineItemJsonConverter),
-
-            typeof(global::Runway.JsonConverters.DataItem2JsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetVoicesResponse2JsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchVoicesResponseJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetWorkflowInvocationsResponseJsonConverter),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestGen45PromptImagePromptImage>>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestGen4TurboPromptImagePromptImage>>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestVeo31PromptImagePromptImage>>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestVeo31FastPromptImagePromptImage>>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<object>>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestHappyhorse10PromptImagePromptImage>>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestSeedance2PromptImagePromptImage>>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestSeedance2FastPromptImagePromptImage>>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestSeedance2MiniPromptImagePromptImage>>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestGeminiOmniFlashPromptImagePromptImage>>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestSeedance25PromptImagePromptImage>>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<global::Runway.CreateVideoToVideoRequestVariant1KeyframeVariant1, global::Runway.CreateVideoToVideoRequestVariant1KeyframeVariant2>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<global::Runway.CreateGenerateVideoRequestInputKeyframeVariant1, global::Runway.CreateGenerateVideoRequestInputKeyframeVariant2>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?, bool?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<object, string, object>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<object, string, object>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<object, string, object>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<global::Runway.CreateGenerateVideoResponseVariant1, global::Runway.CreateGenerateVideoResponseVariant2>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<global::Runway.CreateGenerateImageResponseVariant1, global::Runway.CreateGenerateImageResponseVariant2>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<global::Runway.CreateGenerateAudioResponseVariant1, global::Runway.CreateGenerateAudioResponseVariant2>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.UnixTimestampJsonConverter),
         })]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.PatchRoutersRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.PatchRoutersRequestSettings))]
@@ -3267,1121 +1037,6 @@ namespace Runway
         DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull,
         Converters = new global::System.Type[]
         {
-            typeof(global::Runway.JsonConverters.CreateAvatarsRequestVoiceRunwayLivePresetVoicePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsRequestVoiceRunwayLivePresetVoicePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsRequestVoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsRequestVoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsRequestImageProcessingJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsRequestImageProcessingNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsRequestVoiceRunwayLivePresetVoicePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsRequestVoiceRunwayLivePresetVoicePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsRequestVoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsRequestVoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsRequestImageProcessingJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsRequestImageProcessingNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarVideosRequestAvatarRunwayPresetAvatarPresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarVideosRequestAvatarRunwayPresetAvatarPresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarVideosRequestAvatarDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarVideosRequestAvatarDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarVideosRequestSpeechTextInputVoiceRunwayPresetVoicePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarVideosRequestSpeechTextInputVoiceRunwayPresetVoicePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarVideosRequestSpeechTextInputVoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarVideosRequestSpeechTextInputVoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarVideosRequestSpeechDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarVideosRequestSpeechDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRealtimeSessionsRequestAvatarRunwayPresetAvatarPresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRealtimeSessionsRequestAvatarRunwayPresetAvatarPresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRealtimeSessionsRequestAvatarDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRealtimeSessionsRequestAvatarDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolClientEventToolParameterArrayParameterItemsTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolClientEventToolParameterArrayParameterItemsTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolClientEventToolParameterDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolClientEventToolParameterDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolBackendRPCToolParameterArrayParameterItemsTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolBackendRPCToolParameterArrayParameterItemsTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolBackendRPCToolParameterDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolBackendRPCToolParameterDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRealtimeSessionsRequestIntegrationDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRealtimeSessionsRequestIntegrationDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestGen45RatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestGen45RatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestGen45ContentModerationPublicFigureThresholdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestGen45ContentModerationPublicFigureThresholdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestGen45OutputFormatJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestGen45OutputFormatNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestGen45ProresProfileJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestGen45ProresProfileNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestGen4TurboRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestGen4TurboRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestGen4TurboContentModerationPublicFigureThresholdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestGen4TurboContentModerationPublicFigureThresholdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestVeo31PromptImagePromptImagePositionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestVeo31PromptImagePromptImagePositionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestVeo31RatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestVeo31RatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestVeo31FastPromptImagePromptImagePositionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestVeo31FastPromptImagePromptImagePositionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestVeo31FastRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestVeo31FastRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestHailuo3ResolutionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestHailuo3ResolutionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestHailuo3RatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestHailuo3RatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestHappyhorse10ResolutionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestHappyhorse10ResolutionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2PromptImagePromptImagePositionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2PromptImagePromptImagePositionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2RatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2RatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2FastPromptImagePromptImagePositionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2FastPromptImagePromptImagePositionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2FastRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2FastRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2MiniPromptImagePromptImagePositionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2MiniPromptImagePromptImagePositionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2MiniRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2MiniRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestGeminiOmniFlashRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestGeminiOmniFlashRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestSeedance25PromptImagePromptImagePositionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestSeedance25PromptImagePromptImagePositionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestSeedance25RatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestSeedance25RatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestDiscriminatorModelJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestDiscriminatorModelNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestGen45RatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestGen45RatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestGen45ContentModerationPublicFigureThresholdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestGen45ContentModerationPublicFigureThresholdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestGen45OutputFormatJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestGen45OutputFormatNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestGen45ProresProfileJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestGen45ProresProfileNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestVeo31RatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestVeo31RatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestVeo31FastRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestVeo31FastRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestHailuo3ResolutionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestHailuo3ResolutionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestHailuo3RatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestHailuo3RatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestHappyhorse10RatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestHappyhorse10RatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestSeedance2RatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestSeedance2RatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestSeedance2FastRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestSeedance2FastRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestSeedance2MiniRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestSeedance2MiniRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestGeminiOmniFlashRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestGeminiOmniFlashRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestSeedance25RatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestSeedance25RatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestDiscriminatorModelJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestDiscriminatorModelNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestVariant1TargetAspectRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestVariant1TargetAspectRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestVariant1ContentModerationPublicFigureThresholdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestVariant1ContentModerationPublicFigureThresholdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestVariant1OutputFormatJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestVariant1OutputFormatNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestVariant1ProresProfileJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestVariant1ProresProfileNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestHailuo3ResolutionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestHailuo3ResolutionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestHailuo3RatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestHailuo3RatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance2RatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance2RatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance2FastRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance2FastRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance2MiniRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance2MiniRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance25ModeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance25ModeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance25RatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance25RatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestDiscriminatorModelJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestDiscriminatorModelNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGen4ImageTurboRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGen4ImageTurboRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGen4ImageTurboContentModerationPublicFigureThresholdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGen4ImageTurboContentModerationPublicFigureThresholdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGen4ImageRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGen4ImageRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGen4ImageContentModerationPublicFigureThresholdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGen4ImageContentModerationPublicFigureThresholdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGptImage2RatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGptImage2RatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGptImage2QualityJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGptImage2QualityNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGptImage2BackgroundJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGptImage2BackgroundNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGeminiImage3ProRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGeminiImage3ProRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGeminiImage3ProReferenceImageSubjectJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGeminiImage3ProReferenceImageSubjectNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGeminiImage31FlashRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGeminiImage31FlashRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGeminiImage31FlashReferenceImageSubjectJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGeminiImage31FlashReferenceImageSubjectNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestSeedream5ProRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestSeedream5ProRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestSeedream5ProOutputFormatJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestSeedream5ProOutputFormatNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestSeedream5LiteRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestSeedream5LiteRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestSeedream5LiteOutputFormatJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestSeedream5LiteOutputFormatNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGemini25FlashRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestGemini25FlashRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestDiscriminatorModelJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestDiscriminatorModelNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageUpscaleRequestMagnificPrecisionUpscalerV2FlavorJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageUpscaleRequestMagnificPrecisionUpscalerV2FlavorNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageUpscaleRequestDiscriminatorModelJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageUpscaleRequestDiscriminatorModelNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoUpscaleRequestMagnificVideoUpscalerCreativeResolutionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoUpscaleRequestMagnificVideoUpscalerCreativeResolutionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoUpscaleRequestMagnificVideoUpscalerCreativeFlavorJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoUpscaleRequestMagnificVideoUpscalerCreativeFlavorNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoUpscaleRequestDiscriminatorModelJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoUpscaleRequestDiscriminatorModelNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateCharacterPerformanceRequestActTwoCharacterDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateCharacterPerformanceRequestActTwoCharacterDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateCharacterPerformanceRequestActTwoReferenceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateCharacterPerformanceRequestActTwoReferenceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateCharacterPerformanceRequestActTwoRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateCharacterPerformanceRequestActTwoRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateCharacterPerformanceRequestActTwoContentModerationPublicFigureThresholdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateCharacterPerformanceRequestActTwoContentModerationPublicFigureThresholdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateCharacterPerformanceRequestDiscriminatorModelJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateCharacterPerformanceRequestDiscriminatorModelNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateSoundEffectRequestSeedAudioOutputFormatJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateSoundEffectRequestSeedAudioOutputFormatNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateSoundEffectRequestDiscriminatorModelJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateSoundEffectRequestDiscriminatorModelNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateSpeechToSpeechRequestElevenMultilingualStsV2VoiceRunwayPresetVoicePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateSpeechToSpeechRequestElevenMultilingualStsV2VoiceRunwayPresetVoicePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateSpeechToSpeechRequestElevenMultilingualStsV2VoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateSpeechToSpeechRequestElevenMultilingualStsV2VoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateSpeechToSpeechRequestDiscriminatorModelJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateSpeechToSpeechRequestDiscriminatorModelNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestSeedAudioVoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestSeedAudioVoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestSeedAudioOutputFormatJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestSeedAudioOutputFormatNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestElevenMultilingualV2VoiceRunwayPresetVoicePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestElevenMultilingualV2VoiceRunwayPresetVoicePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestElevenMultilingualV2VoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestElevenMultilingualV2VoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestElevenV3VoiceRunwayPresetVoicePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestElevenV3VoiceRunwayPresetVoicePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestElevenV3VoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestElevenV3VoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestElevenV3ApplyTextNormalizationJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestElevenV3ApplyTextNormalizationNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestDiscriminatorModelJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestDiscriminatorModelNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVoiceDubbingRequestElevenVoiceDubbingTargetLangJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVoiceDubbingRequestElevenVoiceDubbingTargetLangNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVoiceDubbingRequestDiscriminatorModelJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVoiceDubbingRequestDiscriminatorModelNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVoiceIsolationRequestDiscriminatorModelJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVoiceIsolationRequestDiscriminatorModelNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoRequestInputReferenceImageRoleJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoRequestInputReferenceImageRoleNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoRequestInputReferenceVideoRoleJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoRequestInputReferenceVideoRoleNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoRequestInputAspectRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoRequestInputAspectRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoRequestInputResolutionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoRequestInputResolutionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoRequestInputContentModerationPublicFigureThresholdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoRequestInputContentModerationPublicFigureThresholdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateImageRequestInputAspectRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateImageRequestInputAspectRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateImageRequestInputResolutionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateImageRequestInputResolutionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateImageRequestInputContentModerationPublicFigureThresholdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateImageRequestInputContentModerationPublicFigureThresholdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioRequestInputTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioRequestInputTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioRequestInputVoiceAudioPresetVoicePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioRequestInputVoiceAudioPresetVoicePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioRequestInputVoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioRequestInputVoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateUploadsRequestTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateUploadsRequestTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesAdLocalizationRequestVersionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesAdLocalizationRequestVersionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesAdLocalizationRequestTargetLanguageJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesAdLocalizationRequestTargetLanguageNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesMarketingStockImageRequestVersionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesMarketingStockImageRequestVersionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesMarketingStockImageRequestQualityJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesMarketingStockImageRequestQualityNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesProductAdRequestVersionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesProductAdRequestVersionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesProductAdRequestRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesProductAdRequestRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesProductCampaignImageRequestVersionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesProductCampaignImageRequestVersionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesProductSwapRequestVersionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesProductSwapRequestVersionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesProductSwapRequestNewProductImageViewJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesProductSwapRequestNewProductImageViewNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesProductSwapRequestResolutionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesProductSwapRequestResolutionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesMultiShotVideoRequestVariant1VersionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesMultiShotVideoRequestVariant1VersionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesMultiShotVideoRequestVariant1RatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesMultiShotVideoRequestVariant1RatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesMultiShotVideoRequestVariant2VersionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesMultiShotVideoRequestVariant2VersionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesMultiShotVideoRequestVariant2RatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesMultiShotVideoRequestVariant2RatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesMultiShotVideoRequestDiscriminatorModeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesMultiShotVideoRequestDiscriminatorModeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesProductUgcRequestVersionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesProductUgcRequestVersionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesProductUgcRequestRatioJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesProductUgcRequestRatioNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRoutersRequestSettingsModelsModeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRoutersRequestSettingsModelsModeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRoutersRequestSettingsOptimizeForJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRoutersRequestSettingsOptimizeForNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchRoutersRequestSettingsModelsModeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchRoutersRequestSettingsModelsModeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchRoutersRequestSettingsOptimizeForJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchRoutersRequestSettingsOptimizeForNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVoicesRequestFromVoiceFromTextModelJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVoicesRequestFromVoiceFromTextModelNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVoicesRequestFromDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVoicesRequestFromDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVoicesPreviewRequestModelJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVoicesPreviewRequestModelNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateWorkflowsRequestNodeOutputsDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateWorkflowsRequestNodeOutputsDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetDocumentsSortJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetDocumentsSortNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetDocumentsOrderJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetDocumentsOrderNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarProcessingVoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarProcessingVoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarReadyVoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarReadyVoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarFailedVoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarFailedVoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseDataItemDiscriminatorStatusJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseDataItemDiscriminatorStatusNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsResponseAvatarProcessingVoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsResponseAvatarProcessingVoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsResponseAvatarReadyVoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsResponseAvatarReadyVoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsResponseAvatarFailedVoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsResponseAvatarFailedVoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsResponseDiscriminatorStatusJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsResponseDiscriminatorStatusNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseDataItemStatusJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseDataItemStatusNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseDataItemAvatarVariant1DiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseDataItemAvatarVariant1DiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant1AvatarVariant1DiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant1AvatarVariant1DiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant1TranscriptItemRoleJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant1TranscriptItemRoleNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant1ToolTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant1ToolTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant2AvatarVariant1DiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant2AvatarVariant1DiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant2TranscriptItemRoleJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant2TranscriptItemRoleNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant2ToolTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant2ToolTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant3AvatarVariant1DiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant3AvatarVariant1DiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant3TranscriptItemRoleJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant3TranscriptItemRoleNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant3ToolTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseVariant3ToolTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseDiscriminatorStatusJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponseDiscriminatorStatusNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseAvatarProcessingVoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseAvatarProcessingVoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseAvatarReadyVoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseAvatarReadyVoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseAvatarFailedVoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseAvatarFailedVoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseDiscriminatorStatusJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponseDiscriminatorStatusNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsResponseAvatarProcessingVoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsResponseAvatarProcessingVoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsResponseAvatarReadyVoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsResponseAvatarReadyVoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsResponseAvatarFailedVoiceDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsResponseAvatarFailedVoiceDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsResponseDiscriminatorStatusJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsResponseDiscriminatorStatusNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateDocumentsResponseTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateDocumentsResponseTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetDocumentsResponseDataItemTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetDocumentsResponseDataItemTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetDocumentsResponseTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetDocumentsResponseTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRealtimeSessionsResponseDiscriminatorStatusJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRealtimeSessionsResponseDiscriminatorStatusNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetTasksResponseDiscriminatorStatusJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetTasksResponseDiscriminatorStatusNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoResponseRoutingResolvedSettingsOptimizeForJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoResponseRoutingResolvedSettingsOptimizeForNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoResponseVariant1PipelineItemFilterJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoResponseVariant1PipelineItemFilterNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoResponseVariant1EmptiedByItemJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateVideoResponseVariant1EmptiedByItemNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateImageResponseRoutingResolvedSettingsOptimizeForJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateImageResponseRoutingResolvedSettingsOptimizeForNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateImageResponseVariant1PipelineItemFilterJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateImageResponseVariant1PipelineItemFilterNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateImageResponseVariant1EmptiedByItemJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateImageResponseVariant1EmptiedByItemNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutingResolvedSettingsOptimizeForJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutingResolvedSettingsOptimizeForNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutingResolvedInputTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutingResolvedInputTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutingResolvedInputVoiceJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutingResolvedInputVoiceNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseVariant1PipelineItemFilterJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseVariant1PipelineItemFilterNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseVariant1EmptiedByItemJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseVariant1EmptiedByItemNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetOrganizationWebappUsageResponseDataItemTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetOrganizationWebappUsageResponseDataItemTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetOrganizationWebappAuditLogsResponseDataItemActionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetOrganizationWebappAuditLogsResponseDataItemActionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetOrganizationWebappAuditLogsResponseActionJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetOrganizationWebappAuditLogsResponseActionNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateOrganizationUsageResponseResultUsedCreditModelJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateOrganizationUsageResponseResultUsedCreditModelNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateOrganizationUsageResponseModelJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateOrganizationUsageResponseModelNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersResponseDataItemSettingsModelsModeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersResponseDataItemSettingsModelsModeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersResponseDataItemSettingsOptimizeForJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersResponseDataItemSettingsOptimizeForNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRoutersResponseSettingsModelsModeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRoutersResponseSettingsModelsModeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRoutersResponseSettingsOptimizeForJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRoutersResponseSettingsOptimizeForNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersResponseSettingsModelsModeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersResponseSettingsModelsModeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersResponseSettingsOptimizeForJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersResponseSettingsOptimizeForNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchRoutersResponseSettingsModelsModeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchRoutersResponseSettingsModelsModeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchRoutersResponseSettingsOptimizeForJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchRoutersResponseSettingsOptimizeForNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemStatusJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemStatusNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemReasonCode2JsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemReasonCode2NullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemPipelineItemVariant1FilterJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemPipelineItemVariant1FilterNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemPipelineItemVariant3OutcomeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemPipelineItemVariant3OutcomeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemPipelineItemDiscriminatorTypeJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemPipelineItemDiscriminatorTypeNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemEmptiedByItemJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemEmptiedByItemNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetVoicesResponseDataItemDiscriminatorStatusJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetVoicesResponseDataItemDiscriminatorStatusNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetVoicesResponseDiscriminatorStatusJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetVoicesResponseDiscriminatorStatusNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchVoicesResponseDiscriminatorStatusJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchVoicesResponseDiscriminatorStatusNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetWorkflowInvocationsResponseDiscriminatorStatusJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetWorkflowInvocationsResponseDiscriminatorStatusNullableJsonConverter),
-
-            typeof(global::Runway.JsonConverters.VoiceJsonConverter),
-
-            typeof(global::Runway.JsonConverters.Voice2JsonConverter),
-
-            typeof(global::Runway.JsonConverters.AvatarJsonConverter),
-
-            typeof(global::Runway.JsonConverters.SpeechJsonConverter),
-
-            typeof(global::Runway.JsonConverters.Voice3JsonConverter),
-
-            typeof(global::Runway.JsonConverters.Avatar2JsonConverter),
-
-            typeof(global::Runway.JsonConverters.ToolsItemJsonConverter),
-
-            typeof(global::Runway.JsonConverters.ParametersItemJsonConverter),
-
-            typeof(global::Runway.JsonConverters.ParametersItem2JsonConverter),
-
-            typeof(global::Runway.JsonConverters.IntegrationJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageToVideoRequestJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToVideoRequestJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToImageRequestJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateImageUpscaleRequestJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVideoUpscaleRequestJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateCharacterPerformanceRequestJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CharacterJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateSoundEffectRequestJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateSpeechToSpeechRequestJsonConverter),
-
-            typeof(global::Runway.JsonConverters.MediaJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateTextToSpeechRequestJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVoiceDubbingRequestJsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateVoiceIsolationRequestJsonConverter),
-
-            typeof(global::Runway.JsonConverters.Voice4JsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateRecipesMultiShotVideoRequestJsonConverter),
-
-            typeof(global::Runway.JsonConverters.FromJsonConverter),
-
-            typeof(global::Runway.JsonConverters.NodeOutputsJsonConverter),
-
-            typeof(global::Runway.JsonConverters.DataItemJsonConverter),
-
-            typeof(global::Runway.JsonConverters.Voice5JsonConverter),
-
-            typeof(global::Runway.JsonConverters.Voice6JsonConverter),
-
-            typeof(global::Runway.JsonConverters.Voice7JsonConverter),
-
-            typeof(global::Runway.JsonConverters.CreateAvatarsResponseJsonConverter),
-
-            typeof(global::Runway.JsonConverters.Voice8JsonConverter),
-
-            typeof(global::Runway.JsonConverters.Voice9JsonConverter),
-
-            typeof(global::Runway.JsonConverters.Voice10JsonConverter),
-
-            typeof(global::Runway.JsonConverters.AvatarVariant1JsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarConversationsResponse2JsonConverter),
-
-            typeof(global::Runway.JsonConverters.AvatarVariant12JsonConverter),
-
-            typeof(global::Runway.JsonConverters.AvatarVariant13JsonConverter),
-
-            typeof(global::Runway.JsonConverters.AvatarVariant14JsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetAvatarsResponse2JsonConverter),
-
-            typeof(global::Runway.JsonConverters.Voice11JsonConverter),
-
-            typeof(global::Runway.JsonConverters.Voice12JsonConverter),
-
-            typeof(global::Runway.JsonConverters.Voice13JsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchAvatarsResponseJsonConverter),
-
-            typeof(global::Runway.JsonConverters.Voice14JsonConverter),
-
-            typeof(global::Runway.JsonConverters.Voice15JsonConverter),
-
-            typeof(global::Runway.JsonConverters.Voice16JsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetRealtimeSessionsResponseJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetTasksResponseJsonConverter),
-
-            typeof(global::Runway.JsonConverters.PipelineItemJsonConverter),
-
-            typeof(global::Runway.JsonConverters.DataItem2JsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetVoicesResponse2JsonConverter),
-
-            typeof(global::Runway.JsonConverters.PatchVoicesResponseJsonConverter),
-
-            typeof(global::Runway.JsonConverters.GetWorkflowInvocationsResponseJsonConverter),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestGen45PromptImagePromptImage>>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestGen4TurboPromptImagePromptImage>>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestVeo31PromptImagePromptImage>>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestVeo31FastPromptImagePromptImage>>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<object>>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestHappyhorse10PromptImagePromptImage>>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestSeedance2PromptImagePromptImage>>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestSeedance2FastPromptImagePromptImage>>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestSeedance2MiniPromptImagePromptImage>>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestGeminiOmniFlashPromptImagePromptImage>>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestSeedance25PromptImagePromptImage>>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<global::Runway.CreateVideoToVideoRequestVariant1KeyframeVariant1, global::Runway.CreateVideoToVideoRequestVariant1KeyframeVariant2>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<global::Runway.CreateGenerateVideoRequestInputKeyframeVariant1, global::Runway.CreateGenerateVideoRequestInputKeyframeVariant2>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?, bool?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<object, string, object>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<object, string, object>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<object, string, object>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<global::Runway.CreateGenerateVideoResponseVariant1, global::Runway.CreateGenerateVideoResponseVariant2>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<global::Runway.CreateGenerateImageResponseVariant1, global::Runway.CreateGenerateImageResponseVariant2>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<global::Runway.CreateGenerateAudioResponseVariant1, global::Runway.CreateGenerateAudioResponseVariant2>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>),
-
-            typeof(global::Runway.JsonConverters.UnixTimestampJsonConverter),
         })]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.PatchVoicesResponseDiscriminatorStatus), TypeInfoPropertyName = "PatchVoicesResponseDiscriminatorStatus2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVoicesPreviewResponse))]
@@ -4868,13 +1523,7 @@ namespace Runway
     /// </summary>
     public sealed partial class SourceGenerationContext : global::System.Text.Json.Serialization.JsonSerializerContext
     {
-        private static readonly global::System.Text.Json.Serialization.Metadata.IJsonTypeInfoResolver Resolver = global::System.Text.Json.Serialization.Metadata.JsonTypeInfoResolver.Combine(
-            SourceGenerationContextChunk0.Default,
-
-            SourceGenerationContextChunk1.Default,
-
-            SourceGenerationContextChunk2.Default
-            );
+        private static readonly global::System.Text.Json.Serialization.Metadata.IJsonTypeInfoResolver Resolver = new LazyChunkResolver();
 
         private static readonly global::System.Text.Json.JsonSerializerOptions DefaultOptions = CreateDefaultOptions();
 
@@ -4904,468 +1553,6 @@ namespace Runway
                 DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull,
                 TypeInfoResolver = Resolver,
             };
-            options.Converters.Add(new global::Runway.JsonConverters.CreateAvatarsRequestVoiceRunwayLivePresetVoicePresetIdJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateAvatarsRequestVoiceRunwayLivePresetVoicePresetIdNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateAvatarsRequestVoiceDiscriminatorTypeJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateAvatarsRequestVoiceDiscriminatorTypeNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateAvatarsRequestImageProcessingJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateAvatarsRequestImageProcessingNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.PatchAvatarsRequestVoiceRunwayLivePresetVoicePresetIdJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.PatchAvatarsRequestVoiceRunwayLivePresetVoicePresetIdNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.PatchAvatarsRequestVoiceDiscriminatorTypeJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.PatchAvatarsRequestVoiceDiscriminatorTypeNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.PatchAvatarsRequestImageProcessingJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.PatchAvatarsRequestImageProcessingNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateAvatarVideosRequestAvatarRunwayPresetAvatarPresetIdJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateAvatarVideosRequestAvatarRunwayPresetAvatarPresetIdNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateAvatarVideosRequestAvatarDiscriminatorTypeJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateAvatarVideosRequestAvatarDiscriminatorTypeNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateAvatarVideosRequestSpeechTextInputVoiceRunwayPresetVoicePresetIdJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateAvatarVideosRequestSpeechTextInputVoiceRunwayPresetVoicePresetIdNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateAvatarVideosRequestSpeechTextInputVoiceDiscriminatorTypeJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateAvatarVideosRequestSpeechTextInputVoiceDiscriminatorTypeNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateAvatarVideosRequestSpeechDiscriminatorTypeJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateAvatarVideosRequestSpeechDiscriminatorTypeNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateRealtimeSessionsRequestAvatarRunwayPresetAvatarPresetIdJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateRealtimeSessionsRequestAvatarRunwayPresetAvatarPresetIdNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateRealtimeSessionsRequestAvatarDiscriminatorTypeJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateRealtimeSessionsRequestAvatarDiscriminatorTypeNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolClientEventToolParameterArrayParameterItemsTypeJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolClientEventToolParameterArrayParameterItemsTypeNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolClientEventToolParameterDiscriminatorTypeJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolClientEventToolParameterDiscriminatorTypeNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolBackendRPCToolParameterArrayParameterItemsTypeJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolBackendRPCToolParameterArrayParameterItemsTypeNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolBackendRPCToolParameterDiscriminatorTypeJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolBackendRPCToolParameterDiscriminatorTypeNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolDiscriminatorTypeJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolDiscriminatorTypeNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateRealtimeSessionsRequestIntegrationDiscriminatorTypeJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateRealtimeSessionsRequestIntegrationDiscriminatorTypeNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateImageToVideoRequestGen45RatioJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateImageToVideoRequestGen45RatioNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateImageToVideoRequestGen45ContentModerationPublicFigureThresholdJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateImageToVideoRequestGen45ContentModerationPublicFigureThresholdNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateImageToVideoRequestGen45OutputFormatJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateImageToVideoRequestGen45OutputFormatNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateImageToVideoRequestGen45ProresProfileJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateImageToVideoRequestGen45ProresProfileNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateImageToVideoRequestGen4TurboRatioJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateImageToVideoRequestGen4TurboRatioNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateImageToVideoRequestGen4TurboContentModerationPublicFigureThresholdJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateImageToVideoRequestGen4TurboContentModerationPublicFigureThresholdNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateImageToVideoRequestVeo31PromptImagePromptImagePositionJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateImageToVideoRequestVeo31PromptImagePromptImagePositionNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateImageToVideoRequestVeo31RatioJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateImageToVideoRequestVeo31RatioNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateImageToVideoRequestVeo31FastPromptImagePromptImagePositionJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateImageToVideoRequestVeo31FastPromptImagePromptImagePositionNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateImageToVideoRequestVeo31FastRatioJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateImageToVideoRequestVeo31FastRatioNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateImageToVideoRequestHailuo3ResolutionJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateImageToVideoRequestHailuo3ResolutionNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateImageToVideoRequestHailuo3RatioJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateImageToVideoRequestHailuo3RatioNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateImageToVideoRequestHappyhorse10ResolutionJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateImageToVideoRequestHappyhorse10ResolutionNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2PromptImagePromptImagePositionJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2PromptImagePromptImagePositionNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2RatioJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2RatioNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2FastPromptImagePromptImagePositionJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2FastPromptImagePromptImagePositionNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2FastRatioJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2FastRatioNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2MiniPromptImagePromptImagePositionJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2MiniPromptImagePromptImagePositionNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2MiniRatioJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2MiniRatioNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateImageToVideoRequestGeminiOmniFlashRatioJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateImageToVideoRequestGeminiOmniFlashRatioNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateImageToVideoRequestSeedance25PromptImagePromptImagePositionJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateImageToVideoRequestSeedance25PromptImagePromptImagePositionNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateImageToVideoRequestSeedance25RatioJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateImageToVideoRequestSeedance25RatioNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateImageToVideoRequestDiscriminatorModelJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateImageToVideoRequestDiscriminatorModelNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToVideoRequestGen45RatioJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToVideoRequestGen45RatioNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToVideoRequestGen45ContentModerationPublicFigureThresholdJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToVideoRequestGen45ContentModerationPublicFigureThresholdNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToVideoRequestGen45OutputFormatJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToVideoRequestGen45OutputFormatNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToVideoRequestGen45ProresProfileJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToVideoRequestGen45ProresProfileNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToVideoRequestVeo31RatioJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToVideoRequestVeo31RatioNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToVideoRequestVeo31FastRatioJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToVideoRequestVeo31FastRatioNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToVideoRequestHailuo3ResolutionJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToVideoRequestHailuo3ResolutionNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToVideoRequestHailuo3RatioJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToVideoRequestHailuo3RatioNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToVideoRequestHappyhorse10RatioJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToVideoRequestHappyhorse10RatioNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToVideoRequestSeedance2RatioJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToVideoRequestSeedance2RatioNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToVideoRequestSeedance2FastRatioJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToVideoRequestSeedance2FastRatioNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToVideoRequestSeedance2MiniRatioJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToVideoRequestSeedance2MiniRatioNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToVideoRequestGeminiOmniFlashRatioJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToVideoRequestGeminiOmniFlashRatioNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToVideoRequestSeedance25RatioJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToVideoRequestSeedance25RatioNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToVideoRequestDiscriminatorModelJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToVideoRequestDiscriminatorModelNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateVideoToVideoRequestVariant1TargetAspectRatioJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateVideoToVideoRequestVariant1TargetAspectRatioNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateVideoToVideoRequestVariant1ContentModerationPublicFigureThresholdJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateVideoToVideoRequestVariant1ContentModerationPublicFigureThresholdNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateVideoToVideoRequestVariant1OutputFormatJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateVideoToVideoRequestVariant1OutputFormatNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateVideoToVideoRequestVariant1ProresProfileJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateVideoToVideoRequestVariant1ProresProfileNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateVideoToVideoRequestHailuo3ResolutionJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateVideoToVideoRequestHailuo3ResolutionNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateVideoToVideoRequestHailuo3RatioJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateVideoToVideoRequestHailuo3RatioNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance2RatioJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance2RatioNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance2FastRatioJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance2FastRatioNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance2MiniRatioJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance2MiniRatioNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance25ModeJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance25ModeNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance25RatioJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance25RatioNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateVideoToVideoRequestDiscriminatorModelJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateVideoToVideoRequestDiscriminatorModelNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToImageRequestGen4ImageTurboRatioJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToImageRequestGen4ImageTurboRatioNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToImageRequestGen4ImageTurboContentModerationPublicFigureThresholdJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToImageRequestGen4ImageTurboContentModerationPublicFigureThresholdNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToImageRequestGen4ImageRatioJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToImageRequestGen4ImageRatioNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToImageRequestGen4ImageContentModerationPublicFigureThresholdJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToImageRequestGen4ImageContentModerationPublicFigureThresholdNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToImageRequestGptImage2RatioJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToImageRequestGptImage2RatioNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToImageRequestGptImage2QualityJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToImageRequestGptImage2QualityNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToImageRequestGptImage2BackgroundJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToImageRequestGptImage2BackgroundNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToImageRequestGeminiImage3ProRatioJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToImageRequestGeminiImage3ProRatioNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToImageRequestGeminiImage3ProReferenceImageSubjectJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToImageRequestGeminiImage3ProReferenceImageSubjectNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToImageRequestGeminiImage31FlashRatioJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToImageRequestGeminiImage31FlashRatioNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToImageRequestGeminiImage31FlashReferenceImageSubjectJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToImageRequestGeminiImage31FlashReferenceImageSubjectNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToImageRequestSeedream5ProRatioJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToImageRequestSeedream5ProRatioNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToImageRequestSeedream5ProOutputFormatJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToImageRequestSeedream5ProOutputFormatNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToImageRequestSeedream5LiteRatioJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToImageRequestSeedream5LiteRatioNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToImageRequestSeedream5LiteOutputFormatJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToImageRequestSeedream5LiteOutputFormatNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToImageRequestGemini25FlashRatioJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToImageRequestGemini25FlashRatioNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToImageRequestDiscriminatorModelJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToImageRequestDiscriminatorModelNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateImageUpscaleRequestMagnificPrecisionUpscalerV2FlavorJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateImageUpscaleRequestMagnificPrecisionUpscalerV2FlavorNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateImageUpscaleRequestDiscriminatorModelJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateImageUpscaleRequestDiscriminatorModelNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateVideoUpscaleRequestMagnificVideoUpscalerCreativeResolutionJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateVideoUpscaleRequestMagnificVideoUpscalerCreativeResolutionNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateVideoUpscaleRequestMagnificVideoUpscalerCreativeFlavorJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateVideoUpscaleRequestMagnificVideoUpscalerCreativeFlavorNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateVideoUpscaleRequestDiscriminatorModelJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateVideoUpscaleRequestDiscriminatorModelNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateCharacterPerformanceRequestActTwoCharacterDiscriminatorTypeJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateCharacterPerformanceRequestActTwoCharacterDiscriminatorTypeNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateCharacterPerformanceRequestActTwoReferenceDiscriminatorTypeJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateCharacterPerformanceRequestActTwoReferenceDiscriminatorTypeNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateCharacterPerformanceRequestActTwoRatioJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateCharacterPerformanceRequestActTwoRatioNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateCharacterPerformanceRequestActTwoContentModerationPublicFigureThresholdJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateCharacterPerformanceRequestActTwoContentModerationPublicFigureThresholdNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateCharacterPerformanceRequestDiscriminatorModelJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateCharacterPerformanceRequestDiscriminatorModelNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateSoundEffectRequestSeedAudioOutputFormatJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateSoundEffectRequestSeedAudioOutputFormatNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateSoundEffectRequestDiscriminatorModelJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateSoundEffectRequestDiscriminatorModelNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaDiscriminatorTypeJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaDiscriminatorTypeNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateSpeechToSpeechRequestElevenMultilingualStsV2VoiceRunwayPresetVoicePresetIdJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateSpeechToSpeechRequestElevenMultilingualStsV2VoiceRunwayPresetVoicePresetIdNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateSpeechToSpeechRequestElevenMultilingualStsV2VoiceDiscriminatorTypeJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateSpeechToSpeechRequestElevenMultilingualStsV2VoiceDiscriminatorTypeNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateSpeechToSpeechRequestDiscriminatorModelJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateSpeechToSpeechRequestDiscriminatorModelNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToSpeechRequestSeedAudioVoiceDiscriminatorTypeJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToSpeechRequestSeedAudioVoiceDiscriminatorTypeNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToSpeechRequestSeedAudioOutputFormatJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToSpeechRequestSeedAudioOutputFormatNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToSpeechRequestElevenMultilingualV2VoiceRunwayPresetVoicePresetIdJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToSpeechRequestElevenMultilingualV2VoiceRunwayPresetVoicePresetIdNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToSpeechRequestElevenMultilingualV2VoiceDiscriminatorTypeJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToSpeechRequestElevenMultilingualV2VoiceDiscriminatorTypeNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToSpeechRequestElevenV3VoiceRunwayPresetVoicePresetIdJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToSpeechRequestElevenV3VoiceRunwayPresetVoicePresetIdNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToSpeechRequestElevenV3VoiceDiscriminatorTypeJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToSpeechRequestElevenV3VoiceDiscriminatorTypeNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToSpeechRequestElevenV3ApplyTextNormalizationJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToSpeechRequestElevenV3ApplyTextNormalizationNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToSpeechRequestDiscriminatorModelJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateTextToSpeechRequestDiscriminatorModelNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateVoiceDubbingRequestElevenVoiceDubbingTargetLangJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateVoiceDubbingRequestElevenVoiceDubbingTargetLangNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateVoiceDubbingRequestDiscriminatorModelJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateVoiceDubbingRequestDiscriminatorModelNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateVoiceIsolationRequestDiscriminatorModelJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateVoiceIsolationRequestDiscriminatorModelNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateVideoRequestInputReferenceImageRoleJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateVideoRequestInputReferenceImageRoleNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateVideoRequestInputReferenceVideoRoleJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateVideoRequestInputReferenceVideoRoleNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateVideoRequestInputAspectRatioJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateVideoRequestInputAspectRatioNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateVideoRequestInputResolutionJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateVideoRequestInputResolutionNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateVideoRequestInputContentModerationPublicFigureThresholdJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateVideoRequestInputContentModerationPublicFigureThresholdNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateImageRequestInputAspectRatioJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateImageRequestInputAspectRatioNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateImageRequestInputResolutionJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateImageRequestInputResolutionNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateImageRequestInputContentModerationPublicFigureThresholdJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateImageRequestInputContentModerationPublicFigureThresholdNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateAudioRequestInputTypeJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateAudioRequestInputTypeNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateAudioRequestInputVoiceAudioPresetVoicePresetIdJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateAudioRequestInputVoiceAudioPresetVoicePresetIdNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateAudioRequestInputVoiceDiscriminatorTypeJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateAudioRequestInputVoiceDiscriminatorTypeNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateUploadsRequestTypeJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateUploadsRequestTypeNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateRecipesAdLocalizationRequestVersionJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateRecipesAdLocalizationRequestVersionNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateRecipesAdLocalizationRequestTargetLanguageJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateRecipesAdLocalizationRequestTargetLanguageNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateRecipesMarketingStockImageRequestVersionJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateRecipesMarketingStockImageRequestVersionNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateRecipesMarketingStockImageRequestQualityJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateRecipesMarketingStockImageRequestQualityNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateRecipesProductAdRequestVersionJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateRecipesProductAdRequestVersionNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateRecipesProductAdRequestRatioJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateRecipesProductAdRequestRatioNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateRecipesProductCampaignImageRequestVersionJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateRecipesProductCampaignImageRequestVersionNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateRecipesProductSwapRequestVersionJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateRecipesProductSwapRequestVersionNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateRecipesProductSwapRequestNewProductImageViewJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateRecipesProductSwapRequestNewProductImageViewNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateRecipesProductSwapRequestResolutionJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateRecipesProductSwapRequestResolutionNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateRecipesMultiShotVideoRequestVariant1VersionJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateRecipesMultiShotVideoRequestVariant1VersionNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateRecipesMultiShotVideoRequestVariant1RatioJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateRecipesMultiShotVideoRequestVariant1RatioNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateRecipesMultiShotVideoRequestVariant2VersionJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateRecipesMultiShotVideoRequestVariant2VersionNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateRecipesMultiShotVideoRequestVariant2RatioJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateRecipesMultiShotVideoRequestVariant2RatioNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateRecipesMultiShotVideoRequestDiscriminatorModeJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateRecipesMultiShotVideoRequestDiscriminatorModeNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateRecipesProductUgcRequestVersionJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateRecipesProductUgcRequestVersionNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateRecipesProductUgcRequestRatioJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateRecipesProductUgcRequestRatioNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateRoutersRequestSettingsModelsModeJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateRoutersRequestSettingsModelsModeNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateRoutersRequestSettingsOptimizeForJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateRoutersRequestSettingsOptimizeForNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.PatchRoutersRequestSettingsModelsModeJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.PatchRoutersRequestSettingsModelsModeNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.PatchRoutersRequestSettingsOptimizeForJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.PatchRoutersRequestSettingsOptimizeForNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateVoicesRequestFromVoiceFromTextModelJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateVoicesRequestFromVoiceFromTextModelNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateVoicesRequestFromDiscriminatorTypeJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateVoicesRequestFromDiscriminatorTypeNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateVoicesPreviewRequestModelJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateVoicesPreviewRequestModelNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateWorkflowsRequestNodeOutputsDiscriminatorTypeJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateWorkflowsRequestNodeOutputsDiscriminatorTypeNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetDocumentsSortJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetDocumentsSortNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetDocumentsOrderJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetDocumentsOrderNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarProcessingVoiceDiscriminatorTypeJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarProcessingVoiceDiscriminatorTypeNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarReadyVoiceDiscriminatorTypeJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarReadyVoiceDiscriminatorTypeNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarFailedVoiceDiscriminatorTypeJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarFailedVoiceDiscriminatorTypeNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetAvatarsResponseDataItemDiscriminatorStatusJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetAvatarsResponseDataItemDiscriminatorStatusNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateAvatarsResponseAvatarProcessingVoiceDiscriminatorTypeJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateAvatarsResponseAvatarProcessingVoiceDiscriminatorTypeNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateAvatarsResponseAvatarReadyVoiceDiscriminatorTypeJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateAvatarsResponseAvatarReadyVoiceDiscriminatorTypeNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateAvatarsResponseAvatarFailedVoiceDiscriminatorTypeJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateAvatarsResponseAvatarFailedVoiceDiscriminatorTypeNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateAvatarsResponseDiscriminatorStatusJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateAvatarsResponseDiscriminatorStatusNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetAvatarConversationsResponseDataItemStatusJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetAvatarConversationsResponseDataItemStatusNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetAvatarConversationsResponseDataItemAvatarVariant1DiscriminatorTypeJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetAvatarConversationsResponseDataItemAvatarVariant1DiscriminatorTypeNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetAvatarConversationsResponseVariant1AvatarVariant1DiscriminatorTypeJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetAvatarConversationsResponseVariant1AvatarVariant1DiscriminatorTypeNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetAvatarConversationsResponseVariant1TranscriptItemRoleJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetAvatarConversationsResponseVariant1TranscriptItemRoleNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetAvatarConversationsResponseVariant1ToolTypeJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetAvatarConversationsResponseVariant1ToolTypeNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetAvatarConversationsResponseVariant2AvatarVariant1DiscriminatorTypeJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetAvatarConversationsResponseVariant2AvatarVariant1DiscriminatorTypeNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetAvatarConversationsResponseVariant2TranscriptItemRoleJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetAvatarConversationsResponseVariant2TranscriptItemRoleNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetAvatarConversationsResponseVariant2ToolTypeJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetAvatarConversationsResponseVariant2ToolTypeNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetAvatarConversationsResponseVariant3AvatarVariant1DiscriminatorTypeJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetAvatarConversationsResponseVariant3AvatarVariant1DiscriminatorTypeNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetAvatarConversationsResponseVariant3TranscriptItemRoleJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetAvatarConversationsResponseVariant3TranscriptItemRoleNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetAvatarConversationsResponseVariant3ToolTypeJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetAvatarConversationsResponseVariant3ToolTypeNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetAvatarConversationsResponseDiscriminatorStatusJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetAvatarConversationsResponseDiscriminatorStatusNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetAvatarsResponseAvatarProcessingVoiceDiscriminatorTypeJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetAvatarsResponseAvatarProcessingVoiceDiscriminatorTypeNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetAvatarsResponseAvatarReadyVoiceDiscriminatorTypeJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetAvatarsResponseAvatarReadyVoiceDiscriminatorTypeNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetAvatarsResponseAvatarFailedVoiceDiscriminatorTypeJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetAvatarsResponseAvatarFailedVoiceDiscriminatorTypeNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetAvatarsResponseDiscriminatorStatusJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetAvatarsResponseDiscriminatorStatusNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.PatchAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.PatchAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.PatchAvatarsResponseAvatarProcessingVoiceDiscriminatorTypeJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.PatchAvatarsResponseAvatarProcessingVoiceDiscriminatorTypeNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.PatchAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.PatchAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.PatchAvatarsResponseAvatarReadyVoiceDiscriminatorTypeJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.PatchAvatarsResponseAvatarReadyVoiceDiscriminatorTypeNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.PatchAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.PatchAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.PatchAvatarsResponseAvatarFailedVoiceDiscriminatorTypeJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.PatchAvatarsResponseAvatarFailedVoiceDiscriminatorTypeNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.PatchAvatarsResponseDiscriminatorStatusJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.PatchAvatarsResponseDiscriminatorStatusNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateDocumentsResponseTypeJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateDocumentsResponseTypeNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetDocumentsResponseDataItemTypeJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetDocumentsResponseDataItemTypeNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetDocumentsResponseTypeJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetDocumentsResponseTypeNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetRealtimeSessionsResponseDiscriminatorStatusJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetRealtimeSessionsResponseDiscriminatorStatusNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetTasksResponseDiscriminatorStatusJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetTasksResponseDiscriminatorStatusNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateVideoResponseRoutingResolvedSettingsOptimizeForJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateVideoResponseRoutingResolvedSettingsOptimizeForNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateVideoResponseVariant1PipelineItemFilterJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateVideoResponseVariant1PipelineItemFilterNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateVideoResponseVariant1EmptiedByItemJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateVideoResponseVariant1EmptiedByItemNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateImageResponseRoutingResolvedSettingsOptimizeForJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateImageResponseRoutingResolvedSettingsOptimizeForNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateImageResponseVariant1PipelineItemFilterJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateImageResponseVariant1PipelineItemFilterNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateImageResponseVariant1EmptiedByItemJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateImageResponseVariant1EmptiedByItemNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateAudioResponseRoutingResolvedSettingsOptimizeForJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateAudioResponseRoutingResolvedSettingsOptimizeForNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateAudioResponseRoutingResolvedInputTypeJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateAudioResponseRoutingResolvedInputTypeNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateAudioResponseRoutingResolvedInputVoiceJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateAudioResponseRoutingResolvedInputVoiceNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateAudioResponseVariant1PipelineItemFilterJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateAudioResponseVariant1PipelineItemFilterNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateAudioResponseVariant1EmptiedByItemJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateGenerateAudioResponseVariant1EmptiedByItemNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetOrganizationWebappUsageResponseDataItemTypeJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetOrganizationWebappUsageResponseDataItemTypeNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetOrganizationWebappAuditLogsResponseDataItemActionJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetOrganizationWebappAuditLogsResponseDataItemActionNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetOrganizationWebappAuditLogsResponseActionJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetOrganizationWebappAuditLogsResponseActionNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateOrganizationUsageResponseResultUsedCreditModelJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateOrganizationUsageResponseResultUsedCreditModelNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateOrganizationUsageResponseModelJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateOrganizationUsageResponseModelNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetRoutersResponseDataItemSettingsModelsModeJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetRoutersResponseDataItemSettingsModelsModeNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetRoutersResponseDataItemSettingsOptimizeForJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetRoutersResponseDataItemSettingsOptimizeForNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateRoutersResponseSettingsModelsModeJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateRoutersResponseSettingsModelsModeNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateRoutersResponseSettingsOptimizeForJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateRoutersResponseSettingsOptimizeForNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetRoutersResponseSettingsModelsModeJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetRoutersResponseSettingsModelsModeNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetRoutersResponseSettingsOptimizeForJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetRoutersResponseSettingsOptimizeForNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.PatchRoutersResponseSettingsModelsModeJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.PatchRoutersResponseSettingsModelsModeNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.PatchRoutersResponseSettingsOptimizeForJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.PatchRoutersResponseSettingsOptimizeForNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemStatusJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemStatusNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemReasonCode2JsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemReasonCode2NullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemPipelineItemVariant1FilterJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemPipelineItemVariant1FilterNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemPipelineItemVariant3OutcomeJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemPipelineItemVariant3OutcomeNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemPipelineItemDiscriminatorTypeJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemPipelineItemDiscriminatorTypeNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemEmptiedByItemJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemEmptiedByItemNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetVoicesResponseDataItemDiscriminatorStatusJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetVoicesResponseDataItemDiscriminatorStatusNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetVoicesResponseDiscriminatorStatusJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetVoicesResponseDiscriminatorStatusNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.PatchVoicesResponseDiscriminatorStatusJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.PatchVoicesResponseDiscriminatorStatusNullableJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetWorkflowInvocationsResponseDiscriminatorStatusJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.GetWorkflowInvocationsResponseDiscriminatorStatusNullableJsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.VoiceJsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.Voice2JsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.AvatarJsonConverter());
@@ -5463,7 +1650,3306 @@ namespace Runway
             options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>());
             options.Converters.Add(new global::Runway.JsonConverters.UnixTimestampJsonConverter());
 
+            options.Converters.Add(new LazyEnumJsonConverterFactory());
+
             return options;
+        }
+
+
+        private sealed class LazyEnumJsonConverterFactory : global::System.Text.Json.Serialization.JsonConverterFactory
+        {
+            public override bool CanConvert(global::System.Type typeToConvert)
+            {
+                return
+                    typeToConvert == typeof(global::Runway.CreateAvatarsRequestVoiceRunwayLivePresetVoicePresetId)
+
+                    || typeToConvert == typeof(global::Runway.CreateAvatarsRequestVoiceRunwayLivePresetVoicePresetId?)
+
+                    || typeToConvert == typeof(global::Runway.CreateAvatarsRequestVoiceDiscriminatorType)
+
+                    || typeToConvert == typeof(global::Runway.CreateAvatarsRequestVoiceDiscriminatorType?)
+
+                    || typeToConvert == typeof(global::Runway.CreateAvatarsRequestImageProcessing)
+
+                    || typeToConvert == typeof(global::Runway.CreateAvatarsRequestImageProcessing?)
+
+                    || typeToConvert == typeof(global::Runway.PatchAvatarsRequestVoiceRunwayLivePresetVoicePresetId)
+
+                    || typeToConvert == typeof(global::Runway.PatchAvatarsRequestVoiceRunwayLivePresetVoicePresetId?)
+
+                    || typeToConvert == typeof(global::Runway.PatchAvatarsRequestVoiceDiscriminatorType)
+
+                    || typeToConvert == typeof(global::Runway.PatchAvatarsRequestVoiceDiscriminatorType?)
+
+                    || typeToConvert == typeof(global::Runway.PatchAvatarsRequestImageProcessing)
+
+                    || typeToConvert == typeof(global::Runway.PatchAvatarsRequestImageProcessing?)
+
+                    || typeToConvert == typeof(global::Runway.CreateAvatarVideosRequestAvatarRunwayPresetAvatarPresetId)
+
+                    || typeToConvert == typeof(global::Runway.CreateAvatarVideosRequestAvatarRunwayPresetAvatarPresetId?)
+
+                    || typeToConvert == typeof(global::Runway.CreateAvatarVideosRequestAvatarDiscriminatorType)
+
+                    || typeToConvert == typeof(global::Runway.CreateAvatarVideosRequestAvatarDiscriminatorType?)
+
+                    || typeToConvert == typeof(global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceRunwayPresetVoicePresetId)
+
+                    || typeToConvert == typeof(global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceRunwayPresetVoicePresetId?)
+
+                    || typeToConvert == typeof(global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceDiscriminatorType)
+
+                    || typeToConvert == typeof(global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceDiscriminatorType?)
+
+                    || typeToConvert == typeof(global::Runway.CreateAvatarVideosRequestSpeechDiscriminatorType)
+
+                    || typeToConvert == typeof(global::Runway.CreateAvatarVideosRequestSpeechDiscriminatorType?)
+
+                    || typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestAvatarRunwayPresetAvatarPresetId)
+
+                    || typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestAvatarRunwayPresetAvatarPresetId?)
+
+                    || typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestAvatarDiscriminatorType)
+
+                    || typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestAvatarDiscriminatorType?)
+
+                    || typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterArrayParameterItemsType)
+
+                    || typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterArrayParameterItemsType?)
+
+                    || typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterDiscriminatorType)
+
+                    || typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterDiscriminatorType?)
+
+                    || typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterArrayParameterItemsType)
+
+                    || typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterArrayParameterItemsType?)
+
+                    || typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterDiscriminatorType)
+
+                    || typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterDiscriminatorType?)
+
+                    || typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestToolDiscriminatorType)
+
+                    || typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestToolDiscriminatorType?)
+
+                    || typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestIntegrationDiscriminatorType)
+
+                    || typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestIntegrationDiscriminatorType?)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestGen45Ratio)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestGen45Ratio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestGen45ContentModerationPublicFigureThreshold)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestGen45ContentModerationPublicFigureThreshold?)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestGen45OutputFormat)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestGen45OutputFormat?)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestGen45ProresProfile)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestGen45ProresProfile?)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestGen4TurboRatio)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestGen4TurboRatio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestGen4TurboContentModerationPublicFigureThreshold)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestGen4TurboContentModerationPublicFigureThreshold?)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestVeo31PromptImagePromptImagePosition)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestVeo31PromptImagePromptImagePosition?)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestVeo31Ratio)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestVeo31Ratio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestVeo31FastPromptImagePromptImagePosition)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestVeo31FastPromptImagePromptImagePosition?)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestVeo31FastRatio)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestVeo31FastRatio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestHailuo3Resolution)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestHailuo3Resolution?)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestHailuo3Ratio)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestHailuo3Ratio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestHappyhorse10Resolution)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestHappyhorse10Resolution?)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestSeedance2PromptImagePromptImagePosition)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestSeedance2PromptImagePromptImagePosition?)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestSeedance2Ratio)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestSeedance2Ratio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestSeedance2FastPromptImagePromptImagePosition)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestSeedance2FastPromptImagePromptImagePosition?)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestSeedance2FastRatio)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestSeedance2FastRatio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestSeedance2MiniPromptImagePromptImagePosition)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestSeedance2MiniPromptImagePromptImagePosition?)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestSeedance2MiniRatio)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestSeedance2MiniRatio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestGeminiOmniFlashRatio)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestGeminiOmniFlashRatio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestSeedance25PromptImagePromptImagePosition)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestSeedance25PromptImagePromptImagePosition?)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestSeedance25Ratio)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestSeedance25Ratio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestDiscriminatorModel)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestDiscriminatorModel?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestGen45Ratio)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestGen45Ratio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestGen45ContentModerationPublicFigureThreshold)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestGen45ContentModerationPublicFigureThreshold?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestGen45OutputFormat)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestGen45OutputFormat?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestGen45ProresProfile)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestGen45ProresProfile?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestVeo31Ratio)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestVeo31Ratio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestVeo31FastRatio)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestVeo31FastRatio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestHailuo3Resolution)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestHailuo3Resolution?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestHailuo3Ratio)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestHailuo3Ratio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestHappyhorse10Ratio)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestHappyhorse10Ratio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestSeedance2Ratio)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestSeedance2Ratio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestSeedance2FastRatio)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestSeedance2FastRatio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestSeedance2MiniRatio)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestSeedance2MiniRatio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestGeminiOmniFlashRatio)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestGeminiOmniFlashRatio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestSeedance25Ratio)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestSeedance25Ratio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestDiscriminatorModel)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestDiscriminatorModel?)
+
+                    || typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestVariant1TargetAspectRatio)
+
+                    || typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestVariant1TargetAspectRatio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestVariant1ContentModerationPublicFigureThreshold)
+
+                    || typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestVariant1ContentModerationPublicFigureThreshold?)
+
+                    || typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestVariant1OutputFormat)
+
+                    || typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestVariant1OutputFormat?)
+
+                    || typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestVariant1ProresProfile)
+
+                    || typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestVariant1ProresProfile?)
+
+                    || typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestHailuo3Resolution)
+
+                    || typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestHailuo3Resolution?)
+
+                    || typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestHailuo3Ratio)
+
+                    || typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestHailuo3Ratio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestSeedance2Ratio)
+
+                    || typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestSeedance2Ratio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestSeedance2FastRatio)
+
+                    || typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestSeedance2FastRatio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestSeedance2MiniRatio)
+
+                    || typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestSeedance2MiniRatio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestSeedance25Mode)
+
+                    || typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestSeedance25Mode?)
+
+                    || typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestSeedance25Ratio)
+
+                    || typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestSeedance25Ratio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestDiscriminatorModel)
+
+                    || typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestDiscriminatorModel?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGen4ImageTurboRatio)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGen4ImageTurboRatio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGen4ImageTurboContentModerationPublicFigureThreshold)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGen4ImageTurboContentModerationPublicFigureThreshold?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGen4ImageRatio)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGen4ImageRatio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGen4ImageContentModerationPublicFigureThreshold)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGen4ImageContentModerationPublicFigureThreshold?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage2Ratio)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage2Ratio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage2Quality)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage2Quality?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage2Background)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage2Background?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGeminiImage3ProRatio)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGeminiImage3ProRatio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGeminiImage3ProReferenceImageSubject)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGeminiImage3ProReferenceImageSubject?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGeminiImage31FlashRatio)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGeminiImage31FlashRatio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGeminiImage31FlashReferenceImageSubject)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGeminiImage31FlashReferenceImageSubject?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestSeedream5ProRatio)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestSeedream5ProRatio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestSeedream5ProOutputFormat)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestSeedream5ProOutputFormat?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestSeedream5LiteRatio)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestSeedream5LiteRatio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestSeedream5LiteOutputFormat)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestSeedream5LiteOutputFormat?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGemini25FlashRatio)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGemini25FlashRatio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestDiscriminatorModel)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestDiscriminatorModel?)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageUpscaleRequestMagnificPrecisionUpscalerV2Flavor)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageUpscaleRequestMagnificPrecisionUpscalerV2Flavor?)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageUpscaleRequestDiscriminatorModel)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageUpscaleRequestDiscriminatorModel?)
+
+                    || typeToConvert == typeof(global::Runway.CreateVideoUpscaleRequestMagnificVideoUpscalerCreativeResolution)
+
+                    || typeToConvert == typeof(global::Runway.CreateVideoUpscaleRequestMagnificVideoUpscalerCreativeResolution?)
+
+                    || typeToConvert == typeof(global::Runway.CreateVideoUpscaleRequestMagnificVideoUpscalerCreativeFlavor)
+
+                    || typeToConvert == typeof(global::Runway.CreateVideoUpscaleRequestMagnificVideoUpscalerCreativeFlavor?)
+
+                    || typeToConvert == typeof(global::Runway.CreateVideoUpscaleRequestDiscriminatorModel)
+
+                    || typeToConvert == typeof(global::Runway.CreateVideoUpscaleRequestDiscriminatorModel?)
+
+                    || typeToConvert == typeof(global::Runway.CreateCharacterPerformanceRequestActTwoCharacterDiscriminatorType)
+
+                    || typeToConvert == typeof(global::Runway.CreateCharacterPerformanceRequestActTwoCharacterDiscriminatorType?)
+
+                    || typeToConvert == typeof(global::Runway.CreateCharacterPerformanceRequestActTwoReferenceDiscriminatorType)
+
+                    || typeToConvert == typeof(global::Runway.CreateCharacterPerformanceRequestActTwoReferenceDiscriminatorType?)
+
+                    || typeToConvert == typeof(global::Runway.CreateCharacterPerformanceRequestActTwoRatio)
+
+                    || typeToConvert == typeof(global::Runway.CreateCharacterPerformanceRequestActTwoRatio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateCharacterPerformanceRequestActTwoContentModerationPublicFigureThreshold)
+
+                    || typeToConvert == typeof(global::Runway.CreateCharacterPerformanceRequestActTwoContentModerationPublicFigureThreshold?)
+
+                    || typeToConvert == typeof(global::Runway.CreateCharacterPerformanceRequestDiscriminatorModel)
+
+                    || typeToConvert == typeof(global::Runway.CreateCharacterPerformanceRequestDiscriminatorModel?)
+
+                    || typeToConvert == typeof(global::Runway.CreateSoundEffectRequestSeedAudioOutputFormat)
+
+                    || typeToConvert == typeof(global::Runway.CreateSoundEffectRequestSeedAudioOutputFormat?)
+
+                    || typeToConvert == typeof(global::Runway.CreateSoundEffectRequestDiscriminatorModel)
+
+                    || typeToConvert == typeof(global::Runway.CreateSoundEffectRequestDiscriminatorModel?)
+
+                    || typeToConvert == typeof(global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaDiscriminatorType)
+
+                    || typeToConvert == typeof(global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaDiscriminatorType?)
+
+                    || typeToConvert == typeof(global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2VoiceRunwayPresetVoicePresetId)
+
+                    || typeToConvert == typeof(global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2VoiceRunwayPresetVoicePresetId?)
+
+                    || typeToConvert == typeof(global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2VoiceDiscriminatorType)
+
+                    || typeToConvert == typeof(global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2VoiceDiscriminatorType?)
+
+                    || typeToConvert == typeof(global::Runway.CreateSpeechToSpeechRequestDiscriminatorModel)
+
+                    || typeToConvert == typeof(global::Runway.CreateSpeechToSpeechRequestDiscriminatorModel?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToSpeechRequestSeedAudioVoiceDiscriminatorType)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToSpeechRequestSeedAudioVoiceDiscriminatorType?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToSpeechRequestSeedAudioOutputFormat)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToSpeechRequestSeedAudioOutputFormat?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToSpeechRequestElevenMultilingualV2VoiceRunwayPresetVoicePresetId)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToSpeechRequestElevenMultilingualV2VoiceRunwayPresetVoicePresetId?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToSpeechRequestElevenMultilingualV2VoiceDiscriminatorType)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToSpeechRequestElevenMultilingualV2VoiceDiscriminatorType?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToSpeechRequestElevenV3VoiceRunwayPresetVoicePresetId)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToSpeechRequestElevenV3VoiceRunwayPresetVoicePresetId?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToSpeechRequestElevenV3VoiceDiscriminatorType)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToSpeechRequestElevenV3VoiceDiscriminatorType?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToSpeechRequestElevenV3ApplyTextNormalization)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToSpeechRequestElevenV3ApplyTextNormalization?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToSpeechRequestDiscriminatorModel)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToSpeechRequestDiscriminatorModel?)
+
+                    || typeToConvert == typeof(global::Runway.CreateVoiceDubbingRequestElevenVoiceDubbingTargetLang)
+
+                    || typeToConvert == typeof(global::Runway.CreateVoiceDubbingRequestElevenVoiceDubbingTargetLang?)
+
+                    || typeToConvert == typeof(global::Runway.CreateVoiceDubbingRequestDiscriminatorModel)
+
+                    || typeToConvert == typeof(global::Runway.CreateVoiceDubbingRequestDiscriminatorModel?)
+
+                    || typeToConvert == typeof(global::Runway.CreateVoiceIsolationRequestDiscriminatorModel)
+
+                    || typeToConvert == typeof(global::Runway.CreateVoiceIsolationRequestDiscriminatorModel?)
+
+                    || typeToConvert == typeof(global::Runway.CreateGenerateVideoRequestInputReferenceImageRole)
+
+                    || typeToConvert == typeof(global::Runway.CreateGenerateVideoRequestInputReferenceImageRole?)
+
+                    || typeToConvert == typeof(global::Runway.CreateGenerateVideoRequestInputReferenceVideoRole)
+
+                    || typeToConvert == typeof(global::Runway.CreateGenerateVideoRequestInputReferenceVideoRole?)
+
+                    || typeToConvert == typeof(global::Runway.CreateGenerateVideoRequestInputAspectRatio)
+
+                    || typeToConvert == typeof(global::Runway.CreateGenerateVideoRequestInputAspectRatio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateGenerateVideoRequestInputResolution)
+
+                    || typeToConvert == typeof(global::Runway.CreateGenerateVideoRequestInputResolution?)
+
+                    || typeToConvert == typeof(global::Runway.CreateGenerateVideoRequestInputContentModerationPublicFigureThreshold)
+
+                    || typeToConvert == typeof(global::Runway.CreateGenerateVideoRequestInputContentModerationPublicFigureThreshold?)
+
+                    || typeToConvert == typeof(global::Runway.CreateGenerateImageRequestInputAspectRatio)
+
+                    || typeToConvert == typeof(global::Runway.CreateGenerateImageRequestInputAspectRatio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateGenerateImageRequestInputResolution)
+
+                    || typeToConvert == typeof(global::Runway.CreateGenerateImageRequestInputResolution?)
+
+                    || typeToConvert == typeof(global::Runway.CreateGenerateImageRequestInputContentModerationPublicFigureThreshold)
+
+                    || typeToConvert == typeof(global::Runway.CreateGenerateImageRequestInputContentModerationPublicFigureThreshold?)
+
+                    || typeToConvert == typeof(global::Runway.CreateGenerateAudioRequestInputType)
+
+                    || typeToConvert == typeof(global::Runway.CreateGenerateAudioRequestInputType?)
+
+                    || typeToConvert == typeof(global::Runway.CreateGenerateAudioRequestInputVoiceAudioPresetVoicePresetId)
+
+                    || typeToConvert == typeof(global::Runway.CreateGenerateAudioRequestInputVoiceAudioPresetVoicePresetId?)
+
+                    || typeToConvert == typeof(global::Runway.CreateGenerateAudioRequestInputVoiceDiscriminatorType)
+
+                    || typeToConvert == typeof(global::Runway.CreateGenerateAudioRequestInputVoiceDiscriminatorType?)
+
+                    || typeToConvert == typeof(global::Runway.CreateUploadsRequestType)
+
+                    || typeToConvert == typeof(global::Runway.CreateUploadsRequestType?)
+
+                    || typeToConvert == typeof(global::Runway.CreateRecipesAdLocalizationRequestVersion)
+
+                    || typeToConvert == typeof(global::Runway.CreateRecipesAdLocalizationRequestVersion?)
+
+                    || typeToConvert == typeof(global::Runway.CreateRecipesAdLocalizationRequestTargetLanguage)
+
+                    || typeToConvert == typeof(global::Runway.CreateRecipesAdLocalizationRequestTargetLanguage?)
+
+                    || typeToConvert == typeof(global::Runway.CreateRecipesMarketingStockImageRequestVersion)
+
+                    || typeToConvert == typeof(global::Runway.CreateRecipesMarketingStockImageRequestVersion?)
+
+                    || typeToConvert == typeof(global::Runway.CreateRecipesMarketingStockImageRequestQuality)
+
+                    || typeToConvert == typeof(global::Runway.CreateRecipesMarketingStockImageRequestQuality?)
+
+                    || typeToConvert == typeof(global::Runway.CreateRecipesProductAdRequestVersion)
+
+                    || typeToConvert == typeof(global::Runway.CreateRecipesProductAdRequestVersion?)
+
+                    || typeToConvert == typeof(global::Runway.CreateRecipesProductAdRequestRatio)
+
+                    || typeToConvert == typeof(global::Runway.CreateRecipesProductAdRequestRatio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateRecipesProductCampaignImageRequestVersion)
+
+                    || typeToConvert == typeof(global::Runway.CreateRecipesProductCampaignImageRequestVersion?)
+
+                    || typeToConvert == typeof(global::Runway.CreateRecipesProductSwapRequestVersion)
+
+                    || typeToConvert == typeof(global::Runway.CreateRecipesProductSwapRequestVersion?)
+
+                    || typeToConvert == typeof(global::Runway.CreateRecipesProductSwapRequestNewProductImageView)
+
+                    || typeToConvert == typeof(global::Runway.CreateRecipesProductSwapRequestNewProductImageView?)
+
+                    || typeToConvert == typeof(global::Runway.CreateRecipesProductSwapRequestResolution)
+
+                    || typeToConvert == typeof(global::Runway.CreateRecipesProductSwapRequestResolution?)
+
+                    || typeToConvert == typeof(global::Runway.CreateRecipesMultiShotVideoRequestVariant1Version)
+
+                    || typeToConvert == typeof(global::Runway.CreateRecipesMultiShotVideoRequestVariant1Version?)
+
+                    || typeToConvert == typeof(global::Runway.CreateRecipesMultiShotVideoRequestVariant1Ratio)
+
+                    || typeToConvert == typeof(global::Runway.CreateRecipesMultiShotVideoRequestVariant1Ratio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateRecipesMultiShotVideoRequestVariant2Version)
+
+                    || typeToConvert == typeof(global::Runway.CreateRecipesMultiShotVideoRequestVariant2Version?)
+
+                    || typeToConvert == typeof(global::Runway.CreateRecipesMultiShotVideoRequestVariant2Ratio)
+
+                    || typeToConvert == typeof(global::Runway.CreateRecipesMultiShotVideoRequestVariant2Ratio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateRecipesMultiShotVideoRequestDiscriminatorMode)
+
+                    || typeToConvert == typeof(global::Runway.CreateRecipesMultiShotVideoRequestDiscriminatorMode?)
+
+                    || typeToConvert == typeof(global::Runway.CreateRecipesProductUgcRequestVersion)
+
+                    || typeToConvert == typeof(global::Runway.CreateRecipesProductUgcRequestVersion?)
+
+                    || typeToConvert == typeof(global::Runway.CreateRecipesProductUgcRequestRatio)
+
+                    || typeToConvert == typeof(global::Runway.CreateRecipesProductUgcRequestRatio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateRoutersRequestSettingsModelsMode)
+
+                    || typeToConvert == typeof(global::Runway.CreateRoutersRequestSettingsModelsMode?)
+
+                    || typeToConvert == typeof(global::Runway.CreateRoutersRequestSettingsOptimizeFor)
+
+                    || typeToConvert == typeof(global::Runway.CreateRoutersRequestSettingsOptimizeFor?)
+
+                    || typeToConvert == typeof(global::Runway.PatchRoutersRequestSettingsModelsMode)
+
+                    || typeToConvert == typeof(global::Runway.PatchRoutersRequestSettingsModelsMode?)
+
+                    || typeToConvert == typeof(global::Runway.PatchRoutersRequestSettingsOptimizeFor)
+
+                    || typeToConvert == typeof(global::Runway.PatchRoutersRequestSettingsOptimizeFor?)
+
+                    || typeToConvert == typeof(global::Runway.CreateVoicesRequestFromVoiceFromTextModel)
+
+                    || typeToConvert == typeof(global::Runway.CreateVoicesRequestFromVoiceFromTextModel?)
+
+                    || typeToConvert == typeof(global::Runway.CreateVoicesRequestFromDiscriminatorType)
+
+                    || typeToConvert == typeof(global::Runway.CreateVoicesRequestFromDiscriminatorType?)
+
+                    || typeToConvert == typeof(global::Runway.CreateVoicesPreviewRequestModel)
+
+                    || typeToConvert == typeof(global::Runway.CreateVoicesPreviewRequestModel?)
+
+                    || typeToConvert == typeof(global::Runway.CreateWorkflowsRequestNodeOutputsDiscriminatorType)
+
+                    || typeToConvert == typeof(global::Runway.CreateWorkflowsRequestNodeOutputsDiscriminatorType?)
+
+                    || typeToConvert == typeof(global::Runway.GetDocumentsSort)
+
+                    || typeToConvert == typeof(global::Runway.GetDocumentsSort?)
+
+                    || typeToConvert == typeof(global::Runway.GetDocumentsOrder)
+
+                    || typeToConvert == typeof(global::Runway.GetDocumentsOrder?)
+
+                    || typeToConvert == typeof(global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetId)
+
+                    || typeToConvert == typeof(global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetId?)
+
+                    || typeToConvert == typeof(global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceDiscriminatorType)
+
+                    || typeToConvert == typeof(global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceDiscriminatorType?)
+
+                    || typeToConvert == typeof(global::Runway.GetAvatarsResponseDataItemAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetId)
+
+                    || typeToConvert == typeof(global::Runway.GetAvatarsResponseDataItemAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetId?)
+
+                    || typeToConvert == typeof(global::Runway.GetAvatarsResponseDataItemAvatarReadyVoiceDiscriminatorType)
+
+                    || typeToConvert == typeof(global::Runway.GetAvatarsResponseDataItemAvatarReadyVoiceDiscriminatorType?)
+
+                    || typeToConvert == typeof(global::Runway.GetAvatarsResponseDataItemAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetId)
+
+                    || typeToConvert == typeof(global::Runway.GetAvatarsResponseDataItemAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetId?)
+
+                    || typeToConvert == typeof(global::Runway.GetAvatarsResponseDataItemAvatarFailedVoiceDiscriminatorType)
+
+                    || typeToConvert == typeof(global::Runway.GetAvatarsResponseDataItemAvatarFailedVoiceDiscriminatorType?)
+
+                    || typeToConvert == typeof(global::Runway.GetAvatarsResponseDataItemDiscriminatorStatus)
+
+                    || typeToConvert == typeof(global::Runway.GetAvatarsResponseDataItemDiscriminatorStatus?)
+
+                    || typeToConvert == typeof(global::Runway.CreateAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetId)
+
+                    || typeToConvert == typeof(global::Runway.CreateAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetId?)
+
+                    || typeToConvert == typeof(global::Runway.CreateAvatarsResponseAvatarProcessingVoiceDiscriminatorType)
+
+                    || typeToConvert == typeof(global::Runway.CreateAvatarsResponseAvatarProcessingVoiceDiscriminatorType?)
+
+                    || typeToConvert == typeof(global::Runway.CreateAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetId)
+
+                    || typeToConvert == typeof(global::Runway.CreateAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetId?)
+
+                    || typeToConvert == typeof(global::Runway.CreateAvatarsResponseAvatarReadyVoiceDiscriminatorType)
+
+                    || typeToConvert == typeof(global::Runway.CreateAvatarsResponseAvatarReadyVoiceDiscriminatorType?)
+
+                    || typeToConvert == typeof(global::Runway.CreateAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetId)
+
+                    || typeToConvert == typeof(global::Runway.CreateAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetId?)
+
+                    || typeToConvert == typeof(global::Runway.CreateAvatarsResponseAvatarFailedVoiceDiscriminatorType)
+
+                    || typeToConvert == typeof(global::Runway.CreateAvatarsResponseAvatarFailedVoiceDiscriminatorType?)
+
+                    || typeToConvert == typeof(global::Runway.CreateAvatarsResponseDiscriminatorStatus)
+
+                    || typeToConvert == typeof(global::Runway.CreateAvatarsResponseDiscriminatorStatus?)
+
+                    || typeToConvert == typeof(global::Runway.GetAvatarConversationsResponseDataItemStatus)
+
+                    || typeToConvert == typeof(global::Runway.GetAvatarConversationsResponseDataItemStatus?)
+
+                    || typeToConvert == typeof(global::Runway.GetAvatarConversationsResponseDataItemAvatarVariant1DiscriminatorType)
+
+                    || typeToConvert == typeof(global::Runway.GetAvatarConversationsResponseDataItemAvatarVariant1DiscriminatorType?)
+
+                    || typeToConvert == typeof(global::Runway.GetAvatarConversationsResponseVariant1AvatarVariant1DiscriminatorType)
+
+                    || typeToConvert == typeof(global::Runway.GetAvatarConversationsResponseVariant1AvatarVariant1DiscriminatorType?)
+
+                    || typeToConvert == typeof(global::Runway.GetAvatarConversationsResponseVariant1TranscriptItemRole)
+
+                    || typeToConvert == typeof(global::Runway.GetAvatarConversationsResponseVariant1TranscriptItemRole?)
+
+                    || typeToConvert == typeof(global::Runway.GetAvatarConversationsResponseVariant1ToolType)
+
+                    || typeToConvert == typeof(global::Runway.GetAvatarConversationsResponseVariant1ToolType?)
+
+                    || typeToConvert == typeof(global::Runway.GetAvatarConversationsResponseVariant2AvatarVariant1DiscriminatorType)
+
+                    || typeToConvert == typeof(global::Runway.GetAvatarConversationsResponseVariant2AvatarVariant1DiscriminatorType?)
+
+                    || typeToConvert == typeof(global::Runway.GetAvatarConversationsResponseVariant2TranscriptItemRole)
+
+                    || typeToConvert == typeof(global::Runway.GetAvatarConversationsResponseVariant2TranscriptItemRole?)
+
+                    || typeToConvert == typeof(global::Runway.GetAvatarConversationsResponseVariant2ToolType)
+
+                    || typeToConvert == typeof(global::Runway.GetAvatarConversationsResponseVariant2ToolType?)
+
+                    || typeToConvert == typeof(global::Runway.GetAvatarConversationsResponseVariant3AvatarVariant1DiscriminatorType)
+
+                    || typeToConvert == typeof(global::Runway.GetAvatarConversationsResponseVariant3AvatarVariant1DiscriminatorType?)
+
+                    || typeToConvert == typeof(global::Runway.GetAvatarConversationsResponseVariant3TranscriptItemRole)
+
+                    || typeToConvert == typeof(global::Runway.GetAvatarConversationsResponseVariant3TranscriptItemRole?)
+
+                    || typeToConvert == typeof(global::Runway.GetAvatarConversationsResponseVariant3ToolType)
+
+                    || typeToConvert == typeof(global::Runway.GetAvatarConversationsResponseVariant3ToolType?)
+
+                    || typeToConvert == typeof(global::Runway.GetAvatarConversationsResponseDiscriminatorStatus)
+
+                    || typeToConvert == typeof(global::Runway.GetAvatarConversationsResponseDiscriminatorStatus?)
+
+                    || typeToConvert == typeof(global::Runway.GetAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetId)
+
+                    || typeToConvert == typeof(global::Runway.GetAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetId?)
+
+                    || typeToConvert == typeof(global::Runway.GetAvatarsResponseAvatarProcessingVoiceDiscriminatorType)
+
+                    || typeToConvert == typeof(global::Runway.GetAvatarsResponseAvatarProcessingVoiceDiscriminatorType?)
+
+                    || typeToConvert == typeof(global::Runway.GetAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetId)
+
+                    || typeToConvert == typeof(global::Runway.GetAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetId?)
+
+                    || typeToConvert == typeof(global::Runway.GetAvatarsResponseAvatarReadyVoiceDiscriminatorType)
+
+                    || typeToConvert == typeof(global::Runway.GetAvatarsResponseAvatarReadyVoiceDiscriminatorType?)
+
+                    || typeToConvert == typeof(global::Runway.GetAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetId)
+
+                    || typeToConvert == typeof(global::Runway.GetAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetId?)
+
+                    || typeToConvert == typeof(global::Runway.GetAvatarsResponseAvatarFailedVoiceDiscriminatorType)
+
+                    || typeToConvert == typeof(global::Runway.GetAvatarsResponseAvatarFailedVoiceDiscriminatorType?)
+
+                    || typeToConvert == typeof(global::Runway.GetAvatarsResponseDiscriminatorStatus)
+
+                    || typeToConvert == typeof(global::Runway.GetAvatarsResponseDiscriminatorStatus?)
+
+                    || typeToConvert == typeof(global::Runway.PatchAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetId)
+
+                    || typeToConvert == typeof(global::Runway.PatchAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetId?)
+
+                    || typeToConvert == typeof(global::Runway.PatchAvatarsResponseAvatarProcessingVoiceDiscriminatorType)
+
+                    || typeToConvert == typeof(global::Runway.PatchAvatarsResponseAvatarProcessingVoiceDiscriminatorType?)
+
+                    || typeToConvert == typeof(global::Runway.PatchAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetId)
+
+                    || typeToConvert == typeof(global::Runway.PatchAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetId?)
+
+                    || typeToConvert == typeof(global::Runway.PatchAvatarsResponseAvatarReadyVoiceDiscriminatorType)
+
+                    || typeToConvert == typeof(global::Runway.PatchAvatarsResponseAvatarReadyVoiceDiscriminatorType?)
+
+                    || typeToConvert == typeof(global::Runway.PatchAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetId)
+
+                    || typeToConvert == typeof(global::Runway.PatchAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetId?)
+
+                    || typeToConvert == typeof(global::Runway.PatchAvatarsResponseAvatarFailedVoiceDiscriminatorType)
+
+                    || typeToConvert == typeof(global::Runway.PatchAvatarsResponseAvatarFailedVoiceDiscriminatorType?)
+
+                    || typeToConvert == typeof(global::Runway.PatchAvatarsResponseDiscriminatorStatus)
+
+                    || typeToConvert == typeof(global::Runway.PatchAvatarsResponseDiscriminatorStatus?)
+
+                    || typeToConvert == typeof(global::Runway.CreateDocumentsResponseType)
+
+                    || typeToConvert == typeof(global::Runway.CreateDocumentsResponseType?)
+
+                    || typeToConvert == typeof(global::Runway.GetDocumentsResponseDataItemType)
+
+                    || typeToConvert == typeof(global::Runway.GetDocumentsResponseDataItemType?)
+
+                    || typeToConvert == typeof(global::Runway.GetDocumentsResponseType)
+
+                    || typeToConvert == typeof(global::Runway.GetDocumentsResponseType?)
+
+                    || typeToConvert == typeof(global::Runway.GetRealtimeSessionsResponseDiscriminatorStatus)
+
+                    || typeToConvert == typeof(global::Runway.GetRealtimeSessionsResponseDiscriminatorStatus?)
+
+                    || typeToConvert == typeof(global::Runway.GetTasksResponseDiscriminatorStatus)
+
+                    || typeToConvert == typeof(global::Runway.GetTasksResponseDiscriminatorStatus?)
+
+                    || typeToConvert == typeof(global::Runway.CreateGenerateVideoResponseRoutingResolvedSettingsOptimizeFor)
+
+                    || typeToConvert == typeof(global::Runway.CreateGenerateVideoResponseRoutingResolvedSettingsOptimizeFor?)
+
+                    || typeToConvert == typeof(global::Runway.CreateGenerateVideoResponseVariant1PipelineItemFilter)
+
+                    || typeToConvert == typeof(global::Runway.CreateGenerateVideoResponseVariant1PipelineItemFilter?)
+
+                    || typeToConvert == typeof(global::Runway.CreateGenerateVideoResponseVariant1EmptiedByItem)
+
+                    || typeToConvert == typeof(global::Runway.CreateGenerateVideoResponseVariant1EmptiedByItem?)
+
+                    || typeToConvert == typeof(global::Runway.CreateGenerateImageResponseRoutingResolvedSettingsOptimizeFor)
+
+                    || typeToConvert == typeof(global::Runway.CreateGenerateImageResponseRoutingResolvedSettingsOptimizeFor?)
+
+                    || typeToConvert == typeof(global::Runway.CreateGenerateImageResponseVariant1PipelineItemFilter)
+
+                    || typeToConvert == typeof(global::Runway.CreateGenerateImageResponseVariant1PipelineItemFilter?)
+
+                    || typeToConvert == typeof(global::Runway.CreateGenerateImageResponseVariant1EmptiedByItem)
+
+                    || typeToConvert == typeof(global::Runway.CreateGenerateImageResponseVariant1EmptiedByItem?)
+
+                    || typeToConvert == typeof(global::Runway.CreateGenerateAudioResponseRoutingResolvedSettingsOptimizeFor)
+
+                    || typeToConvert == typeof(global::Runway.CreateGenerateAudioResponseRoutingResolvedSettingsOptimizeFor?)
+
+                    || typeToConvert == typeof(global::Runway.CreateGenerateAudioResponseRoutingResolvedInputType)
+
+                    || typeToConvert == typeof(global::Runway.CreateGenerateAudioResponseRoutingResolvedInputType?)
+
+                    || typeToConvert == typeof(global::Runway.CreateGenerateAudioResponseRoutingResolvedInputVoice)
+
+                    || typeToConvert == typeof(global::Runway.CreateGenerateAudioResponseRoutingResolvedInputVoice?)
+
+                    || typeToConvert == typeof(global::Runway.CreateGenerateAudioResponseVariant1PipelineItemFilter)
+
+                    || typeToConvert == typeof(global::Runway.CreateGenerateAudioResponseVariant1PipelineItemFilter?)
+
+                    || typeToConvert == typeof(global::Runway.CreateGenerateAudioResponseVariant1EmptiedByItem)
+
+                    || typeToConvert == typeof(global::Runway.CreateGenerateAudioResponseVariant1EmptiedByItem?)
+
+                    || typeToConvert == typeof(global::Runway.GetOrganizationWebappUsageResponseDataItemType)
+
+                    || typeToConvert == typeof(global::Runway.GetOrganizationWebappUsageResponseDataItemType?)
+
+                    || typeToConvert == typeof(global::Runway.GetOrganizationWebappAuditLogsResponseDataItemAction)
+
+                    || typeToConvert == typeof(global::Runway.GetOrganizationWebappAuditLogsResponseDataItemAction?)
+
+                    || typeToConvert == typeof(global::Runway.GetOrganizationWebappAuditLogsResponseAction)
+
+                    || typeToConvert == typeof(global::Runway.GetOrganizationWebappAuditLogsResponseAction?)
+
+                    || typeToConvert == typeof(global::Runway.CreateOrganizationUsageResponseResultUsedCreditModel)
+
+                    || typeToConvert == typeof(global::Runway.CreateOrganizationUsageResponseResultUsedCreditModel?)
+
+                    || typeToConvert == typeof(global::Runway.CreateOrganizationUsageResponseModel)
+
+                    || typeToConvert == typeof(global::Runway.CreateOrganizationUsageResponseModel?)
+
+                    || typeToConvert == typeof(global::Runway.GetRoutersResponseDataItemSettingsModelsMode)
+
+                    || typeToConvert == typeof(global::Runway.GetRoutersResponseDataItemSettingsModelsMode?)
+
+                    || typeToConvert == typeof(global::Runway.GetRoutersResponseDataItemSettingsOptimizeFor)
+
+                    || typeToConvert == typeof(global::Runway.GetRoutersResponseDataItemSettingsOptimizeFor?)
+
+                    || typeToConvert == typeof(global::Runway.CreateRoutersResponseSettingsModelsMode)
+
+                    || typeToConvert == typeof(global::Runway.CreateRoutersResponseSettingsModelsMode?)
+
+                    || typeToConvert == typeof(global::Runway.CreateRoutersResponseSettingsOptimizeFor)
+
+                    || typeToConvert == typeof(global::Runway.CreateRoutersResponseSettingsOptimizeFor?)
+
+                    || typeToConvert == typeof(global::Runway.GetRoutersResponseSettingsModelsMode)
+
+                    || typeToConvert == typeof(global::Runway.GetRoutersResponseSettingsModelsMode?)
+
+                    || typeToConvert == typeof(global::Runway.GetRoutersResponseSettingsOptimizeFor)
+
+                    || typeToConvert == typeof(global::Runway.GetRoutersResponseSettingsOptimizeFor?)
+
+                    || typeToConvert == typeof(global::Runway.PatchRoutersResponseSettingsModelsMode)
+
+                    || typeToConvert == typeof(global::Runway.PatchRoutersResponseSettingsModelsMode?)
+
+                    || typeToConvert == typeof(global::Runway.PatchRoutersResponseSettingsOptimizeFor)
+
+                    || typeToConvert == typeof(global::Runway.PatchRoutersResponseSettingsOptimizeFor?)
+
+                    || typeToConvert == typeof(global::Runway.GetRoutersRequestsResponseDataItemStatus)
+
+                    || typeToConvert == typeof(global::Runway.GetRoutersRequestsResponseDataItemStatus?)
+
+                    || typeToConvert == typeof(global::Runway.GetRoutersRequestsResponseDataItemReasonCode2)
+
+                    || typeToConvert == typeof(global::Runway.GetRoutersRequestsResponseDataItemReasonCode2?)
+
+                    || typeToConvert == typeof(global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant1Filter)
+
+                    || typeToConvert == typeof(global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant1Filter?)
+
+                    || typeToConvert == typeof(global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant3Outcome)
+
+                    || typeToConvert == typeof(global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant3Outcome?)
+
+                    || typeToConvert == typeof(global::Runway.GetRoutersRequestsResponseDataItemPipelineItemDiscriminatorType)
+
+                    || typeToConvert == typeof(global::Runway.GetRoutersRequestsResponseDataItemPipelineItemDiscriminatorType?)
+
+                    || typeToConvert == typeof(global::Runway.GetRoutersRequestsResponseDataItemEmptiedByItem)
+
+                    || typeToConvert == typeof(global::Runway.GetRoutersRequestsResponseDataItemEmptiedByItem?)
+
+                    || typeToConvert == typeof(global::Runway.GetVoicesResponseDataItemDiscriminatorStatus)
+
+                    || typeToConvert == typeof(global::Runway.GetVoicesResponseDataItemDiscriminatorStatus?)
+
+                    || typeToConvert == typeof(global::Runway.GetVoicesResponseDiscriminatorStatus)
+
+                    || typeToConvert == typeof(global::Runway.GetVoicesResponseDiscriminatorStatus?)
+
+                    || typeToConvert == typeof(global::Runway.PatchVoicesResponseDiscriminatorStatus)
+
+                    || typeToConvert == typeof(global::Runway.PatchVoicesResponseDiscriminatorStatus?)
+
+                    || typeToConvert == typeof(global::Runway.GetWorkflowInvocationsResponseDiscriminatorStatus)
+
+                    || typeToConvert == typeof(global::Runway.GetWorkflowInvocationsResponseDiscriminatorStatus?);
+            }
+
+            public override global::System.Text.Json.Serialization.JsonConverter CreateConverter(
+                global::System.Type typeToConvert,
+                global::System.Text.Json.JsonSerializerOptions options)
+            {
+                if (typeToConvert == typeof(global::Runway.CreateAvatarsRequestVoiceRunwayLivePresetVoicePresetId))
+                {
+                    return new global::Runway.JsonConverters.CreateAvatarsRequestVoiceRunwayLivePresetVoicePresetIdJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateAvatarsRequestVoiceRunwayLivePresetVoicePresetId?))
+                {
+                    return new global::Runway.JsonConverters.CreateAvatarsRequestVoiceRunwayLivePresetVoicePresetIdNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateAvatarsRequestVoiceDiscriminatorType))
+                {
+                    return new global::Runway.JsonConverters.CreateAvatarsRequestVoiceDiscriminatorTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateAvatarsRequestVoiceDiscriminatorType?))
+                {
+                    return new global::Runway.JsonConverters.CreateAvatarsRequestVoiceDiscriminatorTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateAvatarsRequestImageProcessing))
+                {
+                    return new global::Runway.JsonConverters.CreateAvatarsRequestImageProcessingJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateAvatarsRequestImageProcessing?))
+                {
+                    return new global::Runway.JsonConverters.CreateAvatarsRequestImageProcessingNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.PatchAvatarsRequestVoiceRunwayLivePresetVoicePresetId))
+                {
+                    return new global::Runway.JsonConverters.PatchAvatarsRequestVoiceRunwayLivePresetVoicePresetIdJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.PatchAvatarsRequestVoiceRunwayLivePresetVoicePresetId?))
+                {
+                    return new global::Runway.JsonConverters.PatchAvatarsRequestVoiceRunwayLivePresetVoicePresetIdNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.PatchAvatarsRequestVoiceDiscriminatorType))
+                {
+                    return new global::Runway.JsonConverters.PatchAvatarsRequestVoiceDiscriminatorTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.PatchAvatarsRequestVoiceDiscriminatorType?))
+                {
+                    return new global::Runway.JsonConverters.PatchAvatarsRequestVoiceDiscriminatorTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.PatchAvatarsRequestImageProcessing))
+                {
+                    return new global::Runway.JsonConverters.PatchAvatarsRequestImageProcessingJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.PatchAvatarsRequestImageProcessing?))
+                {
+                    return new global::Runway.JsonConverters.PatchAvatarsRequestImageProcessingNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateAvatarVideosRequestAvatarRunwayPresetAvatarPresetId))
+                {
+                    return new global::Runway.JsonConverters.CreateAvatarVideosRequestAvatarRunwayPresetAvatarPresetIdJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateAvatarVideosRequestAvatarRunwayPresetAvatarPresetId?))
+                {
+                    return new global::Runway.JsonConverters.CreateAvatarVideosRequestAvatarRunwayPresetAvatarPresetIdNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateAvatarVideosRequestAvatarDiscriminatorType))
+                {
+                    return new global::Runway.JsonConverters.CreateAvatarVideosRequestAvatarDiscriminatorTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateAvatarVideosRequestAvatarDiscriminatorType?))
+                {
+                    return new global::Runway.JsonConverters.CreateAvatarVideosRequestAvatarDiscriminatorTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceRunwayPresetVoicePresetId))
+                {
+                    return new global::Runway.JsonConverters.CreateAvatarVideosRequestSpeechTextInputVoiceRunwayPresetVoicePresetIdJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceRunwayPresetVoicePresetId?))
+                {
+                    return new global::Runway.JsonConverters.CreateAvatarVideosRequestSpeechTextInputVoiceRunwayPresetVoicePresetIdNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceDiscriminatorType))
+                {
+                    return new global::Runway.JsonConverters.CreateAvatarVideosRequestSpeechTextInputVoiceDiscriminatorTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceDiscriminatorType?))
+                {
+                    return new global::Runway.JsonConverters.CreateAvatarVideosRequestSpeechTextInputVoiceDiscriminatorTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateAvatarVideosRequestSpeechDiscriminatorType))
+                {
+                    return new global::Runway.JsonConverters.CreateAvatarVideosRequestSpeechDiscriminatorTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateAvatarVideosRequestSpeechDiscriminatorType?))
+                {
+                    return new global::Runway.JsonConverters.CreateAvatarVideosRequestSpeechDiscriminatorTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestAvatarRunwayPresetAvatarPresetId))
+                {
+                    return new global::Runway.JsonConverters.CreateRealtimeSessionsRequestAvatarRunwayPresetAvatarPresetIdJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestAvatarRunwayPresetAvatarPresetId?))
+                {
+                    return new global::Runway.JsonConverters.CreateRealtimeSessionsRequestAvatarRunwayPresetAvatarPresetIdNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestAvatarDiscriminatorType))
+                {
+                    return new global::Runway.JsonConverters.CreateRealtimeSessionsRequestAvatarDiscriminatorTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestAvatarDiscriminatorType?))
+                {
+                    return new global::Runway.JsonConverters.CreateRealtimeSessionsRequestAvatarDiscriminatorTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterArrayParameterItemsType))
+                {
+                    return new global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolClientEventToolParameterArrayParameterItemsTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterArrayParameterItemsType?))
+                {
+                    return new global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolClientEventToolParameterArrayParameterItemsTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterDiscriminatorType))
+                {
+                    return new global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolClientEventToolParameterDiscriminatorTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterDiscriminatorType?))
+                {
+                    return new global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolClientEventToolParameterDiscriminatorTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterArrayParameterItemsType))
+                {
+                    return new global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolBackendRPCToolParameterArrayParameterItemsTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterArrayParameterItemsType?))
+                {
+                    return new global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolBackendRPCToolParameterArrayParameterItemsTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterDiscriminatorType))
+                {
+                    return new global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolBackendRPCToolParameterDiscriminatorTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterDiscriminatorType?))
+                {
+                    return new global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolBackendRPCToolParameterDiscriminatorTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestToolDiscriminatorType))
+                {
+                    return new global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolDiscriminatorTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestToolDiscriminatorType?))
+                {
+                    return new global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolDiscriminatorTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestIntegrationDiscriminatorType))
+                {
+                    return new global::Runway.JsonConverters.CreateRealtimeSessionsRequestIntegrationDiscriminatorTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestIntegrationDiscriminatorType?))
+                {
+                    return new global::Runway.JsonConverters.CreateRealtimeSessionsRequestIntegrationDiscriminatorTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestGen45Ratio))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestGen45RatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestGen45Ratio?))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestGen45RatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestGen45ContentModerationPublicFigureThreshold))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestGen45ContentModerationPublicFigureThresholdJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestGen45ContentModerationPublicFigureThreshold?))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestGen45ContentModerationPublicFigureThresholdNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestGen45OutputFormat))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestGen45OutputFormatJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestGen45OutputFormat?))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestGen45OutputFormatNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestGen45ProresProfile))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestGen45ProresProfileJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestGen45ProresProfile?))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestGen45ProresProfileNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestGen4TurboRatio))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestGen4TurboRatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestGen4TurboRatio?))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestGen4TurboRatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestGen4TurboContentModerationPublicFigureThreshold))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestGen4TurboContentModerationPublicFigureThresholdJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestGen4TurboContentModerationPublicFigureThreshold?))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestGen4TurboContentModerationPublicFigureThresholdNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestVeo31PromptImagePromptImagePosition))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestVeo31PromptImagePromptImagePositionJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestVeo31PromptImagePromptImagePosition?))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestVeo31PromptImagePromptImagePositionNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestVeo31Ratio))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestVeo31RatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestVeo31Ratio?))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestVeo31RatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestVeo31FastPromptImagePromptImagePosition))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestVeo31FastPromptImagePromptImagePositionJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestVeo31FastPromptImagePromptImagePosition?))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestVeo31FastPromptImagePromptImagePositionNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestVeo31FastRatio))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestVeo31FastRatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestVeo31FastRatio?))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestVeo31FastRatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestHailuo3Resolution))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestHailuo3ResolutionJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestHailuo3Resolution?))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestHailuo3ResolutionNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestHailuo3Ratio))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestHailuo3RatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestHailuo3Ratio?))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestHailuo3RatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestHappyhorse10Resolution))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestHappyhorse10ResolutionJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestHappyhorse10Resolution?))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestHappyhorse10ResolutionNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestSeedance2PromptImagePromptImagePosition))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2PromptImagePromptImagePositionJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestSeedance2PromptImagePromptImagePosition?))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2PromptImagePromptImagePositionNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestSeedance2Ratio))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2RatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestSeedance2Ratio?))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2RatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestSeedance2FastPromptImagePromptImagePosition))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2FastPromptImagePromptImagePositionJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestSeedance2FastPromptImagePromptImagePosition?))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2FastPromptImagePromptImagePositionNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestSeedance2FastRatio))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2FastRatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestSeedance2FastRatio?))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2FastRatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestSeedance2MiniPromptImagePromptImagePosition))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2MiniPromptImagePromptImagePositionJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestSeedance2MiniPromptImagePromptImagePosition?))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2MiniPromptImagePromptImagePositionNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestSeedance2MiniRatio))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2MiniRatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestSeedance2MiniRatio?))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestSeedance2MiniRatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestGeminiOmniFlashRatio))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestGeminiOmniFlashRatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestGeminiOmniFlashRatio?))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestGeminiOmniFlashRatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestSeedance25PromptImagePromptImagePosition))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestSeedance25PromptImagePromptImagePositionJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestSeedance25PromptImagePromptImagePosition?))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestSeedance25PromptImagePromptImagePositionNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestSeedance25Ratio))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestSeedance25RatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestSeedance25Ratio?))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestSeedance25RatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestDiscriminatorModel))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestDiscriminatorModelJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestDiscriminatorModel?))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestDiscriminatorModelNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestGen45Ratio))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestGen45RatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestGen45Ratio?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestGen45RatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestGen45ContentModerationPublicFigureThreshold))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestGen45ContentModerationPublicFigureThresholdJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestGen45ContentModerationPublicFigureThreshold?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestGen45ContentModerationPublicFigureThresholdNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestGen45OutputFormat))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestGen45OutputFormatJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestGen45OutputFormat?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestGen45OutputFormatNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestGen45ProresProfile))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestGen45ProresProfileJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestGen45ProresProfile?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestGen45ProresProfileNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestVeo31Ratio))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestVeo31RatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestVeo31Ratio?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestVeo31RatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestVeo31FastRatio))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestVeo31FastRatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestVeo31FastRatio?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestVeo31FastRatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestHailuo3Resolution))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestHailuo3ResolutionJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestHailuo3Resolution?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestHailuo3ResolutionNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestHailuo3Ratio))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestHailuo3RatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestHailuo3Ratio?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestHailuo3RatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestHappyhorse10Ratio))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestHappyhorse10RatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestHappyhorse10Ratio?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestHappyhorse10RatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestSeedance2Ratio))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestSeedance2RatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestSeedance2Ratio?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestSeedance2RatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestSeedance2FastRatio))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestSeedance2FastRatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestSeedance2FastRatio?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestSeedance2FastRatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestSeedance2MiniRatio))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestSeedance2MiniRatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestSeedance2MiniRatio?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestSeedance2MiniRatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestGeminiOmniFlashRatio))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestGeminiOmniFlashRatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestGeminiOmniFlashRatio?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestGeminiOmniFlashRatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestSeedance25Ratio))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestSeedance25RatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestSeedance25Ratio?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestSeedance25RatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestDiscriminatorModel))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestDiscriminatorModelJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestDiscriminatorModel?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestDiscriminatorModelNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestVariant1TargetAspectRatio))
+                {
+                    return new global::Runway.JsonConverters.CreateVideoToVideoRequestVariant1TargetAspectRatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestVariant1TargetAspectRatio?))
+                {
+                    return new global::Runway.JsonConverters.CreateVideoToVideoRequestVariant1TargetAspectRatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestVariant1ContentModerationPublicFigureThreshold))
+                {
+                    return new global::Runway.JsonConverters.CreateVideoToVideoRequestVariant1ContentModerationPublicFigureThresholdJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestVariant1ContentModerationPublicFigureThreshold?))
+                {
+                    return new global::Runway.JsonConverters.CreateVideoToVideoRequestVariant1ContentModerationPublicFigureThresholdNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestVariant1OutputFormat))
+                {
+                    return new global::Runway.JsonConverters.CreateVideoToVideoRequestVariant1OutputFormatJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestVariant1OutputFormat?))
+                {
+                    return new global::Runway.JsonConverters.CreateVideoToVideoRequestVariant1OutputFormatNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestVariant1ProresProfile))
+                {
+                    return new global::Runway.JsonConverters.CreateVideoToVideoRequestVariant1ProresProfileJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestVariant1ProresProfile?))
+                {
+                    return new global::Runway.JsonConverters.CreateVideoToVideoRequestVariant1ProresProfileNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestHailuo3Resolution))
+                {
+                    return new global::Runway.JsonConverters.CreateVideoToVideoRequestHailuo3ResolutionJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestHailuo3Resolution?))
+                {
+                    return new global::Runway.JsonConverters.CreateVideoToVideoRequestHailuo3ResolutionNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestHailuo3Ratio))
+                {
+                    return new global::Runway.JsonConverters.CreateVideoToVideoRequestHailuo3RatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestHailuo3Ratio?))
+                {
+                    return new global::Runway.JsonConverters.CreateVideoToVideoRequestHailuo3RatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestSeedance2Ratio))
+                {
+                    return new global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance2RatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestSeedance2Ratio?))
+                {
+                    return new global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance2RatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestSeedance2FastRatio))
+                {
+                    return new global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance2FastRatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestSeedance2FastRatio?))
+                {
+                    return new global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance2FastRatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestSeedance2MiniRatio))
+                {
+                    return new global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance2MiniRatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestSeedance2MiniRatio?))
+                {
+                    return new global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance2MiniRatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestSeedance25Mode))
+                {
+                    return new global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance25ModeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestSeedance25Mode?))
+                {
+                    return new global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance25ModeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestSeedance25Ratio))
+                {
+                    return new global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance25RatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestSeedance25Ratio?))
+                {
+                    return new global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance25RatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestDiscriminatorModel))
+                {
+                    return new global::Runway.JsonConverters.CreateVideoToVideoRequestDiscriminatorModelJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestDiscriminatorModel?))
+                {
+                    return new global::Runway.JsonConverters.CreateVideoToVideoRequestDiscriminatorModelNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestGen4ImageTurboRatio))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestGen4ImageTurboRatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestGen4ImageTurboRatio?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestGen4ImageTurboRatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestGen4ImageTurboContentModerationPublicFigureThreshold))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestGen4ImageTurboContentModerationPublicFigureThresholdJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestGen4ImageTurboContentModerationPublicFigureThreshold?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestGen4ImageTurboContentModerationPublicFigureThresholdNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestGen4ImageRatio))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestGen4ImageRatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestGen4ImageRatio?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestGen4ImageRatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestGen4ImageContentModerationPublicFigureThreshold))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestGen4ImageContentModerationPublicFigureThresholdJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestGen4ImageContentModerationPublicFigureThreshold?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestGen4ImageContentModerationPublicFigureThresholdNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage2Ratio))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestGptImage2RatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage2Ratio?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestGptImage2RatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage2Quality))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestGptImage2QualityJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage2Quality?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestGptImage2QualityNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage2Background))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestGptImage2BackgroundJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage2Background?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestGptImage2BackgroundNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestGeminiImage3ProRatio))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestGeminiImage3ProRatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestGeminiImage3ProRatio?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestGeminiImage3ProRatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestGeminiImage3ProReferenceImageSubject))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestGeminiImage3ProReferenceImageSubjectJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestGeminiImage3ProReferenceImageSubject?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestGeminiImage3ProReferenceImageSubjectNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestGeminiImage31FlashRatio))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestGeminiImage31FlashRatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestGeminiImage31FlashRatio?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestGeminiImage31FlashRatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestGeminiImage31FlashReferenceImageSubject))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestGeminiImage31FlashReferenceImageSubjectJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestGeminiImage31FlashReferenceImageSubject?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestGeminiImage31FlashReferenceImageSubjectNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestSeedream5ProRatio))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestSeedream5ProRatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestSeedream5ProRatio?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestSeedream5ProRatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestSeedream5ProOutputFormat))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestSeedream5ProOutputFormatJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestSeedream5ProOutputFormat?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestSeedream5ProOutputFormatNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestSeedream5LiteRatio))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestSeedream5LiteRatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestSeedream5LiteRatio?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestSeedream5LiteRatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestSeedream5LiteOutputFormat))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestSeedream5LiteOutputFormatJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestSeedream5LiteOutputFormat?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestSeedream5LiteOutputFormatNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestGemini25FlashRatio))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestGemini25FlashRatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestGemini25FlashRatio?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestGemini25FlashRatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestDiscriminatorModel))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestDiscriminatorModelJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestDiscriminatorModel?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestDiscriminatorModelNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageUpscaleRequestMagnificPrecisionUpscalerV2Flavor))
+                {
+                    return new global::Runway.JsonConverters.CreateImageUpscaleRequestMagnificPrecisionUpscalerV2FlavorJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageUpscaleRequestMagnificPrecisionUpscalerV2Flavor?))
+                {
+                    return new global::Runway.JsonConverters.CreateImageUpscaleRequestMagnificPrecisionUpscalerV2FlavorNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageUpscaleRequestDiscriminatorModel))
+                {
+                    return new global::Runway.JsonConverters.CreateImageUpscaleRequestDiscriminatorModelJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageUpscaleRequestDiscriminatorModel?))
+                {
+                    return new global::Runway.JsonConverters.CreateImageUpscaleRequestDiscriminatorModelNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVideoUpscaleRequestMagnificVideoUpscalerCreativeResolution))
+                {
+                    return new global::Runway.JsonConverters.CreateVideoUpscaleRequestMagnificVideoUpscalerCreativeResolutionJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVideoUpscaleRequestMagnificVideoUpscalerCreativeResolution?))
+                {
+                    return new global::Runway.JsonConverters.CreateVideoUpscaleRequestMagnificVideoUpscalerCreativeResolutionNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVideoUpscaleRequestMagnificVideoUpscalerCreativeFlavor))
+                {
+                    return new global::Runway.JsonConverters.CreateVideoUpscaleRequestMagnificVideoUpscalerCreativeFlavorJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVideoUpscaleRequestMagnificVideoUpscalerCreativeFlavor?))
+                {
+                    return new global::Runway.JsonConverters.CreateVideoUpscaleRequestMagnificVideoUpscalerCreativeFlavorNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVideoUpscaleRequestDiscriminatorModel))
+                {
+                    return new global::Runway.JsonConverters.CreateVideoUpscaleRequestDiscriminatorModelJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVideoUpscaleRequestDiscriminatorModel?))
+                {
+                    return new global::Runway.JsonConverters.CreateVideoUpscaleRequestDiscriminatorModelNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateCharacterPerformanceRequestActTwoCharacterDiscriminatorType))
+                {
+                    return new global::Runway.JsonConverters.CreateCharacterPerformanceRequestActTwoCharacterDiscriminatorTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateCharacterPerformanceRequestActTwoCharacterDiscriminatorType?))
+                {
+                    return new global::Runway.JsonConverters.CreateCharacterPerformanceRequestActTwoCharacterDiscriminatorTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateCharacterPerformanceRequestActTwoReferenceDiscriminatorType))
+                {
+                    return new global::Runway.JsonConverters.CreateCharacterPerformanceRequestActTwoReferenceDiscriminatorTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateCharacterPerformanceRequestActTwoReferenceDiscriminatorType?))
+                {
+                    return new global::Runway.JsonConverters.CreateCharacterPerformanceRequestActTwoReferenceDiscriminatorTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateCharacterPerformanceRequestActTwoRatio))
+                {
+                    return new global::Runway.JsonConverters.CreateCharacterPerformanceRequestActTwoRatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateCharacterPerformanceRequestActTwoRatio?))
+                {
+                    return new global::Runway.JsonConverters.CreateCharacterPerformanceRequestActTwoRatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateCharacterPerformanceRequestActTwoContentModerationPublicFigureThreshold))
+                {
+                    return new global::Runway.JsonConverters.CreateCharacterPerformanceRequestActTwoContentModerationPublicFigureThresholdJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateCharacterPerformanceRequestActTwoContentModerationPublicFigureThreshold?))
+                {
+                    return new global::Runway.JsonConverters.CreateCharacterPerformanceRequestActTwoContentModerationPublicFigureThresholdNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateCharacterPerformanceRequestDiscriminatorModel))
+                {
+                    return new global::Runway.JsonConverters.CreateCharacterPerformanceRequestDiscriminatorModelJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateCharacterPerformanceRequestDiscriminatorModel?))
+                {
+                    return new global::Runway.JsonConverters.CreateCharacterPerformanceRequestDiscriminatorModelNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateSoundEffectRequestSeedAudioOutputFormat))
+                {
+                    return new global::Runway.JsonConverters.CreateSoundEffectRequestSeedAudioOutputFormatJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateSoundEffectRequestSeedAudioOutputFormat?))
+                {
+                    return new global::Runway.JsonConverters.CreateSoundEffectRequestSeedAudioOutputFormatNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateSoundEffectRequestDiscriminatorModel))
+                {
+                    return new global::Runway.JsonConverters.CreateSoundEffectRequestDiscriminatorModelJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateSoundEffectRequestDiscriminatorModel?))
+                {
+                    return new global::Runway.JsonConverters.CreateSoundEffectRequestDiscriminatorModelNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaDiscriminatorType))
+                {
+                    return new global::Runway.JsonConverters.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaDiscriminatorTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaDiscriminatorType?))
+                {
+                    return new global::Runway.JsonConverters.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaDiscriminatorTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2VoiceRunwayPresetVoicePresetId))
+                {
+                    return new global::Runway.JsonConverters.CreateSpeechToSpeechRequestElevenMultilingualStsV2VoiceRunwayPresetVoicePresetIdJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2VoiceRunwayPresetVoicePresetId?))
+                {
+                    return new global::Runway.JsonConverters.CreateSpeechToSpeechRequestElevenMultilingualStsV2VoiceRunwayPresetVoicePresetIdNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2VoiceDiscriminatorType))
+                {
+                    return new global::Runway.JsonConverters.CreateSpeechToSpeechRequestElevenMultilingualStsV2VoiceDiscriminatorTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2VoiceDiscriminatorType?))
+                {
+                    return new global::Runway.JsonConverters.CreateSpeechToSpeechRequestElevenMultilingualStsV2VoiceDiscriminatorTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateSpeechToSpeechRequestDiscriminatorModel))
+                {
+                    return new global::Runway.JsonConverters.CreateSpeechToSpeechRequestDiscriminatorModelJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateSpeechToSpeechRequestDiscriminatorModel?))
+                {
+                    return new global::Runway.JsonConverters.CreateSpeechToSpeechRequestDiscriminatorModelNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToSpeechRequestSeedAudioVoiceDiscriminatorType))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToSpeechRequestSeedAudioVoiceDiscriminatorTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToSpeechRequestSeedAudioVoiceDiscriminatorType?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToSpeechRequestSeedAudioVoiceDiscriminatorTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToSpeechRequestSeedAudioOutputFormat))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToSpeechRequestSeedAudioOutputFormatJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToSpeechRequestSeedAudioOutputFormat?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToSpeechRequestSeedAudioOutputFormatNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToSpeechRequestElevenMultilingualV2VoiceRunwayPresetVoicePresetId))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToSpeechRequestElevenMultilingualV2VoiceRunwayPresetVoicePresetIdJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToSpeechRequestElevenMultilingualV2VoiceRunwayPresetVoicePresetId?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToSpeechRequestElevenMultilingualV2VoiceRunwayPresetVoicePresetIdNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToSpeechRequestElevenMultilingualV2VoiceDiscriminatorType))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToSpeechRequestElevenMultilingualV2VoiceDiscriminatorTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToSpeechRequestElevenMultilingualV2VoiceDiscriminatorType?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToSpeechRequestElevenMultilingualV2VoiceDiscriminatorTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToSpeechRequestElevenV3VoiceRunwayPresetVoicePresetId))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToSpeechRequestElevenV3VoiceRunwayPresetVoicePresetIdJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToSpeechRequestElevenV3VoiceRunwayPresetVoicePresetId?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToSpeechRequestElevenV3VoiceRunwayPresetVoicePresetIdNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToSpeechRequestElevenV3VoiceDiscriminatorType))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToSpeechRequestElevenV3VoiceDiscriminatorTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToSpeechRequestElevenV3VoiceDiscriminatorType?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToSpeechRequestElevenV3VoiceDiscriminatorTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToSpeechRequestElevenV3ApplyTextNormalization))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToSpeechRequestElevenV3ApplyTextNormalizationJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToSpeechRequestElevenV3ApplyTextNormalization?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToSpeechRequestElevenV3ApplyTextNormalizationNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToSpeechRequestDiscriminatorModel))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToSpeechRequestDiscriminatorModelJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToSpeechRequestDiscriminatorModel?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToSpeechRequestDiscriminatorModelNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVoiceDubbingRequestElevenVoiceDubbingTargetLang))
+                {
+                    return new global::Runway.JsonConverters.CreateVoiceDubbingRequestElevenVoiceDubbingTargetLangJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVoiceDubbingRequestElevenVoiceDubbingTargetLang?))
+                {
+                    return new global::Runway.JsonConverters.CreateVoiceDubbingRequestElevenVoiceDubbingTargetLangNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVoiceDubbingRequestDiscriminatorModel))
+                {
+                    return new global::Runway.JsonConverters.CreateVoiceDubbingRequestDiscriminatorModelJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVoiceDubbingRequestDiscriminatorModel?))
+                {
+                    return new global::Runway.JsonConverters.CreateVoiceDubbingRequestDiscriminatorModelNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVoiceIsolationRequestDiscriminatorModel))
+                {
+                    return new global::Runway.JsonConverters.CreateVoiceIsolationRequestDiscriminatorModelJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVoiceIsolationRequestDiscriminatorModel?))
+                {
+                    return new global::Runway.JsonConverters.CreateVoiceIsolationRequestDiscriminatorModelNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateGenerateVideoRequestInputReferenceImageRole))
+                {
+                    return new global::Runway.JsonConverters.CreateGenerateVideoRequestInputReferenceImageRoleJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateGenerateVideoRequestInputReferenceImageRole?))
+                {
+                    return new global::Runway.JsonConverters.CreateGenerateVideoRequestInputReferenceImageRoleNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateGenerateVideoRequestInputReferenceVideoRole))
+                {
+                    return new global::Runway.JsonConverters.CreateGenerateVideoRequestInputReferenceVideoRoleJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateGenerateVideoRequestInputReferenceVideoRole?))
+                {
+                    return new global::Runway.JsonConverters.CreateGenerateVideoRequestInputReferenceVideoRoleNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateGenerateVideoRequestInputAspectRatio))
+                {
+                    return new global::Runway.JsonConverters.CreateGenerateVideoRequestInputAspectRatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateGenerateVideoRequestInputAspectRatio?))
+                {
+                    return new global::Runway.JsonConverters.CreateGenerateVideoRequestInputAspectRatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateGenerateVideoRequestInputResolution))
+                {
+                    return new global::Runway.JsonConverters.CreateGenerateVideoRequestInputResolutionJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateGenerateVideoRequestInputResolution?))
+                {
+                    return new global::Runway.JsonConverters.CreateGenerateVideoRequestInputResolutionNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateGenerateVideoRequestInputContentModerationPublicFigureThreshold))
+                {
+                    return new global::Runway.JsonConverters.CreateGenerateVideoRequestInputContentModerationPublicFigureThresholdJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateGenerateVideoRequestInputContentModerationPublicFigureThreshold?))
+                {
+                    return new global::Runway.JsonConverters.CreateGenerateVideoRequestInputContentModerationPublicFigureThresholdNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateGenerateImageRequestInputAspectRatio))
+                {
+                    return new global::Runway.JsonConverters.CreateGenerateImageRequestInputAspectRatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateGenerateImageRequestInputAspectRatio?))
+                {
+                    return new global::Runway.JsonConverters.CreateGenerateImageRequestInputAspectRatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateGenerateImageRequestInputResolution))
+                {
+                    return new global::Runway.JsonConverters.CreateGenerateImageRequestInputResolutionJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateGenerateImageRequestInputResolution?))
+                {
+                    return new global::Runway.JsonConverters.CreateGenerateImageRequestInputResolutionNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateGenerateImageRequestInputContentModerationPublicFigureThreshold))
+                {
+                    return new global::Runway.JsonConverters.CreateGenerateImageRequestInputContentModerationPublicFigureThresholdJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateGenerateImageRequestInputContentModerationPublicFigureThreshold?))
+                {
+                    return new global::Runway.JsonConverters.CreateGenerateImageRequestInputContentModerationPublicFigureThresholdNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateGenerateAudioRequestInputType))
+                {
+                    return new global::Runway.JsonConverters.CreateGenerateAudioRequestInputTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateGenerateAudioRequestInputType?))
+                {
+                    return new global::Runway.JsonConverters.CreateGenerateAudioRequestInputTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateGenerateAudioRequestInputVoiceAudioPresetVoicePresetId))
+                {
+                    return new global::Runway.JsonConverters.CreateGenerateAudioRequestInputVoiceAudioPresetVoicePresetIdJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateGenerateAudioRequestInputVoiceAudioPresetVoicePresetId?))
+                {
+                    return new global::Runway.JsonConverters.CreateGenerateAudioRequestInputVoiceAudioPresetVoicePresetIdNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateGenerateAudioRequestInputVoiceDiscriminatorType))
+                {
+                    return new global::Runway.JsonConverters.CreateGenerateAudioRequestInputVoiceDiscriminatorTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateGenerateAudioRequestInputVoiceDiscriminatorType?))
+                {
+                    return new global::Runway.JsonConverters.CreateGenerateAudioRequestInputVoiceDiscriminatorTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateUploadsRequestType))
+                {
+                    return new global::Runway.JsonConverters.CreateUploadsRequestTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateUploadsRequestType?))
+                {
+                    return new global::Runway.JsonConverters.CreateUploadsRequestTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateRecipesAdLocalizationRequestVersion))
+                {
+                    return new global::Runway.JsonConverters.CreateRecipesAdLocalizationRequestVersionJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateRecipesAdLocalizationRequestVersion?))
+                {
+                    return new global::Runway.JsonConverters.CreateRecipesAdLocalizationRequestVersionNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateRecipesAdLocalizationRequestTargetLanguage))
+                {
+                    return new global::Runway.JsonConverters.CreateRecipesAdLocalizationRequestTargetLanguageJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateRecipesAdLocalizationRequestTargetLanguage?))
+                {
+                    return new global::Runway.JsonConverters.CreateRecipesAdLocalizationRequestTargetLanguageNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateRecipesMarketingStockImageRequestVersion))
+                {
+                    return new global::Runway.JsonConverters.CreateRecipesMarketingStockImageRequestVersionJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateRecipesMarketingStockImageRequestVersion?))
+                {
+                    return new global::Runway.JsonConverters.CreateRecipesMarketingStockImageRequestVersionNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateRecipesMarketingStockImageRequestQuality))
+                {
+                    return new global::Runway.JsonConverters.CreateRecipesMarketingStockImageRequestQualityJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateRecipesMarketingStockImageRequestQuality?))
+                {
+                    return new global::Runway.JsonConverters.CreateRecipesMarketingStockImageRequestQualityNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateRecipesProductAdRequestVersion))
+                {
+                    return new global::Runway.JsonConverters.CreateRecipesProductAdRequestVersionJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateRecipesProductAdRequestVersion?))
+                {
+                    return new global::Runway.JsonConverters.CreateRecipesProductAdRequestVersionNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateRecipesProductAdRequestRatio))
+                {
+                    return new global::Runway.JsonConverters.CreateRecipesProductAdRequestRatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateRecipesProductAdRequestRatio?))
+                {
+                    return new global::Runway.JsonConverters.CreateRecipesProductAdRequestRatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateRecipesProductCampaignImageRequestVersion))
+                {
+                    return new global::Runway.JsonConverters.CreateRecipesProductCampaignImageRequestVersionJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateRecipesProductCampaignImageRequestVersion?))
+                {
+                    return new global::Runway.JsonConverters.CreateRecipesProductCampaignImageRequestVersionNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateRecipesProductSwapRequestVersion))
+                {
+                    return new global::Runway.JsonConverters.CreateRecipesProductSwapRequestVersionJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateRecipesProductSwapRequestVersion?))
+                {
+                    return new global::Runway.JsonConverters.CreateRecipesProductSwapRequestVersionNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateRecipesProductSwapRequestNewProductImageView))
+                {
+                    return new global::Runway.JsonConverters.CreateRecipesProductSwapRequestNewProductImageViewJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateRecipesProductSwapRequestNewProductImageView?))
+                {
+                    return new global::Runway.JsonConverters.CreateRecipesProductSwapRequestNewProductImageViewNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateRecipesProductSwapRequestResolution))
+                {
+                    return new global::Runway.JsonConverters.CreateRecipesProductSwapRequestResolutionJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateRecipesProductSwapRequestResolution?))
+                {
+                    return new global::Runway.JsonConverters.CreateRecipesProductSwapRequestResolutionNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateRecipesMultiShotVideoRequestVariant1Version))
+                {
+                    return new global::Runway.JsonConverters.CreateRecipesMultiShotVideoRequestVariant1VersionJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateRecipesMultiShotVideoRequestVariant1Version?))
+                {
+                    return new global::Runway.JsonConverters.CreateRecipesMultiShotVideoRequestVariant1VersionNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateRecipesMultiShotVideoRequestVariant1Ratio))
+                {
+                    return new global::Runway.JsonConverters.CreateRecipesMultiShotVideoRequestVariant1RatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateRecipesMultiShotVideoRequestVariant1Ratio?))
+                {
+                    return new global::Runway.JsonConverters.CreateRecipesMultiShotVideoRequestVariant1RatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateRecipesMultiShotVideoRequestVariant2Version))
+                {
+                    return new global::Runway.JsonConverters.CreateRecipesMultiShotVideoRequestVariant2VersionJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateRecipesMultiShotVideoRequestVariant2Version?))
+                {
+                    return new global::Runway.JsonConverters.CreateRecipesMultiShotVideoRequestVariant2VersionNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateRecipesMultiShotVideoRequestVariant2Ratio))
+                {
+                    return new global::Runway.JsonConverters.CreateRecipesMultiShotVideoRequestVariant2RatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateRecipesMultiShotVideoRequestVariant2Ratio?))
+                {
+                    return new global::Runway.JsonConverters.CreateRecipesMultiShotVideoRequestVariant2RatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateRecipesMultiShotVideoRequestDiscriminatorMode))
+                {
+                    return new global::Runway.JsonConverters.CreateRecipesMultiShotVideoRequestDiscriminatorModeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateRecipesMultiShotVideoRequestDiscriminatorMode?))
+                {
+                    return new global::Runway.JsonConverters.CreateRecipesMultiShotVideoRequestDiscriminatorModeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateRecipesProductUgcRequestVersion))
+                {
+                    return new global::Runway.JsonConverters.CreateRecipesProductUgcRequestVersionJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateRecipesProductUgcRequestVersion?))
+                {
+                    return new global::Runway.JsonConverters.CreateRecipesProductUgcRequestVersionNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateRecipesProductUgcRequestRatio))
+                {
+                    return new global::Runway.JsonConverters.CreateRecipesProductUgcRequestRatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateRecipesProductUgcRequestRatio?))
+                {
+                    return new global::Runway.JsonConverters.CreateRecipesProductUgcRequestRatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateRoutersRequestSettingsModelsMode))
+                {
+                    return new global::Runway.JsonConverters.CreateRoutersRequestSettingsModelsModeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateRoutersRequestSettingsModelsMode?))
+                {
+                    return new global::Runway.JsonConverters.CreateRoutersRequestSettingsModelsModeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateRoutersRequestSettingsOptimizeFor))
+                {
+                    return new global::Runway.JsonConverters.CreateRoutersRequestSettingsOptimizeForJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateRoutersRequestSettingsOptimizeFor?))
+                {
+                    return new global::Runway.JsonConverters.CreateRoutersRequestSettingsOptimizeForNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.PatchRoutersRequestSettingsModelsMode))
+                {
+                    return new global::Runway.JsonConverters.PatchRoutersRequestSettingsModelsModeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.PatchRoutersRequestSettingsModelsMode?))
+                {
+                    return new global::Runway.JsonConverters.PatchRoutersRequestSettingsModelsModeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.PatchRoutersRequestSettingsOptimizeFor))
+                {
+                    return new global::Runway.JsonConverters.PatchRoutersRequestSettingsOptimizeForJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.PatchRoutersRequestSettingsOptimizeFor?))
+                {
+                    return new global::Runway.JsonConverters.PatchRoutersRequestSettingsOptimizeForNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVoicesRequestFromVoiceFromTextModel))
+                {
+                    return new global::Runway.JsonConverters.CreateVoicesRequestFromVoiceFromTextModelJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVoicesRequestFromVoiceFromTextModel?))
+                {
+                    return new global::Runway.JsonConverters.CreateVoicesRequestFromVoiceFromTextModelNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVoicesRequestFromDiscriminatorType))
+                {
+                    return new global::Runway.JsonConverters.CreateVoicesRequestFromDiscriminatorTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVoicesRequestFromDiscriminatorType?))
+                {
+                    return new global::Runway.JsonConverters.CreateVoicesRequestFromDiscriminatorTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVoicesPreviewRequestModel))
+                {
+                    return new global::Runway.JsonConverters.CreateVoicesPreviewRequestModelJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVoicesPreviewRequestModel?))
+                {
+                    return new global::Runway.JsonConverters.CreateVoicesPreviewRequestModelNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateWorkflowsRequestNodeOutputsDiscriminatorType))
+                {
+                    return new global::Runway.JsonConverters.CreateWorkflowsRequestNodeOutputsDiscriminatorTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateWorkflowsRequestNodeOutputsDiscriminatorType?))
+                {
+                    return new global::Runway.JsonConverters.CreateWorkflowsRequestNodeOutputsDiscriminatorTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetDocumentsSort))
+                {
+                    return new global::Runway.JsonConverters.GetDocumentsSortJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetDocumentsSort?))
+                {
+                    return new global::Runway.JsonConverters.GetDocumentsSortNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetDocumentsOrder))
+                {
+                    return new global::Runway.JsonConverters.GetDocumentsOrderJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetDocumentsOrder?))
+                {
+                    return new global::Runway.JsonConverters.GetDocumentsOrderNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetId))
+                {
+                    return new global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetId?))
+                {
+                    return new global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceDiscriminatorType))
+                {
+                    return new global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarProcessingVoiceDiscriminatorTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceDiscriminatorType?))
+                {
+                    return new global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarProcessingVoiceDiscriminatorTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetAvatarsResponseDataItemAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetId))
+                {
+                    return new global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetAvatarsResponseDataItemAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetId?))
+                {
+                    return new global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetAvatarsResponseDataItemAvatarReadyVoiceDiscriminatorType))
+                {
+                    return new global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarReadyVoiceDiscriminatorTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetAvatarsResponseDataItemAvatarReadyVoiceDiscriminatorType?))
+                {
+                    return new global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarReadyVoiceDiscriminatorTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetAvatarsResponseDataItemAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetId))
+                {
+                    return new global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetAvatarsResponseDataItemAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetId?))
+                {
+                    return new global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetAvatarsResponseDataItemAvatarFailedVoiceDiscriminatorType))
+                {
+                    return new global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarFailedVoiceDiscriminatorTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetAvatarsResponseDataItemAvatarFailedVoiceDiscriminatorType?))
+                {
+                    return new global::Runway.JsonConverters.GetAvatarsResponseDataItemAvatarFailedVoiceDiscriminatorTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetAvatarsResponseDataItemDiscriminatorStatus))
+                {
+                    return new global::Runway.JsonConverters.GetAvatarsResponseDataItemDiscriminatorStatusJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetAvatarsResponseDataItemDiscriminatorStatus?))
+                {
+                    return new global::Runway.JsonConverters.GetAvatarsResponseDataItemDiscriminatorStatusNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetId))
+                {
+                    return new global::Runway.JsonConverters.CreateAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetId?))
+                {
+                    return new global::Runway.JsonConverters.CreateAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateAvatarsResponseAvatarProcessingVoiceDiscriminatorType))
+                {
+                    return new global::Runway.JsonConverters.CreateAvatarsResponseAvatarProcessingVoiceDiscriminatorTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateAvatarsResponseAvatarProcessingVoiceDiscriminatorType?))
+                {
+                    return new global::Runway.JsonConverters.CreateAvatarsResponseAvatarProcessingVoiceDiscriminatorTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetId))
+                {
+                    return new global::Runway.JsonConverters.CreateAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetId?))
+                {
+                    return new global::Runway.JsonConverters.CreateAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateAvatarsResponseAvatarReadyVoiceDiscriminatorType))
+                {
+                    return new global::Runway.JsonConverters.CreateAvatarsResponseAvatarReadyVoiceDiscriminatorTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateAvatarsResponseAvatarReadyVoiceDiscriminatorType?))
+                {
+                    return new global::Runway.JsonConverters.CreateAvatarsResponseAvatarReadyVoiceDiscriminatorTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetId))
+                {
+                    return new global::Runway.JsonConverters.CreateAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetId?))
+                {
+                    return new global::Runway.JsonConverters.CreateAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateAvatarsResponseAvatarFailedVoiceDiscriminatorType))
+                {
+                    return new global::Runway.JsonConverters.CreateAvatarsResponseAvatarFailedVoiceDiscriminatorTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateAvatarsResponseAvatarFailedVoiceDiscriminatorType?))
+                {
+                    return new global::Runway.JsonConverters.CreateAvatarsResponseAvatarFailedVoiceDiscriminatorTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateAvatarsResponseDiscriminatorStatus))
+                {
+                    return new global::Runway.JsonConverters.CreateAvatarsResponseDiscriminatorStatusJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateAvatarsResponseDiscriminatorStatus?))
+                {
+                    return new global::Runway.JsonConverters.CreateAvatarsResponseDiscriminatorStatusNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetAvatarConversationsResponseDataItemStatus))
+                {
+                    return new global::Runway.JsonConverters.GetAvatarConversationsResponseDataItemStatusJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetAvatarConversationsResponseDataItemStatus?))
+                {
+                    return new global::Runway.JsonConverters.GetAvatarConversationsResponseDataItemStatusNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetAvatarConversationsResponseDataItemAvatarVariant1DiscriminatorType))
+                {
+                    return new global::Runway.JsonConverters.GetAvatarConversationsResponseDataItemAvatarVariant1DiscriminatorTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetAvatarConversationsResponseDataItemAvatarVariant1DiscriminatorType?))
+                {
+                    return new global::Runway.JsonConverters.GetAvatarConversationsResponseDataItemAvatarVariant1DiscriminatorTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetAvatarConversationsResponseVariant1AvatarVariant1DiscriminatorType))
+                {
+                    return new global::Runway.JsonConverters.GetAvatarConversationsResponseVariant1AvatarVariant1DiscriminatorTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetAvatarConversationsResponseVariant1AvatarVariant1DiscriminatorType?))
+                {
+                    return new global::Runway.JsonConverters.GetAvatarConversationsResponseVariant1AvatarVariant1DiscriminatorTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetAvatarConversationsResponseVariant1TranscriptItemRole))
+                {
+                    return new global::Runway.JsonConverters.GetAvatarConversationsResponseVariant1TranscriptItemRoleJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetAvatarConversationsResponseVariant1TranscriptItemRole?))
+                {
+                    return new global::Runway.JsonConverters.GetAvatarConversationsResponseVariant1TranscriptItemRoleNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetAvatarConversationsResponseVariant1ToolType))
+                {
+                    return new global::Runway.JsonConverters.GetAvatarConversationsResponseVariant1ToolTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetAvatarConversationsResponseVariant1ToolType?))
+                {
+                    return new global::Runway.JsonConverters.GetAvatarConversationsResponseVariant1ToolTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetAvatarConversationsResponseVariant2AvatarVariant1DiscriminatorType))
+                {
+                    return new global::Runway.JsonConverters.GetAvatarConversationsResponseVariant2AvatarVariant1DiscriminatorTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetAvatarConversationsResponseVariant2AvatarVariant1DiscriminatorType?))
+                {
+                    return new global::Runway.JsonConverters.GetAvatarConversationsResponseVariant2AvatarVariant1DiscriminatorTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetAvatarConversationsResponseVariant2TranscriptItemRole))
+                {
+                    return new global::Runway.JsonConverters.GetAvatarConversationsResponseVariant2TranscriptItemRoleJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetAvatarConversationsResponseVariant2TranscriptItemRole?))
+                {
+                    return new global::Runway.JsonConverters.GetAvatarConversationsResponseVariant2TranscriptItemRoleNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetAvatarConversationsResponseVariant2ToolType))
+                {
+                    return new global::Runway.JsonConverters.GetAvatarConversationsResponseVariant2ToolTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetAvatarConversationsResponseVariant2ToolType?))
+                {
+                    return new global::Runway.JsonConverters.GetAvatarConversationsResponseVariant2ToolTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetAvatarConversationsResponseVariant3AvatarVariant1DiscriminatorType))
+                {
+                    return new global::Runway.JsonConverters.GetAvatarConversationsResponseVariant3AvatarVariant1DiscriminatorTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetAvatarConversationsResponseVariant3AvatarVariant1DiscriminatorType?))
+                {
+                    return new global::Runway.JsonConverters.GetAvatarConversationsResponseVariant3AvatarVariant1DiscriminatorTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetAvatarConversationsResponseVariant3TranscriptItemRole))
+                {
+                    return new global::Runway.JsonConverters.GetAvatarConversationsResponseVariant3TranscriptItemRoleJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetAvatarConversationsResponseVariant3TranscriptItemRole?))
+                {
+                    return new global::Runway.JsonConverters.GetAvatarConversationsResponseVariant3TranscriptItemRoleNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetAvatarConversationsResponseVariant3ToolType))
+                {
+                    return new global::Runway.JsonConverters.GetAvatarConversationsResponseVariant3ToolTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetAvatarConversationsResponseVariant3ToolType?))
+                {
+                    return new global::Runway.JsonConverters.GetAvatarConversationsResponseVariant3ToolTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetAvatarConversationsResponseDiscriminatorStatus))
+                {
+                    return new global::Runway.JsonConverters.GetAvatarConversationsResponseDiscriminatorStatusJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetAvatarConversationsResponseDiscriminatorStatus?))
+                {
+                    return new global::Runway.JsonConverters.GetAvatarConversationsResponseDiscriminatorStatusNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetId))
+                {
+                    return new global::Runway.JsonConverters.GetAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetId?))
+                {
+                    return new global::Runway.JsonConverters.GetAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetAvatarsResponseAvatarProcessingVoiceDiscriminatorType))
+                {
+                    return new global::Runway.JsonConverters.GetAvatarsResponseAvatarProcessingVoiceDiscriminatorTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetAvatarsResponseAvatarProcessingVoiceDiscriminatorType?))
+                {
+                    return new global::Runway.JsonConverters.GetAvatarsResponseAvatarProcessingVoiceDiscriminatorTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetId))
+                {
+                    return new global::Runway.JsonConverters.GetAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetId?))
+                {
+                    return new global::Runway.JsonConverters.GetAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetAvatarsResponseAvatarReadyVoiceDiscriminatorType))
+                {
+                    return new global::Runway.JsonConverters.GetAvatarsResponseAvatarReadyVoiceDiscriminatorTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetAvatarsResponseAvatarReadyVoiceDiscriminatorType?))
+                {
+                    return new global::Runway.JsonConverters.GetAvatarsResponseAvatarReadyVoiceDiscriminatorTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetId))
+                {
+                    return new global::Runway.JsonConverters.GetAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetId?))
+                {
+                    return new global::Runway.JsonConverters.GetAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetAvatarsResponseAvatarFailedVoiceDiscriminatorType))
+                {
+                    return new global::Runway.JsonConverters.GetAvatarsResponseAvatarFailedVoiceDiscriminatorTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetAvatarsResponseAvatarFailedVoiceDiscriminatorType?))
+                {
+                    return new global::Runway.JsonConverters.GetAvatarsResponseAvatarFailedVoiceDiscriminatorTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetAvatarsResponseDiscriminatorStatus))
+                {
+                    return new global::Runway.JsonConverters.GetAvatarsResponseDiscriminatorStatusJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetAvatarsResponseDiscriminatorStatus?))
+                {
+                    return new global::Runway.JsonConverters.GetAvatarsResponseDiscriminatorStatusNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.PatchAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetId))
+                {
+                    return new global::Runway.JsonConverters.PatchAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.PatchAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetId?))
+                {
+                    return new global::Runway.JsonConverters.PatchAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.PatchAvatarsResponseAvatarProcessingVoiceDiscriminatorType))
+                {
+                    return new global::Runway.JsonConverters.PatchAvatarsResponseAvatarProcessingVoiceDiscriminatorTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.PatchAvatarsResponseAvatarProcessingVoiceDiscriminatorType?))
+                {
+                    return new global::Runway.JsonConverters.PatchAvatarsResponseAvatarProcessingVoiceDiscriminatorTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.PatchAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetId))
+                {
+                    return new global::Runway.JsonConverters.PatchAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.PatchAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetId?))
+                {
+                    return new global::Runway.JsonConverters.PatchAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.PatchAvatarsResponseAvatarReadyVoiceDiscriminatorType))
+                {
+                    return new global::Runway.JsonConverters.PatchAvatarsResponseAvatarReadyVoiceDiscriminatorTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.PatchAvatarsResponseAvatarReadyVoiceDiscriminatorType?))
+                {
+                    return new global::Runway.JsonConverters.PatchAvatarsResponseAvatarReadyVoiceDiscriminatorTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.PatchAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetId))
+                {
+                    return new global::Runway.JsonConverters.PatchAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetIdJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.PatchAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetId?))
+                {
+                    return new global::Runway.JsonConverters.PatchAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetIdNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.PatchAvatarsResponseAvatarFailedVoiceDiscriminatorType))
+                {
+                    return new global::Runway.JsonConverters.PatchAvatarsResponseAvatarFailedVoiceDiscriminatorTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.PatchAvatarsResponseAvatarFailedVoiceDiscriminatorType?))
+                {
+                    return new global::Runway.JsonConverters.PatchAvatarsResponseAvatarFailedVoiceDiscriminatorTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.PatchAvatarsResponseDiscriminatorStatus))
+                {
+                    return new global::Runway.JsonConverters.PatchAvatarsResponseDiscriminatorStatusJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.PatchAvatarsResponseDiscriminatorStatus?))
+                {
+                    return new global::Runway.JsonConverters.PatchAvatarsResponseDiscriminatorStatusNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateDocumentsResponseType))
+                {
+                    return new global::Runway.JsonConverters.CreateDocumentsResponseTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateDocumentsResponseType?))
+                {
+                    return new global::Runway.JsonConverters.CreateDocumentsResponseTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetDocumentsResponseDataItemType))
+                {
+                    return new global::Runway.JsonConverters.GetDocumentsResponseDataItemTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetDocumentsResponseDataItemType?))
+                {
+                    return new global::Runway.JsonConverters.GetDocumentsResponseDataItemTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetDocumentsResponseType))
+                {
+                    return new global::Runway.JsonConverters.GetDocumentsResponseTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetDocumentsResponseType?))
+                {
+                    return new global::Runway.JsonConverters.GetDocumentsResponseTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetRealtimeSessionsResponseDiscriminatorStatus))
+                {
+                    return new global::Runway.JsonConverters.GetRealtimeSessionsResponseDiscriminatorStatusJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetRealtimeSessionsResponseDiscriminatorStatus?))
+                {
+                    return new global::Runway.JsonConverters.GetRealtimeSessionsResponseDiscriminatorStatusNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetTasksResponseDiscriminatorStatus))
+                {
+                    return new global::Runway.JsonConverters.GetTasksResponseDiscriminatorStatusJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetTasksResponseDiscriminatorStatus?))
+                {
+                    return new global::Runway.JsonConverters.GetTasksResponseDiscriminatorStatusNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateGenerateVideoResponseRoutingResolvedSettingsOptimizeFor))
+                {
+                    return new global::Runway.JsonConverters.CreateGenerateVideoResponseRoutingResolvedSettingsOptimizeForJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateGenerateVideoResponseRoutingResolvedSettingsOptimizeFor?))
+                {
+                    return new global::Runway.JsonConverters.CreateGenerateVideoResponseRoutingResolvedSettingsOptimizeForNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateGenerateVideoResponseVariant1PipelineItemFilter))
+                {
+                    return new global::Runway.JsonConverters.CreateGenerateVideoResponseVariant1PipelineItemFilterJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateGenerateVideoResponseVariant1PipelineItemFilter?))
+                {
+                    return new global::Runway.JsonConverters.CreateGenerateVideoResponseVariant1PipelineItemFilterNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateGenerateVideoResponseVariant1EmptiedByItem))
+                {
+                    return new global::Runway.JsonConverters.CreateGenerateVideoResponseVariant1EmptiedByItemJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateGenerateVideoResponseVariant1EmptiedByItem?))
+                {
+                    return new global::Runway.JsonConverters.CreateGenerateVideoResponseVariant1EmptiedByItemNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateGenerateImageResponseRoutingResolvedSettingsOptimizeFor))
+                {
+                    return new global::Runway.JsonConverters.CreateGenerateImageResponseRoutingResolvedSettingsOptimizeForJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateGenerateImageResponseRoutingResolvedSettingsOptimizeFor?))
+                {
+                    return new global::Runway.JsonConverters.CreateGenerateImageResponseRoutingResolvedSettingsOptimizeForNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateGenerateImageResponseVariant1PipelineItemFilter))
+                {
+                    return new global::Runway.JsonConverters.CreateGenerateImageResponseVariant1PipelineItemFilterJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateGenerateImageResponseVariant1PipelineItemFilter?))
+                {
+                    return new global::Runway.JsonConverters.CreateGenerateImageResponseVariant1PipelineItemFilterNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateGenerateImageResponseVariant1EmptiedByItem))
+                {
+                    return new global::Runway.JsonConverters.CreateGenerateImageResponseVariant1EmptiedByItemJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateGenerateImageResponseVariant1EmptiedByItem?))
+                {
+                    return new global::Runway.JsonConverters.CreateGenerateImageResponseVariant1EmptiedByItemNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateGenerateAudioResponseRoutingResolvedSettingsOptimizeFor))
+                {
+                    return new global::Runway.JsonConverters.CreateGenerateAudioResponseRoutingResolvedSettingsOptimizeForJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateGenerateAudioResponseRoutingResolvedSettingsOptimizeFor?))
+                {
+                    return new global::Runway.JsonConverters.CreateGenerateAudioResponseRoutingResolvedSettingsOptimizeForNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateGenerateAudioResponseRoutingResolvedInputType))
+                {
+                    return new global::Runway.JsonConverters.CreateGenerateAudioResponseRoutingResolvedInputTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateGenerateAudioResponseRoutingResolvedInputType?))
+                {
+                    return new global::Runway.JsonConverters.CreateGenerateAudioResponseRoutingResolvedInputTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateGenerateAudioResponseRoutingResolvedInputVoice))
+                {
+                    return new global::Runway.JsonConverters.CreateGenerateAudioResponseRoutingResolvedInputVoiceJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateGenerateAudioResponseRoutingResolvedInputVoice?))
+                {
+                    return new global::Runway.JsonConverters.CreateGenerateAudioResponseRoutingResolvedInputVoiceNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateGenerateAudioResponseVariant1PipelineItemFilter))
+                {
+                    return new global::Runway.JsonConverters.CreateGenerateAudioResponseVariant1PipelineItemFilterJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateGenerateAudioResponseVariant1PipelineItemFilter?))
+                {
+                    return new global::Runway.JsonConverters.CreateGenerateAudioResponseVariant1PipelineItemFilterNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateGenerateAudioResponseVariant1EmptiedByItem))
+                {
+                    return new global::Runway.JsonConverters.CreateGenerateAudioResponseVariant1EmptiedByItemJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateGenerateAudioResponseVariant1EmptiedByItem?))
+                {
+                    return new global::Runway.JsonConverters.CreateGenerateAudioResponseVariant1EmptiedByItemNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetOrganizationWebappUsageResponseDataItemType))
+                {
+                    return new global::Runway.JsonConverters.GetOrganizationWebappUsageResponseDataItemTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetOrganizationWebappUsageResponseDataItemType?))
+                {
+                    return new global::Runway.JsonConverters.GetOrganizationWebappUsageResponseDataItemTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetOrganizationWebappAuditLogsResponseDataItemAction))
+                {
+                    return new global::Runway.JsonConverters.GetOrganizationWebappAuditLogsResponseDataItemActionJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetOrganizationWebappAuditLogsResponseDataItemAction?))
+                {
+                    return new global::Runway.JsonConverters.GetOrganizationWebappAuditLogsResponseDataItemActionNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetOrganizationWebappAuditLogsResponseAction))
+                {
+                    return new global::Runway.JsonConverters.GetOrganizationWebappAuditLogsResponseActionJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetOrganizationWebappAuditLogsResponseAction?))
+                {
+                    return new global::Runway.JsonConverters.GetOrganizationWebappAuditLogsResponseActionNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateOrganizationUsageResponseResultUsedCreditModel))
+                {
+                    return new global::Runway.JsonConverters.CreateOrganizationUsageResponseResultUsedCreditModelJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateOrganizationUsageResponseResultUsedCreditModel?))
+                {
+                    return new global::Runway.JsonConverters.CreateOrganizationUsageResponseResultUsedCreditModelNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateOrganizationUsageResponseModel))
+                {
+                    return new global::Runway.JsonConverters.CreateOrganizationUsageResponseModelJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateOrganizationUsageResponseModel?))
+                {
+                    return new global::Runway.JsonConverters.CreateOrganizationUsageResponseModelNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetRoutersResponseDataItemSettingsModelsMode))
+                {
+                    return new global::Runway.JsonConverters.GetRoutersResponseDataItemSettingsModelsModeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetRoutersResponseDataItemSettingsModelsMode?))
+                {
+                    return new global::Runway.JsonConverters.GetRoutersResponseDataItemSettingsModelsModeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetRoutersResponseDataItemSettingsOptimizeFor))
+                {
+                    return new global::Runway.JsonConverters.GetRoutersResponseDataItemSettingsOptimizeForJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetRoutersResponseDataItemSettingsOptimizeFor?))
+                {
+                    return new global::Runway.JsonConverters.GetRoutersResponseDataItemSettingsOptimizeForNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateRoutersResponseSettingsModelsMode))
+                {
+                    return new global::Runway.JsonConverters.CreateRoutersResponseSettingsModelsModeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateRoutersResponseSettingsModelsMode?))
+                {
+                    return new global::Runway.JsonConverters.CreateRoutersResponseSettingsModelsModeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateRoutersResponseSettingsOptimizeFor))
+                {
+                    return new global::Runway.JsonConverters.CreateRoutersResponseSettingsOptimizeForJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateRoutersResponseSettingsOptimizeFor?))
+                {
+                    return new global::Runway.JsonConverters.CreateRoutersResponseSettingsOptimizeForNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetRoutersResponseSettingsModelsMode))
+                {
+                    return new global::Runway.JsonConverters.GetRoutersResponseSettingsModelsModeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetRoutersResponseSettingsModelsMode?))
+                {
+                    return new global::Runway.JsonConverters.GetRoutersResponseSettingsModelsModeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetRoutersResponseSettingsOptimizeFor))
+                {
+                    return new global::Runway.JsonConverters.GetRoutersResponseSettingsOptimizeForJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetRoutersResponseSettingsOptimizeFor?))
+                {
+                    return new global::Runway.JsonConverters.GetRoutersResponseSettingsOptimizeForNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.PatchRoutersResponseSettingsModelsMode))
+                {
+                    return new global::Runway.JsonConverters.PatchRoutersResponseSettingsModelsModeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.PatchRoutersResponseSettingsModelsMode?))
+                {
+                    return new global::Runway.JsonConverters.PatchRoutersResponseSettingsModelsModeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.PatchRoutersResponseSettingsOptimizeFor))
+                {
+                    return new global::Runway.JsonConverters.PatchRoutersResponseSettingsOptimizeForJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.PatchRoutersResponseSettingsOptimizeFor?))
+                {
+                    return new global::Runway.JsonConverters.PatchRoutersResponseSettingsOptimizeForNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetRoutersRequestsResponseDataItemStatus))
+                {
+                    return new global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemStatusJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetRoutersRequestsResponseDataItemStatus?))
+                {
+                    return new global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemStatusNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetRoutersRequestsResponseDataItemReasonCode2))
+                {
+                    return new global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemReasonCode2JsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetRoutersRequestsResponseDataItemReasonCode2?))
+                {
+                    return new global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemReasonCode2NullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant1Filter))
+                {
+                    return new global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemPipelineItemVariant1FilterJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant1Filter?))
+                {
+                    return new global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemPipelineItemVariant1FilterNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant3Outcome))
+                {
+                    return new global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemPipelineItemVariant3OutcomeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant3Outcome?))
+                {
+                    return new global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemPipelineItemVariant3OutcomeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetRoutersRequestsResponseDataItemPipelineItemDiscriminatorType))
+                {
+                    return new global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemPipelineItemDiscriminatorTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetRoutersRequestsResponseDataItemPipelineItemDiscriminatorType?))
+                {
+                    return new global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemPipelineItemDiscriminatorTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetRoutersRequestsResponseDataItemEmptiedByItem))
+                {
+                    return new global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemEmptiedByItemJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetRoutersRequestsResponseDataItemEmptiedByItem?))
+                {
+                    return new global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemEmptiedByItemNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetVoicesResponseDataItemDiscriminatorStatus))
+                {
+                    return new global::Runway.JsonConverters.GetVoicesResponseDataItemDiscriminatorStatusJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetVoicesResponseDataItemDiscriminatorStatus?))
+                {
+                    return new global::Runway.JsonConverters.GetVoicesResponseDataItemDiscriminatorStatusNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetVoicesResponseDiscriminatorStatus))
+                {
+                    return new global::Runway.JsonConverters.GetVoicesResponseDiscriminatorStatusJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetVoicesResponseDiscriminatorStatus?))
+                {
+                    return new global::Runway.JsonConverters.GetVoicesResponseDiscriminatorStatusNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.PatchVoicesResponseDiscriminatorStatus))
+                {
+                    return new global::Runway.JsonConverters.PatchVoicesResponseDiscriminatorStatusJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.PatchVoicesResponseDiscriminatorStatus?))
+                {
+                    return new global::Runway.JsonConverters.PatchVoicesResponseDiscriminatorStatusNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetWorkflowInvocationsResponseDiscriminatorStatus))
+                {
+                    return new global::Runway.JsonConverters.GetWorkflowInvocationsResponseDiscriminatorStatusJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.GetWorkflowInvocationsResponseDiscriminatorStatus?))
+                {
+                    return new global::Runway.JsonConverters.GetWorkflowInvocationsResponseDiscriminatorStatusNullableJsonConverter();
+                }
+                throw new global::System.NotSupportedException($"No generated enum converter is registered for '{typeToConvert}'.");
+            }
+        }
+
+        private sealed class LazyChunkResolver : global::System.Text.Json.Serialization.Metadata.IJsonTypeInfoResolver
+        {
+            private readonly object _gate = new();
+            private readonly global::System.Text.Json.Serialization.Metadata.IJsonTypeInfoResolver?[] _resolvers = new global::System.Text.Json.Serialization.Metadata.IJsonTypeInfoResolver?[3];
+
+            public global::System.Text.Json.Serialization.Metadata.JsonTypeInfo? GetTypeInfo(
+                global::System.Type type,
+                global::System.Text.Json.JsonSerializerOptions options)
+            {
+                for (var index = 0; index < _resolvers.Length; index++)
+                {
+                    var typeInfo = GetResolver(index).GetTypeInfo(type, options);
+                    if (typeInfo is not null)
+                    {
+                        return typeInfo;
+                    }
+                }
+
+                return null;
+            }
+
+            private global::System.Text.Json.Serialization.Metadata.IJsonTypeInfoResolver GetResolver(int index)
+            {
+                var resolver = global::System.Threading.Volatile.Read(ref _resolvers[index]);
+                if (resolver is not null)
+                {
+                    return resolver;
+                }
+
+                lock (_gate)
+                {
+                    return _resolvers[index] ??= CreateResolver(index);
+                }
+            }
+
+            private static global::System.Text.Json.Serialization.Metadata.IJsonTypeInfoResolver CreateResolver(int index)
+            {
+                return index switch
+                {
+                    0 => new SourceGenerationContextChunk0(new global::System.Text.Json.JsonSerializerOptions()),
+
+                    1 => new SourceGenerationContextChunk1(new global::System.Text.Json.JsonSerializerOptions()),
+
+                    2 => new SourceGenerationContextChunk2(new global::System.Text.Json.JsonSerializerOptions()),
+                    _ => throw new global::System.ArgumentOutOfRangeException(nameof(index)),
+                };
+            }
         }
     }
 }
