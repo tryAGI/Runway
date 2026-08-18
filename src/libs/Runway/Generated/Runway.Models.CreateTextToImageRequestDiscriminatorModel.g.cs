@@ -35,6 +35,10 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        GrokImagineImage2,
+        /// <summary>
+        /// 
+        /// </summary>
         Seedream5Lite,
         /// <summary>
         /// 
@@ -60,6 +64,7 @@ namespace Runway
                 CreateTextToImageRequestDiscriminatorModel.Gen4Image => "gen4_image",
                 CreateTextToImageRequestDiscriminatorModel.Gen4ImageTurbo => "gen4_image_turbo",
                 CreateTextToImageRequestDiscriminatorModel.GptImage2 => "gpt_image_2",
+                CreateTextToImageRequestDiscriminatorModel.GrokImagineImage2 => "grok_imagine_image_2",
                 CreateTextToImageRequestDiscriminatorModel.Seedream5Lite => "seedream5_lite",
                 CreateTextToImageRequestDiscriminatorModel.Seedream5Pro => "seedream5_pro",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
@@ -78,6 +83,7 @@ namespace Runway
                 "gen4_image" => CreateTextToImageRequestDiscriminatorModel.Gen4Image,
                 "gen4_image_turbo" => CreateTextToImageRequestDiscriminatorModel.Gen4ImageTurbo,
                 "gpt_image_2" => CreateTextToImageRequestDiscriminatorModel.GptImage2,
+                "grok_imagine_image_2" => CreateTextToImageRequestDiscriminatorModel.GrokImagineImage2,
                 "seedream5_lite" => CreateTextToImageRequestDiscriminatorModel.Seedream5Lite,
                 "seedream5_pro" => CreateTextToImageRequestDiscriminatorModel.Seedream5Pro,
                 _ => null,

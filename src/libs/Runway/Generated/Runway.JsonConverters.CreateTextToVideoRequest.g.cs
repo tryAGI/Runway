@@ -91,6 +91,13 @@ namespace Runway.JsonConverters
                                throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.CreateTextToVideoRequestSeedance25)}");
                 seedance25 = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
+            global::Runway.CreateTextToVideoRequestGrokImagine15? grokImagine15 = default;
+            if (discriminator?.Model == global::Runway.CreateTextToVideoRequestDiscriminatorModel.GrokImagine15)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateTextToVideoRequestGrokImagine15), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateTextToVideoRequestGrokImagine15> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.CreateTextToVideoRequestGrokImagine15)}");
+                grokImagine15 = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+            }
 
             var __value = new global::Runway.CreateTextToVideoRequest(
                 discriminator?.Model,
@@ -112,7 +119,9 @@ namespace Runway.JsonConverters
 
                 geminiOmniFlash,
 
-                seedance25
+                seedance25,
+
+                grokImagine15
                 );
 
             return __value;
@@ -186,6 +195,12 @@ namespace Runway.JsonConverters
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateTextToVideoRequestSeedance25), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateTextToVideoRequestSeedance25?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateTextToVideoRequestSeedance25).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.Seedance25!, typeInfo);
+            }
+            else if (value.IsGrokImagine15)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateTextToVideoRequestGrokImagine15), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateTextToVideoRequestGrokImagine15?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateTextToVideoRequestGrokImagine15).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.GrokImagine15!, typeInfo);
             }
         }
     }
