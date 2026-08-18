@@ -277,6 +277,43 @@ namespace Runway
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
+        public global::Runway.CreateTextToImageRequestGrokImagineImage2? GrokImagineImage2 { get; init; }
+#else
+        public global::Runway.CreateTextToImageRequestGrokImagineImage2? GrokImagineImage2 { get; }
+#endif
+
+        /// <summary>
+        /// 
+        /// </summary>
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(GrokImagineImage2))]
+#endif
+        public bool IsGrokImagineImage2 => GrokImagineImage2 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickGrokImagineImage2(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Runway.CreateTextToImageRequestGrokImagineImage2? value)
+        {
+            value = GrokImagineImage2;
+            return IsGrokImagineImage2;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Runway.CreateTextToImageRequestGrokImagineImage2 PickGrokImagineImage2() => IsGrokImagineImage2
+            ? GrokImagineImage2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'GrokImagineImage2' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
+#if NET6_0_OR_GREATER
         public global::Runway.CreateTextToImageRequestGemini25Flash? Gemini25Flash { get; init; }
 #else
         public global::Runway.CreateTextToImageRequestGemini25Flash? Gemini25Flash { get; }
@@ -473,6 +510,29 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        public static implicit operator CreateTextToImageRequest(global::Runway.CreateTextToImageRequestGrokImagineImage2 value) => new CreateTextToImageRequest((global::Runway.CreateTextToImageRequestGrokImagineImage2?)value);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static implicit operator global::Runway.CreateTextToImageRequestGrokImagineImage2?(CreateTextToImageRequest @this) => @this.GrokImagineImage2;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public CreateTextToImageRequest(global::Runway.CreateTextToImageRequestGrokImagineImage2? value)
+        {
+            GrokImagineImage2 = value;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static CreateTextToImageRequest FromGrokImagineImage2(global::Runway.CreateTextToImageRequestGrokImagineImage2? value) => new CreateTextToImageRequest(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator CreateTextToImageRequest(global::Runway.CreateTextToImageRequestGemini25Flash value) => new CreateTextToImageRequest((global::Runway.CreateTextToImageRequestGemini25Flash?)value);
 
         /// <summary>
@@ -505,6 +565,7 @@ namespace Runway
             global::Runway.CreateTextToImageRequestGeminiImage31Flash? geminiImage31Flash,
             global::Runway.CreateTextToImageRequestSeedream5Pro? seedream5Pro,
             global::Runway.CreateTextToImageRequestSeedream5Lite? seedream5Lite,
+            global::Runway.CreateTextToImageRequestGrokImagineImage2? grokImagineImage2,
             global::Runway.CreateTextToImageRequestGemini25Flash? gemini25Flash
             )
         {
@@ -517,6 +578,7 @@ namespace Runway
             GeminiImage31Flash = geminiImage31Flash;
             Seedream5Pro = seedream5Pro;
             Seedream5Lite = seedream5Lite;
+            GrokImagineImage2 = grokImagineImage2;
             Gemini25Flash = gemini25Flash;
         }
 
@@ -525,6 +587,7 @@ namespace Runway
         /// </summary>
         public object? Object =>
             Gemini25Flash as object ??
+            GrokImagineImage2 as object ??
             Seedream5Lite as object ??
             Seedream5Pro as object ??
             GeminiImage31Flash as object ??
@@ -545,6 +608,7 @@ namespace Runway
             GeminiImage31Flash?.ToString() ??
             Seedream5Pro?.ToString() ??
             Seedream5Lite?.ToString() ??
+            GrokImagineImage2?.ToString() ??
             Gemini25Flash?.ToString() 
             ;
 
@@ -553,7 +617,7 @@ namespace Runway
         /// </summary>
         public bool Validate()
         {
-            return IsGen4ImageTurbo && !IsGen4Image && !IsGptImage2 && !IsGeminiImage3Pro && !IsGeminiImage31Flash && !IsSeedream5Pro && !IsSeedream5Lite && !IsGemini25Flash || !IsGen4ImageTurbo && IsGen4Image && !IsGptImage2 && !IsGeminiImage3Pro && !IsGeminiImage31Flash && !IsSeedream5Pro && !IsSeedream5Lite && !IsGemini25Flash || !IsGen4ImageTurbo && !IsGen4Image && IsGptImage2 && !IsGeminiImage3Pro && !IsGeminiImage31Flash && !IsSeedream5Pro && !IsSeedream5Lite && !IsGemini25Flash || !IsGen4ImageTurbo && !IsGen4Image && !IsGptImage2 && IsGeminiImage3Pro && !IsGeminiImage31Flash && !IsSeedream5Pro && !IsSeedream5Lite && !IsGemini25Flash || !IsGen4ImageTurbo && !IsGen4Image && !IsGptImage2 && !IsGeminiImage3Pro && IsGeminiImage31Flash && !IsSeedream5Pro && !IsSeedream5Lite && !IsGemini25Flash || !IsGen4ImageTurbo && !IsGen4Image && !IsGptImage2 && !IsGeminiImage3Pro && !IsGeminiImage31Flash && IsSeedream5Pro && !IsSeedream5Lite && !IsGemini25Flash || !IsGen4ImageTurbo && !IsGen4Image && !IsGptImage2 && !IsGeminiImage3Pro && !IsGeminiImage31Flash && !IsSeedream5Pro && IsSeedream5Lite && !IsGemini25Flash || !IsGen4ImageTurbo && !IsGen4Image && !IsGptImage2 && !IsGeminiImage3Pro && !IsGeminiImage31Flash && !IsSeedream5Pro && !IsSeedream5Lite && IsGemini25Flash;
+            return IsGen4ImageTurbo && !IsGen4Image && !IsGptImage2 && !IsGeminiImage3Pro && !IsGeminiImage31Flash && !IsSeedream5Pro && !IsSeedream5Lite && !IsGrokImagineImage2 && !IsGemini25Flash || !IsGen4ImageTurbo && IsGen4Image && !IsGptImage2 && !IsGeminiImage3Pro && !IsGeminiImage31Flash && !IsSeedream5Pro && !IsSeedream5Lite && !IsGrokImagineImage2 && !IsGemini25Flash || !IsGen4ImageTurbo && !IsGen4Image && IsGptImage2 && !IsGeminiImage3Pro && !IsGeminiImage31Flash && !IsSeedream5Pro && !IsSeedream5Lite && !IsGrokImagineImage2 && !IsGemini25Flash || !IsGen4ImageTurbo && !IsGen4Image && !IsGptImage2 && IsGeminiImage3Pro && !IsGeminiImage31Flash && !IsSeedream5Pro && !IsSeedream5Lite && !IsGrokImagineImage2 && !IsGemini25Flash || !IsGen4ImageTurbo && !IsGen4Image && !IsGptImage2 && !IsGeminiImage3Pro && IsGeminiImage31Flash && !IsSeedream5Pro && !IsSeedream5Lite && !IsGrokImagineImage2 && !IsGemini25Flash || !IsGen4ImageTurbo && !IsGen4Image && !IsGptImage2 && !IsGeminiImage3Pro && !IsGeminiImage31Flash && IsSeedream5Pro && !IsSeedream5Lite && !IsGrokImagineImage2 && !IsGemini25Flash || !IsGen4ImageTurbo && !IsGen4Image && !IsGptImage2 && !IsGeminiImage3Pro && !IsGeminiImage31Flash && !IsSeedream5Pro && IsSeedream5Lite && !IsGrokImagineImage2 && !IsGemini25Flash || !IsGen4ImageTurbo && !IsGen4Image && !IsGptImage2 && !IsGeminiImage3Pro && !IsGeminiImage31Flash && !IsSeedream5Pro && !IsSeedream5Lite && IsGrokImagineImage2 && !IsGemini25Flash || !IsGen4ImageTurbo && !IsGen4Image && !IsGptImage2 && !IsGeminiImage3Pro && !IsGeminiImage31Flash && !IsSeedream5Pro && !IsSeedream5Lite && !IsGrokImagineImage2 && IsGemini25Flash;
         }
 
         /// <summary>
@@ -567,6 +631,7 @@ namespace Runway
             global::System.Func<global::Runway.CreateTextToImageRequestGeminiImage31Flash, TResult>? geminiImage31Flash = null,
             global::System.Func<global::Runway.CreateTextToImageRequestSeedream5Pro, TResult>? seedream5Pro = null,
             global::System.Func<global::Runway.CreateTextToImageRequestSeedream5Lite, TResult>? seedream5Lite = null,
+            global::System.Func<global::Runway.CreateTextToImageRequestGrokImagineImage2, TResult>? grokImagineImage2 = null,
             global::System.Func<global::Runway.CreateTextToImageRequestGemini25Flash, TResult>? gemini25Flash = null,
             bool validate = true)
         {
@@ -603,6 +668,10 @@ namespace Runway
             {
                 return seedream5Lite(Seedream5Lite!);
             }
+            else if (IsGrokImagineImage2 && grokImagineImage2 != null)
+            {
+                return grokImagineImage2(GrokImagineImage2!);
+            }
             else if (IsGemini25Flash && gemini25Flash != null)
             {
                 return gemini25Flash(Gemini25Flash!);
@@ -629,6 +698,8 @@ namespace Runway
 
             global::System.Action<global::Runway.CreateTextToImageRequestSeedream5Lite>? seedream5Lite = null,
 
+            global::System.Action<global::Runway.CreateTextToImageRequestGrokImagineImage2>? grokImagineImage2 = null,
+
             global::System.Action<global::Runway.CreateTextToImageRequestGemini25Flash>? gemini25Flash = null,
             bool validate = true)
         {
@@ -664,6 +735,10 @@ namespace Runway
             else if (IsSeedream5Lite)
             {
                 seedream5Lite?.Invoke(Seedream5Lite!);
+            }
+            else if (IsGrokImagineImage2)
+            {
+                grokImagineImage2?.Invoke(GrokImagineImage2!);
             }
             else if (IsGemini25Flash)
             {
@@ -682,6 +757,7 @@ namespace Runway
             global::System.Action<global::Runway.CreateTextToImageRequestGeminiImage31Flash>? geminiImage31Flash = null,
             global::System.Action<global::Runway.CreateTextToImageRequestSeedream5Pro>? seedream5Pro = null,
             global::System.Action<global::Runway.CreateTextToImageRequestSeedream5Lite>? seedream5Lite = null,
+            global::System.Action<global::Runway.CreateTextToImageRequestGrokImagineImage2>? grokImagineImage2 = null,
             global::System.Action<global::Runway.CreateTextToImageRequestGemini25Flash>? gemini25Flash = null,
             bool validate = true)
         {
@@ -717,6 +793,10 @@ namespace Runway
             else if (IsSeedream5Lite)
             {
                 seedream5Lite?.Invoke(Seedream5Lite!);
+            }
+            else if (IsGrokImagineImage2)
+            {
+                grokImagineImage2?.Invoke(GrokImagineImage2!);
             }
             else if (IsGemini25Flash)
             {
@@ -745,6 +825,8 @@ namespace Runway
                 typeof(global::Runway.CreateTextToImageRequestSeedream5Pro),
                 Seedream5Lite,
                 typeof(global::Runway.CreateTextToImageRequestSeedream5Lite),
+                GrokImagineImage2,
+                typeof(global::Runway.CreateTextToImageRequestGrokImagineImage2),
                 Gemini25Flash,
                 typeof(global::Runway.CreateTextToImageRequestGemini25Flash),
             };
@@ -770,6 +852,7 @@ namespace Runway
                 global::System.Collections.Generic.EqualityComparer<global::Runway.CreateTextToImageRequestGeminiImage31Flash?>.Default.Equals(GeminiImage31Flash, other.GeminiImage31Flash) &&
                 global::System.Collections.Generic.EqualityComparer<global::Runway.CreateTextToImageRequestSeedream5Pro?>.Default.Equals(Seedream5Pro, other.Seedream5Pro) &&
                 global::System.Collections.Generic.EqualityComparer<global::Runway.CreateTextToImageRequestSeedream5Lite?>.Default.Equals(Seedream5Lite, other.Seedream5Lite) &&
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateTextToImageRequestGrokImagineImage2?>.Default.Equals(GrokImagineImage2, other.GrokImagineImage2) &&
                 global::System.Collections.Generic.EqualityComparer<global::Runway.CreateTextToImageRequestGemini25Flash?>.Default.Equals(Gemini25Flash, other.Gemini25Flash) 
                 ;
         }

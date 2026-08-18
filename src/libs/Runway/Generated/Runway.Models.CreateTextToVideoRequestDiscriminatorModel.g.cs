@@ -19,6 +19,10 @@ namespace Runway
         /// <summary>
         /// 
         /// </summary>
+        GrokImagine15,
+        /// <summary>
+        /// 
+        /// </summary>
         Hailuo3,
         /// <summary>
         /// 
@@ -64,6 +68,7 @@ namespace Runway
             {
                 CreateTextToVideoRequestDiscriminatorModel.GeminiOmniFlash => "gemini_omni_flash",
                 CreateTextToVideoRequestDiscriminatorModel.Gen45 => "gen4.5",
+                CreateTextToVideoRequestDiscriminatorModel.GrokImagine15 => "grok_imagine_1_5",
                 CreateTextToVideoRequestDiscriminatorModel.Hailuo3 => "hailuo3",
                 CreateTextToVideoRequestDiscriminatorModel.Happyhorse10 => "happyhorse_1_0",
                 CreateTextToVideoRequestDiscriminatorModel.Seedance2 => "seedance2",
@@ -84,6 +89,7 @@ namespace Runway
             {
                 "gemini_omni_flash" => CreateTextToVideoRequestDiscriminatorModel.GeminiOmniFlash,
                 "gen4.5" => CreateTextToVideoRequestDiscriminatorModel.Gen45,
+                "grok_imagine_1_5" => CreateTextToVideoRequestDiscriminatorModel.GrokImagine15,
                 "hailuo3" => CreateTextToVideoRequestDiscriminatorModel.Hailuo3,
                 "happyhorse_1_0" => CreateTextToVideoRequestDiscriminatorModel.Happyhorse10,
                 "seedance2" => CreateTextToVideoRequestDiscriminatorModel.Seedance2,
