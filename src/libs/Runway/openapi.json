@@ -6061,12 +6061,12 @@
           },
           {
             "lang": "TypeScript",
-            "label": "Node SDK (Hailuo 3.0)",
+            "label": "Node SDK (MiniMax H3)",
             "source": "// npm install --save @runwayml/sdk\nimport RunwayML from '@runwayml/sdk';\n\nconst client = new RunwayML();\n\nconst task = await client.imageToVideo\n  .create({\n    model: 'hailuo3',\n    promptImage: [\n      { uri: 'https://example.com/start-frame.jpg', position: 'first' },\n    ],\n    promptText: 'Gentle camera push-in as morning light fills the scene',\n    ratio: '16:9',\n    resolution: '2K',\n    duration: 8,\n  })\n  .waitForTaskOutput();\n\nconsole.log(task);"
           },
           {
             "lang": "Python",
-            "label": "Python SDK (Hailuo 3.0)",
+            "label": "Python SDK (MiniMax H3)",
             "source": "# pip install runwayml\nfrom runwayml import RunwayML\n\nclient = RunwayML()\n\ntask = client.image_to_video.create(\n  model='hailuo3',\n  prompt_image=[\n    {'uri': 'https://example.com/start-frame.jpg', 'position': 'first'},\n  ],\n  prompt_text='Gentle camera push-in as morning light fills the scene',\n  ratio='16:9',\n  resolution='2K',\n  duration=8,\n).wait_for_task_output()\n\nprint(task)"
           }
         ],
@@ -6208,12 +6208,23 @@
                         "additionalProperties": false
                       },
                       "outputFormat": {
-                        "description": "The container/encoding of the output. `mp4` (default) returns an H.264 .mp4. `prores` returns a ProRes .mov. `png_sequence` returns a .zip of PNG frames (plus a separate .wav artifact when the output has audio). Non-mp4 formats incur an additional surcharge of 5 credits per second of output.",
+                        "description": "The container/encoding of the output. `mp4` (default) returns an H.264 .mp4. `prores` returns a ProRes .mov. `png_sequence` returns a .zip of PNG frames (plus a separate .wav artifact when the output has audio). `hdr10` (HEVC Main 10, BT.2020 + PQ) and `hlg` (HEVC Main 10, BT.2020 + HLG) return true-HDR 10-bit .mp4s; `sdr_rec709_10bit` returns a 10-bit Rec.709 HEVC .mp4 for SDR grading pipelines; `hdr_pq_12bit_master` returns a 12-bit 4:4:4 BT.2020 + PQ HEVC .mov with measured HDR10 content-light metadata for mastering; `hdr_prores` returns a BT.2020 + PQ ProRes .mov editorial mezzanine, whose tier is selectable with `proresProfile` (`422`, `422 HQ`, or `4444`; defaults to `422 HQ`); `hdr_png_sequence` returns a .zip of 16-bit PNG frames carrying the PQ signal losslessly (plus a colorimetry.json sidecar and a separate .wav when the output has audio); `hdr_exr_sequence` returns a .zip of half-float OpenEXR frames carrying the HDR signal as linear BT.2020 display light, 1.0 = 100 nits (plus a colorimetry.json sidecar and a separate .wav when the output has audio). Non-mp4 formats incur an additional per-second credit surcharge: 5 credits per second for `prores` and `png_sequence`, and 20 credits per second for every 10-bit and deeper profile (including the 12-bit, 16-bit, and EXR ones), rising to 40 credits per second when the output is larger than 4 megapixels (roughly 4K).",
                         "type": "string",
-                        "enum": ["mp4", "prores", "png_sequence"]
+                        "enum": [
+                          "mp4",
+                          "prores",
+                          "png_sequence",
+                          "hdr10",
+                          "hlg",
+                          "sdr_rec709_10bit",
+                          "hdr_pq_12bit_master",
+                          "hdr_prores",
+                          "hdr_png_sequence",
+                          "hdr_exr_sequence"
+                        ]
                       },
                       "proresProfile": {
-                        "description": "The ProRes profile to use. Only valid when `outputFormat` is `prores`. Defaults to `4444`.",
+                        "description": "The ProRes profile to use. Only valid when `outputFormat` is `prores` or `hdr_prores`. For `prores`, any profile is accepted and the default is `4444`. For `hdr_prores`, only `422`, `422 HQ` and `4444` are available and the default is `422 HQ` — `422 Proxy` and `422 LT` quantize too heavily to hold the HDR gradients, and 12-bit output is served by `hdr_pq_12bit_master` instead of `4444 XQ`.",
                         "type": "string",
                         "enum": [
                           "422",
@@ -6690,7 +6701,7 @@
                         "maxLength": 6000
                       },
                       "resolution": {
-                        "description": "The output resolution. Hailuo 3.0 supports 768P and 2K.",
+                        "description": "The output resolution. MiniMax H3 supports 768P and 2K.",
                         "type": "string",
                         "enum": ["2K", "768P"]
                       },
@@ -6728,7 +6739,7 @@
                               "example": "https://example.com/audio.mp3",
                               "anyOf": [
                                 {
-                                  "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:audio/mp3;base64,...`, up to 16MB) containing an encoded audio. See [our docs](/assets/inputs#audio) on audio inputs for more information.",
+                                  "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:audio/mp3;base64,...`) containing an encoded audio. See [our docs](/assets/inputs#audio) on audio inputs for more information.",
                                   "example": "https://example.com/audio.mp3",
                                   "type": "string",
                                   "minLength": 13,
@@ -7962,12 +7973,12 @@
           },
           {
             "lang": "TypeScript",
-            "label": "Node SDK (Hailuo 3.0)",
+            "label": "Node SDK (MiniMax H3)",
             "source": "// npm install --save @runwayml/sdk\nimport RunwayML from '@runwayml/sdk';\n\nconst client = new RunwayML();\n\nconst task = await client.textToVideo\n  .create({\n    model: 'hailuo3',\n    promptText: 'A cinematic aerial shot over misty mountains at sunrise',\n    ratio: '16:9',\n    resolution: '2K',\n    duration: 8,\n  })\n  .waitForTaskOutput();\n\nconsole.log(task);"
           },
           {
             "lang": "Python",
-            "label": "Python SDK (Hailuo 3.0)",
+            "label": "Python SDK (MiniMax H3)",
             "source": "# pip install runwayml\nfrom runwayml import RunwayML\n\nclient = RunwayML()\n\ntask = client.text_to_video.create(\n  model='hailuo3',\n  prompt_text='A cinematic aerial shot over misty mountains at sunrise',\n  ratio='16:9',\n  resolution='2K',\n  duration=8,\n).wait_for_task_output()\n\nprint(task)"
           }
         ],
@@ -8018,12 +8029,23 @@
                         "additionalProperties": false
                       },
                       "outputFormat": {
-                        "description": "The container/encoding of the output. `mp4` (default) returns an H.264 .mp4. `prores` returns a ProRes .mov. `png_sequence` returns a .zip of PNG frames (plus a separate .wav artifact when the output has audio). Non-mp4 formats incur an additional surcharge of 5 credits per second of output.",
+                        "description": "The container/encoding of the output. `mp4` (default) returns an H.264 .mp4. `prores` returns a ProRes .mov. `png_sequence` returns a .zip of PNG frames (plus a separate .wav artifact when the output has audio). `hdr10` (HEVC Main 10, BT.2020 + PQ) and `hlg` (HEVC Main 10, BT.2020 + HLG) return true-HDR 10-bit .mp4s; `sdr_rec709_10bit` returns a 10-bit Rec.709 HEVC .mp4 for SDR grading pipelines; `hdr_pq_12bit_master` returns a 12-bit 4:4:4 BT.2020 + PQ HEVC .mov with measured HDR10 content-light metadata for mastering; `hdr_prores` returns a BT.2020 + PQ ProRes .mov editorial mezzanine, whose tier is selectable with `proresProfile` (`422`, `422 HQ`, or `4444`; defaults to `422 HQ`); `hdr_png_sequence` returns a .zip of 16-bit PNG frames carrying the PQ signal losslessly (plus a colorimetry.json sidecar and a separate .wav when the output has audio); `hdr_exr_sequence` returns a .zip of half-float OpenEXR frames carrying the HDR signal as linear BT.2020 display light, 1.0 = 100 nits (plus a colorimetry.json sidecar and a separate .wav when the output has audio). Non-mp4 formats incur an additional per-second credit surcharge: 5 credits per second for `prores` and `png_sequence`, and 20 credits per second for every 10-bit and deeper profile (including the 12-bit, 16-bit, and EXR ones), rising to 40 credits per second when the output is larger than 4 megapixels (roughly 4K).",
                         "type": "string",
-                        "enum": ["mp4", "prores", "png_sequence"]
+                        "enum": [
+                          "mp4",
+                          "prores",
+                          "png_sequence",
+                          "hdr10",
+                          "hlg",
+                          "sdr_rec709_10bit",
+                          "hdr_pq_12bit_master",
+                          "hdr_prores",
+                          "hdr_png_sequence",
+                          "hdr_exr_sequence"
+                        ]
                       },
                       "proresProfile": {
-                        "description": "The ProRes profile to use. Only valid when `outputFormat` is `prores`. Defaults to `4444`.",
+                        "description": "The ProRes profile to use. Only valid when `outputFormat` is `prores` or `hdr_prores`. For `prores`, any profile is accepted and the default is `4444`. For `hdr_prores`, only `422`, `422 HQ` and `4444` are available and the default is `422 HQ` — `422 Proxy` and `422 LT` quantize too heavily to hold the HDR gradients, and 12-bit output is served by `hdr_pq_12bit_master` instead of `4444 XQ`.",
                         "type": "string",
                         "enum": [
                           "422",
@@ -8129,7 +8151,7 @@
                         "maxLength": 6000
                       },
                       "resolution": {
-                        "description": "The output resolution. Hailuo 3.0 supports 768P and 2K.",
+                        "description": "The output resolution. MiniMax H3 supports 768P and 2K.",
                         "type": "string",
                         "enum": ["2K", "768P"]
                       },
@@ -9330,12 +9352,12 @@
           },
           {
             "lang": "TypeScript",
-            "label": "Node SDK (Hailuo 3.0)",
+            "label": "Node SDK (MiniMax H3)",
             "source": "// npm install --save @runwayml/sdk\nimport RunwayML from '@runwayml/sdk';\n\nconst client = new RunwayML();\n\nconst task = await client.videoToVideo\n  .create({\n    model: 'hailuo3',\n    promptVideo: 'https://example.com/input.mp4',\n    promptText: 'Camera rises into a sweeping aerial crane shot',\n    ratio: '16:9',\n    resolution: '2K',\n    duration: 8,\n  })\n  .waitForTaskOutput();\n\nconsole.log(task);"
           },
           {
             "lang": "Python",
-            "label": "Python SDK (Hailuo 3.0)",
+            "label": "Python SDK (MiniMax H3)",
             "source": "# pip install runwayml\nfrom runwayml import RunwayML\n\nclient = RunwayML()\n\ntask = client.video_to_video.create(\n  model='hailuo3',\n  prompt_video='https://example.com/input.mp4',\n  prompt_text='Camera rises into a sweeping aerial crane shot',\n  ratio='16:9',\n  resolution='2K',\n  duration=8,\n).wait_for_task_output()\n\nprint(task)"
           }
         ],
@@ -9560,9 +9582,14 @@
                         "additionalProperties": false
                       },
                       "outputFormat": {
-                        "description": "The container/encoding of the output. `mp4` (default) returns an H.264 .mp4. `prores` returns a ProRes .mov. `png_sequence` returns a .zip of PNG frames (plus a separate .wav artifact when the output has audio). Non-mp4 formats incur an additional surcharge of 5 credits per second of output.",
+                        "description": "The container/encoding of the output. `mp4` (default) returns an H.264 .mp4. `prores` returns a ProRes .mov. `png_sequence` returns a .zip of PNG frames. `sdr_rec709_10bit` returns a 10-bit Rec.709 HEVC .mp4 for SDR grading pipelines. Non-mp4 formats incur an additional surcharge: 5 credits per second for `prores` and `png_sequence`, and 20 credits per second for `sdr_rec709_10bit` — 40 credits per second when the output is larger than 4 megapixels (roughly 4K).",
                         "type": "string",
-                        "enum": ["mp4", "prores", "png_sequence"]
+                        "enum": [
+                          "mp4",
+                          "prores",
+                          "png_sequence",
+                          "sdr_rec709_10bit"
+                        ]
                       },
                       "proresProfile": {
                         "description": "The ProRes profile to use. Only valid when `outputFormat` is `prores`. Defaults to `4444`.",
@@ -9622,7 +9649,7 @@
                         "maxLength": 6000
                       },
                       "resolution": {
-                        "description": "The output resolution. Hailuo 3.0 supports 768P and 2K.",
+                        "description": "The output resolution. MiniMax H3 supports 768P and 2K.",
                         "type": "string",
                         "enum": ["2K", "768P"]
                       },
@@ -10722,6 +10749,190 @@
                       "model": { "type": "string", "const": "seedance2_5" }
                     },
                     "required": ["promptVideo", "model"],
+                    "additionalProperties": false
+                  }
+                ],
+                "discriminator": { "propertyName": "model" }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The task that was created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "description": "The ID of the task that was created. Use this to retrieve the task later.",
+                      "type": "string",
+                      "format": "uuid",
+                      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12})$"
+                    },
+                    "estimatedCost": {
+                      "description": "The maximum credits this task may charge. The final amount may be lower after the task completes.",
+                      "type": "object",
+                      "properties": {
+                        "credits": {
+                          "description": "Estimated cost of the generation in credits.",
+                          "type": "number"
+                        }
+                      },
+                      "required": ["credits"],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": ["id", "estimatedCost"],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request was rejected. Inspect `error` or `issues` (when present) and retry with a corrected request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "description": "A message describing why the request was rejected.",
+                      "type": "string"
+                    },
+                    "issues": {
+                      "description": "Field-level validation issues when the request failed Zod body/query validation. Omitted for other 400s.",
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "code": {
+                            "description": "A machine-readable issue code from request validation.",
+                            "type": "string"
+                          },
+                          "path": {
+                            "description": "The path to the invalid field in the request body or query.",
+                            "type": "array",
+                            "items": {
+                              "anyOf": [
+                                { "type": "string" },
+                                { "type": "number" }
+                              ]
+                            }
+                          },
+                          "message": {
+                            "description": "A human-readable description of the issue.",
+                            "type": "string"
+                          }
+                        },
+                        "required": ["code", "path", "message"],
+                        "additionalProperties": {}
+                      }
+                    },
+                    "docUrl": {
+                      "description": "A link to the public API documentation.",
+                      "type": "string"
+                    }
+                  },
+                  "required": ["error"],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "You have exceeded the rate limit for this endpoint.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": { "error": { "type": "string" } },
+                  "required": ["error"],
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/video_to_hdr": {
+      "post": {
+        "tags": ["Start generating"],
+        "summary": "Video to HDR",
+        "description": "This endpoint starts a task to upconvert an SDR video to true HDR with Ruby, Runway's HDR grading model. The output keeps the source's own pixels — luma and color are extended into the HDR range, nothing is re-synthesized. Set `outputFormat` to choose the delivery profile: `hdr10` (HEVC Main 10, BT.2020 + PQ, the default), `hlg` (HEVC Main 10, BT.2020 + HLG), `hdr_prores` (BT.2020 + PQ ProRes .mov editorial mezzanine, tier selectable with `proresProfile`), or `hdr_exr_sequence` (a .zip of half-float OpenEXR frames in linear BT.2020 display light, for compositing). Tasks bill per second of output at 20 credits per second, rising to 40 credits per second when the source is larger than 4 megapixels (roughly 4K) — an upconvert delivers at the source's own resolution.",
+        "x-codeSamples": [
+          {
+            "lang": "TypeScript",
+            "label": "Node SDK",
+            "source": "// npm install --save @runwayml/sdk\nimport RunwayML from '@runwayml/sdk';\n\n// The env var RUNWAYML_API_SECRET is expected to contain your API key.\nconst client = new RunwayML();\n\nconst task = await client.videoToHdr\n  .create({\n    model: 'ruby',\n    videoUri: 'https://example.com/bunny.mp4',\n    outputFormat: 'hdr10',\n  })\n  .waitForTaskOutput();\nconsole.log(task);"
+          },
+          {
+            "lang": "Python",
+            "label": "Python SDK",
+            "source": "# pip install runwayml\nfrom runwayml import RunwayML\n\n# The env var RUNWAYML_API_SECRET is expected to contain your API key.\nclient = RunwayML()\n\ntask = client.video_to_hdr.create(\n    model='ruby',\n    video_uri='https://example.com/bunny.mp4',\n    output_format='hdr10',\n).wait_for_task_output()\n\nprint(task)"
+          }
+        ],
+        "parameters": [{ "$ref": "#/components/parameters/X-Runway-Version" }],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "oneOf": [
+                  {
+                    "title": "ruby",
+                    "type": "object",
+                    "properties": {
+                      "videoUri": {
+                        "description": "The SDR input video to upconvert. Must be 30 seconds or shorter.",
+                        "example": "https://example.com/video.mp4",
+                        "anyOf": [
+                          {
+                            "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:video/mp4;base64,...`, up to 16MB) containing an encoded video. See [our docs](/assets/inputs#videos) on video inputs for more information.",
+                            "example": "https://example.com/video.mp4",
+                            "type": "string",
+                            "minLength": 13,
+                            "maxLength": 2048,
+                            "pattern": "^https:\\/\\/.*"
+                          },
+                          {
+                            "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                            "example": "runway://<token>",
+                            "type": "string",
+                            "minLength": 13,
+                            "maxLength": 5000,
+                            "pattern": "^runway:\\/\\/.*"
+                          },
+                          {
+                            "description": "A data URI containing encoded media, up to 16MB.",
+                            "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                            "type": "string",
+                            "minLength": 13,
+                            "maxLength": 16777216,
+                            "pattern": "^data:video\\/.*"
+                          }
+                        ]
+                      },
+                      "outputFormat": {
+                        "description": "The HDR delivery profile of the output. `hdr10` (default) returns an HEVC Main 10, BT.2020 + PQ .mp4; `hlg` returns an HEVC Main 10, BT.2020 + HLG .mp4; `hdr_prores` returns a BT.2020 + PQ ProRes .mov editorial mezzanine, whose tier is selectable with `proresProfile`; `hdr_exr_sequence` returns a .zip of half-float OpenEXR frames holding the HDR signal as linear BT.2020 display light, 1.0 = 100 nits, ready to composite. The EXR zip is the whole delivery — the frames, a colorimetry.json sidecar, a provenance.json sidecar declaring the upconvert, and the source audio as audio.wav when the source has any. All four profiles bill at the same rate: 20 credits per second of output, rising to 40 credits per second when the source is larger than 4 megapixels (roughly 4K).",
+                        "type": "string",
+                        "enum": [
+                          "hdr10",
+                          "hlg",
+                          "hdr_prores",
+                          "hdr_exr_sequence"
+                        ]
+                      },
+                      "proresProfile": {
+                        "description": "The ProRes tier of the `hdr_prores` mezzanine. Only valid when `outputFormat` is `hdr_prores`. Defaults to `422 HQ`.",
+                        "type": "string",
+                        "enum": ["422", "4444", "422 HQ"]
+                      },
+                      "model": { "type": "string", "const": "ruby" }
+                    },
+                    "required": ["videoUri", "model"],
                     "additionalProperties": false
                   }
                 ],
@@ -14364,118 +14575,122 @@
         },
         "responses": {
           "200": {
-            "description": "The routing decision and created task id.",
+            "description": "The routing decision. Includes a task `id` for real requests; dry runs return the decision only.",
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "RoutedVideoTaskCreated",
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "description": "The ID of the created task. Poll GET /v1/tasks/:id for the result.",
-                      "type": "string",
-                      "format": "uuid",
-                      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12})$"
-                    },
-                    "routing": {
-                      "description": "Metadata describing which model the router selected and why.",
+                  "oneOf": [
+                    {
+                      "title": "RoutedVideoTaskCreated",
                       "type": "object",
                       "properties": {
-                        "model": {
-                          "description": "The public name of the model the router selected.",
-                          "type": "string"
+                        "id": {
+                          "description": "The ID of the created task. Poll GET /v1/tasks/:id for the result.",
+                          "type": "string",
+                          "format": "uuid",
+                          "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12})$"
                         },
-                        "provider": {
-                          "description": "The provider of the selected model.",
-                          "type": "string"
-                        },
-                        "configId": {
-                          "description": "The slug of the router config that was applied to this request.",
-                          "type": "string"
-                        },
-                        "resolvedSettings": {
-                          "description": "The resolved config settings the router used for this request.",
+                        "routing": {
+                          "description": "Metadata describing which model the router selected and why.",
                           "type": "object",
                           "properties": {
-                            "optimizeFor": {
-                              "description": "The single optimization preference the config selected, used as the soft weighting when scoring eligible models.",
-                              "type": "string",
-                              "enum": ["cost", "latency", "quality"]
-                            },
-                            "priceCeiling": {
-                              "description": "The applied maximum credits per generation for this request's modality, or null if the config sets no ceiling.",
-                              "anyOf": [
-                                { "type": "number" },
-                                { "type": "null" }
-                              ]
-                            }
-                          },
-                          "required": ["optimizeFor", "priceCeiling"],
-                          "additionalProperties": false
-                        },
-                        "resolvedInput": {
-                          "description": "Request-side defaults resolved for the routing response. Not necessarily identical to prepared model options.",
-                          "type": "object",
-                          "properties": {
-                            "duration": {
-                              "description": "Duration in seconds used for routing display (request value or router default).",
-                              "type": "number"
-                            },
-                            "ratio": {
-                              "description": "Concrete output ratio derived from aspectRatio (e.g. \"1280:720\"), or the router default.",
+                            "model": {
+                              "description": "The public name of the model the router selected.",
                               "type": "string"
                             },
-                            "resolution": {
-                              "description": "Resolution tier from the request, or the router default when omitted.",
+                            "provider": {
+                              "description": "The provider of the selected model.",
                               "type": "string"
-                            }
-                          },
-                          "required": ["duration", "ratio", "resolution"],
-                          "additionalProperties": false
-                        },
-                        "estimatedCost": {
-                          "description": "Estimated cost, computed against current pricing.",
-                          "type": "object",
-                          "properties": {
-                            "credits": {
-                              "description": "Estimated cost of the generation in credits.",
-                              "type": "number"
-                            }
-                          },
-                          "required": ["credits"],
-                          "additionalProperties": false
-                        },
-                        "capacityFallback": {
-                          "description": "Present only when the config enables fallback.onCapacity and capacity affected this request.",
-                          "type": "object",
-                          "properties": {
-                            "skipped": {
-                              "description": "Eligible models that were considered for this request but not selected because this account is at its concurrency limit for them.",
-                              "type": "array",
-                              "items": { "type": "string" }
                             },
-                            "allExhausted": {
-                              "description": "True when every eligible model was at its concurrency limit, so the best-ranked model was used and the task will queue.",
-                              "type": "boolean"
+                            "configId": {
+                              "description": "The slug of the router config that was applied to this request.",
+                              "type": "string"
+                            },
+                            "resolvedSettings": {
+                              "description": "The resolved config settings the router used for this request.",
+                              "type": "object",
+                              "properties": {
+                                "optimizeFor": {
+                                  "description": "The single optimization preference the config selected, used as the soft weighting when scoring eligible models.",
+                                  "type": "string",
+                                  "enum": ["cost", "latency", "quality"]
+                                },
+                                "priceCeiling": {
+                                  "description": "The applied maximum credits per generation for this request's modality, or null if the config sets no ceiling.",
+                                  "anyOf": [
+                                    { "type": "number" },
+                                    { "type": "null" }
+                                  ]
+                                }
+                              },
+                              "required": ["optimizeFor", "priceCeiling"],
+                              "additionalProperties": false
+                            },
+                            "resolvedInput": {
+                              "description": "Request-side defaults resolved for the routing response. Not necessarily identical to prepared model options.",
+                              "type": "object",
+                              "properties": {
+                                "duration": {
+                                  "description": "Duration in seconds used for routing display (request value or router default).",
+                                  "type": "number"
+                                },
+                                "ratio": {
+                                  "description": "Concrete output ratio derived from aspectRatio (e.g. \"1280:720\"), or the router default.",
+                                  "type": "string"
+                                },
+                                "resolution": {
+                                  "description": "Resolution tier from the request, or the router default when omitted.",
+                                  "type": "string"
+                                }
+                              },
+                              "required": ["duration", "ratio", "resolution"],
+                              "additionalProperties": false
+                            },
+                            "estimatedCost": {
+                              "description": "Estimated cost, computed against current pricing.",
+                              "type": "object",
+                              "properties": {
+                                "credits": {
+                                  "description": "Estimated cost of the generation in credits.",
+                                  "type": "number"
+                                }
+                              },
+                              "required": ["credits"],
+                              "additionalProperties": false
+                            },
+                            "capacityFallback": {
+                              "description": "Present only when the config enables fallback.onCapacity and capacity affected this request.",
+                              "type": "object",
+                              "properties": {
+                                "skipped": {
+                                  "description": "Eligible models that were considered for this request but not selected because this account is at its concurrency limit for them.",
+                                  "type": "array",
+                                  "items": { "type": "string" }
+                                },
+                                "allExhausted": {
+                                  "description": "True when every eligible model was at its concurrency limit, so the best-ranked model was used and the task will queue.",
+                                  "type": "boolean"
+                                }
+                              },
+                              "required": ["skipped", "allExhausted"],
+                              "additionalProperties": false
                             }
                           },
-                          "required": ["skipped", "allExhausted"],
+                          "required": [
+                            "model",
+                            "provider",
+                            "configId",
+                            "resolvedSettings",
+                            "resolvedInput",
+                            "estimatedCost"
+                          ],
                           "additionalProperties": false
                         }
                       },
-                      "required": [
-                        "model",
-                        "provider",
-                        "configId",
-                        "resolvedSettings",
-                        "resolvedInput",
-                        "estimatedCost"
-                      ],
+                      "required": ["id", "routing"],
                       "additionalProperties": false
                     }
-                  },
-                  "required": ["id", "routing"],
-                  "additionalProperties": false
+                  ]
                 }
               }
             }
@@ -14733,118 +14948,126 @@
         },
         "responses": {
           "200": {
-            "description": "The routing decision and created task id.",
+            "description": "The routing decision. Includes a task `id` for real requests; dry runs return the decision only.",
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "RoutedImageTaskCreated",
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "description": "The ID of the created task. Poll GET /v1/tasks/:id for the result.",
-                      "type": "string",
-                      "format": "uuid",
-                      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12})$"
-                    },
-                    "routing": {
-                      "description": "Metadata describing which model the router selected and why.",
+                  "oneOf": [
+                    {
+                      "title": "RoutedImageTaskCreated",
                       "type": "object",
                       "properties": {
-                        "model": {
-                          "description": "The public name of the model the router selected.",
-                          "type": "string"
+                        "id": {
+                          "description": "The ID of the created task. Poll GET /v1/tasks/:id for the result.",
+                          "type": "string",
+                          "format": "uuid",
+                          "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12})$"
                         },
-                        "provider": {
-                          "description": "The provider of the selected model.",
-                          "type": "string"
-                        },
-                        "configId": {
-                          "description": "The slug of the router config that was applied to this request.",
-                          "type": "string"
-                        },
-                        "resolvedSettings": {
-                          "description": "The resolved config settings the router used for this request.",
+                        "routing": {
+                          "description": "Metadata describing which model the router selected and why.",
                           "type": "object",
                           "properties": {
-                            "optimizeFor": {
-                              "description": "The single optimization preference the config selected, used as the soft weighting when scoring eligible models.",
-                              "type": "string",
-                              "enum": ["cost", "latency", "quality"]
-                            },
-                            "priceCeiling": {
-                              "description": "The applied maximum credits per generation for this request's modality, or null if the config sets no ceiling.",
-                              "anyOf": [
-                                { "type": "number" },
-                                { "type": "null" }
-                              ]
-                            }
-                          },
-                          "required": ["optimizeFor", "priceCeiling"],
-                          "additionalProperties": false
-                        },
-                        "resolvedInput": {
-                          "description": "Request-side defaults resolved for the routing response. Not necessarily identical to prepared model options.",
-                          "type": "object",
-                          "properties": {
-                            "ratio": {
-                              "description": "Concrete output ratio derived from aspectRatio and resolution for the selected model.",
+                            "model": {
+                              "description": "The public name of the model the router selected.",
                               "type": "string"
                             },
-                            "aspectRatio": {
-                              "description": "Aspect ratio used for routing display.",
+                            "provider": {
+                              "description": "The provider of the selected model.",
                               "type": "string"
                             },
-                            "resolution": {
-                              "description": "Megapixel tier used for routing display.",
+                            "configId": {
+                              "description": "The slug of the router config that was applied to this request.",
                               "type": "string"
-                            }
-                          },
-                          "required": ["ratio", "aspectRatio", "resolution"],
-                          "additionalProperties": false
-                        },
-                        "estimatedCost": {
-                          "description": "Estimated cost, computed against current pricing.",
-                          "type": "object",
-                          "properties": {
-                            "credits": {
-                              "description": "Estimated cost of the generation in credits.",
-                              "type": "number"
-                            }
-                          },
-                          "required": ["credits"],
-                          "additionalProperties": false
-                        },
-                        "capacityFallback": {
-                          "description": "Present only when the config enables fallback.onCapacity and capacity affected this request.",
-                          "type": "object",
-                          "properties": {
-                            "skipped": {
-                              "description": "Eligible models that were considered for this request but not selected because this account is at its concurrency limit for them.",
-                              "type": "array",
-                              "items": { "type": "string" }
                             },
-                            "allExhausted": {
-                              "description": "True when every eligible model was at its concurrency limit, so the best-ranked model was used and the task will queue.",
-                              "type": "boolean"
+                            "resolvedSettings": {
+                              "description": "The resolved config settings the router used for this request.",
+                              "type": "object",
+                              "properties": {
+                                "optimizeFor": {
+                                  "description": "The single optimization preference the config selected, used as the soft weighting when scoring eligible models.",
+                                  "type": "string",
+                                  "enum": ["cost", "latency", "quality"]
+                                },
+                                "priceCeiling": {
+                                  "description": "The applied maximum credits per generation for this request's modality, or null if the config sets no ceiling.",
+                                  "anyOf": [
+                                    { "type": "number" },
+                                    { "type": "null" }
+                                  ]
+                                }
+                              },
+                              "required": ["optimizeFor", "priceCeiling"],
+                              "additionalProperties": false
+                            },
+                            "resolvedInput": {
+                              "description": "Request-side defaults resolved for the routing response. Not necessarily identical to prepared model options.",
+                              "type": "object",
+                              "properties": {
+                                "ratio": {
+                                  "description": "Concrete output ratio derived from aspectRatio and resolution for the selected model.",
+                                  "type": "string"
+                                },
+                                "aspectRatio": {
+                                  "description": "Aspect ratio used for routing display.",
+                                  "type": "string"
+                                },
+                                "resolution": {
+                                  "description": "Megapixel tier used for routing display.",
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "ratio",
+                                "aspectRatio",
+                                "resolution"
+                              ],
+                              "additionalProperties": false
+                            },
+                            "estimatedCost": {
+                              "description": "Estimated cost, computed against current pricing.",
+                              "type": "object",
+                              "properties": {
+                                "credits": {
+                                  "description": "Estimated cost of the generation in credits.",
+                                  "type": "number"
+                                }
+                              },
+                              "required": ["credits"],
+                              "additionalProperties": false
+                            },
+                            "capacityFallback": {
+                              "description": "Present only when the config enables fallback.onCapacity and capacity affected this request.",
+                              "type": "object",
+                              "properties": {
+                                "skipped": {
+                                  "description": "Eligible models that were considered for this request but not selected because this account is at its concurrency limit for them.",
+                                  "type": "array",
+                                  "items": { "type": "string" }
+                                },
+                                "allExhausted": {
+                                  "description": "True when every eligible model was at its concurrency limit, so the best-ranked model was used and the task will queue.",
+                                  "type": "boolean"
+                                }
+                              },
+                              "required": ["skipped", "allExhausted"],
+                              "additionalProperties": false
                             }
                           },
-                          "required": ["skipped", "allExhausted"],
+                          "required": [
+                            "model",
+                            "provider",
+                            "configId",
+                            "resolvedSettings",
+                            "resolvedInput",
+                            "estimatedCost"
+                          ],
                           "additionalProperties": false
                         }
                       },
-                      "required": [
-                        "model",
-                        "provider",
-                        "configId",
-                        "resolvedSettings",
-                        "resolvedInput",
-                        "estimatedCost"
-                      ],
+                      "required": ["id", "routing"],
                       "additionalProperties": false
                     }
-                  },
-                  "required": ["id", "routing"],
-                  "additionalProperties": false
+                  ]
                 }
               }
             }
@@ -15188,121 +15411,125 @@
         },
         "responses": {
           "200": {
-            "description": "The routing decision and created task id.",
+            "description": "The routing decision. Includes a task `id` for real requests; dry runs return the decision only.",
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "RoutedAudioTaskCreated",
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "description": "The ID of the created task. Poll GET /v1/tasks/:id for the result.",
-                      "type": "string",
-                      "format": "uuid",
-                      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12})$"
-                    },
-                    "routing": {
-                      "description": "Metadata describing which model the router selected and why.",
+                  "oneOf": [
+                    {
+                      "title": "RoutedAudioTaskCreated",
                       "type": "object",
                       "properties": {
-                        "model": {
-                          "description": "The public name of the model the router selected.",
-                          "type": "string"
+                        "id": {
+                          "description": "The ID of the created task. Poll GET /v1/tasks/:id for the result.",
+                          "type": "string",
+                          "format": "uuid",
+                          "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12})$"
                         },
-                        "provider": {
-                          "description": "The provider of the selected model.",
-                          "type": "string"
-                        },
-                        "configId": {
-                          "description": "The slug of the router config that was applied to this request.",
-                          "type": "string"
-                        },
-                        "resolvedSettings": {
-                          "description": "The resolved config settings the router used for this request.",
+                        "routing": {
+                          "description": "Metadata describing which model the router selected and why.",
                           "type": "object",
                           "properties": {
-                            "optimizeFor": {
-                              "description": "The single optimization preference the config selected, used as the soft weighting when scoring eligible models.",
-                              "type": "string",
-                              "enum": ["cost", "latency", "quality"]
+                            "model": {
+                              "description": "The public name of the model the router selected.",
+                              "type": "string"
                             },
-                            "priceCeiling": {
-                              "description": "The applied maximum credits per generation for this request's modality, or null if the config sets no ceiling.",
-                              "anyOf": [
-                                { "type": "number" },
-                                { "type": "null" }
-                              ]
-                            }
-                          },
-                          "required": ["optimizeFor", "priceCeiling"],
-                          "additionalProperties": false
-                        },
-                        "resolvedInput": {
-                          "description": "Request-side defaults resolved for the routing response. Not necessarily identical to prepared model options.",
-                          "type": "object",
-                          "properties": {
-                            "type": {
-                              "description": "The prompt mode the router routed for.",
-                              "type": "string",
-                              "enum": ["speech", "audio"]
+                            "provider": {
+                              "description": "The provider of the selected model.",
+                              "type": "string"
                             },
-                            "voice": {
-                              "description": "How the selected model resolves the voice: the requested preset or reference-audio clone, the model default for voiceless speech, or none for general audio.",
-                              "type": "string",
-                              "enum": [
-                                "preset",
-                                "reference-audio",
-                                "default",
-                                "none"
-                              ]
-                            }
-                          },
-                          "required": ["type", "voice"],
-                          "additionalProperties": false
-                        },
-                        "estimatedCost": {
-                          "description": "Estimated cost, computed against current pricing.",
-                          "type": "object",
-                          "properties": {
-                            "credits": {
-                              "description": "Estimated cost of the generation in credits.",
-                              "type": "number"
-                            }
-                          },
-                          "required": ["credits"],
-                          "additionalProperties": false
-                        },
-                        "capacityFallback": {
-                          "description": "Present only when the config enables fallback.onCapacity and capacity affected this request.",
-                          "type": "object",
-                          "properties": {
-                            "skipped": {
-                              "description": "Eligible models that were considered for this request but not selected because this account is at its concurrency limit for them.",
-                              "type": "array",
-                              "items": { "type": "string" }
+                            "configId": {
+                              "description": "The slug of the router config that was applied to this request.",
+                              "type": "string"
                             },
-                            "allExhausted": {
-                              "description": "True when every eligible model was at its concurrency limit, so the best-ranked model was used and the task will queue.",
-                              "type": "boolean"
+                            "resolvedSettings": {
+                              "description": "The resolved config settings the router used for this request.",
+                              "type": "object",
+                              "properties": {
+                                "optimizeFor": {
+                                  "description": "The single optimization preference the config selected, used as the soft weighting when scoring eligible models.",
+                                  "type": "string",
+                                  "enum": ["cost", "latency", "quality"]
+                                },
+                                "priceCeiling": {
+                                  "description": "The applied maximum credits per generation for this request's modality, or null if the config sets no ceiling.",
+                                  "anyOf": [
+                                    { "type": "number" },
+                                    { "type": "null" }
+                                  ]
+                                }
+                              },
+                              "required": ["optimizeFor", "priceCeiling"],
+                              "additionalProperties": false
+                            },
+                            "resolvedInput": {
+                              "description": "Request-side defaults resolved for the routing response. Not necessarily identical to prepared model options.",
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "description": "The prompt mode the router routed for.",
+                                  "type": "string",
+                                  "enum": ["speech", "audio"]
+                                },
+                                "voice": {
+                                  "description": "How the selected model resolves the voice: the requested preset or reference-audio clone, the model default for voiceless speech, or none for general audio.",
+                                  "type": "string",
+                                  "enum": [
+                                    "preset",
+                                    "reference-audio",
+                                    "default",
+                                    "none"
+                                  ]
+                                }
+                              },
+                              "required": ["type", "voice"],
+                              "additionalProperties": false
+                            },
+                            "estimatedCost": {
+                              "description": "Estimated cost, computed against current pricing.",
+                              "type": "object",
+                              "properties": {
+                                "credits": {
+                                  "description": "Estimated cost of the generation in credits.",
+                                  "type": "number"
+                                }
+                              },
+                              "required": ["credits"],
+                              "additionalProperties": false
+                            },
+                            "capacityFallback": {
+                              "description": "Present only when the config enables fallback.onCapacity and capacity affected this request.",
+                              "type": "object",
+                              "properties": {
+                                "skipped": {
+                                  "description": "Eligible models that were considered for this request but not selected because this account is at its concurrency limit for them.",
+                                  "type": "array",
+                                  "items": { "type": "string" }
+                                },
+                                "allExhausted": {
+                                  "description": "True when every eligible model was at its concurrency limit, so the best-ranked model was used and the task will queue.",
+                                  "type": "boolean"
+                                }
+                              },
+                              "required": ["skipped", "allExhausted"],
+                              "additionalProperties": false
                             }
                           },
-                          "required": ["skipped", "allExhausted"],
+                          "required": [
+                            "model",
+                            "provider",
+                            "configId",
+                            "resolvedSettings",
+                            "resolvedInput",
+                            "estimatedCost"
+                          ],
                           "additionalProperties": false
                         }
                       },
-                      "required": [
-                        "model",
-                        "provider",
-                        "configId",
-                        "resolvedSettings",
-                        "resolvedInput",
-                        "estimatedCost"
-                      ],
+                      "required": ["id", "routing"],
                       "additionalProperties": false
                     }
-                  },
-                  "required": ["id", "routing"],
-                  "additionalProperties": false
+                  ]
                 }
               }
             }

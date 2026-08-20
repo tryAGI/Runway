@@ -17,6 +17,7 @@ internal static class StartGeneratingApiGroupCommand
                          command.Subcommands.Add(StartGeneratingCreateTextToImageCommandApiCommand.Create());
                          command.Subcommands.Add(StartGeneratingCreateTextToSpeechCommandApiCommand.Create());
                          command.Subcommands.Add(StartGeneratingCreateTextToVideoCommandApiCommand.Create());
+                         command.Subcommands.Add(StartGeneratingCreateVideoToHdrCommandApiCommand.Create());
                          command.Subcommands.Add(StartGeneratingCreateVideoToVideoCommandApiCommand.Create());
                          command.Subcommands.Add(StartGeneratingCreateVideoUpscaleCommandApiCommand.Create());
                          command.Subcommands.Add(StartGeneratingCreateVoiceDubbingCommandApiCommand.Create());

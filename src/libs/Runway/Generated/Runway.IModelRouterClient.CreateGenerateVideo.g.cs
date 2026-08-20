@@ -15,7 +15,7 @@ namespace Runway
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Runway.ApiException"></exception>
-        global::System.Threading.Tasks.Task<global::Runway.CreateGenerateVideoResponse> CreateGenerateVideoAsync(
+        global::System.Threading.Tasks.Task<global::Runway.CreateGenerateVideoResponse2> CreateGenerateVideoAsync(
 
             global::Runway.CreateGenerateVideoRequest request,
             string xRunwayVersion = "2024-11-06",
@@ -32,7 +32,7 @@ namespace Runway
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Runway.ApiException"></exception>
-        global::System.Threading.Tasks.Task<global::Runway.AutoSDKHttpResponse<global::Runway.CreateGenerateVideoResponse>> CreateGenerateVideoAsResponseAsync(
+        global::System.Threading.Tasks.Task<global::Runway.AutoSDKHttpResponse<global::Runway.CreateGenerateVideoResponse2>> CreateGenerateVideoAsResponseAsync(
 
             global::Runway.CreateGenerateVideoRequest request,
             string xRunwayVersion = "2024-11-06",
@@ -54,7 +54,7 @@ namespace Runway
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        global::System.Threading.Tasks.Task<global::Runway.CreateGenerateVideoResponse> CreateGenerateVideoAsync(
+        global::System.Threading.Tasks.Task<global::Runway.CreateGenerateVideoResponse2> CreateGenerateVideoAsync(
             string configId,
             global::Runway.CreateGenerateVideoRequestInput input,
             string xRunwayVersion = "2024-11-06",

@@ -28,7 +28,7 @@ internal static partial class ModelRouterCreateGenerateAudioCommandApiCommand
         Required = true,
     };
 
-                    private static string FormatResponse(ParseResult parseResult, global::Runway.CreateGenerateAudioResponse value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
+                    private static string FormatResponse(ParseResult parseResult, global::Runway.CreateGenerateAudioResponse2 value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
                     {
                         string? text = null;
                         CustomizeResponseText(parseResult, value, ref text);
@@ -44,7 +44,7 @@ internal static partial class ModelRouterCreateGenerateAudioCommandApiCommand
                         return CliRuntime.FormatHumanReadable(value, context, truncateLongStrings, hints);
                     }
 
-                    static partial void CustomizeResponseText(ParseResult parseResult, global::Runway.CreateGenerateAudioResponse value, ref string? text);
+                    static partial void CustomizeResponseText(ParseResult parseResult, global::Runway.CreateGenerateAudioResponse2 value, ref string? text);
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 

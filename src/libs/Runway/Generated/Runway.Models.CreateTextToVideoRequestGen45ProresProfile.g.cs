@@ -4,7 +4,7 @@
 namespace Runway
 {
     /// <summary>
-    /// The ProRes profile to use. Only valid when `outputFormat` is `prores`. Defaults to `4444`.
+    /// The ProRes profile to use. Only valid when `outputFormat` is `prores` or `hdr_prores`. For `prores`, any profile is accepted and the default is `4444`. For `hdr_prores`, only `422`, `422 HQ` and `4444` are available and the default is `422 HQ` — `422 Proxy` and `422 LT` quantize too heavily to hold the HDR gradients, and 12-bit output is served by `hdr_pq_12bit_master` instead of `4444 XQ`.
     /// </summary>
     public enum CreateTextToVideoRequestGen45ProresProfile
     {

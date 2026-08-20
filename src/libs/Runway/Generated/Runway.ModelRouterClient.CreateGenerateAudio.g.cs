@@ -54,7 +54,7 @@ namespace Runway
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Runway.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Runway.CreateGenerateAudioResponse> CreateGenerateAudioAsync(
+        public async global::System.Threading.Tasks.Task<global::Runway.CreateGenerateAudioResponse2> CreateGenerateAudioAsync(
 
             global::Runway.CreateGenerateAudioRequest request,
             string xRunwayVersion = "2024-11-06",
@@ -82,7 +82,7 @@ namespace Runway
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Runway.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Runway.AutoSDKHttpResponse<global::Runway.CreateGenerateAudioResponse>> CreateGenerateAudioAsResponseAsync(
+        public async global::System.Threading.Tasks.Task<global::Runway.AutoSDKHttpResponse<global::Runway.CreateGenerateAudioResponse2>> CreateGenerateAudioAsResponseAsync(
 
             global::Runway.CreateGenerateAudioRequest request,
             string xRunwayVersion = "2024-11-06",
@@ -395,19 +395,19 @@ namespace Runway
                             {
                                 string? __content_404 = null;
                                 global::System.Exception? __exception_404 = null;
-                                global::Runway.CreateGenerateAudioResponse3? __value_404 = null;
+                                global::Runway.CreateGenerateAudioResponse4? __value_404 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_404 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_404 = global::Runway.CreateGenerateAudioResponse3.FromJson(__content_404, JsonSerializerContext);
+                                        __value_404 = global::Runway.CreateGenerateAudioResponse4.FromJson(__content_404, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_404 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_404 = global::Runway.CreateGenerateAudioResponse3.FromJson(__content_404, JsonSerializerContext);
+                                        __value_404 = global::Runway.CreateGenerateAudioResponse4.FromJson(__content_404, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -416,7 +416,7 @@ namespace Runway
                                 }
 
 
-                                throw global::Runway.ApiException<global::Runway.CreateGenerateAudioResponse3>.Create(
+                                throw global::Runway.ApiException<global::Runway.CreateGenerateAudioResponse4>.Create(
                                     statusCode: __response.StatusCode,
                                     message: __content_404 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_404,
@@ -432,19 +432,19 @@ namespace Runway
                             {
                                 string? __content_429 = null;
                                 global::System.Exception? __exception_429 = null;
-                                global::Runway.CreateGenerateAudioResponse4? __value_429 = null;
+                                global::Runway.CreateGenerateAudioResponse5? __value_429 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_429 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_429 = global::Runway.CreateGenerateAudioResponse4.FromJson(__content_429, JsonSerializerContext);
+                                        __value_429 = global::Runway.CreateGenerateAudioResponse5.FromJson(__content_429, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_429 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_429 = global::Runway.CreateGenerateAudioResponse4.FromJson(__content_429, JsonSerializerContext);
+                                        __value_429 = global::Runway.CreateGenerateAudioResponse5.FromJson(__content_429, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -453,7 +453,7 @@ namespace Runway
                                 }
 
 
-                                throw global::Runway.ApiException<global::Runway.CreateGenerateAudioResponse4>.Create(
+                                throw global::Runway.ApiException<global::Runway.CreateGenerateAudioResponse5>.Create(
                                     statusCode: __response.StatusCode,
                                     message: __content_429 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_429,
@@ -486,9 +486,9 @@ namespace Runway
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    var __value = global::Runway.CreateGenerateAudioResponse.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::Runway.CreateGenerateAudioResponse2.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
-                                    return new global::Runway.AutoSDKHttpResponse<global::Runway.CreateGenerateAudioResponse>(
+                                    return new global::Runway.AutoSDKHttpResponse<global::Runway.CreateGenerateAudioResponse2>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Runway.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -518,9 +518,9 @@ namespace Runway
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    var __value = await global::Runway.CreateGenerateAudioResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::Runway.CreateGenerateAudioResponse2.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
-                                    return new global::Runway.AutoSDKHttpResponse<global::Runway.CreateGenerateAudioResponse>(
+                                    return new global::Runway.AutoSDKHttpResponse<global::Runway.CreateGenerateAudioResponse2>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Runway.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -576,7 +576,7 @@ namespace Runway
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Runway.CreateGenerateAudioResponse> CreateGenerateAudioAsync(
+        public async global::System.Threading.Tasks.Task<global::Runway.CreateGenerateAudioResponse2> CreateGenerateAudioAsync(
             string configId,
             global::Runway.CreateGenerateAudioRequestInput input,
             string xRunwayVersion = "2024-11-06",

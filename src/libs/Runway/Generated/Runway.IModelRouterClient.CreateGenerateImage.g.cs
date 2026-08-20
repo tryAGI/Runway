@@ -15,7 +15,7 @@ namespace Runway
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Runway.ApiException"></exception>
-        global::System.Threading.Tasks.Task<global::Runway.CreateGenerateImageResponse> CreateGenerateImageAsync(
+        global::System.Threading.Tasks.Task<global::Runway.CreateGenerateImageResponse2> CreateGenerateImageAsync(
 
             global::Runway.CreateGenerateImageRequest request,
             string xRunwayVersion = "2024-11-06",
@@ -32,7 +32,7 @@ namespace Runway
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Runway.ApiException"></exception>
-        global::System.Threading.Tasks.Task<global::Runway.AutoSDKHttpResponse<global::Runway.CreateGenerateImageResponse>> CreateGenerateImageAsResponseAsync(
+        global::System.Threading.Tasks.Task<global::Runway.AutoSDKHttpResponse<global::Runway.CreateGenerateImageResponse2>> CreateGenerateImageAsResponseAsync(
 
             global::Runway.CreateGenerateImageRequest request,
             string xRunwayVersion = "2024-11-06",
@@ -54,7 +54,7 @@ namespace Runway
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        global::System.Threading.Tasks.Task<global::Runway.CreateGenerateImageResponse> CreateGenerateImageAsync(
+        global::System.Threading.Tasks.Task<global::Runway.CreateGenerateImageResponse2> CreateGenerateImageAsync(
             string configId,
             global::Runway.CreateGenerateImageRequestInput input,
             string xRunwayVersion = "2024-11-06",

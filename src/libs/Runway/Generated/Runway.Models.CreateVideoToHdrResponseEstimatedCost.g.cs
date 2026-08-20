@@ -1,0 +1,47 @@
+
+#nullable enable
+
+namespace Runway
+{
+    /// <summary>
+    /// The maximum credits this task may charge. The final amount may be lower after the task completes.
+    /// </summary>
+    public sealed partial class CreateVideoToHdrResponseEstimatedCost
+    {
+        /// <summary>
+        /// Estimated cost of the generation in credits.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("credits")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required double Credits { get; set; }
+
+        /// <summary>
+        /// Additional properties that are not explicitly defined in the schema
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonExtensionData]
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CreateVideoToHdrResponseEstimatedCost" /> class.
+        /// </summary>
+        /// <param name="credits">
+        /// Estimated cost of the generation in credits.
+        /// </param>
+#if NET7_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
+        public CreateVideoToHdrResponseEstimatedCost(
+            double credits)
+        {
+            this.Credits = credits;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CreateVideoToHdrResponseEstimatedCost" /> class.
+        /// </summary>
+        public CreateVideoToHdrResponseEstimatedCost()
+        {
+        }
+
+    }
+}
