@@ -6,7 +6,7 @@ namespace Runway
     /// <summary>
     /// 
     /// </summary>
-    public sealed partial class CreateGenerateAudioResponse
+    public sealed partial class CreateGenerateAudioResponse2
     {
         /// <summary>
         /// The ID of the created task. Poll GET /v1/tasks/:id for the result.
@@ -29,7 +29,7 @@ namespace Runway
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CreateGenerateAudioResponse" /> class.
+        /// Initializes a new instance of the <see cref="CreateGenerateAudioResponse2" /> class.
         /// </summary>
         /// <param name="id">
         /// The ID of the created task. Poll GET /v1/tasks/:id for the result.
@@ -40,7 +40,7 @@ namespace Runway
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
-        public CreateGenerateAudioResponse(
+        public CreateGenerateAudioResponse2(
             global::System.Guid id,
             global::Runway.CreateGenerateAudioResponseRouting routing)
         {
@@ -49,9 +49,9 @@ namespace Runway
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CreateGenerateAudioResponse" /> class.
+        /// Initializes a new instance of the <see cref="CreateGenerateAudioResponse2" /> class.
         /// </summary>
-        public CreateGenerateAudioResponse()
+        public CreateGenerateAudioResponse2()
         {
         }
 

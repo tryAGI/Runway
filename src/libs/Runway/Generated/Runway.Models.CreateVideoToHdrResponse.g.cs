@@ -1,0 +1,59 @@
+
+#nullable enable
+
+namespace Runway
+{
+    /// <summary>
+    /// 
+    /// </summary>
+    public sealed partial class CreateVideoToHdrResponse
+    {
+        /// <summary>
+        /// The ID of the task that was created. Use this to retrieve the task later.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::System.Guid Id { get; set; }
+
+        /// <summary>
+        /// The maximum credits this task may charge. The final amount may be lower after the task completes.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("estimatedCost")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::Runway.CreateVideoToHdrResponseEstimatedCost EstimatedCost { get; set; }
+
+        /// <summary>
+        /// Additional properties that are not explicitly defined in the schema
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonExtensionData]
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CreateVideoToHdrResponse" /> class.
+        /// </summary>
+        /// <param name="id">
+        /// The ID of the task that was created. Use this to retrieve the task later.
+        /// </param>
+        /// <param name="estimatedCost">
+        /// The maximum credits this task may charge. The final amount may be lower after the task completes.
+        /// </param>
+#if NET7_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
+        public CreateVideoToHdrResponse(
+            global::System.Guid id,
+            global::Runway.CreateVideoToHdrResponseEstimatedCost estimatedCost)
+        {
+            this.Id = id;
+            this.EstimatedCost = estimatedCost ?? throw new global::System.ArgumentNullException(nameof(estimatedCost));
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CreateVideoToHdrResponse" /> class.
+        /// </summary>
+        public CreateVideoToHdrResponse()
+        {
+        }
+
+    }
+}

@@ -58,7 +58,7 @@ namespace Runway
         public global::Runway.CreateVideoToVideoRequestVariant1ContentModeration? ContentModeration { get; set; }
 
         /// <summary>
-        /// The container/encoding of the output. `mp4` (default) returns an H.264 .mp4. `prores` returns a ProRes .mov. `png_sequence` returns a .zip of PNG frames (plus a separate .wav artifact when the output has audio). Non-mp4 formats incur an additional surcharge of 5 credits per second of output.
+        /// The container/encoding of the output. `mp4` (default) returns an H.264 .mp4. `prores` returns a ProRes .mov. `png_sequence` returns a .zip of PNG frames. `sdr_rec709_10bit` returns a 10-bit Rec.709 HEVC .mp4 for SDR grading pipelines. Non-mp4 formats incur an additional surcharge: 5 credits per second for `prores` and `png_sequence`, and 20 credits per second for `sdr_rec709_10bit` — 40 credits per second when the output is larger than 4 megapixels (roughly 4K).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("outputFormat")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestVariant1OutputFormatJsonConverter))]
@@ -107,7 +107,7 @@ namespace Runway
         /// Settings that affect the behavior of the content moderation system.
         /// </param>
         /// <param name="outputFormat">
-        /// The container/encoding of the output. `mp4` (default) returns an H.264 .mp4. `prores` returns a ProRes .mov. `png_sequence` returns a .zip of PNG frames (plus a separate .wav artifact when the output has audio). Non-mp4 formats incur an additional surcharge of 5 credits per second of output.
+        /// The container/encoding of the output. `mp4` (default) returns an H.264 .mp4. `prores` returns a ProRes .mov. `png_sequence` returns a .zip of PNG frames. `sdr_rec709_10bit` returns a 10-bit Rec.709 HEVC .mp4 for SDR grading pipelines. Non-mp4 formats incur an additional surcharge: 5 credits per second for `prores` and `png_sequence`, and 20 credits per second for `sdr_rec709_10bit` — 40 credits per second when the output is larger than 4 megapixels (roughly 4K).
         /// </param>
         /// <param name="proresProfile">
         /// The ProRes profile to use. Only valid when `outputFormat` is `prores`. Defaults to `4444`.

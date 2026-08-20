@@ -16,6 +16,13 @@ namespace Runway
         public required string Error { get; set; }
 
         /// <summary>
+        /// 
+        /// </summary>
+        /// <default>"router_config_not_found"</default>
+        [global::System.Text.Json.Serialization.JsonPropertyName("code")]
+        public string Code { get; set; } = "router_config_not_found";
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -25,13 +32,16 @@ namespace Runway
         /// Initializes a new instance of the <see cref="CreateGenerateVideoResponse4" /> class.
         /// </summary>
         /// <param name="error"></param>
+        /// <param name="code"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public CreateGenerateVideoResponse4(
-            string error)
+            string error,
+            string code = "router_config_not_found")
         {
             this.Error = error ?? throw new global::System.ArgumentNullException(nameof(error));
+            this.Code = code;
         }
 
         /// <summary>
@@ -39,6 +49,18 @@ namespace Runway
         /// </summary>
         public CreateGenerateVideoResponse4()
         {
+        }
+
+        /// <summary>
+        /// Creates a new <see cref="CreateGenerateVideoResponse4"/> from its single non-const required field,
+        /// hardcoding any const discriminator fields.
+        /// </summary>
+        public static CreateGenerateVideoResponse4 FromError(string error)
+        {
+            return new CreateGenerateVideoResponse4
+            {
+                Error = error,
+            };
         }
 
     }

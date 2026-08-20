@@ -4,7 +4,7 @@
 namespace Runway
 {
     /// <summary>
-    /// The output resolution. Hailuo 3.0 supports 768P and 2K.
+    /// The output resolution. MiniMax H3 supports 768P and 2K.
     /// </summary>
     public enum CreateImageToVideoRequestHailuo3Resolution
     {
