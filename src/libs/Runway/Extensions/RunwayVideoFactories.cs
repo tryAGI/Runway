@@ -45,27 +45,6 @@ public static class RunwayTextToVideo
         });
     }
 
-    /// <summary>Builds a <c>veo3</c> text-to-video request. Duration defaults to 8s when omitted.</summary>
-    public static CreateTextToVideoRequest Veo3(
-        string promptText,
-        CreateTextToVideoRequestVeo3Ratio ratio,
-        double? duration = null)
-    {
-        ArgumentException.ThrowIfNullOrWhiteSpace(promptText);
-
-        var body = new CreateTextToVideoRequestVeo3
-        {
-            PromptText = promptText,
-            Ratio = ratio,
-        };
-        if (duration is { } d)
-        {
-            body.Duration = d;
-        }
-
-        return new CreateTextToVideoRequest(body);
-    }
-
     /// <summary>Builds a <c>gen4.5</c> text-to-video request. <paramref name="duration"/> is required for this model.</summary>
     public static CreateTextToVideoRequest Gen45(
         string promptText,
@@ -136,31 +115,6 @@ public static class RunwayImageToVideo
             Audio = audio,
             Duration = duration,
         });
-    }
-
-    /// <summary>Builds a <c>veo3</c> image-to-video request. Duration defaults to 8s when omitted.</summary>
-#pragma warning disable CA1054
-    public static CreateImageToVideoRequest Veo3(
-        string promptImageUri,
-        CreateImageToVideoRequestVeo3Ratio ratio,
-        string? promptText = null,
-        double? duration = null)
-#pragma warning restore CA1054
-    {
-        ArgumentException.ThrowIfNullOrWhiteSpace(promptImageUri);
-
-        var body = new CreateImageToVideoRequestVeo3
-        {
-            PromptImage = new AnyOf<string?, global::System.Collections.Generic.IList<CreateImageToVideoRequestVeo3PromptImagePromptImage>>(promptImageUri),
-            Ratio = ratio,
-            PromptText = promptText,
-        };
-        if (duration is { } d)
-        {
-            body.Duration = d;
-        }
-
-        return new CreateImageToVideoRequest(body);
     }
 
     /// <summary>Builds a <c>gen4.5</c> image-to-video request. <paramref name="promptText"/> and <paramref name="duration"/> are required for this model.</summary>

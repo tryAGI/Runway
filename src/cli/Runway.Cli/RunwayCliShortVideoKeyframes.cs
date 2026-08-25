@@ -91,6 +91,7 @@ internal static class RunwayCliShortVideoKeyframes
         ArgumentNullException.ThrowIfNull(plan);
         ArgumentNullException.ThrowIfNull(options);
         ArgumentNullException.ThrowIfNull(keyframes);
+        ArgumentException.ThrowIfNullOrWhiteSpace(options.Output);
 
         var imageModel = RunwayCliGeneration.NormalizeTextToImageModel(keyframes.ImageModel);
         var supportedImageRatios = RunwayCliGeneration.GetSupportedTextToImageRatios(imageModel);

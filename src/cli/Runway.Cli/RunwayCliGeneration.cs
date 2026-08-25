@@ -5,8 +5,8 @@ using Runway;
 
 internal static class RunwayCliGeneration
 {
-    private static readonly string[] TextToVideoModels = ["gen4.5", "veo3.1", "veo3.1_fast", "veo3"];
-    private static readonly string[] ImageToVideoModels = ["gen4.5", "gen4_turbo", "veo3.1", "veo3.1_fast", "happyhorse_1_0", "seedance2", "seedance2_fast", "veo3"];
+    private static readonly string[] TextToVideoModels = ["gen4.5", "veo3.1", "veo3.1_fast"];
+    private static readonly string[] ImageToVideoModels = ["gen4.5", "gen4_turbo", "veo3.1", "veo3.1_fast", "happyhorse_1_0", "seedance2", "seedance2_fast"];
     private static readonly string[] TextToImageModels = ["gen4_image_turbo", "gen4_image", "gemini_image3_pro", "gpt_image_2", "gemini_2.5_flash"];
 
     public static string JoinPrompt(string[]? values)

@@ -104,7 +104,6 @@ public static class RunwayRatioSupport
         Add<CreateTextToVideoRequestGen45Ratio>(triples, "gen4.5", RunwayRatioEndpoints.TextToVideo, v => v.ToValueString());
         Add<CreateTextToVideoRequestVeo31Ratio>(triples, "veo3.1", RunwayRatioEndpoints.TextToVideo, v => v.ToValueString());
         Add<CreateTextToVideoRequestVeo31FastRatio>(triples, "veo3.1_fast", RunwayRatioEndpoints.TextToVideo, v => v.ToValueString());
-        Add<CreateTextToVideoRequestVeo3Ratio>(triples, "veo3", RunwayRatioEndpoints.TextToVideo, v => v.ToValueString());
         // image_to_video
         Add<CreateImageToVideoRequestGen45Ratio>(triples, "gen4.5", RunwayRatioEndpoints.ImageToVideo, v => v.ToValueString());
         Add<CreateImageToVideoRequestGen4TurboRatio>(triples, "gen4_turbo", RunwayRatioEndpoints.ImageToVideo, v => v.ToValueString());
@@ -112,7 +111,6 @@ public static class RunwayRatioSupport
         Add<CreateImageToVideoRequestVeo31FastRatio>(triples, "veo3.1_fast", RunwayRatioEndpoints.ImageToVideo, v => v.ToValueString());
         Add<CreateImageToVideoRequestSeedance2Ratio>(triples, "seedance2", RunwayRatioEndpoints.ImageToVideo, v => v.ToValueString());
         Add<CreateImageToVideoRequestSeedance2FastRatio>(triples, "seedance2_fast", RunwayRatioEndpoints.ImageToVideo, v => v.ToValueString());
-        Add<CreateImageToVideoRequestVeo3Ratio>(triples, "veo3", RunwayRatioEndpoints.ImageToVideo, v => v.ToValueString());
         // video_to_video
         Add<CreateVideoToVideoRequestSeedance2Ratio>(triples, "seedance2", RunwayRatioEndpoints.VideoToVideo, v => v.ToValueString());
         Add<CreateVideoToVideoRequestSeedance2FastRatio>(triples, "seedance2_fast", RunwayRatioEndpoints.VideoToVideo, v => v.ToValueString());

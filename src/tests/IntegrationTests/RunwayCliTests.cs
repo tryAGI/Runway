@@ -1583,7 +1583,7 @@ public partial class Tests
     {
         var supporters = RunwayRatioSupport.GetSupportingModels("1280:720");
 
-        supporters.Should().Contain(["veo3.1_fast", "veo3.1", "veo3", "gen4.5", "gen4_turbo", "seedance2", "seedance2_fast", "act_two"]);
+        supporters.Should().Contain(["veo3.1_fast", "veo3.1", "gen4.5", "gen4_turbo", "seedance2", "seedance2_fast", "act_two"]);
     }
 
     [TestMethod]

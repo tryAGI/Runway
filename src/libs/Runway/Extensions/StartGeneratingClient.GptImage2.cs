@@ -51,10 +51,8 @@ public static class StartGeneratingClientGptImage2Extensions
             };
         }
 
-        var taskId = JsonNode.Parse(content)?["id"]?.GetValue<Guid>()
+        return CreateTextToImageResponse.FromJson(content, client.JsonSerializerContext)
             ?? throw new InvalidOperationException($"Response deserialization failed for \"{content}\".");
-
-        return new CreateTextToImageResponse(taskId);
     }
 
     private static void ApplyBearerAuthorization(StartGeneratingClient client, HttpRequestMessage request)

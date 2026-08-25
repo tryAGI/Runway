@@ -292,7 +292,7 @@ public delegate ValueTask<RunwayShortVideoPlan?> RunwayShortVideoPlanner(
 /// </summary>
 public static class RunwayShortVideoExtensions
 {
-    private static readonly string[] SupportedTextToVideoModels = ["gen4.5", "veo3.1", "veo3.1_fast", "veo3"];
+    private static readonly string[] SupportedTextToVideoModels = ["gen4.5", "veo3.1", "veo3.1_fast"];
 
     /// <summary>
     /// Creates a deterministic storyboard plan from a plain scenario prompt.
@@ -755,7 +755,6 @@ public static class RunwayShortVideoExtensions
             "gen4.5" => CreateGen45Request(prompt, effectiveOptions, seed),
             "veo3.1" => CreateVeo31Request(prompt, effectiveOptions, seed),
             "veo3.1_fast" => CreateVeo31FastRequest(prompt, effectiveOptions, seed),
-            "veo3" => CreateVeo3Request(prompt, effectiveOptions, seed),
             _ => throw new ArgumentException($"Unsupported model '{effectiveOptions.Model}'."),
         };
     }
@@ -808,22 +807,6 @@ public static class RunwayShortVideoExtensions
                 ?? throw new ArgumentException("veo3.1_fast supports ratios: 1080:1920, 1280:720, 1920:1080, 720:1280."),
             Duration = options.ShotDurationSeconds,
             Audio = options.Audio,
-        };
-        AddAdditionalRequestProperties(request.AdditionalProperties, seed, options.PublicFigureThreshold);
-        return request;
-    }
-
-    private static CreateTextToVideoRequest CreateVeo3Request(
-        string prompt,
-        RunwayShortVideoOptions options,
-        int? seed)
-    {
-        var request = new CreateTextToVideoRequestVeo3
-        {
-            PromptText = prompt,
-            Ratio = CreateTextToVideoRequestVeo3RatioExtensions.ToEnum(options.Ratio)
-                ?? throw new ArgumentException("veo3 supports ratios: 1080:1920, 1280:720, 1920:1080, 720:1280."),
-            Duration = options.ShotDurationSeconds,
         };
         AddAdditionalRequestProperties(request.AdditionalProperties, seed, options.PublicFigureThreshold);
         return request;
