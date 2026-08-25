@@ -35,6 +35,7 @@ public partial class Tests
             });
 
         response.Id.Should().Be(taskId);
+        response.EstimatedCost.Credits.Should().Be(5);
         handler.Method.Should().Be(HttpMethod.Post);
         handler.RequestUri.Should().Be(new Uri("https://api.dev.runwayml.com/v1/text_to_image"));
         handler.Authorization.Should().Be("Bearer api-key");
@@ -77,7 +78,10 @@ public partial class Tests
                 Content = new StringContent(
                     $$"""
                     {
-                      "id": "{{taskId:D}}"
+                      "id": "{{taskId:D}}",
+                      "estimatedCost": {
+                        "credits": 5
+                      }
                     }
                     """,
                     Encoding.UTF8,
