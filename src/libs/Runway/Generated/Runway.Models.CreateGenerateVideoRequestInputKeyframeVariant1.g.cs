@@ -4,7 +4,7 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class CreateGenerateVideoRequestInputKeyframeVariant1
     {
@@ -18,14 +18,14 @@ namespace Runway
         public required string Uri { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("seconds")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required double Seconds { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("range")]
         public global::Runway.CreateGenerateVideoRequestInputKeyframeVariant1Range? Range { get; set; }

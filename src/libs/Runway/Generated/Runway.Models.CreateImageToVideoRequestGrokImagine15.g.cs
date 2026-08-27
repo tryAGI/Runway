@@ -4,12 +4,12 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class CreateImageToVideoRequestGrokImagine15
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("promptImage")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestGrokImagine15PromptImagePromptImage>>))]
@@ -36,7 +36,7 @@ namespace Runway
         public int? Duration { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"grok_imagine_1_5"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]

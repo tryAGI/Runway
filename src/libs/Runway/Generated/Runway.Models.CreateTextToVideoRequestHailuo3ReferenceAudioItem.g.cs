@@ -9,7 +9,7 @@ namespace Runway
     public sealed partial class CreateTextToVideoRequestHailuo3ReferenceAudioItem
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"audio"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]

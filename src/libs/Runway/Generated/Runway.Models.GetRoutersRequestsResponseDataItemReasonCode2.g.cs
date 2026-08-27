@@ -4,28 +4,28 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum GetRoutersRequestsResponseDataItemReasonCode2
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         BestLatency,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         BestQuality,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         FilterOrderFallback,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         LowestCost,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         OnlyEligibleModel,
     }

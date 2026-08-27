@@ -9,11 +9,11 @@ namespace Runway
     public enum CreateCharacterPerformanceRequestActTwoContentModerationPublicFigureThreshold
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Auto,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Low,
     }

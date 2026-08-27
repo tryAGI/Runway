@@ -9,91 +9,91 @@ namespace Runway
     public enum CreateRecipesAdLocalizationRequestTargetLanguage
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Ar,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         De,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         El,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         En,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Es,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Fr,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Hi,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Id,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         It,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Ja,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Ko,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Nl,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Pl,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Pt,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Ru,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Sv,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Th,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Tr,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Uk,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Vi,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Zh,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ZhHant,
     }

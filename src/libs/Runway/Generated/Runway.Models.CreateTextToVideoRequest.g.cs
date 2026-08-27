@@ -5,17 +5,17 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct CreateTextToVideoRequest : global::System.IEquatable<CreateTextToVideoRequest>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.CreateTextToVideoRequestDiscriminatorModel? Model { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Runway.CreateTextToVideoRequestGen45? Gen45 { get; init; }
@@ -24,7 +24,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Gen45))]
@@ -32,7 +32,7 @@ namespace Runway
         public bool IsGen45 => Gen45 != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickGen45(
 #if NET6_0_OR_GREATER
@@ -45,14 +45,14 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.CreateTextToVideoRequestGen45 PickGen45() => IsGen45
             ? Gen45!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Gen45' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Runway.CreateTextToVideoRequestVeo31? Veo31 { get; init; }
@@ -61,7 +61,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Veo31))]
@@ -69,7 +69,7 @@ namespace Runway
         public bool IsVeo31 => Veo31 != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickVeo31(
 #if NET6_0_OR_GREATER
@@ -82,14 +82,14 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.CreateTextToVideoRequestVeo31 PickVeo31() => IsVeo31
             ? Veo31!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Veo31' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Runway.CreateTextToVideoRequestVeo31Fast? Veo31Fast { get; init; }
@@ -98,7 +98,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Veo31Fast))]
@@ -106,7 +106,7 @@ namespace Runway
         public bool IsVeo31Fast => Veo31Fast != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickVeo31Fast(
 #if NET6_0_OR_GREATER
@@ -119,14 +119,14 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.CreateTextToVideoRequestVeo31Fast PickVeo31Fast() => IsVeo31Fast
             ? Veo31Fast!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Veo31Fast' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Runway.CreateTextToVideoRequestHailuo3? Hailuo3 { get; init; }
@@ -135,7 +135,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Hailuo3))]
@@ -143,7 +143,7 @@ namespace Runway
         public bool IsHailuo3 => Hailuo3 != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickHailuo3(
 #if NET6_0_OR_GREATER
@@ -156,14 +156,14 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.CreateTextToVideoRequestHailuo3 PickHailuo3() => IsHailuo3
             ? Hailuo3!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Hailuo3' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Runway.CreateTextToVideoRequestHappyhorse10? Happyhorse10 { get; init; }
@@ -172,7 +172,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Happyhorse10))]
@@ -180,7 +180,7 @@ namespace Runway
         public bool IsHappyhorse10 => Happyhorse10 != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickHappyhorse10(
 #if NET6_0_OR_GREATER
@@ -193,14 +193,14 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.CreateTextToVideoRequestHappyhorse10 PickHappyhorse10() => IsHappyhorse10
             ? Happyhorse10!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Happyhorse10' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Runway.CreateTextToVideoRequestSeedance2? Seedance2 { get; init; }
@@ -209,7 +209,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Seedance2))]
@@ -217,7 +217,7 @@ namespace Runway
         public bool IsSeedance2 => Seedance2 != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickSeedance2(
 #if NET6_0_OR_GREATER
@@ -230,14 +230,14 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.CreateTextToVideoRequestSeedance2 PickSeedance2() => IsSeedance2
             ? Seedance2!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Seedance2' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Runway.CreateTextToVideoRequestSeedance2Fast? Seedance2Fast { get; init; }
@@ -246,7 +246,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Seedance2Fast))]
@@ -254,7 +254,7 @@ namespace Runway
         public bool IsSeedance2Fast => Seedance2Fast != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickSeedance2Fast(
 #if NET6_0_OR_GREATER
@@ -267,14 +267,14 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.CreateTextToVideoRequestSeedance2Fast PickSeedance2Fast() => IsSeedance2Fast
             ? Seedance2Fast!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Seedance2Fast' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Runway.CreateTextToVideoRequestSeedance2Mini? Seedance2Mini { get; init; }
@@ -283,7 +283,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Seedance2Mini))]
@@ -291,7 +291,7 @@ namespace Runway
         public bool IsSeedance2Mini => Seedance2Mini != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickSeedance2Mini(
 #if NET6_0_OR_GREATER
@@ -304,14 +304,14 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.CreateTextToVideoRequestSeedance2Mini PickSeedance2Mini() => IsSeedance2Mini
             ? Seedance2Mini!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Seedance2Mini' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Runway.CreateTextToVideoRequestGeminiOmniFlash? GeminiOmniFlash { get; init; }
@@ -320,7 +320,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(GeminiOmniFlash))]
@@ -328,7 +328,7 @@ namespace Runway
         public bool IsGeminiOmniFlash => GeminiOmniFlash != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickGeminiOmniFlash(
 #if NET6_0_OR_GREATER
@@ -341,14 +341,14 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.CreateTextToVideoRequestGeminiOmniFlash PickGeminiOmniFlash() => IsGeminiOmniFlash
             ? GeminiOmniFlash!
             : throw new global::System.InvalidOperationException($"Expected union variant 'GeminiOmniFlash' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Runway.CreateTextToVideoRequestSeedance25? Seedance25 { get; init; }
@@ -357,7 +357,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Seedance25))]
@@ -365,7 +365,7 @@ namespace Runway
         public bool IsSeedance25 => Seedance25 != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickSeedance25(
 #if NET6_0_OR_GREATER
@@ -378,14 +378,14 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.CreateTextToVideoRequestSeedance25 PickSeedance25() => IsSeedance25
             ? Seedance25!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Seedance25' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Runway.CreateTextToVideoRequestGrokImagine15? GrokImagine15 { get; init; }
@@ -394,7 +394,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(GrokImagine15))]
@@ -402,7 +402,7 @@ namespace Runway
         public bool IsGrokImagine15 => GrokImagine15 != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickGrokImagine15(
 #if NET6_0_OR_GREATER
@@ -415,23 +415,23 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.CreateTextToVideoRequestGrokImagine15 PickGrokImagine15() => IsGrokImagine15
             ? GrokImagine15!
             : throw new global::System.InvalidOperationException($"Expected union variant 'GrokImagine15' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator CreateTextToVideoRequest(global::Runway.CreateTextToVideoRequestGen45 value) => new CreateTextToVideoRequest((global::Runway.CreateTextToVideoRequestGen45?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.CreateTextToVideoRequestGen45?(CreateTextToVideoRequest @this) => @this.Gen45;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public CreateTextToVideoRequest(global::Runway.CreateTextToVideoRequestGen45? value)
         {
@@ -439,22 +439,22 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static CreateTextToVideoRequest FromGen45(global::Runway.CreateTextToVideoRequestGen45? value) => new CreateTextToVideoRequest(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator CreateTextToVideoRequest(global::Runway.CreateTextToVideoRequestVeo31 value) => new CreateTextToVideoRequest((global::Runway.CreateTextToVideoRequestVeo31?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.CreateTextToVideoRequestVeo31?(CreateTextToVideoRequest @this) => @this.Veo31;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public CreateTextToVideoRequest(global::Runway.CreateTextToVideoRequestVeo31? value)
         {
@@ -462,22 +462,22 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static CreateTextToVideoRequest FromVeo31(global::Runway.CreateTextToVideoRequestVeo31? value) => new CreateTextToVideoRequest(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator CreateTextToVideoRequest(global::Runway.CreateTextToVideoRequestVeo31Fast value) => new CreateTextToVideoRequest((global::Runway.CreateTextToVideoRequestVeo31Fast?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.CreateTextToVideoRequestVeo31Fast?(CreateTextToVideoRequest @this) => @this.Veo31Fast;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public CreateTextToVideoRequest(global::Runway.CreateTextToVideoRequestVeo31Fast? value)
         {
@@ -485,22 +485,22 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static CreateTextToVideoRequest FromVeo31Fast(global::Runway.CreateTextToVideoRequestVeo31Fast? value) => new CreateTextToVideoRequest(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator CreateTextToVideoRequest(global::Runway.CreateTextToVideoRequestHailuo3 value) => new CreateTextToVideoRequest((global::Runway.CreateTextToVideoRequestHailuo3?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.CreateTextToVideoRequestHailuo3?(CreateTextToVideoRequest @this) => @this.Hailuo3;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public CreateTextToVideoRequest(global::Runway.CreateTextToVideoRequestHailuo3? value)
         {
@@ -508,22 +508,22 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static CreateTextToVideoRequest FromHailuo3(global::Runway.CreateTextToVideoRequestHailuo3? value) => new CreateTextToVideoRequest(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator CreateTextToVideoRequest(global::Runway.CreateTextToVideoRequestHappyhorse10 value) => new CreateTextToVideoRequest((global::Runway.CreateTextToVideoRequestHappyhorse10?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.CreateTextToVideoRequestHappyhorse10?(CreateTextToVideoRequest @this) => @this.Happyhorse10;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public CreateTextToVideoRequest(global::Runway.CreateTextToVideoRequestHappyhorse10? value)
         {
@@ -531,22 +531,22 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static CreateTextToVideoRequest FromHappyhorse10(global::Runway.CreateTextToVideoRequestHappyhorse10? value) => new CreateTextToVideoRequest(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator CreateTextToVideoRequest(global::Runway.CreateTextToVideoRequestSeedance2 value) => new CreateTextToVideoRequest((global::Runway.CreateTextToVideoRequestSeedance2?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.CreateTextToVideoRequestSeedance2?(CreateTextToVideoRequest @this) => @this.Seedance2;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public CreateTextToVideoRequest(global::Runway.CreateTextToVideoRequestSeedance2? value)
         {
@@ -554,22 +554,22 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static CreateTextToVideoRequest FromSeedance2(global::Runway.CreateTextToVideoRequestSeedance2? value) => new CreateTextToVideoRequest(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator CreateTextToVideoRequest(global::Runway.CreateTextToVideoRequestSeedance2Fast value) => new CreateTextToVideoRequest((global::Runway.CreateTextToVideoRequestSeedance2Fast?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.CreateTextToVideoRequestSeedance2Fast?(CreateTextToVideoRequest @this) => @this.Seedance2Fast;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public CreateTextToVideoRequest(global::Runway.CreateTextToVideoRequestSeedance2Fast? value)
         {
@@ -577,22 +577,22 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static CreateTextToVideoRequest FromSeedance2Fast(global::Runway.CreateTextToVideoRequestSeedance2Fast? value) => new CreateTextToVideoRequest(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator CreateTextToVideoRequest(global::Runway.CreateTextToVideoRequestSeedance2Mini value) => new CreateTextToVideoRequest((global::Runway.CreateTextToVideoRequestSeedance2Mini?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.CreateTextToVideoRequestSeedance2Mini?(CreateTextToVideoRequest @this) => @this.Seedance2Mini;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public CreateTextToVideoRequest(global::Runway.CreateTextToVideoRequestSeedance2Mini? value)
         {
@@ -600,22 +600,22 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static CreateTextToVideoRequest FromSeedance2Mini(global::Runway.CreateTextToVideoRequestSeedance2Mini? value) => new CreateTextToVideoRequest(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator CreateTextToVideoRequest(global::Runway.CreateTextToVideoRequestGeminiOmniFlash value) => new CreateTextToVideoRequest((global::Runway.CreateTextToVideoRequestGeminiOmniFlash?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.CreateTextToVideoRequestGeminiOmniFlash?(CreateTextToVideoRequest @this) => @this.GeminiOmniFlash;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public CreateTextToVideoRequest(global::Runway.CreateTextToVideoRequestGeminiOmniFlash? value)
         {
@@ -623,22 +623,22 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static CreateTextToVideoRequest FromGeminiOmniFlash(global::Runway.CreateTextToVideoRequestGeminiOmniFlash? value) => new CreateTextToVideoRequest(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator CreateTextToVideoRequest(global::Runway.CreateTextToVideoRequestSeedance25 value) => new CreateTextToVideoRequest((global::Runway.CreateTextToVideoRequestSeedance25?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.CreateTextToVideoRequestSeedance25?(CreateTextToVideoRequest @this) => @this.Seedance25;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public CreateTextToVideoRequest(global::Runway.CreateTextToVideoRequestSeedance25? value)
         {
@@ -646,22 +646,22 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static CreateTextToVideoRequest FromSeedance25(global::Runway.CreateTextToVideoRequestSeedance25? value) => new CreateTextToVideoRequest(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator CreateTextToVideoRequest(global::Runway.CreateTextToVideoRequestGrokImagine15 value) => new CreateTextToVideoRequest((global::Runway.CreateTextToVideoRequestGrokImagine15?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.CreateTextToVideoRequestGrokImagine15?(CreateTextToVideoRequest @this) => @this.GrokImagine15;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public CreateTextToVideoRequest(global::Runway.CreateTextToVideoRequestGrokImagine15? value)
         {
@@ -669,12 +669,12 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static CreateTextToVideoRequest FromGrokImagine15(global::Runway.CreateTextToVideoRequestGrokImagine15? value) => new CreateTextToVideoRequest(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public CreateTextToVideoRequest(
             global::Runway.CreateTextToVideoRequestDiscriminatorModel? model,
@@ -707,7 +707,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             GrokImagine15 as object ??
@@ -720,11 +720,11 @@ namespace Runway
             Hailuo3 as object ??
             Veo31Fast as object ??
             Veo31 as object ??
-            Gen45 as object 
+            Gen45 as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             Gen45?.ToString() ??
@@ -737,11 +737,11 @@ namespace Runway
             Seedance2Mini?.ToString() ??
             GeminiOmniFlash?.ToString() ??
             Seedance25?.ToString() ??
-            GrokImagine15?.ToString() 
+            GrokImagine15?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -749,7 +749,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Runway.CreateTextToVideoRequestGen45, TResult>? gen45 = null,
@@ -819,7 +819,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Runway.CreateTextToVideoRequestGen45>? gen45 = null,
@@ -897,7 +897,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Runway.CreateTextToVideoRequestGen45>? gen45 = null,
@@ -965,7 +965,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -1004,7 +1004,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(CreateTextToVideoRequest other)
         {
@@ -1019,12 +1019,12 @@ namespace Runway
                 global::System.Collections.Generic.EqualityComparer<global::Runway.CreateTextToVideoRequestSeedance2Mini?>.Default.Equals(Seedance2Mini, other.Seedance2Mini) &&
                 global::System.Collections.Generic.EqualityComparer<global::Runway.CreateTextToVideoRequestGeminiOmniFlash?>.Default.Equals(GeminiOmniFlash, other.GeminiOmniFlash) &&
                 global::System.Collections.Generic.EqualityComparer<global::Runway.CreateTextToVideoRequestSeedance25?>.Default.Equals(Seedance25, other.Seedance25) &&
-                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateTextToVideoRequestGrokImagine15?>.Default.Equals(GrokImagine15, other.GrokImagine15) 
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateTextToVideoRequestGrokImagine15?>.Default.Equals(GrokImagine15, other.GrokImagine15)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(CreateTextToVideoRequest obj1, CreateTextToVideoRequest obj2)
         {
@@ -1032,7 +1032,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(CreateTextToVideoRequest obj1, CreateTextToVideoRequest obj2)
         {
@@ -1040,7 +1040,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

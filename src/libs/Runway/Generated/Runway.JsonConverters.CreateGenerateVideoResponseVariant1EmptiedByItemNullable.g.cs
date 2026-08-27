@@ -20,7 +20,7 @@ namespace Runway.JsonConverters
                     {
                         return global::Runway.CreateGenerateVideoResponseVariant1EmptiedByItemExtensions.ToEnum(stringValue);
                     }
-                    
+
                     break;
                 }
                 case global::System.Text.Json.JsonTokenType.Number:

@@ -9,11 +9,11 @@ namespace Runway
     public enum CreateTextToImageRequestGrokImagineImage2Quality
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Low,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Medium,
     }

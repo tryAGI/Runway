@@ -4,16 +4,16 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum CreateAvatarVideosRequestSpeechTextInputVoiceDiscriminatorType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Custom,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Preset,
     }

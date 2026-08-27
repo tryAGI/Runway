@@ -4,7 +4,7 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class CreateImageUpscaleRequestMagnificPrecisionUpscalerV2
     {
@@ -49,7 +49,7 @@ namespace Runway
         public global::Runway.CreateImageUpscaleRequestMagnificPrecisionUpscalerV2Flavor? Flavor { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"magnific_precision_upscaler_v2"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]

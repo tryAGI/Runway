@@ -4,7 +4,7 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class CreateTextToSpeechRequestElevenV3
     {
@@ -72,7 +72,7 @@ namespace Runway
         public int? Seed { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"eleven_v3"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]

@@ -4,7 +4,7 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class CreateVoiceIsolationRequestElevenVoiceIsolation
     {
@@ -18,7 +18,7 @@ namespace Runway
         public required string AudioUri { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"eleven_voice_isolation"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]

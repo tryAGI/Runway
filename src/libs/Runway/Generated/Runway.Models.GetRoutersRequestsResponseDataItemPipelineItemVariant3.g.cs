@@ -4,12 +4,12 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class GetRoutersRequestsResponseDataItemPipelineItemVariant3
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"rank"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]

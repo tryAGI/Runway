@@ -4,7 +4,7 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class CreateImageToVideoRequestSeedance2Mini
     {
@@ -49,7 +49,7 @@ namespace Runway
         public global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestSeedance2MiniReferenceAudioItem>? ReferenceAudio { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"seedance2_mini"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]

@@ -9,11 +9,11 @@ namespace Runway
     public enum GetDocumentsOrder
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Asc,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Desc,
     }

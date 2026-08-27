@@ -9,19 +9,19 @@ namespace Runway
     public sealed partial class CreateRoutersResponseSettingsMaxCreditsPerGeneration
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("video")]
         public int? Video { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("image")]
         public int? Image { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("audio")]
         public int? Audio { get; set; }

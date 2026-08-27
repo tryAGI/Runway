@@ -4,7 +4,7 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class CreateTextToImageRequestGen4Image
     {
@@ -42,7 +42,7 @@ namespace Runway
         public global::Runway.CreateTextToImageRequestGen4ImageContentModeration? ContentModeration { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"gen4_image"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]

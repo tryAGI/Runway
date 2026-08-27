@@ -4,7 +4,7 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class CreateTextToImageRequestSeedream5Lite
     {
@@ -49,7 +49,7 @@ namespace Runway
         public bool? Grounding { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"seedream5_lite"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]

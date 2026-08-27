@@ -4,7 +4,7 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class CreateRealtimeSessionsRequestToolBackendRPCToolParameterIntegerParameter
     {
@@ -30,7 +30,7 @@ namespace Runway
         public bool? Required { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"integer"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]

@@ -5,12 +5,12 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct GetAvatarConversationsResponse2 : global::System.IEquatable<GetAvatarConversationsResponse2>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.GetAvatarConversationsResponseDiscriminatorStatus? Status { get; }
 
@@ -24,7 +24,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(InProgress))]
@@ -32,7 +32,7 @@ namespace Runway
         public bool IsInProgress => InProgress != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickInProgress(
 #if NET6_0_OR_GREATER
@@ -45,7 +45,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.GetAvatarConversationsResponseVariant1 PickInProgress() => IsInProgress
             ? InProgress!
@@ -61,7 +61,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Ended))]
@@ -69,7 +69,7 @@ namespace Runway
         public bool IsEnded => Ended != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickEnded(
 #if NET6_0_OR_GREATER
@@ -82,7 +82,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.GetAvatarConversationsResponseVariant2 PickEnded() => IsEnded
             ? Ended!
@@ -98,7 +98,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Failed))]
@@ -106,7 +106,7 @@ namespace Runway
         public bool IsFailed => Failed != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickFailed(
 #if NET6_0_OR_GREATER
@@ -119,23 +119,23 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.GetAvatarConversationsResponseVariant3 PickFailed() => IsFailed
             ? Failed!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Failed' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator GetAvatarConversationsResponse2(global::Runway.GetAvatarConversationsResponseVariant1 value) => new GetAvatarConversationsResponse2((global::Runway.GetAvatarConversationsResponseVariant1?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.GetAvatarConversationsResponseVariant1?(GetAvatarConversationsResponse2 @this) => @this.InProgress;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public GetAvatarConversationsResponse2(global::Runway.GetAvatarConversationsResponseVariant1? value)
         {
@@ -143,22 +143,22 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static GetAvatarConversationsResponse2 FromInProgress(global::Runway.GetAvatarConversationsResponseVariant1? value) => new GetAvatarConversationsResponse2(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator GetAvatarConversationsResponse2(global::Runway.GetAvatarConversationsResponseVariant2 value) => new GetAvatarConversationsResponse2((global::Runway.GetAvatarConversationsResponseVariant2?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.GetAvatarConversationsResponseVariant2?(GetAvatarConversationsResponse2 @this) => @this.Ended;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public GetAvatarConversationsResponse2(global::Runway.GetAvatarConversationsResponseVariant2? value)
         {
@@ -166,22 +166,22 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static GetAvatarConversationsResponse2 FromEnded(global::Runway.GetAvatarConversationsResponseVariant2? value) => new GetAvatarConversationsResponse2(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator GetAvatarConversationsResponse2(global::Runway.GetAvatarConversationsResponseVariant3 value) => new GetAvatarConversationsResponse2((global::Runway.GetAvatarConversationsResponseVariant3?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.GetAvatarConversationsResponseVariant3?(GetAvatarConversationsResponse2 @this) => @this.Failed;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public GetAvatarConversationsResponse2(global::Runway.GetAvatarConversationsResponseVariant3? value)
         {
@@ -189,12 +189,12 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static GetAvatarConversationsResponse2 FromFailed(global::Runway.GetAvatarConversationsResponseVariant3? value) => new GetAvatarConversationsResponse2(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public GetAvatarConversationsResponse2(
             global::Runway.GetAvatarConversationsResponseDiscriminatorStatus? status,
@@ -211,25 +211,25 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             Failed as object ??
             Ended as object ??
-            InProgress as object 
+            InProgress as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             InProgress?.ToString() ??
             Ended?.ToString() ??
-            Failed?.ToString() 
+            Failed?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -237,7 +237,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Runway.GetAvatarConversationsResponseVariant1, TResult>? inProgress = null,
@@ -267,7 +267,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Runway.GetAvatarConversationsResponseVariant1>? inProgress = null,
@@ -297,7 +297,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Runway.GetAvatarConversationsResponseVariant1>? inProgress = null,
@@ -325,7 +325,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -348,19 +348,19 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(GetAvatarConversationsResponse2 other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::Runway.GetAvatarConversationsResponseVariant1?>.Default.Equals(InProgress, other.InProgress) &&
                 global::System.Collections.Generic.EqualityComparer<global::Runway.GetAvatarConversationsResponseVariant2?>.Default.Equals(Ended, other.Ended) &&
-                global::System.Collections.Generic.EqualityComparer<global::Runway.GetAvatarConversationsResponseVariant3?>.Default.Equals(Failed, other.Failed) 
+                global::System.Collections.Generic.EqualityComparer<global::Runway.GetAvatarConversationsResponseVariant3?>.Default.Equals(Failed, other.Failed)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(GetAvatarConversationsResponse2 obj1, GetAvatarConversationsResponse2 obj2)
         {
@@ -368,7 +368,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(GetAvatarConversationsResponse2 obj1, GetAvatarConversationsResponse2 obj2)
         {
@@ -376,7 +376,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

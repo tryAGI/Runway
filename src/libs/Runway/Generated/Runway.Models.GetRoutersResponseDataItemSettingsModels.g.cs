@@ -9,7 +9,7 @@ namespace Runway
     public sealed partial class GetRoutersResponseDataItemSettingsModels
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("mode")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.GetRoutersResponseDataItemSettingsModelsModeJsonConverter))]
@@ -17,7 +17,7 @@ namespace Runway
         public required global::Runway.GetRoutersResponseDataItemSettingsModelsMode Mode { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ids")]
         [global::System.Text.Json.Serialization.JsonRequired]

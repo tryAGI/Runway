@@ -9,15 +9,15 @@ namespace Runway
     public enum GetAvatarConversationsResponseDataItemStatus
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Ended,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Failed,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InProgress,
     }

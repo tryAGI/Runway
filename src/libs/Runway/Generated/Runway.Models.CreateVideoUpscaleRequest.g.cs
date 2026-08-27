@@ -5,17 +5,17 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct CreateVideoUpscaleRequest : global::System.IEquatable<CreateVideoUpscaleRequest>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.CreateVideoUpscaleRequestDiscriminatorModel? Model { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Runway.CreateVideoUpscaleRequestMagnificVideoUpscalerCreative? MagnificVideoUpscalerCreative { get; init; }
@@ -24,7 +24,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(MagnificVideoUpscalerCreative))]
@@ -32,7 +32,7 @@ namespace Runway
         public bool IsMagnificVideoUpscalerCreative => MagnificVideoUpscalerCreative != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickMagnificVideoUpscalerCreative(
 #if NET6_0_OR_GREATER
@@ -45,23 +45,23 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.CreateVideoUpscaleRequestMagnificVideoUpscalerCreative PickMagnificVideoUpscalerCreative() => IsMagnificVideoUpscalerCreative
             ? MagnificVideoUpscalerCreative!
             : throw new global::System.InvalidOperationException($"Expected union variant 'MagnificVideoUpscalerCreative' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator CreateVideoUpscaleRequest(global::Runway.CreateVideoUpscaleRequestMagnificVideoUpscalerCreative value) => new CreateVideoUpscaleRequest((global::Runway.CreateVideoUpscaleRequestMagnificVideoUpscalerCreative?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.CreateVideoUpscaleRequestMagnificVideoUpscalerCreative?(CreateVideoUpscaleRequest @this) => @this.MagnificVideoUpscalerCreative;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public CreateVideoUpscaleRequest(global::Runway.CreateVideoUpscaleRequestMagnificVideoUpscalerCreative? value)
         {
@@ -69,12 +69,12 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static CreateVideoUpscaleRequest FromMagnificVideoUpscalerCreative(global::Runway.CreateVideoUpscaleRequestMagnificVideoUpscalerCreative? value) => new CreateVideoUpscaleRequest(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public CreateVideoUpscaleRequest(
             global::Runway.CreateVideoUpscaleRequestDiscriminatorModel? model,
@@ -87,21 +87,21 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
-            MagnificVideoUpscalerCreative as object 
+            MagnificVideoUpscalerCreative as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
-            MagnificVideoUpscalerCreative?.ToString() 
+            MagnificVideoUpscalerCreative?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -109,7 +109,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Runway.CreateVideoUpscaleRequestMagnificVideoUpscalerCreative, TResult>? magnificVideoUpscalerCreative = null,
@@ -129,7 +129,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Runway.CreateVideoUpscaleRequestMagnificVideoUpscalerCreative>? magnificVideoUpscalerCreative = null,
@@ -147,7 +147,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Runway.CreateVideoUpscaleRequestMagnificVideoUpscalerCreative>? magnificVideoUpscalerCreative = null,
@@ -165,7 +165,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -184,17 +184,17 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(CreateVideoUpscaleRequest other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateVideoUpscaleRequestMagnificVideoUpscalerCreative?>.Default.Equals(MagnificVideoUpscalerCreative, other.MagnificVideoUpscalerCreative) 
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateVideoUpscaleRequestMagnificVideoUpscalerCreative?>.Default.Equals(MagnificVideoUpscalerCreative, other.MagnificVideoUpscalerCreative)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(CreateVideoUpscaleRequest obj1, CreateVideoUpscaleRequest obj2)
         {
@@ -202,7 +202,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(CreateVideoUpscaleRequest obj1, CreateVideoUpscaleRequest obj2)
         {
@@ -210,7 +210,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

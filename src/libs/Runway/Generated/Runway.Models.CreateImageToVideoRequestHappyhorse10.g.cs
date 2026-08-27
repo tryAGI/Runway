@@ -4,7 +4,7 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class CreateImageToVideoRequestHappyhorse10
     {
@@ -15,7 +15,7 @@ namespace Runway
         public string? PromptText { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("promptImage")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestHappyhorse10PromptImagePromptImage>>))]
@@ -36,7 +36,7 @@ namespace Runway
         public int? Duration { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"happyhorse_1_0"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]

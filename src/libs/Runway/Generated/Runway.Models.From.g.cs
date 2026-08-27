@@ -5,17 +5,17 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct From : global::System.IEquatable<From>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.CreateVoicesRequestFromDiscriminatorType? Type { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Runway.CreateVoicesRequestFromVoiceFromAudio? Audio { get; init; }
@@ -24,7 +24,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Audio))]
@@ -32,7 +32,7 @@ namespace Runway
         public bool IsAudio => Audio != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickAudio(
 #if NET6_0_OR_GREATER
@@ -45,14 +45,14 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.CreateVoicesRequestFromVoiceFromAudio PickAudio() => IsAudio
             ? Audio!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Audio' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Runway.CreateVoicesRequestFromVoiceFromText? Text { get; init; }
@@ -61,7 +61,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Text))]
@@ -69,7 +69,7 @@ namespace Runway
         public bool IsText => Text != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickText(
 #if NET6_0_OR_GREATER
@@ -82,23 +82,23 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.CreateVoicesRequestFromVoiceFromText PickText() => IsText
             ? Text!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Text' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator From(global::Runway.CreateVoicesRequestFromVoiceFromAudio value) => new From((global::Runway.CreateVoicesRequestFromVoiceFromAudio?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.CreateVoicesRequestFromVoiceFromAudio?(From @this) => @this.Audio;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public From(global::Runway.CreateVoicesRequestFromVoiceFromAudio? value)
         {
@@ -106,22 +106,22 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static From FromAudio(global::Runway.CreateVoicesRequestFromVoiceFromAudio? value) => new From(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator From(global::Runway.CreateVoicesRequestFromVoiceFromText value) => new From((global::Runway.CreateVoicesRequestFromVoiceFromText?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.CreateVoicesRequestFromVoiceFromText?(From @this) => @this.Text;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public From(global::Runway.CreateVoicesRequestFromVoiceFromText? value)
         {
@@ -129,12 +129,12 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static From FromText(global::Runway.CreateVoicesRequestFromVoiceFromText? value) => new From(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public From(
             global::Runway.CreateVoicesRequestFromDiscriminatorType? type,
@@ -149,23 +149,23 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             Text as object ??
-            Audio as object 
+            Audio as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             Audio?.ToString() ??
-            Text?.ToString() 
+            Text?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -173,7 +173,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Runway.CreateVoicesRequestFromVoiceFromAudio, TResult>? audio = null,
@@ -198,7 +198,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Runway.CreateVoicesRequestFromVoiceFromAudio>? audio = null,
@@ -222,7 +222,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Runway.CreateVoicesRequestFromVoiceFromAudio>? audio = null,
@@ -245,7 +245,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -266,18 +266,18 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(From other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::Runway.CreateVoicesRequestFromVoiceFromAudio?>.Default.Equals(Audio, other.Audio) &&
-                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateVoicesRequestFromVoiceFromText?>.Default.Equals(Text, other.Text) 
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateVoicesRequestFromVoiceFromText?>.Default.Equals(Text, other.Text)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(From obj1, From obj2)
         {
@@ -285,7 +285,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(From obj1, From obj2)
         {
@@ -293,7 +293,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

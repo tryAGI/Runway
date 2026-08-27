@@ -4,16 +4,16 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum CreateAvatarsRequestVoiceDiscriminatorType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Custom,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         RunwayLivePreset,
     }

@@ -4,7 +4,7 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class CreateVideoToHdrRequestRuby
     {
@@ -32,7 +32,7 @@ namespace Runway
         public global::Runway.CreateVideoToHdrRequestRubyProresProfile? ProresProfile { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"ruby"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]

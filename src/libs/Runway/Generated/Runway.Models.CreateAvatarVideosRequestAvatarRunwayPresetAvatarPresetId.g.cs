@@ -9,39 +9,39 @@ namespace Runway
     public enum CreateAvatarVideosRequestAvatarRunwayPresetAvatarPresetId
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CatCharacter,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CookingTeacher,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         FashionDesigner,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         GameCharacter,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         GameCharacterMan,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         HumanResource,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Influencer,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MusicSuperstar,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TennisCoach,
     }

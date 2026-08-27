@@ -9,15 +9,15 @@ namespace Runway
     public enum CreateRecipesProductAdRequestVersion
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x202606,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x202607,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UnsafeLatest,
     }

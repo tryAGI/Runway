@@ -4,7 +4,7 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class CreateImageToVideoRequestHailuo3
     {
@@ -50,7 +50,7 @@ namespace Runway
         public global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestHailuo3ReferenceAudioItem>? ReferenceAudio { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"hailuo3"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]

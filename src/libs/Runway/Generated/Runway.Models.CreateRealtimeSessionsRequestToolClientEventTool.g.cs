@@ -9,7 +9,7 @@ namespace Runway
     public sealed partial class CreateRealtimeSessionsRequestToolClientEventTool
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"client_event"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]

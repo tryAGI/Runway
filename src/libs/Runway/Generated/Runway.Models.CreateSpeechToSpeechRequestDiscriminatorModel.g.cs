@@ -4,12 +4,12 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum CreateSpeechToSpeechRequestDiscriminatorModel
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ElevenMultilingualStsV2,
     }

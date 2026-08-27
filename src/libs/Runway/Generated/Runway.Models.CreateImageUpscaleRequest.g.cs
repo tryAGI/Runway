@@ -5,17 +5,17 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct CreateImageUpscaleRequest : global::System.IEquatable<CreateImageUpscaleRequest>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.CreateImageUpscaleRequestDiscriminatorModel? Model { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Runway.CreateImageUpscaleRequestMagnificPrecisionUpscalerV2? MagnificPrecisionUpscalerV2 { get; init; }
@@ -24,7 +24,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(MagnificPrecisionUpscalerV2))]
@@ -32,7 +32,7 @@ namespace Runway
         public bool IsMagnificPrecisionUpscalerV2 => MagnificPrecisionUpscalerV2 != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickMagnificPrecisionUpscalerV2(
 #if NET6_0_OR_GREATER
@@ -45,23 +45,23 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.CreateImageUpscaleRequestMagnificPrecisionUpscalerV2 PickMagnificPrecisionUpscalerV2() => IsMagnificPrecisionUpscalerV2
             ? MagnificPrecisionUpscalerV2!
             : throw new global::System.InvalidOperationException($"Expected union variant 'MagnificPrecisionUpscalerV2' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator CreateImageUpscaleRequest(global::Runway.CreateImageUpscaleRequestMagnificPrecisionUpscalerV2 value) => new CreateImageUpscaleRequest((global::Runway.CreateImageUpscaleRequestMagnificPrecisionUpscalerV2?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.CreateImageUpscaleRequestMagnificPrecisionUpscalerV2?(CreateImageUpscaleRequest @this) => @this.MagnificPrecisionUpscalerV2;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public CreateImageUpscaleRequest(global::Runway.CreateImageUpscaleRequestMagnificPrecisionUpscalerV2? value)
         {
@@ -69,12 +69,12 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static CreateImageUpscaleRequest FromMagnificPrecisionUpscalerV2(global::Runway.CreateImageUpscaleRequestMagnificPrecisionUpscalerV2? value) => new CreateImageUpscaleRequest(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public CreateImageUpscaleRequest(
             global::Runway.CreateImageUpscaleRequestDiscriminatorModel? model,
@@ -87,21 +87,21 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
-            MagnificPrecisionUpscalerV2 as object 
+            MagnificPrecisionUpscalerV2 as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
-            MagnificPrecisionUpscalerV2?.ToString() 
+            MagnificPrecisionUpscalerV2?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -109,7 +109,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Runway.CreateImageUpscaleRequestMagnificPrecisionUpscalerV2, TResult>? magnificPrecisionUpscalerV2 = null,
@@ -129,7 +129,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Runway.CreateImageUpscaleRequestMagnificPrecisionUpscalerV2>? magnificPrecisionUpscalerV2 = null,
@@ -147,7 +147,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Runway.CreateImageUpscaleRequestMagnificPrecisionUpscalerV2>? magnificPrecisionUpscalerV2 = null,
@@ -165,7 +165,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -184,17 +184,17 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(CreateImageUpscaleRequest other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateImageUpscaleRequestMagnificPrecisionUpscalerV2?>.Default.Equals(MagnificPrecisionUpscalerV2, other.MagnificPrecisionUpscalerV2) 
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateImageUpscaleRequestMagnificPrecisionUpscalerV2?>.Default.Equals(MagnificPrecisionUpscalerV2, other.MagnificPrecisionUpscalerV2)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(CreateImageUpscaleRequest obj1, CreateImageUpscaleRequest obj2)
         {
@@ -202,7 +202,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(CreateImageUpscaleRequest obj1, CreateImageUpscaleRequest obj2)
         {
@@ -210,7 +210,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

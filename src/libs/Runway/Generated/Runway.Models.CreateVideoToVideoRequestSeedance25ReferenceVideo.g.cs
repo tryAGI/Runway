@@ -9,7 +9,7 @@ namespace Runway
     public sealed partial class CreateVideoToVideoRequestSeedance25ReferenceVideo
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"video"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]

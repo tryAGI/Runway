@@ -9,43 +9,43 @@ namespace Runway
     public enum CreateTextToVideoRequestHappyhorse10Ratio
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1080_1920,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1108_832,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1248_1662,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1280_720,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1440_1440,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1662_1248,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1920_1080,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x720_1280,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x832_1108,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x960_960,
     }

@@ -10,7 +10,7 @@ namespace Runway
     public readonly partial struct Avatar : global::System.IEquatable<Avatar>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.CreateAvatarVideosRequestAvatarDiscriminatorType? Type { get; }
 
@@ -24,7 +24,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(RunwayPreset))]
@@ -32,7 +32,7 @@ namespace Runway
         public bool IsRunwayPreset => RunwayPreset != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickRunwayPreset(
 #if NET6_0_OR_GREATER
@@ -45,7 +45,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.CreateAvatarVideosRequestAvatarRunwayPresetAvatar PickRunwayPreset() => IsRunwayPreset
             ? RunwayPreset!
@@ -61,7 +61,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Custom))]
@@ -69,7 +69,7 @@ namespace Runway
         public bool IsCustom => Custom != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickCustom(
 #if NET6_0_OR_GREATER
@@ -82,23 +82,23 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.CreateAvatarVideosRequestAvatarCustomAvatar PickCustom() => IsCustom
             ? Custom!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Custom' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator Avatar(global::Runway.CreateAvatarVideosRequestAvatarRunwayPresetAvatar value) => new Avatar((global::Runway.CreateAvatarVideosRequestAvatarRunwayPresetAvatar?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.CreateAvatarVideosRequestAvatarRunwayPresetAvatar?(Avatar @this) => @this.RunwayPreset;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public Avatar(global::Runway.CreateAvatarVideosRequestAvatarRunwayPresetAvatar? value)
         {
@@ -106,22 +106,22 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static Avatar FromRunwayPreset(global::Runway.CreateAvatarVideosRequestAvatarRunwayPresetAvatar? value) => new Avatar(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator Avatar(global::Runway.CreateAvatarVideosRequestAvatarCustomAvatar value) => new Avatar((global::Runway.CreateAvatarVideosRequestAvatarCustomAvatar?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.CreateAvatarVideosRequestAvatarCustomAvatar?(Avatar @this) => @this.Custom;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public Avatar(global::Runway.CreateAvatarVideosRequestAvatarCustomAvatar? value)
         {
@@ -129,12 +129,12 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static Avatar FromCustom(global::Runway.CreateAvatarVideosRequestAvatarCustomAvatar? value) => new Avatar(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public Avatar(
             global::Runway.CreateAvatarVideosRequestAvatarDiscriminatorType? type,
@@ -149,23 +149,23 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             Custom as object ??
-            RunwayPreset as object 
+            RunwayPreset as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             RunwayPreset?.ToString() ??
-            Custom?.ToString() 
+            Custom?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -173,7 +173,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Runway.CreateAvatarVideosRequestAvatarRunwayPresetAvatar, TResult>? runwayPreset = null,
@@ -198,7 +198,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Runway.CreateAvatarVideosRequestAvatarRunwayPresetAvatar>? runwayPreset = null,
@@ -222,7 +222,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Runway.CreateAvatarVideosRequestAvatarRunwayPresetAvatar>? runwayPreset = null,
@@ -245,7 +245,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -266,18 +266,18 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(Avatar other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::Runway.CreateAvatarVideosRequestAvatarRunwayPresetAvatar?>.Default.Equals(RunwayPreset, other.RunwayPreset) &&
-                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateAvatarVideosRequestAvatarCustomAvatar?>.Default.Equals(Custom, other.Custom) 
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateAvatarVideosRequestAvatarCustomAvatar?>.Default.Equals(Custom, other.Custom)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(Avatar obj1, Avatar obj2)
         {
@@ -285,7 +285,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(Avatar obj1, Avatar obj2)
         {
@@ -293,7 +293,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

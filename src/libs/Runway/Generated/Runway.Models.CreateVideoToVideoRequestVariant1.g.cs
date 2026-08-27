@@ -6,7 +6,7 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class CreateVideoToVideoRequestVariant1
     {
@@ -38,7 +38,7 @@ namespace Runway
         public int? Seed { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ratio")]
         [global::System.Obsolete("This property marked as deprecated.")]
@@ -72,7 +72,7 @@ namespace Runway
         public global::Runway.CreateVideoToVideoRequestVariant1ProresProfile? ProresProfile { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"aleph2"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]

@@ -9,27 +9,27 @@ namespace Runway
     public enum CreateImageToVideoRequestGen45ProresProfile
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x422,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x422Hq,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x422Lt,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x422Proxy,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x4444,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x4444Xq,
     }

@@ -20,7 +20,7 @@ namespace Runway.JsonConverters
                     {
                         return global::Runway.GetAvatarConversationsResponseVariant1TranscriptItemRoleExtensions.ToEnum(stringValue) ?? default;
                     }
-                    
+
                     break;
                 }
                 case global::System.Text.Json.JsonTokenType.Number:

@@ -9,15 +9,15 @@ namespace Runway
     public enum CreateGenerateVideoRequestInputReferenceImageRole
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         First,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Last,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Reference,
     }

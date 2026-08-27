@@ -4,7 +4,7 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class CreateTextToVideoRequestGen45
     {
@@ -57,7 +57,7 @@ namespace Runway
         public global::Runway.CreateTextToVideoRequestGen45ProresProfile? ProresProfile { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"gen4.5"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]

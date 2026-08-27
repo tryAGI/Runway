@@ -4,7 +4,7 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class CreateSpeechToSpeechRequestElevenMultilingualStsV2
     {
@@ -15,7 +15,7 @@ namespace Runway
         public bool? RemoveBackgroundNoise { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("media")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.MediaJsonConverter))]
@@ -30,7 +30,7 @@ namespace Runway
         public required global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2VoiceRunwayPresetVoice Voice { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"eleven_multilingual_sts_v2"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]

@@ -4,7 +4,7 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class CreateImageToVideoRequestGen4Turbo
     {
@@ -15,7 +15,7 @@ namespace Runway
         public string? PromptText { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("promptImage")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestGen4TurboPromptImagePromptImage>>))]
@@ -49,7 +49,7 @@ namespace Runway
         public global::Runway.CreateImageToVideoRequestGen4TurboContentModeration? ContentModeration { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"gen4_turbo"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]

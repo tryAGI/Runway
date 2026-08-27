@@ -9,283 +9,283 @@ namespace Runway
     public enum GetOrganizationWebappAuditLogsResponseDataItemAction
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AccountLinkCreated,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AccountLinkDeleted,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AgentConnectorAssetExported,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AgentConnectorConnected,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AgentConnectorDisconnected,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AgentConnectorLinkTokenCreated,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AgentConnectorSessionDisabled,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AgentConnectorSessionEnabled,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AgentCustomSkillCreated,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AgentCustomSkillDeleted,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AgentCustomSkillShared,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AgentCustomSkillUnshared,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AgentSessionShared,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AgentSessionUnshared,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AssetCreated,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AssetDeleted,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AssetDownloaded,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AssetShared,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AssetUnshared,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AssetUpdated,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         BrandKitShared,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         BrandKitUnshared,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CreditsTransferred,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         EmailChangeRequested,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         EmailChanged,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         EnterpriseSpendCapEnforcementUpdated,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         GenerationCreated,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InviteAccepted,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InviteLinkToggled,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MemberInvited,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MemberRemoved,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MemberRoleChanged,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MeteredBillingConfigUpdated,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MeteredBillingRefillTriggered,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MeteredBillingRetryTriggered,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         OrganizationDisabledModelsUpdated,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         OrganizationSettingsUpdated,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         PasswordChanged,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         PermissionAccepted,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         PermissionGranted,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         PermissionRevoked,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         PermissionUpdated,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SSOConfigCreated,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SSODomainRegistrationCloned,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SSOLogin,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SSOUserAutoAddedToTeam,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SSOUserProvisioned,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SeatsTransferred,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SessionShared,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SessionUnshared,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SubscriptionCancelled,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SubscriptionPlanSwitched,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TeamSettingsUpdated,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UserAccountDeleted,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UserGroupCreated,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UserGroupDeleted,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UserGroupMemberAdded,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UserGroupMemberRemoved,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UserLogin,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UserRegistered,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         VideoProjectShared,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         VideoProjectUnshared,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         WorkspaceCountryLockUpdated,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         WorkspaceCreated,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         WorkspaceDeleted,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         WorkspaceTagAssigned,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         WorkspaceTagCreated,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         WorkspaceTagDeleted,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         WorkspaceTagUnassigned,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         WorkspaceTagUpdated,
     }

@@ -4,7 +4,7 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class CreateTextToImageRequestGeminiImage3Pro
     {
@@ -36,7 +36,7 @@ namespace Runway
         public double? OutputCount { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"gemini_image3_pro"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]

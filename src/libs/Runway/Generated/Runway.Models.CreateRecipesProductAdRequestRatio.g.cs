@@ -9,35 +9,35 @@ namespace Runway
     public enum CreateRecipesProductAdRequestRatio
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1080_1920,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1248_1664,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1280_720,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1440_1440,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1920_1080,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x720_1280,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x834_1112,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x960_960,
     }

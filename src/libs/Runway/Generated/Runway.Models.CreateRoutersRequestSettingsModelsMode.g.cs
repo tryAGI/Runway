@@ -4,16 +4,16 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum CreateRoutersRequestSettingsModelsMode
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AllowNewExcept,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AllowlistOnly,
     }

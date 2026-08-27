@@ -43,7 +43,7 @@ namespace Runway
         public required int Version { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("settings")]
         [global::System.Text.Json.Serialization.JsonRequired]

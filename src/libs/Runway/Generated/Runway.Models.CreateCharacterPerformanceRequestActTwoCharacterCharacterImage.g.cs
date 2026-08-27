@@ -9,7 +9,7 @@ namespace Runway
     public sealed partial class CreateCharacterPerformanceRequestActTwoCharacterCharacterImage
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"image"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]

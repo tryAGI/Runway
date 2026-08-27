@@ -9,11 +9,11 @@ namespace Runway
     public enum CreateImageToVideoRequestSeedance25PromptImagePromptImagePosition
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         First,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Last,
     }

@@ -62,7 +62,7 @@ namespace Runway
         public required global::System.Collections.Generic.IList<global::Runway.GetAvatarConversationsResponseVariant3Tool> Tools { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"failed"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("status")]

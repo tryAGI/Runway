@@ -9,11 +9,11 @@ namespace Runway
     public enum CreateTextToImageRequestGen4ImageContentModerationPublicFigureThreshold
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Auto,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Low,
     }

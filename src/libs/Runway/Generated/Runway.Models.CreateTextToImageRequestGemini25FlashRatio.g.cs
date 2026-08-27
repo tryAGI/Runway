@@ -9,43 +9,43 @@ namespace Runway
     public enum CreateTextToImageRequestGemini25FlashRatio
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1024_1024,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1152_896,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1184_864,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1248_832,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1344_768,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1536_672,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x768_1344,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x832_1248,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x864_1184,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x896_1152,
     }

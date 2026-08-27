@@ -5,12 +5,12 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct GetRealtimeSessionsResponse : global::System.IEquatable<GetRealtimeSessionsResponse>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.GetRealtimeSessionsResponseDiscriminatorStatus? Status { get; }
 
@@ -24,7 +24,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(NotReady))]
@@ -32,7 +32,7 @@ namespace Runway
         public bool IsNotReady => NotReady != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickNotReady(
 #if NET6_0_OR_GREATER
@@ -45,7 +45,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.GetRealtimeSessionsResponseSessionNotReady PickNotReady() => IsNotReady
             ? NotReady!
@@ -61,7 +61,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Ready))]
@@ -69,7 +69,7 @@ namespace Runway
         public bool IsReady => Ready != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickReady(
 #if NET6_0_OR_GREATER
@@ -82,7 +82,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.GetRealtimeSessionsResponseSessionReady PickReady() => IsReady
             ? Ready!
@@ -98,7 +98,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Running))]
@@ -106,7 +106,7 @@ namespace Runway
         public bool IsRunning => Running != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickRunning(
 #if NET6_0_OR_GREATER
@@ -119,7 +119,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.GetRealtimeSessionsResponseSessionRunning PickRunning() => IsRunning
             ? Running!
@@ -135,7 +135,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Completed))]
@@ -143,7 +143,7 @@ namespace Runway
         public bool IsCompleted => Completed != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickCompleted(
 #if NET6_0_OR_GREATER
@@ -156,7 +156,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.GetRealtimeSessionsResponseSessionCompleted PickCompleted() => IsCompleted
             ? Completed!
@@ -172,7 +172,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Failed))]
@@ -180,7 +180,7 @@ namespace Runway
         public bool IsFailed => Failed != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickFailed(
 #if NET6_0_OR_GREATER
@@ -193,7 +193,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.GetRealtimeSessionsResponseSessionFailed PickFailed() => IsFailed
             ? Failed!
@@ -209,7 +209,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Cancelled))]
@@ -217,7 +217,7 @@ namespace Runway
         public bool IsCancelled => Cancelled != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickCancelled(
 #if NET6_0_OR_GREATER
@@ -230,23 +230,23 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.GetRealtimeSessionsResponseSessionCancelled PickCancelled() => IsCancelled
             ? Cancelled!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Cancelled' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator GetRealtimeSessionsResponse(global::Runway.GetRealtimeSessionsResponseSessionNotReady value) => new GetRealtimeSessionsResponse((global::Runway.GetRealtimeSessionsResponseSessionNotReady?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.GetRealtimeSessionsResponseSessionNotReady?(GetRealtimeSessionsResponse @this) => @this.NotReady;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public GetRealtimeSessionsResponse(global::Runway.GetRealtimeSessionsResponseSessionNotReady? value)
         {
@@ -254,22 +254,22 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static GetRealtimeSessionsResponse FromNotReady(global::Runway.GetRealtimeSessionsResponseSessionNotReady? value) => new GetRealtimeSessionsResponse(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator GetRealtimeSessionsResponse(global::Runway.GetRealtimeSessionsResponseSessionReady value) => new GetRealtimeSessionsResponse((global::Runway.GetRealtimeSessionsResponseSessionReady?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.GetRealtimeSessionsResponseSessionReady?(GetRealtimeSessionsResponse @this) => @this.Ready;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public GetRealtimeSessionsResponse(global::Runway.GetRealtimeSessionsResponseSessionReady? value)
         {
@@ -277,22 +277,22 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static GetRealtimeSessionsResponse FromReady(global::Runway.GetRealtimeSessionsResponseSessionReady? value) => new GetRealtimeSessionsResponse(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator GetRealtimeSessionsResponse(global::Runway.GetRealtimeSessionsResponseSessionRunning value) => new GetRealtimeSessionsResponse((global::Runway.GetRealtimeSessionsResponseSessionRunning?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.GetRealtimeSessionsResponseSessionRunning?(GetRealtimeSessionsResponse @this) => @this.Running;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public GetRealtimeSessionsResponse(global::Runway.GetRealtimeSessionsResponseSessionRunning? value)
         {
@@ -300,22 +300,22 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static GetRealtimeSessionsResponse FromRunning(global::Runway.GetRealtimeSessionsResponseSessionRunning? value) => new GetRealtimeSessionsResponse(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator GetRealtimeSessionsResponse(global::Runway.GetRealtimeSessionsResponseSessionCompleted value) => new GetRealtimeSessionsResponse((global::Runway.GetRealtimeSessionsResponseSessionCompleted?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.GetRealtimeSessionsResponseSessionCompleted?(GetRealtimeSessionsResponse @this) => @this.Completed;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public GetRealtimeSessionsResponse(global::Runway.GetRealtimeSessionsResponseSessionCompleted? value)
         {
@@ -323,22 +323,22 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static GetRealtimeSessionsResponse FromCompleted(global::Runway.GetRealtimeSessionsResponseSessionCompleted? value) => new GetRealtimeSessionsResponse(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator GetRealtimeSessionsResponse(global::Runway.GetRealtimeSessionsResponseSessionFailed value) => new GetRealtimeSessionsResponse((global::Runway.GetRealtimeSessionsResponseSessionFailed?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.GetRealtimeSessionsResponseSessionFailed?(GetRealtimeSessionsResponse @this) => @this.Failed;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public GetRealtimeSessionsResponse(global::Runway.GetRealtimeSessionsResponseSessionFailed? value)
         {
@@ -346,22 +346,22 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static GetRealtimeSessionsResponse FromFailed(global::Runway.GetRealtimeSessionsResponseSessionFailed? value) => new GetRealtimeSessionsResponse(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator GetRealtimeSessionsResponse(global::Runway.GetRealtimeSessionsResponseSessionCancelled value) => new GetRealtimeSessionsResponse((global::Runway.GetRealtimeSessionsResponseSessionCancelled?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.GetRealtimeSessionsResponseSessionCancelled?(GetRealtimeSessionsResponse @this) => @this.Cancelled;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public GetRealtimeSessionsResponse(global::Runway.GetRealtimeSessionsResponseSessionCancelled? value)
         {
@@ -369,12 +369,12 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static GetRealtimeSessionsResponse FromCancelled(global::Runway.GetRealtimeSessionsResponseSessionCancelled? value) => new GetRealtimeSessionsResponse(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public GetRealtimeSessionsResponse(
             global::Runway.GetRealtimeSessionsResponseDiscriminatorStatus? status,
@@ -397,7 +397,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             Cancelled as object ??
@@ -405,11 +405,11 @@ namespace Runway
             Completed as object ??
             Running as object ??
             Ready as object ??
-            NotReady as object 
+            NotReady as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             NotReady?.ToString() ??
@@ -417,11 +417,11 @@ namespace Runway
             Running?.ToString() ??
             Completed?.ToString() ??
             Failed?.ToString() ??
-            Cancelled?.ToString() 
+            Cancelled?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -429,7 +429,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Runway.GetRealtimeSessionsResponseSessionNotReady, TResult>? notReady = null,
@@ -474,7 +474,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Runway.GetRealtimeSessionsResponseSessionNotReady>? notReady = null,
@@ -522,7 +522,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Runway.GetRealtimeSessionsResponseSessionNotReady>? notReady = null,
@@ -565,7 +565,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -594,7 +594,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(GetRealtimeSessionsResponse other)
         {
@@ -604,12 +604,12 @@ namespace Runway
                 global::System.Collections.Generic.EqualityComparer<global::Runway.GetRealtimeSessionsResponseSessionRunning?>.Default.Equals(Running, other.Running) &&
                 global::System.Collections.Generic.EqualityComparer<global::Runway.GetRealtimeSessionsResponseSessionCompleted?>.Default.Equals(Completed, other.Completed) &&
                 global::System.Collections.Generic.EqualityComparer<global::Runway.GetRealtimeSessionsResponseSessionFailed?>.Default.Equals(Failed, other.Failed) &&
-                global::System.Collections.Generic.EqualityComparer<global::Runway.GetRealtimeSessionsResponseSessionCancelled?>.Default.Equals(Cancelled, other.Cancelled) 
+                global::System.Collections.Generic.EqualityComparer<global::Runway.GetRealtimeSessionsResponseSessionCancelled?>.Default.Equals(Cancelled, other.Cancelled)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(GetRealtimeSessionsResponse obj1, GetRealtimeSessionsResponse obj2)
         {
@@ -617,7 +617,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(GetRealtimeSessionsResponse obj1, GetRealtimeSessionsResponse obj2)
         {
@@ -625,7 +625,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

@@ -10,11 +10,11 @@ namespace Runway
     public enum CreateAvatarsRequestImageProcessing
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         None,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Optimize,
     }

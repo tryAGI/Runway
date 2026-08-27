@@ -5,17 +5,17 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct CreateVideoToHdrRequest : global::System.IEquatable<CreateVideoToHdrRequest>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.CreateVideoToHdrRequestDiscriminatorModel? Model { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Runway.CreateVideoToHdrRequestRuby? Ruby { get; init; }
@@ -24,7 +24,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Ruby))]
@@ -32,7 +32,7 @@ namespace Runway
         public bool IsRuby => Ruby != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickRuby(
 #if NET6_0_OR_GREATER
@@ -45,23 +45,23 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.CreateVideoToHdrRequestRuby PickRuby() => IsRuby
             ? Ruby!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Ruby' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator CreateVideoToHdrRequest(global::Runway.CreateVideoToHdrRequestRuby value) => new CreateVideoToHdrRequest((global::Runway.CreateVideoToHdrRequestRuby?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.CreateVideoToHdrRequestRuby?(CreateVideoToHdrRequest @this) => @this.Ruby;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public CreateVideoToHdrRequest(global::Runway.CreateVideoToHdrRequestRuby? value)
         {
@@ -69,12 +69,12 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static CreateVideoToHdrRequest FromRuby(global::Runway.CreateVideoToHdrRequestRuby? value) => new CreateVideoToHdrRequest(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public CreateVideoToHdrRequest(
             global::Runway.CreateVideoToHdrRequestDiscriminatorModel? model,
@@ -87,21 +87,21 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
-            Ruby as object 
+            Ruby as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
-            Ruby?.ToString() 
+            Ruby?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -109,7 +109,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Runway.CreateVideoToHdrRequestRuby, TResult>? ruby = null,
@@ -129,7 +129,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Runway.CreateVideoToHdrRequestRuby>? ruby = null,
@@ -147,7 +147,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Runway.CreateVideoToHdrRequestRuby>? ruby = null,
@@ -165,7 +165,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -184,17 +184,17 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(CreateVideoToHdrRequest other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateVideoToHdrRequestRuby?>.Default.Equals(Ruby, other.Ruby) 
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateVideoToHdrRequestRuby?>.Default.Equals(Ruby, other.Ruby)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(CreateVideoToHdrRequest obj1, CreateVideoToHdrRequest obj2)
         {
@@ -202,7 +202,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(CreateVideoToHdrRequest obj1, CreateVideoToHdrRequest obj2)
         {
@@ -210,7 +210,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

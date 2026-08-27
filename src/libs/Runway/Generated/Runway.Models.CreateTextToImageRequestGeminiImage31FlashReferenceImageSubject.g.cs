@@ -10,11 +10,11 @@ namespace Runway
     public enum CreateTextToImageRequestGeminiImage31FlashReferenceImageSubject
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Human,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Object,
     }

@@ -9,11 +9,11 @@ namespace Runway
     public enum GetOrganizationWebappUsageResponseDataItemType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Charge,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Refund,
     }

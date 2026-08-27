@@ -9,14 +9,14 @@ namespace Runway
     public sealed partial class CreateAvatarVideosRequestSpeechTextInputVoiceRunwayPresetVoice
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"preset"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
         public string Type { get; set; } = "preset";
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("presetId")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.CreateAvatarVideosRequestSpeechTextInputVoiceRunwayPresetVoicePresetIdJsonConverter))]

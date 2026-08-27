@@ -9,11 +9,11 @@ namespace Runway
     public enum CreateImageToVideoRequestHappyhorse10Resolution
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1080p,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x720p,
     }

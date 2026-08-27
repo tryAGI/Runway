@@ -4,7 +4,7 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class CreateVoicesRequest
     {
@@ -22,7 +22,7 @@ namespace Runway
         public string? Description { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("from")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.FromJsonConverter))]

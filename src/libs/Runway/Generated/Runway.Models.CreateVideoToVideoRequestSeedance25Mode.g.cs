@@ -10,11 +10,11 @@ namespace Runway
     public enum CreateVideoToVideoRequestSeedance25Mode
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Extend,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Reference,
     }

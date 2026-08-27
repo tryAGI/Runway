@@ -10,11 +10,11 @@ namespace Runway
     public enum PatchAvatarsRequestImageProcessing
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         None,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Optimize,
     }

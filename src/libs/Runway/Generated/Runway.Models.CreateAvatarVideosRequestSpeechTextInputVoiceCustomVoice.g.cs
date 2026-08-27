@@ -9,14 +9,14 @@ namespace Runway
     public sealed partial class CreateAvatarVideosRequestSpeechTextInputVoiceCustomVoice
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"custom"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
         public string Type { get; set; } = "custom";
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("id")]
         [global::System.Text.Json.Serialization.JsonRequired]

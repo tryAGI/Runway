@@ -6,7 +6,7 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class CreateRealtimeSessionsRequest
     {

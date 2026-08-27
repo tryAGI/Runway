@@ -5,12 +5,12 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct GetWorkflowInvocationsResponse : global::System.IEquatable<GetWorkflowInvocationsResponse>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.GetWorkflowInvocationsResponseDiscriminatorStatus? Status { get; }
 
@@ -24,7 +24,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Pending))]
@@ -32,7 +32,7 @@ namespace Runway
         public bool IsPending => Pending != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickPending(
 #if NET6_0_OR_GREATER
@@ -45,7 +45,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationPending PickPending() => IsPending
             ? Pending!
@@ -61,7 +61,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Throttled))]
@@ -69,7 +69,7 @@ namespace Runway
         public bool IsThrottled => Throttled != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickThrottled(
 #if NET6_0_OR_GREATER
@@ -82,7 +82,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationThrottled PickThrottled() => IsThrottled
             ? Throttled!
@@ -98,7 +98,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Cancelled))]
@@ -106,7 +106,7 @@ namespace Runway
         public bool IsCancelled => Cancelled != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickCancelled(
 #if NET6_0_OR_GREATER
@@ -119,7 +119,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationCancelled PickCancelled() => IsCancelled
             ? Cancelled!
@@ -135,7 +135,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Running))]
@@ -143,7 +143,7 @@ namespace Runway
         public bool IsRunning => Running != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickRunning(
 #if NET6_0_OR_GREATER
@@ -156,7 +156,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationRunning PickRunning() => IsRunning
             ? Running!
@@ -172,7 +172,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Failed))]
@@ -180,7 +180,7 @@ namespace Runway
         public bool IsFailed => Failed != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickFailed(
 #if NET6_0_OR_GREATER
@@ -193,7 +193,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationFailed PickFailed() => IsFailed
             ? Failed!
@@ -209,7 +209,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Succeeded))]
@@ -217,7 +217,7 @@ namespace Runway
         public bool IsSucceeded => Succeeded != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickSucceeded(
 #if NET6_0_OR_GREATER
@@ -230,23 +230,23 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationSucceeded PickSucceeded() => IsSucceeded
             ? Succeeded!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Succeeded' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator GetWorkflowInvocationsResponse(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationPending value) => new GetWorkflowInvocationsResponse((global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationPending?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationPending?(GetWorkflowInvocationsResponse @this) => @this.Pending;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public GetWorkflowInvocationsResponse(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationPending? value)
         {
@@ -254,22 +254,22 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static GetWorkflowInvocationsResponse FromPending(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationPending? value) => new GetWorkflowInvocationsResponse(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator GetWorkflowInvocationsResponse(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationThrottled value) => new GetWorkflowInvocationsResponse((global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationThrottled?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationThrottled?(GetWorkflowInvocationsResponse @this) => @this.Throttled;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public GetWorkflowInvocationsResponse(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationThrottled? value)
         {
@@ -277,22 +277,22 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static GetWorkflowInvocationsResponse FromThrottled(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationThrottled? value) => new GetWorkflowInvocationsResponse(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator GetWorkflowInvocationsResponse(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationCancelled value) => new GetWorkflowInvocationsResponse((global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationCancelled?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationCancelled?(GetWorkflowInvocationsResponse @this) => @this.Cancelled;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public GetWorkflowInvocationsResponse(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationCancelled? value)
         {
@@ -300,22 +300,22 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static GetWorkflowInvocationsResponse FromCancelled(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationCancelled? value) => new GetWorkflowInvocationsResponse(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator GetWorkflowInvocationsResponse(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationRunning value) => new GetWorkflowInvocationsResponse((global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationRunning?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationRunning?(GetWorkflowInvocationsResponse @this) => @this.Running;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public GetWorkflowInvocationsResponse(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationRunning? value)
         {
@@ -323,22 +323,22 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static GetWorkflowInvocationsResponse FromRunning(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationRunning? value) => new GetWorkflowInvocationsResponse(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator GetWorkflowInvocationsResponse(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationFailed value) => new GetWorkflowInvocationsResponse((global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationFailed?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationFailed?(GetWorkflowInvocationsResponse @this) => @this.Failed;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public GetWorkflowInvocationsResponse(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationFailed? value)
         {
@@ -346,22 +346,22 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static GetWorkflowInvocationsResponse FromFailed(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationFailed? value) => new GetWorkflowInvocationsResponse(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator GetWorkflowInvocationsResponse(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationSucceeded value) => new GetWorkflowInvocationsResponse((global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationSucceeded?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationSucceeded?(GetWorkflowInvocationsResponse @this) => @this.Succeeded;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public GetWorkflowInvocationsResponse(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationSucceeded? value)
         {
@@ -369,12 +369,12 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static GetWorkflowInvocationsResponse FromSucceeded(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationSucceeded? value) => new GetWorkflowInvocationsResponse(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public GetWorkflowInvocationsResponse(
             global::Runway.GetWorkflowInvocationsResponseDiscriminatorStatus? status,
@@ -397,7 +397,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             Succeeded as object ??
@@ -405,11 +405,11 @@ namespace Runway
             Running as object ??
             Cancelled as object ??
             Throttled as object ??
-            Pending as object 
+            Pending as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             Pending?.ToString() ??
@@ -417,11 +417,11 @@ namespace Runway
             Cancelled?.ToString() ??
             Running?.ToString() ??
             Failed?.ToString() ??
-            Succeeded?.ToString() 
+            Succeeded?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -429,7 +429,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationPending, TResult>? pending = null,
@@ -474,7 +474,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationPending>? pending = null,
@@ -522,7 +522,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationPending>? pending = null,
@@ -565,7 +565,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -594,7 +594,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(GetWorkflowInvocationsResponse other)
         {
@@ -604,12 +604,12 @@ namespace Runway
                 global::System.Collections.Generic.EqualityComparer<global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationCancelled?>.Default.Equals(Cancelled, other.Cancelled) &&
                 global::System.Collections.Generic.EqualityComparer<global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationRunning?>.Default.Equals(Running, other.Running) &&
                 global::System.Collections.Generic.EqualityComparer<global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationFailed?>.Default.Equals(Failed, other.Failed) &&
-                global::System.Collections.Generic.EqualityComparer<global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationSucceeded?>.Default.Equals(Succeeded, other.Succeeded) 
+                global::System.Collections.Generic.EqualityComparer<global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationSucceeded?>.Default.Equals(Succeeded, other.Succeeded)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(GetWorkflowInvocationsResponse obj1, GetWorkflowInvocationsResponse obj2)
         {
@@ -617,7 +617,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(GetWorkflowInvocationsResponse obj1, GetWorkflowInvocationsResponse obj2)
         {
@@ -625,7 +625,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

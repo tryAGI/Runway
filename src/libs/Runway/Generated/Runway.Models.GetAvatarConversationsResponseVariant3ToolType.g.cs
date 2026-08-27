@@ -9,11 +9,11 @@ namespace Runway
     public enum GetAvatarConversationsResponseVariant3ToolType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         BackendRpc,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ClientEvent,
     }

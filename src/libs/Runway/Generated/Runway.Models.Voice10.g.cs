@@ -10,7 +10,7 @@ namespace Runway
     public readonly partial struct Voice10 : global::System.IEquatable<Voice10>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.CreateAvatarsResponseAvatarFailedVoiceDiscriminatorType? Type { get; }
 
@@ -24,7 +24,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(RunwayLivePreset))]
@@ -32,7 +32,7 @@ namespace Runway
         public bool IsRunwayLivePreset => RunwayLivePreset != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickRunwayLivePreset(
 #if NET6_0_OR_GREATER
@@ -45,7 +45,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.CreateAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponse PickRunwayLivePreset() => IsRunwayLivePreset
             ? RunwayLivePreset!
@@ -61,7 +61,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Custom))]
@@ -69,7 +69,7 @@ namespace Runway
         public bool IsCustom => Custom != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickCustom(
 #if NET6_0_OR_GREATER
@@ -82,23 +82,23 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.CreateAvatarsResponseAvatarFailedVoiceCustomVoiceResponse PickCustom() => IsCustom
             ? Custom!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Custom' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator Voice10(global::Runway.CreateAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponse value) => new Voice10((global::Runway.CreateAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponse?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.CreateAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponse?(Voice10 @this) => @this.RunwayLivePreset;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public Voice10(global::Runway.CreateAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponse? value)
         {
@@ -106,22 +106,22 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static Voice10 FromRunwayLivePreset(global::Runway.CreateAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponse? value) => new Voice10(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator Voice10(global::Runway.CreateAvatarsResponseAvatarFailedVoiceCustomVoiceResponse value) => new Voice10((global::Runway.CreateAvatarsResponseAvatarFailedVoiceCustomVoiceResponse?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.CreateAvatarsResponseAvatarFailedVoiceCustomVoiceResponse?(Voice10 @this) => @this.Custom;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public Voice10(global::Runway.CreateAvatarsResponseAvatarFailedVoiceCustomVoiceResponse? value)
         {
@@ -129,12 +129,12 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static Voice10 FromCustom(global::Runway.CreateAvatarsResponseAvatarFailedVoiceCustomVoiceResponse? value) => new Voice10(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public Voice10(
             global::Runway.CreateAvatarsResponseAvatarFailedVoiceDiscriminatorType? type,
@@ -149,23 +149,23 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             Custom as object ??
-            RunwayLivePreset as object 
+            RunwayLivePreset as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             RunwayLivePreset?.ToString() ??
-            Custom?.ToString() 
+            Custom?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -173,7 +173,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Runway.CreateAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponse, TResult>? runwayLivePreset = null,
@@ -198,7 +198,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Runway.CreateAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponse>? runwayLivePreset = null,
@@ -222,7 +222,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Runway.CreateAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponse>? runwayLivePreset = null,
@@ -245,7 +245,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -266,18 +266,18 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(Voice10 other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::Runway.CreateAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponse?>.Default.Equals(RunwayLivePreset, other.RunwayLivePreset) &&
-                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateAvatarsResponseAvatarFailedVoiceCustomVoiceResponse?>.Default.Equals(Custom, other.Custom) 
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateAvatarsResponseAvatarFailedVoiceCustomVoiceResponse?>.Default.Equals(Custom, other.Custom)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(Voice10 obj1, Voice10 obj2)
         {
@@ -285,7 +285,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(Voice10 obj1, Voice10 obj2)
         {
@@ -293,7 +293,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

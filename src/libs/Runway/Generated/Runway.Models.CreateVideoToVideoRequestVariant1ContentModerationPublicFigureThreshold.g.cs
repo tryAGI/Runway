@@ -9,11 +9,11 @@ namespace Runway
     public enum CreateVideoToVideoRequestVariant1ContentModerationPublicFigureThreshold
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Auto,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Low,
     }

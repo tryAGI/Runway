@@ -4,7 +4,7 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class CreateTextToImageRequestGemini25Flash
     {
@@ -30,7 +30,7 @@ namespace Runway
         public global::System.Collections.Generic.IList<global::Runway.CreateTextToImageRequestGemini25FlashReferenceImage>? ReferenceImages { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"gemini_2.5_flash"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]

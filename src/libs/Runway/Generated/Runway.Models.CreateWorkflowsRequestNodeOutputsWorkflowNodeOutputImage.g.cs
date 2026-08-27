@@ -9,7 +9,7 @@ namespace Runway
     public sealed partial class CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputImage
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"image"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]

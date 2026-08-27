@@ -9,7 +9,7 @@ namespace Runway
     public sealed partial class CreateTextToSpeechRequestElevenV3VoiceRunwayPresetVoice
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"runway-preset"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]

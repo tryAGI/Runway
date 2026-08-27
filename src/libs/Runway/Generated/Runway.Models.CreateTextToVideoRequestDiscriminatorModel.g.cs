@@ -4,52 +4,52 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum CreateTextToVideoRequestDiscriminatorModel
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         GeminiOmniFlash,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Gen45,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         GrokImagine15,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Hailuo3,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Happyhorse10,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Seedance2,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Seedance25,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Seedance2Fast,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Seedance2Mini,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Veo31,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Veo31Fast,
     }

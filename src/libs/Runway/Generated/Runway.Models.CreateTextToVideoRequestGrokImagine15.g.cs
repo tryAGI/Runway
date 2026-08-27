@@ -4,7 +4,7 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class CreateTextToVideoRequestGrokImagine15
     {
@@ -48,7 +48,7 @@ namespace Runway
         public global::System.Collections.Generic.IList<global::Runway.CreateTextToVideoRequestGrokImagine15ReferenceAudioItem>? ReferenceAudio { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"grok_imagine_1_5"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]

@@ -9,15 +9,15 @@ namespace Runway
     public enum CreateImageToVideoRequestGrokImagine15Resolution
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1080p,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x480p,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x720p,
     }

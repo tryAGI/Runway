@@ -9,11 +9,11 @@ namespace Runway
     public enum CreateRecipesProductUgcRequestRatio
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1080_1920,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x720_1280,
     }

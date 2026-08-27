@@ -9,7 +9,7 @@ namespace Runway
     public sealed partial class CreateGenerateAudioRequestInputVoiceAudioReferenceVoice
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"reference-audio"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]

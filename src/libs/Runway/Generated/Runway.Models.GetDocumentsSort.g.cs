@@ -9,11 +9,11 @@ namespace Runway
     public enum GetDocumentsSort
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CreatedAt,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UpdatedAt,
     }

@@ -9,123 +9,123 @@ namespace Runway
     public enum CreateTextToImageRequestGeminiImage3ProRatio
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1024_1024,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1152_896,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1184_864,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1248_832,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1344_768,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1536_2752,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1536_672,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1696_2528,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1792_2400,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1856_2304,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x2048_2048,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x2304_1856,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x2400_1792,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x2528_1696,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x2752_1536,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x3072_5504,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x3168_1344,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x3392_5056,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x3584_4800,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x3712_4608,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x4096_4096,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x4608_3712,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x4800_3584,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x5056_3392,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x5504_3072,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x6336_2688,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x768_1344,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x832_1248,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x864_1184,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x896_1152,
     }

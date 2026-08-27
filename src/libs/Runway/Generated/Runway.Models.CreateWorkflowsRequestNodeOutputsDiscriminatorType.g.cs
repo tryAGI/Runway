@@ -4,24 +4,24 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum CreateWorkflowsRequestNodeOutputsDiscriminatorType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Audio,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Image,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Primitive,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Video,
     }

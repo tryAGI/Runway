@@ -9,7 +9,7 @@ namespace Runway
     public sealed partial class CreateAvatarVideosRequestSpeechTextInput
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"text"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]

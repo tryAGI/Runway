@@ -11,7 +11,7 @@ namespace Runway
     public readonly partial struct Voice2 : global::System.IEquatable<Voice2>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.PatchAvatarsRequestVoiceDiscriminatorType? Type { get; }
 
@@ -25,7 +25,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(RunwayLivePreset))]
@@ -33,7 +33,7 @@ namespace Runway
         public bool IsRunwayLivePreset => RunwayLivePreset != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickRunwayLivePreset(
 #if NET6_0_OR_GREATER
@@ -46,7 +46,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.PatchAvatarsRequestVoiceRunwayLivePresetVoice PickRunwayLivePreset() => IsRunwayLivePreset
             ? RunwayLivePreset!
@@ -62,7 +62,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Custom))]
@@ -70,7 +70,7 @@ namespace Runway
         public bool IsCustom => Custom != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickCustom(
 #if NET6_0_OR_GREATER
@@ -83,23 +83,23 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.PatchAvatarsRequestVoiceCustomVoice PickCustom() => IsCustom
             ? Custom!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Custom' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator Voice2(global::Runway.PatchAvatarsRequestVoiceRunwayLivePresetVoice value) => new Voice2((global::Runway.PatchAvatarsRequestVoiceRunwayLivePresetVoice?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.PatchAvatarsRequestVoiceRunwayLivePresetVoice?(Voice2 @this) => @this.RunwayLivePreset;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public Voice2(global::Runway.PatchAvatarsRequestVoiceRunwayLivePresetVoice? value)
         {
@@ -107,22 +107,22 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static Voice2 FromRunwayLivePreset(global::Runway.PatchAvatarsRequestVoiceRunwayLivePresetVoice? value) => new Voice2(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator Voice2(global::Runway.PatchAvatarsRequestVoiceCustomVoice value) => new Voice2((global::Runway.PatchAvatarsRequestVoiceCustomVoice?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.PatchAvatarsRequestVoiceCustomVoice?(Voice2 @this) => @this.Custom;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public Voice2(global::Runway.PatchAvatarsRequestVoiceCustomVoice? value)
         {
@@ -130,12 +130,12 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static Voice2 FromCustom(global::Runway.PatchAvatarsRequestVoiceCustomVoice? value) => new Voice2(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public Voice2(
             global::Runway.PatchAvatarsRequestVoiceDiscriminatorType? type,
@@ -150,23 +150,23 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             Custom as object ??
-            RunwayLivePreset as object 
+            RunwayLivePreset as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             RunwayLivePreset?.ToString() ??
-            Custom?.ToString() 
+            Custom?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -174,7 +174,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Runway.PatchAvatarsRequestVoiceRunwayLivePresetVoice, TResult>? runwayLivePreset = null,
@@ -199,7 +199,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Runway.PatchAvatarsRequestVoiceRunwayLivePresetVoice>? runwayLivePreset = null,
@@ -223,7 +223,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Runway.PatchAvatarsRequestVoiceRunwayLivePresetVoice>? runwayLivePreset = null,
@@ -246,7 +246,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -267,18 +267,18 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(Voice2 other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::Runway.PatchAvatarsRequestVoiceRunwayLivePresetVoice?>.Default.Equals(RunwayLivePreset, other.RunwayLivePreset) &&
-                global::System.Collections.Generic.EqualityComparer<global::Runway.PatchAvatarsRequestVoiceCustomVoice?>.Default.Equals(Custom, other.Custom) 
+                global::System.Collections.Generic.EqualityComparer<global::Runway.PatchAvatarsRequestVoiceCustomVoice?>.Default.Equals(Custom, other.Custom)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(Voice2 obj1, Voice2 obj2)
         {
@@ -286,7 +286,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(Voice2 obj1, Voice2 obj2)
         {
@@ -294,7 +294,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

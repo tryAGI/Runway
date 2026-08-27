@@ -9,11 +9,11 @@ namespace Runway
     public enum CreateRecipesMultiShotVideoRequestVariant2Version
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x202606,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UnsafeLatest,
     }

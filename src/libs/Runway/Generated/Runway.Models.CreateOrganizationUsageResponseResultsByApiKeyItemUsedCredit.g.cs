@@ -4,19 +4,19 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class CreateOrganizationUsageResponseResultsByApiKeyItemUsedCredit
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("apiKeyId")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::System.Guid ApiKeyId { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("amount")]
         [global::System.Text.Json.Serialization.JsonRequired]

@@ -4,12 +4,12 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum CreateTextToSpeechRequestElevenV3VoiceDiscriminatorType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         RunwayPreset,
     }

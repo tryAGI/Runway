@@ -9,7 +9,7 @@ namespace Runway
     public sealed partial class CreateRealtimeSessionsRequestToolBackendRPCTool
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"backend_rpc"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]

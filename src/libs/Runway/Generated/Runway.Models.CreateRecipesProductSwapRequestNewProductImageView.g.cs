@@ -9,15 +9,15 @@ namespace Runway
     public enum CreateRecipesProductSwapRequestNewProductImageView
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Back,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Front,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Side,
     }

@@ -4,7 +4,7 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class CreateTextToVideoRequestGeminiOmniFlash
     {
@@ -29,7 +29,7 @@ namespace Runway
         public int? Duration { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"gemini_omni_flash"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
