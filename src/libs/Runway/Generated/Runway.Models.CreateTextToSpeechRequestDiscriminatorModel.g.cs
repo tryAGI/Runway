@@ -4,20 +4,20 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum CreateTextToSpeechRequestDiscriminatorModel
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ElevenMultilingualV2,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ElevenV3,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SeedAudio,
     }

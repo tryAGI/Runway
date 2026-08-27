@@ -4,16 +4,16 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum CreateRealtimeSessionsRequestIntegrationDiscriminatorType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Elevenlabs,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Livekit,
     }

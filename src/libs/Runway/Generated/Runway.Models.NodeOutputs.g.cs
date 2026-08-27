@@ -5,12 +5,12 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct NodeOutputs : global::System.IEquatable<NodeOutputs>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.CreateWorkflowsRequestNodeOutputsDiscriminatorType? Type { get; }
 
@@ -24,7 +24,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Primitive))]
@@ -32,7 +32,7 @@ namespace Runway
         public bool IsPrimitive => Primitive != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickPrimitive(
 #if NET6_0_OR_GREATER
@@ -45,7 +45,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputPrimitive PickPrimitive() => IsPrimitive
             ? Primitive!
@@ -61,7 +61,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Image))]
@@ -69,7 +69,7 @@ namespace Runway
         public bool IsImage => Image != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickImage(
 #if NET6_0_OR_GREATER
@@ -82,7 +82,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputImage PickImage() => IsImage
             ? Image!
@@ -98,7 +98,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Video))]
@@ -106,7 +106,7 @@ namespace Runway
         public bool IsVideo => Video != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickVideo(
 #if NET6_0_OR_GREATER
@@ -119,7 +119,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputVideo PickVideo() => IsVideo
             ? Video!
@@ -135,7 +135,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Audio))]
@@ -143,7 +143,7 @@ namespace Runway
         public bool IsAudio => Audio != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickAudio(
 #if NET6_0_OR_GREATER
@@ -156,23 +156,23 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputAudio PickAudio() => IsAudio
             ? Audio!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Audio' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator NodeOutputs(global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputPrimitive value) => new NodeOutputs((global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputPrimitive?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputPrimitive?(NodeOutputs @this) => @this.Primitive;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public NodeOutputs(global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputPrimitive? value)
         {
@@ -180,22 +180,22 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static NodeOutputs FromPrimitive(global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputPrimitive? value) => new NodeOutputs(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator NodeOutputs(global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputImage value) => new NodeOutputs((global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputImage?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputImage?(NodeOutputs @this) => @this.Image;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public NodeOutputs(global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputImage? value)
         {
@@ -203,22 +203,22 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static NodeOutputs FromImage(global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputImage? value) => new NodeOutputs(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator NodeOutputs(global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputVideo value) => new NodeOutputs((global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputVideo?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputVideo?(NodeOutputs @this) => @this.Video;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public NodeOutputs(global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputVideo? value)
         {
@@ -226,22 +226,22 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static NodeOutputs FromVideo(global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputVideo? value) => new NodeOutputs(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator NodeOutputs(global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputAudio value) => new NodeOutputs((global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputAudio?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputAudio?(NodeOutputs @this) => @this.Audio;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public NodeOutputs(global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputAudio? value)
         {
@@ -249,12 +249,12 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static NodeOutputs FromAudio(global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputAudio? value) => new NodeOutputs(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public NodeOutputs(
             global::Runway.CreateWorkflowsRequestNodeOutputsDiscriminatorType? type,
@@ -273,27 +273,27 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             Audio as object ??
             Video as object ??
             Image as object ??
-            Primitive as object 
+            Primitive as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             Primitive?.ToString() ??
             Image?.ToString() ??
             Video?.ToString() ??
-            Audio?.ToString() 
+            Audio?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -301,7 +301,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputPrimitive, TResult>? primitive = null,
@@ -336,7 +336,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputPrimitive>? primitive = null,
@@ -372,7 +372,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputPrimitive>? primitive = null,
@@ -405,7 +405,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -430,7 +430,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(NodeOutputs other)
         {
@@ -438,12 +438,12 @@ namespace Runway
                 global::System.Collections.Generic.EqualityComparer<global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputPrimitive?>.Default.Equals(Primitive, other.Primitive) &&
                 global::System.Collections.Generic.EqualityComparer<global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputImage?>.Default.Equals(Image, other.Image) &&
                 global::System.Collections.Generic.EqualityComparer<global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputVideo?>.Default.Equals(Video, other.Video) &&
-                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputAudio?>.Default.Equals(Audio, other.Audio) 
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputAudio?>.Default.Equals(Audio, other.Audio)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(NodeOutputs obj1, NodeOutputs obj2)
         {
@@ -451,7 +451,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(NodeOutputs obj1, NodeOutputs obj2)
         {
@@ -459,7 +459,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

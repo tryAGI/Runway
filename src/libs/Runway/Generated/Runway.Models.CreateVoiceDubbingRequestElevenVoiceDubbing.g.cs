@@ -4,7 +4,7 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class CreateVoiceDubbingRequestElevenVoiceDubbing
     {
@@ -44,7 +44,7 @@ namespace Runway
         public int? NumSpeakers { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"eleven_voice_dubbing"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]

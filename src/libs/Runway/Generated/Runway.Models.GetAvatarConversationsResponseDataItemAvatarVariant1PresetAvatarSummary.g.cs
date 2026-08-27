@@ -9,7 +9,7 @@ namespace Runway
     public sealed partial class GetAvatarConversationsResponseDataItemAvatarVariant1PresetAvatarSummary
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"runway-preset"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]

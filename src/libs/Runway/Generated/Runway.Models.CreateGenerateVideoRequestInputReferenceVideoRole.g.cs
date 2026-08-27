@@ -9,11 +9,11 @@ namespace Runway
     public enum CreateGenerateVideoRequestInputReferenceVideoRole
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Reference,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Source,
     }

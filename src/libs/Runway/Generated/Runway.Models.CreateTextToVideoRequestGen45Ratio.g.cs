@@ -9,11 +9,11 @@ namespace Runway
     public enum CreateTextToVideoRequestGen45Ratio
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1280_720,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x720_1280,
     }

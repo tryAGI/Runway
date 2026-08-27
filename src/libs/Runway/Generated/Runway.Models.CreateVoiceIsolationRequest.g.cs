@@ -5,17 +5,17 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct CreateVoiceIsolationRequest : global::System.IEquatable<CreateVoiceIsolationRequest>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.CreateVoiceIsolationRequestDiscriminatorModel? Model { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Runway.CreateVoiceIsolationRequestElevenVoiceIsolation? ElevenVoiceIsolation { get; init; }
@@ -24,7 +24,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ElevenVoiceIsolation))]
@@ -32,7 +32,7 @@ namespace Runway
         public bool IsElevenVoiceIsolation => ElevenVoiceIsolation != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickElevenVoiceIsolation(
 #if NET6_0_OR_GREATER
@@ -45,23 +45,23 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.CreateVoiceIsolationRequestElevenVoiceIsolation PickElevenVoiceIsolation() => IsElevenVoiceIsolation
             ? ElevenVoiceIsolation!
             : throw new global::System.InvalidOperationException($"Expected union variant 'ElevenVoiceIsolation' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator CreateVoiceIsolationRequest(global::Runway.CreateVoiceIsolationRequestElevenVoiceIsolation value) => new CreateVoiceIsolationRequest((global::Runway.CreateVoiceIsolationRequestElevenVoiceIsolation?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.CreateVoiceIsolationRequestElevenVoiceIsolation?(CreateVoiceIsolationRequest @this) => @this.ElevenVoiceIsolation;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public CreateVoiceIsolationRequest(global::Runway.CreateVoiceIsolationRequestElevenVoiceIsolation? value)
         {
@@ -69,12 +69,12 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static CreateVoiceIsolationRequest FromElevenVoiceIsolation(global::Runway.CreateVoiceIsolationRequestElevenVoiceIsolation? value) => new CreateVoiceIsolationRequest(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public CreateVoiceIsolationRequest(
             global::Runway.CreateVoiceIsolationRequestDiscriminatorModel? model,
@@ -87,21 +87,21 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
-            ElevenVoiceIsolation as object 
+            ElevenVoiceIsolation as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
-            ElevenVoiceIsolation?.ToString() 
+            ElevenVoiceIsolation?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -109,7 +109,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Runway.CreateVoiceIsolationRequestElevenVoiceIsolation, TResult>? elevenVoiceIsolation = null,
@@ -129,7 +129,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Runway.CreateVoiceIsolationRequestElevenVoiceIsolation>? elevenVoiceIsolation = null,
@@ -147,7 +147,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Runway.CreateVoiceIsolationRequestElevenVoiceIsolation>? elevenVoiceIsolation = null,
@@ -165,7 +165,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -184,17 +184,17 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(CreateVoiceIsolationRequest other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateVoiceIsolationRequestElevenVoiceIsolation?>.Default.Equals(ElevenVoiceIsolation, other.ElevenVoiceIsolation) 
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateVoiceIsolationRequestElevenVoiceIsolation?>.Default.Equals(ElevenVoiceIsolation, other.ElevenVoiceIsolation)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(CreateVoiceIsolationRequest obj1, CreateVoiceIsolationRequest obj2)
         {
@@ -202,7 +202,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(CreateVoiceIsolationRequest obj1, CreateVoiceIsolationRequest obj2)
         {
@@ -210,7 +210,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

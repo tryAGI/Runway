@@ -9,15 +9,15 @@ namespace Runway
     public enum CreateGenerateImageRequestInputResolution
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1k,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x2k,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x4k,
     }

@@ -9,11 +9,11 @@ namespace Runway
     public enum CreateRecipesAdLocalizationRequestVersion
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x202606,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UnsafeLatest,
     }

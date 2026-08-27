@@ -9,7 +9,7 @@ namespace Runway
     public enum CreateUploadsRequestType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Ephemeral,
     }

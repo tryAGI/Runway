@@ -10,7 +10,7 @@ namespace Runway
     public readonly partial struct Integration : global::System.IEquatable<Integration>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.CreateRealtimeSessionsRequestIntegrationDiscriminatorType? Type { get; }
 
@@ -24,7 +24,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Elevenlabs))]
@@ -32,7 +32,7 @@ namespace Runway
         public bool IsElevenlabs => Elevenlabs != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickElevenlabs(
 #if NET6_0_OR_GREATER
@@ -45,7 +45,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.CreateRealtimeSessionsRequestIntegrationElevenLabsIntegration PickElevenlabs() => IsElevenlabs
             ? Elevenlabs!
@@ -61,7 +61,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Livekit))]
@@ -69,7 +69,7 @@ namespace Runway
         public bool IsLivekit => Livekit != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickLivekit(
 #if NET6_0_OR_GREATER
@@ -82,23 +82,23 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.CreateRealtimeSessionsRequestIntegrationLiveKitIntegration PickLivekit() => IsLivekit
             ? Livekit!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Livekit' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator Integration(global::Runway.CreateRealtimeSessionsRequestIntegrationElevenLabsIntegration value) => new Integration((global::Runway.CreateRealtimeSessionsRequestIntegrationElevenLabsIntegration?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.CreateRealtimeSessionsRequestIntegrationElevenLabsIntegration?(Integration @this) => @this.Elevenlabs;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public Integration(global::Runway.CreateRealtimeSessionsRequestIntegrationElevenLabsIntegration? value)
         {
@@ -106,22 +106,22 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static Integration FromElevenlabs(global::Runway.CreateRealtimeSessionsRequestIntegrationElevenLabsIntegration? value) => new Integration(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator Integration(global::Runway.CreateRealtimeSessionsRequestIntegrationLiveKitIntegration value) => new Integration((global::Runway.CreateRealtimeSessionsRequestIntegrationLiveKitIntegration?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.CreateRealtimeSessionsRequestIntegrationLiveKitIntegration?(Integration @this) => @this.Livekit;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public Integration(global::Runway.CreateRealtimeSessionsRequestIntegrationLiveKitIntegration? value)
         {
@@ -129,12 +129,12 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static Integration FromLivekit(global::Runway.CreateRealtimeSessionsRequestIntegrationLiveKitIntegration? value) => new Integration(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public Integration(
             global::Runway.CreateRealtimeSessionsRequestIntegrationDiscriminatorType? type,
@@ -149,23 +149,23 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             Livekit as object ??
-            Elevenlabs as object 
+            Elevenlabs as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             Elevenlabs?.ToString() ??
-            Livekit?.ToString() 
+            Livekit?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -173,7 +173,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Runway.CreateRealtimeSessionsRequestIntegrationElevenLabsIntegration, TResult>? elevenlabs = null,
@@ -198,7 +198,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Runway.CreateRealtimeSessionsRequestIntegrationElevenLabsIntegration>? elevenlabs = null,
@@ -222,7 +222,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Runway.CreateRealtimeSessionsRequestIntegrationElevenLabsIntegration>? elevenlabs = null,
@@ -245,7 +245,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -266,18 +266,18 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(Integration other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::Runway.CreateRealtimeSessionsRequestIntegrationElevenLabsIntegration?>.Default.Equals(Elevenlabs, other.Elevenlabs) &&
-                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateRealtimeSessionsRequestIntegrationLiveKitIntegration?>.Default.Equals(Livekit, other.Livekit) 
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateRealtimeSessionsRequestIntegrationLiveKitIntegration?>.Default.Equals(Livekit, other.Livekit)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(Integration obj1, Integration obj2)
         {
@@ -285,7 +285,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(Integration obj1, Integration obj2)
         {
@@ -293,7 +293,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

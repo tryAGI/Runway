@@ -9,11 +9,11 @@ namespace Runway
     public enum CreateTextToImageRequestSeedream5ProOutputFormat
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Jpeg,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Png,
     }

@@ -10,7 +10,7 @@ namespace Runway
     public readonly partial struct Avatar2 : global::System.IEquatable<Avatar2>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.CreateRealtimeSessionsRequestAvatarDiscriminatorType? Type { get; }
 
@@ -24,7 +24,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(RunwayPreset))]
@@ -32,7 +32,7 @@ namespace Runway
         public bool IsRunwayPreset => RunwayPreset != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickRunwayPreset(
 #if NET6_0_OR_GREATER
@@ -45,7 +45,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.CreateRealtimeSessionsRequestAvatarRunwayPresetAvatar PickRunwayPreset() => IsRunwayPreset
             ? RunwayPreset!
@@ -61,7 +61,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Custom))]
@@ -69,7 +69,7 @@ namespace Runway
         public bool IsCustom => Custom != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickCustom(
 #if NET6_0_OR_GREATER
@@ -82,23 +82,23 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.CreateRealtimeSessionsRequestAvatarCustomAvatar PickCustom() => IsCustom
             ? Custom!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Custom' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator Avatar2(global::Runway.CreateRealtimeSessionsRequestAvatarRunwayPresetAvatar value) => new Avatar2((global::Runway.CreateRealtimeSessionsRequestAvatarRunwayPresetAvatar?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.CreateRealtimeSessionsRequestAvatarRunwayPresetAvatar?(Avatar2 @this) => @this.RunwayPreset;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public Avatar2(global::Runway.CreateRealtimeSessionsRequestAvatarRunwayPresetAvatar? value)
         {
@@ -106,22 +106,22 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static Avatar2 FromRunwayPreset(global::Runway.CreateRealtimeSessionsRequestAvatarRunwayPresetAvatar? value) => new Avatar2(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator Avatar2(global::Runway.CreateRealtimeSessionsRequestAvatarCustomAvatar value) => new Avatar2((global::Runway.CreateRealtimeSessionsRequestAvatarCustomAvatar?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.CreateRealtimeSessionsRequestAvatarCustomAvatar?(Avatar2 @this) => @this.Custom;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public Avatar2(global::Runway.CreateRealtimeSessionsRequestAvatarCustomAvatar? value)
         {
@@ -129,12 +129,12 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static Avatar2 FromCustom(global::Runway.CreateRealtimeSessionsRequestAvatarCustomAvatar? value) => new Avatar2(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public Avatar2(
             global::Runway.CreateRealtimeSessionsRequestAvatarDiscriminatorType? type,
@@ -149,23 +149,23 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             Custom as object ??
-            RunwayPreset as object 
+            RunwayPreset as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             RunwayPreset?.ToString() ??
-            Custom?.ToString() 
+            Custom?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -173,7 +173,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Runway.CreateRealtimeSessionsRequestAvatarRunwayPresetAvatar, TResult>? runwayPreset = null,
@@ -198,7 +198,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Runway.CreateRealtimeSessionsRequestAvatarRunwayPresetAvatar>? runwayPreset = null,
@@ -222,7 +222,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Runway.CreateRealtimeSessionsRequestAvatarRunwayPresetAvatar>? runwayPreset = null,
@@ -245,7 +245,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -266,18 +266,18 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(Avatar2 other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::Runway.CreateRealtimeSessionsRequestAvatarRunwayPresetAvatar?>.Default.Equals(RunwayPreset, other.RunwayPreset) &&
-                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateRealtimeSessionsRequestAvatarCustomAvatar?>.Default.Equals(Custom, other.Custom) 
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateRealtimeSessionsRequestAvatarCustomAvatar?>.Default.Equals(Custom, other.Custom)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(Avatar2 obj1, Avatar2 obj2)
         {
@@ -285,7 +285,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(Avatar2 obj1, Avatar2 obj2)
         {
@@ -293,7 +293,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

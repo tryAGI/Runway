@@ -9,14 +9,14 @@ namespace Runway
     public sealed partial class CreateGenerateVideoResponseVariant1
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("error")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string Error { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"no_eligible_model"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("code")]

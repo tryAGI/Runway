@@ -10,7 +10,7 @@ namespace Runway
     public readonly partial struct Speech : global::System.IEquatable<Speech>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.CreateAvatarVideosRequestSpeechDiscriminatorType? Type { get; }
 
@@ -24,7 +24,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Audio))]
@@ -32,7 +32,7 @@ namespace Runway
         public bool IsAudio => Audio != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickAudio(
 #if NET6_0_OR_GREATER
@@ -45,7 +45,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.CreateAvatarVideosRequestSpeechAudioInput PickAudio() => IsAudio
             ? Audio!
@@ -61,7 +61,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Text))]
@@ -69,7 +69,7 @@ namespace Runway
         public bool IsText => Text != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickText(
 #if NET6_0_OR_GREATER
@@ -82,23 +82,23 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.CreateAvatarVideosRequestSpeechTextInput PickText() => IsText
             ? Text!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Text' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator Speech(global::Runway.CreateAvatarVideosRequestSpeechAudioInput value) => new Speech((global::Runway.CreateAvatarVideosRequestSpeechAudioInput?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.CreateAvatarVideosRequestSpeechAudioInput?(Speech @this) => @this.Audio;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public Speech(global::Runway.CreateAvatarVideosRequestSpeechAudioInput? value)
         {
@@ -106,22 +106,22 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static Speech FromAudio(global::Runway.CreateAvatarVideosRequestSpeechAudioInput? value) => new Speech(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator Speech(global::Runway.CreateAvatarVideosRequestSpeechTextInput value) => new Speech((global::Runway.CreateAvatarVideosRequestSpeechTextInput?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.CreateAvatarVideosRequestSpeechTextInput?(Speech @this) => @this.Text;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public Speech(global::Runway.CreateAvatarVideosRequestSpeechTextInput? value)
         {
@@ -129,12 +129,12 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static Speech FromText(global::Runway.CreateAvatarVideosRequestSpeechTextInput? value) => new Speech(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public Speech(
             global::Runway.CreateAvatarVideosRequestSpeechDiscriminatorType? type,
@@ -149,23 +149,23 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             Text as object ??
-            Audio as object 
+            Audio as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             Audio?.ToString() ??
-            Text?.ToString() 
+            Text?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -173,7 +173,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Runway.CreateAvatarVideosRequestSpeechAudioInput, TResult>? audio = null,
@@ -198,7 +198,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Runway.CreateAvatarVideosRequestSpeechAudioInput>? audio = null,
@@ -222,7 +222,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Runway.CreateAvatarVideosRequestSpeechAudioInput>? audio = null,
@@ -245,7 +245,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -266,18 +266,18 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(Speech other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::Runway.CreateAvatarVideosRequestSpeechAudioInput?>.Default.Equals(Audio, other.Audio) &&
-                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateAvatarVideosRequestSpeechTextInput?>.Default.Equals(Text, other.Text) 
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateAvatarVideosRequestSpeechTextInput?>.Default.Equals(Text, other.Text)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(Speech obj1, Speech obj2)
         {
@@ -285,7 +285,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(Speech obj1, Speech obj2)
         {
@@ -293,7 +293,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

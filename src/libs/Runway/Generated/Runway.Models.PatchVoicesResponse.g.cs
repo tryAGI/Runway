@@ -5,12 +5,12 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct PatchVoicesResponse : global::System.IEquatable<PatchVoicesResponse>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.PatchVoicesResponseDiscriminatorStatus? Status { get; }
 
@@ -24,7 +24,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Processing))]
@@ -32,7 +32,7 @@ namespace Runway
         public bool IsProcessing => Processing != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickProcessing(
 #if NET6_0_OR_GREATER
@@ -45,7 +45,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.PatchVoicesResponseVoiceProcessing PickProcessing() => IsProcessing
             ? Processing!
@@ -61,7 +61,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Ready))]
@@ -69,7 +69,7 @@ namespace Runway
         public bool IsReady => Ready != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickReady(
 #if NET6_0_OR_GREATER
@@ -82,7 +82,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.PatchVoicesResponseVoiceReady PickReady() => IsReady
             ? Ready!
@@ -98,7 +98,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Failed))]
@@ -106,7 +106,7 @@ namespace Runway
         public bool IsFailed => Failed != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickFailed(
 #if NET6_0_OR_GREATER
@@ -119,23 +119,23 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.PatchVoicesResponseVoiceFailed PickFailed() => IsFailed
             ? Failed!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Failed' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator PatchVoicesResponse(global::Runway.PatchVoicesResponseVoiceProcessing value) => new PatchVoicesResponse((global::Runway.PatchVoicesResponseVoiceProcessing?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.PatchVoicesResponseVoiceProcessing?(PatchVoicesResponse @this) => @this.Processing;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public PatchVoicesResponse(global::Runway.PatchVoicesResponseVoiceProcessing? value)
         {
@@ -143,22 +143,22 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static PatchVoicesResponse FromProcessing(global::Runway.PatchVoicesResponseVoiceProcessing? value) => new PatchVoicesResponse(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator PatchVoicesResponse(global::Runway.PatchVoicesResponseVoiceReady value) => new PatchVoicesResponse((global::Runway.PatchVoicesResponseVoiceReady?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.PatchVoicesResponseVoiceReady?(PatchVoicesResponse @this) => @this.Ready;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public PatchVoicesResponse(global::Runway.PatchVoicesResponseVoiceReady? value)
         {
@@ -166,22 +166,22 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static PatchVoicesResponse FromReady(global::Runway.PatchVoicesResponseVoiceReady? value) => new PatchVoicesResponse(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator PatchVoicesResponse(global::Runway.PatchVoicesResponseVoiceFailed value) => new PatchVoicesResponse((global::Runway.PatchVoicesResponseVoiceFailed?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.PatchVoicesResponseVoiceFailed?(PatchVoicesResponse @this) => @this.Failed;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public PatchVoicesResponse(global::Runway.PatchVoicesResponseVoiceFailed? value)
         {
@@ -189,12 +189,12 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static PatchVoicesResponse FromFailed(global::Runway.PatchVoicesResponseVoiceFailed? value) => new PatchVoicesResponse(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public PatchVoicesResponse(
             global::Runway.PatchVoicesResponseDiscriminatorStatus? status,
@@ -211,25 +211,25 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             Failed as object ??
             Ready as object ??
-            Processing as object 
+            Processing as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             Processing?.ToString() ??
             Ready?.ToString() ??
-            Failed?.ToString() 
+            Failed?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -237,7 +237,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Runway.PatchVoicesResponseVoiceProcessing, TResult>? processing = null,
@@ -267,7 +267,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Runway.PatchVoicesResponseVoiceProcessing>? processing = null,
@@ -297,7 +297,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Runway.PatchVoicesResponseVoiceProcessing>? processing = null,
@@ -325,7 +325,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -348,19 +348,19 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(PatchVoicesResponse other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::Runway.PatchVoicesResponseVoiceProcessing?>.Default.Equals(Processing, other.Processing) &&
                 global::System.Collections.Generic.EqualityComparer<global::Runway.PatchVoicesResponseVoiceReady?>.Default.Equals(Ready, other.Ready) &&
-                global::System.Collections.Generic.EqualityComparer<global::Runway.PatchVoicesResponseVoiceFailed?>.Default.Equals(Failed, other.Failed) 
+                global::System.Collections.Generic.EqualityComparer<global::Runway.PatchVoicesResponseVoiceFailed?>.Default.Equals(Failed, other.Failed)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(PatchVoicesResponse obj1, PatchVoicesResponse obj2)
         {
@@ -368,7 +368,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(PatchVoicesResponse obj1, PatchVoicesResponse obj2)
         {
@@ -376,7 +376,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

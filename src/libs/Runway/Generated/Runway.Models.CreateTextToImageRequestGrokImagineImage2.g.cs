@@ -4,7 +4,7 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class CreateTextToImageRequestGrokImagineImage2
     {
@@ -49,7 +49,7 @@ namespace Runway
         public int? OutputCount { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"grok_imagine_image_2"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]

@@ -4,7 +4,7 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class CreateTextToVideoRequestVeo31
     {
@@ -43,7 +43,7 @@ namespace Runway
         public double? Duration { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"veo3.1"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]

@@ -9,211 +9,211 @@ namespace Runway
     public enum CreateOrganizationUsageResponseResultUsedCreditModel
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ActTwo,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AdLocalization,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Aleph2,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ElevenMultilingualStsV2,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ElevenMultilingualV2,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ElevenScribeV2,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ElevenTextToSoundV2,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ElevenV3,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ElevenVoiceDubbing,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ElevenVoiceIsolation,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Gemini25Flash,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         GeminiImage31Flash,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         GeminiImage3Pro,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         GeminiOmniFlash,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Gen3aTurbo,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Gen45,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Gen4Aleph,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Gen4Image,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Gen4ImageTurbo,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Gen4Turbo,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         GptImage2,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Gwm1AvatarAsyncAudioToVideo,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Gwm1AvatarAsyncTextToVideo,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Gwm1Avatars,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Hailuo3,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Happyhorse10,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Kling25TurboPro,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Kling304k,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Kling30Pro,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Kling30Standard,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         KlingO34k,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         KlingO3Pro,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         KlingO3Standard,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MagnificPrecisionUpscalerV2,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MagnificVideoUpscalerCreative,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MarketingStockImage,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MultiShotVideo,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ProductAd,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ProductCampaignImage,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ProductSwap,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ProductUgc,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SeedAudio,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Seedance2,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Seedance25,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Seedance2Fast,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Seedance2Mini,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Seedream5Lite,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Seedream5Pro,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Veo3,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Veo31,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Veo31Fast,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         VoiceProcessing,
     }

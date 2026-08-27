@@ -4,7 +4,7 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class CreateSoundEffectRequestElevenTextToSoundV2
     {
@@ -29,7 +29,7 @@ namespace Runway
         public bool? Loop { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"eleven_text_to_sound_v2"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]

@@ -23,14 +23,14 @@ namespace Runway
         public required global::System.DateTime CreatedAt { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"RUNNING"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("status")]
         public string Status { get; set; } = "RUNNING";
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("progress")]
         [global::System.Text.Json.Serialization.JsonRequired]

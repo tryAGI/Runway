@@ -9,67 +9,67 @@ namespace Runway
     public enum CreateTextToImageRequestSeedream5LiteRatio
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1600_2848,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1664_2496,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1728_2304,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x2048_2048,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x2304_1728,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x2304_4096,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x2496_1664,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x2496_3744,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x2592_3456,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x2848_1600,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x3072_3072,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x3136_1344,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x3456_2592,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x3744_2496,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x4096_2304,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x4704_2016,
     }

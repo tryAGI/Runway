@@ -9,19 +9,19 @@ namespace Runway
     public enum CreateRealtimeSessionsRequestToolBackendRPCToolParameterArrayParameterItemsType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Boolean,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Integer,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Number,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         String,
     }

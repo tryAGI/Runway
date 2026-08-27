@@ -9,11 +9,11 @@ namespace Runway
     public enum GetAvatarConversationsResponseVariant1TranscriptItemRole
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Assistant,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         User,
     }

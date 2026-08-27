@@ -9,11 +9,11 @@ namespace Runway
     public enum GetDocumentsResponseDataItemType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         File,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Text,
     }

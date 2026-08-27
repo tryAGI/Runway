@@ -9,15 +9,15 @@ namespace Runway
     public enum CreateTextToSpeechRequestSeedAudioOutputFormat
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Mp3,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         OggOpus,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Wav,
     }

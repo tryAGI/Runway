@@ -20,7 +20,7 @@ namespace Runway.JsonConverters
                     {
                         return global::Runway.PatchRoutersRequestSettingsModelsModeExtensions.ToEnum(stringValue);
                     }
-                    
+
                     break;
                 }
                 case global::System.Text.Json.JsonTokenType.Number:

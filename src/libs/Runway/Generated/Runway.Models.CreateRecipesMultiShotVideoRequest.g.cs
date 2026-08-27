@@ -5,17 +5,17 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct CreateRecipesMultiShotVideoRequest : global::System.IEquatable<CreateRecipesMultiShotVideoRequest>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.CreateRecipesMultiShotVideoRequestDiscriminatorMode? Mode { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Runway.CreateRecipesMultiShotVideoRequestVariant1? Auto { get; init; }
@@ -24,7 +24,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Auto))]
@@ -32,7 +32,7 @@ namespace Runway
         public bool IsAuto => Auto != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickAuto(
 #if NET6_0_OR_GREATER
@@ -45,14 +45,14 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.CreateRecipesMultiShotVideoRequestVariant1 PickAuto() => IsAuto
             ? Auto!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Auto' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Runway.CreateRecipesMultiShotVideoRequestVariant2? Custom { get; init; }
@@ -61,7 +61,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Custom))]
@@ -69,7 +69,7 @@ namespace Runway
         public bool IsCustom => Custom != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickCustom(
 #if NET6_0_OR_GREATER
@@ -82,23 +82,23 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.CreateRecipesMultiShotVideoRequestVariant2 PickCustom() => IsCustom
             ? Custom!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Custom' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator CreateRecipesMultiShotVideoRequest(global::Runway.CreateRecipesMultiShotVideoRequestVariant1 value) => new CreateRecipesMultiShotVideoRequest((global::Runway.CreateRecipesMultiShotVideoRequestVariant1?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.CreateRecipesMultiShotVideoRequestVariant1?(CreateRecipesMultiShotVideoRequest @this) => @this.Auto;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public CreateRecipesMultiShotVideoRequest(global::Runway.CreateRecipesMultiShotVideoRequestVariant1? value)
         {
@@ -106,22 +106,22 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static CreateRecipesMultiShotVideoRequest FromAuto(global::Runway.CreateRecipesMultiShotVideoRequestVariant1? value) => new CreateRecipesMultiShotVideoRequest(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator CreateRecipesMultiShotVideoRequest(global::Runway.CreateRecipesMultiShotVideoRequestVariant2 value) => new CreateRecipesMultiShotVideoRequest((global::Runway.CreateRecipesMultiShotVideoRequestVariant2?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.CreateRecipesMultiShotVideoRequestVariant2?(CreateRecipesMultiShotVideoRequest @this) => @this.Custom;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public CreateRecipesMultiShotVideoRequest(global::Runway.CreateRecipesMultiShotVideoRequestVariant2? value)
         {
@@ -129,12 +129,12 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static CreateRecipesMultiShotVideoRequest FromCustom(global::Runway.CreateRecipesMultiShotVideoRequestVariant2? value) => new CreateRecipesMultiShotVideoRequest(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public CreateRecipesMultiShotVideoRequest(
             global::Runway.CreateRecipesMultiShotVideoRequestDiscriminatorMode? mode,
@@ -149,23 +149,23 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             Custom as object ??
-            Auto as object 
+            Auto as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             Auto?.ToString() ??
-            Custom?.ToString() 
+            Custom?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -173,7 +173,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Runway.CreateRecipesMultiShotVideoRequestVariant1, TResult>? auto = null,
@@ -198,7 +198,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Runway.CreateRecipesMultiShotVideoRequestVariant1>? auto = null,
@@ -222,7 +222,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Runway.CreateRecipesMultiShotVideoRequestVariant1>? auto = null,
@@ -245,7 +245,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -266,18 +266,18 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(CreateRecipesMultiShotVideoRequest other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::Runway.CreateRecipesMultiShotVideoRequestVariant1?>.Default.Equals(Auto, other.Auto) &&
-                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateRecipesMultiShotVideoRequestVariant2?>.Default.Equals(Custom, other.Custom) 
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateRecipesMultiShotVideoRequestVariant2?>.Default.Equals(Custom, other.Custom)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(CreateRecipesMultiShotVideoRequest obj1, CreateRecipesMultiShotVideoRequest obj2)
         {
@@ -285,7 +285,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(CreateRecipesMultiShotVideoRequest obj1, CreateRecipesMultiShotVideoRequest obj2)
         {
@@ -293,7 +293,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

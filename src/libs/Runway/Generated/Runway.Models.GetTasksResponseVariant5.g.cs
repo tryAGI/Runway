@@ -23,7 +23,7 @@ namespace Runway
         public required global::System.DateTime CreatedAt { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"FAILED"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("status")]

@@ -4,28 +4,28 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum CreateGenerateAudioResponseVariant1EmptiedByItem
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AllowDeny,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Capability,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InputSupport,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Price,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         PromptLength,
     }

@@ -9,7 +9,7 @@ namespace Runway
     public sealed partial class CreateRealtimeSessionsRequestIntegrationElevenLabsIntegration
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"elevenlabs"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]

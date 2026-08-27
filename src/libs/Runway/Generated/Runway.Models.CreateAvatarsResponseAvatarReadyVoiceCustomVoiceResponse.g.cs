@@ -9,7 +9,7 @@ namespace Runway
     public sealed partial class CreateAvatarsResponseAvatarReadyVoiceCustomVoiceResponse
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"custom"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]

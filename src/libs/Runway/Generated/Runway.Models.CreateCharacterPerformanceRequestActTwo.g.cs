@@ -4,7 +4,7 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class CreateCharacterPerformanceRequestActTwo
     {
@@ -66,7 +66,7 @@ namespace Runway
         public global::Runway.CreateCharacterPerformanceRequestActTwoContentModeration? ContentModeration { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"act_two"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]

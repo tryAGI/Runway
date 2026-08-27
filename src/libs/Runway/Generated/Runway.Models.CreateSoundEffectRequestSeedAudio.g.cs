@@ -4,7 +4,7 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class CreateSoundEffectRequestSeedAudio
     {
@@ -53,7 +53,7 @@ namespace Runway
         public global::Runway.CreateSoundEffectRequestSeedAudioOutputFormat? OutputFormat { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"seed_audio"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]

@@ -9,7 +9,7 @@ namespace Runway
     public sealed partial class CreateRealtimeSessionsRequestIntegrationLiveKitIntegration
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"livekit"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]

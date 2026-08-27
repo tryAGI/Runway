@@ -9,7 +9,7 @@ namespace Runway
     public sealed partial class CreateImageToVideoRequestSeedance2FastReferenceAudioItem
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"audio"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]

@@ -5,17 +5,17 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct CreateVoiceDubbingRequest : global::System.IEquatable<CreateVoiceDubbingRequest>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.CreateVoiceDubbingRequestDiscriminatorModel? Model { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Runway.CreateVoiceDubbingRequestElevenVoiceDubbing? ElevenVoiceDubbing { get; init; }
@@ -24,7 +24,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ElevenVoiceDubbing))]
@@ -32,7 +32,7 @@ namespace Runway
         public bool IsElevenVoiceDubbing => ElevenVoiceDubbing != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickElevenVoiceDubbing(
 #if NET6_0_OR_GREATER
@@ -45,23 +45,23 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.CreateVoiceDubbingRequestElevenVoiceDubbing PickElevenVoiceDubbing() => IsElevenVoiceDubbing
             ? ElevenVoiceDubbing!
             : throw new global::System.InvalidOperationException($"Expected union variant 'ElevenVoiceDubbing' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator CreateVoiceDubbingRequest(global::Runway.CreateVoiceDubbingRequestElevenVoiceDubbing value) => new CreateVoiceDubbingRequest((global::Runway.CreateVoiceDubbingRequestElevenVoiceDubbing?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.CreateVoiceDubbingRequestElevenVoiceDubbing?(CreateVoiceDubbingRequest @this) => @this.ElevenVoiceDubbing;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public CreateVoiceDubbingRequest(global::Runway.CreateVoiceDubbingRequestElevenVoiceDubbing? value)
         {
@@ -69,12 +69,12 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static CreateVoiceDubbingRequest FromElevenVoiceDubbing(global::Runway.CreateVoiceDubbingRequestElevenVoiceDubbing? value) => new CreateVoiceDubbingRequest(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public CreateVoiceDubbingRequest(
             global::Runway.CreateVoiceDubbingRequestDiscriminatorModel? model,
@@ -87,21 +87,21 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
-            ElevenVoiceDubbing as object 
+            ElevenVoiceDubbing as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
-            ElevenVoiceDubbing?.ToString() 
+            ElevenVoiceDubbing?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -109,7 +109,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Runway.CreateVoiceDubbingRequestElevenVoiceDubbing, TResult>? elevenVoiceDubbing = null,
@@ -129,7 +129,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Runway.CreateVoiceDubbingRequestElevenVoiceDubbing>? elevenVoiceDubbing = null,
@@ -147,7 +147,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Runway.CreateVoiceDubbingRequestElevenVoiceDubbing>? elevenVoiceDubbing = null,
@@ -165,7 +165,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -184,17 +184,17 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(CreateVoiceDubbingRequest other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateVoiceDubbingRequestElevenVoiceDubbing?>.Default.Equals(ElevenVoiceDubbing, other.ElevenVoiceDubbing) 
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateVoiceDubbingRequestElevenVoiceDubbing?>.Default.Equals(ElevenVoiceDubbing, other.ElevenVoiceDubbing)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(CreateVoiceDubbingRequest obj1, CreateVoiceDubbingRequest obj2)
         {
@@ -202,7 +202,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(CreateVoiceDubbingRequest obj1, CreateVoiceDubbingRequest obj2)
         {
@@ -210,7 +210,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

@@ -11,7 +11,7 @@ namespace Runway
     public sealed partial class RunwayClient : global::Runway.IRunwayClient, global::System.IDisposable
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public const string DefaultBaseUrl = "https://api.dev.runwayml.com/";
 
@@ -38,7 +38,7 @@ namespace Runway
         internal global::System.Lazy<global::System.Text.Json.Serialization.JsonSerializerContext> JsonSerializerContextProvider { get; set; } = new(() => global::Runway.SourceGenerationContext.Default);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::System.Text.Json.Serialization.JsonSerializerContext JsonSerializerContext
         {
@@ -48,7 +48,7 @@ namespace Runway
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public AvatarVideosClient AvatarVideos => new AvatarVideosClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -57,7 +57,7 @@ namespace Runway
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public AvatarsClient Avatars => new AvatarsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -66,7 +66,7 @@ namespace Runway
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public KnowledgeClient Knowledge => new KnowledgeClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -75,7 +75,7 @@ namespace Runway
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ModelRouterClient ModelRouter => new ModelRouterClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -84,7 +84,7 @@ namespace Runway
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public OrganizationClient Organization => new OrganizationClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -93,7 +93,7 @@ namespace Runway
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public RealtimeSessionsClient RealtimeSessions => new RealtimeSessionsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -102,7 +102,7 @@ namespace Runway
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public RecipesClient Recipes => new RecipesClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -138,7 +138,7 @@ namespace Runway
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public VoicesClient Voices => new VoicesClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -147,7 +147,7 @@ namespace Runway
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public WorkflowsClient Workflows => new WorkflowsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {

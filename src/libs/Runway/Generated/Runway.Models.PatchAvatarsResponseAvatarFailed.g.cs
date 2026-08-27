@@ -77,7 +77,7 @@ namespace Runway
         public required global::System.DateTime UpdatedAt { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"FAILED"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("status")]

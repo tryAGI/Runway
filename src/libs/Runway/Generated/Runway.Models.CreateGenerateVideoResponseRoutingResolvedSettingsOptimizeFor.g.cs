@@ -9,15 +9,15 @@ namespace Runway
     public enum CreateGenerateVideoResponseRoutingResolvedSettingsOptimizeFor
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Cost,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Latency,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Quality,
     }

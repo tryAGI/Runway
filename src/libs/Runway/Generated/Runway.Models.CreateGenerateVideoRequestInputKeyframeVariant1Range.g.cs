@@ -4,19 +4,19 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class CreateGenerateVideoRequestInputKeyframeVariant1Range
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("start_seconds")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required int StartSeconds { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("end_seconds")]
         [global::System.Text.Json.Serialization.JsonRequired]

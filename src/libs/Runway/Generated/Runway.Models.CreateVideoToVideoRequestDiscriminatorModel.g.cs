@@ -4,36 +4,36 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum CreateVideoToVideoRequestDiscriminatorModel
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Aleph2,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         GeminiOmniFlash,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Hailuo3,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Seedance2,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Seedance25,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Seedance2Fast,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Seedance2Mini,
     }

@@ -9,107 +9,107 @@ namespace Runway
     public enum CreateTextToImageRequestGrokImagineImage2Ratio
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1024_1024,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1152_864,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1248_576,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1248_832,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1280_576,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1280_720,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1344_2912,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1408_704,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1440_3200,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1456_2912,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1584_2816,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1664_2496,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1776_2368,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x2048_2048,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x2368_1776,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x2496_1664,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x2816_1584,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x2912_1344,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x2912_1456,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x3200_1440,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x576_1248,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x576_1280,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x704_1408,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x720_1280,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x832_1248,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x864_1152,
         /// <summary>

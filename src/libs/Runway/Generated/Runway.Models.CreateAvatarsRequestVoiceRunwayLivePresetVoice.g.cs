@@ -9,7 +9,7 @@ namespace Runway
     public sealed partial class CreateAvatarsRequestVoiceRunwayLivePresetVoice
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"runway-live-preset"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]

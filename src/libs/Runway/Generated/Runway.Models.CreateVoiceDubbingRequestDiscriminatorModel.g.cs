@@ -4,12 +4,12 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum CreateVoiceDubbingRequestDiscriminatorModel
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ElevenVoiceDubbing,
     }

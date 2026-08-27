@@ -4,19 +4,19 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class CreateGenerateVideoResponse4
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("error")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string Error { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"router_config_not_found"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("code")]

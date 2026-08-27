@@ -4,12 +4,12 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum CreateVideoUpscaleRequestDiscriminatorModel
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MagnificVideoUpscalerCreative,
     }

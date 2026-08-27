@@ -4,7 +4,7 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class CreateRealtimeSessionsRequestToolClientEventToolParameterStringParameter
     {
@@ -30,7 +30,7 @@ namespace Runway
         public bool? Required { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"string"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]

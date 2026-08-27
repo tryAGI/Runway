@@ -5,17 +5,17 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct CreateCharacterPerformanceRequest : global::System.IEquatable<CreateCharacterPerformanceRequest>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.CreateCharacterPerformanceRequestDiscriminatorModel? Model { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Runway.CreateCharacterPerformanceRequestActTwo? ActTwo { get; init; }
@@ -24,7 +24,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ActTwo))]
@@ -32,7 +32,7 @@ namespace Runway
         public bool IsActTwo => ActTwo != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickActTwo(
 #if NET6_0_OR_GREATER
@@ -45,23 +45,23 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.CreateCharacterPerformanceRequestActTwo PickActTwo() => IsActTwo
             ? ActTwo!
             : throw new global::System.InvalidOperationException($"Expected union variant 'ActTwo' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator CreateCharacterPerformanceRequest(global::Runway.CreateCharacterPerformanceRequestActTwo value) => new CreateCharacterPerformanceRequest((global::Runway.CreateCharacterPerformanceRequestActTwo?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.CreateCharacterPerformanceRequestActTwo?(CreateCharacterPerformanceRequest @this) => @this.ActTwo;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public CreateCharacterPerformanceRequest(global::Runway.CreateCharacterPerformanceRequestActTwo? value)
         {
@@ -69,12 +69,12 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static CreateCharacterPerformanceRequest FromActTwo(global::Runway.CreateCharacterPerformanceRequestActTwo? value) => new CreateCharacterPerformanceRequest(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public CreateCharacterPerformanceRequest(
             global::Runway.CreateCharacterPerformanceRequestDiscriminatorModel? model,
@@ -87,21 +87,21 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
-            ActTwo as object 
+            ActTwo as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
-            ActTwo?.ToString() 
+            ActTwo?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -109,7 +109,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Runway.CreateCharacterPerformanceRequestActTwo, TResult>? actTwo = null,
@@ -129,7 +129,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Runway.CreateCharacterPerformanceRequestActTwo>? actTwo = null,
@@ -147,7 +147,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Runway.CreateCharacterPerformanceRequestActTwo>? actTwo = null,
@@ -165,7 +165,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -184,17 +184,17 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(CreateCharacterPerformanceRequest other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateCharacterPerformanceRequestActTwo?>.Default.Equals(ActTwo, other.ActTwo) 
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateCharacterPerformanceRequestActTwo?>.Default.Equals(ActTwo, other.ActTwo)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(CreateCharacterPerformanceRequest obj1, CreateCharacterPerformanceRequest obj2)
         {
@@ -202,7 +202,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(CreateCharacterPerformanceRequest obj1, CreateCharacterPerformanceRequest obj2)
         {
@@ -210,7 +210,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

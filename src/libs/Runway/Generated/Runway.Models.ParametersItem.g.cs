@@ -5,17 +5,17 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct ParametersItem : global::System.IEquatable<ParametersItem>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterDiscriminatorType? Type { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterStringParameter? String { get; init; }
@@ -24,7 +24,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(String))]
@@ -32,7 +32,7 @@ namespace Runway
         public bool IsString => String != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickString(
 #if NET6_0_OR_GREATER
@@ -45,14 +45,14 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterStringParameter PickString() => IsString
             ? String!
             : throw new global::System.InvalidOperationException($"Expected union variant 'String' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterIntegerParameter? Integer { get; init; }
@@ -61,7 +61,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Integer))]
@@ -69,7 +69,7 @@ namespace Runway
         public bool IsInteger => Integer != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickInteger(
 #if NET6_0_OR_GREATER
@@ -82,14 +82,14 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterIntegerParameter PickInteger() => IsInteger
             ? Integer!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Integer' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterNumberParameter? Number { get; init; }
@@ -98,7 +98,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Number))]
@@ -106,7 +106,7 @@ namespace Runway
         public bool IsNumber => Number != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickNumber(
 #if NET6_0_OR_GREATER
@@ -119,14 +119,14 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterNumberParameter PickNumber() => IsNumber
             ? Number!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Number' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterBooleanParameter? Boolean { get; init; }
@@ -135,7 +135,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Boolean))]
@@ -143,7 +143,7 @@ namespace Runway
         public bool IsBoolean => Boolean != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickBoolean(
 #if NET6_0_OR_GREATER
@@ -156,14 +156,14 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterBooleanParameter PickBoolean() => IsBoolean
             ? Boolean!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Boolean' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterArrayParameter? Array { get; init; }
@@ -172,7 +172,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Array))]
@@ -180,7 +180,7 @@ namespace Runway
         public bool IsArray => Array != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickArray(
 #if NET6_0_OR_GREATER
@@ -193,14 +193,14 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterArrayParameter PickArray() => IsArray
             ? Array!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Array' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterObjectParameter? ObjectValue { get; init; }
@@ -209,7 +209,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ObjectValue))]
@@ -217,7 +217,7 @@ namespace Runway
         public bool IsObjectValue => ObjectValue != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickObjectValue(
 #if NET6_0_OR_GREATER
@@ -230,23 +230,23 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterObjectParameter PickObjectValue() => IsObjectValue
             ? ObjectValue!
             : throw new global::System.InvalidOperationException($"Expected union variant 'ObjectValue' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ParametersItem(global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterStringParameter value) => new ParametersItem((global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterStringParameter?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterStringParameter?(ParametersItem @this) => @this.String;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ParametersItem(global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterStringParameter? value)
         {
@@ -254,22 +254,22 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ParametersItem FromString(global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterStringParameter? value) => new ParametersItem(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ParametersItem(global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterIntegerParameter value) => new ParametersItem((global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterIntegerParameter?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterIntegerParameter?(ParametersItem @this) => @this.Integer;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ParametersItem(global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterIntegerParameter? value)
         {
@@ -277,22 +277,22 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ParametersItem FromInteger(global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterIntegerParameter? value) => new ParametersItem(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ParametersItem(global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterNumberParameter value) => new ParametersItem((global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterNumberParameter?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterNumberParameter?(ParametersItem @this) => @this.Number;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ParametersItem(global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterNumberParameter? value)
         {
@@ -300,22 +300,22 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ParametersItem FromNumber(global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterNumberParameter? value) => new ParametersItem(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ParametersItem(global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterBooleanParameter value) => new ParametersItem((global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterBooleanParameter?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterBooleanParameter?(ParametersItem @this) => @this.Boolean;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ParametersItem(global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterBooleanParameter? value)
         {
@@ -323,22 +323,22 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ParametersItem FromBoolean(global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterBooleanParameter? value) => new ParametersItem(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ParametersItem(global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterArrayParameter value) => new ParametersItem((global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterArrayParameter?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterArrayParameter?(ParametersItem @this) => @this.Array;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ParametersItem(global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterArrayParameter? value)
         {
@@ -346,22 +346,22 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ParametersItem FromArray(global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterArrayParameter? value) => new ParametersItem(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ParametersItem(global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterObjectParameter value) => new ParametersItem((global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterObjectParameter?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterObjectParameter?(ParametersItem @this) => @this.ObjectValue;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ParametersItem(global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterObjectParameter? value)
         {
@@ -369,12 +369,12 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ParametersItem FromObjectValue(global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterObjectParameter? value) => new ParametersItem(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ParametersItem(
             global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterDiscriminatorType? type,
@@ -397,7 +397,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             ObjectValue as object ??
@@ -405,11 +405,11 @@ namespace Runway
             Boolean as object ??
             Number as object ??
             Integer as object ??
-            String as object 
+            String as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             String?.ToString() ??
@@ -417,11 +417,11 @@ namespace Runway
             Number?.ToString() ??
             Boolean?.ToString() ??
             Array?.ToString() ??
-            ObjectValue?.ToString() 
+            ObjectValue?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -429,7 +429,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterStringParameter, TResult>? @string = null,
@@ -474,7 +474,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterStringParameter>? @string = null,
@@ -522,7 +522,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterStringParameter>? @string = null,
@@ -565,7 +565,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -594,7 +594,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(ParametersItem other)
         {
@@ -604,12 +604,12 @@ namespace Runway
                 global::System.Collections.Generic.EqualityComparer<global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterNumberParameter?>.Default.Equals(Number, other.Number) &&
                 global::System.Collections.Generic.EqualityComparer<global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterBooleanParameter?>.Default.Equals(Boolean, other.Boolean) &&
                 global::System.Collections.Generic.EqualityComparer<global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterArrayParameter?>.Default.Equals(Array, other.Array) &&
-                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterObjectParameter?>.Default.Equals(ObjectValue, other.ObjectValue) 
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterObjectParameter?>.Default.Equals(ObjectValue, other.ObjectValue)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(ParametersItem obj1, ParametersItem obj2)
         {
@@ -617,7 +617,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(ParametersItem obj1, ParametersItem obj2)
         {
@@ -625,7 +625,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

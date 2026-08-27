@@ -10,7 +10,7 @@ namespace Runway
     public readonly partial struct AvatarVariant12 : global::System.IEquatable<AvatarVariant12>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.GetAvatarConversationsResponseVariant1AvatarVariant1DiscriminatorType? Type { get; }
 
@@ -24,7 +24,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(RunwayPreset))]
@@ -32,7 +32,7 @@ namespace Runway
         public bool IsRunwayPreset => RunwayPreset != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickRunwayPreset(
 #if NET6_0_OR_GREATER
@@ -45,7 +45,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.GetAvatarConversationsResponseVariant1AvatarVariant1PresetAvatar PickRunwayPreset() => IsRunwayPreset
             ? RunwayPreset!
@@ -61,7 +61,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Custom))]
@@ -69,7 +69,7 @@ namespace Runway
         public bool IsCustom => Custom != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickCustom(
 #if NET6_0_OR_GREATER
@@ -82,23 +82,23 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.GetAvatarConversationsResponseVariant1AvatarVariant1CustomAvatar PickCustom() => IsCustom
             ? Custom!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Custom' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator AvatarVariant12(global::Runway.GetAvatarConversationsResponseVariant1AvatarVariant1PresetAvatar value) => new AvatarVariant12((global::Runway.GetAvatarConversationsResponseVariant1AvatarVariant1PresetAvatar?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.GetAvatarConversationsResponseVariant1AvatarVariant1PresetAvatar?(AvatarVariant12 @this) => @this.RunwayPreset;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public AvatarVariant12(global::Runway.GetAvatarConversationsResponseVariant1AvatarVariant1PresetAvatar? value)
         {
@@ -106,22 +106,22 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static AvatarVariant12 FromRunwayPreset(global::Runway.GetAvatarConversationsResponseVariant1AvatarVariant1PresetAvatar? value) => new AvatarVariant12(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator AvatarVariant12(global::Runway.GetAvatarConversationsResponseVariant1AvatarVariant1CustomAvatar value) => new AvatarVariant12((global::Runway.GetAvatarConversationsResponseVariant1AvatarVariant1CustomAvatar?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.GetAvatarConversationsResponseVariant1AvatarVariant1CustomAvatar?(AvatarVariant12 @this) => @this.Custom;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public AvatarVariant12(global::Runway.GetAvatarConversationsResponseVariant1AvatarVariant1CustomAvatar? value)
         {
@@ -129,12 +129,12 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static AvatarVariant12 FromCustom(global::Runway.GetAvatarConversationsResponseVariant1AvatarVariant1CustomAvatar? value) => new AvatarVariant12(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public AvatarVariant12(
             global::Runway.GetAvatarConversationsResponseVariant1AvatarVariant1DiscriminatorType? type,
@@ -149,23 +149,23 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             Custom as object ??
-            RunwayPreset as object 
+            RunwayPreset as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             RunwayPreset?.ToString() ??
-            Custom?.ToString() 
+            Custom?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -173,7 +173,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Runway.GetAvatarConversationsResponseVariant1AvatarVariant1PresetAvatar, TResult>? runwayPreset = null,
@@ -198,7 +198,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Runway.GetAvatarConversationsResponseVariant1AvatarVariant1PresetAvatar>? runwayPreset = null,
@@ -222,7 +222,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Runway.GetAvatarConversationsResponseVariant1AvatarVariant1PresetAvatar>? runwayPreset = null,
@@ -245,7 +245,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -266,18 +266,18 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(AvatarVariant12 other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::Runway.GetAvatarConversationsResponseVariant1AvatarVariant1PresetAvatar?>.Default.Equals(RunwayPreset, other.RunwayPreset) &&
-                global::System.Collections.Generic.EqualityComparer<global::Runway.GetAvatarConversationsResponseVariant1AvatarVariant1CustomAvatar?>.Default.Equals(Custom, other.Custom) 
+                global::System.Collections.Generic.EqualityComparer<global::Runway.GetAvatarConversationsResponseVariant1AvatarVariant1CustomAvatar?>.Default.Equals(Custom, other.Custom)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(AvatarVariant12 obj1, AvatarVariant12 obj2)
         {
@@ -285,7 +285,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(AvatarVariant12 obj1, AvatarVariant12 obj2)
         {
@@ -293,7 +293,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

@@ -9,11 +9,11 @@ namespace Runway
     public enum CreateVoicesRequestFromVoiceFromTextModel
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ElevenMultilingualTtvV2,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ElevenTtvV3,
     }

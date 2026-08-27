@@ -9,99 +9,99 @@ namespace Runway
     public enum CreateTextToVideoRequestSeedance2Ratio
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1080_1920,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1112_834,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1248_1664,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1280_720,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1440_1440,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1470_630,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1664_1248,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1920_1080,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x2160_3840,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x2206_946,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x2880_3840,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x3840_1646,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x3840_2160,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x3840_2880,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x3840_3840,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x496_864,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x560_752,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x640_640,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x720_1280,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x752_560,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x834_1112,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x864_496,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x960_960,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x992_432,
     }

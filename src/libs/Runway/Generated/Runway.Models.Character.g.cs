@@ -10,7 +10,7 @@ namespace Runway
     public readonly partial struct Character : global::System.IEquatable<Character>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.CreateCharacterPerformanceRequestActTwoCharacterDiscriminatorType? Type { get; }
 
@@ -24,7 +24,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Image))]
@@ -32,7 +32,7 @@ namespace Runway
         public bool IsImage => Image != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickImage(
 #if NET6_0_OR_GREATER
@@ -45,7 +45,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterImage PickImage() => IsImage
             ? Image!
@@ -61,7 +61,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Video))]
@@ -69,7 +69,7 @@ namespace Runway
         public bool IsVideo => Video != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickVideo(
 #if NET6_0_OR_GREATER
@@ -82,23 +82,23 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterVideo PickVideo() => IsVideo
             ? Video!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Video' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator Character(global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterImage value) => new Character((global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterImage?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterImage?(Character @this) => @this.Image;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public Character(global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterImage? value)
         {
@@ -106,22 +106,22 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static Character FromImage(global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterImage? value) => new Character(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator Character(global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterVideo value) => new Character((global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterVideo?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterVideo?(Character @this) => @this.Video;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public Character(global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterVideo? value)
         {
@@ -129,12 +129,12 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static Character FromVideo(global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterVideo? value) => new Character(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public Character(
             global::Runway.CreateCharacterPerformanceRequestActTwoCharacterDiscriminatorType? type,
@@ -149,23 +149,23 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             Video as object ??
-            Image as object 
+            Image as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             Image?.ToString() ??
-            Video?.ToString() 
+            Video?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -173,7 +173,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterImage, TResult>? image = null,
@@ -198,7 +198,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterImage>? image = null,
@@ -222,7 +222,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterImage>? image = null,
@@ -245,7 +245,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -266,18 +266,18 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(Character other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterImage?>.Default.Equals(Image, other.Image) &&
-                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterVideo?>.Default.Equals(Video, other.Video) 
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterVideo?>.Default.Equals(Video, other.Video)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(Character obj1, Character obj2)
         {
@@ -285,7 +285,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(Character obj1, Character obj2)
         {
@@ -293,7 +293,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

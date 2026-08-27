@@ -4,7 +4,7 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class CreateTextToVideoRequestHappyhorse10
     {
@@ -29,7 +29,7 @@ namespace Runway
         public global::Runway.CreateTextToVideoRequestHappyhorse10Ratio? Ratio { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"happyhorse_1_0"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]

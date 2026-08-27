@@ -4,44 +4,44 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum CreateTextToImageRequestDiscriminatorModel
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Gemini25Flash,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         GeminiImage31Flash,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         GeminiImage3Pro,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Gen4Image,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Gen4ImageTurbo,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         GptImage2,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         GrokImagineImage2,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Seedream5Lite,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Seedream5Pro,
     }

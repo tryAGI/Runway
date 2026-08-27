@@ -4,16 +4,16 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum CreateSoundEffectRequestDiscriminatorModel
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ElevenTextToSoundV2,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SeedAudio,
     }

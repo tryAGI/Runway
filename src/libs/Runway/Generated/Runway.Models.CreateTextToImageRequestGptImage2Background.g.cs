@@ -9,11 +9,11 @@ namespace Runway
     public enum CreateTextToImageRequestGptImage2Background
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Auto,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Opaque,
     }

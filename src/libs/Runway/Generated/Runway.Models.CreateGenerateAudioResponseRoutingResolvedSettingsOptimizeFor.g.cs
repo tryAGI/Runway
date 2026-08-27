@@ -9,15 +9,15 @@ namespace Runway
     public enum CreateGenerateAudioResponseRoutingResolvedSettingsOptimizeFor
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Cost,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Latency,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Quality,
     }

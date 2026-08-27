@@ -9,123 +9,123 @@ namespace Runway
     public enum PatchAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetId
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Adam,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Adrian,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Aurora,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Blake,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Clara,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         David,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Drew,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Emma,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Felix,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Georgia,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Jasper,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Leo,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Luna,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Marcus,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Max,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Maya,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Mia,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Morgan,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Nathan,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Nina,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Petra,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Roman,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Ruby,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Sam,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Skye,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Summer,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Victoria,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Vincent,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Violet,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Zach,
     }

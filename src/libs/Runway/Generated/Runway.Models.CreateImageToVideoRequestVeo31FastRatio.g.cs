@@ -9,19 +9,19 @@ namespace Runway
     public enum CreateImageToVideoRequestVeo31FastRatio
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1080_1920,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1280_720,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1920_1080,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x720_1280,
     }

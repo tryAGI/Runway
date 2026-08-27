@@ -10,11 +10,11 @@ namespace Runway
     public enum CreateTextToImageRequestGeminiImage3ProReferenceImageSubject
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Human,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Object,
     }

@@ -40,43 +40,43 @@ namespace Runway
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         global::System.Text.Json.Serialization.JsonSerializerContext JsonSerializerContext { get; set; }
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public AvatarVideosClient AvatarVideos { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public AvatarsClient Avatars { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public KnowledgeClient Knowledge { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ModelRouterClient ModelRouter { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public OrganizationClient Organization { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public RealtimeSessionsClient RealtimeSessions { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public RecipesClient Recipes { get; }
 
@@ -96,12 +96,12 @@ namespace Runway
         public UploadsClient Uploads { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public VoicesClient Voices { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public WorkflowsClient Workflows { get; }
 

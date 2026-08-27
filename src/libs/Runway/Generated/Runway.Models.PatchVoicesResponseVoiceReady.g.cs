@@ -36,7 +36,7 @@ namespace Runway
         public required global::System.DateTime CreatedAt { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"READY"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("status")]

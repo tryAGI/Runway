@@ -9,11 +9,11 @@ namespace Runway
     public enum CreateGenerateAudioResponseRoutingResolvedInputType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Audio,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Speech,
     }

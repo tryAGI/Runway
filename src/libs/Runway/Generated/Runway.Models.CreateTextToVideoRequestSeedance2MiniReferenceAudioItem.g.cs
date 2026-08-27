@@ -9,7 +9,7 @@ namespace Runway
     public sealed partial class CreateTextToVideoRequestSeedance2MiniReferenceAudioItem
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"audio"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]

@@ -4,20 +4,20 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum GetRoutersRequestsResponseDataItemPipelineItemDiscriminatorType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Capacity,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Filter,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Rank,
     }

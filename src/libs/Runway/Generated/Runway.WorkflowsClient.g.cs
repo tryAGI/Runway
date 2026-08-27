@@ -10,7 +10,7 @@ namespace Runway
     public sealed partial class WorkflowsClient : global::Runway.IWorkflowsClient, global::System.IDisposable
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public const string DefaultBaseUrl = "https://api.dev.runwayml.com/";
 
@@ -37,7 +37,7 @@ namespace Runway
         internal global::System.Lazy<global::System.Text.Json.Serialization.JsonSerializerContext> JsonSerializerContextProvider { get; set; } = new(() => global::Runway.SourceGenerationContext.Default);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::System.Text.Json.Serialization.JsonSerializerContext JsonSerializerContext
         {

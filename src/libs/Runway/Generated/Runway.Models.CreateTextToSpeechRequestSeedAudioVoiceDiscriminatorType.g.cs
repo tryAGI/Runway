@@ -4,12 +4,12 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum CreateTextToSpeechRequestSeedAudioVoiceDiscriminatorType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ReferenceAudio,
     }

@@ -9,11 +9,11 @@ namespace Runway
     public enum CreateImageToVideoRequestVeo31FastPromptImagePromptImagePosition
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         First,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Last,
     }

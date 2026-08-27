@@ -9,15 +9,15 @@ namespace Runway
     public enum CreateVideoToHdrRequestRubyProresProfile
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x422,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x422Hq,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x4444,
     }

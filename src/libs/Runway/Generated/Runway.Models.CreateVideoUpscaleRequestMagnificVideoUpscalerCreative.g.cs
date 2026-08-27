@@ -4,7 +4,7 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class CreateVideoUpscaleRequestMagnificVideoUpscalerCreative
     {
@@ -56,7 +56,7 @@ namespace Runway
         public bool? FpsBoost { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"magnific_video_upscaler_creative"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]

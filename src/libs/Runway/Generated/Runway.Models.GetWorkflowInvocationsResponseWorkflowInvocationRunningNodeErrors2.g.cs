@@ -4,7 +4,7 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class GetWorkflowInvocationsResponseWorkflowInvocationRunningNodeErrors2
     {

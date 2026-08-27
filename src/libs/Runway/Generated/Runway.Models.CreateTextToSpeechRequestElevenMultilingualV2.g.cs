@@ -4,7 +4,7 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class CreateTextToSpeechRequestElevenMultilingualV2
     {
@@ -23,7 +23,7 @@ namespace Runway
         public required global::Runway.CreateTextToSpeechRequestElevenMultilingualV2VoiceRunwayPresetVoice Voice { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"eleven_multilingual_v2"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]

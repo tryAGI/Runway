@@ -4,12 +4,12 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum CreateVideoToHdrRequestDiscriminatorModel
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Ruby,
     }

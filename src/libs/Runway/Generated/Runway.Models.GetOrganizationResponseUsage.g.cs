@@ -9,7 +9,7 @@ namespace Runway
     public sealed partial class GetOrganizationResponseUsage
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("models")]
         [global::System.Text.Json.Serialization.JsonRequired]

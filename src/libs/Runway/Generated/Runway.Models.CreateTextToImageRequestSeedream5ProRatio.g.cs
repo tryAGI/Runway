@@ -9,59 +9,59 @@ namespace Runway
     public enum CreateTextToImageRequestSeedream5ProRatio
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1024_1024,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1184_896,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1296_864,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1376_768,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1530_2720,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1664_2496,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1728_2304,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x2048_2048,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x2304_1728,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x2496_1664,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x2720_1530,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x768_1376,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x864_1296,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x896_1184,
         /// <summary>

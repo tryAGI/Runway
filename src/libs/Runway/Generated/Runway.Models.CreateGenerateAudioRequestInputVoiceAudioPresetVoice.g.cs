@@ -9,7 +9,7 @@ namespace Runway
     public sealed partial class CreateGenerateAudioRequestInputVoiceAudioPresetVoice
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"preset"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]

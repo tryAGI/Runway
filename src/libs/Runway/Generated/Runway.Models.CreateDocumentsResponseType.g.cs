@@ -9,11 +9,11 @@ namespace Runway
     public enum CreateDocumentsResponseType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         File,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Text,
     }

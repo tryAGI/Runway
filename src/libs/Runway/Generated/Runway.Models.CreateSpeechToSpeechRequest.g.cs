@@ -5,17 +5,17 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct CreateSpeechToSpeechRequest : global::System.IEquatable<CreateSpeechToSpeechRequest>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.CreateSpeechToSpeechRequestDiscriminatorModel? Model { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2? ElevenMultilingualStsV2 { get; init; }
@@ -24,7 +24,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ElevenMultilingualStsV2))]
@@ -32,7 +32,7 @@ namespace Runway
         public bool IsElevenMultilingualStsV2 => ElevenMultilingualStsV2 != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickElevenMultilingualStsV2(
 #if NET6_0_OR_GREATER
@@ -45,23 +45,23 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2 PickElevenMultilingualStsV2() => IsElevenMultilingualStsV2
             ? ElevenMultilingualStsV2!
             : throw new global::System.InvalidOperationException($"Expected union variant 'ElevenMultilingualStsV2' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator CreateSpeechToSpeechRequest(global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2 value) => new CreateSpeechToSpeechRequest((global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2?(CreateSpeechToSpeechRequest @this) => @this.ElevenMultilingualStsV2;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public CreateSpeechToSpeechRequest(global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2? value)
         {
@@ -69,12 +69,12 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static CreateSpeechToSpeechRequest FromElevenMultilingualStsV2(global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2? value) => new CreateSpeechToSpeechRequest(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public CreateSpeechToSpeechRequest(
             global::Runway.CreateSpeechToSpeechRequestDiscriminatorModel? model,
@@ -87,21 +87,21 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
-            ElevenMultilingualStsV2 as object 
+            ElevenMultilingualStsV2 as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
-            ElevenMultilingualStsV2?.ToString() 
+            ElevenMultilingualStsV2?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -109,7 +109,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2, TResult>? elevenMultilingualStsV2 = null,
@@ -129,7 +129,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2>? elevenMultilingualStsV2 = null,
@@ -147,7 +147,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2>? elevenMultilingualStsV2 = null,
@@ -165,7 +165,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -184,17 +184,17 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(CreateSpeechToSpeechRequest other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2?>.Default.Equals(ElevenMultilingualStsV2, other.ElevenMultilingualStsV2) 
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2?>.Default.Equals(ElevenMultilingualStsV2, other.ElevenMultilingualStsV2)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(CreateSpeechToSpeechRequest obj1, CreateSpeechToSpeechRequest obj2)
         {
@@ -202,7 +202,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(CreateSpeechToSpeechRequest obj1, CreateSpeechToSpeechRequest obj2)
         {
@@ -210,7 +210,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

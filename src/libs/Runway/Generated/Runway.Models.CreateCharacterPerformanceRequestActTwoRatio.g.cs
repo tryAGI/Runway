@@ -10,27 +10,27 @@ namespace Runway
     public enum CreateCharacterPerformanceRequestActTwoRatio
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1104_832,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1280_720,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1584_672,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x720_1280,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x832_1104,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x960_960,
     }

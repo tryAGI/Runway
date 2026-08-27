@@ -4,16 +4,16 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum CreateRealtimeSessionsRequestToolDiscriminatorType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         BackendRpc,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ClientEvent,
     }

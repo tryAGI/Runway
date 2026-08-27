@@ -9,11 +9,11 @@ namespace Runway
     public enum CreateVideoToVideoRequestHailuo3Resolution
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x2k,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x768p,
     }

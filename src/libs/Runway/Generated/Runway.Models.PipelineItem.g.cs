@@ -5,17 +5,17 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct PipelineItem : global::System.IEquatable<PipelineItem>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.GetRoutersRequestsResponseDataItemPipelineItemDiscriminatorType? Type { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant1? Filter { get; init; }
@@ -24,7 +24,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Filter))]
@@ -32,7 +32,7 @@ namespace Runway
         public bool IsFilter => Filter != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickFilter(
 #if NET6_0_OR_GREATER
@@ -45,14 +45,14 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant1 PickFilter() => IsFilter
             ? Filter!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Filter' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant2? Capacity { get; init; }
@@ -61,7 +61,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Capacity))]
@@ -69,7 +69,7 @@ namespace Runway
         public bool IsCapacity => Capacity != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickCapacity(
 #if NET6_0_OR_GREATER
@@ -82,14 +82,14 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant2 PickCapacity() => IsCapacity
             ? Capacity!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Capacity' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant3? Rank { get; init; }
@@ -98,7 +98,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Rank))]
@@ -106,7 +106,7 @@ namespace Runway
         public bool IsRank => Rank != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickRank(
 #if NET6_0_OR_GREATER
@@ -119,23 +119,23 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant3 PickRank() => IsRank
             ? Rank!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Rank' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator PipelineItem(global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant1 value) => new PipelineItem((global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant1?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant1?(PipelineItem @this) => @this.Filter;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public PipelineItem(global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant1? value)
         {
@@ -143,22 +143,22 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static PipelineItem FromFilter(global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant1? value) => new PipelineItem(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator PipelineItem(global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant2 value) => new PipelineItem((global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant2?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant2?(PipelineItem @this) => @this.Capacity;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public PipelineItem(global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant2? value)
         {
@@ -166,22 +166,22 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static PipelineItem FromCapacity(global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant2? value) => new PipelineItem(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator PipelineItem(global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant3 value) => new PipelineItem((global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant3?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant3?(PipelineItem @this) => @this.Rank;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public PipelineItem(global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant3? value)
         {
@@ -189,12 +189,12 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static PipelineItem FromRank(global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant3? value) => new PipelineItem(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public PipelineItem(
             global::Runway.GetRoutersRequestsResponseDataItemPipelineItemDiscriminatorType? type,
@@ -211,25 +211,25 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             Rank as object ??
             Capacity as object ??
-            Filter as object 
+            Filter as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             Filter?.ToString() ??
             Capacity?.ToString() ??
-            Rank?.ToString() 
+            Rank?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -237,7 +237,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant1, TResult>? filter = null,
@@ -267,7 +267,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant1>? filter = null,
@@ -297,7 +297,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant1>? filter = null,
@@ -325,7 +325,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -348,19 +348,19 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(PipelineItem other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant1?>.Default.Equals(Filter, other.Filter) &&
                 global::System.Collections.Generic.EqualityComparer<global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant2?>.Default.Equals(Capacity, other.Capacity) &&
-                global::System.Collections.Generic.EqualityComparer<global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant3?>.Default.Equals(Rank, other.Rank) 
+                global::System.Collections.Generic.EqualityComparer<global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant3?>.Default.Equals(Rank, other.Rank)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(PipelineItem obj1, PipelineItem obj2)
         {
@@ -368,7 +368,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(PipelineItem obj1, PipelineItem obj2)
         {
@@ -376,7 +376,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

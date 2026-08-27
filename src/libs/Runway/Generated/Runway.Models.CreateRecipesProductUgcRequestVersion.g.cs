@@ -9,11 +9,11 @@ namespace Runway
     public enum CreateRecipesProductUgcRequestVersion
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x202606,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UnsafeLatest,
     }

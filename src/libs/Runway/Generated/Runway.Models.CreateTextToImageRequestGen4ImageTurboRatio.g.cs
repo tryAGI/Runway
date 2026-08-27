@@ -9,67 +9,67 @@ namespace Runway
     public enum CreateTextToImageRequestGen4ImageTurboRatio
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1024_1024,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1080_1080,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1080_1440,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1080_1920,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1168_880,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1280_720,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1360_768,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1440_1080,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1680_720,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1808_768,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1920_1080,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x2112_912,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x720_1280,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x720_720,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x720_960,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x960_720,
     }

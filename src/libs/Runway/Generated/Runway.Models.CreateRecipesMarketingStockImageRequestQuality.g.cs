@@ -10,15 +10,15 @@ namespace Runway
     public enum CreateRecipesMarketingStockImageRequestQuality
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         High,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Low,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Medium,
     }

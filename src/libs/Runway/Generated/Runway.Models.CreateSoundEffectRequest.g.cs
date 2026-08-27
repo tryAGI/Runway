@@ -5,17 +5,17 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct CreateSoundEffectRequest : global::System.IEquatable<CreateSoundEffectRequest>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.CreateSoundEffectRequestDiscriminatorModel? Model { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Runway.CreateSoundEffectRequestSeedAudio? SeedAudio { get; init; }
@@ -24,7 +24,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(SeedAudio))]
@@ -32,7 +32,7 @@ namespace Runway
         public bool IsSeedAudio => SeedAudio != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickSeedAudio(
 #if NET6_0_OR_GREATER
@@ -45,14 +45,14 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.CreateSoundEffectRequestSeedAudio PickSeedAudio() => IsSeedAudio
             ? SeedAudio!
             : throw new global::System.InvalidOperationException($"Expected union variant 'SeedAudio' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Runway.CreateSoundEffectRequestElevenTextToSoundV2? ElevenTextToSoundV2 { get; init; }
@@ -61,7 +61,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ElevenTextToSoundV2))]
@@ -69,7 +69,7 @@ namespace Runway
         public bool IsElevenTextToSoundV2 => ElevenTextToSoundV2 != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickElevenTextToSoundV2(
 #if NET6_0_OR_GREATER
@@ -82,23 +82,23 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.CreateSoundEffectRequestElevenTextToSoundV2 PickElevenTextToSoundV2() => IsElevenTextToSoundV2
             ? ElevenTextToSoundV2!
             : throw new global::System.InvalidOperationException($"Expected union variant 'ElevenTextToSoundV2' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator CreateSoundEffectRequest(global::Runway.CreateSoundEffectRequestSeedAudio value) => new CreateSoundEffectRequest((global::Runway.CreateSoundEffectRequestSeedAudio?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.CreateSoundEffectRequestSeedAudio?(CreateSoundEffectRequest @this) => @this.SeedAudio;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public CreateSoundEffectRequest(global::Runway.CreateSoundEffectRequestSeedAudio? value)
         {
@@ -106,22 +106,22 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static CreateSoundEffectRequest FromSeedAudio(global::Runway.CreateSoundEffectRequestSeedAudio? value) => new CreateSoundEffectRequest(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator CreateSoundEffectRequest(global::Runway.CreateSoundEffectRequestElevenTextToSoundV2 value) => new CreateSoundEffectRequest((global::Runway.CreateSoundEffectRequestElevenTextToSoundV2?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.CreateSoundEffectRequestElevenTextToSoundV2?(CreateSoundEffectRequest @this) => @this.ElevenTextToSoundV2;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public CreateSoundEffectRequest(global::Runway.CreateSoundEffectRequestElevenTextToSoundV2? value)
         {
@@ -129,12 +129,12 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static CreateSoundEffectRequest FromElevenTextToSoundV2(global::Runway.CreateSoundEffectRequestElevenTextToSoundV2? value) => new CreateSoundEffectRequest(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public CreateSoundEffectRequest(
             global::Runway.CreateSoundEffectRequestDiscriminatorModel? model,
@@ -149,23 +149,23 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             ElevenTextToSoundV2 as object ??
-            SeedAudio as object 
+            SeedAudio as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             SeedAudio?.ToString() ??
-            ElevenTextToSoundV2?.ToString() 
+            ElevenTextToSoundV2?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -173,7 +173,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Runway.CreateSoundEffectRequestSeedAudio, TResult>? seedAudio = null,
@@ -198,7 +198,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Runway.CreateSoundEffectRequestSeedAudio>? seedAudio = null,
@@ -222,7 +222,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Runway.CreateSoundEffectRequestSeedAudio>? seedAudio = null,
@@ -245,7 +245,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -266,18 +266,18 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(CreateSoundEffectRequest other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::Runway.CreateSoundEffectRequestSeedAudio?>.Default.Equals(SeedAudio, other.SeedAudio) &&
-                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateSoundEffectRequestElevenTextToSoundV2?>.Default.Equals(ElevenTextToSoundV2, other.ElevenTextToSoundV2) 
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateSoundEffectRequestElevenTextToSoundV2?>.Default.Equals(ElevenTextToSoundV2, other.ElevenTextToSoundV2)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(CreateSoundEffectRequest obj1, CreateSoundEffectRequest obj2)
         {
@@ -285,7 +285,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(CreateSoundEffectRequest obj1, CreateSoundEffectRequest obj2)
         {
@@ -293,7 +293,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

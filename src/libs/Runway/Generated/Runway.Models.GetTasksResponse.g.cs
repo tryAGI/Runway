@@ -5,12 +5,12 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct GetTasksResponse : global::System.IEquatable<GetTasksResponse>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.GetTasksResponseDiscriminatorStatus? Status { get; }
 
@@ -24,7 +24,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Pending))]
@@ -32,7 +32,7 @@ namespace Runway
         public bool IsPending => Pending != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickPending(
 #if NET6_0_OR_GREATER
@@ -45,7 +45,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.GetTasksResponseVariant1 PickPending() => IsPending
             ? Pending!
@@ -61,7 +61,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Throttled))]
@@ -69,7 +69,7 @@ namespace Runway
         public bool IsThrottled => Throttled != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickThrottled(
 #if NET6_0_OR_GREATER
@@ -82,7 +82,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.GetTasksResponseVariant2 PickThrottled() => IsThrottled
             ? Throttled!
@@ -98,7 +98,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Cancelled))]
@@ -106,7 +106,7 @@ namespace Runway
         public bool IsCancelled => Cancelled != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickCancelled(
 #if NET6_0_OR_GREATER
@@ -119,7 +119,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.GetTasksResponseVariant3 PickCancelled() => IsCancelled
             ? Cancelled!
@@ -135,7 +135,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Running))]
@@ -143,7 +143,7 @@ namespace Runway
         public bool IsRunning => Running != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickRunning(
 #if NET6_0_OR_GREATER
@@ -156,7 +156,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.GetTasksResponseVariant4 PickRunning() => IsRunning
             ? Running!
@@ -172,7 +172,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Failed))]
@@ -180,7 +180,7 @@ namespace Runway
         public bool IsFailed => Failed != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickFailed(
 #if NET6_0_OR_GREATER
@@ -193,7 +193,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.GetTasksResponseVariant5 PickFailed() => IsFailed
             ? Failed!
@@ -209,7 +209,7 @@ namespace Runway
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Succeeded))]
@@ -217,7 +217,7 @@ namespace Runway
         public bool IsSucceeded => Succeeded != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickSucceeded(
 #if NET6_0_OR_GREATER
@@ -230,23 +230,23 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Runway.GetTasksResponseVariant6 PickSucceeded() => IsSucceeded
             ? Succeeded!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Succeeded' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator GetTasksResponse(global::Runway.GetTasksResponseVariant1 value) => new GetTasksResponse((global::Runway.GetTasksResponseVariant1?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.GetTasksResponseVariant1?(GetTasksResponse @this) => @this.Pending;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public GetTasksResponse(global::Runway.GetTasksResponseVariant1? value)
         {
@@ -254,22 +254,22 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static GetTasksResponse FromPending(global::Runway.GetTasksResponseVariant1? value) => new GetTasksResponse(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator GetTasksResponse(global::Runway.GetTasksResponseVariant2 value) => new GetTasksResponse((global::Runway.GetTasksResponseVariant2?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.GetTasksResponseVariant2?(GetTasksResponse @this) => @this.Throttled;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public GetTasksResponse(global::Runway.GetTasksResponseVariant2? value)
         {
@@ -277,22 +277,22 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static GetTasksResponse FromThrottled(global::Runway.GetTasksResponseVariant2? value) => new GetTasksResponse(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator GetTasksResponse(global::Runway.GetTasksResponseVariant3 value) => new GetTasksResponse((global::Runway.GetTasksResponseVariant3?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.GetTasksResponseVariant3?(GetTasksResponse @this) => @this.Cancelled;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public GetTasksResponse(global::Runway.GetTasksResponseVariant3? value)
         {
@@ -300,22 +300,22 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static GetTasksResponse FromCancelled(global::Runway.GetTasksResponseVariant3? value) => new GetTasksResponse(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator GetTasksResponse(global::Runway.GetTasksResponseVariant4 value) => new GetTasksResponse((global::Runway.GetTasksResponseVariant4?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.GetTasksResponseVariant4?(GetTasksResponse @this) => @this.Running;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public GetTasksResponse(global::Runway.GetTasksResponseVariant4? value)
         {
@@ -323,22 +323,22 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static GetTasksResponse FromRunning(global::Runway.GetTasksResponseVariant4? value) => new GetTasksResponse(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator GetTasksResponse(global::Runway.GetTasksResponseVariant5 value) => new GetTasksResponse((global::Runway.GetTasksResponseVariant5?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.GetTasksResponseVariant5?(GetTasksResponse @this) => @this.Failed;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public GetTasksResponse(global::Runway.GetTasksResponseVariant5? value)
         {
@@ -346,22 +346,22 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static GetTasksResponse FromFailed(global::Runway.GetTasksResponseVariant5? value) => new GetTasksResponse(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator GetTasksResponse(global::Runway.GetTasksResponseVariant6 value) => new GetTasksResponse((global::Runway.GetTasksResponseVariant6?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Runway.GetTasksResponseVariant6?(GetTasksResponse @this) => @this.Succeeded;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public GetTasksResponse(global::Runway.GetTasksResponseVariant6? value)
         {
@@ -369,12 +369,12 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static GetTasksResponse FromSucceeded(global::Runway.GetTasksResponseVariant6? value) => new GetTasksResponse(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public GetTasksResponse(
             global::Runway.GetTasksResponseDiscriminatorStatus? status,
@@ -397,7 +397,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             Succeeded as object ??
@@ -405,11 +405,11 @@ namespace Runway
             Running as object ??
             Cancelled as object ??
             Throttled as object ??
-            Pending as object 
+            Pending as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             Pending?.ToString() ??
@@ -417,11 +417,11 @@ namespace Runway
             Cancelled?.ToString() ??
             Running?.ToString() ??
             Failed?.ToString() ??
-            Succeeded?.ToString() 
+            Succeeded?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -429,7 +429,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Runway.GetTasksResponseVariant1, TResult>? pending = null,
@@ -474,7 +474,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Runway.GetTasksResponseVariant1>? pending = null,
@@ -522,7 +522,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Runway.GetTasksResponseVariant1>? pending = null,
@@ -565,7 +565,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -594,7 +594,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(GetTasksResponse other)
         {
@@ -604,12 +604,12 @@ namespace Runway
                 global::System.Collections.Generic.EqualityComparer<global::Runway.GetTasksResponseVariant3?>.Default.Equals(Cancelled, other.Cancelled) &&
                 global::System.Collections.Generic.EqualityComparer<global::Runway.GetTasksResponseVariant4?>.Default.Equals(Running, other.Running) &&
                 global::System.Collections.Generic.EqualityComparer<global::Runway.GetTasksResponseVariant5?>.Default.Equals(Failed, other.Failed) &&
-                global::System.Collections.Generic.EqualityComparer<global::Runway.GetTasksResponseVariant6?>.Default.Equals(Succeeded, other.Succeeded) 
+                global::System.Collections.Generic.EqualityComparer<global::Runway.GetTasksResponseVariant6?>.Default.Equals(Succeeded, other.Succeeded)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(GetTasksResponse obj1, GetTasksResponse obj2)
         {
@@ -617,7 +617,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(GetTasksResponse obj1, GetTasksResponse obj2)
         {
@@ -625,7 +625,7 @@ namespace Runway
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

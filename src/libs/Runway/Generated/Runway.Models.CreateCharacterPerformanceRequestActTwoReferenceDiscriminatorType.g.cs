@@ -4,12 +4,12 @@
 namespace Runway
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum CreateCharacterPerformanceRequestActTwoReferenceDiscriminatorType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Video,
     }
