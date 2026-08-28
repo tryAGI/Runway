@@ -1023,7 +1023,7 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.GetRoutersRequestsResponseDataItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetRoutersRequestsResponseDataItem))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetRoutersRequestsResponseDataItemStatus), TypeInfoPropertyName = "GetRoutersRequestsResponseDataItemStatus2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetRoutersRequestsResponseDataItemReasonCode2))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetRoutersRequestsResponseDataItemReasonCode2), TypeInfoPropertyName = "GetRoutersRequestsResponseDataItemReasonCode22")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.PipelineItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.PipelineItem), TypeInfoPropertyName = "PipelineItem2")]
     internal sealed partial class SourceGenerationContextChunk1 : global::System.Text.Json.Serialization.JsonSerializerContext
@@ -1399,6 +1399,7 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.PatchRoutersResponseSettingsModelsMode?), TypeInfoPropertyName = "NullablePatchRoutersResponseSettingsModelsMode2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.PatchRoutersResponseSettingsOptimizeFor?), TypeInfoPropertyName = "NullablePatchRoutersResponseSettingsOptimizeFor2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetRoutersRequestsResponseDataItemStatus?), TypeInfoPropertyName = "NullableGetRoutersRequestsResponseDataItemStatus2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetRoutersRequestsResponseDataItemReasonCode2?), TypeInfoPropertyName = "NullableGetRoutersRequestsResponseDataItemReasonCode22")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.PipelineItem?), TypeInfoPropertyName = "NullablePipelineItem2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant1Filter?), TypeInfoPropertyName = "NullableGetRoutersRequestsResponseDataItemPipelineItemVariant1Filter2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant3Outcome?), TypeInfoPropertyName = "NullableGetRoutersRequestsResponseDataItemPipelineItemVariant3Outcome2")]
@@ -1537,7 +1538,6 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateGenerateImageResponseVariant1PipelineItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateGenerateImageResponseVariant1EmptiedByItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateGenerateAudioResponseVariant1PipelineItem>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateGenerateAudioResponseVariant1EmptiedByItem>))]
     internal sealed partial class SourceGenerationContextChunk2 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }
@@ -1550,6 +1550,7 @@ namespace Runway
         Converters = new global::System.Type[]
         {
         })]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateGenerateAudioResponseVariant1EmptiedByItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.GetOrganizationWebappUsageResponseDataItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.GetOrganizationWebappAuditLogsResponseDataItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateOrganizationUsageResponseResult>))]
