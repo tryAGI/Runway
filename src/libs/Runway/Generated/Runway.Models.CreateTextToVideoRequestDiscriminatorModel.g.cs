@@ -52,6 +52,10 @@ namespace Runway
         ///
         /// </summary>
         Veo31Fast,
+        /// <summary>
+        ///
+        /// </summary>
+        Wan3,
     }
 
     /// <summary>
@@ -77,6 +81,7 @@ namespace Runway
                 CreateTextToVideoRequestDiscriminatorModel.Seedance2Mini => "seedance2_mini",
                 CreateTextToVideoRequestDiscriminatorModel.Veo31 => "veo3.1",
                 CreateTextToVideoRequestDiscriminatorModel.Veo31Fast => "veo3.1_fast",
+                CreateTextToVideoRequestDiscriminatorModel.Wan3 => "wan3",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -98,6 +103,7 @@ namespace Runway
                 "seedance2_mini" => CreateTextToVideoRequestDiscriminatorModel.Seedance2Mini,
                 "veo3.1" => CreateTextToVideoRequestDiscriminatorModel.Veo31,
                 "veo3.1_fast" => CreateTextToVideoRequestDiscriminatorModel.Veo31Fast,
+                "wan3" => CreateTextToVideoRequestDiscriminatorModel.Wan3,
                 _ => null,
             };
         }

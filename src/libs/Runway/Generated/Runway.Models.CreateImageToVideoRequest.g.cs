@@ -457,6 +457,43 @@ namespace Runway
         public global::Runway.CreateImageToVideoRequestGrokImagine15 PickGrokImagine15() => IsGrokImagine15
             ? GrokImagine15!
             : throw new global::System.InvalidOperationException($"Expected union variant 'GrokImagine15' but the value was {ToString()}.");
+
+        /// <summary>
+        ///
+        /// </summary>
+#if NET6_0_OR_GREATER
+        public global::Runway.CreateImageToVideoRequestWan3? Wan3 { get; init; }
+#else
+        public global::Runway.CreateImageToVideoRequestWan3? Wan3 { get; }
+#endif
+
+        /// <summary>
+        ///
+        /// </summary>
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Wan3))]
+#endif
+        public bool IsWan3 => Wan3 != null;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public bool TryPickWan3(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Runway.CreateImageToVideoRequestWan3? value)
+        {
+            value = Wan3;
+            return IsWan3;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Runway.CreateImageToVideoRequestWan3 PickWan3() => IsWan3
+            ? Wan3!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Wan3' but the value was {ToString()}.");
         /// <summary>
         ///
         /// </summary>
@@ -736,6 +773,29 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
+        public static implicit operator CreateImageToVideoRequest(global::Runway.CreateImageToVideoRequestWan3 value) => new CreateImageToVideoRequest((global::Runway.CreateImageToVideoRequestWan3?)value);
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static implicit operator global::Runway.CreateImageToVideoRequestWan3?(CreateImageToVideoRequest @this) => @this.Wan3;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public CreateImageToVideoRequest(global::Runway.CreateImageToVideoRequestWan3? value)
+        {
+            Wan3 = value;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static CreateImageToVideoRequest FromWan3(global::Runway.CreateImageToVideoRequestWan3? value) => new CreateImageToVideoRequest(value);
+
+        /// <summary>
+        ///
+        /// </summary>
         public CreateImageToVideoRequest(
             global::Runway.CreateImageToVideoRequestDiscriminatorModel? model,
             global::Runway.CreateImageToVideoRequestGen45? gen45,
@@ -749,7 +809,8 @@ namespace Runway
             global::Runway.CreateImageToVideoRequestSeedance2Mini? seedance2Mini,
             global::Runway.CreateImageToVideoRequestGeminiOmniFlash? geminiOmniFlash,
             global::Runway.CreateImageToVideoRequestSeedance25? seedance25,
-            global::Runway.CreateImageToVideoRequestGrokImagine15? grokImagine15
+            global::Runway.CreateImageToVideoRequestGrokImagine15? grokImagine15,
+            global::Runway.CreateImageToVideoRequestWan3? wan3
             )
         {
             Model = model;
@@ -766,12 +827,14 @@ namespace Runway
             GeminiOmniFlash = geminiOmniFlash;
             Seedance25 = seedance25;
             GrokImagine15 = grokImagine15;
+            Wan3 = wan3;
         }
 
         /// <summary>
         ///
         /// </summary>
         public object? Object =>
+            Wan3 as object ??
             GrokImagine15 as object ??
             Seedance25 as object ??
             GeminiOmniFlash as object ??
@@ -801,7 +864,8 @@ namespace Runway
             Seedance2Mini?.ToString() ??
             GeminiOmniFlash?.ToString() ??
             Seedance25?.ToString() ??
-            GrokImagine15?.ToString()
+            GrokImagine15?.ToString() ??
+            Wan3?.ToString()
             ;
 
         /// <summary>
@@ -809,7 +873,7 @@ namespace Runway
         /// </summary>
         public bool Validate()
         {
-            return IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsHailuo3 && !IsHappyhorse10 && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsSeedance25 && !IsGrokImagine15 || !IsGen45 && IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsHailuo3 && !IsHappyhorse10 && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsSeedance25 && !IsGrokImagine15 || !IsGen45 && !IsGen4Turbo && IsVeo31 && !IsVeo31Fast && !IsHailuo3 && !IsHappyhorse10 && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsSeedance25 && !IsGrokImagine15 || !IsGen45 && !IsGen4Turbo && !IsVeo31 && IsVeo31Fast && !IsHailuo3 && !IsHappyhorse10 && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsSeedance25 && !IsGrokImagine15 || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && IsHailuo3 && !IsHappyhorse10 && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsSeedance25 && !IsGrokImagine15 || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsHailuo3 && IsHappyhorse10 && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsSeedance25 && !IsGrokImagine15 || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsHailuo3 && !IsHappyhorse10 && IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsSeedance25 && !IsGrokImagine15 || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsHailuo3 && !IsHappyhorse10 && !IsSeedance2 && IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsSeedance25 && !IsGrokImagine15 || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsHailuo3 && !IsHappyhorse10 && !IsSeedance2 && !IsSeedance2Fast && IsSeedance2Mini && !IsGeminiOmniFlash && !IsSeedance25 && !IsGrokImagine15 || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsHailuo3 && !IsHappyhorse10 && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && IsGeminiOmniFlash && !IsSeedance25 && !IsGrokImagine15 || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsHailuo3 && !IsHappyhorse10 && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && IsSeedance25 && !IsGrokImagine15 || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsHailuo3 && !IsHappyhorse10 && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsSeedance25 && IsGrokImagine15;
+            return IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsHailuo3 && !IsHappyhorse10 && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsSeedance25 && !IsGrokImagine15 && !IsWan3 || !IsGen45 && IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsHailuo3 && !IsHappyhorse10 && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsSeedance25 && !IsGrokImagine15 && !IsWan3 || !IsGen45 && !IsGen4Turbo && IsVeo31 && !IsVeo31Fast && !IsHailuo3 && !IsHappyhorse10 && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsSeedance25 && !IsGrokImagine15 && !IsWan3 || !IsGen45 && !IsGen4Turbo && !IsVeo31 && IsVeo31Fast && !IsHailuo3 && !IsHappyhorse10 && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsSeedance25 && !IsGrokImagine15 && !IsWan3 || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && IsHailuo3 && !IsHappyhorse10 && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsSeedance25 && !IsGrokImagine15 && !IsWan3 || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsHailuo3 && IsHappyhorse10 && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsSeedance25 && !IsGrokImagine15 && !IsWan3 || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsHailuo3 && !IsHappyhorse10 && IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsSeedance25 && !IsGrokImagine15 && !IsWan3 || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsHailuo3 && !IsHappyhorse10 && !IsSeedance2 && IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsSeedance25 && !IsGrokImagine15 && !IsWan3 || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsHailuo3 && !IsHappyhorse10 && !IsSeedance2 && !IsSeedance2Fast && IsSeedance2Mini && !IsGeminiOmniFlash && !IsSeedance25 && !IsGrokImagine15 && !IsWan3 || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsHailuo3 && !IsHappyhorse10 && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && IsGeminiOmniFlash && !IsSeedance25 && !IsGrokImagine15 && !IsWan3 || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsHailuo3 && !IsHappyhorse10 && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && IsSeedance25 && !IsGrokImagine15 && !IsWan3 || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsHailuo3 && !IsHappyhorse10 && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsSeedance25 && IsGrokImagine15 && !IsWan3 || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsHailuo3 && !IsHappyhorse10 && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsSeedance25 && !IsGrokImagine15 && IsWan3;
         }
 
         /// <summary>
@@ -828,6 +892,7 @@ namespace Runway
             global::System.Func<global::Runway.CreateImageToVideoRequestGeminiOmniFlash, TResult>? geminiOmniFlash = null,
             global::System.Func<global::Runway.CreateImageToVideoRequestSeedance25, TResult>? seedance25 = null,
             global::System.Func<global::Runway.CreateImageToVideoRequestGrokImagine15, TResult>? grokImagine15 = null,
+            global::System.Func<global::Runway.CreateImageToVideoRequestWan3, TResult>? wan3 = null,
             bool validate = true)
         {
             if (validate)
@@ -883,6 +948,10 @@ namespace Runway
             {
                 return grokImagine15(GrokImagine15!);
             }
+            else if (IsWan3 && wan3 != null)
+            {
+                return wan3(Wan3!);
+            }
 
             return default(TResult);
         }
@@ -914,6 +983,8 @@ namespace Runway
             global::System.Action<global::Runway.CreateImageToVideoRequestSeedance25>? seedance25 = null,
 
             global::System.Action<global::Runway.CreateImageToVideoRequestGrokImagine15>? grokImagine15 = null,
+
+            global::System.Action<global::Runway.CreateImageToVideoRequestWan3>? wan3 = null,
             bool validate = true)
         {
             if (validate)
@@ -968,6 +1039,10 @@ namespace Runway
             else if (IsGrokImagine15)
             {
                 grokImagine15?.Invoke(GrokImagine15!);
+            }
+            else if (IsWan3)
+            {
+                wan3?.Invoke(Wan3!);
             }
         }
 
@@ -987,6 +1062,7 @@ namespace Runway
             global::System.Action<global::Runway.CreateImageToVideoRequestGeminiOmniFlash>? geminiOmniFlash = null,
             global::System.Action<global::Runway.CreateImageToVideoRequestSeedance25>? seedance25 = null,
             global::System.Action<global::Runway.CreateImageToVideoRequestGrokImagine15>? grokImagine15 = null,
+            global::System.Action<global::Runway.CreateImageToVideoRequestWan3>? wan3 = null,
             bool validate = true)
         {
             if (validate)
@@ -1041,6 +1117,10 @@ namespace Runway
             else if (IsGrokImagine15)
             {
                 grokImagine15?.Invoke(GrokImagine15!);
+            }
+            else if (IsWan3)
+            {
+                wan3?.Invoke(Wan3!);
             }
         }
 
@@ -1075,6 +1155,8 @@ namespace Runway
                 typeof(global::Runway.CreateImageToVideoRequestSeedance25),
                 GrokImagine15,
                 typeof(global::Runway.CreateImageToVideoRequestGrokImagine15),
+                Wan3,
+                typeof(global::Runway.CreateImageToVideoRequestWan3),
             };
             const int offset = unchecked((int)2166136261);
             const int prime = 16777619;
@@ -1102,7 +1184,8 @@ namespace Runway
                 global::System.Collections.Generic.EqualityComparer<global::Runway.CreateImageToVideoRequestSeedance2Mini?>.Default.Equals(Seedance2Mini, other.Seedance2Mini) &&
                 global::System.Collections.Generic.EqualityComparer<global::Runway.CreateImageToVideoRequestGeminiOmniFlash?>.Default.Equals(GeminiOmniFlash, other.GeminiOmniFlash) &&
                 global::System.Collections.Generic.EqualityComparer<global::Runway.CreateImageToVideoRequestSeedance25?>.Default.Equals(Seedance25, other.Seedance25) &&
-                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateImageToVideoRequestGrokImagine15?>.Default.Equals(GrokImagine15, other.GrokImagine15)
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateImageToVideoRequestGrokImagine15?>.Default.Equals(GrokImagine15, other.GrokImagine15) &&
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateImageToVideoRequestWan3?>.Default.Equals(Wan3, other.Wan3)
                 ;
         }
 

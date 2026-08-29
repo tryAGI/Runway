@@ -6068,6 +6068,16 @@
             "lang": "Python",
             "label": "Python SDK (MiniMax H3)",
             "source": "# pip install runwayml\nfrom runwayml import RunwayML\n\nclient = RunwayML()\n\ntask = client.image_to_video.create(\n  model='hailuo3',\n  prompt_image=[\n    {'uri': 'https://example.com/start-frame.jpg', 'position': 'first'},\n  ],\n  prompt_text='Gentle camera push-in as morning light fills the scene',\n  ratio='16:9',\n  resolution='2K',\n  duration=8,\n).wait_for_task_output()\n\nprint(task)"
+          },
+          {
+            "lang": "TypeScript",
+            "label": "Node SDK (Wan 3.0)",
+            "source": "// npm install --save @runwayml/sdk\nimport RunwayML from '@runwayml/sdk';\n\nconst client = new RunwayML();\n\nconst task = await client.imageToVideo\n  .create({\n    model: 'wan3',\n    promptImage: 'https://example.com/start-frame.jpg',\n    promptText: 'Gentle camera push-in as morning light fills the scene',\n    ratio: 'auto_1080p',\n    duration: 5,\n    audio: true,\n  })\n  .waitForTaskOutput();\n\nconsole.log(task);"
+          },
+          {
+            "lang": "Python",
+            "label": "Python SDK (Wan 3.0)",
+            "source": "# pip install runwayml\nfrom runwayml import RunwayML\n\nclient = RunwayML()\n\ntask = client.image_to_video.create(\n  model='wan3',\n  prompt_image='https://example.com/start-frame.jpg',\n  prompt_text='Gentle camera push-in as morning light fills the scene',\n  ratio='auto_1080p',\n  duration=5,\n  audio=True,\n).wait_for_task_output()\n\nprint(task)"
           }
         ],
         "parameters": [{ "$ref": "#/components/parameters/X-Runway-Version" }],
@@ -7848,6 +7858,186 @@
                     },
                     "required": ["promptImage", "model"],
                     "additionalProperties": false
+                  },
+                  {
+                    "title": "wan3",
+                    "type": "object",
+                    "properties": {
+                      "promptImage": {
+                        "description": "An image or array of images. Use position `first`/`last` for keyframe mode, or omit position for reference images. The two modes cannot be mixed.",
+                        "anyOf": [
+                          {
+                            "description": "A HTTPS URL, Runway or data URI containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                            "example": "https://example.com/image.jpg",
+                            "anyOf": [
+                              {
+                                "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:image/png;base64,...`, up to 5MB) containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                                "example": "https://example.com/image.jpg",
+                                "type": "string",
+                                "minLength": 13,
+                                "maxLength": 2048,
+                                "pattern": "^https:\\/\\/.*"
+                              },
+                              {
+                                "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                                "example": "runway://<token>",
+                                "type": "string",
+                                "minLength": 13,
+                                "maxLength": 5000,
+                                "pattern": "^runway:\\/\\/.*"
+                              },
+                              {
+                                "description": "A data URI containing encoded media, up to 5MB.",
+                                "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                                "type": "string",
+                                "minLength": 13,
+                                "maxLength": 5242880,
+                                "pattern": "^data:image\\/.*"
+                              }
+                            ]
+                          },
+                          {
+                            "minItems": 1,
+                            "maxItems": 10,
+                            "type": "array",
+                            "items": {}
+                          }
+                        ]
+                      },
+                      "promptText": {
+                        "description": "A non-empty text prompt describing what should appear in the output.",
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 20000
+                      },
+                      "audio": {
+                        "description": "Whether to generate audio with the video.",
+                        "type": "boolean"
+                      },
+                      "duration": {
+                        "description": "The number of seconds of duration for the output video.",
+                        "type": "integer",
+                        "minimum": 2,
+                        "maximum": 30
+                      },
+                      "ratio": {
+                        "description": "The resolution of the output video, as `<width>:<height>`. Use `auto_480p`, `auto_720p`, or `auto_1080p` to let the model pick framing at that quality tier.",
+                        "type": "string",
+                        "enum": [
+                          "832:480",
+                          "640:480",
+                          "480:480",
+                          "480:640",
+                          "480:832",
+                          "1280:720",
+                          "960:720",
+                          "720:720",
+                          "720:960",
+                          "720:1280",
+                          "1920:1080",
+                          "1440:1080",
+                          "1080:1080",
+                          "1080:1440",
+                          "1080:1920",
+                          "auto_480p",
+                          "auto_720p",
+                          "auto_1080p"
+                        ]
+                      },
+                      "referenceVideos": {
+                        "description": "An optional array of video references. The combined duration across all video references must not exceed 15 seconds. See [our docs](/assets/inputs#videos) on video inputs for more information.",
+                        "maxItems": 5,
+                        "type": "array",
+                        "items": {
+                          "title": "VideoReference",
+                          "description": "A video reference allows the model to use the video as additional context for the output.",
+                          "type": "object",
+                          "properties": {
+                            "type": { "type": "string", "const": "video" },
+                            "uri": {
+                              "description": "A HTTPS URL, Runway or data URI containing an encoded video. See [our docs](/assets/inputs#videos) on video inputs for more information.",
+                              "example": "https://example.com/video.mp4",
+                              "anyOf": [
+                                {
+                                  "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:video/mp4;base64,...`, up to 5MB) containing an encoded video. See [our docs](/assets/inputs#videos) on video inputs for more information.",
+                                  "example": "https://example.com/video.mp4",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 2048,
+                                  "pattern": "^https:\\/\\/.*"
+                                },
+                                {
+                                  "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                                  "example": "runway://<token>",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 5000,
+                                  "pattern": "^runway:\\/\\/.*"
+                                },
+                                {
+                                  "description": "A data URI containing encoded media, up to 5MB.",
+                                  "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 5242880,
+                                  "pattern": "^data:video\\/.*"
+                                }
+                              ]
+                            }
+                          },
+                          "required": ["type", "uri"],
+                          "additionalProperties": false
+                        }
+                      },
+                      "referenceAudio": {
+                        "description": "An optional array of audio references. The total combined duration must not exceed 15 seconds.",
+                        "maxItems": 5,
+                        "type": "array",
+                        "items": {
+                          "title": "AudioReference",
+                          "description": "An audio reference allows the model to use the audio as additional context for the output.",
+                          "type": "object",
+                          "properties": {
+                            "type": { "type": "string", "const": "audio" },
+                            "uri": {
+                              "description": "A HTTPS URL, Runway or data URI containing an encoded audio. See [our docs](/assets/inputs#audio) on audio inputs for more information.",
+                              "example": "https://example.com/audio.mp3",
+                              "anyOf": [
+                                {
+                                  "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:audio/mp3;base64,...`, up to 5MB) containing an encoded audio. See [our docs](/assets/inputs#audio) on audio inputs for more information.",
+                                  "example": "https://example.com/audio.mp3",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 2048,
+                                  "pattern": "^https:\\/\\/.*"
+                                },
+                                {
+                                  "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                                  "example": "runway://<token>",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 5000,
+                                  "pattern": "^runway:\\/\\/.*"
+                                },
+                                {
+                                  "description": "A data URI containing encoded media, up to 5MB.",
+                                  "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 5242880,
+                                  "pattern": "^data:audio\\/.*"
+                                }
+                              ]
+                            }
+                          },
+                          "required": ["type", "uri"],
+                          "additionalProperties": false
+                        }
+                      },
+                      "model": { "type": "string", "const": "wan3" }
+                    },
+                    "required": ["promptImage", "promptText", "model"],
+                    "additionalProperties": false
                   }
                 ],
                 "discriminator": { "propertyName": "model" }
@@ -7980,6 +8170,16 @@
             "lang": "Python",
             "label": "Python SDK (MiniMax H3)",
             "source": "# pip install runwayml\nfrom runwayml import RunwayML\n\nclient = RunwayML()\n\ntask = client.text_to_video.create(\n  model='hailuo3',\n  prompt_text='A cinematic aerial shot over misty mountains at sunrise',\n  ratio='16:9',\n  resolution='2K',\n  duration=8,\n).wait_for_task_output()\n\nprint(task)"
+          },
+          {
+            "lang": "TypeScript",
+            "label": "Node SDK (Wan 3.0)",
+            "source": "// npm install --save @runwayml/sdk\nimport RunwayML from '@runwayml/sdk';\n\nconst client = new RunwayML();\n\nconst task = await client.textToVideo\n  .create({\n    model: 'wan3',\n    promptText: 'A cinematic aerial shot over misty mountains at sunrise',\n    ratio: 'auto_1080p',\n    duration: 5,\n    audio: true,\n  })\n  .waitForTaskOutput();\n\nconsole.log(task);"
+          },
+          {
+            "lang": "Python",
+            "label": "Python SDK (Wan 3.0)",
+            "source": "# pip install runwayml\nfrom runwayml import RunwayML\n\nclient = RunwayML()\n\ntask = client.text_to_video.create(\n  model='wan3',\n  prompt_text='A cinematic aerial shot over misty mountains at sunrise',\n  ratio='auto_1080p',\n  duration=5,\n  audio=True,\n).wait_for_task_output()\n\nprint(task)"
           }
         ],
         "parameters": [{ "$ref": "#/components/parameters/X-Runway-Version" }],
@@ -9224,6 +9424,189 @@
                         }
                       },
                       "model": { "type": "string", "const": "grok_imagine_1_5" }
+                    },
+                    "required": ["promptText", "model"],
+                    "additionalProperties": false
+                  },
+                  {
+                    "title": "wan3",
+                    "type": "object",
+                    "properties": {
+                      "promptText": {
+                        "description": "A non-empty text prompt describing what should appear in the output.",
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 20000
+                      },
+                      "audio": {
+                        "description": "Whether to generate audio with the video.",
+                        "type": "boolean"
+                      },
+                      "duration": {
+                        "description": "The number of seconds of duration for the output video.",
+                        "type": "integer",
+                        "minimum": 2,
+                        "maximum": 30
+                      },
+                      "ratio": {
+                        "description": "The resolution of the output video, as `<width>:<height>`. Use `auto_480p`, `auto_720p`, or `auto_1080p` to let the model pick framing at that quality tier.",
+                        "type": "string",
+                        "enum": [
+                          "832:480",
+                          "640:480",
+                          "480:480",
+                          "480:640",
+                          "480:832",
+                          "1280:720",
+                          "960:720",
+                          "720:720",
+                          "720:960",
+                          "720:1280",
+                          "1920:1080",
+                          "1440:1080",
+                          "1080:1080",
+                          "1080:1440",
+                          "1080:1920",
+                          "auto_480p",
+                          "auto_720p",
+                          "auto_1080p"
+                        ]
+                      },
+                      "references": {
+                        "description": "An optional array of image references (up to 10). See [our docs](/assets/inputs#images) on image inputs for more information.",
+                        "maxItems": 10,
+                        "type": "array",
+                        "items": {
+                          "title": "PromptImage",
+                          "x-stainless-variantName": "PromptImage",
+                          "type": "object",
+                          "properties": {
+                            "uri": {
+                              "description": "A HTTPS URL, Runway or data URI containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                              "example": "https://example.com/image.jpg",
+                              "anyOf": [
+                                {
+                                  "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:image/png;base64,...`, up to 5MB) containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                                  "example": "https://example.com/image.jpg",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 2048,
+                                  "pattern": "^https:\\/\\/.*"
+                                },
+                                {
+                                  "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                                  "example": "runway://<token>",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 5000,
+                                  "pattern": "^runway:\\/\\/.*"
+                                },
+                                {
+                                  "description": "A data URI containing encoded media, up to 5MB.",
+                                  "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 5242880,
+                                  "pattern": "^data:image\\/.*"
+                                }
+                              ]
+                            }
+                          },
+                          "required": ["uri"],
+                          "additionalProperties": false
+                        }
+                      },
+                      "referenceVideos": {
+                        "description": "An optional array of video references. The combined duration across all video references must not exceed 15 seconds. See [our docs](/assets/inputs#videos) on video inputs for more information.",
+                        "maxItems": 5,
+                        "type": "array",
+                        "items": {
+                          "title": "VideoReference",
+                          "description": "A video reference allows the model to use the video as additional context for the output.",
+                          "type": "object",
+                          "properties": {
+                            "type": { "type": "string", "const": "video" },
+                            "uri": {
+                              "description": "A HTTPS URL, Runway or data URI containing an encoded video. See [our docs](/assets/inputs#videos) on video inputs for more information.",
+                              "example": "https://example.com/video.mp4",
+                              "anyOf": [
+                                {
+                                  "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:video/mp4;base64,...`, up to 5MB) containing an encoded video. See [our docs](/assets/inputs#videos) on video inputs for more information.",
+                                  "example": "https://example.com/video.mp4",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 2048,
+                                  "pattern": "^https:\\/\\/.*"
+                                },
+                                {
+                                  "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                                  "example": "runway://<token>",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 5000,
+                                  "pattern": "^runway:\\/\\/.*"
+                                },
+                                {
+                                  "description": "A data URI containing encoded media, up to 5MB.",
+                                  "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 5242880,
+                                  "pattern": "^data:video\\/.*"
+                                }
+                              ]
+                            }
+                          },
+                          "required": ["type", "uri"],
+                          "additionalProperties": false
+                        }
+                      },
+                      "referenceAudio": {
+                        "description": "An optional array of audio references. The total combined duration must not exceed 15 seconds.",
+                        "maxItems": 5,
+                        "type": "array",
+                        "items": {
+                          "title": "AudioReference",
+                          "description": "An audio reference allows the model to use the audio as additional context for the output.",
+                          "type": "object",
+                          "properties": {
+                            "type": { "type": "string", "const": "audio" },
+                            "uri": {
+                              "description": "A HTTPS URL, Runway or data URI containing an encoded audio. See [our docs](/assets/inputs#audio) on audio inputs for more information.",
+                              "example": "https://example.com/audio.mp3",
+                              "anyOf": [
+                                {
+                                  "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:audio/mp3;base64,...`, up to 5MB) containing an encoded audio. See [our docs](/assets/inputs#audio) on audio inputs for more information.",
+                                  "example": "https://example.com/audio.mp3",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 2048,
+                                  "pattern": "^https:\\/\\/.*"
+                                },
+                                {
+                                  "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                                  "example": "runway://<token>",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 5000,
+                                  "pattern": "^runway:\\/\\/.*"
+                                },
+                                {
+                                  "description": "A data URI containing encoded media, up to 5MB.",
+                                  "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 5242880,
+                                  "pattern": "^data:audio\\/.*"
+                                }
+                              ]
+                            }
+                          },
+                          "required": ["type", "uri"],
+                          "additionalProperties": false
+                        }
+                      },
+                      "model": { "type": "string", "const": "wan3" }
                     },
                     "required": ["promptText", "model"],
                     "additionalProperties": false
@@ -11648,6 +12031,85 @@
                       }
                     },
                     "required": ["promptText", "ratio", "model"]
+                  },
+                  {
+                    "title": "muse_image",
+                    "type": "object",
+                    "properties": {
+                      "promptText": {
+                        "description": "A non-empty text prompt describing what should appear in the output image.",
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 4000
+                      },
+                      "ratio": {
+                        "description": "The resolution of the output image, expressed as `<width>:<height>`. Use `auto` to let the model choose the framing from the prompt.",
+                        "type": "string",
+                        "enum": [
+                          "2352:1008",
+                          "2016:1152",
+                          "1920:1280",
+                          "1792:1344",
+                          "1600:1600",
+                          "1344:1792",
+                          "1280:1920",
+                          "1152:2016",
+                          "auto"
+                        ]
+                      },
+                      "referenceImages": {
+                        "description": "Up to 10 images to guide the generation. When provided, the model edits and combines them as your prompt describes instead of generating from the prompt alone.",
+                        "maxItems": 10,
+                        "type": "array",
+                        "items": {
+                          "title": "MuseImageReferenceImage",
+                          "type": "object",
+                          "properties": {
+                            "uri": {
+                              "description": "A HTTPS URL, Runway or data URI containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                              "example": "https://example.com/image.jpg",
+                              "anyOf": [
+                                {
+                                  "description": "A HTTPS URL, Runway upload URI, or base64 data URI (e.g. `data:image/png;base64,...`, up to 5MB) containing an encoded image. See [our docs](/assets/inputs#images) on image inputs for more information.",
+                                  "example": "https://example.com/image.jpg",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 2048,
+                                  "pattern": "^https:\\/\\/.*"
+                                },
+                                {
+                                  "description": "A Runway upload URI. See https://docs.dev.runwayml.com/assets/uploads for more information.",
+                                  "example": "runway://<token>",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 5000,
+                                  "pattern": "^runway:\\/\\/.*"
+                                },
+                                {
+                                  "description": "A data URI containing encoded media, up to 5MB.",
+                                  "example": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                                  "type": "string",
+                                  "minLength": 13,
+                                  "maxLength": 5242880,
+                                  "pattern": "^data:image\\/.*"
+                                }
+                              ]
+                            }
+                          },
+                          "required": ["uri"],
+                          "additionalProperties": false
+                        }
+                      },
+                      "outputCount": {
+                        "description": "The number of images to generate. Each image costs 1 credit.",
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 10
+                      },
+                      "model": { "type": "string", "const": "muse_image" }
+                    },
+                    "required": ["promptText", "ratio", "model"],
+                    "additionalProperties": false
                   },
                   {
                     "title": "seedream5_pro",
@@ -16358,6 +16820,8 @@
                               "seedance2_fast",
                               "seedance2_mini",
                               "hailuo3",
+                              "wan3",
+                              "muse_image",
                               "magnific_precision_upscaler_v2",
                               "magnific_video_upscaler_creative",
                               "kling2.5_turbo_pro",
@@ -16458,6 +16922,8 @@
                               "seedance2_fast",
                               "seedance2_mini",
                               "hailuo3",
+                              "wan3",
+                              "muse_image",
                               "magnific_precision_upscaler_v2",
                               "magnific_video_upscaler_creative",
                               "kling2.5_turbo_pro",
@@ -16615,6 +17081,8 @@
                                     "seedance2_fast",
                                     "seedance2_mini",
                                     "hailuo3",
+                                    "wan3",
+                                    "muse_image",
                                     "magnific_precision_upscaler_v2",
                                     "magnific_video_upscaler_creative",
                                     "kling2.5_turbo_pro",
@@ -16693,6 +17161,8 @@
                           "seedance2_fast",
                           "seedance2_mini",
                           "hailuo3",
+                          "wan3",
+                          "muse_image",
                           "magnific_precision_upscaler_v2",
                           "magnific_video_upscaler_creative",
                           "kling2.5_turbo_pro",
