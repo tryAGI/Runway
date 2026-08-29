@@ -56,6 +56,13 @@ namespace Runway.JsonConverters
                                throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.CreateTextToImageRequestGeminiImage31Flash)}");
                 geminiImage31Flash = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
+            global::Runway.CreateTextToImageRequestMuseImage? museImage = default;
+            if (discriminator?.Model == global::Runway.CreateTextToImageRequestDiscriminatorModel.MuseImage)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateTextToImageRequestMuseImage), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateTextToImageRequestMuseImage> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.CreateTextToImageRequestMuseImage)}");
+                museImage = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+            }
             global::Runway.CreateTextToImageRequestSeedream5Pro? seedream5Pro = default;
             if (discriminator?.Model == global::Runway.CreateTextToImageRequestDiscriminatorModel.Seedream5Pro)
             {
@@ -96,6 +103,8 @@ namespace Runway.JsonConverters
                 geminiImage3Pro,
 
                 geminiImage31Flash,
+
+                museImage,
 
                 seedream5Pro,
 
@@ -147,6 +156,12 @@ namespace Runway.JsonConverters
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateTextToImageRequestGeminiImage31Flash), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateTextToImageRequestGeminiImage31Flash?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateTextToImageRequestGeminiImage31Flash).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.GeminiImage31Flash!, typeInfo);
+            }
+            else if (value.IsMuseImage)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateTextToImageRequestMuseImage), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateTextToImageRequestMuseImage?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateTextToImageRequestMuseImage).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.MuseImage!, typeInfo);
             }
             else if (value.IsSeedream5Pro)
             {

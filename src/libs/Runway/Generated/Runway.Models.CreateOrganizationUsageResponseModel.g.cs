@@ -159,6 +159,10 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
+        MuseImage,
+        /// <summary>
+        ///
+        /// </summary>
         ProductAd,
         /// <summary>
         ///
@@ -216,6 +220,10 @@ namespace Runway
         ///
         /// </summary>
         VoiceProcessing,
+        /// <summary>
+        ///
+        /// </summary>
+        Wan3,
     }
 
     /// <summary>
@@ -267,6 +275,7 @@ namespace Runway
                 CreateOrganizationUsageResponseModel.MagnificVideoUpscalerCreative => "magnific_video_upscaler_creative",
                 CreateOrganizationUsageResponseModel.MarketingStockImage => "marketing_stock_image",
                 CreateOrganizationUsageResponseModel.MultiShotVideo => "multi_shot_video",
+                CreateOrganizationUsageResponseModel.MuseImage => "muse_image",
                 CreateOrganizationUsageResponseModel.ProductAd => "product_ad",
                 CreateOrganizationUsageResponseModel.ProductCampaignImage => "product_campaign_image",
                 CreateOrganizationUsageResponseModel.ProductSwap => "product_swap",
@@ -282,6 +291,7 @@ namespace Runway
                 CreateOrganizationUsageResponseModel.Veo31 => "veo3.1",
                 CreateOrganizationUsageResponseModel.Veo31Fast => "veo3.1_fast",
                 CreateOrganizationUsageResponseModel.VoiceProcessing => "voice_processing",
+                CreateOrganizationUsageResponseModel.Wan3 => "wan3",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -329,6 +339,7 @@ namespace Runway
                 "magnific_video_upscaler_creative" => CreateOrganizationUsageResponseModel.MagnificVideoUpscalerCreative,
                 "marketing_stock_image" => CreateOrganizationUsageResponseModel.MarketingStockImage,
                 "multi_shot_video" => CreateOrganizationUsageResponseModel.MultiShotVideo,
+                "muse_image" => CreateOrganizationUsageResponseModel.MuseImage,
                 "product_ad" => CreateOrganizationUsageResponseModel.ProductAd,
                 "product_campaign_image" => CreateOrganizationUsageResponseModel.ProductCampaignImage,
                 "product_swap" => CreateOrganizationUsageResponseModel.ProductSwap,
@@ -344,6 +355,7 @@ namespace Runway
                 "veo3.1" => CreateOrganizationUsageResponseModel.Veo31,
                 "veo3.1_fast" => CreateOrganizationUsageResponseModel.Veo31Fast,
                 "voice_processing" => CreateOrganizationUsageResponseModel.VoiceProcessing,
+                "wan3" => CreateOrganizationUsageResponseModel.Wan3,
                 _ => null,
             };
         }
