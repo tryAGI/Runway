@@ -62,6 +62,30 @@ public static class RunwayTextToVideo
             Seed = seed,
         });
     }
+
+    /// <summary>Builds a <c>seedance2</c> text-to-video request.</summary>
+    public static CreateTextToVideoRequest Seedance2(
+        string promptText,
+        bool? audio = null,
+        int? duration = null,
+        CreateTextToVideoRequestSeedance2Ratio? ratio = null,
+        global::System.Collections.Generic.IList<CreateTextToVideoRequestSeedance2Reference>? references = null,
+        global::System.Collections.Generic.IList<CreateTextToVideoRequestSeedance2ReferenceVideo>? referenceVideos = null,
+        global::System.Collections.Generic.IList<CreateTextToVideoRequestSeedance2ReferenceAudioItem>? referenceAudio = null)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(promptText);
+
+        return new CreateTextToVideoRequest(new CreateTextToVideoRequestSeedance2
+        {
+            PromptText = promptText,
+            Audio = audio,
+            Duration = duration,
+            Ratio = ratio,
+            References = references,
+            ReferenceVideos = referenceVideos,
+            ReferenceAudio = referenceAudio,
+        });
+    }
 }
 
 /// <summary>

@@ -3,6 +3,14 @@ using System.Globalization;
 namespace Runway;
 
 /// <summary>
+/// An output downloaded from a succeeded Runway task.
+/// </summary>
+/// <param name="Url">The provider-issued output URL.</param>
+/// <param name="Data">The downloaded output bytes.</param>
+/// <param name="ContentType">The response media type, when provided by the output host.</param>
+public sealed record RunwayDownloadedOutput(Uri Url, ReadOnlyMemory<byte> Data, string? ContentType);
+
+/// <summary>
 /// Helpers for polling Runway tasks and downloading completed task outputs.
 /// </summary>
 public static class RunwayTaskExtensions
@@ -106,6 +114,52 @@ public static class RunwayTaskExtensions
             }
 
             return paths;
+        }
+        finally
+        {
+            ownedHttpClient?.Dispose();
+        }
+    }
+
+    /// <summary>
+    /// Downloads one output from a succeeded Runway task into memory.
+    /// </summary>
+    public static async Task<RunwayDownloadedOutput> DownloadOutputAsync(
+        this GetTasksResponse task,
+        int outputIndex = 0,
+        HttpClient? httpClient = null,
+        CancellationToken cancellationToken = default)
+    {
+        var succeeded = task.Succeeded ?? throw CreateTerminalTaskException(task);
+        var outputUrls = succeeded.Output;
+        if ((uint)outputIndex >= (uint)outputUrls.Count)
+        {
+            throw new ArgumentOutOfRangeException(
+                nameof(outputIndex),
+                outputIndex,
+                $"Runway task {succeeded.Id} returned {outputUrls.Count} output URL(s).");
+        }
+
+        var outputUrl = outputUrls[outputIndex];
+        var outputUri = Uri.TryCreate(outputUrl, UriKind.Absolute, out var parsedOutputUri)
+            ? parsedOutputUri
+            : throw new InvalidOperationException($"Runway task output URL is invalid: {outputUrl}");
+
+        HttpClient? ownedHttpClient = null;
+        var effectiveHttpClient = httpClient ?? (ownedHttpClient = new HttpClient());
+
+        try
+        {
+            using var response = await effectiveHttpClient.GetAsync(
+                outputUri,
+                HttpCompletionOption.ResponseContentRead,
+                cancellationToken).ConfigureAwait(false);
+            response.EnsureSuccessStatusCode();
+
+            return new RunwayDownloadedOutput(
+                outputUri,
+                await response.Content.ReadAsByteArrayAsync(cancellationToken).ConfigureAwait(false),
+                response.Content.Headers.ContentType?.MediaType);
         }
         finally
         {
