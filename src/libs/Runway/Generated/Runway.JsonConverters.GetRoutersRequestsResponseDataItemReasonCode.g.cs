@@ -3,10 +3,10 @@
 namespace Runway.JsonConverters
 {
     /// <inheritdoc />
-    public sealed class GetRoutersRequestsResponseDataItemReasonCode2NullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Runway.GetRoutersRequestsResponseDataItemReasonCode2?>
+    public sealed class GetRoutersRequestsResponseDataItemReasonCodeJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Runway.GetRoutersRequestsResponseDataItemReasonCode>
     {
         /// <inheritdoc />
-        public override global::Runway.GetRoutersRequestsResponseDataItemReasonCode2? Read(
+        public override global::Runway.GetRoutersRequestsResponseDataItemReasonCode Read(
             ref global::System.Text.Json.Utf8JsonReader reader,
             global::System.Type typeToConvert,
             global::System.Text.Json.JsonSerializerOptions options)
@@ -18,7 +18,7 @@ namespace Runway.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::Runway.GetRoutersRequestsResponseDataItemReasonCode2Extensions.ToEnum(stringValue);
+                        return global::Runway.GetRoutersRequestsResponseDataItemReasonCodeExtensions.ToEnum(stringValue) ?? default;
                     }
 
                     break;
@@ -26,11 +26,11 @@ namespace Runway.JsonConverters
                 case global::System.Text.Json.JsonTokenType.Number:
                 {
                     var numValue = reader.GetInt32();
-                    return (global::Runway.GetRoutersRequestsResponseDataItemReasonCode2)numValue;
+                    return (global::Runway.GetRoutersRequestsResponseDataItemReasonCode)numValue;
                 }
                 case global::System.Text.Json.JsonTokenType.Null:
                 {
-                    return default(global::Runway.GetRoutersRequestsResponseDataItemReasonCode2?);
+                    return default(global::Runway.GetRoutersRequestsResponseDataItemReasonCode);
                 }
                 default:
                     throw new global::System.ArgumentOutOfRangeException(nameof(reader));
@@ -42,19 +42,12 @@ namespace Runway.JsonConverters
         /// <inheritdoc />
         public override void Write(
             global::System.Text.Json.Utf8JsonWriter writer,
-            global::Runway.GetRoutersRequestsResponseDataItemReasonCode2? value,
+            global::Runway.GetRoutersRequestsResponseDataItemReasonCode value,
             global::System.Text.Json.JsonSerializerOptions options)
         {
             writer = writer ?? throw new global::System.ArgumentNullException(nameof(writer));
 
-            if (value == null)
-            {
-                writer.WriteNullValue();
-            }
-            else
-            {
-                writer.WriteStringValue(global::Runway.GetRoutersRequestsResponseDataItemReasonCode2Extensions.ToValueString(value.Value));
-            }
+            writer.WriteStringValue(global::Runway.GetRoutersRequestsResponseDataItemReasonCodeExtensions.ToValueString(value));
         }
     }
 }

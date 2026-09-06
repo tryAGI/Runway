@@ -4,16 +4,66 @@
 namespace Runway
 {
     /// <summary>
-    /// Why the model won: lowest_cost, best_latency, best_quality, only_eligible_model, or filter_order_fallback (ranking was unavailable, so hard-filter order stood). Null when the request never reached ranking.
+    ///
     /// </summary>
-    public sealed partial class GetRoutersRequestsResponseDataItemReasonCode
+    public enum GetRoutersRequestsResponseDataItemReasonCode
     {
-
         /// <summary>
-        /// Additional properties that are not explicitly defined in the schema
+        ///
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonExtensionData]
-        public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+        BestLatency,
+        /// <summary>
+        ///
+        /// </summary>
+        BestQuality,
+        /// <summary>
+        ///
+        /// </summary>
+        FilterOrderFallback,
+        /// <summary>
+        ///
+        /// </summary>
+        LowestCost,
+        /// <summary>
+        ///
+        /// </summary>
+        OnlyEligibleModel,
+    }
 
+    /// <summary>
+    /// Enum extensions to do fast conversions without the reflection.
+    /// </summary>
+    public static class GetRoutersRequestsResponseDataItemReasonCodeExtensions
+    {
+        /// <summary>
+        /// Converts an enum to a string.
+        /// </summary>
+        public static string ToValueString(this GetRoutersRequestsResponseDataItemReasonCode value)
+        {
+            return value switch
+            {
+                GetRoutersRequestsResponseDataItemReasonCode.BestLatency => "best_latency",
+                GetRoutersRequestsResponseDataItemReasonCode.BestQuality => "best_quality",
+                GetRoutersRequestsResponseDataItemReasonCode.FilterOrderFallback => "filter_order_fallback",
+                GetRoutersRequestsResponseDataItemReasonCode.LowestCost => "lowest_cost",
+                GetRoutersRequestsResponseDataItemReasonCode.OnlyEligibleModel => "only_eligible_model",
+                _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
+            };
+        }
+        /// <summary>
+        /// Converts an string to a enum.
+        /// </summary>
+        public static GetRoutersRequestsResponseDataItemReasonCode? ToEnum(string value)
+        {
+            return value switch
+            {
+                "best_latency" => GetRoutersRequestsResponseDataItemReasonCode.BestLatency,
+                "best_quality" => GetRoutersRequestsResponseDataItemReasonCode.BestQuality,
+                "filter_order_fallback" => GetRoutersRequestsResponseDataItemReasonCode.FilterOrderFallback,
+                "lowest_cost" => GetRoutersRequestsResponseDataItemReasonCode.LowestCost,
+                "only_eligible_model" => GetRoutersRequestsResponseDataItemReasonCode.OnlyEligibleModel,
+                _ => null,
+            };
+        }
     }
 }
