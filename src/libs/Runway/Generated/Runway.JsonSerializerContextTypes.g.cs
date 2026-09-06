@@ -4089,7 +4089,7 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetRoutersRequestsResponseDataItemReasonCode2? Type1014 { get; set; }
+        public global::Runway.GetRoutersRequestsResponseDataItemReasonCode? Type1014 { get; set; }
         /// <summary>
         ///
         /// </summary>

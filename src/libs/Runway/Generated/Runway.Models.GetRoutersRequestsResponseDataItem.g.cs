@@ -52,7 +52,7 @@ namespace Runway
         /// Why the model won: lowest_cost, best_latency, best_quality, only_eligible_model, or filter_order_fallback (ranking was unavailable, so hard-filter order stood). Null when the request never reached ranking.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("reasonCode")]
-        public global::Runway.GetRoutersRequestsResponseDataItemReasonCode2? ReasonCode { get; set; }
+        public global::Runway.GetRoutersRequestsResponseDataItemReasonCode? ReasonCode { get; set; }
 
         /// <summary>
         ///
@@ -131,7 +131,7 @@ namespace Runway
             string? model,
             string? provider,
             string? reason,
-            global::Runway.GetRoutersRequestsResponseDataItemReasonCode2? reasonCode,
+            global::Runway.GetRoutersRequestsResponseDataItemReasonCode? reasonCode,
             double? estimatedCredits,
             global::System.Guid? taskId)
         {

@@ -1054,7 +1054,7 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.GetRoutersRequestsResponseDataItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetRoutersRequestsResponseDataItem))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetRoutersRequestsResponseDataItemStatus), TypeInfoPropertyName = "GetRoutersRequestsResponseDataItemStatus2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetRoutersRequestsResponseDataItemReasonCode2), TypeInfoPropertyName = "GetRoutersRequestsResponseDataItemReasonCode22")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetRoutersRequestsResponseDataItemReasonCode), TypeInfoPropertyName = "GetRoutersRequestsResponseDataItemReasonCode2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.PipelineItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.PipelineItem), TypeInfoPropertyName = "PipelineItem2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant1))]
@@ -1421,7 +1421,7 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.PatchRoutersResponseSettingsModelsMode?), TypeInfoPropertyName = "NullablePatchRoutersResponseSettingsModelsMode2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.PatchRoutersResponseSettingsOptimizeFor?), TypeInfoPropertyName = "NullablePatchRoutersResponseSettingsOptimizeFor2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetRoutersRequestsResponseDataItemStatus?), TypeInfoPropertyName = "NullableGetRoutersRequestsResponseDataItemStatus2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetRoutersRequestsResponseDataItemReasonCode2?), TypeInfoPropertyName = "NullableGetRoutersRequestsResponseDataItemReasonCode22")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetRoutersRequestsResponseDataItemReasonCode?), TypeInfoPropertyName = "NullableGetRoutersRequestsResponseDataItemReasonCode2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.PipelineItem?), TypeInfoPropertyName = "NullablePipelineItem2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant1Filter?), TypeInfoPropertyName = "NullableGetRoutersRequestsResponseDataItemPipelineItemVariant1Filter2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant3Outcome?), TypeInfoPropertyName = "NullableGetRoutersRequestsResponseDataItemPipelineItemVariant3Outcome2")]
@@ -2687,9 +2687,9 @@ namespace Runway
 
                     || typeToConvert == typeof(global::Runway.GetRoutersRequestsResponseDataItemStatus?)
 
-                    || typeToConvert == typeof(global::Runway.GetRoutersRequestsResponseDataItemReasonCode2)
+                    || typeToConvert == typeof(global::Runway.GetRoutersRequestsResponseDataItemReasonCode)
 
-                    || typeToConvert == typeof(global::Runway.GetRoutersRequestsResponseDataItemReasonCode2?)
+                    || typeToConvert == typeof(global::Runway.GetRoutersRequestsResponseDataItemReasonCode?)
 
                     || typeToConvert == typeof(global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant1Filter)
 
@@ -5058,14 +5058,14 @@ namespace Runway
                     return new global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemStatusNullableJsonConverter();
                 }
 
-                if (typeToConvert == typeof(global::Runway.GetRoutersRequestsResponseDataItemReasonCode2))
+                if (typeToConvert == typeof(global::Runway.GetRoutersRequestsResponseDataItemReasonCode))
                 {
-                    return new global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemReasonCode2JsonConverter();
+                    return new global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemReasonCodeJsonConverter();
                 }
 
-                if (typeToConvert == typeof(global::Runway.GetRoutersRequestsResponseDataItemReasonCode2?))
+                if (typeToConvert == typeof(global::Runway.GetRoutersRequestsResponseDataItemReasonCode?))
                 {
-                    return new global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemReasonCode2NullableJsonConverter();
+                    return new global::Runway.JsonConverters.GetRoutersRequestsResponseDataItemReasonCodeNullableJsonConverter();
                 }
 
                 if (typeToConvert == typeof(global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant1Filter))
