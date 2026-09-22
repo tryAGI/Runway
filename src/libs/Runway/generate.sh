@@ -15,8 +15,9 @@ fetch_spec() {
 
 # OpenAPI spec: https://raw.githubusercontent.com/runwayml/openapi/refs/heads/next/openapi.json
 install_autosdk_cli
-rm -rf Generated
 fetch_spec --fail --silent --show-error -L -o openapi.json https://raw.githubusercontent.com/runwayml/openapi/refs/heads/next/openapi.json
+python3 patch_openapi.py openapi.json
+rm -rf Generated
 autosdk generate openapi.json \
   --namespace Runway \
   --clientClassName RunwayClient \

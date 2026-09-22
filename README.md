@@ -55,12 +55,36 @@ npx skills add tryAGI/Runway -a claude-code -y
 After install, the skill's instructions live at `.agents/skills/runway-cli/SKILL.md`. Listing on [skills.sh/tryAGI/Runway](https://skills.sh/tryAGI/Runway) is updated automatically from anonymous install telemetry.
 
 ## Features 🔥
-- Fully generated C# SDK based on [official Runway OpenAPI specification](https://raw.githubusercontent.com/runwayml/openapi/refs/heads/next/openapi.json) using [AutoSDK](https://github.com/tryAGI/AutoSDK)
+- Fully generated C# SDK based on the [official Runway OpenAPI specification](https://raw.githubusercontent.com/runwayml/openapi/refs/heads/next/openapi.json), with a small [documented feature patch](src/libs/Runway/patch_openapi.py) while the published spec catches up, using [AutoSDK](https://github.com/tryAGI/AutoSDK)
 - Same day update to support new features
 - Updated and supported automatically if there are no breaking changes
 - All modern .NET features - nullability, trimming, NativeAOT, etc.
 
 ### Usage
+
+#### Enhance Frame Rate and Ruby
+
+`enhance_frame_rate` uses the video upscale endpoint. The target rate is required; NTSC rates use `x2398`, `x2997`, or `x5994` in C# and serialize to `23_98`, `29_97`, or `59_94`. Inputs can be up to five minutes and 4K.
+
+```csharp
+using Runway;
+
+using var client = new RunwayClient(apiKey);
+
+var interpolation = await client.StartGenerating.CreateVideoUpscaleAsync(
+    new CreateVideoUpscaleRequestEnhanceFrameRate(
+        "https://example.com/source.mov",
+        CreateVideoUpscaleRequestEnhanceFrameRateTargetFramerate.x5994));
+
+var hdr = await client.StartGenerating.CreateVideoToHdrAsync(
+    new CreateVideoToHdrRequestRuby
+    {
+        VideoUri = "https://example.com/source-with-alpha.mov",
+        OutputFormat = CreateVideoToHdrRequestRubyOutputFormat.HdrExrAcescgSequence20,
+    });
+```
+
+Ruby detects alpha in the source automatically. Choose `hdr_prores` or an EXR output to retain it; `hdr10` and `hlg` cannot carry alpha. The SDK also exposes published workflow invocation, linked workspace usage, and organization credit usage endpoints. Credit sharing and transfers are managed by Runway account/workspace settings; they do not require a new SDK request field. See [Runway's model guide](https://docs.dev.runwayml.com/guides/models/) and [API changelog](https://docs.dev.runwayml.com/api-details/api_changelog/).
 
 #### Avatar Video
 Generate a talking-avatar video from text using a Runway preset avatar.

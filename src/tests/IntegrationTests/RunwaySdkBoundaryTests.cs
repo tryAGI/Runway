@@ -1,5 +1,6 @@
 using System.Net;
 using System.Net.Http.Headers;
+using System.Text.Json;
 using AwesomeAssertions;
 
 namespace Runway.IntegrationTests;
@@ -7,6 +8,58 @@ namespace Runway.IntegrationTests;
 [TestClass]
 public sealed class RunwaySdkBoundaryTests
 {
+    [TestMethod]
+    public void EnhanceFrameRate_SerializesAllSupportedRates()
+    {
+        var rates = new (CreateVideoUpscaleRequestEnhanceFrameRateTargetFramerate Rate, string WireValue)[]
+        {
+            (CreateVideoUpscaleRequestEnhanceFrameRateTargetFramerate.x24, "24"),
+            (CreateVideoUpscaleRequestEnhanceFrameRateTargetFramerate.x25, "25"),
+            (CreateVideoUpscaleRequestEnhanceFrameRateTargetFramerate.x30, "30"),
+            (CreateVideoUpscaleRequestEnhanceFrameRateTargetFramerate.x48, "48"),
+            (CreateVideoUpscaleRequestEnhanceFrameRateTargetFramerate.x50, "50"),
+            (CreateVideoUpscaleRequestEnhanceFrameRateTargetFramerate.x60, "60"),
+            (CreateVideoUpscaleRequestEnhanceFrameRateTargetFramerate.x120, "120"),
+            (CreateVideoUpscaleRequestEnhanceFrameRateTargetFramerate.x2398, "23_98"),
+            (CreateVideoUpscaleRequestEnhanceFrameRateTargetFramerate.x2997, "29_97"),
+            (CreateVideoUpscaleRequestEnhanceFrameRateTargetFramerate.x5994, "59_94"),
+        };
+
+        foreach (var (rate, wireValue) in rates)
+        {
+            CreateVideoUpscaleRequest request = new CreateVideoUpscaleRequestEnhanceFrameRate(
+                "https://example.com/source.mov", rate);
+            request.IsEnhanceFrameRate.Should().BeTrue();
+            using var json = JsonDocument.Parse(request.ToJson());
+            json.RootElement.GetProperty("model").GetString().Should().Be("enhance_frame_rate");
+            json.RootElement.GetProperty("videoUri").GetString().Should().Be("https://example.com/source.mov");
+            json.RootElement.GetProperty("targetFramerate").GetString().Should().Be(wireValue);
+        }
+    }
+
+    [TestMethod]
+    public void Ruby_AlphaCapableFormats_SerializeWithoutAnAlphaFlag()
+    {
+        foreach (var (format, wireValue) in new[]
+                 {
+                     (CreateVideoToHdrRequestRubyOutputFormat.HdrProres, "hdr_prores"),
+                     (CreateVideoToHdrRequestRubyOutputFormat.HdrExrSequence, "hdr_exr_sequence"),
+                     (CreateVideoToHdrRequestRubyOutputFormat.HdrExrAcescgSequence13, "hdr_exr_acescg_sequence_1_3"),
+                     (CreateVideoToHdrRequestRubyOutputFormat.HdrExrAcescgSequence20, "hdr_exr_acescg_sequence_2_0"),
+                 })
+        {
+            var request = new CreateVideoToHdrRequestRuby
+            {
+                VideoUri = "https://example.com/alpha.mov",
+                OutputFormat = format,
+            };
+            using var json = JsonDocument.Parse(request.ToJson());
+            json.RootElement.GetProperty("model").GetString().Should().Be("ruby");
+            json.RootElement.GetProperty("outputFormat").GetString().Should().Be(wireValue);
+            json.RootElement.TryGetProperty("alpha", out _).Should().BeFalse();
+        }
+    }
+
     [TestMethod]
     public void TextToVideo_Seedance2WrapsGeneratedVariant()
     {

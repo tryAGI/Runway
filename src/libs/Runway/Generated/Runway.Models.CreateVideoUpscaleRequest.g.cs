@@ -50,6 +50,43 @@ namespace Runway
         public global::Runway.CreateVideoUpscaleRequestMagnificVideoUpscalerCreative PickMagnificVideoUpscalerCreative() => IsMagnificVideoUpscalerCreative
             ? MagnificVideoUpscalerCreative!
             : throw new global::System.InvalidOperationException($"Expected union variant 'MagnificVideoUpscalerCreative' but the value was {ToString()}.");
+
+        /// <summary>
+        ///
+        /// </summary>
+#if NET6_0_OR_GREATER
+        public global::Runway.CreateVideoUpscaleRequestEnhanceFrameRate? EnhanceFrameRate { get; init; }
+#else
+        public global::Runway.CreateVideoUpscaleRequestEnhanceFrameRate? EnhanceFrameRate { get; }
+#endif
+
+        /// <summary>
+        ///
+        /// </summary>
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(EnhanceFrameRate))]
+#endif
+        public bool IsEnhanceFrameRate => EnhanceFrameRate != null;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public bool TryPickEnhanceFrameRate(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Runway.CreateVideoUpscaleRequestEnhanceFrameRate? value)
+        {
+            value = EnhanceFrameRate;
+            return IsEnhanceFrameRate;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Runway.CreateVideoUpscaleRequestEnhanceFrameRate PickEnhanceFrameRate() => IsEnhanceFrameRate
+            ? EnhanceFrameRate!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'EnhanceFrameRate' but the value was {ToString()}.");
         /// <summary>
         ///
         /// </summary>
@@ -76,20 +113,46 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
+        public static implicit operator CreateVideoUpscaleRequest(global::Runway.CreateVideoUpscaleRequestEnhanceFrameRate value) => new CreateVideoUpscaleRequest((global::Runway.CreateVideoUpscaleRequestEnhanceFrameRate?)value);
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static implicit operator global::Runway.CreateVideoUpscaleRequestEnhanceFrameRate?(CreateVideoUpscaleRequest @this) => @this.EnhanceFrameRate;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public CreateVideoUpscaleRequest(global::Runway.CreateVideoUpscaleRequestEnhanceFrameRate? value)
+        {
+            EnhanceFrameRate = value;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static CreateVideoUpscaleRequest FromEnhanceFrameRate(global::Runway.CreateVideoUpscaleRequestEnhanceFrameRate? value) => new CreateVideoUpscaleRequest(value);
+
+        /// <summary>
+        ///
+        /// </summary>
         public CreateVideoUpscaleRequest(
             global::Runway.CreateVideoUpscaleRequestDiscriminatorModel? model,
-            global::Runway.CreateVideoUpscaleRequestMagnificVideoUpscalerCreative? magnificVideoUpscalerCreative
+            global::Runway.CreateVideoUpscaleRequestMagnificVideoUpscalerCreative? magnificVideoUpscalerCreative,
+            global::Runway.CreateVideoUpscaleRequestEnhanceFrameRate? enhanceFrameRate
             )
         {
             Model = model;
 
             MagnificVideoUpscalerCreative = magnificVideoUpscalerCreative;
+            EnhanceFrameRate = enhanceFrameRate;
         }
 
         /// <summary>
         ///
         /// </summary>
         public object? Object =>
+            EnhanceFrameRate as object ??
             MagnificVideoUpscalerCreative as object
             ;
 
@@ -97,7 +160,8 @@ namespace Runway
         ///
         /// </summary>
         public override string? ToString() =>
-            MagnificVideoUpscalerCreative?.ToString()
+            MagnificVideoUpscalerCreative?.ToString() ??
+            EnhanceFrameRate?.ToString()
             ;
 
         /// <summary>
@@ -105,7 +169,7 @@ namespace Runway
         /// </summary>
         public bool Validate()
         {
-            return IsMagnificVideoUpscalerCreative;
+            return IsMagnificVideoUpscalerCreative && !IsEnhanceFrameRate || !IsMagnificVideoUpscalerCreative && IsEnhanceFrameRate;
         }
 
         /// <summary>
@@ -113,6 +177,7 @@ namespace Runway
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Runway.CreateVideoUpscaleRequestMagnificVideoUpscalerCreative, TResult>? magnificVideoUpscalerCreative = null,
+            global::System.Func<global::Runway.CreateVideoUpscaleRequestEnhanceFrameRate, TResult>? enhanceFrameRate = null,
             bool validate = true)
         {
             if (validate)
@@ -124,6 +189,10 @@ namespace Runway
             {
                 return magnificVideoUpscalerCreative(MagnificVideoUpscalerCreative!);
             }
+            else if (IsEnhanceFrameRate && enhanceFrameRate != null)
+            {
+                return enhanceFrameRate(EnhanceFrameRate!);
+            }
 
             return default(TResult);
         }
@@ -133,6 +202,8 @@ namespace Runway
         /// </summary>
         public void Match(
             global::System.Action<global::Runway.CreateVideoUpscaleRequestMagnificVideoUpscalerCreative>? magnificVideoUpscalerCreative = null,
+
+            global::System.Action<global::Runway.CreateVideoUpscaleRequestEnhanceFrameRate>? enhanceFrameRate = null,
             bool validate = true)
         {
             if (validate)
@@ -143,6 +214,10 @@ namespace Runway
             if (IsMagnificVideoUpscalerCreative)
             {
                 magnificVideoUpscalerCreative?.Invoke(MagnificVideoUpscalerCreative!);
+            }
+            else if (IsEnhanceFrameRate)
+            {
+                enhanceFrameRate?.Invoke(EnhanceFrameRate!);
             }
         }
 
@@ -151,6 +226,7 @@ namespace Runway
         /// </summary>
         public void Switch(
             global::System.Action<global::Runway.CreateVideoUpscaleRequestMagnificVideoUpscalerCreative>? magnificVideoUpscalerCreative = null,
+            global::System.Action<global::Runway.CreateVideoUpscaleRequestEnhanceFrameRate>? enhanceFrameRate = null,
             bool validate = true)
         {
             if (validate)
@@ -161,6 +237,10 @@ namespace Runway
             if (IsMagnificVideoUpscalerCreative)
             {
                 magnificVideoUpscalerCreative?.Invoke(MagnificVideoUpscalerCreative!);
+            }
+            else if (IsEnhanceFrameRate)
+            {
+                enhanceFrameRate?.Invoke(EnhanceFrameRate!);
             }
         }
 
@@ -173,6 +253,8 @@ namespace Runway
             {
                 MagnificVideoUpscalerCreative,
                 typeof(global::Runway.CreateVideoUpscaleRequestMagnificVideoUpscalerCreative),
+                EnhanceFrameRate,
+                typeof(global::Runway.CreateVideoUpscaleRequestEnhanceFrameRate),
             };
             const int offset = unchecked((int)2166136261);
             const int prime = 16777619;
@@ -189,7 +271,8 @@ namespace Runway
         public bool Equals(CreateVideoUpscaleRequest other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateVideoUpscaleRequestMagnificVideoUpscalerCreative?>.Default.Equals(MagnificVideoUpscalerCreative, other.MagnificVideoUpscalerCreative)
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateVideoUpscaleRequestMagnificVideoUpscalerCreative?>.Default.Equals(MagnificVideoUpscalerCreative, other.MagnificVideoUpscalerCreative) &&
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateVideoUpscaleRequestEnhanceFrameRate?>.Default.Equals(EnhanceFrameRate, other.EnhanceFrameRate)
                 ;
         }
 

@@ -1553,2783 +1553,2791 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateVideoUpscaleRequestDiscriminator? Type380 { get; set; }
+        public global::Runway.CreateVideoUpscaleRequestEnhanceFrameRate? Type380 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateVideoUpscaleRequestDiscriminatorModel? Type381 { get; set; }
+        public global::Runway.CreateVideoUpscaleRequestEnhanceFrameRateTargetFramerate? Type381 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateCharacterPerformanceRequest? Type382 { get; set; }
+        public global::Runway.CreateVideoUpscaleRequestDiscriminator? Type382 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateCharacterPerformanceRequestActTwo? Type383 { get; set; }
+        public global::Runway.CreateVideoUpscaleRequestDiscriminatorModel? Type383 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.Character? Type384 { get; set; }
+        public global::Runway.CreateCharacterPerformanceRequest? Type384 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterImage? Type385 { get; set; }
+        public global::Runway.CreateCharacterPerformanceRequestActTwo? Type385 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterVideo? Type386 { get; set; }
+        public global::Runway.Character? Type386 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateCharacterPerformanceRequestActTwoCharacterDiscriminator? Type387 { get; set; }
+        public global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterImage? Type387 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateCharacterPerformanceRequestActTwoCharacterDiscriminatorType? Type388 { get; set; }
+        public global::Runway.CreateCharacterPerformanceRequestActTwoCharacterCharacterVideo? Type388 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateCharacterPerformanceRequestActTwoReferenceCharacterReferenceVideo? Type389 { get; set; }
+        public global::Runway.CreateCharacterPerformanceRequestActTwoCharacterDiscriminator? Type389 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateCharacterPerformanceRequestActTwoReferenceDiscriminator? Type390 { get; set; }
+        public global::Runway.CreateCharacterPerformanceRequestActTwoCharacterDiscriminatorType? Type390 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateCharacterPerformanceRequestActTwoReferenceDiscriminatorType? Type391 { get; set; }
+        public global::Runway.CreateCharacterPerformanceRequestActTwoReferenceCharacterReferenceVideo? Type391 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateCharacterPerformanceRequestActTwoRatio? Type392 { get; set; }
+        public global::Runway.CreateCharacterPerformanceRequestActTwoReferenceDiscriminator? Type392 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateCharacterPerformanceRequestActTwoContentModeration? Type393 { get; set; }
+        public global::Runway.CreateCharacterPerformanceRequestActTwoReferenceDiscriminatorType? Type393 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateCharacterPerformanceRequestActTwoContentModerationPublicFigureThreshold? Type394 { get; set; }
+        public global::Runway.CreateCharacterPerformanceRequestActTwoRatio? Type394 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateCharacterPerformanceRequestDiscriminator? Type395 { get; set; }
+        public global::Runway.CreateCharacterPerformanceRequestActTwoContentModeration? Type395 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateCharacterPerformanceRequestDiscriminatorModel? Type396 { get; set; }
+        public global::Runway.CreateCharacterPerformanceRequestActTwoContentModerationPublicFigureThreshold? Type396 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateSoundEffectRequest? Type397 { get; set; }
+        public global::Runway.CreateCharacterPerformanceRequestDiscriminator? Type397 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateSoundEffectRequestSeedAudio? Type398 { get; set; }
+        public global::Runway.CreateCharacterPerformanceRequestDiscriminatorModel? Type398 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateSoundEffectRequestSeedAudioOutputFormat? Type399 { get; set; }
+        public global::Runway.CreateSoundEffectRequest? Type399 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateSoundEffectRequestElevenTextToSoundV2? Type400 { get; set; }
+        public global::Runway.CreateSoundEffectRequestSeedAudio? Type400 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateSoundEffectRequestDiscriminator? Type401 { get; set; }
+        public global::Runway.CreateSoundEffectRequestSeedAudioOutputFormat? Type401 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateSoundEffectRequestDiscriminatorModel? Type402 { get; set; }
+        public global::Runway.CreateSoundEffectRequestElevenTextToSoundV2? Type402 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateSpeechToSpeechRequest? Type403 { get; set; }
+        public global::Runway.CreateSoundEffectRequestDiscriminator? Type403 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2? Type404 { get; set; }
+        public global::Runway.CreateSoundEffectRequestDiscriminatorModel? Type404 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.Media? Type405 { get; set; }
+        public global::Runway.CreateSpeechToSpeechRequest? Type405 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaSpeechToSpeechAudio? Type406 { get; set; }
+        public global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2? Type406 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaSpeechToSpeechVideo? Type407 { get; set; }
+        public global::Runway.Media? Type407 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaDiscriminator? Type408 { get; set; }
+        public global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaSpeechToSpeechAudio? Type408 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaDiscriminatorType? Type409 { get; set; }
+        public global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaSpeechToSpeechVideo? Type409 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2VoiceRunwayPresetVoice? Type410 { get; set; }
+        public global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaDiscriminator? Type410 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2VoiceRunwayPresetVoicePresetId? Type411 { get; set; }
+        public global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaDiscriminatorType? Type411 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2VoiceDiscriminator? Type412 { get; set; }
+        public global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2VoiceRunwayPresetVoice? Type412 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2VoiceDiscriminatorType? Type413 { get; set; }
+        public global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2VoiceRunwayPresetVoicePresetId? Type413 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateSpeechToSpeechRequestDiscriminator? Type414 { get; set; }
+        public global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2VoiceDiscriminator? Type414 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateSpeechToSpeechRequestDiscriminatorModel? Type415 { get; set; }
+        public global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2VoiceDiscriminatorType? Type415 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateTextToSpeechRequest? Type416 { get; set; }
+        public global::Runway.CreateSpeechToSpeechRequestDiscriminator? Type416 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateTextToSpeechRequestSeedAudio? Type417 { get; set; }
+        public global::Runway.CreateSpeechToSpeechRequestDiscriminatorModel? Type417 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateTextToSpeechRequestSeedAudioVoiceSeedReferenceVoice? Type418 { get; set; }
+        public global::Runway.CreateTextToSpeechRequest? Type418 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateTextToSpeechRequestSeedAudioVoiceDiscriminator? Type419 { get; set; }
+        public global::Runway.CreateTextToSpeechRequestSeedAudio? Type419 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateTextToSpeechRequestSeedAudioVoiceDiscriminatorType? Type420 { get; set; }
+        public global::Runway.CreateTextToSpeechRequestSeedAudioVoiceSeedReferenceVoice? Type420 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateTextToSpeechRequestSeedAudioOutputFormat? Type421 { get; set; }
+        public global::Runway.CreateTextToSpeechRequestSeedAudioVoiceDiscriminator? Type421 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateTextToSpeechRequestElevenMultilingualV2? Type422 { get; set; }
+        public global::Runway.CreateTextToSpeechRequestSeedAudioVoiceDiscriminatorType? Type422 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateTextToSpeechRequestElevenMultilingualV2VoiceRunwayPresetVoice? Type423 { get; set; }
+        public global::Runway.CreateTextToSpeechRequestSeedAudioOutputFormat? Type423 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateTextToSpeechRequestElevenMultilingualV2VoiceRunwayPresetVoicePresetId? Type424 { get; set; }
+        public global::Runway.CreateTextToSpeechRequestElevenMultilingualV2? Type424 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateTextToSpeechRequestElevenMultilingualV2VoiceDiscriminator? Type425 { get; set; }
+        public global::Runway.CreateTextToSpeechRequestElevenMultilingualV2VoiceRunwayPresetVoice? Type425 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateTextToSpeechRequestElevenMultilingualV2VoiceDiscriminatorType? Type426 { get; set; }
+        public global::Runway.CreateTextToSpeechRequestElevenMultilingualV2VoiceRunwayPresetVoicePresetId? Type426 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateTextToSpeechRequestElevenV3? Type427 { get; set; }
+        public global::Runway.CreateTextToSpeechRequestElevenMultilingualV2VoiceDiscriminator? Type427 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateTextToSpeechRequestElevenV3VoiceRunwayPresetVoice? Type428 { get; set; }
+        public global::Runway.CreateTextToSpeechRequestElevenMultilingualV2VoiceDiscriminatorType? Type428 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateTextToSpeechRequestElevenV3VoiceRunwayPresetVoicePresetId? Type429 { get; set; }
+        public global::Runway.CreateTextToSpeechRequestElevenV3? Type429 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateTextToSpeechRequestElevenV3VoiceDiscriminator? Type430 { get; set; }
+        public global::Runway.CreateTextToSpeechRequestElevenV3VoiceRunwayPresetVoice? Type430 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateTextToSpeechRequestElevenV3VoiceDiscriminatorType? Type431 { get; set; }
+        public global::Runway.CreateTextToSpeechRequestElevenV3VoiceRunwayPresetVoicePresetId? Type431 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateTextToSpeechRequestElevenV3ApplyTextNormalization? Type432 { get; set; }
+        public global::Runway.CreateTextToSpeechRequestElevenV3VoiceDiscriminator? Type432 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateTextToSpeechRequestDiscriminator? Type433 { get; set; }
+        public global::Runway.CreateTextToSpeechRequestElevenV3VoiceDiscriminatorType? Type433 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateTextToSpeechRequestDiscriminatorModel? Type434 { get; set; }
+        public global::Runway.CreateTextToSpeechRequestElevenV3ApplyTextNormalization? Type434 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateVoiceDubbingRequest? Type435 { get; set; }
+        public global::Runway.CreateTextToSpeechRequestDiscriminator? Type435 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateVoiceDubbingRequestElevenVoiceDubbing? Type436 { get; set; }
+        public global::Runway.CreateTextToSpeechRequestDiscriminatorModel? Type436 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateVoiceDubbingRequestElevenVoiceDubbingTargetLang? Type437 { get; set; }
+        public global::Runway.CreateVoiceDubbingRequest? Type437 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateVoiceDubbingRequestDiscriminator? Type438 { get; set; }
+        public global::Runway.CreateVoiceDubbingRequestElevenVoiceDubbing? Type438 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateVoiceDubbingRequestDiscriminatorModel? Type439 { get; set; }
+        public global::Runway.CreateVoiceDubbingRequestElevenVoiceDubbingTargetLang? Type439 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateVoiceIsolationRequest? Type440 { get; set; }
+        public global::Runway.CreateVoiceDubbingRequestDiscriminator? Type440 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateVoiceIsolationRequestElevenVoiceIsolation? Type441 { get; set; }
+        public global::Runway.CreateVoiceDubbingRequestDiscriminatorModel? Type441 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateVoiceIsolationRequestDiscriminator? Type442 { get; set; }
+        public global::Runway.CreateVoiceIsolationRequest? Type442 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateVoiceIsolationRequestDiscriminatorModel? Type443 { get; set; }
+        public global::Runway.CreateVoiceIsolationRequestElevenVoiceIsolation? Type443 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateVideoRequest? Type444 { get; set; }
+        public global::Runway.CreateVoiceIsolationRequestDiscriminator? Type444 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateVideoRequestInput? Type445 { get; set; }
+        public global::Runway.CreateVoiceIsolationRequestDiscriminatorModel? Type445 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.CreateGenerateVideoRequestInputReferenceImage>? Type446 { get; set; }
+        public global::Runway.CreateGenerateVideoRequest? Type446 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateVideoRequestInputReferenceImage? Type447 { get; set; }
+        public global::Runway.CreateGenerateVideoRequestInput? Type447 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateVideoRequestInputReferenceImageRole? Type448 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.CreateGenerateVideoRequestInputReferenceImage>? Type448 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.CreateGenerateVideoRequestInputReferenceVideo>? Type449 { get; set; }
+        public global::Runway.CreateGenerateVideoRequestInputReferenceImage? Type449 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateVideoRequestInputReferenceVideo? Type450 { get; set; }
+        public global::Runway.CreateGenerateVideoRequestInputReferenceImageRole? Type450 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateVideoRequestInputReferenceVideoRole? Type451 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.CreateGenerateVideoRequestInputReferenceVideo>? Type451 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.CreateGenerateVideoRequestInputReferenceAudioItem>? Type452 { get; set; }
+        public global::Runway.CreateGenerateVideoRequestInputReferenceVideo? Type452 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateVideoRequestInputReferenceAudioItem? Type453 { get; set; }
+        public global::Runway.CreateGenerateVideoRequestInputReferenceVideoRole? Type453 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.AnyOf<global::Runway.CreateGenerateVideoRequestInputKeyframeVariant1, global::Runway.CreateGenerateVideoRequestInputKeyframeVariant2>>? Type454 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.CreateGenerateVideoRequestInputReferenceAudioItem>? Type454 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.AnyOf<global::Runway.CreateGenerateVideoRequestInputKeyframeVariant1, global::Runway.CreateGenerateVideoRequestInputKeyframeVariant2>? Type455 { get; set; }
+        public global::Runway.CreateGenerateVideoRequestInputReferenceAudioItem? Type455 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateVideoRequestInputKeyframeVariant1? Type456 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.AnyOf<global::Runway.CreateGenerateVideoRequestInputKeyframeVariant1, global::Runway.CreateGenerateVideoRequestInputKeyframeVariant2>>? Type456 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateVideoRequestInputKeyframeVariant1Range? Type457 { get; set; }
+        public global::Runway.AnyOf<global::Runway.CreateGenerateVideoRequestInputKeyframeVariant1, global::Runway.CreateGenerateVideoRequestInputKeyframeVariant2>? Type457 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateVideoRequestInputKeyframeVariant2? Type458 { get; set; }
+        public global::Runway.CreateGenerateVideoRequestInputKeyframeVariant1? Type458 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateVideoRequestInputKeyframeVariant2Range? Type459 { get; set; }
+        public global::Runway.CreateGenerateVideoRequestInputKeyframeVariant1Range? Type459 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateVideoRequestInputAspectRatio? Type460 { get; set; }
+        public global::Runway.CreateGenerateVideoRequestInputKeyframeVariant2? Type460 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateVideoRequestInputResolution? Type461 { get; set; }
+        public global::Runway.CreateGenerateVideoRequestInputKeyframeVariant2Range? Type461 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateVideoRequestInputContentModeration? Type462 { get; set; }
+        public global::Runway.CreateGenerateVideoRequestInputAspectRatio? Type462 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateVideoRequestInputContentModerationPublicFigureThreshold? Type463 { get; set; }
+        public global::Runway.CreateGenerateVideoRequestInputResolution? Type463 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateImageRequest? Type464 { get; set; }
+        public global::Runway.CreateGenerateVideoRequestInputContentModeration? Type464 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateImageRequestInput? Type465 { get; set; }
+        public global::Runway.CreateGenerateVideoRequestInputContentModerationPublicFigureThreshold? Type465 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.CreateGenerateImageRequestInputReferenceImage>? Type466 { get; set; }
+        public global::Runway.CreateGenerateImageRequest? Type466 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateImageRequestInputReferenceImage? Type467 { get; set; }
+        public global::Runway.CreateGenerateImageRequestInput? Type467 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateImageRequestInputAspectRatio? Type468 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.CreateGenerateImageRequestInputReferenceImage>? Type468 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateImageRequestInputResolution? Type469 { get; set; }
+        public global::Runway.CreateGenerateImageRequestInputReferenceImage? Type469 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateImageRequestInputContentModeration? Type470 { get; set; }
+        public global::Runway.CreateGenerateImageRequestInputAspectRatio? Type470 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateImageRequestInputContentModerationPublicFigureThreshold? Type471 { get; set; }
+        public global::Runway.CreateGenerateImageRequestInputResolution? Type471 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateAudioRequest? Type472 { get; set; }
+        public global::Runway.CreateGenerateImageRequestInputContentModeration? Type472 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateAudioRequestInput? Type473 { get; set; }
+        public global::Runway.CreateGenerateImageRequestInputContentModerationPublicFigureThreshold? Type473 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateAudioRequestInputType? Type474 { get; set; }
+        public global::Runway.CreateGenerateAudioRequest? Type474 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.Voice4? Type475 { get; set; }
+        public global::Runway.CreateGenerateAudioRequestInput? Type475 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateAudioRequestInputVoiceAudioPresetVoice? Type476 { get; set; }
+        public global::Runway.CreateGenerateAudioRequestInputType? Type476 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateAudioRequestInputVoiceAudioPresetVoicePresetId? Type477 { get; set; }
+        public global::Runway.Voice4? Type477 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateAudioRequestInputVoiceAudioReferenceVoice? Type478 { get; set; }
+        public global::Runway.CreateGenerateAudioRequestInputVoiceAudioPresetVoice? Type478 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateAudioRequestInputVoiceDiscriminator? Type479 { get; set; }
+        public global::Runway.CreateGenerateAudioRequestInputVoiceAudioPresetVoicePresetId? Type479 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateAudioRequestInputVoiceDiscriminatorType? Type480 { get; set; }
+        public global::Runway.CreateGenerateAudioRequestInputVoiceAudioReferenceVoice? Type480 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.CreateGenerateAudioRequestInputReferenceAudio>? Type481 { get; set; }
+        public global::Runway.CreateGenerateAudioRequestInputVoiceDiscriminator? Type481 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateAudioRequestInputReferenceAudio? Type482 { get; set; }
+        public global::Runway.CreateGenerateAudioRequestInputVoiceDiscriminatorType? Type482 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateOrganizationUsageRequest? Type483 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.CreateGenerateAudioRequestInputReferenceAudio>? Type483 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.DateTime? Type484 { get; set; }
+        public global::Runway.CreateGenerateAudioRequestInputReferenceAudio? Type484 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateUploadsRequest? Type485 { get; set; }
+        public global::Runway.CreateOrganizationUsageRequest? Type485 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateUploadsRequestType? Type486 { get; set; }
+        public global::System.DateTime? Type486 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesAdLocalizationRequest? Type487 { get; set; }
+        public global::Runway.CreateUploadsRequest? Type487 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesAdLocalizationRequestVersion? Type488 { get; set; }
+        public global::Runway.CreateUploadsRequestType? Type488 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesAdLocalizationRequestReferenceImage? Type489 { get; set; }
+        public global::Runway.CreateRecipesAdLocalizationRequest? Type489 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesAdLocalizationRequestTargetLanguage? Type490 { get; set; }
+        public global::Runway.CreateRecipesAdLocalizationRequestVersion? Type490 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesMarketingStockImageRequest? Type491 { get; set; }
+        public global::Runway.CreateRecipesAdLocalizationRequestReferenceImage? Type491 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesMarketingStockImageRequestVersion? Type492 { get; set; }
+        public global::Runway.CreateRecipesAdLocalizationRequestTargetLanguage? Type492 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesMarketingStockImageRequestReferenceImage? Type493 { get; set; }
+        public global::Runway.CreateRecipesMarketingStockImageRequest? Type493 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesMarketingStockImageRequestQuality? Type494 { get; set; }
+        public global::Runway.CreateRecipesMarketingStockImageRequestVersion? Type494 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesProductAdRequest? Type495 { get; set; }
+        public global::Runway.CreateRecipesMarketingStockImageRequestReferenceImage? Type495 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesProductAdRequestVersion? Type496 { get; set; }
+        public global::Runway.CreateRecipesMarketingStockImageRequestQuality? Type496 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.CreateRecipesProductAdRequestProductImage>? Type497 { get; set; }
+        public global::Runway.CreateRecipesProductAdRequest? Type497 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesProductAdRequestProductImage? Type498 { get; set; }
+        public global::Runway.CreateRecipesProductAdRequestVersion? Type498 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.CreateRecipesProductAdRequestStyleImage>? Type499 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.CreateRecipesProductAdRequestProductImage>? Type499 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesProductAdRequestStyleImage? Type500 { get; set; }
+        public global::Runway.CreateRecipesProductAdRequestProductImage? Type500 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesProductAdRequestRatio? Type501 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.CreateRecipesProductAdRequestStyleImage>? Type501 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesProductCampaignImageRequest? Type502 { get; set; }
+        public global::Runway.CreateRecipesProductAdRequestStyleImage? Type502 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesProductCampaignImageRequestVersion? Type503 { get; set; }
+        public global::Runway.CreateRecipesProductAdRequestRatio? Type503 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesProductCampaignImageRequestImage? Type504 { get; set; }
+        public global::Runway.CreateRecipesProductCampaignImageRequest? Type504 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesProductSwapRequest? Type505 { get; set; }
+        public global::Runway.CreateRecipesProductCampaignImageRequestVersion? Type505 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesProductSwapRequestVersion? Type506 { get; set; }
+        public global::Runway.CreateRecipesProductCampaignImageRequestImage? Type506 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesProductSwapRequestReferenceVideo? Type507 { get; set; }
+        public global::Runway.CreateRecipesProductSwapRequest? Type507 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesProductSwapRequestOriginalProductImage? Type508 { get; set; }
+        public global::Runway.CreateRecipesProductSwapRequestVersion? Type508 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.CreateRecipesProductSwapRequestNewProductImage>? Type509 { get; set; }
+        public global::Runway.CreateRecipesProductSwapRequestReferenceVideo? Type509 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesProductSwapRequestNewProductImage? Type510 { get; set; }
+        public global::Runway.CreateRecipesProductSwapRequestOriginalProductImage? Type510 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesProductSwapRequestNewProductImageView? Type511 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.CreateRecipesProductSwapRequestNewProductImage>? Type511 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesProductSwapRequestResolution? Type512 { get; set; }
+        public global::Runway.CreateRecipesProductSwapRequestNewProductImage? Type512 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesMultiShotVideoRequest? Type513 { get; set; }
+        public global::Runway.CreateRecipesProductSwapRequestNewProductImageView? Type513 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesMultiShotVideoRequestVariant1? Type514 { get; set; }
+        public global::Runway.CreateRecipesProductSwapRequestResolution? Type514 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesMultiShotVideoRequestVariant1Version? Type515 { get; set; }
+        public global::Runway.CreateRecipesMultiShotVideoRequest? Type515 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesMultiShotVideoRequestVariant1FirstFrame? Type516 { get; set; }
+        public global::Runway.CreateRecipesMultiShotVideoRequestVariant1? Type516 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesMultiShotVideoRequestVariant1Ratio? Type517 { get; set; }
+        public global::Runway.CreateRecipesMultiShotVideoRequestVariant1Version? Type517 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesMultiShotVideoRequestVariant2? Type518 { get; set; }
+        public global::Runway.CreateRecipesMultiShotVideoRequestVariant1FirstFrame? Type518 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.CreateRecipesMultiShotVideoRequestVariant2Shot>? Type519 { get; set; }
+        public global::Runway.CreateRecipesMultiShotVideoRequestVariant1Ratio? Type519 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesMultiShotVideoRequestVariant2Shot? Type520 { get; set; }
+        public global::Runway.CreateRecipesMultiShotVideoRequestVariant2? Type520 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesMultiShotVideoRequestVariant2Version? Type521 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.CreateRecipesMultiShotVideoRequestVariant2Shot>? Type521 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesMultiShotVideoRequestVariant2FirstFrame? Type522 { get; set; }
+        public global::Runway.CreateRecipesMultiShotVideoRequestVariant2Shot? Type522 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesMultiShotVideoRequestVariant2Ratio? Type523 { get; set; }
+        public global::Runway.CreateRecipesMultiShotVideoRequestVariant2Version? Type523 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesMultiShotVideoRequestDiscriminator? Type524 { get; set; }
+        public global::Runway.CreateRecipesMultiShotVideoRequestVariant2FirstFrame? Type524 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesMultiShotVideoRequestDiscriminatorMode? Type525 { get; set; }
+        public global::Runway.CreateRecipesMultiShotVideoRequestVariant2Ratio? Type525 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesProductUgcRequest? Type526 { get; set; }
+        public global::Runway.CreateRecipesMultiShotVideoRequestDiscriminator? Type526 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesProductUgcRequestVersion? Type527 { get; set; }
+        public global::Runway.CreateRecipesMultiShotVideoRequestDiscriminatorMode? Type527 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesProductUgcRequestCharacterImage? Type528 { get; set; }
+        public global::Runway.CreateRecipesProductUgcRequest? Type528 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesProductUgcRequestProductImage? Type529 { get; set; }
+        public global::Runway.CreateRecipesProductUgcRequestVersion? Type529 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesProductUgcRequestRatio? Type530 { get; set; }
+        public global::Runway.CreateRecipesProductUgcRequestCharacterImage? Type530 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRoutersRequest? Type531 { get; set; }
+        public global::Runway.CreateRecipesProductUgcRequestProductImage? Type531 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRoutersRequestSettings? Type532 { get; set; }
+        public global::Runway.CreateRecipesProductUgcRequestRatio? Type532 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRoutersRequestSettingsModels? Type533 { get; set; }
+        public global::Runway.CreateRoutersRequest? Type533 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRoutersRequestSettingsModelsMode? Type534 { get; set; }
+        public global::Runway.CreateRoutersRequestSettings? Type534 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRoutersRequestSettingsMaxCreditsPerGeneration? Type535 { get; set; }
+        public global::Runway.CreateRoutersRequestSettingsModels? Type535 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRoutersRequestSettingsOptimizeFor? Type536 { get; set; }
+        public global::Runway.CreateRoutersRequestSettingsModelsMode? Type536 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRoutersRequestSettingsFallback? Type537 { get; set; }
+        public global::Runway.CreateRoutersRequestSettingsMaxCreditsPerGeneration? Type537 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.PatchRoutersRequest? Type538 { get; set; }
+        public global::Runway.CreateRoutersRequestSettingsOptimizeFor? Type538 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.PatchRoutersRequestSettings? Type539 { get; set; }
+        public global::Runway.CreateRoutersRequestSettingsFallback? Type539 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.PatchRoutersRequestSettingsModels? Type540 { get; set; }
+        public global::Runway.PatchRoutersRequest? Type540 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.PatchRoutersRequestSettingsModelsMode? Type541 { get; set; }
+        public global::Runway.PatchRoutersRequestSettings? Type541 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.PatchRoutersRequestSettingsMaxCreditsPerGeneration? Type542 { get; set; }
+        public global::Runway.PatchRoutersRequestSettingsModels? Type542 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.PatchRoutersRequestSettingsOptimizeFor? Type543 { get; set; }
+        public global::Runway.PatchRoutersRequestSettingsModelsMode? Type543 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.PatchRoutersRequestSettingsFallback? Type544 { get; set; }
+        public global::Runway.PatchRoutersRequestSettingsMaxCreditsPerGeneration? Type544 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateVoicesRequest? Type545 { get; set; }
+        public global::Runway.PatchRoutersRequestSettingsOptimizeFor? Type545 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.From? Type546 { get; set; }
+        public global::Runway.PatchRoutersRequestSettingsFallback? Type546 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateVoicesRequestFromVoiceFromAudio? Type547 { get; set; }
+        public global::Runway.CreateVoicesRequest? Type547 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateVoicesRequestFromVoiceFromText? Type548 { get; set; }
+        public global::Runway.From? Type548 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateVoicesRequestFromVoiceFromTextModel? Type549 { get; set; }
+        public global::Runway.CreateVoicesRequestFromVoiceFromAudio? Type549 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateVoicesRequestFromDiscriminator? Type550 { get; set; }
+        public global::Runway.CreateVoicesRequestFromVoiceFromText? Type550 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateVoicesRequestFromDiscriminatorType? Type551 { get; set; }
+        public global::Runway.CreateVoicesRequestFromVoiceFromTextModel? Type551 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.PatchVoicesRequest? Type552 { get; set; }
+        public global::Runway.CreateVoicesRequestFromDiscriminator? Type552 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateVoicesPreviewRequest? Type553 { get; set; }
+        public global::Runway.CreateVoicesRequestFromDiscriminatorType? Type553 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateVoicesPreviewRequestModel? Type554 { get; set; }
+        public global::Runway.PatchVoicesRequest? Type554 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateWorkflowsRequest? Type555 { get; set; }
+        public global::Runway.CreateVoicesPreviewRequest? Type555 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.Dictionary<string, object>? Type556 { get; set; }
+        public global::Runway.CreateVoicesPreviewRequestModel? Type556 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.NodeOutputs? Type557 { get; set; }
+        public global::Runway.CreateWorkflowsRequest? Type557 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputPrimitive? Type558 { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, object>? Type558 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.AnyOf<string, double?, bool?>? Type559 { get; set; }
+        public global::Runway.NodeOutputs? Type559 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputImage? Type560 { get; set; }
+        public global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputPrimitive? Type560 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputVideo? Type561 { get; set; }
+        public global::Runway.AnyOf<string, double?, bool?>? Type561 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputAudio? Type562 { get; set; }
+        public global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputImage? Type562 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateWorkflowsRequestNodeOutputsDiscriminator? Type563 { get; set; }
+        public global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputVideo? Type563 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateWorkflowsRequestNodeOutputsDiscriminatorType? Type564 { get; set; }
+        public global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputAudio? Type564 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetDocumentsSort? Type565 { get; set; }
+        public global::Runway.CreateWorkflowsRequestNodeOutputsDiscriminator? Type565 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetDocumentsOrder? Type566 { get; set; }
+        public global::Runway.CreateWorkflowsRequestNodeOutputsDiscriminatorType? Type566 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarsResponse? Type567 { get; set; }
+        public global::Runway.GetDocumentsSort? Type567 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.DataItem>? Type568 { get; set; }
+        public global::Runway.GetDocumentsOrder? Type568 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.DataItem? Type569 { get; set; }
+        public global::Runway.GetAvatarsResponse? Type569 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarsResponseDataItemAvatarProcessing? Type570 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.DataItem>? Type570 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.Voice5? Type571 { get; set; }
+        public global::Runway.DataItem? Type571 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceRunwayLivePresetVoiceResponse? Type572 { get; set; }
+        public global::Runway.GetAvatarsResponseDataItemAvatarProcessing? Type572 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetId? Type573 { get; set; }
+        public global::Runway.Voice5? Type573 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceCustomVoiceResponse? Type574 { get; set; }
+        public global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceRunwayLivePresetVoiceResponse? Type574 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceDiscriminator? Type575 { get; set; }
+        public global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetId? Type575 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceDiscriminatorType? Type576 { get; set; }
+        public global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceCustomVoiceResponse? Type576 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarsResponseDataItemAvatarReady? Type577 { get; set; }
+        public global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceDiscriminator? Type577 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.Voice6? Type578 { get; set; }
+        public global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceDiscriminatorType? Type578 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarsResponseDataItemAvatarReadyVoiceRunwayLivePresetVoiceResponse? Type579 { get; set; }
+        public global::Runway.GetAvatarsResponseDataItemAvatarReady? Type579 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarsResponseDataItemAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetId? Type580 { get; set; }
+        public global::Runway.Voice6? Type580 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarsResponseDataItemAvatarReadyVoiceCustomVoiceResponse? Type581 { get; set; }
+        public global::Runway.GetAvatarsResponseDataItemAvatarReadyVoiceRunwayLivePresetVoiceResponse? Type581 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarsResponseDataItemAvatarReadyVoiceDiscriminator? Type582 { get; set; }
+        public global::Runway.GetAvatarsResponseDataItemAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetId? Type582 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarsResponseDataItemAvatarReadyVoiceDiscriminatorType? Type583 { get; set; }
+        public global::Runway.GetAvatarsResponseDataItemAvatarReadyVoiceCustomVoiceResponse? Type583 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarsResponseDataItemAvatarFailed? Type584 { get; set; }
+        public global::Runway.GetAvatarsResponseDataItemAvatarReadyVoiceDiscriminator? Type584 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.Voice7? Type585 { get; set; }
+        public global::Runway.GetAvatarsResponseDataItemAvatarReadyVoiceDiscriminatorType? Type585 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarsResponseDataItemAvatarFailedVoiceRunwayLivePresetVoiceResponse? Type586 { get; set; }
+        public global::Runway.GetAvatarsResponseDataItemAvatarFailed? Type586 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarsResponseDataItemAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetId? Type587 { get; set; }
+        public global::Runway.Voice7? Type587 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarsResponseDataItemAvatarFailedVoiceCustomVoiceResponse? Type588 { get; set; }
+        public global::Runway.GetAvatarsResponseDataItemAvatarFailedVoiceRunwayLivePresetVoiceResponse? Type588 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarsResponseDataItemAvatarFailedVoiceDiscriminator? Type589 { get; set; }
+        public global::Runway.GetAvatarsResponseDataItemAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetId? Type589 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarsResponseDataItemAvatarFailedVoiceDiscriminatorType? Type590 { get; set; }
+        public global::Runway.GetAvatarsResponseDataItemAvatarFailedVoiceCustomVoiceResponse? Type590 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarsResponseDataItemDiscriminator? Type591 { get; set; }
+        public global::Runway.GetAvatarsResponseDataItemAvatarFailedVoiceDiscriminator? Type591 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarsResponseDataItemDiscriminatorStatus? Type592 { get; set; }
+        public global::Runway.GetAvatarsResponseDataItemAvatarFailedVoiceDiscriminatorType? Type592 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateAvatarsResponse? Type593 { get; set; }
+        public global::Runway.GetAvatarsResponseDataItemDiscriminator? Type593 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateAvatarsResponseAvatarProcessing? Type594 { get; set; }
+        public global::Runway.GetAvatarsResponseDataItemDiscriminatorStatus? Type594 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.Voice8? Type595 { get; set; }
+        public global::Runway.CreateAvatarsResponse? Type595 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponse? Type596 { get; set; }
+        public global::Runway.CreateAvatarsResponseAvatarProcessing? Type596 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetId? Type597 { get; set; }
+        public global::Runway.Voice8? Type597 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateAvatarsResponseAvatarProcessingVoiceCustomVoiceResponse? Type598 { get; set; }
+        public global::Runway.CreateAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponse? Type598 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateAvatarsResponseAvatarProcessingVoiceDiscriminator? Type599 { get; set; }
+        public global::Runway.CreateAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetId? Type599 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateAvatarsResponseAvatarProcessingVoiceDiscriminatorType? Type600 { get; set; }
+        public global::Runway.CreateAvatarsResponseAvatarProcessingVoiceCustomVoiceResponse? Type600 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateAvatarsResponseAvatarReady? Type601 { get; set; }
+        public global::Runway.CreateAvatarsResponseAvatarProcessingVoiceDiscriminator? Type601 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.Voice9? Type602 { get; set; }
+        public global::Runway.CreateAvatarsResponseAvatarProcessingVoiceDiscriminatorType? Type602 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponse? Type603 { get; set; }
+        public global::Runway.CreateAvatarsResponseAvatarReady? Type603 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetId? Type604 { get; set; }
+        public global::Runway.Voice9? Type604 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateAvatarsResponseAvatarReadyVoiceCustomVoiceResponse? Type605 { get; set; }
+        public global::Runway.CreateAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponse? Type605 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateAvatarsResponseAvatarReadyVoiceDiscriminator? Type606 { get; set; }
+        public global::Runway.CreateAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetId? Type606 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateAvatarsResponseAvatarReadyVoiceDiscriminatorType? Type607 { get; set; }
+        public global::Runway.CreateAvatarsResponseAvatarReadyVoiceCustomVoiceResponse? Type607 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateAvatarsResponseAvatarFailed? Type608 { get; set; }
+        public global::Runway.CreateAvatarsResponseAvatarReadyVoiceDiscriminator? Type608 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.Voice10? Type609 { get; set; }
+        public global::Runway.CreateAvatarsResponseAvatarReadyVoiceDiscriminatorType? Type609 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponse? Type610 { get; set; }
+        public global::Runway.CreateAvatarsResponseAvatarFailed? Type610 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetId? Type611 { get; set; }
+        public global::Runway.Voice10? Type611 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateAvatarsResponseAvatarFailedVoiceCustomVoiceResponse? Type612 { get; set; }
+        public global::Runway.CreateAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponse? Type612 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateAvatarsResponseAvatarFailedVoiceDiscriminator? Type613 { get; set; }
+        public global::Runway.CreateAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetId? Type613 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateAvatarsResponseAvatarFailedVoiceDiscriminatorType? Type614 { get; set; }
+        public global::Runway.CreateAvatarsResponseAvatarFailedVoiceCustomVoiceResponse? Type614 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateAvatarsResponseDiscriminator? Type615 { get; set; }
+        public global::Runway.CreateAvatarsResponseAvatarFailedVoiceDiscriminator? Type615 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateAvatarsResponseDiscriminatorStatus? Type616 { get; set; }
+        public global::Runway.CreateAvatarsResponseAvatarFailedVoiceDiscriminatorType? Type616 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarConversationsResponse? Type617 { get; set; }
+        public global::Runway.CreateAvatarsResponseDiscriminator? Type617 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.GetAvatarConversationsResponseDataItem>? Type618 { get; set; }
+        public global::Runway.CreateAvatarsResponseDiscriminatorStatus? Type618 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarConversationsResponseDataItem? Type619 { get; set; }
+        public global::Runway.GetAvatarConversationsResponse? Type619 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarConversationsResponseDataItemStatus? Type620 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.GetAvatarConversationsResponseDataItem>? Type620 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.AvatarVariant1? Type621 { get; set; }
+        public global::Runway.GetAvatarConversationsResponseDataItem? Type621 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarConversationsResponseDataItemAvatarVariant1PresetAvatarSummary? Type622 { get; set; }
+        public global::Runway.GetAvatarConversationsResponseDataItemStatus? Type622 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarConversationsResponseDataItemAvatarVariant1CustomAvatarSummary? Type623 { get; set; }
+        public global::Runway.AvatarVariant1? Type623 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarConversationsResponseDataItemAvatarVariant1Discriminator? Type624 { get; set; }
+        public global::Runway.GetAvatarConversationsResponseDataItemAvatarVariant1PresetAvatarSummary? Type624 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarConversationsResponseDataItemAvatarVariant1DiscriminatorType? Type625 { get; set; }
+        public global::Runway.GetAvatarConversationsResponseDataItemAvatarVariant1CustomAvatarSummary? Type625 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarUsageResponse? Type626 { get; set; }
+        public global::Runway.GetAvatarConversationsResponseDataItemAvatarVariant1Discriminator? Type626 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.GetAvatarUsageResponseByDayItem>? Type627 { get; set; }
+        public global::Runway.GetAvatarConversationsResponseDataItemAvatarVariant1DiscriminatorType? Type627 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarUsageResponseByDayItem? Type628 { get; set; }
+        public global::Runway.GetAvatarUsageResponse? Type628 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarConversationsResponse2? Type629 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.GetAvatarUsageResponseByDayItem>? Type629 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarConversationsResponseVariant1? Type630 { get; set; }
+        public global::Runway.GetAvatarUsageResponseByDayItem? Type630 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.AvatarVariant12? Type631 { get; set; }
+        public global::Runway.GetAvatarConversationsResponse2? Type631 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarConversationsResponseVariant1AvatarVariant1PresetAvatar? Type632 { get; set; }
+        public global::Runway.GetAvatarConversationsResponseVariant1? Type632 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarConversationsResponseVariant1AvatarVariant1CustomAvatar? Type633 { get; set; }
+        public global::Runway.AvatarVariant12? Type633 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarConversationsResponseVariant1AvatarVariant1Discriminator? Type634 { get; set; }
+        public global::Runway.GetAvatarConversationsResponseVariant1AvatarVariant1PresetAvatar? Type634 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarConversationsResponseVariant1AvatarVariant1DiscriminatorType? Type635 { get; set; }
+        public global::Runway.GetAvatarConversationsResponseVariant1AvatarVariant1CustomAvatar? Type635 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.GetAvatarConversationsResponseVariant1TranscriptItem>? Type636 { get; set; }
+        public global::Runway.GetAvatarConversationsResponseVariant1AvatarVariant1Discriminator? Type636 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarConversationsResponseVariant1TranscriptItem? Type637 { get; set; }
+        public global::Runway.GetAvatarConversationsResponseVariant1AvatarVariant1DiscriminatorType? Type637 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarConversationsResponseVariant1TranscriptItemRole? Type638 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.GetAvatarConversationsResponseVariant1TranscriptItem>? Type638 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.GetAvatarConversationsResponseVariant1TranscriptItemToolCall>? Type639 { get; set; }
+        public global::Runway.GetAvatarConversationsResponseVariant1TranscriptItem? Type639 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarConversationsResponseVariant1TranscriptItemToolCall? Type640 { get; set; }
+        public global::Runway.GetAvatarConversationsResponseVariant1TranscriptItemRole? Type640 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.GetAvatarConversationsResponseVariant1TranscriptItemToolResult>? Type641 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.GetAvatarConversationsResponseVariant1TranscriptItemToolCall>? Type641 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarConversationsResponseVariant1TranscriptItemToolResult? Type642 { get; set; }
+        public global::Runway.GetAvatarConversationsResponseVariant1TranscriptItemToolCall? Type642 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.AnyOf<object, string, object>? Type643 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.GetAvatarConversationsResponseVariant1TranscriptItemToolResult>? Type643 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.GetAvatarConversationsResponseVariant1Tool>? Type644 { get; set; }
+        public global::Runway.GetAvatarConversationsResponseVariant1TranscriptItemToolResult? Type644 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarConversationsResponseVariant1Tool? Type645 { get; set; }
+        public global::Runway.AnyOf<object, string, object>? Type645 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarConversationsResponseVariant1ToolType? Type646 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.GetAvatarConversationsResponseVariant1Tool>? Type646 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarConversationsResponseVariant2? Type647 { get; set; }
+        public global::Runway.GetAvatarConversationsResponseVariant1Tool? Type647 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.AvatarVariant13? Type648 { get; set; }
+        public global::Runway.GetAvatarConversationsResponseVariant1ToolType? Type648 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarConversationsResponseVariant2AvatarVariant1PresetAvatar? Type649 { get; set; }
+        public global::Runway.GetAvatarConversationsResponseVariant2? Type649 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarConversationsResponseVariant2AvatarVariant1CustomAvatar? Type650 { get; set; }
+        public global::Runway.AvatarVariant13? Type650 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarConversationsResponseVariant2AvatarVariant1Discriminator? Type651 { get; set; }
+        public global::Runway.GetAvatarConversationsResponseVariant2AvatarVariant1PresetAvatar? Type651 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarConversationsResponseVariant2AvatarVariant1DiscriminatorType? Type652 { get; set; }
+        public global::Runway.GetAvatarConversationsResponseVariant2AvatarVariant1CustomAvatar? Type652 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.GetAvatarConversationsResponseVariant2TranscriptItem>? Type653 { get; set; }
+        public global::Runway.GetAvatarConversationsResponseVariant2AvatarVariant1Discriminator? Type653 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarConversationsResponseVariant2TranscriptItem? Type654 { get; set; }
+        public global::Runway.GetAvatarConversationsResponseVariant2AvatarVariant1DiscriminatorType? Type654 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarConversationsResponseVariant2TranscriptItemRole? Type655 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.GetAvatarConversationsResponseVariant2TranscriptItem>? Type655 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.GetAvatarConversationsResponseVariant2TranscriptItemToolCall>? Type656 { get; set; }
+        public global::Runway.GetAvatarConversationsResponseVariant2TranscriptItem? Type656 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarConversationsResponseVariant2TranscriptItemToolCall? Type657 { get; set; }
+        public global::Runway.GetAvatarConversationsResponseVariant2TranscriptItemRole? Type657 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.GetAvatarConversationsResponseVariant2TranscriptItemToolResult>? Type658 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.GetAvatarConversationsResponseVariant2TranscriptItemToolCall>? Type658 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarConversationsResponseVariant2TranscriptItemToolResult? Type659 { get; set; }
+        public global::Runway.GetAvatarConversationsResponseVariant2TranscriptItemToolCall? Type659 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.GetAvatarConversationsResponseVariant2Tool>? Type660 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.GetAvatarConversationsResponseVariant2TranscriptItemToolResult>? Type660 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarConversationsResponseVariant2Tool? Type661 { get; set; }
+        public global::Runway.GetAvatarConversationsResponseVariant2TranscriptItemToolResult? Type661 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarConversationsResponseVariant2ToolType? Type662 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.GetAvatarConversationsResponseVariant2Tool>? Type662 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarConversationsResponseVariant3? Type663 { get; set; }
+        public global::Runway.GetAvatarConversationsResponseVariant2Tool? Type663 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.AvatarVariant14? Type664 { get; set; }
+        public global::Runway.GetAvatarConversationsResponseVariant2ToolType? Type664 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarConversationsResponseVariant3AvatarVariant1PresetAvatar? Type665 { get; set; }
+        public global::Runway.GetAvatarConversationsResponseVariant3? Type665 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarConversationsResponseVariant3AvatarVariant1CustomAvatar? Type666 { get; set; }
+        public global::Runway.AvatarVariant14? Type666 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarConversationsResponseVariant3AvatarVariant1Discriminator? Type667 { get; set; }
+        public global::Runway.GetAvatarConversationsResponseVariant3AvatarVariant1PresetAvatar? Type667 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarConversationsResponseVariant3AvatarVariant1DiscriminatorType? Type668 { get; set; }
+        public global::Runway.GetAvatarConversationsResponseVariant3AvatarVariant1CustomAvatar? Type668 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.GetAvatarConversationsResponseVariant3TranscriptItem>? Type669 { get; set; }
+        public global::Runway.GetAvatarConversationsResponseVariant3AvatarVariant1Discriminator? Type669 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarConversationsResponseVariant3TranscriptItem? Type670 { get; set; }
+        public global::Runway.GetAvatarConversationsResponseVariant3AvatarVariant1DiscriminatorType? Type670 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarConversationsResponseVariant3TranscriptItemRole? Type671 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.GetAvatarConversationsResponseVariant3TranscriptItem>? Type671 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.GetAvatarConversationsResponseVariant3TranscriptItemToolCall>? Type672 { get; set; }
+        public global::Runway.GetAvatarConversationsResponseVariant3TranscriptItem? Type672 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarConversationsResponseVariant3TranscriptItemToolCall? Type673 { get; set; }
+        public global::Runway.GetAvatarConversationsResponseVariant3TranscriptItemRole? Type673 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.GetAvatarConversationsResponseVariant3TranscriptItemToolResult>? Type674 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.GetAvatarConversationsResponseVariant3TranscriptItemToolCall>? Type674 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarConversationsResponseVariant3TranscriptItemToolResult? Type675 { get; set; }
+        public global::Runway.GetAvatarConversationsResponseVariant3TranscriptItemToolCall? Type675 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.GetAvatarConversationsResponseVariant3Tool>? Type676 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.GetAvatarConversationsResponseVariant3TranscriptItemToolResult>? Type676 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarConversationsResponseVariant3Tool? Type677 { get; set; }
+        public global::Runway.GetAvatarConversationsResponseVariant3TranscriptItemToolResult? Type677 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarConversationsResponseVariant3ToolType? Type678 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.GetAvatarConversationsResponseVariant3Tool>? Type678 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarConversationsResponseDiscriminator? Type679 { get; set; }
+        public global::Runway.GetAvatarConversationsResponseVariant3Tool? Type679 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarConversationsResponseDiscriminatorStatus? Type680 { get; set; }
+        public global::Runway.GetAvatarConversationsResponseVariant3ToolType? Type680 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarsResponse2? Type681 { get; set; }
+        public global::Runway.GetAvatarConversationsResponseDiscriminator? Type681 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarsResponseAvatarProcessing? Type682 { get; set; }
+        public global::Runway.GetAvatarConversationsResponseDiscriminatorStatus? Type682 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.Voice11? Type683 { get; set; }
+        public global::Runway.GetAvatarsResponse2? Type683 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponse? Type684 { get; set; }
+        public global::Runway.GetAvatarsResponseAvatarProcessing? Type684 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetId? Type685 { get; set; }
+        public global::Runway.Voice11? Type685 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarsResponseAvatarProcessingVoiceCustomVoiceResponse? Type686 { get; set; }
+        public global::Runway.GetAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponse? Type686 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarsResponseAvatarProcessingVoiceDiscriminator? Type687 { get; set; }
+        public global::Runway.GetAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetId? Type687 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarsResponseAvatarProcessingVoiceDiscriminatorType? Type688 { get; set; }
+        public global::Runway.GetAvatarsResponseAvatarProcessingVoiceCustomVoiceResponse? Type688 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarsResponseAvatarReady? Type689 { get; set; }
+        public global::Runway.GetAvatarsResponseAvatarProcessingVoiceDiscriminator? Type689 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.Voice12? Type690 { get; set; }
+        public global::Runway.GetAvatarsResponseAvatarProcessingVoiceDiscriminatorType? Type690 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponse? Type691 { get; set; }
+        public global::Runway.GetAvatarsResponseAvatarReady? Type691 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetId? Type692 { get; set; }
+        public global::Runway.Voice12? Type692 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarsResponseAvatarReadyVoiceCustomVoiceResponse? Type693 { get; set; }
+        public global::Runway.GetAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponse? Type693 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarsResponseAvatarReadyVoiceDiscriminator? Type694 { get; set; }
+        public global::Runway.GetAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetId? Type694 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarsResponseAvatarReadyVoiceDiscriminatorType? Type695 { get; set; }
+        public global::Runway.GetAvatarsResponseAvatarReadyVoiceCustomVoiceResponse? Type695 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarsResponseAvatarFailed? Type696 { get; set; }
+        public global::Runway.GetAvatarsResponseAvatarReadyVoiceDiscriminator? Type696 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.Voice13? Type697 { get; set; }
+        public global::Runway.GetAvatarsResponseAvatarReadyVoiceDiscriminatorType? Type697 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponse? Type698 { get; set; }
+        public global::Runway.GetAvatarsResponseAvatarFailed? Type698 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetId? Type699 { get; set; }
+        public global::Runway.Voice13? Type699 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarsResponseAvatarFailedVoiceCustomVoiceResponse? Type700 { get; set; }
+        public global::Runway.GetAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponse? Type700 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarsResponseAvatarFailedVoiceDiscriminator? Type701 { get; set; }
+        public global::Runway.GetAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetId? Type701 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarsResponseAvatarFailedVoiceDiscriminatorType? Type702 { get; set; }
+        public global::Runway.GetAvatarsResponseAvatarFailedVoiceCustomVoiceResponse? Type702 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarsResponseDiscriminator? Type703 { get; set; }
+        public global::Runway.GetAvatarsResponseAvatarFailedVoiceDiscriminator? Type703 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarsResponseDiscriminatorStatus? Type704 { get; set; }
+        public global::Runway.GetAvatarsResponseAvatarFailedVoiceDiscriminatorType? Type704 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.PatchAvatarsResponse? Type705 { get; set; }
+        public global::Runway.GetAvatarsResponseDiscriminator? Type705 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.PatchAvatarsResponseAvatarProcessing? Type706 { get; set; }
+        public global::Runway.GetAvatarsResponseDiscriminatorStatus? Type706 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.Voice14? Type707 { get; set; }
+        public global::Runway.PatchAvatarsResponse? Type707 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.PatchAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponse? Type708 { get; set; }
+        public global::Runway.PatchAvatarsResponseAvatarProcessing? Type708 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.PatchAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetId? Type709 { get; set; }
+        public global::Runway.Voice14? Type709 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.PatchAvatarsResponseAvatarProcessingVoiceCustomVoiceResponse? Type710 { get; set; }
+        public global::Runway.PatchAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponse? Type710 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.PatchAvatarsResponseAvatarProcessingVoiceDiscriminator? Type711 { get; set; }
+        public global::Runway.PatchAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponsePresetId? Type711 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.PatchAvatarsResponseAvatarProcessingVoiceDiscriminatorType? Type712 { get; set; }
+        public global::Runway.PatchAvatarsResponseAvatarProcessingVoiceCustomVoiceResponse? Type712 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.PatchAvatarsResponseAvatarReady? Type713 { get; set; }
+        public global::Runway.PatchAvatarsResponseAvatarProcessingVoiceDiscriminator? Type713 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.Voice15? Type714 { get; set; }
+        public global::Runway.PatchAvatarsResponseAvatarProcessingVoiceDiscriminatorType? Type714 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.PatchAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponse? Type715 { get; set; }
+        public global::Runway.PatchAvatarsResponseAvatarReady? Type715 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.PatchAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetId? Type716 { get; set; }
+        public global::Runway.Voice15? Type716 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.PatchAvatarsResponseAvatarReadyVoiceCustomVoiceResponse? Type717 { get; set; }
+        public global::Runway.PatchAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponse? Type717 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.PatchAvatarsResponseAvatarReadyVoiceDiscriminator? Type718 { get; set; }
+        public global::Runway.PatchAvatarsResponseAvatarReadyVoiceRunwayLivePresetVoiceResponsePresetId? Type718 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.PatchAvatarsResponseAvatarReadyVoiceDiscriminatorType? Type719 { get; set; }
+        public global::Runway.PatchAvatarsResponseAvatarReadyVoiceCustomVoiceResponse? Type719 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.PatchAvatarsResponseAvatarFailed? Type720 { get; set; }
+        public global::Runway.PatchAvatarsResponseAvatarReadyVoiceDiscriminator? Type720 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.Voice16? Type721 { get; set; }
+        public global::Runway.PatchAvatarsResponseAvatarReadyVoiceDiscriminatorType? Type721 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.PatchAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponse? Type722 { get; set; }
+        public global::Runway.PatchAvatarsResponseAvatarFailed? Type722 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.PatchAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetId? Type723 { get; set; }
+        public global::Runway.Voice16? Type723 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.PatchAvatarsResponseAvatarFailedVoiceCustomVoiceResponse? Type724 { get; set; }
+        public global::Runway.PatchAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponse? Type724 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.PatchAvatarsResponseAvatarFailedVoiceDiscriminator? Type725 { get; set; }
+        public global::Runway.PatchAvatarsResponseAvatarFailedVoiceRunwayLivePresetVoiceResponsePresetId? Type725 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.PatchAvatarsResponseAvatarFailedVoiceDiscriminatorType? Type726 { get; set; }
+        public global::Runway.PatchAvatarsResponseAvatarFailedVoiceCustomVoiceResponse? Type726 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.PatchAvatarsResponseDiscriminator? Type727 { get; set; }
+        public global::Runway.PatchAvatarsResponseAvatarFailedVoiceDiscriminator? Type727 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.PatchAvatarsResponseDiscriminatorStatus? Type728 { get; set; }
+        public global::Runway.PatchAvatarsResponseAvatarFailedVoiceDiscriminatorType? Type728 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.PatchAvatarsResponse2? Type729 { get; set; }
+        public global::Runway.PatchAvatarsResponseDiscriminator? Type729 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateAvatarVideosResponse? Type730 { get; set; }
+        public global::Runway.PatchAvatarsResponseDiscriminatorStatus? Type730 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateDocumentsResponse? Type731 { get; set; }
+        public global::Runway.PatchAvatarsResponse2? Type731 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateDocumentsResponseType? Type732 { get; set; }
+        public global::Runway.CreateAvatarVideosResponse? Type732 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.CreateDocumentsResponseUsedByItem>? Type733 { get; set; }
+        public global::Runway.CreateDocumentsResponse? Type733 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateDocumentsResponseUsedByItem? Type734 { get; set; }
+        public global::Runway.CreateDocumentsResponseType? Type734 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetDocumentsResponse? Type735 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.CreateDocumentsResponseUsedByItem>? Type735 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.GetDocumentsResponseDataItem>? Type736 { get; set; }
+        public global::Runway.CreateDocumentsResponseUsedByItem? Type736 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetDocumentsResponseDataItem? Type737 { get; set; }
+        public global::Runway.GetDocumentsResponse? Type737 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetDocumentsResponseDataItemType? Type738 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.GetDocumentsResponseDataItem>? Type738 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.GetDocumentsResponseDataItemUsedByItem>? Type739 { get; set; }
+        public global::Runway.GetDocumentsResponseDataItem? Type739 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetDocumentsResponseDataItemUsedByItem? Type740 { get; set; }
+        public global::Runway.GetDocumentsResponseDataItemType? Type740 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetDocumentsResponse2? Type741 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.GetDocumentsResponseDataItemUsedByItem>? Type741 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetDocumentsResponseType? Type742 { get; set; }
+        public global::Runway.GetDocumentsResponseDataItemUsedByItem? Type742 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.GetDocumentsResponseUsedByItem>? Type743 { get; set; }
+        public global::Runway.GetDocumentsResponse2? Type743 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetDocumentsResponseUsedByItem? Type744 { get; set; }
+        public global::Runway.GetDocumentsResponseType? Type744 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRealtimeSessionsResponse? Type745 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.GetDocumentsResponseUsedByItem>? Type745 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetRealtimeSessionsResponse? Type746 { get; set; }
+        public global::Runway.GetDocumentsResponseUsedByItem? Type746 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetRealtimeSessionsResponseSessionNotReady? Type747 { get; set; }
+        public global::Runway.CreateRealtimeSessionsResponse? Type747 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetRealtimeSessionsResponseSessionReady? Type748 { get; set; }
+        public global::Runway.GetRealtimeSessionsResponse? Type748 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetRealtimeSessionsResponseSessionRunning? Type749 { get; set; }
+        public global::Runway.GetRealtimeSessionsResponseSessionNotReady? Type749 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetRealtimeSessionsResponseSessionCompleted? Type750 { get; set; }
+        public global::Runway.GetRealtimeSessionsResponseSessionReady? Type750 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetRealtimeSessionsResponseSessionFailed? Type751 { get; set; }
+        public global::Runway.GetRealtimeSessionsResponseSessionRunning? Type751 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetRealtimeSessionsResponseSessionCancelled? Type752 { get; set; }
+        public global::Runway.GetRealtimeSessionsResponseSessionCompleted? Type752 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetRealtimeSessionsResponseDiscriminator? Type753 { get; set; }
+        public global::Runway.GetRealtimeSessionsResponseSessionFailed? Type753 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetRealtimeSessionsResponseDiscriminatorStatus? Type754 { get; set; }
+        public global::Runway.GetRealtimeSessionsResponseSessionCancelled? Type754 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetTasksResponse? Type755 { get; set; }
+        public global::Runway.GetRealtimeSessionsResponseDiscriminator? Type755 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetTasksResponseVariant1? Type756 { get; set; }
+        public global::Runway.GetRealtimeSessionsResponseDiscriminatorStatus? Type756 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetTasksResponseVariant1EstimatedCost? Type757 { get; set; }
+        public global::Runway.GetTasksResponse? Type757 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetTasksResponseVariant2? Type758 { get; set; }
+        public global::Runway.GetTasksResponseVariant1? Type758 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetTasksResponseVariant2EstimatedCost? Type759 { get; set; }
+        public global::Runway.GetTasksResponseVariant1EstimatedCost? Type759 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetTasksResponseVariant3? Type760 { get; set; }
+        public global::Runway.GetTasksResponseVariant2? Type760 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetTasksResponseVariant3Cost? Type761 { get; set; }
+        public global::Runway.GetTasksResponseVariant2EstimatedCost? Type761 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetTasksResponseVariant4? Type762 { get; set; }
+        public global::Runway.GetTasksResponseVariant3? Type762 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetTasksResponseVariant4EstimatedCost? Type763 { get; set; }
+        public global::Runway.GetTasksResponseVariant3Cost? Type763 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetTasksResponseVariant5? Type764 { get; set; }
+        public global::Runway.GetTasksResponseVariant4? Type764 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetTasksResponseVariant5Cost? Type765 { get; set; }
+        public global::Runway.GetTasksResponseVariant4EstimatedCost? Type765 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetTasksResponseVariant6? Type766 { get; set; }
+        public global::Runway.GetTasksResponseVariant5? Type766 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetTasksResponseVariant6Cost? Type767 { get; set; }
+        public global::Runway.GetTasksResponseVariant5Cost? Type767 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetTasksResponseDiscriminator? Type768 { get; set; }
+        public global::Runway.GetTasksResponseVariant6? Type768 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetTasksResponseDiscriminatorStatus? Type769 { get; set; }
+        public global::Runway.GetTasksResponseVariant6Cost? Type769 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetTasksResponse2? Type770 { get; set; }
+        public global::Runway.GetTasksResponseDiscriminator? Type770 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateImageToVideoResponse? Type771 { get; set; }
+        public global::Runway.GetTasksResponseDiscriminatorStatus? Type771 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateImageToVideoResponseEstimatedCost? Type772 { get; set; }
+        public global::Runway.GetTasksResponse2? Type772 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateImageToVideoResponse2? Type773 { get; set; }
+        public global::Runway.CreateImageToVideoResponse? Type773 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoResponseIssue>? Type774 { get; set; }
+        public global::Runway.CreateImageToVideoResponseEstimatedCost? Type774 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateImageToVideoResponseIssue? Type775 { get; set; }
+        public global::Runway.CreateImageToVideoResponse2? Type775 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.AnyOf<string, double?>>? Type776 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoResponseIssue>? Type776 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.AnyOf<string, double?>? Type777 { get; set; }
+        public global::Runway.CreateImageToVideoResponseIssue? Type777 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateImageToVideoResponse3? Type778 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.AnyOf<string, double?>>? Type778 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateTextToVideoResponse? Type779 { get; set; }
+        public global::Runway.AnyOf<string, double?>? Type779 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateTextToVideoResponseEstimatedCost? Type780 { get; set; }
+        public global::Runway.CreateImageToVideoResponse3? Type780 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateTextToVideoResponse2? Type781 { get; set; }
+        public global::Runway.CreateTextToVideoResponse? Type781 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.CreateTextToVideoResponseIssue>? Type782 { get; set; }
+        public global::Runway.CreateTextToVideoResponseEstimatedCost? Type782 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateTextToVideoResponseIssue? Type783 { get; set; }
+        public global::Runway.CreateTextToVideoResponse2? Type783 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateTextToVideoResponse3? Type784 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.CreateTextToVideoResponseIssue>? Type784 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateVideoToVideoResponse? Type785 { get; set; }
+        public global::Runway.CreateTextToVideoResponseIssue? Type785 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateVideoToVideoResponseEstimatedCost? Type786 { get; set; }
+        public global::Runway.CreateTextToVideoResponse3? Type786 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateVideoToVideoResponse2? Type787 { get; set; }
+        public global::Runway.CreateVideoToVideoResponse? Type787 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.CreateVideoToVideoResponseIssue>? Type788 { get; set; }
+        public global::Runway.CreateVideoToVideoResponseEstimatedCost? Type788 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateVideoToVideoResponseIssue? Type789 { get; set; }
+        public global::Runway.CreateVideoToVideoResponse2? Type789 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateVideoToVideoResponse3? Type790 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.CreateVideoToVideoResponseIssue>? Type790 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateVideoToHdrResponse? Type791 { get; set; }
+        public global::Runway.CreateVideoToVideoResponseIssue? Type791 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateVideoToHdrResponseEstimatedCost? Type792 { get; set; }
+        public global::Runway.CreateVideoToVideoResponse3? Type792 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateVideoToHdrResponse2? Type793 { get; set; }
+        public global::Runway.CreateVideoToHdrResponse? Type793 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.CreateVideoToHdrResponseIssue>? Type794 { get; set; }
+        public global::Runway.CreateVideoToHdrResponseEstimatedCost? Type794 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateVideoToHdrResponseIssue? Type795 { get; set; }
+        public global::Runway.CreateVideoToHdrResponse2? Type795 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateVideoToHdrResponse3? Type796 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.CreateVideoToHdrResponseIssue>? Type796 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateTextToImageResponse? Type797 { get; set; }
+        public global::Runway.CreateVideoToHdrResponseIssue? Type797 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateTextToImageResponseEstimatedCost? Type798 { get; set; }
+        public global::Runway.CreateVideoToHdrResponse3? Type798 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateTextToImageResponse2? Type799 { get; set; }
+        public global::Runway.CreateTextToImageResponse? Type799 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.CreateTextToImageResponseIssue>? Type800 { get; set; }
+        public global::Runway.CreateTextToImageResponseEstimatedCost? Type800 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateTextToImageResponseIssue? Type801 { get; set; }
+        public global::Runway.CreateTextToImageResponse2? Type801 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateTextToImageResponse3? Type802 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.CreateTextToImageResponseIssue>? Type802 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateImageUpscaleResponse? Type803 { get; set; }
+        public global::Runway.CreateTextToImageResponseIssue? Type803 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateImageUpscaleResponseEstimatedCost? Type804 { get; set; }
+        public global::Runway.CreateTextToImageResponse3? Type804 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateImageUpscaleResponse2? Type805 { get; set; }
+        public global::Runway.CreateImageUpscaleResponse? Type805 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.CreateImageUpscaleResponseIssue>? Type806 { get; set; }
+        public global::Runway.CreateImageUpscaleResponseEstimatedCost? Type806 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateImageUpscaleResponseIssue? Type807 { get; set; }
+        public global::Runway.CreateImageUpscaleResponse2? Type807 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateImageUpscaleResponse3? Type808 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.CreateImageUpscaleResponseIssue>? Type808 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateVideoUpscaleResponse? Type809 { get; set; }
+        public global::Runway.CreateImageUpscaleResponseIssue? Type809 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateVideoUpscaleResponseEstimatedCost? Type810 { get; set; }
+        public global::Runway.CreateImageUpscaleResponse3? Type810 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateVideoUpscaleResponse2? Type811 { get; set; }
+        public global::Runway.CreateVideoUpscaleResponse? Type811 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.CreateVideoUpscaleResponseIssue>? Type812 { get; set; }
+        public global::Runway.CreateVideoUpscaleResponseEstimatedCost? Type812 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateVideoUpscaleResponseIssue? Type813 { get; set; }
+        public global::Runway.CreateVideoUpscaleResponse2? Type813 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateVideoUpscaleResponse3? Type814 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.CreateVideoUpscaleResponseIssue>? Type814 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateCharacterPerformanceResponse? Type815 { get; set; }
+        public global::Runway.CreateVideoUpscaleResponseIssue? Type815 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateCharacterPerformanceResponseEstimatedCost? Type816 { get; set; }
+        public global::Runway.CreateVideoUpscaleResponse3? Type816 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateCharacterPerformanceResponse2? Type817 { get; set; }
+        public global::Runway.CreateCharacterPerformanceResponse? Type817 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.CreateCharacterPerformanceResponseIssue>? Type818 { get; set; }
+        public global::Runway.CreateCharacterPerformanceResponseEstimatedCost? Type818 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateCharacterPerformanceResponseIssue? Type819 { get; set; }
+        public global::Runway.CreateCharacterPerformanceResponse2? Type819 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateCharacterPerformanceResponse3? Type820 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.CreateCharacterPerformanceResponseIssue>? Type820 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateSoundEffectResponse? Type821 { get; set; }
+        public global::Runway.CreateCharacterPerformanceResponseIssue? Type821 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateSoundEffectResponseEstimatedCost? Type822 { get; set; }
+        public global::Runway.CreateCharacterPerformanceResponse3? Type822 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateSoundEffectResponse2? Type823 { get; set; }
+        public global::Runway.CreateSoundEffectResponse? Type823 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.CreateSoundEffectResponseIssue>? Type824 { get; set; }
+        public global::Runway.CreateSoundEffectResponseEstimatedCost? Type824 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateSoundEffectResponseIssue? Type825 { get; set; }
+        public global::Runway.CreateSoundEffectResponse2? Type825 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateSoundEffectResponse3? Type826 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.CreateSoundEffectResponseIssue>? Type826 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateSpeechToSpeechResponse? Type827 { get; set; }
+        public global::Runway.CreateSoundEffectResponseIssue? Type827 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateSpeechToSpeechResponseEstimatedCost? Type828 { get; set; }
+        public global::Runway.CreateSoundEffectResponse3? Type828 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateSpeechToSpeechResponse2? Type829 { get; set; }
+        public global::Runway.CreateSpeechToSpeechResponse? Type829 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.CreateSpeechToSpeechResponseIssue>? Type830 { get; set; }
+        public global::Runway.CreateSpeechToSpeechResponseEstimatedCost? Type830 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateSpeechToSpeechResponseIssue? Type831 { get; set; }
+        public global::Runway.CreateSpeechToSpeechResponse2? Type831 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateSpeechToSpeechResponse3? Type832 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.CreateSpeechToSpeechResponseIssue>? Type832 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateTextToSpeechResponse? Type833 { get; set; }
+        public global::Runway.CreateSpeechToSpeechResponseIssue? Type833 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateTextToSpeechResponseEstimatedCost? Type834 { get; set; }
+        public global::Runway.CreateSpeechToSpeechResponse3? Type834 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateTextToSpeechResponse2? Type835 { get; set; }
+        public global::Runway.CreateTextToSpeechResponse? Type835 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.CreateTextToSpeechResponseIssue>? Type836 { get; set; }
+        public global::Runway.CreateTextToSpeechResponseEstimatedCost? Type836 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateTextToSpeechResponseIssue? Type837 { get; set; }
+        public global::Runway.CreateTextToSpeechResponse2? Type837 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateTextToSpeechResponse3? Type838 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.CreateTextToSpeechResponseIssue>? Type838 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateVoiceDubbingResponse? Type839 { get; set; }
+        public global::Runway.CreateTextToSpeechResponseIssue? Type839 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateVoiceDubbingResponseEstimatedCost? Type840 { get; set; }
+        public global::Runway.CreateTextToSpeechResponse3? Type840 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateVoiceDubbingResponse2? Type841 { get; set; }
+        public global::Runway.CreateVoiceDubbingResponse? Type841 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.CreateVoiceDubbingResponseIssue>? Type842 { get; set; }
+        public global::Runway.CreateVoiceDubbingResponseEstimatedCost? Type842 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateVoiceDubbingResponseIssue? Type843 { get; set; }
+        public global::Runway.CreateVoiceDubbingResponse2? Type843 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateVoiceDubbingResponse3? Type844 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.CreateVoiceDubbingResponseIssue>? Type844 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateVoiceIsolationResponse? Type845 { get; set; }
+        public global::Runway.CreateVoiceDubbingResponseIssue? Type845 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateVoiceIsolationResponseEstimatedCost? Type846 { get; set; }
+        public global::Runway.CreateVoiceDubbingResponse3? Type846 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateVoiceIsolationResponse2? Type847 { get; set; }
+        public global::Runway.CreateVoiceIsolationResponse? Type847 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.CreateVoiceIsolationResponseIssue>? Type848 { get; set; }
+        public global::Runway.CreateVoiceIsolationResponseEstimatedCost? Type848 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateVoiceIsolationResponseIssue? Type849 { get; set; }
+        public global::Runway.CreateVoiceIsolationResponse2? Type849 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateVoiceIsolationResponse3? Type850 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.CreateVoiceIsolationResponseIssue>? Type850 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateVideoResponse2? Type851 { get; set; }
+        public global::Runway.CreateVoiceIsolationResponseIssue? Type851 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateVideoResponseRouting? Type852 { get; set; }
+        public global::Runway.CreateVoiceIsolationResponse3? Type852 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateVideoResponseRoutingResolvedSettings? Type853 { get; set; }
+        public global::Runway.CreateGenerateVideoResponse2? Type853 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateVideoResponseRoutingResolvedSettingsOptimizeFor? Type854 { get; set; }
+        public global::Runway.CreateGenerateVideoResponseRouting? Type854 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateVideoResponseRoutingResolvedInput? Type855 { get; set; }
+        public global::Runway.CreateGenerateVideoResponseRoutingResolvedSettings? Type855 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateVideoResponseRoutingEstimatedCost? Type856 { get; set; }
+        public global::Runway.CreateGenerateVideoResponseRoutingResolvedSettingsOptimizeFor? Type856 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateVideoResponseRoutingCapacityFallback? Type857 { get; set; }
+        public global::Runway.CreateGenerateVideoResponseRoutingResolvedInput? Type857 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.AnyOf<global::Runway.CreateGenerateVideoResponseVariant1, global::Runway.CreateGenerateVideoResponseVariant2>? Type858 { get; set; }
+        public global::Runway.CreateGenerateVideoResponseRoutingEstimatedCost? Type858 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateVideoResponseVariant1? Type859 { get; set; }
+        public global::Runway.CreateGenerateVideoResponseRoutingCapacityFallback? Type859 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.CreateGenerateVideoResponseVariant1PipelineItem>? Type860 { get; set; }
+        public global::Runway.AnyOf<global::Runway.CreateGenerateVideoResponseVariant1, global::Runway.CreateGenerateVideoResponseVariant2>? Type860 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateVideoResponseVariant1PipelineItem? Type861 { get; set; }
+        public global::Runway.CreateGenerateVideoResponseVariant1? Type861 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateVideoResponseVariant1PipelineItemFilter? Type862 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.CreateGenerateVideoResponseVariant1PipelineItem>? Type862 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.CreateGenerateVideoResponseVariant1EmptiedByItem>? Type863 { get; set; }
+        public global::Runway.CreateGenerateVideoResponseVariant1PipelineItem? Type863 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateVideoResponseVariant1EmptiedByItem? Type864 { get; set; }
+        public global::Runway.CreateGenerateVideoResponseVariant1PipelineItemFilter? Type864 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateVideoResponseVariant2? Type865 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.CreateGenerateVideoResponseVariant1EmptiedByItem>? Type865 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateVideoResponse4? Type866 { get; set; }
+        public global::Runway.CreateGenerateVideoResponseVariant1EmptiedByItem? Type866 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateVideoResponse5? Type867 { get; set; }
+        public global::Runway.CreateGenerateVideoResponseVariant2? Type867 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateImageResponse2? Type868 { get; set; }
+        public global::Runway.CreateGenerateVideoResponse4? Type868 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateImageResponseRouting? Type869 { get; set; }
+        public global::Runway.CreateGenerateVideoResponse5? Type869 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateImageResponseRoutingResolvedSettings? Type870 { get; set; }
+        public global::Runway.CreateGenerateImageResponse2? Type870 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateImageResponseRoutingResolvedSettingsOptimizeFor? Type871 { get; set; }
+        public global::Runway.CreateGenerateImageResponseRouting? Type871 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateImageResponseRoutingResolvedInput? Type872 { get; set; }
+        public global::Runway.CreateGenerateImageResponseRoutingResolvedSettings? Type872 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateImageResponseRoutingEstimatedCost? Type873 { get; set; }
+        public global::Runway.CreateGenerateImageResponseRoutingResolvedSettingsOptimizeFor? Type873 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateImageResponseRoutingCapacityFallback? Type874 { get; set; }
+        public global::Runway.CreateGenerateImageResponseRoutingResolvedInput? Type874 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.AnyOf<global::Runway.CreateGenerateImageResponseVariant1, global::Runway.CreateGenerateImageResponseVariant2>? Type875 { get; set; }
+        public global::Runway.CreateGenerateImageResponseRoutingEstimatedCost? Type875 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateImageResponseVariant1? Type876 { get; set; }
+        public global::Runway.CreateGenerateImageResponseRoutingCapacityFallback? Type876 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.CreateGenerateImageResponseVariant1PipelineItem>? Type877 { get; set; }
+        public global::Runway.AnyOf<global::Runway.CreateGenerateImageResponseVariant1, global::Runway.CreateGenerateImageResponseVariant2>? Type877 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateImageResponseVariant1PipelineItem? Type878 { get; set; }
+        public global::Runway.CreateGenerateImageResponseVariant1? Type878 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateImageResponseVariant1PipelineItemFilter? Type879 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.CreateGenerateImageResponseVariant1PipelineItem>? Type879 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.CreateGenerateImageResponseVariant1EmptiedByItem>? Type880 { get; set; }
+        public global::Runway.CreateGenerateImageResponseVariant1PipelineItem? Type880 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateImageResponseVariant1EmptiedByItem? Type881 { get; set; }
+        public global::Runway.CreateGenerateImageResponseVariant1PipelineItemFilter? Type881 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateImageResponseVariant2? Type882 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.CreateGenerateImageResponseVariant1EmptiedByItem>? Type882 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateImageResponse4? Type883 { get; set; }
+        public global::Runway.CreateGenerateImageResponseVariant1EmptiedByItem? Type883 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateImageResponse5? Type884 { get; set; }
+        public global::Runway.CreateGenerateImageResponseVariant2? Type884 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateAudioResponse2? Type885 { get; set; }
+        public global::Runway.CreateGenerateImageResponse4? Type885 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateAudioResponseRouting? Type886 { get; set; }
+        public global::Runway.CreateGenerateImageResponse5? Type886 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateAudioResponseRoutingResolvedSettings? Type887 { get; set; }
+        public global::Runway.CreateGenerateAudioResponse2? Type887 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateAudioResponseRoutingResolvedSettingsOptimizeFor? Type888 { get; set; }
+        public global::Runway.CreateGenerateAudioResponseRouting? Type888 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateAudioResponseRoutingResolvedInput? Type889 { get; set; }
+        public global::Runway.CreateGenerateAudioResponseRoutingResolvedSettings? Type889 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateAudioResponseRoutingResolvedInputType? Type890 { get; set; }
+        public global::Runway.CreateGenerateAudioResponseRoutingResolvedSettingsOptimizeFor? Type890 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateAudioResponseRoutingResolvedInputVoice? Type891 { get; set; }
+        public global::Runway.CreateGenerateAudioResponseRoutingResolvedInput? Type891 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateAudioResponseRoutingEstimatedCost? Type892 { get; set; }
+        public global::Runway.CreateGenerateAudioResponseRoutingResolvedInputType? Type892 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateAudioResponseRoutingCapacityFallback? Type893 { get; set; }
+        public global::Runway.CreateGenerateAudioResponseRoutingResolvedInputVoice? Type893 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.AnyOf<global::Runway.CreateGenerateAudioResponseVariant1, global::Runway.CreateGenerateAudioResponseVariant2>? Type894 { get; set; }
+        public global::Runway.CreateGenerateAudioResponseRoutingEstimatedCost? Type894 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateAudioResponseVariant1? Type895 { get; set; }
+        public global::Runway.CreateGenerateAudioResponseRoutingCapacityFallback? Type895 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.CreateGenerateAudioResponseVariant1PipelineItem>? Type896 { get; set; }
+        public global::Runway.AnyOf<global::Runway.CreateGenerateAudioResponseVariant1, global::Runway.CreateGenerateAudioResponseVariant2>? Type896 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateAudioResponseVariant1PipelineItem? Type897 { get; set; }
+        public global::Runway.CreateGenerateAudioResponseVariant1? Type897 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateAudioResponseVariant1PipelineItemFilter? Type898 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.CreateGenerateAudioResponseVariant1PipelineItem>? Type898 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.CreateGenerateAudioResponseVariant1EmptiedByItem>? Type899 { get; set; }
+        public global::Runway.CreateGenerateAudioResponseVariant1PipelineItem? Type899 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateAudioResponseVariant1EmptiedByItem? Type900 { get; set; }
+        public global::Runway.CreateGenerateAudioResponseVariant1PipelineItemFilter? Type900 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateAudioResponseVariant2? Type901 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.CreateGenerateAudioResponseVariant1EmptiedByItem>? Type901 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateAudioResponse4? Type902 { get; set; }
+        public global::Runway.CreateGenerateAudioResponseVariant1EmptiedByItem? Type902 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateAudioResponse5? Type903 { get; set; }
+        public global::Runway.CreateGenerateAudioResponseVariant2? Type903 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetOrganizationWebappUsageResponse? Type904 { get; set; }
+        public global::Runway.CreateGenerateAudioResponse4? Type904 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.GetOrganizationWebappUsageResponseDataItem>? Type905 { get; set; }
+        public global::Runway.CreateGenerateAudioResponse5? Type905 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetOrganizationWebappUsageResponseDataItem? Type906 { get; set; }
+        public global::Runway.GetOrganizationWebappUsageResponse? Type906 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetOrganizationWebappUsageResponseDataItemType? Type907 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.GetOrganizationWebappUsageResponseDataItem>? Type907 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetOrganizationWebappAuditLogsResponse? Type908 { get; set; }
+        public global::Runway.GetOrganizationWebappUsageResponseDataItem? Type908 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.GetOrganizationWebappAuditLogsResponseDataItem>? Type909 { get; set; }
+        public global::Runway.GetOrganizationWebappUsageResponseDataItemType? Type909 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetOrganizationWebappAuditLogsResponseDataItem? Type910 { get; set; }
+        public global::Runway.GetOrganizationWebappAuditLogsResponse? Type910 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetOrganizationWebappAuditLogsResponseDataItemAction? Type911 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.GetOrganizationWebappAuditLogsResponseDataItem>? Type911 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetOrganizationWebappAuditLogsResponse2? Type912 { get; set; }
+        public global::Runway.GetOrganizationWebappAuditLogsResponseDataItem? Type912 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetOrganizationWebappAuditLogsResponseAction? Type913 { get; set; }
+        public global::Runway.GetOrganizationWebappAuditLogsResponseDataItemAction? Type913 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetOrganizationWebappAuditLogsResponseMetadata? Type914 { get; set; }
+        public global::Runway.GetOrganizationWebappAuditLogsResponse2? Type914 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetOrganizationWebappAuditLogsResponse3? Type915 { get; set; }
+        public global::Runway.GetOrganizationWebappAuditLogsResponseAction? Type915 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetOrganizationResponse? Type916 { get; set; }
+        public global::Runway.GetOrganizationWebappAuditLogsResponseMetadata? Type916 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetOrganizationResponseTier? Type917 { get; set; }
+        public global::Runway.GetOrganizationWebappAuditLogsResponse3? Type917 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.Dictionary<string, global::Runway.GetOrganizationResponseTierModels2>? Type918 { get; set; }
+        public global::Runway.GetOrganizationResponse? Type918 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetOrganizationResponseTierModels2? Type919 { get; set; }
+        public global::Runway.GetOrganizationResponseTier? Type919 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetOrganizationResponseUsage? Type920 { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, global::Runway.GetOrganizationResponseTierModels2>? Type920 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.Dictionary<string, global::Runway.GetOrganizationResponseUsageModels2>? Type921 { get; set; }
+        public global::Runway.GetOrganizationResponseTierModels2? Type921 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetOrganizationResponseUsageModels2? Type922 { get; set; }
+        public global::Runway.GetOrganizationResponseUsage? Type922 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateOrganizationUsageResponse? Type923 { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, global::Runway.GetOrganizationResponseUsageModels2>? Type923 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.CreateOrganizationUsageResponseResult>? Type924 { get; set; }
+        public global::Runway.GetOrganizationResponseUsageModels2? Type924 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateOrganizationUsageResponseResult? Type925 { get; set; }
+        public global::Runway.CreateOrganizationUsageResponse? Type925 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.CreateOrganizationUsageResponseResultUsedCredit>? Type926 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.CreateOrganizationUsageResponseResult>? Type926 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateOrganizationUsageResponseResultUsedCredit? Type927 { get; set; }
+        public global::Runway.CreateOrganizationUsageResponseResult? Type927 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateOrganizationUsageResponseResultUsedCreditModel? Type928 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.CreateOrganizationUsageResponseResultUsedCredit>? Type928 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.CreateOrganizationUsageResponseModel>? Type929 { get; set; }
+        public global::Runway.CreateOrganizationUsageResponseResultUsedCredit? Type929 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateOrganizationUsageResponseModel? Type930 { get; set; }
+        public global::Runway.CreateOrganizationUsageResponseResultUsedCreditModel? Type930 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.CreateOrganizationUsageResponseResultsByApiKeyItem>? Type931 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.CreateOrganizationUsageResponseModel>? Type931 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateOrganizationUsageResponseResultsByApiKeyItem? Type932 { get; set; }
+        public global::Runway.CreateOrganizationUsageResponseModel? Type932 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.CreateOrganizationUsageResponseResultsByApiKeyItemUsedCredit>? Type933 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.CreateOrganizationUsageResponseResultsByApiKeyItem>? Type933 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateOrganizationUsageResponseResultsByApiKeyItemUsedCredit? Type934 { get; set; }
+        public global::Runway.CreateOrganizationUsageResponseResultsByApiKeyItem? Type934 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateUploadsResponse? Type935 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.CreateOrganizationUsageResponseResultsByApiKeyItemUsedCredit>? Type935 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.Dictionary<string, string>? Type936 { get; set; }
+        public global::Runway.CreateOrganizationUsageResponseResultsByApiKeyItemUsedCredit? Type936 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateUploadsResponse2? Type937 { get; set; }
+        public global::Runway.CreateUploadsResponse? Type937 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesAdLocalizationResponse? Type938 { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, string>? Type938 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesAdLocalizationResponseEstimatedCost? Type939 { get; set; }
+        public global::Runway.CreateUploadsResponse2? Type939 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesAdLocalizationResponse2? Type940 { get; set; }
+        public global::Runway.CreateRecipesAdLocalizationResponse? Type940 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.CreateRecipesAdLocalizationResponseIssue>? Type941 { get; set; }
+        public global::Runway.CreateRecipesAdLocalizationResponseEstimatedCost? Type941 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesAdLocalizationResponseIssue? Type942 { get; set; }
+        public global::Runway.CreateRecipesAdLocalizationResponse2? Type942 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesAdLocalizationResponse3? Type943 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.CreateRecipesAdLocalizationResponseIssue>? Type943 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesMarketingStockImageResponse? Type944 { get; set; }
+        public global::Runway.CreateRecipesAdLocalizationResponseIssue? Type944 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesMarketingStockImageResponseEstimatedCost? Type945 { get; set; }
+        public global::Runway.CreateRecipesAdLocalizationResponse3? Type945 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesMarketingStockImageResponse2? Type946 { get; set; }
+        public global::Runway.CreateRecipesMarketingStockImageResponse? Type946 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.CreateRecipesMarketingStockImageResponseIssue>? Type947 { get; set; }
+        public global::Runway.CreateRecipesMarketingStockImageResponseEstimatedCost? Type947 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesMarketingStockImageResponseIssue? Type948 { get; set; }
+        public global::Runway.CreateRecipesMarketingStockImageResponse2? Type948 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesMarketingStockImageResponse3? Type949 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.CreateRecipesMarketingStockImageResponseIssue>? Type949 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesProductAdResponse? Type950 { get; set; }
+        public global::Runway.CreateRecipesMarketingStockImageResponseIssue? Type950 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesProductAdResponseEstimatedCost? Type951 { get; set; }
+        public global::Runway.CreateRecipesMarketingStockImageResponse3? Type951 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesProductAdResponse2? Type952 { get; set; }
+        public global::Runway.CreateRecipesProductAdResponse? Type952 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.CreateRecipesProductAdResponseIssue>? Type953 { get; set; }
+        public global::Runway.CreateRecipesProductAdResponseEstimatedCost? Type953 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesProductAdResponseIssue? Type954 { get; set; }
+        public global::Runway.CreateRecipesProductAdResponse2? Type954 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesProductAdResponse3? Type955 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.CreateRecipesProductAdResponseIssue>? Type955 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesProductCampaignImageResponse? Type956 { get; set; }
+        public global::Runway.CreateRecipesProductAdResponseIssue? Type956 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesProductCampaignImageResponseEstimatedCost? Type957 { get; set; }
+        public global::Runway.CreateRecipesProductAdResponse3? Type957 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesProductCampaignImageResponse2? Type958 { get; set; }
+        public global::Runway.CreateRecipesProductCampaignImageResponse? Type958 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.CreateRecipesProductCampaignImageResponseIssue>? Type959 { get; set; }
+        public global::Runway.CreateRecipesProductCampaignImageResponseEstimatedCost? Type959 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesProductCampaignImageResponseIssue? Type960 { get; set; }
+        public global::Runway.CreateRecipesProductCampaignImageResponse2? Type960 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesProductCampaignImageResponse3? Type961 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.CreateRecipesProductCampaignImageResponseIssue>? Type961 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesProductSwapResponse? Type962 { get; set; }
+        public global::Runway.CreateRecipesProductCampaignImageResponseIssue? Type962 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesProductSwapResponseEstimatedCost? Type963 { get; set; }
+        public global::Runway.CreateRecipesProductCampaignImageResponse3? Type963 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesProductSwapResponse2? Type964 { get; set; }
+        public global::Runway.CreateRecipesProductSwapResponse? Type964 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.CreateRecipesProductSwapResponseIssue>? Type965 { get; set; }
+        public global::Runway.CreateRecipesProductSwapResponseEstimatedCost? Type965 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesProductSwapResponseIssue? Type966 { get; set; }
+        public global::Runway.CreateRecipesProductSwapResponse2? Type966 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesProductSwapResponse3? Type967 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.CreateRecipesProductSwapResponseIssue>? Type967 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesMultiShotVideoResponse? Type968 { get; set; }
+        public global::Runway.CreateRecipesProductSwapResponseIssue? Type968 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesMultiShotVideoResponseEstimatedCost? Type969 { get; set; }
+        public global::Runway.CreateRecipesProductSwapResponse3? Type969 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesMultiShotVideoResponse2? Type970 { get; set; }
+        public global::Runway.CreateRecipesMultiShotVideoResponse? Type970 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.CreateRecipesMultiShotVideoResponseIssue>? Type971 { get; set; }
+        public global::Runway.CreateRecipesMultiShotVideoResponseEstimatedCost? Type971 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesMultiShotVideoResponseIssue? Type972 { get; set; }
+        public global::Runway.CreateRecipesMultiShotVideoResponse2? Type972 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesMultiShotVideoResponse3? Type973 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.CreateRecipesMultiShotVideoResponseIssue>? Type973 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesProductUgcResponse? Type974 { get; set; }
+        public global::Runway.CreateRecipesMultiShotVideoResponseIssue? Type974 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesProductUgcResponseEstimatedCost? Type975 { get; set; }
+        public global::Runway.CreateRecipesMultiShotVideoResponse3? Type975 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesProductUgcResponse2? Type976 { get; set; }
+        public global::Runway.CreateRecipesProductUgcResponse? Type976 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.CreateRecipesProductUgcResponseIssue>? Type977 { get; set; }
+        public global::Runway.CreateRecipesProductUgcResponseEstimatedCost? Type977 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesProductUgcResponseIssue? Type978 { get; set; }
+        public global::Runway.CreateRecipesProductUgcResponse2? Type978 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRecipesProductUgcResponse3? Type979 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.CreateRecipesProductUgcResponseIssue>? Type979 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetRoutersResponse? Type980 { get; set; }
+        public global::Runway.CreateRecipesProductUgcResponseIssue? Type980 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.GetRoutersResponseDataItem>? Type981 { get; set; }
+        public global::Runway.CreateRecipesProductUgcResponse3? Type981 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetRoutersResponseDataItem? Type982 { get; set; }
+        public global::Runway.GetRoutersResponse? Type982 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetRoutersResponseDataItemSettings? Type983 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.GetRoutersResponseDataItem>? Type983 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetRoutersResponseDataItemSettingsModels? Type984 { get; set; }
+        public global::Runway.GetRoutersResponseDataItem? Type984 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetRoutersResponseDataItemSettingsModelsMode? Type985 { get; set; }
+        public global::Runway.GetRoutersResponseDataItemSettings? Type985 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetRoutersResponseDataItemSettingsMaxCreditsPerGeneration? Type986 { get; set; }
+        public global::Runway.GetRoutersResponseDataItemSettingsModels? Type986 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetRoutersResponseDataItemSettingsOptimizeFor? Type987 { get; set; }
+        public global::Runway.GetRoutersResponseDataItemSettingsModelsMode? Type987 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetRoutersResponseDataItemSettingsFallback? Type988 { get; set; }
+        public global::Runway.GetRoutersResponseDataItemSettingsMaxCreditsPerGeneration? Type988 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRoutersResponse? Type989 { get; set; }
+        public global::Runway.GetRoutersResponseDataItemSettingsOptimizeFor? Type989 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRoutersResponseSettings? Type990 { get; set; }
+        public global::Runway.GetRoutersResponseDataItemSettingsFallback? Type990 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRoutersResponseSettingsModels? Type991 { get; set; }
+        public global::Runway.CreateRoutersResponse? Type991 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRoutersResponseSettingsModelsMode? Type992 { get; set; }
+        public global::Runway.CreateRoutersResponseSettings? Type992 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRoutersResponseSettingsMaxCreditsPerGeneration? Type993 { get; set; }
+        public global::Runway.CreateRoutersResponseSettingsModels? Type993 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRoutersResponseSettingsOptimizeFor? Type994 { get; set; }
+        public global::Runway.CreateRoutersResponseSettingsModelsMode? Type994 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRoutersResponseSettingsFallback? Type995 { get; set; }
+        public global::Runway.CreateRoutersResponseSettingsMaxCreditsPerGeneration? Type995 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetRoutersResponse2? Type996 { get; set; }
+        public global::Runway.CreateRoutersResponseSettingsOptimizeFor? Type996 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetRoutersResponseSettings? Type997 { get; set; }
+        public global::Runway.CreateRoutersResponseSettingsFallback? Type997 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetRoutersResponseSettingsModels? Type998 { get; set; }
+        public global::Runway.GetRoutersResponse2? Type998 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetRoutersResponseSettingsModelsMode? Type999 { get; set; }
+        public global::Runway.GetRoutersResponseSettings? Type999 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetRoutersResponseSettingsMaxCreditsPerGeneration? Type1000 { get; set; }
+        public global::Runway.GetRoutersResponseSettingsModels? Type1000 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetRoutersResponseSettingsOptimizeFor? Type1001 { get; set; }
+        public global::Runway.GetRoutersResponseSettingsModelsMode? Type1001 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetRoutersResponseSettingsFallback? Type1002 { get; set; }
+        public global::Runway.GetRoutersResponseSettingsMaxCreditsPerGeneration? Type1002 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.PatchRoutersResponse? Type1003 { get; set; }
+        public global::Runway.GetRoutersResponseSettingsOptimizeFor? Type1003 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.PatchRoutersResponseSettings? Type1004 { get; set; }
+        public global::Runway.GetRoutersResponseSettingsFallback? Type1004 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.PatchRoutersResponseSettingsModels? Type1005 { get; set; }
+        public global::Runway.PatchRoutersResponse? Type1005 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.PatchRoutersResponseSettingsModelsMode? Type1006 { get; set; }
+        public global::Runway.PatchRoutersResponseSettings? Type1006 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.PatchRoutersResponseSettingsMaxCreditsPerGeneration? Type1007 { get; set; }
+        public global::Runway.PatchRoutersResponseSettingsModels? Type1007 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.PatchRoutersResponseSettingsOptimizeFor? Type1008 { get; set; }
+        public global::Runway.PatchRoutersResponseSettingsModelsMode? Type1008 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.PatchRoutersResponseSettingsFallback? Type1009 { get; set; }
+        public global::Runway.PatchRoutersResponseSettingsMaxCreditsPerGeneration? Type1009 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetRoutersRequestsResponse? Type1010 { get; set; }
+        public global::Runway.PatchRoutersResponseSettingsOptimizeFor? Type1010 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.GetRoutersRequestsResponseDataItem>? Type1011 { get; set; }
+        public global::Runway.PatchRoutersResponseSettingsFallback? Type1011 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetRoutersRequestsResponseDataItem? Type1012 { get; set; }
+        public global::Runway.GetRoutersRequestsResponse? Type1012 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetRoutersRequestsResponseDataItemStatus? Type1013 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.GetRoutersRequestsResponseDataItem>? Type1013 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetRoutersRequestsResponseDataItemReasonCode? Type1014 { get; set; }
+        public global::Runway.GetRoutersRequestsResponseDataItem? Type1014 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.PipelineItem>? Type1015 { get; set; }
+        public global::Runway.GetRoutersRequestsResponseDataItemStatus? Type1015 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.PipelineItem? Type1016 { get; set; }
+        public global::Runway.GetRoutersRequestsResponseDataItemReasonCode? Type1016 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant1? Type1017 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.PipelineItem>? Type1017 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant1Filter? Type1018 { get; set; }
+        public global::Runway.PipelineItem? Type1018 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant2? Type1019 { get; set; }
+        public global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant1? Type1019 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant3? Type1020 { get; set; }
+        public global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant1Filter? Type1020 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant3Outcome? Type1021 { get; set; }
+        public global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant2? Type1021 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetRoutersRequestsResponseDataItemPipelineItemDiscriminator? Type1022 { get; set; }
+        public global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant3? Type1022 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetRoutersRequestsResponseDataItemPipelineItemDiscriminatorType? Type1023 { get; set; }
+        public global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant3Outcome? Type1023 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.GetRoutersRequestsResponseDataItemEmptiedByItem>? Type1024 { get; set; }
+        public global::Runway.GetRoutersRequestsResponseDataItemPipelineItemDiscriminator? Type1024 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetRoutersRequestsResponseDataItemEmptiedByItem? Type1025 { get; set; }
+        public global::Runway.GetRoutersRequestsResponseDataItemPipelineItemDiscriminatorType? Type1025 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetVoicesResponse? Type1026 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.GetRoutersRequestsResponseDataItemEmptiedByItem>? Type1026 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.DataItem2>? Type1027 { get; set; }
+        public global::Runway.GetRoutersRequestsResponseDataItemEmptiedByItem? Type1027 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.DataItem2? Type1028 { get; set; }
+        public global::Runway.GetVoicesResponse? Type1028 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetVoicesResponseDataItemVoiceProcessing? Type1029 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.DataItem2>? Type1029 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetVoicesResponseDataItemVoiceReady? Type1030 { get; set; }
+        public global::Runway.DataItem2? Type1030 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetVoicesResponseDataItemVoiceFailed? Type1031 { get; set; }
+        public global::Runway.GetVoicesResponseDataItemVoiceProcessing? Type1031 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetVoicesResponseDataItemDiscriminator? Type1032 { get; set; }
+        public global::Runway.GetVoicesResponseDataItemVoiceReady? Type1032 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetVoicesResponseDataItemDiscriminatorStatus? Type1033 { get; set; }
+        public global::Runway.GetVoicesResponseDataItemVoiceFailed? Type1033 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateVoicesResponse? Type1034 { get; set; }
+        public global::Runway.GetVoicesResponseDataItemDiscriminator? Type1034 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetVoicesResponse2? Type1035 { get; set; }
+        public global::Runway.GetVoicesResponseDataItemDiscriminatorStatus? Type1035 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetVoicesResponseVoiceProcessing? Type1036 { get; set; }
+        public global::Runway.CreateVoicesResponse? Type1036 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetVoicesResponseVoiceReady? Type1037 { get; set; }
+        public global::Runway.GetVoicesResponse2? Type1037 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetVoicesResponseVoiceFailed? Type1038 { get; set; }
+        public global::Runway.GetVoicesResponseVoiceProcessing? Type1038 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetVoicesResponseDiscriminator? Type1039 { get; set; }
+        public global::Runway.GetVoicesResponseVoiceReady? Type1039 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetVoicesResponseDiscriminatorStatus? Type1040 { get; set; }
+        public global::Runway.GetVoicesResponseVoiceFailed? Type1040 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.PatchVoicesResponse? Type1041 { get; set; }
+        public global::Runway.GetVoicesResponseDiscriminator? Type1041 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.PatchVoicesResponseVoiceProcessing? Type1042 { get; set; }
+        public global::Runway.GetVoicesResponseDiscriminatorStatus? Type1042 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.PatchVoicesResponseVoiceReady? Type1043 { get; set; }
+        public global::Runway.PatchVoicesResponse? Type1043 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.PatchVoicesResponseVoiceFailed? Type1044 { get; set; }
+        public global::Runway.PatchVoicesResponseVoiceProcessing? Type1044 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.PatchVoicesResponseDiscriminator? Type1045 { get; set; }
+        public global::Runway.PatchVoicesResponseVoiceReady? Type1045 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.PatchVoicesResponseDiscriminatorStatus? Type1046 { get; set; }
+        public global::Runway.PatchVoicesResponseVoiceFailed? Type1046 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateVoicesPreviewResponse? Type1047 { get; set; }
+        public global::Runway.PatchVoicesResponseDiscriminator? Type1047 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateWorkflowsResponse? Type1048 { get; set; }
+        public global::Runway.PatchVoicesResponseDiscriminatorStatus? Type1048 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateWorkflowsResponse2? Type1049 { get; set; }
+        public global::Runway.CreateVoicesPreviewResponse? Type1049 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetWorkflowsResponse? Type1050 { get; set; }
+        public global::Runway.CreateWorkflowsResponse? Type1050 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetWorkflowsResponseGraph? Type1051 { get; set; }
+        public global::Runway.CreateWorkflowsResponse2? Type1051 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetWorkflowsResponse2? Type1052 { get; set; }
+        public global::Runway.GetWorkflowsResponse? Type1052 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetWorkflowsResponse3? Type1053 { get; set; }
+        public global::Runway.GetWorkflowsResponseGraph? Type1053 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.GetWorkflowsResponseDataItem>? Type1054 { get; set; }
+        public global::Runway.GetWorkflowsResponse2? Type1054 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetWorkflowsResponseDataItem? Type1055 { get; set; }
+        public global::Runway.GetWorkflowsResponse3? Type1055 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Runway.GetWorkflowsResponseDataItemVersion>? Type1056 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.GetWorkflowsResponseDataItem>? Type1056 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetWorkflowsResponseDataItemVersion? Type1057 { get; set; }
+        public global::Runway.GetWorkflowsResponseDataItem? Type1057 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetWorkflowInvocationsResponse? Type1058 { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.GetWorkflowsResponseDataItemVersion>? Type1058 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationPending? Type1059 { get; set; }
+        public global::Runway.GetWorkflowsResponseDataItemVersion? Type1059 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationThrottled? Type1060 { get; set; }
+        public global::Runway.GetWorkflowInvocationsResponse? Type1060 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationCancelled? Type1061 { get; set; }
+        public global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationPending? Type1061 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationRunning? Type1062 { get; set; }
+        public global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationThrottled? Type1062 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.Dictionary<string, global::System.Collections.Generic.IList<string>>? Type1063 { get; set; }
+        public global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationCancelled? Type1063 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.Dictionary<string, global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationRunningNodeErrors2>? Type1064 { get; set; }
+        public global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationRunning? Type1064 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationRunningNodeErrors2? Type1065 { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, global::System.Collections.Generic.IList<string>>? Type1065 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationFailed? Type1066 { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationRunningNodeErrors2>? Type1066 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.Dictionary<string, global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationFailedNodeErrors2>? Type1067 { get; set; }
+        public global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationRunningNodeErrors2? Type1067 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationFailedNodeErrors2? Type1068 { get; set; }
+        public global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationFailed? Type1068 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationSucceeded? Type1069 { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationFailedNodeErrors2>? Type1069 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.Dictionary<string, global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationSucceededNodeErrors2>? Type1070 { get; set; }
+        public global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationFailedNodeErrors2? Type1070 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationSucceededNodeErrors2? Type1071 { get; set; }
+        public global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationSucceeded? Type1071 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetWorkflowInvocationsResponseDiscriminator? Type1072 { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationSucceededNodeErrors2>? Type1072 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetWorkflowInvocationsResponseDiscriminatorStatus? Type1073 { get; set; }
+        public global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationSucceededNodeErrors2? Type1073 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetWorkflowInvocationsResponse2? Type1074 { get; set; }
+        public global::Runway.GetWorkflowInvocationsResponseDiscriminator? Type1074 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Runway.GetWorkflowInvocationsResponseDiscriminatorStatus? Type1075 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Runway.GetWorkflowInvocationsResponse2? Type1076 { get; set; }
 
         /// <summary>
         ///

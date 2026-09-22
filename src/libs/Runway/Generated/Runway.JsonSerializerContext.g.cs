@@ -398,6 +398,8 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoUpscaleRequestMagnificVideoUpscalerCreative))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoUpscaleRequestMagnificVideoUpscalerCreativeResolution), TypeInfoPropertyName = "CreateVideoUpscaleRequestMagnificVideoUpscalerCreativeResolution2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoUpscaleRequestMagnificVideoUpscalerCreativeFlavor), TypeInfoPropertyName = "CreateVideoUpscaleRequestMagnificVideoUpscalerCreativeFlavor2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoUpscaleRequestEnhanceFrameRate))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoUpscaleRequestEnhanceFrameRateTargetFramerate), TypeInfoPropertyName = "CreateVideoUpscaleRequestEnhanceFrameRateTargetFramerate2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoUpscaleRequestDiscriminator))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoUpscaleRequestDiscriminatorModel), TypeInfoPropertyName = "CreateVideoUpscaleRequestDiscriminatorModel2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateCharacterPerformanceRequest), TypeInfoPropertyName = "CreateCharacterPerformanceRequest2")]
@@ -512,8 +514,6 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRecipesMarketingStockImageRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRecipesMarketingStockImageRequestVersion), TypeInfoPropertyName = "CreateRecipesMarketingStockImageRequestVersion2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRecipesMarketingStockImageRequestReferenceImage))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRecipesMarketingStockImageRequestQuality), TypeInfoPropertyName = "CreateRecipesMarketingStockImageRequestQuality2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRecipesProductAdRequest))]
     internal sealed partial class SourceGenerationContextChunk0 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }
@@ -526,6 +526,8 @@ namespace Runway
         Converters = new global::System.Type[]
         {
         })]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRecipesMarketingStockImageRequestQuality), TypeInfoPropertyName = "CreateRecipesMarketingStockImageRequestQuality2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRecipesProductAdRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRecipesProductAdRequestVersion), TypeInfoPropertyName = "CreateRecipesProductAdRequestVersion2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateRecipesProductAdRequestProductImage>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRecipesProductAdRequestProductImage))]
@@ -1024,8 +1026,6 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRoutersResponseSettingsMaxCreditsPerGeneration))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRoutersResponseSettingsOptimizeFor), TypeInfoPropertyName = "CreateRoutersResponseSettingsOptimizeFor2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRoutersResponseSettingsFallback))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetRoutersResponse2))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetRoutersResponseSettings))]
     internal sealed partial class SourceGenerationContextChunk1 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }
@@ -1038,6 +1038,8 @@ namespace Runway
         Converters = new global::System.Type[]
         {
         })]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetRoutersResponse2))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetRoutersResponseSettings))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetRoutersResponseSettingsModels))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetRoutersResponseSettingsModelsMode), TypeInfoPropertyName = "GetRoutersResponseSettingsModelsMode2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetRoutersResponseSettingsMaxCreditsPerGeneration))]
@@ -1250,6 +1252,7 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoUpscaleRequest?), TypeInfoPropertyName = "NullableCreateVideoUpscaleRequest2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoUpscaleRequestMagnificVideoUpscalerCreativeResolution?), TypeInfoPropertyName = "NullableCreateVideoUpscaleRequestMagnificVideoUpscalerCreativeResolution2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoUpscaleRequestMagnificVideoUpscalerCreativeFlavor?), TypeInfoPropertyName = "NullableCreateVideoUpscaleRequestMagnificVideoUpscalerCreativeFlavor2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoUpscaleRequestEnhanceFrameRateTargetFramerate?), TypeInfoPropertyName = "NullableCreateVideoUpscaleRequestEnhanceFrameRateTargetFramerate2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoUpscaleRequestDiscriminatorModel?), TypeInfoPropertyName = "NullableCreateVideoUpscaleRequestDiscriminatorModel2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateCharacterPerformanceRequest?), TypeInfoPropertyName = "NullableCreateCharacterPerformanceRequest2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.Character?), TypeInfoPropertyName = "NullableCharacter2")]
@@ -1535,9 +1538,6 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.GetAvatarConversationsResponseVariant1TranscriptItemToolResult>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.GetAvatarConversationsResponseVariant1Tool>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.GetAvatarConversationsResponseVariant2TranscriptItem>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.GetAvatarConversationsResponseVariant2TranscriptItemToolCall>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.GetAvatarConversationsResponseVariant2TranscriptItemToolResult>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.GetAvatarConversationsResponseVariant2Tool>))]
     internal sealed partial class SourceGenerationContextChunk2 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }
@@ -1550,6 +1550,9 @@ namespace Runway
         Converters = new global::System.Type[]
         {
         })]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.GetAvatarConversationsResponseVariant2TranscriptItemToolCall>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.GetAvatarConversationsResponseVariant2TranscriptItemToolResult>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.GetAvatarConversationsResponseVariant2Tool>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.GetAvatarConversationsResponseVariant3TranscriptItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.GetAvatarConversationsResponseVariant3TranscriptItemToolCall>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.GetAvatarConversationsResponseVariant3TranscriptItemToolResult>))]
@@ -2158,6 +2161,10 @@ namespace Runway
                     || typeToConvert == typeof(global::Runway.CreateVideoUpscaleRequestMagnificVideoUpscalerCreativeFlavor)
 
                     || typeToConvert == typeof(global::Runway.CreateVideoUpscaleRequestMagnificVideoUpscalerCreativeFlavor?)
+
+                    || typeToConvert == typeof(global::Runway.CreateVideoUpscaleRequestEnhanceFrameRateTargetFramerate)
+
+                    || typeToConvert == typeof(global::Runway.CreateVideoUpscaleRequestEnhanceFrameRateTargetFramerate?)
 
                     || typeToConvert == typeof(global::Runway.CreateVideoUpscaleRequestDiscriminatorModel)
 
@@ -3736,6 +3743,16 @@ namespace Runway
                 if (typeToConvert == typeof(global::Runway.CreateVideoUpscaleRequestMagnificVideoUpscalerCreativeFlavor?))
                 {
                     return new global::Runway.JsonConverters.CreateVideoUpscaleRequestMagnificVideoUpscalerCreativeFlavorNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVideoUpscaleRequestEnhanceFrameRateTargetFramerate))
+                {
+                    return new global::Runway.JsonConverters.CreateVideoUpscaleRequestEnhanceFrameRateTargetFramerateJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVideoUpscaleRequestEnhanceFrameRateTargetFramerate?))
+                {
+                    return new global::Runway.JsonConverters.CreateVideoUpscaleRequestEnhanceFrameRateTargetFramerateNullableJsonConverter();
                 }
 
                 if (typeToConvert == typeof(global::Runway.CreateVideoUpscaleRequestDiscriminatorModel))

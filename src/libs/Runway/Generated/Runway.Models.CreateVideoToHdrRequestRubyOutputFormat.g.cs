@@ -4,24 +4,32 @@
 namespace Runway
 {
     /// <summary>
-    /// The HDR delivery profile of the output. `hdr10` (default) returns an HEVC Main 10, BT.2020 + PQ .mp4; `hlg` returns an HEVC Main 10, BT.2020 + HLG .mp4; `hdr_prores` returns a BT.2020 + PQ ProRes .mov editorial mezzanine, whose tier is selectable with `proresProfile`; `hdr_exr_sequence` returns a .zip of half-float OpenEXR frames holding the HDR signal as linear BT.2020 display light, 1.0 = 100 nits, ready to composite. The EXR zip is the whole delivery — the frames, a colorimetry.json sidecar, a provenance.json sidecar declaring the upconvert, and the source audio as audio.wav when the source has any. All four profiles bill at the same rate: 20 credits per second of output, rising to 40 credits per second when the source is larger than 4 megapixels (roughly 4K).
+    /// HDR delivery format. `hdr10` (default) and `hlg` deliver 10-bit HEVC without alpha. `hdr_prores` delivers BT.2020 + PQ ProRes and preserves source alpha as 4444. `hdr_exr_sequence` delivers linear BT.2020 EXR; `hdr_exr_acescg_sequence_1_3` and `hdr_exr_acescg_sequence_2_0` deliver scene-referred ACEScg EXR. EXR sequences preserve source alpha in the A channel and include colorimetry and provenance sidecars, plus source audio when present. All formats cost 20 credits per second, or 40 above 4 megapixels.
     /// </summary>
     public enum CreateVideoToHdrRequestRubyOutputFormat
     {
         /// <summary>
-        /// 20 credits per second of output, rising to 40 credits per second when the source is larger than 4 megapixels (roughly 4K).
+        ///
         /// </summary>
         Hdr10,
         /// <summary>
-        /// 20 credits per second of output, rising to 40 credits per second when the source is larger than 4 megapixels (roughly 4K).
+        ///
+        /// </summary>
+        HdrExrAcescgSequence13,
+        /// <summary>
+        ///
+        /// </summary>
+        HdrExrAcescgSequence20,
+        /// <summary>
+        ///
         /// </summary>
         HdrExrSequence,
         /// <summary>
-        /// 20 credits per second of output, rising to 40 credits per second when the source is larger than 4 megapixels (roughly 4K).
+        ///
         /// </summary>
         HdrProres,
         /// <summary>
-        /// 20 credits per second of output, rising to 40 credits per second when the source is larger than 4 megapixels (roughly 4K).
+        ///
         /// </summary>
         Hlg,
     }
@@ -39,6 +47,8 @@ namespace Runway
             return value switch
             {
                 CreateVideoToHdrRequestRubyOutputFormat.Hdr10 => "hdr10",
+                CreateVideoToHdrRequestRubyOutputFormat.HdrExrAcescgSequence13 => "hdr_exr_acescg_sequence_1_3",
+                CreateVideoToHdrRequestRubyOutputFormat.HdrExrAcescgSequence20 => "hdr_exr_acescg_sequence_2_0",
                 CreateVideoToHdrRequestRubyOutputFormat.HdrExrSequence => "hdr_exr_sequence",
                 CreateVideoToHdrRequestRubyOutputFormat.HdrProres => "hdr_prores",
                 CreateVideoToHdrRequestRubyOutputFormat.Hlg => "hlg",
@@ -53,6 +63,8 @@ namespace Runway
             return value switch
             {
                 "hdr10" => CreateVideoToHdrRequestRubyOutputFormat.Hdr10,
+                "hdr_exr_acescg_sequence_1_3" => CreateVideoToHdrRequestRubyOutputFormat.HdrExrAcescgSequence13,
+                "hdr_exr_acescg_sequence_2_0" => CreateVideoToHdrRequestRubyOutputFormat.HdrExrAcescgSequence20,
                 "hdr_exr_sequence" => CreateVideoToHdrRequestRubyOutputFormat.HdrExrSequence,
                 "hdr_prores" => CreateVideoToHdrRequestRubyOutputFormat.HdrProres,
                 "hlg" => CreateVideoToHdrRequestRubyOutputFormat.Hlg,

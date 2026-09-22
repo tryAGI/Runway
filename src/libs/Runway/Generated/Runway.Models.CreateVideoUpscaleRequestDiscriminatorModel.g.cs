@@ -11,6 +11,10 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
+        EnhanceFrameRate,
+        /// <summary>
+        ///
+        /// </summary>
         MagnificVideoUpscalerCreative,
     }
 
@@ -26,6 +30,7 @@ namespace Runway
         {
             return value switch
             {
+                CreateVideoUpscaleRequestDiscriminatorModel.EnhanceFrameRate => "enhance_frame_rate",
                 CreateVideoUpscaleRequestDiscriminatorModel.MagnificVideoUpscalerCreative => "magnific_video_upscaler_creative",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
@@ -37,6 +42,7 @@ namespace Runway
         {
             return value switch
             {
+                "enhance_frame_rate" => CreateVideoUpscaleRequestDiscriminatorModel.EnhanceFrameRate,
                 "magnific_video_upscaler_creative" => CreateVideoUpscaleRequestDiscriminatorModel.MagnificVideoUpscalerCreative,
                 _ => null,
             };
