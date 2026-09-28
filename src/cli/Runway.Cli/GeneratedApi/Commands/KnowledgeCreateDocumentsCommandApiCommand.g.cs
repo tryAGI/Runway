@@ -47,6 +47,8 @@ internal static partial class KnowledgeCreateDocumentsCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"create-documents", @"Create document
@@ -87,6 +89,7 @@ Create a new knowledge document. Documents can be attached to avatars to provide
                                     cancellationToken).ConfigureAwait(false);
                                 }
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

@@ -48,6 +48,8 @@ internal static partial class KnowledgeEditDocumentsByIdCommandApiCommand
           Hidden = true,
       };
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"edit-documents-by-id", @"Update document
@@ -97,6 +99,7 @@ Update a knowledge document. At least one of `name` or `content` must be provide
 
                                 await CliRuntime.WriteSuccessAsync(parseResult, cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

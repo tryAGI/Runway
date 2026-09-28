@@ -20,6 +20,8 @@ internal static partial class TaskManagementDeleteTasksByIdCommandApiCommand
         DefaultValueFactory = _ => "2024-11-06",
     };
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"delete-tasks-by-id", @"Cancel or delete a task
@@ -45,6 +47,7 @@ The output data associated with a deleted task will be deleted from persistent s
 
                                 await CliRuntime.WriteSuccessAsync(parseResult, cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

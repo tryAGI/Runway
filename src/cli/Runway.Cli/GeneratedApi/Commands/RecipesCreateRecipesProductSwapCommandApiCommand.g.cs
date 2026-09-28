@@ -110,6 +110,8 @@ internal static partial class RecipesCreateRecipesProductSwapCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"create-recipes-product-swap", @"Swap a product in a reference video
@@ -216,6 +218,7 @@ Replace the product in a reference video with a new product, preserving camera m
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

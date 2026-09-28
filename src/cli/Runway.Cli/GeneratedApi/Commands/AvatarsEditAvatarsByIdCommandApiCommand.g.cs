@@ -98,6 +98,8 @@ internal static partial class AvatarsEditAvatarsByIdCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"edit-avatars-by-id", @"Update avatar
@@ -168,6 +170,7 @@ Update an existing avatar. At least one field must be provided.");
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

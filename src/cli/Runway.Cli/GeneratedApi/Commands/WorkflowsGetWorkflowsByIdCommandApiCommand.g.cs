@@ -40,6 +40,8 @@ internal static partial class WorkflowsGetWorkflowsByIdCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"get-workflows-by-id", @"Get workflow details
@@ -69,6 +71,7 @@ Returns details about a specific published workflow, including its graph schema.
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

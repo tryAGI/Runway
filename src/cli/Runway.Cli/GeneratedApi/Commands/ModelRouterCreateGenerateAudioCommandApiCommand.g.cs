@@ -64,6 +64,8 @@ internal static partial class ModelRouterCreateGenerateAudioCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"create-generate-audio", @"Routed audio generation
@@ -130,6 +132,7 @@ Start an audio generation task using a saved Model Router config instead of nami
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

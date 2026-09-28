@@ -66,6 +66,8 @@ internal static partial class StartGeneratingCreateVideoUpscaleCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"create-video-upscale", @"Video upscale
@@ -146,6 +148,7 @@ This endpoint starts a task to upscale a video. Set `model` to choose the upscal
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

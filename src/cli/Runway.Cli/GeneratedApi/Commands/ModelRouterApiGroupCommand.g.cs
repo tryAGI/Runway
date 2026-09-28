@@ -4,8 +4,10 @@ using System.CommandLine;
 
 namespace Runway.Cli.GeneratedApi.Commands;
 
-internal static class ModelRouterApiGroupCommand
+internal static partial class ModelRouterApiGroupCommand
 {
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"model-router", @"Model Router endpoint commands.");
@@ -18,6 +20,7 @@ internal static class ModelRouterApiGroupCommand
                          command.Subcommands.Add(ModelRouterGetRoutersCommandApiCommand.Create());
                          command.Subcommands.Add(ModelRouterGetRoutersByIdCommandApiCommand.Create());
                          command.Subcommands.Add(ModelRouterGetRoutersByIdRequestsCommandApiCommand.Create());
+        CustomizeCommand(ref command);
         return command;
     }
 }

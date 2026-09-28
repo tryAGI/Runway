@@ -66,6 +66,8 @@ internal static partial class StartGeneratingCreateTextToVideoCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"create-text-to-video", @"Text to video
@@ -146,6 +148,7 @@ This endpoint will start a new task to generate a video from a text prompt.");
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

@@ -48,6 +48,8 @@ internal static partial class AvatarsGetAvatarUsageCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"get-avatar-usage", @"Get avatar usage
@@ -88,6 +90,7 @@ Get aggregate usage statistics for avatar conversations, including total duratio
                                     cancellationToken).ConfigureAwait(false);
                                 }
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

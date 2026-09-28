@@ -46,6 +46,8 @@ internal static partial class OrganizationGetOrganizationWebappAuditLogsByEventI
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"get-organization-webapp-audit-logs-by-event-id", @"Get a linked workspace audit log entry
@@ -78,6 +80,7 @@ Get a single audit log entry, including its metadata and forensic details, for a
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

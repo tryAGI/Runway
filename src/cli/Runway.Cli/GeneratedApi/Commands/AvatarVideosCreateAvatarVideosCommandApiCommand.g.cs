@@ -71,6 +71,8 @@ internal static partial class AvatarVideosCreateAvatarVideosCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"create-avatar-videos", @"Generate avatar video from audio or text
@@ -141,6 +143,7 @@ Start an asynchronous task to generate a video of an avatar speaking. Provide `s
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

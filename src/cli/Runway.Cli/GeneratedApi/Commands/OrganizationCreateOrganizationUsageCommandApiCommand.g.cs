@@ -62,6 +62,8 @@ internal static partial class OrganizationCreateOrganizationUsageCommandApiComma
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"create-organization-usage", @"Query credit usage
@@ -114,6 +116,7 @@ Fetch credit usage data broken down by model and day for the organization associ
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

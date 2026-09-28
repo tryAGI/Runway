@@ -66,6 +66,8 @@ internal static partial class StartGeneratingCreateImageUpscaleCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"create-image-upscale", @"Image upscale
@@ -146,6 +148,7 @@ Upscale an image with Magnific precision upscaling. Each input dimension must be
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

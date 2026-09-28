@@ -40,6 +40,8 @@ internal static partial class RealtimeSessionsGetRealtimeSessionsByIdCommandApiC
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"get-realtime-sessions-by-id", @"Get realtime session
@@ -69,6 +71,7 @@ Get the status of a realtime session. This endpoint uses the same ID that the av
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

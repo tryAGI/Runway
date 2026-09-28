@@ -48,6 +48,8 @@ internal static partial class VoicesCreateVoicesPreviewCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"create-voices-preview", @"Preview a voice
@@ -80,6 +82,7 @@ Generate a short audio preview of a voice from a text description. Use this to a
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

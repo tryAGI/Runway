@@ -4,8 +4,10 @@ using System.CommandLine;
 
 namespace Runway.Cli.GeneratedApi.Commands;
 
-internal static class RecipesApiGroupCommand
+internal static partial class RecipesApiGroupCommand
 {
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"recipes", @"Recipes endpoint commands.");
@@ -16,6 +18,7 @@ internal static class RecipesApiGroupCommand
                          command.Subcommands.Add(RecipesCreateRecipesProductCampaignImageCommandApiCommand.Create());
                          command.Subcommands.Add(RecipesCreateRecipesProductSwapCommandApiCommand.Create());
                          command.Subcommands.Add(RecipesCreateRecipesProductUgcCommandApiCommand.Create());
+        CustomizeCommand(ref command);
         return command;
     }
 }

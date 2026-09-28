@@ -65,6 +65,8 @@ internal static partial class AvatarsGetAvatarConversationsCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"get-avatar-conversations", @"List conversations
@@ -114,6 +116,7 @@ List realtime avatar conversations for the authenticated user with cursor-based 
                                     cancellationToken).ConfigureAwait(false);
                                 }
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

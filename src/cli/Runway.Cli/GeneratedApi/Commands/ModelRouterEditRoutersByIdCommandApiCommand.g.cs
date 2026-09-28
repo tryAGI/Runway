@@ -74,6 +74,8 @@ internal static partial class ModelRouterEditRoutersByIdCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"edit-routers-by-id", @"Update Model Router
@@ -132,6 +134,7 @@ Update a Model Router configuration. Settings changes append a new version; name
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }
