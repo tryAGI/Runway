@@ -83,6 +83,8 @@ internal static partial class OrganizationGetOrganizationWebappAuditLogsCommandA
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"get-organization-webapp-audit-logs", @"List linked workspace audit logs
@@ -141,6 +143,7 @@ List audit log entries for the linked Runway workspaces you administer, newest f
                                     cancellationToken).ConfigureAwait(false);
                                 }
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

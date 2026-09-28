@@ -66,6 +66,8 @@ internal static partial class StartGeneratingCreateSoundEffectCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"create-sound-effect", @"Generate sound effects
@@ -146,6 +148,7 @@ This endpoint will start a new task to generate sound effects from a text descri
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

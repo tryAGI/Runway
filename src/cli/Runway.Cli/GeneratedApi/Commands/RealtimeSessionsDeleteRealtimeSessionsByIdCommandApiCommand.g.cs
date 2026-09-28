@@ -20,6 +20,8 @@ internal static partial class RealtimeSessionsDeleteRealtimeSessionsByIdCommandA
         DefaultValueFactory = _ => "2024-11-06",
     };
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"delete-realtime-sessions-by-id", @"Cancel realtime session
@@ -43,6 +45,7 @@ Cancel an active realtime session.");
 
                                 await CliRuntime.WriteSuccessAsync(parseResult, cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

@@ -20,6 +20,8 @@ internal static partial class KnowledgeDeleteDocumentsByIdCommandApiCommand
         DefaultValueFactory = _ => "2024-11-06",
     };
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"delete-documents-by-id", @"Delete document
@@ -43,6 +45,7 @@ Delete a knowledge document. This also removes it from all avatars it was attach
 
                                 await CliRuntime.WriteSuccessAsync(parseResult, cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

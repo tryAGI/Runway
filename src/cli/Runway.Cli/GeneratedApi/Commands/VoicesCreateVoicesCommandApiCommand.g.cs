@@ -85,6 +85,8 @@ internal static partial class VoicesCreateVoicesCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"create-voices", @"Create a voice
@@ -175,6 +177,7 @@ Create a custom voice from a text description, or clone a voice from an audio sa
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

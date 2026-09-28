@@ -20,6 +20,8 @@ internal static partial class AvatarsDeleteAvatarConversationsByIdCommandApiComm
         DefaultValueFactory = _ => "2024-11-06",
     };
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"delete-avatar-conversations-by-id", @"Delete conversation
@@ -43,6 +45,7 @@ Delete a conversation and its associated data.");
 
                                 await CliRuntime.WriteSuccessAsync(parseResult, cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

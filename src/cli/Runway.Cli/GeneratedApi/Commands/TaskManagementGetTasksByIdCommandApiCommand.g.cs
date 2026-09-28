@@ -40,6 +40,8 @@ internal static partial class TaskManagementGetTasksByIdCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"get-tasks-by-id", @"Get task detail
@@ -69,6 +71,7 @@ Return details about a task. Consumers of this API should not expect updates mor
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

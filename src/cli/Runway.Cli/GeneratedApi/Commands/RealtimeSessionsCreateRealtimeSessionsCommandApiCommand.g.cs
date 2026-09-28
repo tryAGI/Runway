@@ -110,6 +110,8 @@ internal static partial class RealtimeSessionsCreateRealtimeSessionsCommandApiCo
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"create-realtime-sessions", @"Create realtime session
@@ -216,6 +218,7 @@ Create a new realtime session with the specified model configuration. The return
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

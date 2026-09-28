@@ -47,6 +47,8 @@ internal static partial class AvatarsGetAvatarsCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"get-avatars", @"List avatars
@@ -87,6 +89,7 @@ List avatars for the authenticated user with cursor-based pagination.");
                                     cancellationToken).ConfigureAwait(false);
                                 }
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

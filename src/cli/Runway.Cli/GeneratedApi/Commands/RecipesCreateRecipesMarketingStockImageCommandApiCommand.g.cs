@@ -98,6 +98,8 @@ internal static partial class RecipesCreateRecipesMarketingStockImageCommandApiC
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"create-recipes-marketing-stock-image", @"Create a marketing stock image
@@ -196,6 +198,7 @@ Generate a polished marketing stock image from a text brief and optional brand l
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

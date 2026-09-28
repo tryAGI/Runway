@@ -66,6 +66,8 @@ internal static partial class StartGeneratingCreateVideoToHdrCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"create-video-to-hdr", @"Video to HDR
@@ -146,6 +148,7 @@ This endpoint starts a task to upconvert an SDR video to true HDR with Ruby, Run
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

@@ -66,6 +66,8 @@ internal static partial class RecipesCreateRecipesMultiShotVideoCommandApiComman
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"create-recipes-multi-shot-video", @"Create a multi-shot video
@@ -146,6 +148,7 @@ Generate a multi-cut video from a story prompt (auto mode) or a custom shot list
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

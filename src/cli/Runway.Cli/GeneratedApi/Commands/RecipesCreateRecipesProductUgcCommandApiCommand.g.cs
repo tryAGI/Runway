@@ -115,6 +115,8 @@ internal static partial class RecipesCreateRecipesProductUgcCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"create-recipes-product-ugc", @"Create a product UGC video
@@ -225,6 +227,7 @@ Generate a vertical user-generated content ad from a character image, product im
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

@@ -73,6 +73,8 @@ internal static partial class OrganizationGetOrganizationWebappUsageCommandApiCo
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"get-organization-webapp-usage", @"List linked workspace usage
@@ -125,6 +127,7 @@ List per-generation credit-usage rows for the linked Runway workspaces you admin
                                     cancellationToken).ConfigureAwait(false);
                                 }
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

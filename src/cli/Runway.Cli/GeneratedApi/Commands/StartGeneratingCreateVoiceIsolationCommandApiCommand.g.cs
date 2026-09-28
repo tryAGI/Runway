@@ -66,6 +66,8 @@ internal static partial class StartGeneratingCreateVoiceIsolationCommandApiComma
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"create-voice-isolation", @"Voice isolation
@@ -146,6 +148,7 @@ This endpoint will start a new task to isolate the voice from the background aud
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

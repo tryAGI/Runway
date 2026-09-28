@@ -4,8 +4,10 @@ using System.CommandLine;
 
 namespace Runway.Cli.GeneratedApi.Commands;
 
-internal static class AvatarsApiGroupCommand
+internal static partial class AvatarsApiGroupCommand
 {
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"avatars", @"Avatars endpoint commands.");
@@ -18,6 +20,7 @@ internal static class AvatarsApiGroupCommand
                          command.Subcommands.Add(AvatarsGetAvatarUsageCommandApiCommand.Create());
                          command.Subcommands.Add(AvatarsGetAvatarsCommandApiCommand.Create());
                          command.Subcommands.Add(AvatarsGetAvatarsByIdCommandApiCommand.Create());
+        CustomizeCommand(ref command);
         return command;
     }
 }

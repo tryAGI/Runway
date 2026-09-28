@@ -66,6 +66,8 @@ internal static partial class StartGeneratingCreateVoiceDubbingCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"create-voice-dubbing", @"Voice dubbing
@@ -146,6 +148,7 @@ This endpoint will start a new task to dub audio content to a target language.")
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

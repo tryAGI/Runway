@@ -114,6 +114,8 @@ internal static partial class RecipesCreateRecipesProductAdCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"create-recipes-product-ad", @"Create a product ad video
@@ -224,6 +226,7 @@ Generate a cinematic product ad from product images, optional style references, 
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

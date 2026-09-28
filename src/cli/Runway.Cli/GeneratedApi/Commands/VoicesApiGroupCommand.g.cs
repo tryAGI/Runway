@@ -4,8 +4,10 @@ using System.CommandLine;
 
 namespace Runway.Cli.GeneratedApi.Commands;
 
-internal static class VoicesApiGroupCommand
+internal static partial class VoicesApiGroupCommand
 {
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"voices", @"Voices endpoint commands.");
@@ -15,6 +17,7 @@ internal static class VoicesApiGroupCommand
                          command.Subcommands.Add(VoicesEditVoicesByIdCommandApiCommand.Create());
                          command.Subcommands.Add(VoicesGetVoicesCommandApiCommand.Create());
                          command.Subcommands.Add(VoicesGetVoicesByIdCommandApiCommand.Create());
+        CustomizeCommand(ref command);
         return command;
     }
 }

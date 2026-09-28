@@ -66,6 +66,8 @@ internal static partial class StartGeneratingCreateCharacterPerformanceCommandAp
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"create-character-performance", @"Control a character
@@ -146,6 +148,7 @@ This endpoint will start a new task to control a character's facial expressions 
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

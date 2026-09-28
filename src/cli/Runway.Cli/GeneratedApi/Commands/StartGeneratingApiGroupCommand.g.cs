@@ -4,8 +4,10 @@ using System.CommandLine;
 
 namespace Runway.Cli.GeneratedApi.Commands;
 
-internal static class StartGeneratingApiGroupCommand
+internal static partial class StartGeneratingApiGroupCommand
 {
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"start-generating", @"Start generating endpoint commands.");
@@ -22,6 +24,7 @@ internal static class StartGeneratingApiGroupCommand
                          command.Subcommands.Add(StartGeneratingCreateVideoUpscaleCommandApiCommand.Create());
                          command.Subcommands.Add(StartGeneratingCreateVoiceDubbingCommandApiCommand.Create());
                          command.Subcommands.Add(StartGeneratingCreateVoiceIsolationCommandApiCommand.Create());
+        CustomizeCommand(ref command);
         return command;
     }
 }
