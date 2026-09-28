@@ -47,8 +47,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateAudioRequestInputVoiceAudioPresetVoice PickPreset() => IsPreset
-            ? Preset!
+        public global::Runway.CreateGenerateAudioRequestInputVoiceAudioPresetVoice PickPreset() => Preset is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Preset' but the value was {ToString()}.");
 
         /// <summary>
@@ -84,8 +84,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateGenerateAudioRequestInputVoiceAudioReferenceVoice PickReferenceAudio() => IsReferenceAudio
-            ? ReferenceAudio!
+        public global::Runway.CreateGenerateAudioRequestInputVoiceAudioReferenceVoice PickReferenceAudio() => ReferenceAudio is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ReferenceAudio' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -185,13 +185,13 @@ namespace Runway
                 Validate();
             }
 
-            if (IsPreset && preset != null)
+            if (Preset is { } __value0 && preset != null)
             {
-                return preset(Preset!);
+                return preset(__value0);
             }
-            else if (IsReferenceAudio && referenceAudio != null)
+            else if (ReferenceAudio is { } __value1 && referenceAudio != null)
             {
-                return referenceAudio(ReferenceAudio!);
+                return referenceAudio(__value1);
             }
 
             return default(TResult);
@@ -211,13 +211,13 @@ namespace Runway
                 Validate();
             }
 
-            if (IsPreset)
+            if (Preset is { } __value0)
             {
-                preset?.Invoke(Preset!);
+                preset?.Invoke(__value0);
             }
-            else if (IsReferenceAudio)
+            else if (ReferenceAudio is { } __value1)
             {
-                referenceAudio?.Invoke(ReferenceAudio!);
+                referenceAudio?.Invoke(__value1);
             }
         }
 
@@ -234,13 +234,13 @@ namespace Runway
                 Validate();
             }
 
-            if (IsPreset)
+            if (Preset is { } __value0)
             {
-                preset?.Invoke(Preset!);
+                preset?.Invoke(__value0);
             }
-            else if (IsReferenceAudio)
+            else if (ReferenceAudio is { } __value1)
             {
-                referenceAudio?.Invoke(ReferenceAudio!);
+                referenceAudio?.Invoke(__value1);
             }
         }
 

@@ -47,8 +47,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateVideoUpscaleRequestMagnificVideoUpscalerCreative PickMagnificVideoUpscalerCreative() => IsMagnificVideoUpscalerCreative
-            ? MagnificVideoUpscalerCreative!
+        public global::Runway.CreateVideoUpscaleRequestMagnificVideoUpscalerCreative PickMagnificVideoUpscalerCreative() => MagnificVideoUpscalerCreative is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'MagnificVideoUpscalerCreative' but the value was {ToString()}.");
 
         /// <summary>
@@ -84,8 +84,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateVideoUpscaleRequestEnhanceFrameRate PickEnhanceFrameRate() => IsEnhanceFrameRate
-            ? EnhanceFrameRate!
+        public global::Runway.CreateVideoUpscaleRequestEnhanceFrameRate PickEnhanceFrameRate() => EnhanceFrameRate is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'EnhanceFrameRate' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -185,13 +185,13 @@ namespace Runway
                 Validate();
             }
 
-            if (IsMagnificVideoUpscalerCreative && magnificVideoUpscalerCreative != null)
+            if (MagnificVideoUpscalerCreative is { } __value0 && magnificVideoUpscalerCreative != null)
             {
-                return magnificVideoUpscalerCreative(MagnificVideoUpscalerCreative!);
+                return magnificVideoUpscalerCreative(__value0);
             }
-            else if (IsEnhanceFrameRate && enhanceFrameRate != null)
+            else if (EnhanceFrameRate is { } __value1 && enhanceFrameRate != null)
             {
-                return enhanceFrameRate(EnhanceFrameRate!);
+                return enhanceFrameRate(__value1);
             }
 
             return default(TResult);
@@ -211,13 +211,13 @@ namespace Runway
                 Validate();
             }
 
-            if (IsMagnificVideoUpscalerCreative)
+            if (MagnificVideoUpscalerCreative is { } __value0)
             {
-                magnificVideoUpscalerCreative?.Invoke(MagnificVideoUpscalerCreative!);
+                magnificVideoUpscalerCreative?.Invoke(__value0);
             }
-            else if (IsEnhanceFrameRate)
+            else if (EnhanceFrameRate is { } __value1)
             {
-                enhanceFrameRate?.Invoke(EnhanceFrameRate!);
+                enhanceFrameRate?.Invoke(__value1);
             }
         }
 
@@ -234,13 +234,13 @@ namespace Runway
                 Validate();
             }
 
-            if (IsMagnificVideoUpscalerCreative)
+            if (MagnificVideoUpscalerCreative is { } __value0)
             {
-                magnificVideoUpscalerCreative?.Invoke(MagnificVideoUpscalerCreative!);
+                magnificVideoUpscalerCreative?.Invoke(__value0);
             }
-            else if (IsEnhanceFrameRate)
+            else if (EnhanceFrameRate is { } __value1)
             {
-                enhanceFrameRate?.Invoke(EnhanceFrameRate!);
+                enhanceFrameRate?.Invoke(__value1);
             }
         }
 

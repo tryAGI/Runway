@@ -59,13 +59,13 @@ namespace Runway.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateVideoUpscaleRequestMagnificVideoUpscalerCreative), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateVideoUpscaleRequestMagnificVideoUpscalerCreative?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateVideoUpscaleRequestMagnificVideoUpscalerCreative).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.MagnificVideoUpscalerCreative!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickMagnificVideoUpscalerCreative(), typeInfo);
             }
             else if (value.IsEnhanceFrameRate)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateVideoUpscaleRequestEnhanceFrameRate), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateVideoUpscaleRequestEnhanceFrameRate?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateVideoUpscaleRequestEnhanceFrameRate).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.EnhanceFrameRate!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickEnhanceFrameRate(), typeInfo);
             }
         }
     }

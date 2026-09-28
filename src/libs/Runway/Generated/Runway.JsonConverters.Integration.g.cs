@@ -59,13 +59,13 @@ namespace Runway.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateRealtimeSessionsRequestIntegrationElevenLabsIntegration), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateRealtimeSessionsRequestIntegrationElevenLabsIntegration?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateRealtimeSessionsRequestIntegrationElevenLabsIntegration).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Elevenlabs!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickElevenlabs(), typeInfo);
             }
             else if (value.IsLivekit)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateRealtimeSessionsRequestIntegrationLiveKitIntegration), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateRealtimeSessionsRequestIntegrationLiveKitIntegration?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateRealtimeSessionsRequestIntegrationLiveKitIntegration).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Livekit!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickLivekit(), typeInfo);
             }
         }
     }

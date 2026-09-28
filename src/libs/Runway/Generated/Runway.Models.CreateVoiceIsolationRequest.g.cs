@@ -47,8 +47,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateVoiceIsolationRequestElevenVoiceIsolation PickElevenVoiceIsolation() => IsElevenVoiceIsolation
-            ? ElevenVoiceIsolation!
+        public global::Runway.CreateVoiceIsolationRequestElevenVoiceIsolation PickElevenVoiceIsolation() => ElevenVoiceIsolation is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ElevenVoiceIsolation' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -120,9 +120,9 @@ namespace Runway
                 Validate();
             }
 
-            if (IsElevenVoiceIsolation && elevenVoiceIsolation != null)
+            if (ElevenVoiceIsolation is { } __value0 && elevenVoiceIsolation != null)
             {
-                return elevenVoiceIsolation(ElevenVoiceIsolation!);
+                return elevenVoiceIsolation(__value0);
             }
 
             return default(TResult);
@@ -140,9 +140,9 @@ namespace Runway
                 Validate();
             }
 
-            if (IsElevenVoiceIsolation)
+            if (ElevenVoiceIsolation is { } __value0)
             {
-                elevenVoiceIsolation?.Invoke(ElevenVoiceIsolation!);
+                elevenVoiceIsolation?.Invoke(__value0);
             }
         }
 
@@ -158,9 +158,9 @@ namespace Runway
                 Validate();
             }
 
-            if (IsElevenVoiceIsolation)
+            if (ElevenVoiceIsolation is { } __value0)
             {
-                elevenVoiceIsolation?.Invoke(ElevenVoiceIsolation!);
+                elevenVoiceIsolation?.Invoke(__value0);
             }
         }
 

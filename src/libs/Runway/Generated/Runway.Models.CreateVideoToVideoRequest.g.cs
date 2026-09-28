@@ -47,8 +47,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateVideoToVideoRequestVariant1 PickAleph2() => IsAleph2
-            ? Aleph2!
+        public global::Runway.CreateVideoToVideoRequestVariant1 PickAleph2() => Aleph2 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Aleph2' but the value was {ToString()}.");
 
         /// <summary>
@@ -84,8 +84,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateVideoToVideoRequestHailuo3 PickHailuo3() => IsHailuo3
-            ? Hailuo3!
+        public global::Runway.CreateVideoToVideoRequestHailuo3 PickHailuo3() => Hailuo3 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Hailuo3' but the value was {ToString()}.");
 
         /// <summary>
@@ -121,8 +121,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateVideoToVideoRequestSeedance2 PickSeedance2() => IsSeedance2
-            ? Seedance2!
+        public global::Runway.CreateVideoToVideoRequestSeedance2 PickSeedance2() => Seedance2 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Seedance2' but the value was {ToString()}.");
 
         /// <summary>
@@ -158,8 +158,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateVideoToVideoRequestSeedance2Fast PickSeedance2Fast() => IsSeedance2Fast
-            ? Seedance2Fast!
+        public global::Runway.CreateVideoToVideoRequestSeedance2Fast PickSeedance2Fast() => Seedance2Fast is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Seedance2Fast' but the value was {ToString()}.");
 
         /// <summary>
@@ -195,8 +195,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateVideoToVideoRequestSeedance2Mini PickSeedance2Mini() => IsSeedance2Mini
-            ? Seedance2Mini!
+        public global::Runway.CreateVideoToVideoRequestSeedance2Mini PickSeedance2Mini() => Seedance2Mini is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Seedance2Mini' but the value was {ToString()}.");
 
         /// <summary>
@@ -232,8 +232,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateVideoToVideoRequestGeminiOmniFlash PickGeminiOmniFlash() => IsGeminiOmniFlash
-            ? GeminiOmniFlash!
+        public global::Runway.CreateVideoToVideoRequestGeminiOmniFlash PickGeminiOmniFlash() => GeminiOmniFlash is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'GeminiOmniFlash' but the value was {ToString()}.");
 
         /// <summary>
@@ -269,8 +269,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateVideoToVideoRequestSeedance25 PickSeedance25() => IsSeedance25
-            ? Seedance25!
+        public global::Runway.CreateVideoToVideoRequestSeedance25 PickSeedance25() => Seedance25 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Seedance25' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -510,33 +510,33 @@ namespace Runway
                 Validate();
             }
 
-            if (IsAleph2 && aleph2 != null)
+            if (Aleph2 is { } __value0 && aleph2 != null)
             {
-                return aleph2(Aleph2!);
+                return aleph2(__value0);
             }
-            else if (IsHailuo3 && hailuo3 != null)
+            else if (Hailuo3 is { } __value1 && hailuo3 != null)
             {
-                return hailuo3(Hailuo3!);
+                return hailuo3(__value1);
             }
-            else if (IsSeedance2 && seedance2 != null)
+            else if (Seedance2 is { } __value2 && seedance2 != null)
             {
-                return seedance2(Seedance2!);
+                return seedance2(__value2);
             }
-            else if (IsSeedance2Fast && seedance2Fast != null)
+            else if (Seedance2Fast is { } __value3 && seedance2Fast != null)
             {
-                return seedance2Fast(Seedance2Fast!);
+                return seedance2Fast(__value3);
             }
-            else if (IsSeedance2Mini && seedance2Mini != null)
+            else if (Seedance2Mini is { } __value4 && seedance2Mini != null)
             {
-                return seedance2Mini(Seedance2Mini!);
+                return seedance2Mini(__value4);
             }
-            else if (IsGeminiOmniFlash && geminiOmniFlash != null)
+            else if (GeminiOmniFlash is { } __value5 && geminiOmniFlash != null)
             {
-                return geminiOmniFlash(GeminiOmniFlash!);
+                return geminiOmniFlash(__value5);
             }
-            else if (IsSeedance25 && seedance25 != null)
+            else if (Seedance25 is { } __value6 && seedance25 != null)
             {
-                return seedance25(Seedance25!);
+                return seedance25(__value6);
             }
 
             return default(TResult);
@@ -566,33 +566,33 @@ namespace Runway
                 Validate();
             }
 
-            if (IsAleph2)
+            if (Aleph2 is { } __value0)
             {
-                aleph2?.Invoke(Aleph2!);
+                aleph2?.Invoke(__value0);
             }
-            else if (IsHailuo3)
+            else if (Hailuo3 is { } __value1)
             {
-                hailuo3?.Invoke(Hailuo3!);
+                hailuo3?.Invoke(__value1);
             }
-            else if (IsSeedance2)
+            else if (Seedance2 is { } __value2)
             {
-                seedance2?.Invoke(Seedance2!);
+                seedance2?.Invoke(__value2);
             }
-            else if (IsSeedance2Fast)
+            else if (Seedance2Fast is { } __value3)
             {
-                seedance2Fast?.Invoke(Seedance2Fast!);
+                seedance2Fast?.Invoke(__value3);
             }
-            else if (IsSeedance2Mini)
+            else if (Seedance2Mini is { } __value4)
             {
-                seedance2Mini?.Invoke(Seedance2Mini!);
+                seedance2Mini?.Invoke(__value4);
             }
-            else if (IsGeminiOmniFlash)
+            else if (GeminiOmniFlash is { } __value5)
             {
-                geminiOmniFlash?.Invoke(GeminiOmniFlash!);
+                geminiOmniFlash?.Invoke(__value5);
             }
-            else if (IsSeedance25)
+            else if (Seedance25 is { } __value6)
             {
-                seedance25?.Invoke(Seedance25!);
+                seedance25?.Invoke(__value6);
             }
         }
 
@@ -614,33 +614,33 @@ namespace Runway
                 Validate();
             }
 
-            if (IsAleph2)
+            if (Aleph2 is { } __value0)
             {
-                aleph2?.Invoke(Aleph2!);
+                aleph2?.Invoke(__value0);
             }
-            else if (IsHailuo3)
+            else if (Hailuo3 is { } __value1)
             {
-                hailuo3?.Invoke(Hailuo3!);
+                hailuo3?.Invoke(__value1);
             }
-            else if (IsSeedance2)
+            else if (Seedance2 is { } __value2)
             {
-                seedance2?.Invoke(Seedance2!);
+                seedance2?.Invoke(__value2);
             }
-            else if (IsSeedance2Fast)
+            else if (Seedance2Fast is { } __value3)
             {
-                seedance2Fast?.Invoke(Seedance2Fast!);
+                seedance2Fast?.Invoke(__value3);
             }
-            else if (IsSeedance2Mini)
+            else if (Seedance2Mini is { } __value4)
             {
-                seedance2Mini?.Invoke(Seedance2Mini!);
+                seedance2Mini?.Invoke(__value4);
             }
-            else if (IsGeminiOmniFlash)
+            else if (GeminiOmniFlash is { } __value5)
             {
-                geminiOmniFlash?.Invoke(GeminiOmniFlash!);
+                geminiOmniFlash?.Invoke(__value5);
             }
-            else if (IsSeedance25)
+            else if (Seedance25 is { } __value6)
             {
-                seedance25?.Invoke(Seedance25!);
+                seedance25?.Invoke(__value6);
             }
         }
 

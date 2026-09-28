@@ -95,37 +95,37 @@ namespace Runway.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationPending), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationPending?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationPending).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Pending!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickPending(), typeInfo);
             }
             else if (value.IsThrottled)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationThrottled), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationThrottled?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationThrottled).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Throttled!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickThrottled(), typeInfo);
             }
             else if (value.IsCancelled)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationCancelled), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationCancelled?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationCancelled).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Cancelled!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickCancelled(), typeInfo);
             }
             else if (value.IsRunning)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationRunning), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationRunning?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationRunning).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Running!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickRunning(), typeInfo);
             }
             else if (value.IsFailed)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationFailed), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationFailed?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationFailed).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Failed!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickFailed(), typeInfo);
             }
             else if (value.IsSucceeded)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationSucceeded), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationSucceeded?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationSucceeded).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Succeeded!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickSucceeded(), typeInfo);
             }
         }
     }

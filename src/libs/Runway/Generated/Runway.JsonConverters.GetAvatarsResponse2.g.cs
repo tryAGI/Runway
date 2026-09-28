@@ -68,19 +68,19 @@ namespace Runway.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetAvatarsResponseAvatarProcessing), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetAvatarsResponseAvatarProcessing?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.GetAvatarsResponseAvatarProcessing).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Processing!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickProcessing(), typeInfo);
             }
             else if (value.IsReady)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetAvatarsResponseAvatarReady), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetAvatarsResponseAvatarReady?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.GetAvatarsResponseAvatarReady).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Ready!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickReady(), typeInfo);
             }
             else if (value.IsFailed)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetAvatarsResponseAvatarFailed), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetAvatarsResponseAvatarFailed?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.GetAvatarsResponseAvatarFailed).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Failed!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickFailed(), typeInfo);
             }
         }
     }

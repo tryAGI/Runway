@@ -95,37 +95,37 @@ namespace Runway.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetRealtimeSessionsResponseSessionNotReady), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetRealtimeSessionsResponseSessionNotReady?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.GetRealtimeSessionsResponseSessionNotReady).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.NotReady!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickNotReady(), typeInfo);
             }
             else if (value.IsReady)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetRealtimeSessionsResponseSessionReady), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetRealtimeSessionsResponseSessionReady?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.GetRealtimeSessionsResponseSessionReady).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Ready!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickReady(), typeInfo);
             }
             else if (value.IsRunning)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetRealtimeSessionsResponseSessionRunning), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetRealtimeSessionsResponseSessionRunning?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.GetRealtimeSessionsResponseSessionRunning).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Running!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickRunning(), typeInfo);
             }
             else if (value.IsCompleted)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetRealtimeSessionsResponseSessionCompleted), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetRealtimeSessionsResponseSessionCompleted?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.GetRealtimeSessionsResponseSessionCompleted).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Completed!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickCompleted(), typeInfo);
             }
             else if (value.IsFailed)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetRealtimeSessionsResponseSessionFailed), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetRealtimeSessionsResponseSessionFailed?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.GetRealtimeSessionsResponseSessionFailed).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Failed!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickFailed(), typeInfo);
             }
             else if (value.IsCancelled)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetRealtimeSessionsResponseSessionCancelled), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetRealtimeSessionsResponseSessionCancelled?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.GetRealtimeSessionsResponseSessionCancelled).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Cancelled!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickCancelled(), typeInfo);
             }
         }
     }

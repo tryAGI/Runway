@@ -47,8 +47,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateImageUpscaleRequestMagnificPrecisionUpscalerV2 PickMagnificPrecisionUpscalerV2() => IsMagnificPrecisionUpscalerV2
-            ? MagnificPrecisionUpscalerV2!
+        public global::Runway.CreateImageUpscaleRequestMagnificPrecisionUpscalerV2 PickMagnificPrecisionUpscalerV2() => MagnificPrecisionUpscalerV2 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'MagnificPrecisionUpscalerV2' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -120,9 +120,9 @@ namespace Runway
                 Validate();
             }
 
-            if (IsMagnificPrecisionUpscalerV2 && magnificPrecisionUpscalerV2 != null)
+            if (MagnificPrecisionUpscalerV2 is { } __value0 && magnificPrecisionUpscalerV2 != null)
             {
-                return magnificPrecisionUpscalerV2(MagnificPrecisionUpscalerV2!);
+                return magnificPrecisionUpscalerV2(__value0);
             }
 
             return default(TResult);
@@ -140,9 +140,9 @@ namespace Runway
                 Validate();
             }
 
-            if (IsMagnificPrecisionUpscalerV2)
+            if (MagnificPrecisionUpscalerV2 is { } __value0)
             {
-                magnificPrecisionUpscalerV2?.Invoke(MagnificPrecisionUpscalerV2!);
+                magnificPrecisionUpscalerV2?.Invoke(__value0);
             }
         }
 
@@ -158,9 +158,9 @@ namespace Runway
                 Validate();
             }
 
-            if (IsMagnificPrecisionUpscalerV2)
+            if (MagnificPrecisionUpscalerV2 is { } __value0)
             {
-                magnificPrecisionUpscalerV2?.Invoke(MagnificPrecisionUpscalerV2!);
+                magnificPrecisionUpscalerV2?.Invoke(__value0);
             }
         }
 

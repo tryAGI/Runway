@@ -47,8 +47,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateCharacterPerformanceRequestActTwo PickActTwo() => IsActTwo
-            ? ActTwo!
+        public global::Runway.CreateCharacterPerformanceRequestActTwo PickActTwo() => ActTwo is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ActTwo' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -120,9 +120,9 @@ namespace Runway
                 Validate();
             }
 
-            if (IsActTwo && actTwo != null)
+            if (ActTwo is { } __value0 && actTwo != null)
             {
-                return actTwo(ActTwo!);
+                return actTwo(__value0);
             }
 
             return default(TResult);
@@ -140,9 +140,9 @@ namespace Runway
                 Validate();
             }
 
-            if (IsActTwo)
+            if (ActTwo is { } __value0)
             {
-                actTwo?.Invoke(ActTwo!);
+                actTwo?.Invoke(__value0);
             }
         }
 
@@ -158,9 +158,9 @@ namespace Runway
                 Validate();
             }
 
-            if (IsActTwo)
+            if (ActTwo is { } __value0)
             {
-                actTwo?.Invoke(ActTwo!);
+                actTwo?.Invoke(__value0);
             }
         }
 

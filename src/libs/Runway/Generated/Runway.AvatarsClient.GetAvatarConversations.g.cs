@@ -175,7 +175,7 @@ namespace Runway
                                 baseUri: HttpClient.BaseAddress);
                             __pathBuilder
                                 .AddOptionalParameter("cursor", cursor)
-                                .AddRequiredParameter("limit", limit.ToString()!)
+                                .AddRequiredParameter("limit", limit.ToString() ?? throw new global::System.InvalidOperationException("A required query parameter returned null from ToString()."))
                                 .AddOptionalParameter("avatar", avatar?.ToString())
                                 .AddOptionalParameter("startDate", startDate?.ToString("yyyy-MM-ddTHH:mm:ssZ"))
                                 .AddOptionalParameter("endDate", endDate?.ToString("yyyy-MM-ddTHH:mm:ssZ"))
@@ -224,11 +224,11 @@ namespace Runway
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
                     cursor: cursor,
-                    limit: limit!,
+                    limit: limit,
                     avatar: avatar,
                     startDate: startDate,
                     endDate: endDate,
-                    xRunwayVersion: xRunwayVersion!);
+                    xRunwayVersion: xRunwayVersion);
 
                 return __httpRequest;
             }
@@ -250,7 +250,7 @@ namespace Runway
                                 pathTemplate: "\"/v1/avatar_conversations\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: null,
                                 clientOptions: Options,
@@ -284,7 +284,7 @@ namespace Runway
                                 pathTemplate: "\"/v1/avatar_conversations\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: __exception,
                                 clientOptions: Options,
@@ -325,7 +325,7 @@ namespace Runway
                                 pathTemplate: "\"/v1/avatar_conversations\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -373,7 +373,7 @@ namespace Runway
                                 pathTemplate: "\"/v1/avatar_conversations\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -395,7 +395,7 @@ namespace Runway
                                 pathTemplate: "\"/v1/avatar_conversations\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,

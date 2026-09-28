@@ -77,25 +77,25 @@ namespace Runway.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputPrimitive), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputPrimitive?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputPrimitive).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Primitive!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickPrimitive(), typeInfo);
             }
             else if (value.IsImage)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputImage), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputImage?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputImage).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Image!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickImage(), typeInfo);
             }
             else if (value.IsVideo)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputVideo), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputVideo?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputVideo).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Video!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickVideo(), typeInfo);
             }
             else if (value.IsAudio)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputAudio), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputAudio?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputAudio).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Audio!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickAudio(), typeInfo);
             }
         }
     }

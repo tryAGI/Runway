@@ -47,8 +47,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant1 PickFilter() => IsFilter
-            ? Filter!
+        public global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant1 PickFilter() => Filter is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Filter' but the value was {ToString()}.");
 
         /// <summary>
@@ -84,8 +84,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant2 PickCapacity() => IsCapacity
-            ? Capacity!
+        public global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant2 PickCapacity() => Capacity is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Capacity' but the value was {ToString()}.");
 
         /// <summary>
@@ -121,8 +121,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant3 PickRank() => IsRank
-            ? Rank!
+        public global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant3 PickRank() => Rank is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Rank' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -250,17 +250,17 @@ namespace Runway
                 Validate();
             }
 
-            if (IsFilter && filter != null)
+            if (Filter is { } __value0 && filter != null)
             {
-                return filter(Filter!);
+                return filter(__value0);
             }
-            else if (IsCapacity && capacity != null)
+            else if (Capacity is { } __value1 && capacity != null)
             {
-                return capacity(Capacity!);
+                return capacity(__value1);
             }
-            else if (IsRank && rank != null)
+            else if (Rank is { } __value2 && rank != null)
             {
-                return rank(Rank!);
+                return rank(__value2);
             }
 
             return default(TResult);
@@ -282,17 +282,17 @@ namespace Runway
                 Validate();
             }
 
-            if (IsFilter)
+            if (Filter is { } __value0)
             {
-                filter?.Invoke(Filter!);
+                filter?.Invoke(__value0);
             }
-            else if (IsCapacity)
+            else if (Capacity is { } __value1)
             {
-                capacity?.Invoke(Capacity!);
+                capacity?.Invoke(__value1);
             }
-            else if (IsRank)
+            else if (Rank is { } __value2)
             {
-                rank?.Invoke(Rank!);
+                rank?.Invoke(__value2);
             }
         }
 
@@ -310,17 +310,17 @@ namespace Runway
                 Validate();
             }
 
-            if (IsFilter)
+            if (Filter is { } __value0)
             {
-                filter?.Invoke(Filter!);
+                filter?.Invoke(__value0);
             }
-            else if (IsCapacity)
+            else if (Capacity is { } __value1)
             {
-                capacity?.Invoke(Capacity!);
+                capacity?.Invoke(__value1);
             }
-            else if (IsRank)
+            else if (Rank is { } __value2)
             {
-                rank?.Invoke(Rank!);
+                rank?.Invoke(__value2);
             }
         }
 

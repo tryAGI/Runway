@@ -47,8 +47,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRealtimeSessionsRequestIntegrationElevenLabsIntegration PickElevenlabs() => IsElevenlabs
-            ? Elevenlabs!
+        public global::Runway.CreateRealtimeSessionsRequestIntegrationElevenLabsIntegration PickElevenlabs() => Elevenlabs is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Elevenlabs' but the value was {ToString()}.");
 
         /// <summary>
@@ -84,8 +84,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRealtimeSessionsRequestIntegrationLiveKitIntegration PickLivekit() => IsLivekit
-            ? Livekit!
+        public global::Runway.CreateRealtimeSessionsRequestIntegrationLiveKitIntegration PickLivekit() => Livekit is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Livekit' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -185,13 +185,13 @@ namespace Runway
                 Validate();
             }
 
-            if (IsElevenlabs && elevenlabs != null)
+            if (Elevenlabs is { } __value0 && elevenlabs != null)
             {
-                return elevenlabs(Elevenlabs!);
+                return elevenlabs(__value0);
             }
-            else if (IsLivekit && livekit != null)
+            else if (Livekit is { } __value1 && livekit != null)
             {
-                return livekit(Livekit!);
+                return livekit(__value1);
             }
 
             return default(TResult);
@@ -211,13 +211,13 @@ namespace Runway
                 Validate();
             }
 
-            if (IsElevenlabs)
+            if (Elevenlabs is { } __value0)
             {
-                elevenlabs?.Invoke(Elevenlabs!);
+                elevenlabs?.Invoke(__value0);
             }
-            else if (IsLivekit)
+            else if (Livekit is { } __value1)
             {
-                livekit?.Invoke(Livekit!);
+                livekit?.Invoke(__value1);
             }
         }
 
@@ -234,13 +234,13 @@ namespace Runway
                 Validate();
             }
 
-            if (IsElevenlabs)
+            if (Elevenlabs is { } __value0)
             {
-                elevenlabs?.Invoke(Elevenlabs!);
+                elevenlabs?.Invoke(__value0);
             }
-            else if (IsLivekit)
+            else if (Livekit is { } __value1)
             {
-                livekit?.Invoke(Livekit!);
+                livekit?.Invoke(__value1);
             }
         }
 

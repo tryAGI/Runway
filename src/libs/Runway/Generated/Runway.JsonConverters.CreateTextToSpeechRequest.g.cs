@@ -68,19 +68,19 @@ namespace Runway.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateTextToSpeechRequestSeedAudio), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateTextToSpeechRequestSeedAudio?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateTextToSpeechRequestSeedAudio).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.SeedAudio!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickSeedAudio(), typeInfo);
             }
             else if (value.IsElevenMultilingualV2)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateTextToSpeechRequestElevenMultilingualV2), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateTextToSpeechRequestElevenMultilingualV2?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateTextToSpeechRequestElevenMultilingualV2).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ElevenMultilingualV2!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickElevenMultilingualV2(), typeInfo);
             }
             else if (value.IsElevenV3)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateTextToSpeechRequestElevenV3), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateTextToSpeechRequestElevenV3?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateTextToSpeechRequestElevenV3).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ElevenV3!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickElevenV3(), typeInfo);
             }
         }
     }

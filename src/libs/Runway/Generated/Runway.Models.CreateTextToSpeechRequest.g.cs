@@ -47,8 +47,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateTextToSpeechRequestSeedAudio PickSeedAudio() => IsSeedAudio
-            ? SeedAudio!
+        public global::Runway.CreateTextToSpeechRequestSeedAudio PickSeedAudio() => SeedAudio is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'SeedAudio' but the value was {ToString()}.");
 
         /// <summary>
@@ -84,8 +84,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateTextToSpeechRequestElevenMultilingualV2 PickElevenMultilingualV2() => IsElevenMultilingualV2
-            ? ElevenMultilingualV2!
+        public global::Runway.CreateTextToSpeechRequestElevenMultilingualV2 PickElevenMultilingualV2() => ElevenMultilingualV2 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ElevenMultilingualV2' but the value was {ToString()}.");
 
         /// <summary>
@@ -121,8 +121,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateTextToSpeechRequestElevenV3 PickElevenV3() => IsElevenV3
-            ? ElevenV3!
+        public global::Runway.CreateTextToSpeechRequestElevenV3 PickElevenV3() => ElevenV3 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ElevenV3' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -250,17 +250,17 @@ namespace Runway
                 Validate();
             }
 
-            if (IsSeedAudio && seedAudio != null)
+            if (SeedAudio is { } __value0 && seedAudio != null)
             {
-                return seedAudio(SeedAudio!);
+                return seedAudio(__value0);
             }
-            else if (IsElevenMultilingualV2 && elevenMultilingualV2 != null)
+            else if (ElevenMultilingualV2 is { } __value1 && elevenMultilingualV2 != null)
             {
-                return elevenMultilingualV2(ElevenMultilingualV2!);
+                return elevenMultilingualV2(__value1);
             }
-            else if (IsElevenV3 && elevenV3 != null)
+            else if (ElevenV3 is { } __value2 && elevenV3 != null)
             {
-                return elevenV3(ElevenV3!);
+                return elevenV3(__value2);
             }
 
             return default(TResult);
@@ -282,17 +282,17 @@ namespace Runway
                 Validate();
             }
 
-            if (IsSeedAudio)
+            if (SeedAudio is { } __value0)
             {
-                seedAudio?.Invoke(SeedAudio!);
+                seedAudio?.Invoke(__value0);
             }
-            else if (IsElevenMultilingualV2)
+            else if (ElevenMultilingualV2 is { } __value1)
             {
-                elevenMultilingualV2?.Invoke(ElevenMultilingualV2!);
+                elevenMultilingualV2?.Invoke(__value1);
             }
-            else if (IsElevenV3)
+            else if (ElevenV3 is { } __value2)
             {
-                elevenV3?.Invoke(ElevenV3!);
+                elevenV3?.Invoke(__value2);
             }
         }
 
@@ -310,17 +310,17 @@ namespace Runway
                 Validate();
             }
 
-            if (IsSeedAudio)
+            if (SeedAudio is { } __value0)
             {
-                seedAudio?.Invoke(SeedAudio!);
+                seedAudio?.Invoke(__value0);
             }
-            else if (IsElevenMultilingualV2)
+            else if (ElevenMultilingualV2 is { } __value1)
             {
-                elevenMultilingualV2?.Invoke(ElevenMultilingualV2!);
+                elevenMultilingualV2?.Invoke(__value1);
             }
-            else if (IsElevenV3)
+            else if (ElevenV3 is { } __value2)
             {
-                elevenV3?.Invoke(ElevenV3!);
+                elevenV3?.Invoke(__value2);
             }
         }
 

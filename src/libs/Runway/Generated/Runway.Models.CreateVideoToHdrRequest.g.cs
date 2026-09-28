@@ -47,8 +47,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateVideoToHdrRequestRuby PickRuby() => IsRuby
-            ? Ruby!
+        public global::Runway.CreateVideoToHdrRequestRuby PickRuby() => Ruby is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Ruby' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -120,9 +120,9 @@ namespace Runway
                 Validate();
             }
 
-            if (IsRuby && ruby != null)
+            if (Ruby is { } __value0 && ruby != null)
             {
-                return ruby(Ruby!);
+                return ruby(__value0);
             }
 
             return default(TResult);
@@ -140,9 +140,9 @@ namespace Runway
                 Validate();
             }
 
-            if (IsRuby)
+            if (Ruby is { } __value0)
             {
-                ruby?.Invoke(Ruby!);
+                ruby?.Invoke(__value0);
             }
         }
 
@@ -158,9 +158,9 @@ namespace Runway
                 Validate();
             }
 
-            if (IsRuby)
+            if (Ruby is { } __value0)
             {
-                ruby?.Invoke(Ruby!);
+                ruby?.Invoke(__value0);
             }
         }
 

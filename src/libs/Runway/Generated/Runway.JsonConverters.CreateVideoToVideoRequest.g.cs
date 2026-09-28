@@ -104,43 +104,43 @@ namespace Runway.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateVideoToVideoRequestVariant1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateVideoToVideoRequestVariant1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateVideoToVideoRequestVariant1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Aleph2!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickAleph2(), typeInfo);
             }
             else if (value.IsHailuo3)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateVideoToVideoRequestHailuo3), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateVideoToVideoRequestHailuo3?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateVideoToVideoRequestHailuo3).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Hailuo3!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickHailuo3(), typeInfo);
             }
             else if (value.IsSeedance2)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateVideoToVideoRequestSeedance2), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateVideoToVideoRequestSeedance2?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateVideoToVideoRequestSeedance2).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Seedance2!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickSeedance2(), typeInfo);
             }
             else if (value.IsSeedance2Fast)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateVideoToVideoRequestSeedance2Fast), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateVideoToVideoRequestSeedance2Fast?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateVideoToVideoRequestSeedance2Fast).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Seedance2Fast!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickSeedance2Fast(), typeInfo);
             }
             else if (value.IsSeedance2Mini)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateVideoToVideoRequestSeedance2Mini), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateVideoToVideoRequestSeedance2Mini?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateVideoToVideoRequestSeedance2Mini).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Seedance2Mini!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickSeedance2Mini(), typeInfo);
             }
             else if (value.IsGeminiOmniFlash)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateVideoToVideoRequestGeminiOmniFlash), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateVideoToVideoRequestGeminiOmniFlash?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateVideoToVideoRequestGeminiOmniFlash).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.GeminiOmniFlash!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickGeminiOmniFlash(), typeInfo);
             }
             else if (value.IsSeedance25)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateVideoToVideoRequestSeedance25), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateVideoToVideoRequestSeedance25?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateVideoToVideoRequestSeedance25).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Seedance25!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickSeedance25(), typeInfo);
             }
         }
     }

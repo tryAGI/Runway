@@ -47,8 +47,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputPrimitive PickPrimitive() => IsPrimitive
-            ? Primitive!
+        public global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputPrimitive PickPrimitive() => Primitive is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Primitive' but the value was {ToString()}.");
 
         /// <summary>
@@ -84,8 +84,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputImage PickImage() => IsImage
-            ? Image!
+        public global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputImage PickImage() => Image is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Image' but the value was {ToString()}.");
 
         /// <summary>
@@ -121,8 +121,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputVideo PickVideo() => IsVideo
-            ? Video!
+        public global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputVideo PickVideo() => Video is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Video' but the value was {ToString()}.");
 
         /// <summary>
@@ -158,8 +158,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputAudio PickAudio() => IsAudio
-            ? Audio!
+        public global::Runway.CreateWorkflowsRequestNodeOutputsWorkflowNodeOutputAudio PickAudio() => Audio is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Audio' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -315,21 +315,21 @@ namespace Runway
                 Validate();
             }
 
-            if (IsPrimitive && primitive != null)
+            if (Primitive is { } __value0 && primitive != null)
             {
-                return primitive(Primitive!);
+                return primitive(__value0);
             }
-            else if (IsImage && image != null)
+            else if (Image is { } __value1 && image != null)
             {
-                return image(Image!);
+                return image(__value1);
             }
-            else if (IsVideo && video != null)
+            else if (Video is { } __value2 && video != null)
             {
-                return video(Video!);
+                return video(__value2);
             }
-            else if (IsAudio && audio != null)
+            else if (Audio is { } __value3 && audio != null)
             {
-                return audio(Audio!);
+                return audio(__value3);
             }
 
             return default(TResult);
@@ -353,21 +353,21 @@ namespace Runway
                 Validate();
             }
 
-            if (IsPrimitive)
+            if (Primitive is { } __value0)
             {
-                primitive?.Invoke(Primitive!);
+                primitive?.Invoke(__value0);
             }
-            else if (IsImage)
+            else if (Image is { } __value1)
             {
-                image?.Invoke(Image!);
+                image?.Invoke(__value1);
             }
-            else if (IsVideo)
+            else if (Video is { } __value2)
             {
-                video?.Invoke(Video!);
+                video?.Invoke(__value2);
             }
-            else if (IsAudio)
+            else if (Audio is { } __value3)
             {
-                audio?.Invoke(Audio!);
+                audio?.Invoke(__value3);
             }
         }
 
@@ -386,21 +386,21 @@ namespace Runway
                 Validate();
             }
 
-            if (IsPrimitive)
+            if (Primitive is { } __value0)
             {
-                primitive?.Invoke(Primitive!);
+                primitive?.Invoke(__value0);
             }
-            else if (IsImage)
+            else if (Image is { } __value1)
             {
-                image?.Invoke(Image!);
+                image?.Invoke(__value1);
             }
-            else if (IsVideo)
+            else if (Video is { } __value2)
             {
-                video?.Invoke(Video!);
+                video?.Invoke(__value2);
             }
-            else if (IsAudio)
+            else if (Audio is { } __value3)
             {
-                audio?.Invoke(Audio!);
+                audio?.Invoke(__value3);
             }
         }
 
