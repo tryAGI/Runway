@@ -131,61 +131,61 @@ namespace Runway.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateTextToImageRequestGen4ImageTurbo), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateTextToImageRequestGen4ImageTurbo?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateTextToImageRequestGen4ImageTurbo).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Gen4ImageTurbo!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickGen4ImageTurbo(), typeInfo);
             }
             else if (value.IsGen4Image)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateTextToImageRequestGen4Image), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateTextToImageRequestGen4Image?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateTextToImageRequestGen4Image).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Gen4Image!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickGen4Image(), typeInfo);
             }
             else if (value.IsGptImage2)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateTextToImageRequestGptImage2), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateTextToImageRequestGptImage2?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateTextToImageRequestGptImage2).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.GptImage2!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickGptImage2(), typeInfo);
             }
             else if (value.IsGeminiImage3Pro)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateTextToImageRequestGeminiImage3Pro), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateTextToImageRequestGeminiImage3Pro?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateTextToImageRequestGeminiImage3Pro).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.GeminiImage3Pro!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickGeminiImage3Pro(), typeInfo);
             }
             else if (value.IsGeminiImage31Flash)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateTextToImageRequestGeminiImage31Flash), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateTextToImageRequestGeminiImage31Flash?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateTextToImageRequestGeminiImage31Flash).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.GeminiImage31Flash!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickGeminiImage31Flash(), typeInfo);
             }
             else if (value.IsMuseImage)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateTextToImageRequestMuseImage), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateTextToImageRequestMuseImage?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateTextToImageRequestMuseImage).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.MuseImage!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickMuseImage(), typeInfo);
             }
             else if (value.IsSeedream5Pro)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateTextToImageRequestSeedream5Pro), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateTextToImageRequestSeedream5Pro?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateTextToImageRequestSeedream5Pro).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Seedream5Pro!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickSeedream5Pro(), typeInfo);
             }
             else if (value.IsSeedream5Lite)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateTextToImageRequestSeedream5Lite), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateTextToImageRequestSeedream5Lite?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateTextToImageRequestSeedream5Lite).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Seedream5Lite!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickSeedream5Lite(), typeInfo);
             }
             else if (value.IsGrokImagineImage2)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateTextToImageRequestGrokImagineImage2), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateTextToImageRequestGrokImagineImage2?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateTextToImageRequestGrokImagineImage2).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.GrokImagineImage2!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickGrokImagineImage2(), typeInfo);
             }
             else if (value.IsGemini25Flash)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateTextToImageRequestGemini25Flash), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateTextToImageRequestGemini25Flash?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateTextToImageRequestGemini25Flash).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Gemini25Flash!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickGemini25Flash(), typeInfo);
             }
         }
     }

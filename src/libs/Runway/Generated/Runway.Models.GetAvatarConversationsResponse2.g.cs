@@ -47,8 +47,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarConversationsResponseVariant1 PickInProgress() => IsInProgress
-            ? InProgress!
+        public global::Runway.GetAvatarConversationsResponseVariant1 PickInProgress() => InProgress is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'InProgress' but the value was {ToString()}.");
 
         /// <summary>
@@ -84,8 +84,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarConversationsResponseVariant2 PickEnded() => IsEnded
-            ? Ended!
+        public global::Runway.GetAvatarConversationsResponseVariant2 PickEnded() => Ended is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Ended' but the value was {ToString()}.");
 
         /// <summary>
@@ -121,8 +121,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarConversationsResponseVariant3 PickFailed() => IsFailed
-            ? Failed!
+        public global::Runway.GetAvatarConversationsResponseVariant3 PickFailed() => Failed is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Failed' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -250,17 +250,17 @@ namespace Runway
                 Validate();
             }
 
-            if (IsInProgress && inProgress != null)
+            if (InProgress is { } __value0 && inProgress != null)
             {
-                return inProgress(InProgress!);
+                return inProgress(__value0);
             }
-            else if (IsEnded && ended != null)
+            else if (Ended is { } __value1 && ended != null)
             {
-                return ended(Ended!);
+                return ended(__value1);
             }
-            else if (IsFailed && failed != null)
+            else if (Failed is { } __value2 && failed != null)
             {
-                return failed(Failed!);
+                return failed(__value2);
             }
 
             return default(TResult);
@@ -282,17 +282,17 @@ namespace Runway
                 Validate();
             }
 
-            if (IsInProgress)
+            if (InProgress is { } __value0)
             {
-                inProgress?.Invoke(InProgress!);
+                inProgress?.Invoke(__value0);
             }
-            else if (IsEnded)
+            else if (Ended is { } __value1)
             {
-                ended?.Invoke(Ended!);
+                ended?.Invoke(__value1);
             }
-            else if (IsFailed)
+            else if (Failed is { } __value2)
             {
-                failed?.Invoke(Failed!);
+                failed?.Invoke(__value2);
             }
         }
 
@@ -310,17 +310,17 @@ namespace Runway
                 Validate();
             }
 
-            if (IsInProgress)
+            if (InProgress is { } __value0)
             {
-                inProgress?.Invoke(InProgress!);
+                inProgress?.Invoke(__value0);
             }
-            else if (IsEnded)
+            else if (Ended is { } __value1)
             {
-                ended?.Invoke(Ended!);
+                ended?.Invoke(__value1);
             }
-            else if (IsFailed)
+            else if (Failed is { } __value2)
             {
-                failed?.Invoke(Failed!);
+                failed?.Invoke(__value2);
             }
         }
 

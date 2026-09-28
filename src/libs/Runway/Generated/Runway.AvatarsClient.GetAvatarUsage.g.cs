@@ -174,9 +174,9 @@ namespace Runway
                 PrepareGetAvatarUsageRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    startDate: startDate!,
-                    endDate: endDate!,
-                    xRunwayVersion: xRunwayVersion!);
+                    startDate: startDate,
+                    endDate: endDate,
+                    xRunwayVersion: xRunwayVersion);
 
                 return __httpRequest;
             }
@@ -198,7 +198,7 @@ namespace Runway
                                 pathTemplate: "\"/v1/avatar_usage\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: null,
                                 clientOptions: Options,
@@ -232,7 +232,7 @@ namespace Runway
                                 pathTemplate: "\"/v1/avatar_usage\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: __exception,
                                 clientOptions: Options,
@@ -273,7 +273,7 @@ namespace Runway
                                 pathTemplate: "\"/v1/avatar_usage\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -321,7 +321,7 @@ namespace Runway
                                 pathTemplate: "\"/v1/avatar_usage\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -343,7 +343,7 @@ namespace Runway
                                 pathTemplate: "\"/v1/avatar_usage\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,

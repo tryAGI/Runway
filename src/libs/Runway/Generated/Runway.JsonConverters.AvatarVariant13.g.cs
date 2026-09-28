@@ -59,13 +59,13 @@ namespace Runway.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetAvatarConversationsResponseVariant2AvatarVariant1PresetAvatar), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetAvatarConversationsResponseVariant2AvatarVariant1PresetAvatar?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.GetAvatarConversationsResponseVariant2AvatarVariant1PresetAvatar).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.RunwayPreset!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickRunwayPreset(), typeInfo);
             }
             else if (value.IsCustom)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetAvatarConversationsResponseVariant2AvatarVariant1CustomAvatar), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetAvatarConversationsResponseVariant2AvatarVariant1CustomAvatar?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.GetAvatarConversationsResponseVariant2AvatarVariant1CustomAvatar).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Custom!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickCustom(), typeInfo);
             }
         }
     }

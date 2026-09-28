@@ -47,8 +47,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateSoundEffectRequestSeedAudio PickSeedAudio() => IsSeedAudio
-            ? SeedAudio!
+        public global::Runway.CreateSoundEffectRequestSeedAudio PickSeedAudio() => SeedAudio is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'SeedAudio' but the value was {ToString()}.");
 
         /// <summary>
@@ -84,8 +84,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateSoundEffectRequestElevenTextToSoundV2 PickElevenTextToSoundV2() => IsElevenTextToSoundV2
-            ? ElevenTextToSoundV2!
+        public global::Runway.CreateSoundEffectRequestElevenTextToSoundV2 PickElevenTextToSoundV2() => ElevenTextToSoundV2 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ElevenTextToSoundV2' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -185,13 +185,13 @@ namespace Runway
                 Validate();
             }
 
-            if (IsSeedAudio && seedAudio != null)
+            if (SeedAudio is { } __value0 && seedAudio != null)
             {
-                return seedAudio(SeedAudio!);
+                return seedAudio(__value0);
             }
-            else if (IsElevenTextToSoundV2 && elevenTextToSoundV2 != null)
+            else if (ElevenTextToSoundV2 is { } __value1 && elevenTextToSoundV2 != null)
             {
-                return elevenTextToSoundV2(ElevenTextToSoundV2!);
+                return elevenTextToSoundV2(__value1);
             }
 
             return default(TResult);
@@ -211,13 +211,13 @@ namespace Runway
                 Validate();
             }
 
-            if (IsSeedAudio)
+            if (SeedAudio is { } __value0)
             {
-                seedAudio?.Invoke(SeedAudio!);
+                seedAudio?.Invoke(__value0);
             }
-            else if (IsElevenTextToSoundV2)
+            else if (ElevenTextToSoundV2 is { } __value1)
             {
-                elevenTextToSoundV2?.Invoke(ElevenTextToSoundV2!);
+                elevenTextToSoundV2?.Invoke(__value1);
             }
         }
 
@@ -234,13 +234,13 @@ namespace Runway
                 Validate();
             }
 
-            if (IsSeedAudio)
+            if (SeedAudio is { } __value0)
             {
-                seedAudio?.Invoke(SeedAudio!);
+                seedAudio?.Invoke(__value0);
             }
-            else if (IsElevenTextToSoundV2)
+            else if (ElevenTextToSoundV2 is { } __value1)
             {
-                elevenTextToSoundV2?.Invoke(ElevenTextToSoundV2!);
+                elevenTextToSoundV2?.Invoke(__value1);
             }
         }
 

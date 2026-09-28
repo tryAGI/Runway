@@ -47,8 +47,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetRealtimeSessionsResponseSessionNotReady PickNotReady() => IsNotReady
-            ? NotReady!
+        public global::Runway.GetRealtimeSessionsResponseSessionNotReady PickNotReady() => NotReady is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'NotReady' but the value was {ToString()}.");
 
         /// <summary>
@@ -84,8 +84,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetRealtimeSessionsResponseSessionReady PickReady() => IsReady
-            ? Ready!
+        public global::Runway.GetRealtimeSessionsResponseSessionReady PickReady() => Ready is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Ready' but the value was {ToString()}.");
 
         /// <summary>
@@ -121,8 +121,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetRealtimeSessionsResponseSessionRunning PickRunning() => IsRunning
-            ? Running!
+        public global::Runway.GetRealtimeSessionsResponseSessionRunning PickRunning() => Running is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Running' but the value was {ToString()}.");
 
         /// <summary>
@@ -158,8 +158,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetRealtimeSessionsResponseSessionCompleted PickCompleted() => IsCompleted
-            ? Completed!
+        public global::Runway.GetRealtimeSessionsResponseSessionCompleted PickCompleted() => Completed is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Completed' but the value was {ToString()}.");
 
         /// <summary>
@@ -195,8 +195,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetRealtimeSessionsResponseSessionFailed PickFailed() => IsFailed
-            ? Failed!
+        public global::Runway.GetRealtimeSessionsResponseSessionFailed PickFailed() => Failed is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Failed' but the value was {ToString()}.");
 
         /// <summary>
@@ -232,8 +232,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetRealtimeSessionsResponseSessionCancelled PickCancelled() => IsCancelled
-            ? Cancelled!
+        public global::Runway.GetRealtimeSessionsResponseSessionCancelled PickCancelled() => Cancelled is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Cancelled' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -445,29 +445,29 @@ namespace Runway
                 Validate();
             }
 
-            if (IsNotReady && notReady != null)
+            if (NotReady is { } __value0 && notReady != null)
             {
-                return notReady(NotReady!);
+                return notReady(__value0);
             }
-            else if (IsReady && ready != null)
+            else if (Ready is { } __value1 && ready != null)
             {
-                return ready(Ready!);
+                return ready(__value1);
             }
-            else if (IsRunning && running != null)
+            else if (Running is { } __value2 && running != null)
             {
-                return running(Running!);
+                return running(__value2);
             }
-            else if (IsCompleted && completed != null)
+            else if (Completed is { } __value3 && completed != null)
             {
-                return completed(Completed!);
+                return completed(__value3);
             }
-            else if (IsFailed && failed != null)
+            else if (Failed is { } __value4 && failed != null)
             {
-                return failed(Failed!);
+                return failed(__value4);
             }
-            else if (IsCancelled && cancelled != null)
+            else if (Cancelled is { } __value5 && cancelled != null)
             {
-                return cancelled(Cancelled!);
+                return cancelled(__value5);
             }
 
             return default(TResult);
@@ -495,29 +495,29 @@ namespace Runway
                 Validate();
             }
 
-            if (IsNotReady)
+            if (NotReady is { } __value0)
             {
-                notReady?.Invoke(NotReady!);
+                notReady?.Invoke(__value0);
             }
-            else if (IsReady)
+            else if (Ready is { } __value1)
             {
-                ready?.Invoke(Ready!);
+                ready?.Invoke(__value1);
             }
-            else if (IsRunning)
+            else if (Running is { } __value2)
             {
-                running?.Invoke(Running!);
+                running?.Invoke(__value2);
             }
-            else if (IsCompleted)
+            else if (Completed is { } __value3)
             {
-                completed?.Invoke(Completed!);
+                completed?.Invoke(__value3);
             }
-            else if (IsFailed)
+            else if (Failed is { } __value4)
             {
-                failed?.Invoke(Failed!);
+                failed?.Invoke(__value4);
             }
-            else if (IsCancelled)
+            else if (Cancelled is { } __value5)
             {
-                cancelled?.Invoke(Cancelled!);
+                cancelled?.Invoke(__value5);
             }
         }
 
@@ -538,29 +538,29 @@ namespace Runway
                 Validate();
             }
 
-            if (IsNotReady)
+            if (NotReady is { } __value0)
             {
-                notReady?.Invoke(NotReady!);
+                notReady?.Invoke(__value0);
             }
-            else if (IsReady)
+            else if (Ready is { } __value1)
             {
-                ready?.Invoke(Ready!);
+                ready?.Invoke(__value1);
             }
-            else if (IsRunning)
+            else if (Running is { } __value2)
             {
-                running?.Invoke(Running!);
+                running?.Invoke(__value2);
             }
-            else if (IsCompleted)
+            else if (Completed is { } __value3)
             {
-                completed?.Invoke(Completed!);
+                completed?.Invoke(__value3);
             }
-            else if (IsFailed)
+            else if (Failed is { } __value4)
             {
-                failed?.Invoke(Failed!);
+                failed?.Invoke(__value4);
             }
-            else if (IsCancelled)
+            else if (Cancelled is { } __value5)
             {
-                cancelled?.Invoke(Cancelled!);
+                cancelled?.Invoke(__value5);
             }
         }
 

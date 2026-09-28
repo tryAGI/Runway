@@ -59,13 +59,13 @@ namespace Runway.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceRunwayPresetVoice), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceRunwayPresetVoice?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceRunwayPresetVoice).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Preset!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickPreset(), typeInfo);
             }
             else if (value.IsCustom)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceCustomVoice), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceCustomVoice?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceCustomVoice).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Custom!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickCustom(), typeInfo);
             }
         }
     }

@@ -47,8 +47,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRealtimeSessionsRequestToolClientEventTool PickClientEvent() => IsClientEvent
-            ? ClientEvent!
+        public global::Runway.CreateRealtimeSessionsRequestToolClientEventTool PickClientEvent() => ClientEvent is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ClientEvent' but the value was {ToString()}.");
 
         /// <summary>
@@ -84,8 +84,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRealtimeSessionsRequestToolBackendRPCTool PickBackendRpc() => IsBackendRpc
-            ? BackendRpc!
+        public global::Runway.CreateRealtimeSessionsRequestToolBackendRPCTool PickBackendRpc() => BackendRpc is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'BackendRpc' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -185,13 +185,13 @@ namespace Runway
                 Validate();
             }
 
-            if (IsClientEvent && clientEvent != null)
+            if (ClientEvent is { } __value0 && clientEvent != null)
             {
-                return clientEvent(ClientEvent!);
+                return clientEvent(__value0);
             }
-            else if (IsBackendRpc && backendRpc != null)
+            else if (BackendRpc is { } __value1 && backendRpc != null)
             {
-                return backendRpc(BackendRpc!);
+                return backendRpc(__value1);
             }
 
             return default(TResult);
@@ -211,13 +211,13 @@ namespace Runway
                 Validate();
             }
 
-            if (IsClientEvent)
+            if (ClientEvent is { } __value0)
             {
-                clientEvent?.Invoke(ClientEvent!);
+                clientEvent?.Invoke(__value0);
             }
-            else if (IsBackendRpc)
+            else if (BackendRpc is { } __value1)
             {
-                backendRpc?.Invoke(BackendRpc!);
+                backendRpc?.Invoke(__value1);
             }
         }
 
@@ -234,13 +234,13 @@ namespace Runway
                 Validate();
             }
 
-            if (IsClientEvent)
+            if (ClientEvent is { } __value0)
             {
-                clientEvent?.Invoke(ClientEvent!);
+                clientEvent?.Invoke(__value0);
             }
-            else if (IsBackendRpc)
+            else if (BackendRpc is { } __value1)
             {
-                backendRpc?.Invoke(BackendRpc!);
+                backendRpc?.Invoke(__value1);
             }
         }
 

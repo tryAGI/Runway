@@ -47,8 +47,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateImageToVideoRequestGen45 PickGen45() => IsGen45
-            ? Gen45!
+        public global::Runway.CreateImageToVideoRequestGen45 PickGen45() => Gen45 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Gen45' but the value was {ToString()}.");
 
         /// <summary>
@@ -84,8 +84,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateImageToVideoRequestGen4Turbo PickGen4Turbo() => IsGen4Turbo
-            ? Gen4Turbo!
+        public global::Runway.CreateImageToVideoRequestGen4Turbo PickGen4Turbo() => Gen4Turbo is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Gen4Turbo' but the value was {ToString()}.");
 
         /// <summary>
@@ -121,8 +121,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateImageToVideoRequestVeo31 PickVeo31() => IsVeo31
-            ? Veo31!
+        public global::Runway.CreateImageToVideoRequestVeo31 PickVeo31() => Veo31 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Veo31' but the value was {ToString()}.");
 
         /// <summary>
@@ -158,8 +158,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateImageToVideoRequestVeo31Fast PickVeo31Fast() => IsVeo31Fast
-            ? Veo31Fast!
+        public global::Runway.CreateImageToVideoRequestVeo31Fast PickVeo31Fast() => Veo31Fast is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Veo31Fast' but the value was {ToString()}.");
 
         /// <summary>
@@ -195,8 +195,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateImageToVideoRequestHailuo3 PickHailuo3() => IsHailuo3
-            ? Hailuo3!
+        public global::Runway.CreateImageToVideoRequestHailuo3 PickHailuo3() => Hailuo3 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Hailuo3' but the value was {ToString()}.");
 
         /// <summary>
@@ -232,8 +232,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateImageToVideoRequestHappyhorse10 PickHappyhorse10() => IsHappyhorse10
-            ? Happyhorse10!
+        public global::Runway.CreateImageToVideoRequestHappyhorse10 PickHappyhorse10() => Happyhorse10 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Happyhorse10' but the value was {ToString()}.");
 
         /// <summary>
@@ -269,8 +269,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateImageToVideoRequestSeedance2 PickSeedance2() => IsSeedance2
-            ? Seedance2!
+        public global::Runway.CreateImageToVideoRequestSeedance2 PickSeedance2() => Seedance2 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Seedance2' but the value was {ToString()}.");
 
         /// <summary>
@@ -306,8 +306,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateImageToVideoRequestSeedance2Fast PickSeedance2Fast() => IsSeedance2Fast
-            ? Seedance2Fast!
+        public global::Runway.CreateImageToVideoRequestSeedance2Fast PickSeedance2Fast() => Seedance2Fast is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Seedance2Fast' but the value was {ToString()}.");
 
         /// <summary>
@@ -343,8 +343,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateImageToVideoRequestSeedance2Mini PickSeedance2Mini() => IsSeedance2Mini
-            ? Seedance2Mini!
+        public global::Runway.CreateImageToVideoRequestSeedance2Mini PickSeedance2Mini() => Seedance2Mini is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Seedance2Mini' but the value was {ToString()}.");
 
         /// <summary>
@@ -380,8 +380,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateImageToVideoRequestGeminiOmniFlash PickGeminiOmniFlash() => IsGeminiOmniFlash
-            ? GeminiOmniFlash!
+        public global::Runway.CreateImageToVideoRequestGeminiOmniFlash PickGeminiOmniFlash() => GeminiOmniFlash is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'GeminiOmniFlash' but the value was {ToString()}.");
 
         /// <summary>
@@ -417,8 +417,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateImageToVideoRequestSeedance25 PickSeedance25() => IsSeedance25
-            ? Seedance25!
+        public global::Runway.CreateImageToVideoRequestSeedance25 PickSeedance25() => Seedance25 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Seedance25' but the value was {ToString()}.");
 
         /// <summary>
@@ -454,8 +454,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateImageToVideoRequestGrokImagine15 PickGrokImagine15() => IsGrokImagine15
-            ? GrokImagine15!
+        public global::Runway.CreateImageToVideoRequestGrokImagine15 PickGrokImagine15() => GrokImagine15 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'GrokImagine15' but the value was {ToString()}.");
 
         /// <summary>
@@ -491,8 +491,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateImageToVideoRequestWan3 PickWan3() => IsWan3
-            ? Wan3!
+        public global::Runway.CreateImageToVideoRequestWan3 PickWan3() => Wan3 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Wan3' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -900,57 +900,57 @@ namespace Runway
                 Validate();
             }
 
-            if (IsGen45 && gen45 != null)
+            if (Gen45 is { } __value0 && gen45 != null)
             {
-                return gen45(Gen45!);
+                return gen45(__value0);
             }
-            else if (IsGen4Turbo && gen4Turbo != null)
+            else if (Gen4Turbo is { } __value1 && gen4Turbo != null)
             {
-                return gen4Turbo(Gen4Turbo!);
+                return gen4Turbo(__value1);
             }
-            else if (IsVeo31 && veo31 != null)
+            else if (Veo31 is { } __value2 && veo31 != null)
             {
-                return veo31(Veo31!);
+                return veo31(__value2);
             }
-            else if (IsVeo31Fast && veo31Fast != null)
+            else if (Veo31Fast is { } __value3 && veo31Fast != null)
             {
-                return veo31Fast(Veo31Fast!);
+                return veo31Fast(__value3);
             }
-            else if (IsHailuo3 && hailuo3 != null)
+            else if (Hailuo3 is { } __value4 && hailuo3 != null)
             {
-                return hailuo3(Hailuo3!);
+                return hailuo3(__value4);
             }
-            else if (IsHappyhorse10 && happyhorse10 != null)
+            else if (Happyhorse10 is { } __value5 && happyhorse10 != null)
             {
-                return happyhorse10(Happyhorse10!);
+                return happyhorse10(__value5);
             }
-            else if (IsSeedance2 && seedance2 != null)
+            else if (Seedance2 is { } __value6 && seedance2 != null)
             {
-                return seedance2(Seedance2!);
+                return seedance2(__value6);
             }
-            else if (IsSeedance2Fast && seedance2Fast != null)
+            else if (Seedance2Fast is { } __value7 && seedance2Fast != null)
             {
-                return seedance2Fast(Seedance2Fast!);
+                return seedance2Fast(__value7);
             }
-            else if (IsSeedance2Mini && seedance2Mini != null)
+            else if (Seedance2Mini is { } __value8 && seedance2Mini != null)
             {
-                return seedance2Mini(Seedance2Mini!);
+                return seedance2Mini(__value8);
             }
-            else if (IsGeminiOmniFlash && geminiOmniFlash != null)
+            else if (GeminiOmniFlash is { } __value9 && geminiOmniFlash != null)
             {
-                return geminiOmniFlash(GeminiOmniFlash!);
+                return geminiOmniFlash(__value9);
             }
-            else if (IsSeedance25 && seedance25 != null)
+            else if (Seedance25 is { } __value10 && seedance25 != null)
             {
-                return seedance25(Seedance25!);
+                return seedance25(__value10);
             }
-            else if (IsGrokImagine15 && grokImagine15 != null)
+            else if (GrokImagine15 is { } __value11 && grokImagine15 != null)
             {
-                return grokImagine15(GrokImagine15!);
+                return grokImagine15(__value11);
             }
-            else if (IsWan3 && wan3 != null)
+            else if (Wan3 is { } __value12 && wan3 != null)
             {
-                return wan3(Wan3!);
+                return wan3(__value12);
             }
 
             return default(TResult);
@@ -992,57 +992,57 @@ namespace Runway
                 Validate();
             }
 
-            if (IsGen45)
+            if (Gen45 is { } __value0)
             {
-                gen45?.Invoke(Gen45!);
+                gen45?.Invoke(__value0);
             }
-            else if (IsGen4Turbo)
+            else if (Gen4Turbo is { } __value1)
             {
-                gen4Turbo?.Invoke(Gen4Turbo!);
+                gen4Turbo?.Invoke(__value1);
             }
-            else if (IsVeo31)
+            else if (Veo31 is { } __value2)
             {
-                veo31?.Invoke(Veo31!);
+                veo31?.Invoke(__value2);
             }
-            else if (IsVeo31Fast)
+            else if (Veo31Fast is { } __value3)
             {
-                veo31Fast?.Invoke(Veo31Fast!);
+                veo31Fast?.Invoke(__value3);
             }
-            else if (IsHailuo3)
+            else if (Hailuo3 is { } __value4)
             {
-                hailuo3?.Invoke(Hailuo3!);
+                hailuo3?.Invoke(__value4);
             }
-            else if (IsHappyhorse10)
+            else if (Happyhorse10 is { } __value5)
             {
-                happyhorse10?.Invoke(Happyhorse10!);
+                happyhorse10?.Invoke(__value5);
             }
-            else if (IsSeedance2)
+            else if (Seedance2 is { } __value6)
             {
-                seedance2?.Invoke(Seedance2!);
+                seedance2?.Invoke(__value6);
             }
-            else if (IsSeedance2Fast)
+            else if (Seedance2Fast is { } __value7)
             {
-                seedance2Fast?.Invoke(Seedance2Fast!);
+                seedance2Fast?.Invoke(__value7);
             }
-            else if (IsSeedance2Mini)
+            else if (Seedance2Mini is { } __value8)
             {
-                seedance2Mini?.Invoke(Seedance2Mini!);
+                seedance2Mini?.Invoke(__value8);
             }
-            else if (IsGeminiOmniFlash)
+            else if (GeminiOmniFlash is { } __value9)
             {
-                geminiOmniFlash?.Invoke(GeminiOmniFlash!);
+                geminiOmniFlash?.Invoke(__value9);
             }
-            else if (IsSeedance25)
+            else if (Seedance25 is { } __value10)
             {
-                seedance25?.Invoke(Seedance25!);
+                seedance25?.Invoke(__value10);
             }
-            else if (IsGrokImagine15)
+            else if (GrokImagine15 is { } __value11)
             {
-                grokImagine15?.Invoke(GrokImagine15!);
+                grokImagine15?.Invoke(__value11);
             }
-            else if (IsWan3)
+            else if (Wan3 is { } __value12)
             {
-                wan3?.Invoke(Wan3!);
+                wan3?.Invoke(__value12);
             }
         }
 
@@ -1070,57 +1070,57 @@ namespace Runway
                 Validate();
             }
 
-            if (IsGen45)
+            if (Gen45 is { } __value0)
             {
-                gen45?.Invoke(Gen45!);
+                gen45?.Invoke(__value0);
             }
-            else if (IsGen4Turbo)
+            else if (Gen4Turbo is { } __value1)
             {
-                gen4Turbo?.Invoke(Gen4Turbo!);
+                gen4Turbo?.Invoke(__value1);
             }
-            else if (IsVeo31)
+            else if (Veo31 is { } __value2)
             {
-                veo31?.Invoke(Veo31!);
+                veo31?.Invoke(__value2);
             }
-            else if (IsVeo31Fast)
+            else if (Veo31Fast is { } __value3)
             {
-                veo31Fast?.Invoke(Veo31Fast!);
+                veo31Fast?.Invoke(__value3);
             }
-            else if (IsHailuo3)
+            else if (Hailuo3 is { } __value4)
             {
-                hailuo3?.Invoke(Hailuo3!);
+                hailuo3?.Invoke(__value4);
             }
-            else if (IsHappyhorse10)
+            else if (Happyhorse10 is { } __value5)
             {
-                happyhorse10?.Invoke(Happyhorse10!);
+                happyhorse10?.Invoke(__value5);
             }
-            else if (IsSeedance2)
+            else if (Seedance2 is { } __value6)
             {
-                seedance2?.Invoke(Seedance2!);
+                seedance2?.Invoke(__value6);
             }
-            else if (IsSeedance2Fast)
+            else if (Seedance2Fast is { } __value7)
             {
-                seedance2Fast?.Invoke(Seedance2Fast!);
+                seedance2Fast?.Invoke(__value7);
             }
-            else if (IsSeedance2Mini)
+            else if (Seedance2Mini is { } __value8)
             {
-                seedance2Mini?.Invoke(Seedance2Mini!);
+                seedance2Mini?.Invoke(__value8);
             }
-            else if (IsGeminiOmniFlash)
+            else if (GeminiOmniFlash is { } __value9)
             {
-                geminiOmniFlash?.Invoke(GeminiOmniFlash!);
+                geminiOmniFlash?.Invoke(__value9);
             }
-            else if (IsSeedance25)
+            else if (Seedance25 is { } __value10)
             {
-                seedance25?.Invoke(Seedance25!);
+                seedance25?.Invoke(__value10);
             }
-            else if (IsGrokImagine15)
+            else if (GrokImagine15 is { } __value11)
             {
-                grokImagine15?.Invoke(GrokImagine15!);
+                grokImagine15?.Invoke(__value11);
             }
-            else if (IsWan3)
+            else if (Wan3 is { } __value12)
             {
-                wan3?.Invoke(Wan3!);
+                wan3?.Invoke(__value12);
             }
         }
 

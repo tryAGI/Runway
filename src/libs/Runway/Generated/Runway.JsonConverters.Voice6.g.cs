@@ -59,13 +59,13 @@ namespace Runway.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetAvatarsResponseDataItemAvatarReadyVoiceRunwayLivePresetVoiceResponse), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetAvatarsResponseDataItemAvatarReadyVoiceRunwayLivePresetVoiceResponse?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.GetAvatarsResponseDataItemAvatarReadyVoiceRunwayLivePresetVoiceResponse).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.RunwayLivePreset!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickRunwayLivePreset(), typeInfo);
             }
             else if (value.IsCustom)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetAvatarsResponseDataItemAvatarReadyVoiceCustomVoiceResponse), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetAvatarsResponseDataItemAvatarReadyVoiceCustomVoiceResponse?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.GetAvatarsResponseDataItemAvatarReadyVoiceCustomVoiceResponse).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Custom!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickCustom(), typeInfo);
             }
         }
     }

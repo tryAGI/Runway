@@ -47,8 +47,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2 PickElevenMultilingualStsV2() => IsElevenMultilingualStsV2
-            ? ElevenMultilingualStsV2!
+        public global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2 PickElevenMultilingualStsV2() => ElevenMultilingualStsV2 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ElevenMultilingualStsV2' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -120,9 +120,9 @@ namespace Runway
                 Validate();
             }
 
-            if (IsElevenMultilingualStsV2 && elevenMultilingualStsV2 != null)
+            if (ElevenMultilingualStsV2 is { } __value0 && elevenMultilingualStsV2 != null)
             {
-                return elevenMultilingualStsV2(ElevenMultilingualStsV2!);
+                return elevenMultilingualStsV2(__value0);
             }
 
             return default(TResult);
@@ -140,9 +140,9 @@ namespace Runway
                 Validate();
             }
 
-            if (IsElevenMultilingualStsV2)
+            if (ElevenMultilingualStsV2 is { } __value0)
             {
-                elevenMultilingualStsV2?.Invoke(ElevenMultilingualStsV2!);
+                elevenMultilingualStsV2?.Invoke(__value0);
             }
         }
 
@@ -158,9 +158,9 @@ namespace Runway
                 Validate();
             }
 
-            if (IsElevenMultilingualStsV2)
+            if (ElevenMultilingualStsV2 is { } __value0)
             {
-                elevenMultilingualStsV2?.Invoke(ElevenMultilingualStsV2!);
+                elevenMultilingualStsV2?.Invoke(__value0);
             }
         }
 

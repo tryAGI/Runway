@@ -59,13 +59,13 @@ namespace Runway.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateRealtimeSessionsRequestToolClientEventTool), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateRealtimeSessionsRequestToolClientEventTool?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateRealtimeSessionsRequestToolClientEventTool).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ClientEvent!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickClientEvent(), typeInfo);
             }
             else if (value.IsBackendRpc)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCTool), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateRealtimeSessionsRequestToolBackendRPCTool?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCTool).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.BackendRpc!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickBackendRpc(), typeInfo);
             }
         }
     }

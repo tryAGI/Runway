@@ -47,8 +47,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterStringParameter PickString() => IsString
-            ? String!
+        public global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterStringParameter PickString() => String is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'String' but the value was {ToString()}.");
 
         /// <summary>
@@ -84,8 +84,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterIntegerParameter PickInteger() => IsInteger
-            ? Integer!
+        public global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterIntegerParameter PickInteger() => Integer is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Integer' but the value was {ToString()}.");
 
         /// <summary>
@@ -121,8 +121,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterNumberParameter PickNumber() => IsNumber
-            ? Number!
+        public global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterNumberParameter PickNumber() => Number is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Number' but the value was {ToString()}.");
 
         /// <summary>
@@ -158,8 +158,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterBooleanParameter PickBoolean() => IsBoolean
-            ? Boolean!
+        public global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterBooleanParameter PickBoolean() => Boolean is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Boolean' but the value was {ToString()}.");
 
         /// <summary>
@@ -195,8 +195,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterArrayParameter PickArray() => IsArray
-            ? Array!
+        public global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterArrayParameter PickArray() => Array is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Array' but the value was {ToString()}.");
 
         /// <summary>
@@ -232,8 +232,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterObjectParameter PickObjectValue() => IsObjectValue
-            ? ObjectValue!
+        public global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterObjectParameter PickObjectValue() => ObjectValue is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ObjectValue' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -445,29 +445,29 @@ namespace Runway
                 Validate();
             }
 
-            if (IsString && @string != null)
+            if (String is { } __value0 && @string != null)
             {
-                return @string(String!);
+                return @string(__value0);
             }
-            else if (IsInteger && integer != null)
+            else if (Integer is { } __value1 && integer != null)
             {
-                return integer(Integer!);
+                return integer(__value1);
             }
-            else if (IsNumber && number != null)
+            else if (Number is { } __value2 && number != null)
             {
-                return number(Number!);
+                return number(__value2);
             }
-            else if (IsBoolean && boolean != null)
+            else if (Boolean is { } __value3 && boolean != null)
             {
-                return boolean(Boolean!);
+                return boolean(__value3);
             }
-            else if (IsArray && array != null)
+            else if (Array is { } __value4 && array != null)
             {
-                return array(Array!);
+                return array(__value4);
             }
-            else if (IsObjectValue && objectValue != null)
+            else if (ObjectValue is { } __value5 && objectValue != null)
             {
-                return objectValue(ObjectValue!);
+                return objectValue(__value5);
             }
 
             return default(TResult);
@@ -495,29 +495,29 @@ namespace Runway
                 Validate();
             }
 
-            if (IsString)
+            if (String is { } __value0)
             {
-                @string?.Invoke(String!);
+                @string?.Invoke(__value0);
             }
-            else if (IsInteger)
+            else if (Integer is { } __value1)
             {
-                integer?.Invoke(Integer!);
+                integer?.Invoke(__value1);
             }
-            else if (IsNumber)
+            else if (Number is { } __value2)
             {
-                number?.Invoke(Number!);
+                number?.Invoke(__value2);
             }
-            else if (IsBoolean)
+            else if (Boolean is { } __value3)
             {
-                boolean?.Invoke(Boolean!);
+                boolean?.Invoke(__value3);
             }
-            else if (IsArray)
+            else if (Array is { } __value4)
             {
-                array?.Invoke(Array!);
+                array?.Invoke(__value4);
             }
-            else if (IsObjectValue)
+            else if (ObjectValue is { } __value5)
             {
-                objectValue?.Invoke(ObjectValue!);
+                objectValue?.Invoke(__value5);
             }
         }
 
@@ -538,29 +538,29 @@ namespace Runway
                 Validate();
             }
 
-            if (IsString)
+            if (String is { } __value0)
             {
-                @string?.Invoke(String!);
+                @string?.Invoke(__value0);
             }
-            else if (IsInteger)
+            else if (Integer is { } __value1)
             {
-                integer?.Invoke(Integer!);
+                integer?.Invoke(__value1);
             }
-            else if (IsNumber)
+            else if (Number is { } __value2)
             {
-                number?.Invoke(Number!);
+                number?.Invoke(__value2);
             }
-            else if (IsBoolean)
+            else if (Boolean is { } __value3)
             {
-                boolean?.Invoke(Boolean!);
+                boolean?.Invoke(__value3);
             }
-            else if (IsArray)
+            else if (Array is { } __value4)
             {
-                array?.Invoke(Array!);
+                array?.Invoke(__value4);
             }
-            else if (IsObjectValue)
+            else if (ObjectValue is { } __value5)
             {
-                objectValue?.Invoke(ObjectValue!);
+                objectValue?.Invoke(__value5);
             }
         }
 

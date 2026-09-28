@@ -95,37 +95,37 @@ namespace Runway.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterStringParameter), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterStringParameter?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterStringParameter).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.String!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickString(), typeInfo);
             }
             else if (value.IsInteger)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterIntegerParameter), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterIntegerParameter?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterIntegerParameter).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Integer!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickInteger(), typeInfo);
             }
             else if (value.IsNumber)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterNumberParameter), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterNumberParameter?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterNumberParameter).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Number!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickNumber(), typeInfo);
             }
             else if (value.IsBoolean)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterBooleanParameter), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterBooleanParameter?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterBooleanParameter).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Boolean!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickBoolean(), typeInfo);
             }
             else if (value.IsArray)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterArrayParameter), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterArrayParameter?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterArrayParameter).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Array!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickArray(), typeInfo);
             }
             else if (value.IsObjectValue)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterObjectParameter), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterObjectParameter?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterObjectParameter).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ObjectValue!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickObjectValue(), typeInfo);
             }
         }
     }

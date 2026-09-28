@@ -211,7 +211,7 @@ namespace Runway
                 PrepareCreateVideoToVideoRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    xRunwayVersion: xRunwayVersion!,
+                    xRunwayVersion: xRunwayVersion,
                     request: request);
 
                 return __httpRequest;
@@ -234,7 +234,7 @@ namespace Runway
                                 pathTemplate: "\"/v1/video_to_video\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: null,
                                 clientOptions: Options,
@@ -268,7 +268,7 @@ namespace Runway
                                 pathTemplate: "\"/v1/video_to_video\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: __exception,
                                 clientOptions: Options,
@@ -309,7 +309,7 @@ namespace Runway
                                 pathTemplate: "\"/v1/video_to_video\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -357,7 +357,7 @@ namespace Runway
                                 pathTemplate: "\"/v1/video_to_video\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -379,7 +379,7 @@ namespace Runway
                                 pathTemplate: "\"/v1/video_to_video\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,

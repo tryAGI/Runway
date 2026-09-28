@@ -47,8 +47,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.PatchAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponse PickRunwayLivePreset() => IsRunwayLivePreset
-            ? RunwayLivePreset!
+        public global::Runway.PatchAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponse PickRunwayLivePreset() => RunwayLivePreset is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'RunwayLivePreset' but the value was {ToString()}.");
 
         /// <summary>
@@ -84,8 +84,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.PatchAvatarsResponseAvatarProcessingVoiceCustomVoiceResponse PickCustom() => IsCustom
-            ? Custom!
+        public global::Runway.PatchAvatarsResponseAvatarProcessingVoiceCustomVoiceResponse PickCustom() => Custom is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Custom' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -185,13 +185,13 @@ namespace Runway
                 Validate();
             }
 
-            if (IsRunwayLivePreset && runwayLivePreset != null)
+            if (RunwayLivePreset is { } __value0 && runwayLivePreset != null)
             {
-                return runwayLivePreset(RunwayLivePreset!);
+                return runwayLivePreset(__value0);
             }
-            else if (IsCustom && custom != null)
+            else if (Custom is { } __value1 && custom != null)
             {
-                return custom(Custom!);
+                return custom(__value1);
             }
 
             return default(TResult);
@@ -211,13 +211,13 @@ namespace Runway
                 Validate();
             }
 
-            if (IsRunwayLivePreset)
+            if (RunwayLivePreset is { } __value0)
             {
-                runwayLivePreset?.Invoke(RunwayLivePreset!);
+                runwayLivePreset?.Invoke(__value0);
             }
-            else if (IsCustom)
+            else if (Custom is { } __value1)
             {
-                custom?.Invoke(Custom!);
+                custom?.Invoke(__value1);
             }
         }
 
@@ -234,13 +234,13 @@ namespace Runway
                 Validate();
             }
 
-            if (IsRunwayLivePreset)
+            if (RunwayLivePreset is { } __value0)
             {
-                runwayLivePreset?.Invoke(RunwayLivePreset!);
+                runwayLivePreset?.Invoke(__value0);
             }
-            else if (IsCustom)
+            else if (Custom is { } __value1)
             {
-                custom?.Invoke(Custom!);
+                custom?.Invoke(__value1);
             }
         }
 

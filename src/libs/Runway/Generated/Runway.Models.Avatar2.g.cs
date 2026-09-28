@@ -47,8 +47,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRealtimeSessionsRequestAvatarRunwayPresetAvatar PickRunwayPreset() => IsRunwayPreset
-            ? RunwayPreset!
+        public global::Runway.CreateRealtimeSessionsRequestAvatarRunwayPresetAvatar PickRunwayPreset() => RunwayPreset is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'RunwayPreset' but the value was {ToString()}.");
 
         /// <summary>
@@ -84,8 +84,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRealtimeSessionsRequestAvatarCustomAvatar PickCustom() => IsCustom
-            ? Custom!
+        public global::Runway.CreateRealtimeSessionsRequestAvatarCustomAvatar PickCustom() => Custom is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Custom' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -185,13 +185,13 @@ namespace Runway
                 Validate();
             }
 
-            if (IsRunwayPreset && runwayPreset != null)
+            if (RunwayPreset is { } __value0 && runwayPreset != null)
             {
-                return runwayPreset(RunwayPreset!);
+                return runwayPreset(__value0);
             }
-            else if (IsCustom && custom != null)
+            else if (Custom is { } __value1 && custom != null)
             {
-                return custom(Custom!);
+                return custom(__value1);
             }
 
             return default(TResult);
@@ -211,13 +211,13 @@ namespace Runway
                 Validate();
             }
 
-            if (IsRunwayPreset)
+            if (RunwayPreset is { } __value0)
             {
-                runwayPreset?.Invoke(RunwayPreset!);
+                runwayPreset?.Invoke(__value0);
             }
-            else if (IsCustom)
+            else if (Custom is { } __value1)
             {
-                custom?.Invoke(Custom!);
+                custom?.Invoke(__value1);
             }
         }
 
@@ -234,13 +234,13 @@ namespace Runway
                 Validate();
             }
 
-            if (IsRunwayPreset)
+            if (RunwayPreset is { } __value0)
             {
-                runwayPreset?.Invoke(RunwayPreset!);
+                runwayPreset?.Invoke(__value0);
             }
-            else if (IsCustom)
+            else if (Custom is { } __value1)
             {
-                custom?.Invoke(Custom!);
+                custom?.Invoke(__value1);
             }
         }
 

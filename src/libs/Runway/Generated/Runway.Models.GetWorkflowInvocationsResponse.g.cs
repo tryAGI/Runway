@@ -47,8 +47,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationPending PickPending() => IsPending
-            ? Pending!
+        public global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationPending PickPending() => Pending is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Pending' but the value was {ToString()}.");
 
         /// <summary>
@@ -84,8 +84,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationThrottled PickThrottled() => IsThrottled
-            ? Throttled!
+        public global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationThrottled PickThrottled() => Throttled is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Throttled' but the value was {ToString()}.");
 
         /// <summary>
@@ -121,8 +121,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationCancelled PickCancelled() => IsCancelled
-            ? Cancelled!
+        public global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationCancelled PickCancelled() => Cancelled is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Cancelled' but the value was {ToString()}.");
 
         /// <summary>
@@ -158,8 +158,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationRunning PickRunning() => IsRunning
-            ? Running!
+        public global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationRunning PickRunning() => Running is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Running' but the value was {ToString()}.");
 
         /// <summary>
@@ -195,8 +195,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationFailed PickFailed() => IsFailed
-            ? Failed!
+        public global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationFailed PickFailed() => Failed is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Failed' but the value was {ToString()}.");
 
         /// <summary>
@@ -232,8 +232,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationSucceeded PickSucceeded() => IsSucceeded
-            ? Succeeded!
+        public global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationSucceeded PickSucceeded() => Succeeded is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Succeeded' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -445,29 +445,29 @@ namespace Runway
                 Validate();
             }
 
-            if (IsPending && pending != null)
+            if (Pending is { } __value0 && pending != null)
             {
-                return pending(Pending!);
+                return pending(__value0);
             }
-            else if (IsThrottled && throttled != null)
+            else if (Throttled is { } __value1 && throttled != null)
             {
-                return throttled(Throttled!);
+                return throttled(__value1);
             }
-            else if (IsCancelled && cancelled != null)
+            else if (Cancelled is { } __value2 && cancelled != null)
             {
-                return cancelled(Cancelled!);
+                return cancelled(__value2);
             }
-            else if (IsRunning && running != null)
+            else if (Running is { } __value3 && running != null)
             {
-                return running(Running!);
+                return running(__value3);
             }
-            else if (IsFailed && failed != null)
+            else if (Failed is { } __value4 && failed != null)
             {
-                return failed(Failed!);
+                return failed(__value4);
             }
-            else if (IsSucceeded && succeeded != null)
+            else if (Succeeded is { } __value5 && succeeded != null)
             {
-                return succeeded(Succeeded!);
+                return succeeded(__value5);
             }
 
             return default(TResult);
@@ -495,29 +495,29 @@ namespace Runway
                 Validate();
             }
 
-            if (IsPending)
+            if (Pending is { } __value0)
             {
-                pending?.Invoke(Pending!);
+                pending?.Invoke(__value0);
             }
-            else if (IsThrottled)
+            else if (Throttled is { } __value1)
             {
-                throttled?.Invoke(Throttled!);
+                throttled?.Invoke(__value1);
             }
-            else if (IsCancelled)
+            else if (Cancelled is { } __value2)
             {
-                cancelled?.Invoke(Cancelled!);
+                cancelled?.Invoke(__value2);
             }
-            else if (IsRunning)
+            else if (Running is { } __value3)
             {
-                running?.Invoke(Running!);
+                running?.Invoke(__value3);
             }
-            else if (IsFailed)
+            else if (Failed is { } __value4)
             {
-                failed?.Invoke(Failed!);
+                failed?.Invoke(__value4);
             }
-            else if (IsSucceeded)
+            else if (Succeeded is { } __value5)
             {
-                succeeded?.Invoke(Succeeded!);
+                succeeded?.Invoke(__value5);
             }
         }
 
@@ -538,29 +538,29 @@ namespace Runway
                 Validate();
             }
 
-            if (IsPending)
+            if (Pending is { } __value0)
             {
-                pending?.Invoke(Pending!);
+                pending?.Invoke(__value0);
             }
-            else if (IsThrottled)
+            else if (Throttled is { } __value1)
             {
-                throttled?.Invoke(Throttled!);
+                throttled?.Invoke(__value1);
             }
-            else if (IsCancelled)
+            else if (Cancelled is { } __value2)
             {
-                cancelled?.Invoke(Cancelled!);
+                cancelled?.Invoke(__value2);
             }
-            else if (IsRunning)
+            else if (Running is { } __value3)
             {
-                running?.Invoke(Running!);
+                running?.Invoke(__value3);
             }
-            else if (IsFailed)
+            else if (Failed is { } __value4)
             {
-                failed?.Invoke(Failed!);
+                failed?.Invoke(__value4);
             }
-            else if (IsSucceeded)
+            else if (Succeeded is { } __value5)
             {
-                succeeded?.Invoke(Succeeded!);
+                succeeded?.Invoke(__value5);
             }
         }
 

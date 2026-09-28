@@ -59,13 +59,13 @@ namespace Runway.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateRecipesMultiShotVideoRequestVariant1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateRecipesMultiShotVideoRequestVariant1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateRecipesMultiShotVideoRequestVariant1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Auto!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickAuto(), typeInfo);
             }
             else if (value.IsCustom)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateRecipesMultiShotVideoRequestVariant2), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateRecipesMultiShotVideoRequestVariant2?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateRecipesMultiShotVideoRequestVariant2).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Custom!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickCustom(), typeInfo);
             }
         }
     }

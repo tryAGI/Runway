@@ -47,8 +47,8 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateVoiceDubbingRequestElevenVoiceDubbing PickElevenVoiceDubbing() => IsElevenVoiceDubbing
-            ? ElevenVoiceDubbing!
+        public global::Runway.CreateVoiceDubbingRequestElevenVoiceDubbing PickElevenVoiceDubbing() => ElevenVoiceDubbing is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ElevenVoiceDubbing' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -120,9 +120,9 @@ namespace Runway
                 Validate();
             }
 
-            if (IsElevenVoiceDubbing && elevenVoiceDubbing != null)
+            if (ElevenVoiceDubbing is { } __value0 && elevenVoiceDubbing != null)
             {
-                return elevenVoiceDubbing(ElevenVoiceDubbing!);
+                return elevenVoiceDubbing(__value0);
             }
 
             return default(TResult);
@@ -140,9 +140,9 @@ namespace Runway
                 Validate();
             }
 
-            if (IsElevenVoiceDubbing)
+            if (ElevenVoiceDubbing is { } __value0)
             {
-                elevenVoiceDubbing?.Invoke(ElevenVoiceDubbing!);
+                elevenVoiceDubbing?.Invoke(__value0);
             }
         }
 
@@ -158,9 +158,9 @@ namespace Runway
                 Validate();
             }
 
-            if (IsElevenVoiceDubbing)
+            if (ElevenVoiceDubbing is { } __value0)
             {
-                elevenVoiceDubbing?.Invoke(ElevenVoiceDubbing!);
+                elevenVoiceDubbing?.Invoke(__value0);
             }
         }
 

@@ -68,19 +68,19 @@ namespace Runway.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Filter!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickFilter(), typeInfo);
             }
             else if (value.IsCapacity)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant2), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant2?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant2).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Capacity!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickCapacity(), typeInfo);
             }
             else if (value.IsRank)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant3), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant3?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.GetRoutersRequestsResponseDataItemPipelineItemVariant3).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Rank!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickRank(), typeInfo);
             }
         }
     }

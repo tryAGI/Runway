@@ -68,19 +68,19 @@ namespace Runway.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateAvatarsResponseAvatarProcessing), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateAvatarsResponseAvatarProcessing?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateAvatarsResponseAvatarProcessing).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Processing!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickProcessing(), typeInfo);
             }
             else if (value.IsReady)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateAvatarsResponseAvatarReady), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateAvatarsResponseAvatarReady?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateAvatarsResponseAvatarReady).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Ready!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickReady(), typeInfo);
             }
             else if (value.IsFailed)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateAvatarsResponseAvatarFailed), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateAvatarsResponseAvatarFailed?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateAvatarsResponseAvatarFailed).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Failed!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickFailed(), typeInfo);
             }
         }
     }
