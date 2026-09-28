@@ -77,6 +77,22 @@ internal static partial class RecipesCreateRecipesProductAdCommandApiCommand
           Description = "Path to a JSON request file, or '-' for stdin.",
           Hidden = true,
       };
+      private static Option<bool> Wait { get; } = new("--wait")
+      {
+          Description = "Poll the generated wait helper until the resource reaches a terminal state.",
+      };
+
+      private static Option<string> PollInterval { get; } = new("--poll-interval")
+      {
+          Description = "Polling interval, for example 250ms, 2s, 30m, or 01:00:00.",
+          DefaultValueFactory = _ => "2s",
+      };
+
+      private static Option<string> WaitTimeout { get; } = new("--wait-timeout")
+      {
+          Description = "Maximum time to wait before timing out, for example 30m or 00:30:00.",
+          DefaultValueFactory = _ => "30m",
+      };
 
                     private static string FormatResponse(ParseResult parseResult, global::Runway.CreateRecipesProductAdResponse value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
                     {
@@ -125,7 +141,9 @@ Generate a cinematic product ad from product images, optional style references, 
                   result.AddError(@"Specify at most one of --input, --request-json, or --request-file.");
               }
           });
-
+          command.Options.Add(Wait);
+          command.Options.Add(PollInterval);
+          command.Options.Add(WaitTimeout);
         command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
             await CliRuntime.RunAsync(async () =>
             {
@@ -144,9 +162,47 @@ Generate a cinematic product ad from product images, optional style references, 
                         var userConcept = CliRuntime.WasSpecified(parseResult, UserConcept) ? parseResult.GetValue(UserConcept) : (__requestBase is { } __UserConceptBaseValue ? __UserConceptBaseValue.UserConcept : default);
                         var ratio = CliRuntime.WasSpecified(parseResult, Ratio) ? parseResult.GetValue(Ratio) : (__requestBase is { } __RatioBaseValue ? __RatioBaseValue.Ratio : default);
                         var duration = CliRuntime.WasSpecified(parseResult, Duration) ? parseResult.GetValue(Duration) : (__requestBase is { } __DurationBaseValue ? __DurationBaseValue.Duration : default);
-                        var audio = CliRuntime.WasSpecified(parseResult, Audio) ? parseResult.GetValue(Audio) : (__requestBase is { } __AudioBaseValue ? __AudioBaseValue.Audio : default);
+                        var audio = CliRuntime.WasSpecified(parseResult, Audio) ? parseResult.GetValue(Audio) : (__requestBase is { } __AudioBaseValue ? __AudioBaseValue.Audio : default);          var wait = parseResult.GetValue(Wait);
+          var pollInterval = wait ? CliRuntime.ParseDuration(parseResult.GetRequiredValue(PollInterval), PollInterval.Name) : default;
+          var waitTimeout = wait ? CliRuntime.ParseDuration(parseResult.GetRequiredValue(WaitTimeout), WaitTimeout.Name) : default;
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
+                                if (wait)
+                                {
+                                var createResponse = await client.Recipes.CreateRecipesProductAdAsync(
+                                    xRunwayVersion: xRunwayVersion,
+                                    version: version,
+                                    productImages: productImages,
+                                    styleImages: styleImages,
+                                    productInfo: productInfo,
+                                    userConcept: userConcept,
+                                    ratio: ratio,
+                                    duration: duration,
+                                    audio: audio,
+                                    cancellationToken: cancellationToken).ConfigureAwait(false);
+                                    var resourceId = global::System.Convert.ToString(
+                                        createResponse.Id,
+                                        global::System.Globalization.CultureInfo.InvariantCulture);
+                                    if (string.IsNullOrWhiteSpace(resourceId))
+                                    {
+                                        throw new CliException("The create response did not contain a job id.");
+                                    }
+
+                                    var waitResponse = await CliRuntime.PollUntilTerminalAsync(
+                                        fetchAsync: token => client.TaskManagement.GetTasksByIdAsync(
+                                            id: global::System.Guid.Parse(resourceId),
+                                            cancellationToken: token),
+                                        pollInterval: pollInterval,
+                                        waitTimeout: waitTimeout,
+                                        context: global::Runway.SourceGenerationContext.Default,
+                                        cancellationToken: cancellationToken).ConfigureAwait(false);
+                                    await CliRuntime.WriteResponseAsync(
+                                        parseResult,
+                                        waitResponse,
+                                        global::Runway.SourceGenerationContext.Default,
+                                        cancellationToken: cancellationToken).ConfigureAwait(false);
+                                    return;
+                                }
 
                                 var response = await client.Recipes.CreateRecipesProductAdAsync(
                                     xRunwayVersion: xRunwayVersion,
