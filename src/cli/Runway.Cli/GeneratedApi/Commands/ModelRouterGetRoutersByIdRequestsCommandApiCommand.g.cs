@@ -55,9 +55,9 @@ internal static partial class ModelRouterGetRoutersByIdRequestsCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-routers-by-id-requests", @"List Model Router requests
+        var command = new Command(commandName ?? @"get-routers-by-id-requests", @"List Model Router requests
 Paginated routing history for live Model Router requests (successful routes and failures). Playground dry runs are not recorded.");
                         command.Arguments.Add(Id);
                         command.Options.Add(Cursor);

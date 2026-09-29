@@ -22,9 +22,9 @@ internal static partial class RealtimeSessionsDeleteRealtimeSessionsByIdCommandA
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"delete-realtime-sessions-by-id", @"Cancel realtime session
+        var command = new Command(commandName ?? @"delete-realtime-sessions-by-id", @"Cancel realtime session
 Cancel an active realtime session.");
                         command.Arguments.Add(Id);
                         command.Options.Add(XRunwayVersion);

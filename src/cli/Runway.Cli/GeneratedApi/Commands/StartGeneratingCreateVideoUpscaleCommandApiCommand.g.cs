@@ -68,9 +68,9 @@ internal static partial class StartGeneratingCreateVideoUpscaleCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-video-upscale", @"Video upscale
+        var command = new Command(commandName ?? @"create-video-upscale", @"Video upscale
 This endpoint starts a task to upscale a video. Set `model` to choose the upscaler.");
                         command.Options.Add(XRunwayVersion);
           command.Options.Add(Input);

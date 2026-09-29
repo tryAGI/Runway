@@ -68,9 +68,9 @@ internal static partial class StartGeneratingCreateVoiceIsolationCommandApiComma
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-voice-isolation", @"Voice isolation
+        var command = new Command(commandName ?? @"create-voice-isolation", @"Voice isolation
 This endpoint will start a new task to isolate the voice from the background audio. Audio duration must be greater than 4.6 seconds and less than 3600 seconds.");
                         command.Options.Add(XRunwayVersion);
           command.Options.Add(Input);

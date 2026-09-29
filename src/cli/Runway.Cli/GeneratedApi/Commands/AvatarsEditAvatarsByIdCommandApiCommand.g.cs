@@ -100,9 +100,9 @@ internal static partial class AvatarsEditAvatarsByIdCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"edit-avatars-by-id", @"Update avatar
+        var command = new Command(commandName ?? @"edit-avatars-by-id", @"Update avatar
 Update an existing avatar. At least one field must be provided.");
                         command.Arguments.Add(Id);
                         command.Options.Add(XRunwayVersion);

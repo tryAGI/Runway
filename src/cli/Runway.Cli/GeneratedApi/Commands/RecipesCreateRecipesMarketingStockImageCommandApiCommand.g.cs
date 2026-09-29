@@ -100,9 +100,9 @@ internal static partial class RecipesCreateRecipesMarketingStockImageCommandApiC
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-recipes-marketing-stock-image", @"Create a marketing stock image
+        var command = new Command(commandName ?? @"create-recipes-marketing-stock-image", @"Create a marketing stock image
 Generate a polished marketing stock image from a text brief and optional brand logo image.");
                         command.Options.Add(XRunwayVersion);
                         command.Options.Add(Version);

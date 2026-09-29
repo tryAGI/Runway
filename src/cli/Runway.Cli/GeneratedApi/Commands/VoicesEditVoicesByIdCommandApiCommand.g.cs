@@ -70,9 +70,9 @@ internal static partial class VoicesEditVoicesByIdCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"edit-voices-by-id", @"Update a voice
+        var command = new Command(commandName ?? @"edit-voices-by-id", @"Update a voice
 Update the name and/or description of a custom voice.");
                         command.Arguments.Add(Id);
                         command.Options.Add(XRunwayVersion);

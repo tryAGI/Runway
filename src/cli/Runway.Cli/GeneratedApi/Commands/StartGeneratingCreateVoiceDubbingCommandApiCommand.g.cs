@@ -68,9 +68,9 @@ internal static partial class StartGeneratingCreateVoiceDubbingCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-voice-dubbing", @"Voice dubbing
+        var command = new Command(commandName ?? @"create-voice-dubbing", @"Voice dubbing
 This endpoint will start a new task to dub audio content to a target language.");
                         command.Options.Add(XRunwayVersion);
           command.Options.Add(Input);

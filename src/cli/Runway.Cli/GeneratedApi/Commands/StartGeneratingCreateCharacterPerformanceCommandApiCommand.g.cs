@@ -68,9 +68,9 @@ internal static partial class StartGeneratingCreateCharacterPerformanceCommandAp
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-character-performance", @"Control a character
+        var command = new Command(commandName ?? @"create-character-performance", @"Control a character
 This endpoint will start a new task to control a character's facial expressions and body movements using a reference video.");
                         command.Options.Add(XRunwayVersion);
           command.Options.Add(Input);

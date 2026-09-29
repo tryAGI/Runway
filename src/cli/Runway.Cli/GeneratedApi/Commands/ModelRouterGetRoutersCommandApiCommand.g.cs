@@ -49,9 +49,9 @@ internal static partial class ModelRouterGetRoutersCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-routers", @"List Model Routers
+        var command = new Command(commandName ?? @"get-routers", @"List Model Routers
 List Model Router configurations for the authenticated organization with cursor-based pagination.");
                         command.Options.Add(Cursor);
                         command.Options.Add(Limit);

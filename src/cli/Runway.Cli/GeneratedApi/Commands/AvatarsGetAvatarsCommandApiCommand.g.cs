@@ -49,9 +49,9 @@ internal static partial class AvatarsGetAvatarsCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-avatars", @"List avatars
+        var command = new Command(commandName ?? @"get-avatars", @"List avatars
 List avatars for the authenticated user with cursor-based pagination.");
                         command.Options.Add(Cursor);
                         command.Options.Add(Limit);

@@ -73,9 +73,9 @@ internal static partial class RecipesCreateRecipesProductCampaignImageCommandApi
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-recipes-product-campaign-image", @"Create product campaign images
+        var command = new Command(commandName ?? @"create-recipes-product-campaign-image", @"Create product campaign images
 Generate four fashion campaign images from a product image and style brief.");
                         command.Options.Add(XRunwayVersion);
                         command.Options.Add(Version);

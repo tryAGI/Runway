@@ -64,9 +64,9 @@ internal static partial class OrganizationCreateOrganizationUsageCommandApiComma
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-organization-usage", @"Query credit usage
+        var command = new Command(commandName ?? @"create-organization-usage", @"Query credit usage
 Fetch credit usage data broken down by model and day for the organization associated with the API key used to make the request. Up to 90 days of data can be queried at a time.");
                         command.Options.Add(XRunwayVersion);
                         command.Options.Add(StartDate);

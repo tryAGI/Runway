@@ -64,9 +64,9 @@ internal static partial class WorkflowsCreateWorkflowsByIdCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-workflows-by-id", @"Run a published workflow
+        var command = new Command(commandName ?? @"create-workflows-by-id", @"Run a published workflow
 Start a new task to execute a published workflow. You can optionally provide custom input values via `nodeOutputs` to override the defaults defined in the workflow graph.");
                         command.Arguments.Add(Id);
                         command.Options.Add(XRunwayVersion);

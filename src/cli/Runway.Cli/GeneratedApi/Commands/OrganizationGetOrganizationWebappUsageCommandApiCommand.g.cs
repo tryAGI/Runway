@@ -75,9 +75,9 @@ internal static partial class OrganizationGetOrganizationWebappUsageCommandApiCo
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-organization-webapp-usage", @"List linked workspace usage
+        var command = new Command(commandName ?? @"get-organization-webapp-usage", @"List linked workspace usage
 List per-generation credit-usage rows for the linked Runway workspaces you administer, newest first. Unlike `/v1/organization/usage` (this API project's own usage), this reports usage from the workspace linked to this API project. Authorized via that account link.");
                         command.Options.Add(Cursor);
                         command.Options.Add(Limit);

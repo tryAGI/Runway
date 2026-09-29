@@ -42,9 +42,9 @@ internal static partial class ModelRouterGetRoutersByIdCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-routers-by-id", @"Retrieve Model Router
+        var command = new Command(commandName ?? @"get-routers-by-id", @"Retrieve Model Router
 Retrieve a Model Router configuration by ID.");
                         command.Arguments.Add(Id);
                         command.Options.Add(XRunwayVersion);

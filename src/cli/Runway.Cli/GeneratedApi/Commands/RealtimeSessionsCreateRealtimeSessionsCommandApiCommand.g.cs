@@ -112,9 +112,9 @@ internal static partial class RealtimeSessionsCreateRealtimeSessionsCommandApiCo
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-realtime-sessions", @"Create realtime session
+        var command = new Command(commandName ?? @"create-realtime-sessions", @"Create realtime session
 Create a new realtime session with the specified model configuration. The returned ID is also the conversation ID used later to fetch transcripts and recordings from the avatar conversation endpoints.");
                         command.Options.Add(XRunwayVersion);
                         command.Options.Add(Model);

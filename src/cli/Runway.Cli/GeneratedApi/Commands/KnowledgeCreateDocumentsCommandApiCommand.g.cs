@@ -49,9 +49,9 @@ internal static partial class KnowledgeCreateDocumentsCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-documents", @"Create document
+        var command = new Command(commandName ?? @"create-documents", @"Create document
 Create a new knowledge document. Documents can be attached to avatars to provide additional context during conversations.");
                         command.Arguments.Add(NameOption);
                         command.Options.Add(XRunwayVersion);

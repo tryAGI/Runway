@@ -66,9 +66,9 @@ internal static partial class ModelRouterCreateGenerateAudioCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-generate-audio", @"Routed audio generation
+        var command = new Command(commandName ?? @"create-generate-audio", @"Routed audio generation
 Start an audio generation task using a saved Model Router config instead of naming a model. Set input.type to speech to speak promptText verbatim, or audio to generate audio described by promptText.");
                         command.Options.Add(XRunwayVersion);
                         command.Options.Add(ConfigId);

@@ -42,9 +42,9 @@ internal static partial class TaskManagementGetTasksByIdCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-tasks-by-id", @"Get task detail
+        var command = new Command(commandName ?? @"get-tasks-by-id", @"Get task detail
 Return details about a task. Consumers of this API should not expect updates more frequent than once every five seconds for a given task.");
                         command.Arguments.Add(Id);
                         command.Options.Add(XRunwayVersion);

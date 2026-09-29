@@ -22,9 +22,9 @@ internal static partial class AvatarsDeleteAvatarConversationsByIdCommandApiComm
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"delete-avatar-conversations-by-id", @"Delete conversation
+        var command = new Command(commandName ?? @"delete-avatar-conversations-by-id", @"Delete conversation
 Delete a conversation and its associated data.");
                         command.Arguments.Add(Id);
                         command.Options.Add(XRunwayVersion);

@@ -117,9 +117,9 @@ internal static partial class RecipesCreateRecipesProductUgcCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-recipes-product-ugc", @"Create a product UGC video
+        var command = new Command(commandName ?? @"create-recipes-product-ugc", @"Create a product UGC video
 Generate a vertical user-generated content ad from a character image, product image, product details, and optional creative direction.");
                         command.Options.Add(XRunwayVersion);
                         command.Options.Add(Version);

@@ -68,9 +68,9 @@ internal static partial class RecipesCreateRecipesMultiShotVideoCommandApiComman
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-recipes-multi-shot-video", @"Create a multi-shot video
+        var command = new Command(commandName ?? @"create-recipes-multi-shot-video", @"Create a multi-shot video
 Generate a multi-cut video from a story prompt (auto mode) or a custom shot list (custom mode).");
                         command.Options.Add(XRunwayVersion);
           command.Options.Add(Input);

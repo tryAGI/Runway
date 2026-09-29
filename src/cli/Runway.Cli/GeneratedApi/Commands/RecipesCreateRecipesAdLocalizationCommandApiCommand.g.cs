@@ -73,9 +73,9 @@ internal static partial class RecipesCreateRecipesAdLocalizationCommandApiComman
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-recipes-ad-localization", @"Localize an ad image
+        var command = new Command(commandName ?? @"create-recipes-ad-localization", @"Localize an ad image
 Localize an existing ad image for a target language, preserving visual creative while adapting on-screen messaging.");
                         command.Options.Add(XRunwayVersion);
                         command.Options.Add(Version);

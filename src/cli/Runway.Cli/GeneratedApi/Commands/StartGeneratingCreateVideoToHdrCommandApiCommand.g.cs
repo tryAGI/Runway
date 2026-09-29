@@ -68,9 +68,9 @@ internal static partial class StartGeneratingCreateVideoToHdrCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-video-to-hdr", @"Video to HDR
+        var command = new Command(commandName ?? @"create-video-to-hdr", @"Video to HDR
 This endpoint starts a task to upconvert an SDR video to true HDR with Ruby, Runway's HDR grading model. The output keeps the source's own pixels — luma and color are extended into the HDR range, nothing is re-synthesized. Set `outputFormat` to choose the delivery profile: `hdr10` (HEVC Main 10, BT.2020 + PQ, the default), `hlg` (HEVC Main 10, BT.2020 + HLG), `hdr_prores` (BT.2020 + PQ ProRes .mov editorial mezzanine, tier selectable with `proresProfile`), or `hdr_exr_sequence` (a .zip of half-float OpenEXR frames in linear BT.2020 display light, for compositing). Tasks bill per second of output at 20 credits per second, rising to 40 credits per second when the source is larger than 4 megapixels (roughly 4K) — an upconvert delivers at the source's own resolution.");
                         command.Options.Add(XRunwayVersion);
           command.Options.Add(Input);

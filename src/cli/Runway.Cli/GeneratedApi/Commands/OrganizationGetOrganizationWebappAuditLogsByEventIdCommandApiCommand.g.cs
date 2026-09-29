@@ -48,9 +48,9 @@ internal static partial class OrganizationGetOrganizationWebappAuditLogsByEventI
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-organization-webapp-audit-logs-by-event-id", @"Get a linked workspace audit log entry
+        var command = new Command(commandName ?? @"get-organization-webapp-audit-logs-by-event-id", @"Get a linked workspace audit log entry
 Get a single audit log entry, including its metadata and forensic details, for a linked Runway workspace you administer. Authorized via the account link between this API project and the workspace.");
                         command.Arguments.Add(EventId);
                         command.Options.Add(OrganizationId);

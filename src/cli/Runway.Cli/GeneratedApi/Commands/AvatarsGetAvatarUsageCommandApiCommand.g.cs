@@ -50,9 +50,9 @@ internal static partial class AvatarsGetAvatarUsageCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-avatar-usage", @"Get avatar usage
+        var command = new Command(commandName ?? @"get-avatar-usage", @"Get avatar usage
 Get aggregate usage statistics for avatar conversations, including total duration, session counts, average duration, and a per-day breakdown. Per-day buckets are keyed by UTC calendar date. The date range must not exceed 90 days.");
                         command.Options.Add(StartDate);
                         command.Options.Add(EndDate);

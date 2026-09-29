@@ -68,9 +68,9 @@ internal static partial class StartGeneratingCreateTextToVideoCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-text-to-video", @"Text to video
+        var command = new Command(commandName ?? @"create-text-to-video", @"Text to video
 This endpoint will start a new task to generate a video from a text prompt.");
                         command.Options.Add(XRunwayVersion);
           command.Options.Add(Input);

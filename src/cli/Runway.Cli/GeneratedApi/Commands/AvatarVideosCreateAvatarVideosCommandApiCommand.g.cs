@@ -73,9 +73,9 @@ internal static partial class AvatarVideosCreateAvatarVideosCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-avatar-videos", @"Generate avatar video from audio or text
+        var command = new Command(commandName ?? @"create-avatar-videos", @"Generate avatar video from audio or text
 Start an asynchronous task to generate a video of an avatar speaking. Provide `speech` with `type: ""audio""` (audio file) or `type: ""text""` (text script for TTS). Poll `GET /v1/tasks/:id` to check progress and retrieve the output video URL once complete.");
                         command.Options.Add(XRunwayVersion);
                         command.Options.Add(Model);
