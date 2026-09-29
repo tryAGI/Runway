@@ -97,9 +97,9 @@ internal static partial class AvatarsCreateAvatarsCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-avatars", @"Create avatar
+        var command = new Command(commandName ?? @"create-avatars", @"Create avatar
 Create a new avatar with a reference image and voice.");
                         command.Arguments.Add(NameOption);
                         command.Options.Add(XRunwayVersion);

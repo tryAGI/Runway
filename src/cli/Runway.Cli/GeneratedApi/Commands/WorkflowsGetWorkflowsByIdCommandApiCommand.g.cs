@@ -42,9 +42,9 @@ internal static partial class WorkflowsGetWorkflowsByIdCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-workflows-by-id", @"Get workflow details
+        var command = new Command(commandName ?? @"get-workflows-by-id", @"Get workflow details
 Returns details about a specific published workflow, including its graph schema.");
                         command.Arguments.Add(Id);
                         command.Options.Add(XRunwayVersion);

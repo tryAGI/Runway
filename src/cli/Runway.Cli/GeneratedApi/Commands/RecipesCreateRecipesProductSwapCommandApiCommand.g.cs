@@ -112,9 +112,9 @@ internal static partial class RecipesCreateRecipesProductSwapCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-recipes-product-swap", @"Swap a product in a reference video
+        var command = new Command(commandName ?? @"create-recipes-product-swap", @"Swap a product in a reference video
 Replace the product in a reference video with a new product, preserving camera motion, lighting, and scene composition.");
                         command.Options.Add(XRunwayVersion);
                         command.Options.Add(Version);

@@ -67,9 +67,9 @@ internal static partial class AvatarsGetAvatarConversationsCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-avatar-conversations", @"List conversations
+        var command = new Command(commandName ?? @"get-avatar-conversations", @"List conversations
 List realtime avatar conversations for the authenticated user with cursor-based pagination. Each conversation corresponds to a realtime session, and the conversation ID matches the realtime session ID. Pass `avatar` to restrict results to a single avatar.");
                         command.Options.Add(Cursor);
                         command.Options.Add(Limit);

@@ -42,9 +42,9 @@ internal static partial class AvatarsGetAvatarsByIdCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-avatars-by-id", @"Get avatar
+        var command = new Command(commandName ?? @"get-avatars-by-id", @"Get avatar
 Get details of a specific avatar.");
                         command.Arguments.Add(Id);
                         command.Options.Add(XRunwayVersion);

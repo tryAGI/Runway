@@ -68,9 +68,9 @@ internal static partial class StartGeneratingCreateSpeechToSpeechCommandApiComma
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-speech-to-speech", @"Speech to speech
+        var command = new Command(commandName ?? @"create-speech-to-speech", @"Speech to speech
 This endpoint will start a new task to convert speech from one voice to another in audio or video.");
                         command.Options.Add(XRunwayVersion);
           command.Options.Add(Input);

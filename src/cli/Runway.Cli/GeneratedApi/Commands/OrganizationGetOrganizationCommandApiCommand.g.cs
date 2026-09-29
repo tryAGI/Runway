@@ -36,9 +36,9 @@ internal static partial class OrganizationGetOrganizationCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-organization", @"Get organization information
+        var command = new Command(commandName ?? @"get-organization", @"Get organization information
 Get usage tier and credit balance information about the organization associated with the API key used to make the request.");
                         command.Options.Add(XRunwayVersion);
 

@@ -42,9 +42,9 @@ internal static partial class RealtimeSessionsGetRealtimeSessionsByIdCommandApiC
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-realtime-sessions-by-id", @"Get realtime session
+        var command = new Command(commandName ?? @"get-realtime-sessions-by-id", @"Get realtime session
 Get the status of a realtime session. This endpoint uses the same ID that the avatar conversation endpoints later expose as the conversation ID.");
                         command.Arguments.Add(Id);
                         command.Options.Add(XRunwayVersion);

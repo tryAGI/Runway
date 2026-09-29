@@ -50,9 +50,9 @@ internal static partial class KnowledgeEditDocumentsByIdCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"edit-documents-by-id", @"Update document
+        var command = new Command(commandName ?? @"edit-documents-by-id", @"Update document
 Update a knowledge document. At least one of `name` or `content` must be provided.");
                         command.Arguments.Add(Id);
                         command.Options.Add(XRunwayVersion);

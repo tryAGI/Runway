@@ -42,9 +42,9 @@ internal static partial class WorkflowsGetWorkflowInvocationsByIdCommandApiComma
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-workflow-invocations-by-id", @"Get workflow invocation detail
+        var command = new Command(commandName ?? @"get-workflow-invocations-by-id", @"Get workflow invocation detail
 Return details about a workflow invocation. Consumers of this API should not expect updates more frequent than once every five seconds for a given workflow invocation.");
                         command.Arguments.Add(Id);
                         command.Options.Add(XRunwayVersion);

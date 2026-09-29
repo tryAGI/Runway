@@ -76,9 +76,9 @@ internal static partial class ModelRouterCreateRoutersCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-routers", @"Create Model Router
+        var command = new Command(commandName ?? @"create-routers", @"Create Model Router
 Create a Model Router configuration.");
                         command.Arguments.Add(Slug);
                         command.Options.Add(XRunwayVersion);

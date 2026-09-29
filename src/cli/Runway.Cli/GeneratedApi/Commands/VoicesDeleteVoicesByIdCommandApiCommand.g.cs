@@ -22,9 +22,9 @@ internal static partial class VoicesDeleteVoicesByIdCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"delete-voices-by-id", @"Delete a voice
+        var command = new Command(commandName ?? @"delete-voices-by-id", @"Delete a voice
 Delete a custom voice.");
                         command.Arguments.Add(Id);
                         command.Options.Add(XRunwayVersion);

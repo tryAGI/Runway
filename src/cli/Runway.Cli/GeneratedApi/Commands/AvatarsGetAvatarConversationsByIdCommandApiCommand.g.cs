@@ -42,9 +42,9 @@ internal static partial class AvatarsGetAvatarConversationsByIdCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-avatar-conversations-by-id", @"Get conversation
+        var command = new Command(commandName ?? @"get-avatar-conversations-by-id", @"Get conversation
 Get detailed information about a specific conversation, including the transcript and recording download URL when available. The conversation ID is the same value returned when the realtime session was created.");
                         command.Arguments.Add(Id);
                         command.Options.Add(XRunwayVersion);

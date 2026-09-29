@@ -22,9 +22,9 @@ internal static partial class TaskManagementDeleteTasksByIdCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"delete-tasks-by-id", @"Cancel or delete a task
+        var command = new Command(commandName ?? @"delete-tasks-by-id", @"Cancel or delete a task
 Tasks that are running, pending, or throttled can be canceled by invoking this method. Invoking this method for other tasks will delete them.
 
 The output data associated with a deleted task will be deleted from persistent storage in accordance with our data retention policy. Aborted and deleted tasks will not be able to be fetched again in the future.");

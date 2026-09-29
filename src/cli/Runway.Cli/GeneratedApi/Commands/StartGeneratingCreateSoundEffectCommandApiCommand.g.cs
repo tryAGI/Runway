@@ -68,9 +68,9 @@ internal static partial class StartGeneratingCreateSoundEffectCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-sound-effect", @"Generate sound effects
+        var command = new Command(commandName ?? @"create-sound-effect", @"Generate sound effects
 This endpoint will start a new task to generate sound effects from a text description.");
                         command.Options.Add(XRunwayVersion);
           command.Options.Add(Input);

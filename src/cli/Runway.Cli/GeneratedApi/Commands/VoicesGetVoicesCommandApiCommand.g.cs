@@ -49,9 +49,9 @@ internal static partial class VoicesGetVoicesCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-voices", @"List voices
+        var command = new Command(commandName ?? @"get-voices", @"List voices
 List custom voices for the authenticated organization with cursor-based pagination.");
                         command.Options.Add(Cursor);
                         command.Options.Add(Limit);

@@ -66,9 +66,9 @@ internal static partial class ModelRouterCreateGenerateVideoCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-generate-video", @"Routed video generation
+        var command = new Command(commandName ?? @"create-generate-video", @"Routed video generation
 Start a video generation task using a saved Model Router config instead of naming a model.");
                         command.Options.Add(XRunwayVersion);
                         command.Options.Add(ConfigId);

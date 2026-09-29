@@ -85,9 +85,9 @@ internal static partial class OrganizationGetOrganizationWebappAuditLogsCommandA
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-organization-webapp-audit-logs", @"List linked workspace audit logs
+        var command = new Command(commandName ?? @"get-organization-webapp-audit-logs", @"List linked workspace audit logs
 List audit log entries for the linked Runway workspaces you administer, newest first. Authorized via the account link between this API project and the workspace.");
                         command.Options.Add(Cursor);
                         command.Options.Add(Limit);

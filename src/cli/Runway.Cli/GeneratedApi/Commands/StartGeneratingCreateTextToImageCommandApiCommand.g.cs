@@ -68,9 +68,9 @@ internal static partial class StartGeneratingCreateTextToImageCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-text-to-image", @"Text/Image to Image
+        var command = new Command(commandName ?? @"create-text-to-image", @"Text/Image to Image
 This endpoint will start a new task to generate images from text and/or image(s)");
                         command.Options.Add(XRunwayVersion);
           command.Options.Add(Input);

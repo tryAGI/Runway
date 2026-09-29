@@ -22,9 +22,9 @@ internal static partial class KnowledgeDeleteDocumentsByIdCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"delete-documents-by-id", @"Delete document
+        var command = new Command(commandName ?? @"delete-documents-by-id", @"Delete document
 Delete a knowledge document. This also removes it from all avatars it was attached to.");
                         command.Arguments.Add(Id);
                         command.Options.Add(XRunwayVersion);

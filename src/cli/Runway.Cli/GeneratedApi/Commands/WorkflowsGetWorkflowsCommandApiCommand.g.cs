@@ -36,9 +36,9 @@ internal static partial class WorkflowsGetWorkflowsCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-workflows", @"List published workflows
+        var command = new Command(commandName ?? @"get-workflows", @"List published workflows
 Returns a list of all published workflows for the authenticated user, grouped by source workflow with their published versions.");
                         command.Options.Add(XRunwayVersion);
 

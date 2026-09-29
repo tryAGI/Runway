@@ -22,9 +22,9 @@ internal static partial class ModelRouterDeleteRoutersByIdCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"delete-routers-by-id", @"Delete Model Router
+        var command = new Command(commandName ?? @"delete-routers-by-id", @"Delete Model Router
 Delete a Model Router configuration. Deleted Model Routers cannot be used for generation.");
                         command.Arguments.Add(Id);
                         command.Options.Add(XRunwayVersion);

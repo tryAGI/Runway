@@ -63,9 +63,9 @@ internal static partial class KnowledgeGetDocumentsCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-documents", @"List documents
+        var command = new Command(commandName ?? @"get-documents", @"List documents
 List knowledge documents for the authenticated user with cursor-based pagination.");
                         command.Options.Add(Cursor);
                         command.Options.Add(Limit);

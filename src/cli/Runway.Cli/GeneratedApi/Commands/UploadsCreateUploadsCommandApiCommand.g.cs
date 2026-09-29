@@ -65,9 +65,9 @@ internal static partial class UploadsCreateUploadsCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-uploads", @"Upload a file
+        var command = new Command(commandName ?? @"create-uploads", @"Upload a file
 Uploads a temporary media file that can be referenced in API generation requests. The uploaded files will be automatically expired and deleted after a period of time. It is strongly recommended to use our SDKs for this which have a simplified interface that directly accepts file objects.");
                         command.Options.Add(XRunwayVersion);
                         command.Options.Add(Filename);

@@ -68,9 +68,9 @@ internal static partial class StartGeneratingCreateImageUpscaleCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-image-upscale", @"Image upscale
+        var command = new Command(commandName ?? @"create-image-upscale", @"Image upscale
 Upscale an image with Magnific precision upscaling. Each input dimension must be between 300px and 8000px. Output width and height are the input dimensions multiplied by `scaleFactor` (default 2). Output width times height cannot exceed 25,300,000 pixels (~25.3 million).");
                         command.Options.Add(XRunwayVersion);
           command.Options.Add(Input);

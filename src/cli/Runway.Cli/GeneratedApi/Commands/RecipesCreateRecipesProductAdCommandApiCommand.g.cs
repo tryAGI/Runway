@@ -116,9 +116,9 @@ internal static partial class RecipesCreateRecipesProductAdCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-recipes-product-ad", @"Create a product ad video
+        var command = new Command(commandName ?? @"create-recipes-product-ad", @"Create a product ad video
 Generate a cinematic product ad from product images, optional style references, product info, and creative direction.");
                         command.Options.Add(XRunwayVersion);
                         command.Options.Add(Version);

@@ -50,9 +50,9 @@ internal static partial class VoicesCreateVoicesPreviewCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-voices-preview", @"Preview a voice
+        var command = new Command(commandName ?? @"create-voices-preview", @"Preview a voice
 Generate a short audio preview of a voice from a text description. Use this to audition a voice before creating it.");
                         command.Options.Add(XRunwayVersion);
                         command.Options.Add(Prompt);

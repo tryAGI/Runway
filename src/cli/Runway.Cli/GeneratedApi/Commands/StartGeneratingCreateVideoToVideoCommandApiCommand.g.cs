@@ -68,9 +68,9 @@ internal static partial class StartGeneratingCreateVideoToVideoCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-video-to-video", @"Video to video
+        var command = new Command(commandName ?? @"create-video-to-video", @"Video to video
 This endpoint will start a new task to generate a video from a video.");
                         command.Options.Add(XRunwayVersion);
           command.Options.Add(Input);
