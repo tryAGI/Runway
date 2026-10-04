@@ -121,9 +121,9 @@ namespace Runway
             options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<object>>());
             options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<object>>());
             options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string, double?, bool?>());
-            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<object, string, object>());
-            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<object, string, object>());
-            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<object, string, object>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<object, string>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<object, string>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<object, string>());
             options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>());
             options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>());
             options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>());
