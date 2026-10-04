@@ -2613,7 +2613,7 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.AnyOf<object, string, object>? Type645 { get; set; }
+        public global::Runway.AnyOf<object, string>? Type645 { get; set; }
         /// <summary>
         ///
         /// </summary>

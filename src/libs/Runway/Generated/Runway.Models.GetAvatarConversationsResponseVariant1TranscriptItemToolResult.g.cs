@@ -25,8 +25,8 @@ namespace Runway
         /// The tool result (object, string, or null).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("result")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.AnyOfJsonConverter<object, string, object>))]
-        public global::Runway.AnyOf<object, string, object>? Result { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.AnyOfJsonConverter<object, string>))]
+        public global::Runway.AnyOf<object, string>? Result { get; set; }
 
         /// <summary>
         /// Error message if the tool call failed.
@@ -70,7 +70,7 @@ namespace Runway
         public GetAvatarConversationsResponseVariant1TranscriptItemToolResult(
             string name,
             string? id,
-            global::Runway.AnyOf<object, string, object>? result,
+            global::Runway.AnyOf<object, string>? result,
             string? error,
             double? durationMs)
         {
