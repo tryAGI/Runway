@@ -20,8 +20,6 @@ jobs:
       run-tests: false
       enable-caching: false
       additional-test-arguments: '--logger GitHubActions'
-    secrets:
-      nuget-key: ${{ secrets.NUGET_API_KEY || secrets.NUGET_KEY }}
 
   tests:
     name: Tests
@@ -102,8 +100,6 @@ jobs:
     uses: tryAGI/workflows/.github/workflows/auto-stable-release.yml@main
     with:
       project-path: src/libs/Runway/Runway.csproj
-    secrets:
-      nuget-key: ${{ secrets.NUGET_API_KEY || secrets.NUGET_KEY }}
 
   release:
     name: Release
@@ -120,3 +116,17 @@ jobs:
           --generate-notes
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  nuget-trusted-publish:
+    name: NuGet trusted publishing
+    needs: publish
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: tryAGI/workflows/.github/actions/nuget-publish@main
+        with:
+          user: havendv
+          artifact-pattern: nuget-packages-Linux
