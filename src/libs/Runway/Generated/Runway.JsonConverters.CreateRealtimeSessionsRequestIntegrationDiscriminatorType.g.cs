@@ -18,7 +18,7 @@ namespace Runway.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::Runway.CreateRealtimeSessionsRequestIntegrationDiscriminatorTypeExtensions.ToEnum(stringValue) ?? default;
+                        return global::Runway.CreateRealtimeSessionsRequestIntegrationDiscriminatorTypeExtensions.ToEnum(stringValue) ?? throw new global::System.Text.Json.JsonException($"Unknown value '{stringValue}' for global::Runway.CreateRealtimeSessionsRequestIntegrationDiscriminatorType.");
                     }
 
                     break;

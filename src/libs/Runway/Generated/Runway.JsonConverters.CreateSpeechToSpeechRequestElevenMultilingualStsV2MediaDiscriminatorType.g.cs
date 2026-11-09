@@ -18,7 +18,7 @@ namespace Runway.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaDiscriminatorTypeExtensions.ToEnum(stringValue) ?? default;
+                        return global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaDiscriminatorTypeExtensions.ToEnum(stringValue) ?? throw new global::System.Text.Json.JsonException($"Unknown value '{stringValue}' for global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaDiscriminatorType.");
                     }
 
                     break;

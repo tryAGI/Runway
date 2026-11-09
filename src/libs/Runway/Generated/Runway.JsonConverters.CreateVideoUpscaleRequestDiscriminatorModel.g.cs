@@ -18,7 +18,7 @@ namespace Runway.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::Runway.CreateVideoUpscaleRequestDiscriminatorModelExtensions.ToEnum(stringValue) ?? default;
+                        return global::Runway.CreateVideoUpscaleRequestDiscriminatorModelExtensions.ToEnum(stringValue) ?? throw new global::System.Text.Json.JsonException($"Unknown value '{stringValue}' for global::Runway.CreateVideoUpscaleRequestDiscriminatorModel.");
                     }
 
                     break;

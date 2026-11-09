@@ -18,7 +18,7 @@ namespace Runway.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::Runway.CreateTextToImageRequestGptImage2QualityExtensions.ToEnum(stringValue) ?? default;
+                        return global::Runway.CreateTextToImageRequestGptImage2QualityExtensions.ToEnum(stringValue) ?? throw new global::System.Text.Json.JsonException($"Unknown value '{stringValue}' for global::Runway.CreateTextToImageRequestGptImage2Quality.");
                     }
 
                     break;

@@ -18,7 +18,7 @@ namespace Runway.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::Runway.CreateTextToVideoRequestHappyhorse10RatioExtensions.ToEnum(stringValue) ?? default;
+                        return global::Runway.CreateTextToVideoRequestHappyhorse10RatioExtensions.ToEnum(stringValue) ?? throw new global::System.Text.Json.JsonException($"Unknown value '{stringValue}' for global::Runway.CreateTextToVideoRequestHappyhorse10Ratio.");
                     }
 
                     break;

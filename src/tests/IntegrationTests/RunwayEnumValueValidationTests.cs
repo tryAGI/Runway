@@ -16,24 +16,42 @@ public sealed class RunwayEnumValueValidationTests
     private const string AudioUri = "https://example.com/source.mp3";
 
     [TestMethod]
-    public void GeneratedConvertersCoerceRatherThanThrow()
+    public void GeneratedConvertersThrowOnRequestEnumsAndStayLenientOnResponseEnums()
     {
-        // The premise. If AutoSDK ever starts throwing instead, this test says so and the CLI-side
-        // validation becomes belt-and-braces rather than load-bearing.
-        var coerced = JsonSerializer.Deserialize(
+        // `generate.sh` passes --reject-unknown-enum-values, and AutoSDK applies it only where the
+        // enum cannot arrive in a response. Both halves matter, so both are pinned here.
+
+        // A request enum: an undeclared value is the caller's typo, so it fails loudly. This is why
+        // the CLI-side checks below are belt-and-braces rather than the only line of defence.
+        var act = () => JsonSerializer.Deserialize(
             """{"model":"magnific_video_upscaler_creative","videoUri":"https://example.com/a.mp4","flavor":"bogus"}""",
             typeof(CreateVideoUpscaleRequestMagnificVideoUpscalerCreative),
-            SourceGenerationContext.Default) as CreateVideoUpscaleRequestMagnificVideoUpscalerCreative;
+            SourceGenerationContext.Default);
 
-        coerced.Should().NotBeNull();
+        act.Should().Throw<JsonException>()
+            .WithMessage("*Unknown value 'bogus'*",
+                "an undeclared value on a request-only enum must not be coerced into a real one");
 
-        // AutoSDK emits enum members in alphabetical order, so `default` is the alphabetically first
-        // value — Natural here, even though the spec lists `vivid` first. Which value it lands on is
-        // incidental; the point is that it lands on one instead of failing.
-        coerced!.Flavor.Should().Be(CreateVideoUpscaleRequestMagnificVideoUpscalerCreativeFlavor.Natural,
-            "an unknown enum string lands on the default member instead of failing");
-        CreateVideoUpscaleRequestMagnificVideoUpscalerCreativeFlavorExtensions.ToEnum("bogus").Should().BeNull(
-            "ToEnum itself reports the unknown value; it is the converter's `?? default` that hides it");
+        // A response enum: an undeclared value means Runway shipped something the spec has not caught
+        // up with, which must not break a client. `CreateOrganizationUsageResponseResultUsedCredit.model`
+        // is the case that forced this distinction — the account bills models the spec does not list,
+        // which is exactly what `runway models --account` reports.
+        var coerced = JsonSerializer.Deserialize(
+            """{"model":"a_model_the_spec_does_not_know_yet","amount":7}""",
+            typeof(CreateOrganizationUsageResponseResultUsedCredit),
+            SourceGenerationContext.Default) as CreateOrganizationUsageResponseResultUsedCredit;
+
+        coerced.Should().NotBeNull("a response carrying a newer model id must still deserialize");
+
+        // AutoSDK emits enum members alphabetically, so `default` is the alphabetically first one.
+        // Which value it lands on is incidental; that it lands on one instead of throwing is the point.
+        coerced!.Model.Should().Be(CreateOrganizationUsageResponseResultUsedCreditModel.ActTwo);
+        coerced.Amount.Should().Be(7);
+
+        // `ToEnum` reports the unknown value either way; only the converter's handling differs.
+        CreateVideoUpscaleRequestMagnificVideoUpscalerCreativeFlavorExtensions.ToEnum("bogus").Should().BeNull();
+        CreateOrganizationUsageResponseResultUsedCreditModelExtensions
+            .ToEnum("a_model_the_spec_does_not_know_yet").Should().BeNull();
     }
 
     [TestMethod]

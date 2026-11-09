@@ -18,7 +18,7 @@ namespace Runway.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::Runway.CreateRecipesProductCampaignImageRequestVersionExtensions.ToEnum(stringValue) ?? default;
+                        return global::Runway.CreateRecipesProductCampaignImageRequestVersionExtensions.ToEnum(stringValue) ?? throw new global::System.Text.Json.JsonException($"Unknown value '{stringValue}' for global::Runway.CreateRecipesProductCampaignImageRequestVersion.");
                     }
 
                     break;

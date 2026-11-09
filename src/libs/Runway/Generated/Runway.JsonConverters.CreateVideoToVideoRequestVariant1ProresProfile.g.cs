@@ -18,7 +18,7 @@ namespace Runway.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::Runway.CreateVideoToVideoRequestVariant1ProresProfileExtensions.ToEnum(stringValue) ?? default;
+                        return global::Runway.CreateVideoToVideoRequestVariant1ProresProfileExtensions.ToEnum(stringValue) ?? throw new global::System.Text.Json.JsonException($"Unknown value '{stringValue}' for global::Runway.CreateVideoToVideoRequestVariant1ProresProfile.");
                     }
 
                     break;

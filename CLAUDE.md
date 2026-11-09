@@ -25,7 +25,10 @@ RUNWAY_RUN_BILLABLE_EXAMPLES=1 dotnet test src/tests/IntegrationTests
 # Run a single test
 dotnet test src/tests/IntegrationTests --filter "CreateImageToVideo"
 
-# Regenerate SDK from OpenAPI spec
+# Regenerate SDK from OpenAPI spec.
+# generate.sh refuses to run unless the installed autosdk.cli narrows
+# --reject-unknown-enum-values to request-reachable enums: an older CLI accepts the flag but hardens
+# response enums too, which would throw on ordinary replies carrying a model id newer than the spec.
 cd src/libs/Runway && chmod +x ./generate.sh && ./generate.sh
 
 # Validate trimming/NativeAOT compatibility (requires: dotnet tool install -g autosdk.cli --prerelease)

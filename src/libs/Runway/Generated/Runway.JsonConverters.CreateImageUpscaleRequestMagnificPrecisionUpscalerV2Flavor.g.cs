@@ -18,7 +18,7 @@ namespace Runway.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::Runway.CreateImageUpscaleRequestMagnificPrecisionUpscalerV2FlavorExtensions.ToEnum(stringValue) ?? default;
+                        return global::Runway.CreateImageUpscaleRequestMagnificPrecisionUpscalerV2FlavorExtensions.ToEnum(stringValue) ?? throw new global::System.Text.Json.JsonException($"Unknown value '{stringValue}' for global::Runway.CreateImageUpscaleRequestMagnificPrecisionUpscalerV2Flavor.");
                     }
 
                     break;

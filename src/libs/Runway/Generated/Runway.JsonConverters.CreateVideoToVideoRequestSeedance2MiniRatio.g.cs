@@ -18,7 +18,7 @@ namespace Runway.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::Runway.CreateVideoToVideoRequestSeedance2MiniRatioExtensions.ToEnum(stringValue) ?? default;
+                        return global::Runway.CreateVideoToVideoRequestSeedance2MiniRatioExtensions.ToEnum(stringValue) ?? throw new global::System.Text.Json.JsonException($"Unknown value '{stringValue}' for global::Runway.CreateVideoToVideoRequestSeedance2MiniRatio.");
                     }
 
                     break;

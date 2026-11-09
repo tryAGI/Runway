@@ -18,7 +18,7 @@ namespace Runway.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::Runway.CreateImageToVideoRequestSeedance2PromptImagePromptImagePositionExtensions.ToEnum(stringValue) ?? default;
+                        return global::Runway.CreateImageToVideoRequestSeedance2PromptImagePromptImagePositionExtensions.ToEnum(stringValue) ?? throw new global::System.Text.Json.JsonException($"Unknown value '{stringValue}' for global::Runway.CreateImageToVideoRequestSeedance2PromptImagePromptImagePosition.");
                     }
 
                     break;

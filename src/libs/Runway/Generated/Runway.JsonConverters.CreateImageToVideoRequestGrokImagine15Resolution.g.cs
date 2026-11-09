@@ -18,7 +18,7 @@ namespace Runway.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::Runway.CreateImageToVideoRequestGrokImagine15ResolutionExtensions.ToEnum(stringValue) ?? default;
+                        return global::Runway.CreateImageToVideoRequestGrokImagine15ResolutionExtensions.ToEnum(stringValue) ?? throw new global::System.Text.Json.JsonException($"Unknown value '{stringValue}' for global::Runway.CreateImageToVideoRequestGrokImagine15Resolution.");
                     }
 
                     break;

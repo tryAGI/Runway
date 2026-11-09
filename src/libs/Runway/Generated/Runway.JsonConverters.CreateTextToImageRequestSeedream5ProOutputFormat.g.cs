@@ -18,7 +18,7 @@ namespace Runway.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::Runway.CreateTextToImageRequestSeedream5ProOutputFormatExtensions.ToEnum(stringValue) ?? default;
+                        return global::Runway.CreateTextToImageRequestSeedream5ProOutputFormatExtensions.ToEnum(stringValue) ?? throw new global::System.Text.Json.JsonException($"Unknown value '{stringValue}' for global::Runway.CreateTextToImageRequestSeedream5ProOutputFormat.");
                     }
 
                     break;
