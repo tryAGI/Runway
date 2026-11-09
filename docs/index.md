@@ -925,6 +925,65 @@ Closest accepted aspects: 720:1280, 1080:1920.
 The repo includes a compact Codex-compatible skill at `.agents/skills/runway-cli/SKILL.md`. It mirrors the official [runwayml/skills](https://github.com/runwayml/skills) agent-skill flow, but uses `dnx Runway.Cli` as the runtime instead of bundled Python or Node scripts. The skill covers direct media generation, scenario-to-short-video planning, creative product/ad recipes, resource inspection, uploads, task polling/downloads, and simple multi-step recipes such as concept image to video and batch product-image animation.
 
 <!-- AUTOSDK:ECOSYSTEM-MAINTENANCE:START -->
+## Scripting and CI
+
+The CLI is built to be driven by other programs, not only read by people.
+
+**One stream per purpose.** stdout carries only machine-readable results — a task ID, one downloaded file
+path per line, or a JSON document. Progress, status and every other prose line goes to stderr. So a
+command can be piped without filtering, and `2>/dev/null` never costs you data.
+
+**Exit codes separate the two kinds of failure.**
+
+| Code | Meaning |
+| --- | --- |
+| `0` | Success |
+| `2` | The invocation is wrong and you can fix it: unknown model, a value outside the spec's enum, a missing option, a path that does not exist, no API key |
+| `1` | The request was well-formed and failed anyway: HTTP error, transport failure, or a task Runway reported as failed |
+
+**`--format json`** turns the result of any generation command into one object, so a CI step does not have
+to scrape stderr for the task ID:
+
+```bash
+runway image "a product photo" --model muse-image --format json --quiet
+# {"taskId":"62b227cd-...","outputs":["/path/runway-image-….png"]}
+```
+
+**`--quiet` (`-q`)** silences the prose on stderr and leaves stdout and errors alone — the combination
+above produces exactly one line of output and nothing else.
+
+**`-` reads an asset from stdin**, so commands chain without `xargs` or a temp file:
+
+```bash
+# Generate a still, then animate it with that still as the image reference.
+runway image "a glossy red ball on white" --model muse-image --quiet   | runway text-to-video "[Image 1] slowly rotating"       --model grok-imagine-1-5 --duration 1 --resolution 480p --ratio 1:1       --reference-image - --quiet --format json
+```
+
+**Every flag value is checked against the spec before the request goes out.** Models, per-model
+parameters, enum values, preset voice and avatar IDs and reference-list sizes are all validated from the
+OpenAPI spec embedded in the SDK, and a rejection names the accepted values. This matters more than it
+looks: the generated enum converters read an unknown value as `ToEnum(value) ?? default`, so without the
+check a typo would quietly render with a *different* setting rather than fail.
+
+```bash
+$ runway video-upscale --video ./shot.mp4 --flavor viv1d
+Unsupported --flavor 'viv1d' for magnific_video_upscaler_creative on video_upscale. Accepted values: vivid, natural.
+$ echo $?
+2
+```
+
+**Fail a build when the spec falls behind your account's entitlements:**
+
+```bash
+runway models --account --json | jq -e '.missingFromSpec | length == 0'
+```
+
+**Request bodies can come from anywhere.** `--json <inline>`, `--json @file.json` or `--json -` (stdin)
+bypasses the friendly flags entirely when you want to post an exact body.
+
+**Point it somewhere else** with `--base-url` or `RUNWAY_BASE_URL` for a proxy, a staging environment or a
+local stub — useful for smoke tests that must not reach production.
+
 ## Ecosystem maintenance
 
 This SDK is one of more than 200 .NET SDKs maintained with [AutoSDK](https://github.com/tryAGI/AutoSDK). The tryAGI [SDK audit](https://github.com/tryAGI/tryAGI/blob/main/GENERATED_SDK_AUDITS.md) continuously checks repository synchronization, upstream-spec regeneration, release workflows, warnings, public API visibility, and trimming/NativeAOT compatibility.

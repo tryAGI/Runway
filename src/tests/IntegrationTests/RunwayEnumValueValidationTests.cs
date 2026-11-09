@@ -1,0 +1,176 @@
+using System.Text.Json;
+using AwesomeAssertions;
+
+namespace Runway.IntegrationTests;
+
+/// <summary>
+/// The generated enum converters read an unknown string as <c>ToEnum(value) ?? default</c>, so an
+/// unvalidated flag value silently becomes the enum's default member — the alphabetically first one, as
+/// AutoSDK orders them — and the API renders something the caller never asked for. Every flag that lands
+/// in a spec enum must therefore be rejected, not coerced.
+/// </summary>
+[TestClass]
+public sealed class RunwayEnumValueValidationTests
+{
+    private const string VideoUri = "https://example.com/source.mp4";
+    private const string AudioUri = "https://example.com/source.mp3";
+
+    [TestMethod]
+    public void GeneratedConvertersCoerceRatherThanThrow()
+    {
+        // The premise. If AutoSDK ever starts throwing instead, this test says so and the CLI-side
+        // validation becomes belt-and-braces rather than load-bearing.
+        var coerced = JsonSerializer.Deserialize(
+            """{"model":"magnific_video_upscaler_creative","videoUri":"https://example.com/a.mp4","flavor":"bogus"}""",
+            typeof(CreateVideoUpscaleRequestMagnificVideoUpscalerCreative),
+            SourceGenerationContext.Default) as CreateVideoUpscaleRequestMagnificVideoUpscalerCreative;
+
+        coerced.Should().NotBeNull();
+
+        // AutoSDK emits enum members in alphabetical order, so `default` is the alphabetically first
+        // value — Natural here, even though the spec lists `vivid` first. Which value it lands on is
+        // incidental; the point is that it lands on one instead of failing.
+        coerced!.Flavor.Should().Be(CreateVideoUpscaleRequestMagnificVideoUpscalerCreativeFlavor.Natural,
+            "an unknown enum string lands on the default member instead of failing");
+        CreateVideoUpscaleRequestMagnificVideoUpscalerCreativeFlavorExtensions.ToEnum("bogus").Should().BeNull(
+            "ToEnum itself reports the unknown value; it is the converter's `?? default` that hides it");
+    }
+
+    [TestMethod]
+    public async Task VideoUpscale_RejectsAnOutOfEnumFlavor()
+    {
+        var act = async () => await RunwayCliGeneration.CreateVideoUpscaleRequestAsync(
+            VideoUri, null, null, null, null, null, null, flavor: "bogus", fpsBoost: null,
+            cancellationToken: CancellationToken.None);
+
+        (await act.Should().ThrowAsync<ArgumentException>())
+            .WithMessage("*Unsupported --flavor 'bogus'*Accepted values: vivid, natural*");
+    }
+
+    [TestMethod]
+    public async Task TextToVideo_RejectsOutOfEnumOutputFormatAndDuration()
+    {
+        var format = async () => await RunwayCliGeneration.CreateTextToVideoRequestAsync(
+            "a shot", "gen4.5", "1280:720", 5, null, true, null,
+            new RunwayCliVideoExtras { OutputFormat = "bogus" }, CancellationToken.None);
+        (await format.Should().ThrowAsync<ArgumentException>())
+            .WithMessage("*Unsupported --output-format 'bogus'*hdr_exr_sequence*");
+
+        // veo3.1 declares duration as an enum of 4/6/8 — 5 used to be remapped silently.
+        var duration = async () => await RunwayCliGeneration.CreateTextToVideoRequestAsync(
+            "a shot", "veo3.1", "1280:720", 5, null, true, null,
+            RunwayCliVideoExtras.None, CancellationToken.None);
+        (await duration.Should().ThrowAsync<ArgumentException>())
+            .WithMessage("*Unsupported --duration '5'*Accepted values: 4, 6, 8*");
+
+        // A value in the enum still passes.
+        var ok = await RunwayCliGeneration.CreateTextToVideoRequestAsync(
+            "a shot", "veo3.1", "1280:720", 6, null, true, null,
+            RunwayCliVideoExtras.None, CancellationToken.None);
+        using var json = JsonDocument.Parse(ok.ToJson());
+        json.RootElement.GetProperty("duration").GetDouble().Should().Be(6);
+    }
+
+    [TestMethod]
+    public async Task VideoToVideo_RejectsOutOfEnumTargetAspectRatioAndMode()
+    {
+        var aspect = async () => await RunwayCliGeneration.CreateVideoToVideoRequestAsync(
+            "restyle", "aleph2", VideoUri, null, null, null, true, null,
+            new RunwayCliVideoExtras { TargetAspectRatio = "bogus" }, CancellationToken.None);
+        (await aspect.Should().ThrowAsync<ArgumentException>())
+            .WithMessage("*Unsupported --target-aspect-ratio 'bogus'*21:9*");
+
+        var mode = async () => await RunwayCliGeneration.CreateVideoToVideoRequestAsync(
+            null, "seedance2_5", VideoUri, null, 4, null, true, null,
+            new RunwayCliVideoExtras { Mode = "bogus" }, CancellationToken.None);
+        (await mode.Should().ThrowAsync<ArgumentException>())
+            .WithMessage("*Unsupported --mode 'bogus'*reference, extend*");
+    }
+
+    [TestMethod]
+    public async Task Ratio_IsValidatedOnTheModelThatDeclaresIt()
+    {
+        // --ratio flows through the lenient setter, which now validates too.
+        var act = async () => await RunwayCliGeneration.CreateImageToVideoRequestAsync(
+            "pan", "gen4_turbo", ["https://example.com/a.png"], null, "9999:1", null, null, true, null,
+            RunwayCliVideoExtras.None, CancellationToken.None);
+
+        (await act.Should().ThrowAsync<ArgumentException>()).WithMessage("*9999:1*");
+    }
+
+    [TestMethod]
+    public async Task VoiceDubbing_RejectsAnUnknownTargetLanguage()
+    {
+        var act = async () => await RunwayCliGeneration.CreateVoiceDubbingRequestAsync(
+            AudioUri, "bogus", RunwayCliAudioExtras.None, CancellationToken.None);
+        (await act.Should().ThrowAsync<ArgumentException>())
+            .WithMessage("*Unsupported --target-language 'bogus'*");
+
+        // Case-insensitive, and the wire value keeps the spec's casing.
+        var request = await RunwayCliGeneration.CreateVoiceDubbingRequestAsync(
+            AudioUri, "RU", RunwayCliAudioExtras.None, CancellationToken.None);
+        using var json = JsonDocument.Parse(request.ToJson());
+        json.RootElement.GetProperty("targetLang").GetString().Should().Be("ru");
+    }
+
+    [TestMethod]
+    public async Task SpeechToSpeech_RejectsAnUnknownMediaType()
+    {
+        var act = async () => await RunwayCliGeneration.CreateSpeechToSpeechRequestAsync(
+            AudioUri, "bogus", "Maya", null, null, CancellationToken.None);
+        (await act.Should().ThrowAsync<ArgumentException>())
+            .WithMessage("*Unsupported --media-type 'bogus'*audio, video*");
+
+        var request = await RunwayCliGeneration.CreateSpeechToSpeechRequestAsync(
+            AudioUri, "VIDEO", "Maya", null, null, CancellationToken.None);
+        using var json = JsonDocument.Parse(request.ToJson());
+        json.RootElement.GetProperty("media").GetProperty("type").GetString().Should().Be("video");
+    }
+
+    [TestMethod]
+    public async Task TextToSpeech_RejectsOutOfEnumRatesAndFormats()
+    {
+        var sampleRate = async () => await RunwayCliGeneration.CreateTextToSpeechRequestAsync(
+            "hello", "seed_audio", "Maya", AudioUri,
+            new RunwayCliAudioExtras { SampleRate = 12345 }, CancellationToken.None);
+        (await sampleRate.Should().ThrowAsync<ArgumentException>())
+            .WithMessage("*Unsupported --sample-rate '12345'*48000*");
+
+        var normalization = async () => await RunwayCliGeneration.CreateTextToSpeechRequestAsync(
+            "hello", "eleven_v3", "Maya", null,
+            new RunwayCliAudioExtras { ApplyTextNormalization = "sometimes" }, CancellationToken.None);
+        (await normalization.Should().ThrowAsync<ArgumentException>())
+            .WithMessage("*auto, on, off*");
+    }
+
+    [TestMethod]
+    public async Task ImageSurface_RejectsOutOfEnumQualityAndOutputFormat()
+    {
+        var quality = async () => await RunwayCliGeneration.CreateTextToImageJsonBodyAsync(
+            "a poster", "grok-imagine-image-2", "1024:1024", null, "object", null, null, null, null,
+            quality: "ultra", extras: null, cancellationToken: CancellationToken.None);
+        (await quality.Should().ThrowAsync<ArgumentException>())
+            .WithMessage("*Unsupported --quality 'ultra'*low, medium*");
+
+        var outputFormat = async () => await RunwayCliGeneration.CreateTextToImageJsonBodyAsync(
+            "a poster", "seedream5-pro", "1024:1024", null, "object", null, null, null, null, null,
+            extras: new RunwayCliImageExtras { OutputFormat = "tiff" },
+            cancellationToken: CancellationToken.None);
+        (await outputFormat.Should().ThrowAsync<ArgumentException>())
+            .WithMessage("*Unsupported --output-format 'tiff'*png, jpeg*");
+    }
+
+    [TestMethod]
+    public void EverySpecEnumIsReachableThroughTheSchemaHelper()
+    {
+        // Guard for the mechanism itself: the helpers can only validate what the schema reader exposes.
+        RunwayModelSchema.GetAllowedValues("magnific_video_upscaler_creative", "video_upscale", "flavor")
+            .Should().BeEquivalentTo(["vivid", "natural"]);
+        RunwayModelSchema.GetAllowedValues("veo3.1", "text_to_video", "duration")
+            .Should().BeEquivalentTo(["4", "6", "8"]);
+        RunwayModelSchema.GetAllowedValues("eleven_voice_dubbing", "voice_dubbing", "targetLang")
+            .Should().HaveCount(29);
+        RunwayModelSchema.GetItemPropertyValues("eleven_multilingual_sts_v2", "speech_to_speech", "media", "type")
+            .Should().BeEquivalentTo(["audio", "video"], "a union's variants each contribute their const");
+    }
+}

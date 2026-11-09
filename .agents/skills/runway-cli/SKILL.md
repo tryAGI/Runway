@@ -53,6 +53,9 @@ Default to low-cost, practical choices:
 | Multi-shot short with a fixed subject | `short-video --model seedance2-5 --ratio 1280:720 --reference-image <file>` |
 | Image models beyond gen4/gemini/gpt | `image --model seedream5-pro --grounding --output-format jpeg`, `image --model muse-image`, `image --model grok-imagine-image-2 --edit --reference-image <file>` |
 | Proxy / staging / local stub | add `--base-url http://localhost:8080` (or set `RUNWAY_BASE_URL`) to any command |
+| Machine-readable result | add `--format json --quiet`: one object on stdout with `taskId` and `outputs`, nothing on stderr |
+| Chain two commands | `runway image "..." --quiet \| runway text-to-video "..." --reference-image -` — `-` reads the asset from stdin |
+| Exit codes | `0` success, `2` bad invocation (unknown model, value outside the spec enum, missing option), `1` API or task failure |
 | Upscale a video | `video-upscale --video <file> --resolution 4k --creativity 40 --flavor vivid` |
 | Smoother motion (frame interpolation) | `video-upscale --video <file> --model enhance-frame-rate --target-framerate 59_94` |
 | Upscale a still | `image-upscale --image <file> --scale-factor 4 --flavor photo` |

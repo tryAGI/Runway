@@ -596,10 +596,28 @@ public static class RunwayModelSchema
                             itemProperties.Add(itemProp.Name);
                         }
 
-                        if (ReadEnumValues(Resolve(itemProp.Value, root)) is { Count: > 0 } values &&
-                            !itemPropertyValues.ContainsKey(itemProp.Name))
+                        // Union across variants rather than keeping the first: a discriminator such as
+                        // `media.type` declares one `const` per variant (audio in one, video in the
+                        // next), so keeping only the first would report half the accepted values.
+                        if (ReadEnumValues(Resolve(itemProp.Value, root)) is { Count: > 0 } values)
                         {
-                            itemPropertyValues[itemProp.Name] = values;
+                            if (itemPropertyValues.TryGetValue(itemProp.Name, out var existing))
+                            {
+                                var merged = new List<string>(existing);
+                                foreach (var value in values)
+                                {
+                                    if (!merged.Contains(value, StringComparer.Ordinal))
+                                    {
+                                        merged.Add(value);
+                                    }
+                                }
+
+                                itemPropertyValues[itemProp.Name] = merged;
+                            }
+                            else
+                            {
+                                itemPropertyValues[itemProp.Name] = values;
+                            }
                         }
                     }
                 }

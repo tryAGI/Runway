@@ -528,7 +528,8 @@ internal static class RunwayCliGeneration
             ["model"] = "eleven_multilingual_sts_v2",
             ["media"] = new JsonObject
             {
-                ["type"] = mediaType,
+                // media.type is a union of `audio`/`video` consts; an unknown value would be coerced.
+                ["type"] = NormalizeUnionConst(mediaType, "eleven_multilingual_sts_v2", SpeechToSpeechEndpoint, "media", "--media-type"),
                 ["uri"] = await NormalizeInputAssetAsync(media, cancellationToken).ConfigureAwait(false),
             },
             ["voice"] = new JsonObject
@@ -644,6 +645,35 @@ internal static class RunwayCliGeneration
     public static string NormalizeVoicePreset(string? value, string model, string endpoint) =>
         NormalizePresetId(value, model, endpoint, "voice", "--voice-preset", "runway voice presets");
 
+    /// <summary>
+    /// Validates a discriminator whose accepted values are the <c>const</c> of each variant shape of a
+    /// union parameter, such as <c>media.type</c> being either <c>audio</c> or <c>video</c>.
+    /// </summary>
+    private static string NormalizeUnionConst(
+        string value,
+        string model,
+        string endpoint,
+        string parameterName,
+        string flag)
+    {
+        var allowed = RunwayModelSchema.GetItemPropertyValues(model, endpoint, parameterName, "type");
+        if (allowed.Count == 0)
+        {
+            return value;
+        }
+
+        foreach (var option in allowed)
+        {
+            if (string.Equals(option, value?.Trim(), StringComparison.OrdinalIgnoreCase))
+            {
+                return option;
+            }
+        }
+
+        throw new ArgumentException(
+            $"Unsupported {flag} '{value}' for {endpoint}. Accepted values: {string.Join(", ", allowed)}.");
+    }
+
     private static IReadOnlyList<string> ModelsSupportingItemProperty(string endpoint, string parameterName, string itemProperty)
     {
         return [.. RunwayModelSchema.ModelsForEndpoint(endpoint)
@@ -711,6 +741,7 @@ internal static class RunwayCliGeneration
         }
 
         RequireSupport(model, endpoint, name, flag);
+        EnsureNumericEnumValue(model, endpoint, name, flag, value.Value);
         body[name] = value.Value;
     }
 
@@ -735,7 +766,7 @@ internal static class RunwayCliGeneration
         {
             ["model"] = "eleven_voice_dubbing",
             ["audioUri"] = await NormalizeInputAssetAsync(audio, cancellationToken).ConfigureAwait(false),
-            ["targetLang"] = targetLanguage,
+            ["targetLang"] = NormalizeEnumValue("eleven_voice_dubbing", VoiceDubbingEndpoint, "targetLang", "--target-language", targetLanguage),
         };
 
         await ApplyAudioExtrasAsync(dubbingBody, "eleven_voice_dubbing", VoiceDubbingEndpoint, extras, cancellationToken).ConfigureAwait(false);
@@ -1073,6 +1104,14 @@ internal static class RunwayCliGeneration
 
     public static async Task<string> NormalizeInputAssetAsync(string value, CancellationToken cancellationToken)
     {
+        // `-` means "take the asset from stdin", so one command's stdout can feed the next without a
+        // temp file or xargs: `runway image "..." | runway image-to-video --image - "push in"`. stdout
+        // carries one path or URI per line, and the first non-empty line is used.
+        if (value == "-")
+        {
+            value = await ReadAssetFromStandardInputAsync(cancellationToken).ConfigureAwait(false);
+        }
+
         if (IsRunwayAssetReference(value))
         {
             return value;
@@ -1088,6 +1127,30 @@ internal static class RunwayCliGeneration
         return string.Create(
             CultureInfo.InvariantCulture,
             $"data:{GetMediaType(path)};base64,{Convert.ToBase64String(bytes)}");
+    }
+
+    /// <summary>
+    /// Reads the first non-empty line of stdin as an asset path or URI. Fails with an actionable message
+    /// when stdin is empty or is a terminal, rather than blocking forever on an interactive prompt.
+    /// </summary>
+    private static async Task<string> ReadAssetFromStandardInputAsync(CancellationToken cancellationToken)
+    {
+        if (Console.IsInputRedirected is false)
+        {
+            throw new ArgumentException("`-` reads the asset from stdin, but stdin is a terminal. Pipe a path or URI in, or pass the value directly.");
+        }
+
+        string? line;
+        while ((line = await Console.In.ReadLineAsync(cancellationToken).ConfigureAwait(false)) is not null)
+        {
+            var trimmed = line.Trim();
+            if (trimmed.Length > 0)
+            {
+                return trimmed;
+            }
+        }
+
+        throw new ArgumentException("`-` reads the asset from stdin, but nothing was piped in. The previous command in the pipeline produced no output.");
     }
 
     public static bool IsRunwayAssetReference(string value)
@@ -1275,14 +1338,39 @@ internal static class RunwayCliGeneration
     {
         if (!string.IsNullOrWhiteSpace(value) && RunwayModelSchema.SupportsParameter(model, endpoint, name))
         {
-            body[name] = value;
+            body[name] = NormalizeEnumValue(model, endpoint, name, "--" + ToKebabCase(name), value);
         }
+    }
+
+    /// <summary>Renders a spec property name as the CLI flag that carries it, for error messages.</summary>
+    private static string ToKebabCase(string name)
+    {
+        var builder = new global::System.Text.StringBuilder(name.Length + 4);
+        foreach (var character in name)
+        {
+            if (char.IsUpper(character))
+            {
+                if (builder.Length > 0)
+                {
+                    builder.Append('-');
+                }
+
+                builder.Append(char.ToLowerInvariant(character));
+            }
+            else
+            {
+                builder.Append(character);
+            }
+        }
+
+        return builder.ToString();
     }
 
     private static void SetIfSupported(JsonObject body, string model, string endpoint, string name, int? value)
     {
         if (value is not null && RunwayModelSchema.SupportsParameter(model, endpoint, name))
         {
+            EnsureNumericEnumValue(model, endpoint, name, "--" + ToKebabCase(name), value.Value);
             body[name] = value.Value;
         }
     }
@@ -1291,6 +1379,7 @@ internal static class RunwayCliGeneration
     {
         if (value is not null && RunwayModelSchema.SupportsParameter(model, endpoint, name))
         {
+            EnsureNumericEnumValue(model, endpoint, name, "--" + ToKebabCase(name), value.Value);
             body[name] = value.Value;
         }
     }
@@ -1348,6 +1437,56 @@ internal static class RunwayCliGeneration
         RequireAndSet(body, model, endpoint, "targetAspectRatio", "--target-aspect-ratio", extras.TargetAspectRatio);
     }
 
+    /// <summary>
+    /// Validates a flag value against the spec enum for that parameter, returning it with the spec's own
+    /// casing. This is not cosmetic: the generated converters read an unknown enum string as
+    /// <c>ToEnum(value) ?? default</c>, so an unvalidated typo silently becomes the enum's FIRST member
+    /// and the API renders something the caller never asked for. Parameters with no enum pass through.
+    /// </summary>
+    private static string NormalizeEnumValue(string model, string endpoint, string name, string flag, string value)
+    {
+        var allowed = RunwayModelSchema.GetAllowedValues(model, endpoint, name);
+        if (allowed.Count == 0)
+        {
+            return value;
+        }
+
+        var candidate = value.Trim();
+        foreach (var option in allowed)
+        {
+            if (string.Equals(option, candidate, StringComparison.OrdinalIgnoreCase))
+            {
+                return option;
+            }
+        }
+
+        throw new ArgumentException(
+            $"Unsupported {flag} '{value}' for {model} on {endpoint}. Accepted values: {string.Join(", ", allowed)}.");
+    }
+
+    /// <summary>
+    /// Same contract for numeric enums (<c>duration</c> 4/6/8, <c>sampleRate</c>, <c>outputCount</c>),
+    /// where an out-of-enum number is also quietly remapped by the generated converter.
+    /// </summary>
+    private static void EnsureNumericEnumValue(string model, string endpoint, string name, string flag, double value)
+    {
+        var allowed = RunwayModelSchema.GetAllowedValues(model, endpoint, name);
+        if (allowed.Count == 0)
+        {
+            return;
+        }
+
+        var rendered = value == Math.Floor(value) && !double.IsInfinity(value)
+            ? ((long)value).ToString(CultureInfo.InvariantCulture)
+            : value.ToString(CultureInfo.InvariantCulture);
+
+        if (!allowed.Contains(rendered, StringComparer.Ordinal))
+        {
+            throw new ArgumentException(
+                $"Unsupported {flag} '{rendered}' for {model} on {endpoint}. Accepted values: {string.Join(", ", allowed)}.");
+        }
+    }
+
     private static void RequireAndSet(JsonObject body, string model, string endpoint, string name, string flag, string? value)
     {
         if (string.IsNullOrWhiteSpace(value))
@@ -1356,7 +1495,7 @@ internal static class RunwayCliGeneration
         }
 
         RequireSupport(model, endpoint, name, flag);
-        body[name] = value;
+        body[name] = NormalizeEnumValue(model, endpoint, name, flag, value);
     }
 
     /// <summary>
@@ -1371,6 +1510,7 @@ internal static class RunwayCliGeneration
         }
 
         RequireSupport(model, endpoint, name, flag);
+        EnsureNumericEnumValue(model, endpoint, name, flag, value.Value);
         body[name] = value.Value;
     }
 

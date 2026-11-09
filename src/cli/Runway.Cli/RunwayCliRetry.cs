@@ -22,7 +22,8 @@ internal static class RunwayCliRetry
         int retryOnInternalError,
         TimeSpan retryBackoff,
         IProgress<GetTasksResponse>? progress,
-        CancellationToken cancellationToken)
+        CancellationToken cancellationToken,
+        bool quiet = false)
     {
         ArgumentNullException.ThrowIfNull(client);
         ArgumentNullException.ThrowIfNull(submitAsync);
@@ -32,11 +33,14 @@ internal static class RunwayCliRetry
         for (var attempt = 1; attempt <= maxAttempts; attempt++)
         {
             var taskId = await submitAsync(cancellationToken).ConfigureAwait(false);
-            await Console.Error.WriteLineAsync(
-                attempt == 1
-                    ? string.Create(CultureInfo.InvariantCulture, $"Task ID: {taskId}")
-                    : string.Create(CultureInfo.InvariantCulture, $"Task ID: {taskId} (retry {attempt - 1}/{maxAttempts - 1})"))
-                .ConfigureAwait(false);
+            if (!quiet)
+            {
+                await Console.Error.WriteLineAsync(
+                    attempt == 1
+                        ? string.Create(CultureInfo.InvariantCulture, $"Task ID: {taskId}")
+                        : string.Create(CultureInfo.InvariantCulture, $"Task ID: {taskId} (retry {attempt - 1}/{maxAttempts - 1})"))
+                    .ConfigureAwait(false);
+            }
 
             var task = await client.WaitForTaskAsync(
                 taskId,

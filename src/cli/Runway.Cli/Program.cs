@@ -12,9 +12,27 @@ using Runway.Cli.GeneratedApi.Commands;
 
 const string DefaultRunwayVersion = "2024-11-06";
 
+// --quiet is read straight off the raw args because the informational writers are shared by code paths
+// that do not all have a ParseResult in hand, including static local functions. See RunwayCliConsole for
+// the stdout/stderr contract this enforces.
+var quietMode = args.Any(argument => argument is "--quiet" or "-q");
+RunwayCliConsole.Quiet = quietMode;
+
 var apiKeyOption = new Option<string?>("--api-key", ["-k"])
 {
     Description = "Runway API key. Defaults to RUNWAY_API_KEY, RUNWAYML_API_SECRET, or .env.",
+    Recursive = true,
+};
+
+var quietOption = new Option<bool>("--quiet", ["-q"])
+{
+    Description = "Suppress progress and informational output on stderr. Errors are still reported and stdout is unaffected.",
+    Recursive = true,
+};
+
+var formatOption = new Option<string?>("--format")
+{
+    Description = "Format of the machine-readable stdout stream: `text` (default; one task ID or file path per line) or `json` (one object carrying the task ID and the output paths). Errors always go to stderr.",
     Recursive = true,
 };
 
@@ -35,6 +53,8 @@ var rootCommand = new RootCommand("Runway API CLI for generation, task, upload, 
 {
     apiKeyOption,
     baseUrlOption,
+    quietOption,
+    formatOption,
     runwayVersionOption,
 };
 rootCommand.Subcommands.Add(ApiCommand.Create());
@@ -1129,7 +1149,7 @@ shortVideoCommand.SetAction(async (ParseResult parseResult, CancellationToken ca
         return 1;
     }
 
-    Console.Error.WriteLine($"Short-video planner: {plannerName}");
+    RunwayCliConsole.WriteInfo($"Short-video planner: {plannerName}");
 
     if (parseResult.GetValue(shortVideoPlanOnlyOption))
     {
@@ -2406,8 +2426,9 @@ modelsCommand.SetAction((ParseResult parseResult, CancellationToken cancellation
     if (modelsAsJson && !parseResult.GetValue(modelsAccountOption))
     {
         // The offline listing is prose by design; only the account comparison has a JSON shape.
+        // Exit 2 like every other usage error, so CI can tell it apart from an API failure.
         Console.Error.WriteLine("--json applies to the account comparison; pass --account as well.");
-        return Task.FromResult(1);
+        return Task.FromResult(2);
     }
 
     if (modelsAsJson)
@@ -3172,8 +3193,8 @@ workflowRegisterCommand.SetAction((ParseResult parseResult, CancellationToken ca
         // shape that LoadAll would re-derive on next CLI invocation.
         var workflow = BuiltInWorkflowSelection.MaterializeFromGraph(
             analyzed.CommandName, analyzed.Description, BuiltInWorkflowCategory.Uncategorized, analyzed.Picks, body, source: $"register:{analyzed.WorkflowId}");
-        await Console.Error.WriteLineAsync($"Registered workflow '{workflow.DisplayName}' as '{workflow.CommandName}' ({workflow.Inputs.Count} inputs).").ConfigureAwait(false);
-        await Console.Error.WriteLineAsync($"  Saved to: {path}").ConfigureAwait(false);
+        await RunwayCliConsole.WriteInfoAsync($"Registered workflow '{workflow.DisplayName}' as '{workflow.CommandName}' ({workflow.Inputs.Count} inputs).").ConfigureAwait(false);
+        await RunwayCliConsole.WriteInfoAsync($"  Saved to: {path}").ConfigureAwait(false);
         Console.WriteLine(JsonSerializer.Serialize(new
         {
             commandName = workflow.CommandName,
@@ -3341,7 +3362,7 @@ workflowRegisteredRemoveCommand.SetAction((ParseResult parseResult, Cancellation
             throw new InvalidOperationException($"Cannot remove '{name}': it is a built-in subcommand, not a registered one.");
         }
         var removed = RunwayCliBuiltInWorkflowRegistry.Remove(name);
-        Console.Error.WriteLine(removed ? $"Removed '{name}'." : $"No registered workflow named '{name}'.");
+        RunwayCliConsole.WriteInfo(removed ? $"Removed '{name}'." : $"No registered workflow named '{name}'.");
         return Task.FromResult(removed ? 0 : 1);
     }
     catch (Exception ex)
@@ -3928,11 +3949,21 @@ async Task HandleGenerationTaskAsync(
     CancellationToken cancellationToken,
     int? retryOnInternalErrorOverride = null)
 {
+    var asJson = IsJsonFormat(parseResult);
+    var quiet = parseResult.GetValue(quietOption);
+
     if (parseResult.GetValue(noWaitOption))
     {
         var taskId = await submitAsync(cancellationToken).ConfigureAwait(false);
-        await Console.Error.WriteLineAsync($"Task ID: {taskId}").ConfigureAwait(false);
-        Console.WriteLine(taskId);
+        if (!quiet)
+        {
+            await Console.Error.WriteLineAsync($"Task ID: {taskId}").ConfigureAwait(false);
+        }
+
+        // stdout is the machine-readable channel: the bare id in text mode, the full result in JSON.
+        Console.WriteLine(asJson
+            ? RunwayCliResult.ToJson(new RunwayCliGenerationResult { TaskId = taskId.ToString(), Outputs = [] })
+            : taskId.ToString());
         return;
     }
 
@@ -3944,7 +3975,8 @@ async Task HandleGenerationTaskAsync(
         pollInterval: TimeSpan.FromSeconds(parseResult.GetValue(pollIntervalOption)),
         retryOnInternalError: retries,
         retryBackoff: TimeSpan.FromSeconds(parseResult.GetValue(retryBackoffSecondsOption)),
-        progress: CreateConsoleProgress(),
+        progress: quiet ? null : CreateConsoleProgress(),
+        quiet: quiet,
         cancellationToken: cancellationToken).ConfigureAwait(false);
 
     if (task.IsFailed)
@@ -3962,10 +3994,39 @@ async Task HandleGenerationTaskAsync(
         stemPrefix: stemPrefix,
         cancellationToken: cancellationToken).ConfigureAwait(false);
 
+    if (asJson)
+    {
+        Console.WriteLine(RunwayCliResult.ToJson(new RunwayCliGenerationResult
+        {
+            TaskId = task.Succeeded?.Id.ToString() ?? string.Empty,
+            Outputs = [.. downloaded],
+        }));
+        return;
+    }
+
     foreach (var path in downloaded)
     {
         Console.WriteLine(path);
     }
+}
+
+/// <summary>
+/// Reads and validates the global <c>--format</c>. An unknown value fails instead of falling back, so a
+/// typo in a CI script cannot silently produce text where JSON was expected.
+/// </summary>
+bool IsJsonFormat(ParseResult parseResult)
+{
+    if (parseResult.GetValue(formatOption) is not { Length: > 0 } format)
+    {
+        return false;
+    }
+
+    return format.Trim().ToLowerInvariant() switch
+    {
+        "json" => true,
+        "text" => false,
+        _ => throw new ArgumentException($"Unsupported --format '{format}'. Accepted values: text, json."),
+    };
 }
 
 async Task<RunwayShortVideoOptions> CreateShortVideoOptionsAsync(
@@ -4036,7 +4097,7 @@ async Task<RunwayCliMarketingBrief> ResolveMarketingBriefAsync(
     {
         if (!brief.IsEmpty)
         {
-            await Console.Error.WriteLineAsync(string.Create(
+            await RunwayCliConsole.WriteInfoAsync(string.Create(
                 System.Globalization.CultureInfo.InvariantCulture,
                 $"Loaded MARKETING.md from {directory}.")).ConfigureAwait(false);
         }
@@ -4053,7 +4114,7 @@ async Task<RunwayCliMarketingBrief> ResolveMarketingBriefAsync(
     var wrote = await RunwayCliMarketingBriefStore.WriteAsync(directory, collected, cancellationToken).ConfigureAwait(false);
     if (wrote)
     {
-        await Console.Error.WriteLineAsync(string.Create(
+        await RunwayCliConsole.WriteInfoAsync(string.Create(
             System.Globalization.CultureInfo.InvariantCulture,
             $"Updated {Path.Combine(directory, RunwayCliMarketingBriefStore.FileName)}.")).ConfigureAwait(false);
     }
@@ -4099,7 +4160,7 @@ Task<int> RunShortVideoPlanAsync(
     return RunWithClientAsync(parseResult, async (client, runwayVersion, ct) =>
     {
         var planPath = await RunwayCliShortVideo.WritePlanAsync(plan, output, ct).ConfigureAwait(false);
-        await Console.Error.WriteLineAsync($"Short-video plan JSON: {planPath}").ConfigureAwait(false);
+        await RunwayCliConsole.WriteInfoAsync($"Short-video plan JSON: {planPath}").ConfigureAwait(false);
 
         WriteShortVideoPlan(plan);
 
@@ -4108,7 +4169,7 @@ Task<int> RunShortVideoPlanAsync(
         var keyframesModel = parseResult.GetValue(shortVideoKeyframesOption);
         if (!string.IsNullOrWhiteSpace(keyframesModel))
         {
-            await Console.Error.WriteLineAsync(string.Create(
+            await RunwayCliConsole.WriteInfoAsync(string.Create(
                 System.Globalization.CultureInfo.InvariantCulture,
                 $"Keyframes mode: {keyframesModel} -> image-to-video ({options.Model}).")).ConfigureAwait(false);
             var keyframesResult = await RunwayCliShortVideoKeyframes.RunPlanAsync(
@@ -4117,7 +4178,7 @@ Task<int> RunShortVideoPlanAsync(
                 options,
                 new RunwayCliShortVideoKeyframeOptions(keyframesModel, ReferenceSubject: "human"),
                 xRunwayVersion: runwayVersion,
-                log: line => Console.Error.WriteLine(line),
+                log: quietMode ? null : line => Console.Error.WriteLine(line),
                 cancellationToken: ct).ConfigureAwait(false);
             downloadedFiles = keyframesResult.DownloadedFiles;
             shotTaskIds = keyframesResult.Shots.Select(shot => shot.VideoTaskId.ToString()).ToArray();
@@ -4300,20 +4361,20 @@ Task<int> RunCreativeVideoRecipeAsync(
 
 static void WriteShortVideoPlan(RunwayShortVideoPlan plan)
 {
-    Console.Error.WriteLine("Short-video plan:");
+    RunwayCliConsole.WriteInfo("Short-video plan:");
     foreach (var shot in plan.Shots)
     {
-        Console.Error.WriteLine($"  {shot.Index}. {shot.Title}");
-        Console.Error.WriteLine($"     {shot.Beat}");
+        RunwayCliConsole.WriteInfo($"  {shot.Index}. {shot.Title}");
+        RunwayCliConsole.WriteInfo($"     {shot.Beat}");
     }
 }
 
 static void WriteCreativeRecipePlan(RunwayCliCreativeRecipePlan plan)
 {
-    Console.Error.WriteLine($"{ToDisplayName(plan.Kind)} plan:");
+    RunwayCliConsole.WriteInfo($"{ToDisplayName(plan.Kind)} plan:");
     foreach (var job in plan.Jobs)
     {
-        Console.Error.WriteLine($"  {job.Index}. {job.Label}");
+        RunwayCliConsole.WriteInfo($"  {job.Index}. {job.Label}");
     }
 }
 
@@ -4335,7 +4396,7 @@ string? ResolveCreativeRecipeName(ParseResult parseResult, RunwayCliCreativeReci
             stemPrefix: stemPrefix,
             namePrefix: autoNamePrefix,
             scanDirectory: scanDirectory);
-        Console.Error.WriteLine($"Auto-name resolved to: {resolved}");
+        RunwayCliConsole.WriteInfo($"Auto-name resolved to: {resolved}");
         return resolved;
     }
 
@@ -4359,7 +4420,7 @@ string? ResolveShortVideoName(ParseResult parseResult)
             stemPrefix: "runway-short-video-",
             namePrefix: autoNamePrefix,
             scanDirectory: scanDirectory);
-        Console.Error.WriteLine($"Auto-name resolved to: {resolved}");
+        RunwayCliConsole.WriteInfo($"Auto-name resolved to: {resolved}");
         return resolved;
     }
 
@@ -4411,11 +4472,11 @@ static void WriteShortVideoProgress(RunwayShortVideoProgress progress)
     switch (progress.Stage)
     {
         case RunwayShortVideoProgressStage.StartingShot:
-            Console.Error.WriteLine($"Starting shot {progress.Shot.Index}/{progress.Shot.Count}: {progress.Shot.Title}");
+            RunwayCliConsole.WriteInfo($"Starting shot {progress.Shot.Index}/{progress.Shot.Count}: {progress.Shot.Title}");
             break;
 
         case RunwayShortVideoProgressStage.TaskCreated:
-            Console.Error.WriteLine($"Shot {progress.Shot.Index} task ID: {progress.TaskId}");
+            RunwayCliConsole.WriteInfo($"Shot {progress.Shot.Index} task ID: {progress.TaskId}");
             break;
 
         case RunwayShortVideoProgressStage.TaskUpdated:
@@ -4427,7 +4488,7 @@ static void WriteShortVideoProgress(RunwayShortVideoProgress progress)
             break;
 
         case RunwayShortVideoProgressStage.ShotDownloaded:
-            Console.Error.WriteLine($"Downloaded shot {progress.Shot.Index}.");
+            RunwayCliConsole.WriteInfo($"Downloaded shot {progress.Shot.Index}.");
             break;
 
         default:
@@ -4564,9 +4625,24 @@ async Task<int> RunWithClientAsync(
     catch (Exception ex)
     {
         await WriteErrorAsync(ex).ConfigureAwait(false);
-        return 1;
+        return ExitCodeFor(ex);
     }
 }
+
+/// <summary>
+/// Exit-code convention so CI can tell a broken invocation from a failed generation: 2 for anything the
+/// caller can fix on the command line (unknown model, a value outside the spec enum, a missing option, a
+/// path that does not exist, no API key), 1 for everything that failed on Runway's side or in transit.
+/// </summary>
+static int ExitCodeFor(Exception exception) => exception switch
+{
+    ArgumentException => 2,
+    FormatException => 2,
+    FileNotFoundException => 2,
+    DirectoryNotFoundException => 2,
+    InvalidOperationException invalid when invalid.Message.StartsWith("Set --api-key", StringComparison.Ordinal) => 2,
+    _ => 1,
+};
 
 string[]? MergeSoulIdImages(ParseResult parseResult, string[]? baseImages)
 {

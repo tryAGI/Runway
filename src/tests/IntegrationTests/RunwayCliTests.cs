@@ -202,7 +202,7 @@ public partial class Tests
     {
         var result = await RunCliAsync("video tiny test prompt --no-wait", removeApiKey: true).ConfigureAwait(false);
 
-        result.ExitCode.Should().Be(1);
+        result.ExitCode.Should().Be(2, "a missing API key is a usage error the caller can fix");
         result.Stderr.Should().Contain("Set --api-key, RUNWAY_API_KEY, RUNWAYML_API_SECRET");
     }
 
@@ -211,7 +211,7 @@ public partial class Tests
     {
         var result = await RunCliAsync("image tiny test prompt --no-wait", removeApiKey: true).ConfigureAwait(false);
 
-        result.ExitCode.Should().Be(1);
+        result.ExitCode.Should().Be(2, "a missing API key is a usage error the caller can fix");
         result.Stderr.Should().Contain("Set --api-key, RUNWAY_API_KEY, RUNWAYML_API_SECRET");
     }
 
@@ -231,7 +231,7 @@ public partial class Tests
     {
         var result = await RunCliAsync("short-video tiny robot finds a glowing garden --no-wait --planner deterministic", removeApiKey: true).ConfigureAwait(false);
 
-        result.ExitCode.Should().Be(1);
+        result.ExitCode.Should().Be(2, "a missing API key is a usage error the caller can fix");
         result.Stderr.Should().Contain("Set --api-key, RUNWAY_API_KEY, RUNWAYML_API_SECRET");
     }
 
@@ -290,9 +290,9 @@ public partial class Tests
             "ad-video create --prompt=tiny-camera --mode ugc --shots 1 --no-wait",
             removeApiKey: true).ConfigureAwait(false);
 
-        product.ExitCode.Should().Be(1);
-        marketplace.ExitCode.Should().Be(1);
-        ad.ExitCode.Should().Be(1);
+        product.ExitCode.Should().Be(2, "a missing API key is a usage error the caller can fix");
+        marketplace.ExitCode.Should().Be(2, "a missing API key is a usage error the caller can fix");
+        ad.ExitCode.Should().Be(2, "a missing API key is a usage error the caller can fix");
         product.Stderr.Should().Contain("Set --api-key, RUNWAY_API_KEY, RUNWAYML_API_SECRET");
         marketplace.Stderr.Should().Contain("Set --api-key, RUNWAY_API_KEY, RUNWAYML_API_SECRET");
         ad.Stderr.Should().Contain("Set --api-key, RUNWAY_API_KEY, RUNWAYML_API_SECRET");
@@ -334,7 +334,7 @@ public partial class Tests
                 removeApiKey: true,
                 environment: new Dictionary<string, string?> { ["PATH"] = plannerPath }).ConfigureAwait(false);
 
-            result.ExitCode.Should().Be(1);
+            result.ExitCode.Should().Be(2, "a missing API key is a usage error the caller can fix");
             result.Stderr.Should().Contain("Short-video planner: Deterministic");
             result.Stderr.Should().Contain("Set --api-key, RUNWAY_API_KEY, RUNWAYML_API_SECRET");
         }
@@ -771,7 +771,7 @@ public partial class Tests
         {
             var result = await RunCliAsync($"short-video run --plan {path} --no-wait", removeApiKey: true).ConfigureAwait(false);
 
-            result.ExitCode.Should().Be(1);
+            result.ExitCode.Should().Be(2, "a missing API key is a usage error the caller can fix");
             result.Stderr.Should().Contain("Set --api-key, RUNWAY_API_KEY, RUNWAYML_API_SECRET");
         }
         finally
