@@ -978,7 +978,8 @@ $ echo $?
 runway models --account --json | jq -e '.missingFromSpec | length == 0'
 ```
 
-**Request bodies can come from anywhere.** `--json <inline>`, `--json @file.json` or `--json -` (stdin)
+**Request bodies can come from anywhere.** `--json <inline>`, `--json @file.json`, `--json path.json` or
+`--json -` (stdin)
 bypasses the friendly flags entirely when you want to post an exact body — and the body is checked
 against the spec too, including inside the generated `runway api …` group, which only ever takes a whole
 body. Every violation is reported at once rather than one per attempt:
@@ -991,7 +992,10 @@ The request body does not match the Runway OpenAPI spec:
 
 The endpoint is inferred from the body's own `model`, so a model that several endpoints accept never
 produces a false positive, and a model the spec has not described yet is never blocked. Bodies piped in
-(`--json -`, `runway api … --input -`) are checked the same way.
+(`--json -`, `runway api … --input -`) are checked the same way. `@path` is read as a file here — the CLI
+disables System.CommandLine's response-file expansion, which would otherwise consume the token and splice
+the file's JSON in as command-line arguments — and a path that does not exist fails with exit 2 rather
+than posting the literal `@path`. The same applies to `--plan`, `--tools-json` and `--node-outputs-json`.
 
 **Shell completion** is generated from the live command tree and the embedded spec, so subcommands,
 options and the `--model` values for each command stay correct after a spec refresh:

@@ -12,6 +12,15 @@ using Runway.Cli.GeneratedApi.Commands;
 
 const string DefaultRunwayVersion = "2024-11-06";
 
+// System.CommandLine expands an `@file` token into command-line arguments read from that file, which
+// swallowed `--json @body.json` — the documented way to post an exact request body — before the option
+// ever saw it, and spliced the JSON in as arguments instead. Request bodies are what `@` means in this
+// CLI, so response-file expansion is switched off.
+var parserConfiguration = new ParserConfiguration
+{
+    ResponseFileTokenReplacer = null,
+};
+
 // --quiet is read straight off the raw args because the informational writers are shared by code paths
 // that do not all have a ParseResult in hand, including static local functions. See RunwayCliConsole for
 // the stdout/stderr contract this enforces.
@@ -3712,7 +3721,7 @@ generateUmbrellaCommand.SetAction(async (ParseResult parseResult, CancellationTo
     };
     var forwarded = string.IsNullOrEmpty(prompt) ? new[] { subcommand } : new[] { subcommand, prompt };
     cancellationToken.ThrowIfCancellationRequested();
-    return await rootCommand.Parse(forwarded).InvokeAsync().ConfigureAwait(false);
+    return await rootCommand.Parse(forwarded, parserConfiguration).InvokeAsync().ConfigureAwait(false);
 });
 
 var modelSchemaCommand = new Command("schema", "Print known parameters for a Runway model id.")
@@ -3926,7 +3935,7 @@ if (TryFindStdinBodyOption(args) is { } stdinBodyFlag && Console.IsInputRedirect
     }
 }
 
-var parseResultForInvocation = rootCommand.Parse(args);
+var parseResultForInvocation = rootCommand.Parse(args, parserConfiguration);
 
 // System.CommandLine exits 1 for a parse or validation error, which is the same code a failed
 // generation uses. Let it print its usual message and usage block, then map it onto 2 so the contract

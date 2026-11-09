@@ -141,6 +141,96 @@ public sealed class RunwayCliBodyAndCompletionTests
     }
 
     [TestMethod]
+    public async Task JsonFromAFileIsReadRatherThanTreatedAsAResponseFile()
+    {
+        // Reported by another session: `--json @body.json` posted something Runway rejected as
+        // "Invalid JSON". System.CommandLine expands an `@file` token into command-line arguments read
+        // from that file, so it consumed the token before the option saw it and spliced the JSON in as
+        // arguments. Response-file expansion is now off, because `@` means "request body" in this CLI.
+        var directory = Directory.CreateTempSubdirectory("runway-json-at");
+        try
+        {
+            var path = Path.Combine(directory.FullName, "body.json");
+            await File.WriteAllTextAsync(
+                path,
+                """{"model":"magnific_video_upscaler_creative","videoUri":"https://example.com/a.mp4","flavor":"viv1d"}""")
+                .ConfigureAwait(false);
+
+            foreach (var argument in new[] { $"--json @{path}", $"--json {path}" })
+            {
+                var result = await RunAsync($"video-upscale {argument}").ConfigureAwait(false);
+
+                // The body arrived: it was read from the file and checked against the spec.
+                result.ExitCode.Should().Be(2, $"`{argument}` should read the file");
+                result.Stderr.Should().Contain("vivid, natural");
+            }
+
+            // A relative path resolves against the working directory the same way.
+            var relative = await CliHarness.RunCliAsync(
+                $"video-upscale --json @{Path.GetRelativePath(CliHarness.FindRunwayRoot(), path)}",
+                environment: OfflineEnvironment).ConfigureAwait(false);
+            relative.ExitCode.Should().Be(2);
+            relative.Stderr.Should().Contain("vivid, natural");
+        }
+        finally
+        {
+            directory.Delete(recursive: true);
+        }
+    }
+
+    [TestMethod]
+    public async Task EveryDocumentedAtPathOptionReadsTheFile()
+    {
+        // --json was not the only `@path` option: --plan, --tools-json and --node-outputs-json all go
+        // through the same reader, so response-file expansion broke them identically. Each is exercised
+        // here so the parser configuration cannot regress for one of them alone.
+        var directory = Directory.CreateTempSubdirectory("runway-at-paths");
+        try
+        {
+            var plan = Path.Combine(directory.FullName, "plan.json");
+            var tools = Path.Combine(directory.FullName, "tools.json");
+            var nodes = Path.Combine(directory.FullName, "nodes.json");
+
+            // A plan whose model is wrong for the endpoint: proof the file was read is the model error.
+            await File.WriteAllTextAsync(plan, """
+                {"sourceText":"x","scenario":"x","style":"x","model":"gpt_image_2","ratio":"1280:720","shotDurationSeconds":4,"shots":[]}
+                """).ConfigureAwait(false);
+            await File.WriteAllTextAsync(tools, """[{"name":"x","description":"d"}]""").ConfigureAwait(false);
+            await File.WriteAllTextAsync(nodes, """{"node-1":{"prompt":{"type":"primitive","value":"hi"}}}""").ConfigureAwait(false);
+
+            var planResult = await RunAsync($"short-video run --plan @{plan} --no-wait").ConfigureAwait(false);
+            planResult.Stderr.Should().Contain("gpt_image_2", "the plan file must have been read");
+
+            // These two only need to get past the reader: a parse or validation error naming the
+            // content proves the file arrived, where before the token itself was sent.
+            foreach (var (option, path) in new[] { ("--tools-json", tools), ("--node-outputs-json", nodes) })
+            {
+                var command = option == "--tools-json"
+                    ? $"realtime create --preset-avatar influencer {option} @{path}"
+                    : $"workflow run 00000000-0000-0000-0000-000000000001 {option} @{path}";
+
+                var result = await RunAsync(command).ConfigureAwait(false);
+                result.Stderr.Should().NotContain("Response file not found", $"{option} must not be treated as a response file");
+                result.Stderr.Should().NotContain("invalid start of a value", $"{option} must not post the literal token");
+            }
+        }
+        finally
+        {
+            directory.Delete(recursive: true);
+        }
+    }
+
+    [TestMethod]
+    public async Task AMissingJsonFileSaysSoInsteadOfPostingTheLiteralToken()
+    {
+        var result = await RunAsync("video-upscale --json @definitely-not-here.json").ConfigureAwait(false);
+
+        result.ExitCode.Should().Be(2);
+        result.Stderr.Should().Contain("JSON file was not found");
+        result.Stderr.Should().NotContain("invalid start of a value", "the old behaviour posted '@path' and failed in the parser");
+    }
+
+    [TestMethod]
     public async Task CompletionScriptsAreEmittedForEverySupportedShell()
     {
         foreach (var shell in RunwayCliCompletion.SupportedShells)

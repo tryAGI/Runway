@@ -806,10 +806,19 @@ internal static class RunwayCliGeneration
             return await Console.In.ReadToEndAsync(cancellationToken).ConfigureAwait(false);
         }
 
-        var path = value.StartsWith('@') ? value[1..] : value;
-        if (File.Exists(path))
+        // An explicit `@path` must resolve: falling through would post the literal "@path" and the
+        // failure would surface as an opaque JSON parse error from the body instead of a missing file.
+        if (value.StartsWith('@'))
         {
-            return await File.ReadAllTextAsync(path, cancellationToken).ConfigureAwait(false);
+            var explicitPath = value[1..];
+            return File.Exists(explicitPath)
+                ? await File.ReadAllTextAsync(explicitPath, cancellationToken).ConfigureAwait(false)
+                : throw new FileNotFoundException($"JSON file was not found: {Path.GetFullPath(explicitPath)}", explicitPath);
+        }
+
+        if (File.Exists(value))
+        {
+            return await File.ReadAllTextAsync(value, cancellationToken).ConfigureAwait(false);
         }
 
         return value;
