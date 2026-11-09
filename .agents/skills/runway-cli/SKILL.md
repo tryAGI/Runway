@@ -56,7 +56,8 @@ Default to low-cost, practical choices:
 | Upscale a video | `video-upscale --video <file> --resolution 4k --creativity 40 --flavor vivid` |
 | Smoother motion (frame interpolation) | `video-upscale --video <file> --model enhance-frame-rate --target-framerate 59_94` |
 | Upscale a still | `image-upscale --image <file> --scale-factor 4 --flavor photo` |
-| Check the spec vs the account's models | `models --account` (free; lists models the account has that the embedded spec lacks) |
+| Check the spec vs the account's models | `models --account` (free), or `models --account --json` for CI |
+| List preset voices / avatars | `voice presets` (49 capitalized speech voices), `avatar presets` (30 lowercase avatar voices + 9 avatars) — the vocabularies are not interchangeable |
 | Expressive speech | `text-to-speech "..." --model eleven_v3 --stability 0.4 --style 0.25 --language-code ru` |
 | Clone a voice from a clip | `text-to-speech "..." --model seed_audio --reference-audio <file>` |
 | Sound effect from reference clips | `sound-effect "like @Audio1 but wetter" --model seed_audio --reference-audio <file>` |

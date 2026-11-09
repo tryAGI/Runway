@@ -591,16 +591,30 @@ internal static class RunwayCliGeneration
     }
 
     /// <summary>
-    /// Validates a Runway preset voice id against the spec enum for the chosen model. The ids are proper
-    /// names (<c>Maya</c>, <c>Claudia</c>, ...), and the generated enum silently coerces an unknown value
-    /// to its first member, so an invalid id would otherwise reach the API as a different voice.
+    /// Validates a Runway preset id against the spec enum for the chosen model and parameter. The
+    /// generated enums silently coerce an unknown value to their first member, so an unvalidated id
+    /// reaches the API as a different voice or avatar rather than as an error. Matching is
+    /// case-insensitive and the spec's own casing is returned; an omitted value takes the first id the
+    /// spec lists instead of a hardcoded guess.
     /// </summary>
-    public static string NormalizeVoicePreset(string? value, string model, string endpoint)
+    /// <param name="value">The id the user supplied, or null.</param>
+    /// <param name="model">Normalized model id, since the vocabularies differ per model.</param>
+    /// <param name="endpoint">Spec endpoint name, e.g. <c>text_to_speech</c>.</param>
+    /// <param name="parameterName">The parameter carrying the preset, e.g. <c>voice</c> or <c>avatar</c>.</param>
+    /// <param name="flag">The CLI flag to name in the error message.</param>
+    /// <param name="listCommand">The command that prints the full list, named in the error message.</param>
+    public static string NormalizePresetId(
+        string? value,
+        string model,
+        string endpoint,
+        string parameterName,
+        string flag,
+        string listCommand)
     {
-        var allowed = RunwayModelSchema.GetItemPropertyValues(model, endpoint, "voice", "presetId");
+        var allowed = RunwayModelSchema.GetItemPropertyValues(model, endpoint, parameterName, "presetId");
         if (allowed.Count == 0)
         {
-            // Nothing enum-backed to check against (seed_audio clones instead of using presets).
+            // Nothing enum-backed to check against (seed_audio clones a voice instead of naming one).
             return value ?? string.Empty;
         }
 
@@ -619,8 +633,16 @@ internal static class RunwayCliGeneration
         }
 
         throw new ArgumentException(
-            $"Unknown --voice-preset '{value}' for {model}. Valid ids are proper names: {string.Join(", ", allowed.Take(8))}, … ({allowed.Count} total). Run `runway voice presets` for the full list.");
+            $"Unknown {flag} '{value}' for {model} on {endpoint}. Valid ids: {string.Join(", ", allowed.Take(8))}{(allowed.Count > 8 ? ", …" : string.Empty)} ({allowed.Count} total). Run `{listCommand}` for the full list.");
     }
+
+    /// <summary>
+    /// Preset voice ids for the speech endpoints. Note the two vocabularies are different: the speech
+    /// endpoints use 49 capitalized proper names, while the avatar endpoints use 30 lowercase ones — so
+    /// <c>clara</c> is a valid avatar voice but not a valid text-to-speech voice.
+    /// </summary>
+    public static string NormalizeVoicePreset(string? value, string model, string endpoint) =>
+        NormalizePresetId(value, model, endpoint, "voice", "--voice-preset", "runway voice presets");
 
     private static IReadOnlyList<string> ModelsSupportingItemProperty(string endpoint, string parameterName, string itemProperty)
     {

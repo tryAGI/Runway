@@ -2384,6 +2384,11 @@ voiceIsolationCommand.SetAction((ParseResult parseResult, CancellationToken canc
             ct).ConfigureAwait(false);
     }, cancellationToken));
 
+var modelsJsonOption = new Option<bool>("--json")
+{
+    Description = "With --account, print the spec/account difference as JSON instead of prose, for scripting and CI checks.",
+};
+
 var modelsAccountOption = new Option<bool>("--account")
 {
     Description = "Also call the Runway API and report models your account is entitled to that the embedded OpenAPI spec does not describe yet (and vice versa). Requires an API key; costs no credits.",
@@ -2392,10 +2397,24 @@ var modelsAccountOption = new Option<bool>("--account")
 var modelsCommand = new Command("models", "List the model IDs each endpoint accepts, read from the embedded OpenAPI spec.")
 {
     modelsAccountOption,
+    modelsJsonOption,
 };
 rootCommand.Subcommands.Add(modelsCommand);
 modelsCommand.SetAction((ParseResult parseResult, CancellationToken cancellationToken) =>
 {
+    var modelsAsJson = parseResult.GetValue(modelsJsonOption);
+    if (modelsAsJson && !parseResult.GetValue(modelsAccountOption))
+    {
+        // The offline listing is prose by design; only the account comparison has a JSON shape.
+        Console.Error.WriteLine("--json applies to the account comparison; pass --account as well.");
+        return Task.FromResult(1);
+    }
+
+    if (modelsAsJson)
+    {
+        return WriteModelGapJsonAsync(parseResult, cancellationToken);
+    }
+
     // Endpoint families are grouped for readability, but the model lists themselves come from the spec,
     // so this never drifts from what the SDK can actually send.
     var groups = new (string Title, string[] Endpoints)[]
@@ -2468,28 +2487,13 @@ modelsCommand.SetAction((ParseResult parseResult, CancellationToken cancellation
 
     return RunWithClientAsync(parseResult, async (client, runwayVersion, ct) =>
     {
-        var organization = await client.Organization.GetOrganizationAsync(
-            xRunwayVersion: runwayVersion,
-            cancellationToken: ct).ConfigureAwait(false);
-
-        var entitled = organization.Tier.Models.Keys.ToHashSet(StringComparer.Ordinal);
-        var described = RunwayModelSchema.KnownModelIds().ToHashSet(StringComparer.Ordinal);
-
-        // The spec is refreshed on a schedule and lags the account's entitlements, so a model can be
-        // billable to this account while no endpoint in the spec accepts it yet.
-        // A capability can be an endpoint rather than a model value (the recipes are), so RunwayModelSchema
-        // is asked whether it can address the name at all before calling it absent.
-        var missingFromSpec = entitled
-            .Where(model => !RunwayModelSchema.IsKnown(model))
-            .OrderBy(model => model, StringComparer.Ordinal).ToList();
-        var asEndpoints = entitled
-            .Where(model => !described.Contains(model) && RunwayModelSchema.IsKnown(model))
-            .OrderBy(model => model, StringComparer.Ordinal).ToList();
-        var missingFromAccount = described.Except(entitled, StringComparer.Ordinal)
-            .OrderBy(model => model, StringComparer.Ordinal).ToList();
+        var report = await BuildModelGapReportAsync(client, runwayVersion, ct).ConfigureAwait(false);
+        var missingFromSpec = report.MissingFromSpec;
+        var asEndpoints = report.EndpointCapabilities;
+        var missingFromAccount = report.MissingFromAccount;
 
         Console.WriteLine();
-        Console.WriteLine($"Account entitlements: {entitled.Count} models. Embedded spec: {described.Count} models.");
+        Console.WriteLine($"Account entitlements: {report.AccountModelCount} models. Embedded spec: {report.SpecModelCount} models.");
 
         if (missingFromSpec.Count > 0)
         {
@@ -2711,6 +2715,39 @@ createUploadCommand.SetAction((ParseResult parseResult, CancellationToken cancel
 
 var voiceCommand = new Command("voice", "Manage custom voices and voice previews.");
 rootCommand.Subcommands.Add(voiceCommand);
+
+var voicePresetsCommand = new Command("presets", "List the preset voice IDs each speech endpoint accepts.");
+voiceCommand.Subcommands.Add(voicePresetsCommand);
+voicePresetsCommand.SetAction(_ =>
+{
+    // Read from the embedded spec rather than a hand-kept list, and printed per endpoint because the
+    // vocabularies differ: the speech endpoints use capitalized proper names while the avatar endpoints
+    // use lowercase ones, so `clara` is a valid avatar voice but not a valid text-to-speech voice.
+    foreach (var (endpoint, model) in new[]
+             {
+                 (RunwayCliGeneration.TextToSpeechEndpoint, "eleven_multilingual_v2"),
+                 (RunwayCliGeneration.TextToSpeechEndpoint, "eleven_v3"),
+                 (RunwayCliGeneration.SpeechToSpeechEndpoint, "eleven_multilingual_sts_v2"),
+             })
+    {
+        var presets = RunwayModelSchema.GetItemPropertyValues(model, endpoint, "voice", "presetId");
+        if (presets.Count == 0)
+        {
+            continue;
+        }
+
+        Console.WriteLine($"{endpoint.Replace('_', '-')} ({model}) — {presets.Count} preset voices:");
+        foreach (var preset in presets)
+        {
+            Console.WriteLine($"  {preset}");
+        }
+
+        Console.WriteLine();
+    }
+
+    Console.WriteLine("Avatar voices use a separate, lowercase vocabulary — run `runway avatar presets` for those.");
+    Console.WriteLine("seed_audio does not use presets; clone a voice with `text-to-speech --model seed_audio --reference-audio <file>`.");
+});
 
 var voiceIdArgument = new Argument<Guid>("id")
 {
@@ -4462,7 +4499,15 @@ async Task<CreateRealtimeSessionsRequest> CreateRealtimeSessionRequestAsync(
             : new JsonObject
             {
                 ["type"] = "runway-preset",
-                ["presetId"] = parseResult.GetValue(realtimePresetAvatarOption) ?? "influencer",
+                // Validated against the spec: this body is deserialized into the generated request, and
+                // the generated enum would coerce an unknown id to its first member (cat-character).
+                ["presetId"] = RunwayCliGeneration.NormalizePresetId(
+                    parseResult.GetValue(realtimePresetAvatarOption),
+                    "gwm1_avatars",
+                    "realtime_sessions",
+                    "avatar",
+                    "--preset-avatar",
+                    "runway avatar presets"),
             },
     };
 
@@ -4538,6 +4583,47 @@ string[]? MergeSoulIdImages(ParseResult parseResult, string[]? baseImages)
 
     return [.. baseImages, .. resolved];
 }
+
+/// <summary>
+/// Computes the difference between the models the embedded spec describes and the models this account is
+/// entitled to. The spec refreshes on a schedule, so it lags behind what the account can already bill.
+/// </summary>
+async Task<RunwayCliModelGapReport> BuildModelGapReportAsync(
+    RunwayClient client,
+    string runwayVersion,
+    CancellationToken cancellationToken)
+{
+    var organization = await client.Organization.GetOrganizationAsync(
+        xRunwayVersion: runwayVersion,
+        cancellationToken: cancellationToken).ConfigureAwait(false);
+
+    var entitled = organization.Tier.Models.Keys.ToHashSet(StringComparer.Ordinal);
+    var described = RunwayModelSchema.KnownModelIds().ToHashSet(StringComparer.Ordinal);
+
+    // A capability can be an endpoint rather than a model value (the recipes are), so RunwayModelSchema is
+    // asked whether it can address the name at all before calling it absent from the spec.
+    return new RunwayCliModelGapReport
+    {
+        SpecModelCount = described.Count,
+        AccountModelCount = entitled.Count,
+        MissingFromSpec = [.. entitled
+            .Where(model => !RunwayModelSchema.IsKnown(model))
+            .OrderBy(model => model, StringComparer.Ordinal)],
+        EndpointCapabilities = [.. entitled
+            .Where(model => !described.Contains(model) && RunwayModelSchema.IsKnown(model))
+            .OrderBy(model => model, StringComparer.Ordinal)],
+        MissingFromAccount = [.. described
+            .Except(entitled, StringComparer.Ordinal)
+            .OrderBy(model => model, StringComparer.Ordinal)],
+    };
+}
+
+Task<int> WriteModelGapJsonAsync(ParseResult parseResult, CancellationToken cancellationToken) =>
+    RunWithClientAsync(parseResult, async (client, runwayVersion, ct) =>
+    {
+        var report = await BuildModelGapReportAsync(client, runwayVersion, ct).ConfigureAwait(false);
+        Console.WriteLine(RunwayCliModelGap.ToJson(report));
+    }, cancellationToken);
 
 Uri? ResolveBaseUri(ParseResult parseResult)
 {

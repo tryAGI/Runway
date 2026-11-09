@@ -277,6 +277,33 @@ public sealed class RunwaySpecDrivenGatingTests
     }
 
     [TestMethod]
+    public void ModelGapReport_SerializesTheScriptableShape()
+    {
+        // `models --account --json` is meant for CI checks, so the field names and shape are pinned.
+        var report = new RunwayCliModelGapReport
+        {
+            SpecModelCount = 39,
+            AccountModelCount = 81,
+            MissingFromSpec = ["kling_4", "nano_banana_2.1"],
+            EndpointCapabilities = ["product_ad"],
+            MissingFromAccount = ["eleven_ttv_v3"],
+        };
+
+        using var json = global::System.Text.Json.JsonDocument.Parse(RunwayCliModelGap.ToJson(report));
+        var root = json.RootElement;
+        root.GetProperty("specModelCount").GetInt32().Should().Be(39);
+        root.GetProperty("accountModelCount").GetInt32().Should().Be(81);
+        root.GetProperty("missingFromSpec").GetArrayLength().Should().Be(2);
+        root.GetProperty("missingFromSpec")[0].GetString().Should().Be("kling_4");
+        root.GetProperty("endpointCapabilities")[0].GetString().Should().Be("product_ad");
+        root.GetProperty("missingFromAccount")[0].GetString().Should().Be("eleven_ttv_v3");
+
+        // Defaults serialize as empty arrays, not null, so a consumer can index without a null check.
+        using var empty = global::System.Text.Json.JsonDocument.Parse(RunwayCliModelGap.ToJson(new RunwayCliModelGapReport()));
+        empty.RootElement.GetProperty("missingFromSpec").GetArrayLength().Should().Be(0);
+    }
+
+    [TestMethod]
     public void ModelSchema_SeparatesEndpointCapabilitiesFromModels()
     {
         var endpoints = RunwayModelSchema.KnownEndpoints();
