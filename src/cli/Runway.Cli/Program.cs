@@ -1112,7 +1112,7 @@ shortVideoCommand.SetAction(async (ParseResult parseResult, CancellationToken ca
         var resolvedName = ResolveShortVideoName(parseResult);
         output = RunwayCliShortVideo.ResolveOutput(parseResult.GetValue(outputOption), DateTime.UtcNow, resolvedName);
         var brief = await ResolveMarketingBriefAsync(parseResult, cancellationToken).ConfigureAwait(false);
-        options = CreateShortVideoOptions(parseResult, output.SegmentDirectory, brief);
+        options = await CreateShortVideoOptionsAsync(parseResult, output.SegmentDirectory, cancellationToken, brief).ConfigureAwait(false);
         var plannerOptions = CreateShortVideoPlannerOptions(parseResult);
         var plannerResult = await RunwayCliShortVideo.CreatePlanResultAsync(
             scenario,
@@ -1192,7 +1192,7 @@ shortVideoRunCommand.SetAction(async (ParseResult parseResult, CancellationToken
     }
 
     var output = RunwayCliShortVideo.ResolveOutput(parseResult.GetValue(outputOption), DateTime.UtcNow, resolvedName);
-    var options = CreateShortVideoOptionsFromPlan(parseResult, output.SegmentDirectory, plan);
+    var options = await CreateShortVideoOptionsFromPlanAsync(parseResult, output.SegmentDirectory, plan, cancellationToken).ConfigureAwait(false);
     return await RunShortVideoPlanAsync(parseResult, plan, options, output, cancellationToken).ConfigureAwait(false);
 });
 
@@ -1768,6 +1768,152 @@ videoToVideoCommand.SetAction((ParseResult parseResult, CancellationToken cancel
             ct).ConfigureAwait(false);
     }, cancellationToken));
 
+var upscaleResolutionOption = new Option<string?>("--resolution")
+{
+    Description = "Target output resolution for magnific-video-upscaler-creative: 720p, 1k, 2k (default), or 4k.",
+};
+
+var upscaleTargetFramerateOption = new Option<string?>("--target-framerate")
+{
+    Description = "Target frames per second for enhance-frame-rate: 24, 25, 30, 48, 50, 60, 120, or the NTSC rates 23_98, 29_97, 59_94.",
+};
+
+var upscaleCreativityOption = new Option<int?>("--creativity")
+{
+    Description = "How much AI-generated detail to add, 0 (faithful) to 100 (magnific-video-upscaler-creative).",
+};
+
+var upscaleSharpenOption = new Option<int?>("--sharpen")
+{
+    Description = "Sharpness intensity, 0 to 100.",
+};
+
+var upscaleSmartGrainOption = new Option<int?>("--smart-grain")
+{
+    Description = "Grain and texture enhancement, 0 to 100.",
+};
+
+var upscaleUltraDetailOption = new Option<int?>("--ultra-detail")
+{
+    Description = "Fine detail enhancement, 0 to 100 (image upscale).",
+};
+
+var upscaleFlavorOption = new Option<string?>("--flavor")
+{
+    Description = "Processing style. Video: vivid or natural. Image: sublime, photo, or photo_denoiser.",
+};
+
+var upscaleFpsBoostOption = new Option<bool?>("--fps-boost")
+{
+    Description = "Increase the output frame rate (magnific-video-upscaler-creative).",
+};
+
+var upscaleScaleFactorOption = new Option<double?>("--scale-factor")
+{
+    Description = "Multiplies each input dimension on image upscale: 2, 4, 8, or 16.",
+};
+
+var videoUpscaleCommand = new Command("video-upscale", "Upscale a video, or interpolate it to a higher frame rate.")
+{
+    sourceVideoOption,
+    videoModelOption,
+    upscaleResolutionOption,
+    upscaleTargetFramerateOption,
+    upscaleCreativityOption,
+    upscaleSharpenOption,
+    upscaleSmartGrainOption,
+    upscaleFlavorOption,
+    upscaleFpsBoostOption,
+    outputOption,
+    jsonOption,
+    noWaitOption,
+    pollIntervalOption,
+    retryOnInternalErrorOption,
+    retryBackoffSecondsOption,
+};
+rootCommand.Subcommands.Add(videoUpscaleCommand);
+videoUpscaleCommand.SetAction((ParseResult parseResult, CancellationToken cancellationToken) =>
+    RunWithClientAsync(parseResult, async (client, runwayVersion, ct) =>
+    {
+        var json = parseResult.GetValue(jsonOption);
+        var request = json is { Length: > 0 }
+            ? await RunwayCliGeneration.ReadGeneratedJsonAsync<CreateVideoUpscaleRequest>(json, ct).ConfigureAwait(false)
+            : await RunwayCliGeneration.CreateVideoUpscaleRequestAsync(
+                RequireOption(parseResult, sourceVideoOption),
+                parseResult.GetValue(videoModelOption),
+                parseResult.GetValue(upscaleResolutionOption),
+                parseResult.GetValue(upscaleTargetFramerateOption),
+                parseResult.GetValue(upscaleCreativityOption),
+                parseResult.GetValue(upscaleSharpenOption),
+                parseResult.GetValue(upscaleSmartGrainOption),
+                parseResult.GetValue(upscaleFlavorOption),
+                parseResult.GetValue(upscaleFpsBoostOption),
+                ct).ConfigureAwait(false);
+
+        await HandleGenerationTaskAsync(
+            client,
+            runwayVersion,
+            async submitCt => (await client.StartGenerating.CreateVideoUpscaleAsync(
+                request: request,
+                xRunwayVersion: runwayVersion,
+                cancellationToken: submitCt).ConfigureAwait(false)).Id,
+            parseResult,
+            ".mp4",
+            "runway-video-upscale",
+            ct).ConfigureAwait(false);
+    }, cancellationToken));
+
+var upscaleImageOption = new Option<string?>("--image")
+{
+    Description = "Local path, HTTPS URL, Runway URI, or data URI image to upscale.",
+};
+
+var imageUpscaleCommand = new Command("image-upscale", "Upscale an image with the magnific precision upscaler.")
+{
+    upscaleImageOption,
+    videoModelOption,
+    upscaleScaleFactorOption,
+    upscaleSharpenOption,
+    upscaleSmartGrainOption,
+    upscaleUltraDetailOption,
+    upscaleFlavorOption,
+    outputOption,
+    jsonOption,
+    noWaitOption,
+    pollIntervalOption,
+    retryOnInternalErrorOption,
+    retryBackoffSecondsOption,
+};
+rootCommand.Subcommands.Add(imageUpscaleCommand);
+imageUpscaleCommand.SetAction((ParseResult parseResult, CancellationToken cancellationToken) =>
+    RunWithClientAsync(parseResult, async (client, runwayVersion, ct) =>
+    {
+        var json = parseResult.GetValue(jsonOption);
+        var request = json is { Length: > 0 }
+            ? await RunwayCliGeneration.ReadGeneratedJsonAsync<CreateImageUpscaleRequest>(json, ct).ConfigureAwait(false)
+            : await RunwayCliGeneration.CreateImageUpscaleRequestAsync(
+                RequireOption(parseResult, upscaleImageOption),
+                parseResult.GetValue(videoModelOption),
+                parseResult.GetValue(upscaleScaleFactorOption),
+                parseResult.GetValue(upscaleSharpenOption),
+                parseResult.GetValue(upscaleSmartGrainOption),
+                parseResult.GetValue(upscaleUltraDetailOption),
+                parseResult.GetValue(upscaleFlavorOption),
+                ct).ConfigureAwait(false);
+
+        await HandleGenerationTaskAsync(
+            client,
+            runwayVersion,
+            async submitCt => (await client.StartGenerating.CreateImageUpscaleAsync(
+                request: request,
+                xRunwayVersion: runwayVersion,
+                cancellationToken: submitCt).ConfigureAwait(false)).Id,
+            parseResult,
+            ".png",
+            "runway-image-upscale",
+            ct).ConfigureAwait(false);
+    }, cancellationToken));
+
 var characterImageOption = new Option<string?>("--character-image")
 {
     Description = "Local path, HTTPS URL, Runway URI, or data URI character image.",
@@ -1798,6 +1944,7 @@ var characterPerformanceCommand = new Command("character-performance", "Start an
     characterImageOption,
     characterVideoOption,
     referenceVideoOption,
+    videoModelOption,
     outputOption,
     videoRatioOption,
     seedOption,
@@ -1822,6 +1969,7 @@ characterPerformanceCommand.SetAction((ParseResult parseResult, CancellationToke
                 parseResult.GetValue(characterImageOption),
                 parseResult.GetValue(characterVideoOption),
                 RequireOption(parseResult, referenceVideoOption),
+                parseResult.GetValue(videoModelOption),
                 parseResult.GetValue(videoRatioOption),
                 parseResult.GetValue(seedOption),
                 parseResult.GetValue(bodyControlOption),
@@ -3509,9 +3657,10 @@ async Task HandleGenerationTaskAsync(
     }
 }
 
-RunwayShortVideoOptions CreateShortVideoOptions(
+async Task<RunwayShortVideoOptions> CreateShortVideoOptionsAsync(
     ParseResult parseResult,
     string segmentOutput,
+    CancellationToken cancellationToken,
     RunwayCliMarketingBrief? brief = null)
 {
     var explicitRatio = parseResult.GetValue(shortVideoRatioOption);
@@ -3529,9 +3678,9 @@ RunwayShortVideoOptions CreateShortVideoOptions(
         Seed = parseResult.GetValue(seedOption),
         Style = parseResult.GetValue(shortVideoStyleOption),
         PublicFigureThreshold = parseResult.GetValue(publicFigureThresholdOption),
-        ReferenceImageUris = ResolveShortVideoReferenceImages(parseResult),
-        ReferenceVideoUris = ResolveReferenceList(parseResult, videoReferenceVideoOption),
-        ReferenceAudioUris = ResolveReferenceList(parseResult, videoReferenceAudioOption),
+        ReferenceImageUris = await ResolveShortVideoReferenceImagesAsync(parseResult, cancellationToken).ConfigureAwait(false),
+        ReferenceVideoUris = await ResolveReferenceListAsync(parseResult, videoReferenceVideoOption, cancellationToken).ConfigureAwait(false),
+        ReferenceAudioUris = await ResolveReferenceListAsync(parseResult, videoReferenceAudioOption, cancellationToken).ConfigureAwait(false),
         WaitForCompletion = !parseResult.GetValue(noWaitOption),
         DownloadOutputs = !parseResult.GetValue(noWaitOption),
         Output = segmentOutput,
@@ -3543,14 +3692,31 @@ RunwayShortVideoOptions CreateShortVideoOptions(
 
 // Short-video shots are text-to-video, which now accepts image references on the seedance/hailuo/wan3/
 // grok models — so --soul-id and --reference-image can flow straight into every shot instead of forcing
-// the image -> image-to-video chain.
-IReadOnlyList<string>? ResolveShortVideoReferenceImages(ParseResult parseResult) =>
-    MergeSoulIdImages(parseResult, parseResult.GetValue(videoReferenceImageOption)) is { Length: > 0 } merged
-        ? merged
-        : null;
+// the image -> image-to-video chain. Local paths are inlined as data URIs here because the library-side
+// short-video runner takes URIs, not paths.
+async Task<IReadOnlyList<string>?> ResolveShortVideoReferenceImagesAsync(ParseResult parseResult, CancellationToken cancellationToken) =>
+    await NormalizeReferenceListAsync(
+        MergeSoulIdImages(parseResult, parseResult.GetValue(videoReferenceImageOption)),
+        cancellationToken).ConfigureAwait(false);
 
-IReadOnlyList<string>? ResolveReferenceList(ParseResult parseResult, Option<string[]> option) =>
-    parseResult.GetValue(option) is { Length: > 0 } values ? values : null;
+async Task<IReadOnlyList<string>?> ResolveReferenceListAsync(ParseResult parseResult, Option<string[]> option, CancellationToken cancellationToken) =>
+    await NormalizeReferenceListAsync(parseResult.GetValue(option), cancellationToken).ConfigureAwait(false);
+
+async Task<IReadOnlyList<string>?> NormalizeReferenceListAsync(string[]? values, CancellationToken cancellationToken)
+{
+    if (values is not { Length: > 0 })
+    {
+        return null;
+    }
+
+    var normalized = new List<string>(values.Length);
+    foreach (var value in values)
+    {
+        normalized.Add(await RunwayCliGeneration.NormalizeInputAssetAsync(value, cancellationToken).ConfigureAwait(false));
+    }
+
+    return normalized;
+}
 
 RunwayCliShortVideoPlannerOptions CreateShortVideoPlannerOptions(ParseResult parseResult)
 {
@@ -3598,10 +3764,11 @@ async Task<RunwayCliMarketingBrief> ResolveMarketingBriefAsync(
     return collected;
 }
 
-RunwayShortVideoOptions CreateShortVideoOptionsFromPlan(
+async Task<RunwayShortVideoOptions> CreateShortVideoOptionsFromPlanAsync(
     ParseResult parseResult,
     string segmentOutput,
-    RunwayShortVideoPlan plan)
+    RunwayShortVideoPlan plan,
+    CancellationToken cancellationToken)
 {
     return new RunwayShortVideoOptions
     {
@@ -3613,9 +3780,9 @@ RunwayShortVideoOptions CreateShortVideoOptionsFromPlan(
         Seed = parseResult.GetValue(seedOption),
         Style = plan.Style,
         PublicFigureThreshold = parseResult.GetValue(publicFigureThresholdOption),
-        ReferenceImageUris = ResolveShortVideoReferenceImages(parseResult),
-        ReferenceVideoUris = ResolveReferenceList(parseResult, videoReferenceVideoOption),
-        ReferenceAudioUris = ResolveReferenceList(parseResult, videoReferenceAudioOption),
+        ReferenceImageUris = await ResolveShortVideoReferenceImagesAsync(parseResult, cancellationToken).ConfigureAwait(false),
+        ReferenceVideoUris = await ResolveReferenceListAsync(parseResult, videoReferenceVideoOption, cancellationToken).ConfigureAwait(false),
+        ReferenceAudioUris = await ResolveReferenceListAsync(parseResult, videoReferenceAudioOption, cancellationToken).ConfigureAwait(false),
         WaitForCompletion = !parseResult.GetValue(noWaitOption),
         DownloadOutputs = !parseResult.GetValue(noWaitOption),
         Output = segmentOutput,

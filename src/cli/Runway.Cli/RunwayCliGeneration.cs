@@ -21,6 +21,18 @@ internal static class RunwayCliGeneration
     public const string DefaultVideoToVideoModel = "aleph2";
 
     public const string TextToImageEndpoint = "text_to_image";
+    public const string CharacterPerformanceEndpoint = "character_performance";
+    public const string VideoUpscaleEndpoint = "video_upscale";
+    public const string ImageUpscaleEndpoint = "image_upscale";
+
+    /// <inheritdoc cref="DefaultTextToVideoModel"/>
+    public const string DefaultCharacterPerformanceModel = "act_two";
+
+    /// <inheritdoc cref="DefaultTextToVideoModel"/>
+    public const string DefaultVideoUpscaleModel = "magnific_video_upscaler_creative";
+
+    /// <inheritdoc cref="DefaultTextToVideoModel"/>
+    public const string DefaultImageUpscaleModel = "magnific_precision_upscaler_v2";
 
     /// <inheritdoc cref="DefaultTextToVideoModel"/>
     public const string DefaultTextToImageModel = "gemini_2.5_flash";
@@ -316,6 +328,7 @@ internal static class RunwayCliGeneration
         string? characterImage,
         string? characterVideo,
         string referenceVideo,
+        string? model,
         string? ratio,
         int? seed,
         bool? bodyControl,
@@ -329,9 +342,10 @@ internal static class RunwayCliGeneration
             throw new ArgumentException("Set --character-image or --character-video.");
         }
 
+        var normalizedModel = NormalizeVideoModel(model, DefaultCharacterPerformanceModel, CharacterPerformanceEndpoint);
         var body = new JsonObject
         {
-            ["model"] = "act_two",
+            ["model"] = normalizedModel,
             ["character"] = new JsonObject
             {
                 ["type"] = characterVideo is { Length: > 0 } ? "video" : "image",
@@ -344,12 +358,123 @@ internal static class RunwayCliGeneration
             },
         };
 
-        SetIfNotNull(body, "ratio", ratio);
-        SetIfNotNull(body, "seed", seed);
-        SetIfNotNull(body, "bodyControl", bodyControl);
-        SetIfNotNull(body, "expressionIntensity", expressionIntensity);
-        AddContentModeration(body, publicFigureThreshold);
+        SetIfSupported(body, normalizedModel, CharacterPerformanceEndpoint, "ratio", ratio);
+        RequireAndSet(body, normalizedModel, CharacterPerformanceEndpoint, "seed", "--seed", seed);
+        if (bodyControl is { } resolvedBodyControl)
+        {
+            RequireSupport(normalizedModel, CharacterPerformanceEndpoint, "bodyControl", "--body-control");
+            body["bodyControl"] = resolvedBodyControl;
+        }
+
+        RequireAndSet(body, normalizedModel, CharacterPerformanceEndpoint, "expressionIntensity", "--expression-intensity", expressionIntensity);
+        AddContentModeration(body, normalizedModel, CharacterPerformanceEndpoint, publicFigureThreshold);
         return ToGenerated<CreateCharacterPerformanceRequest>(body);
+    }
+
+    /// <summary>
+    /// Builds a <c>POST /v1/video_upscale</c> body. The two models on this endpoint take disjoint,
+    /// <c>additionalProperties: false</c> parameter sets — <c>magnific_video_upscaler_creative</c> takes the
+    /// detail/grain knobs and a target resolution, while <c>enhance_frame_rate</c> takes only a target
+    /// framerate — so each flag is gated on what the chosen model declares.
+    /// </summary>
+    public static async Task<CreateVideoUpscaleRequest> CreateVideoUpscaleRequestAsync(
+        string video,
+        string? model,
+        string? resolution,
+        string? targetFramerate,
+        int? creativity,
+        int? sharpen,
+        int? smartGrain,
+        string? flavor,
+        bool? fpsBoost,
+        CancellationToken cancellationToken)
+    {
+        var normalizedModel = NormalizeVideoModel(model, DefaultVideoUpscaleModel, VideoUpscaleEndpoint);
+        var body = new JsonObject
+        {
+            ["model"] = normalizedModel,
+            ["videoUri"] = await NormalizeInputAssetAsync(video, cancellationToken).ConfigureAwait(false),
+        };
+
+        RequireAndSet(body, normalizedModel, VideoUpscaleEndpoint, "resolution", "--resolution", resolution);
+        RequireAndSet(body, normalizedModel, VideoUpscaleEndpoint, "targetFramerate", "--target-framerate", targetFramerate);
+        RequireAndSet(body, normalizedModel, VideoUpscaleEndpoint, "creativity", "--creativity", creativity);
+        RequireAndSet(body, normalizedModel, VideoUpscaleEndpoint, "sharpen", "--sharpen", sharpen);
+        RequireAndSet(body, normalizedModel, VideoUpscaleEndpoint, "smartGrain", "--smart-grain", smartGrain);
+        RequireAndSet(body, normalizedModel, VideoUpscaleEndpoint, "flavor", "--flavor", flavor);
+
+        if (fpsBoost is { } resolvedFpsBoost)
+        {
+            RequireSupport(normalizedModel, VideoUpscaleEndpoint, "fpsBoost", "--fps-boost");
+            body["fpsBoost"] = resolvedFpsBoost;
+        }
+
+        EnsureRequiredUpscaleParameters(normalizedModel, VideoUpscaleEndpoint, body);
+        return ToGenerated<CreateVideoUpscaleRequest>(body);
+    }
+
+    /// <summary>
+    /// Builds a <c>POST /v1/image_upscale</c> body, gated the same way as the video endpoint.
+    /// </summary>
+    public static async Task<CreateImageUpscaleRequest> CreateImageUpscaleRequestAsync(
+        string image,
+        string? model,
+        double? scaleFactor,
+        int? sharpen,
+        int? smartGrain,
+        int? ultraDetail,
+        string? flavor,
+        CancellationToken cancellationToken)
+    {
+        var normalizedModel = NormalizeVideoModel(model, DefaultImageUpscaleModel, ImageUpscaleEndpoint);
+        var body = new JsonObject
+        {
+            ["model"] = normalizedModel,
+            ["imageUri"] = await NormalizeInputAssetAsync(image, cancellationToken).ConfigureAwait(false),
+        };
+
+        if (scaleFactor is { } resolvedScaleFactor)
+        {
+            RequireSupport(normalizedModel, ImageUpscaleEndpoint, "scaleFactor", "--scale-factor");
+            var allowed = RunwayModelSchema.GetAllowedValues(normalizedModel, ImageUpscaleEndpoint, "scaleFactor");
+            var rendered = resolvedScaleFactor.ToString(CultureInfo.InvariantCulture);
+            if (allowed.Count > 0 && !allowed.Contains(rendered, StringComparer.Ordinal))
+            {
+                throw new ArgumentException($"--scale-factor must be one of: {string.Join(", ", allowed)}.");
+            }
+
+            body["scaleFactor"] = resolvedScaleFactor;
+        }
+
+        RequireAndSet(body, normalizedModel, ImageUpscaleEndpoint, "sharpen", "--sharpen", sharpen);
+        RequireAndSet(body, normalizedModel, ImageUpscaleEndpoint, "smartGrain", "--smart-grain", smartGrain);
+        RequireAndSet(body, normalizedModel, ImageUpscaleEndpoint, "ultraDetail", "--ultra-detail", ultraDetail);
+        RequireAndSet(body, normalizedModel, ImageUpscaleEndpoint, "flavor", "--flavor", flavor);
+
+        EnsureRequiredUpscaleParameters(normalizedModel, ImageUpscaleEndpoint, body);
+        return ToGenerated<CreateImageUpscaleRequest>(body);
+    }
+
+    /// <summary>
+    /// Fails when a required parameter of the chosen upscale model was not supplied, naming the flag.
+    /// `enhance_frame_rate` requires `--target-framerate`, which the creative upscaler does not accept.
+    /// </summary>
+    private static void EnsureRequiredUpscaleParameters(string model, string endpoint, JsonObject body)
+    {
+        foreach (var entry in RunwayModelSchema.Lookup(model))
+        {
+            if (!string.Equals(entry.Endpoint, endpoint, StringComparison.Ordinal))
+            {
+                continue;
+            }
+
+            var missing = entry.RequiredParameters.Where(name => !body.ContainsKey(name)).ToList();
+            if (missing.Count > 0)
+            {
+                throw new ArgumentException(
+                    $"Model `{model}` on `{endpoint}` requires {string.Join(", ", missing.Select(RunwayModelSchema.DescribeRequiredParam))} per the Runway OpenAPI spec.");
+            }
+        }
     }
 
     public static CreateSoundEffectRequest CreateSoundEffectRequest(string prompt, double? duration, bool loop)
@@ -511,6 +636,9 @@ internal static class RunwayCliGeneration
             "seedream5-pro" or "seedream5.pro" or "seedream-5-pro" => "seedream5_pro",
             "seedream5-lite" or "seedream5.lite" or "seedream-5-lite" => "seedream5_lite",
             "grok-imagine-image-2" or "grok-imagine-image2" or "grok_imagine_image2" => "grok_imagine_image_2",
+            "enhance-frame-rate" or "frame-rate" or "fps" => "enhance_frame_rate",
+            "magnific-video-upscaler-creative" or "magnific-video" or "magnific" => "magnific_video_upscaler_creative",
+            "magnific-precision-upscaler-v2" or "magnific-precision" or "magnific-image" => "magnific_precision_upscaler_v2",
             "gen4_aleph" or "gen4-aleph" or "aleph" or "aleph-2" => "aleph2",
             _ => candidate,
         };

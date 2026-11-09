@@ -494,6 +494,12 @@ dnx Runway.Cli image "a product poster for a transparent speaker" \
   --grounding \
   --output-format jpeg
 
+# Upscale, or interpolate to a higher frame rate. The two video-upscale models take disjoint options,
+# so a flag the chosen model does not accept is refused with the model that does.
+dnx Runway.Cli video-upscale --video ./shot.mp4 --resolution 4k --creativity 40 --flavor vivid
+dnx Runway.Cli video-upscale --video ./shot.mp4 --model enhance-frame-rate --target-framerate 59_94
+dnx Runway.Cli image-upscale --image ./still.png --scale-factor 4 --flavor photo --sharpen 20
+
 # ProRes/HDR delivery straight out of gen4.5.
 dnx Runway.Cli text-to-video "a cinematic drone shot over a neon desert highway" \
   --model gen4.5 \
@@ -654,6 +660,8 @@ rather than dropped or sent into a schema that rejects it:
 | `ad-video create` | Runway-native ad recipe planner over `POST /v1/text_to_video` or `POST /v1/image_to_video` when `--image` is supplied | `veo3.1_fast` by default; accepts video models |
 | `image-to-video` | `POST /v1/image_to_video` | `gen4.5`, `gen4_turbo`, `veo3.1`, `veo3.1_fast`, `hailuo3`, `happyhorse_1_0`, `seedance2`, `seedance2_fast`, `seedance2_mini`, `seedance2_5`, `gemini_omni_flash`, `grok_imagine_1_5`, `wan3` |
 | `video-to-video` | `POST /v1/video_to_video` | `aleph2`, `hailuo3`, `seedance2`, `seedance2_fast`, `seedance2_mini`, `seedance2_5`, `gemini_omni_flash` |
+| `video-upscale` | `POST /v1/video_upscale` | `magnific_video_upscaler_creative` (detail/grain/resolution), `enhance_frame_rate` (frame interpolation) |
+| `image-upscale` | `POST /v1/image_upscale` | `magnific_precision_upscaler_v2` |
 | `image` | `POST /v1/text_to_image` | `gen4_image_turbo`, `gen4_image`, `gemini_image3_pro`, `gemini_image3.1_flash`, `gpt_image_2`, `gemini_2.5_flash`, `muse_image`, `seedream5_pro`, `seedream5_lite`, `grok_imagine_image_2` |
 | `product-photoshoot create` | Runway-native product photoshoot recipe planner over `POST /v1/text_to_image` | `gpt_image_2` by default; accepts image models |
 | `marketplace-cards create` | Runway-native marketplace-style card recipe planner over `POST /v1/text_to_image` | `gpt_image_2` by default; accepts image models |

@@ -48,6 +48,30 @@ internal static class RunwayCliCreativeRecipes
         "virtual_try_on",
     ];
 
+    /// <summary>
+    /// Normalizes a recipe <c>--model</c> against the embedded OpenAPI spec for the image surface, so a
+    /// wrong or retired model id fails while planning instead of being written into the plan JSON and
+    /// rejected later, once per job, at generation time.
+    /// </summary>
+    private static string ResolveImageModel(string? model) =>
+        RunwayCliGeneration.NormalizeVideoModel(
+            FirstNonEmpty(model, DefaultImageModel),
+            DefaultImageModel,
+            RunwayCliGeneration.TextToImageEndpoint);
+
+    /// <summary>
+    /// Same for the video surface. Ad-video jobs with reference images run through
+    /// <c>image_to_video</c> and the rest through <c>text_to_video</c>, so the model is checked against
+    /// whichever endpoint this plan will actually post to.
+    /// </summary>
+    private static string ResolveVideoModel(string? model, string[]? referenceImages) =>
+        RunwayCliGeneration.NormalizeVideoModel(
+            FirstNonEmpty(model, DefaultVideoModel),
+            DefaultVideoModel,
+            referenceImages is { Length: > 0 }
+                ? RunwayCliGeneration.ImageToVideoEndpoint
+                : RunwayCliGeneration.TextToVideoEndpoint);
+
     public static RunwayCliCreativeRecipePlan CreateProductPhotoshootPlan(
         string prompt,
         string[]? referenceImages,
@@ -63,7 +87,7 @@ internal static class RunwayCliCreativeRecipes
         var normalizedMode = NormalizeChoice(mode, "product_shot", ProductPhotoshootModes, "product photoshoot mode");
         var resolvedCount = ValidateCount(count ?? GetDefaultProductPhotoshootCount(normalizedMode), 1, 16, "--count");
         var resolvedRatio = FirstNonEmpty(ratio, DefaultImageRatio)!;
-        var resolvedModel = FirstNonEmpty(model, DefaultImageModel)!;
+        var resolvedModel = ResolveImageModel(model);
         var resolvedQuality = FirstNonEmpty(quality, DefaultImageQuality);
         var resolvedResolution = FirstNonEmpty(resolution, DefaultImageResolution);
         var references = ToList(referenceImages);
@@ -127,7 +151,7 @@ internal static class RunwayCliCreativeRecipes
     {
         var normalizedScope = NormalizeChoice(scope, "main", MarketplaceScopes, "marketplace card scope");
         var resolvedRatio = FirstNonEmpty(ratio, DefaultImageRatio)!;
-        var resolvedModel = FirstNonEmpty(model, DefaultImageModel)!;
+        var resolvedModel = ResolveImageModel(model);
         var references = ToList(assets);
         var baseLabels = GetMarketplaceLabels(normalizedScope);
         var resolvedCount = ValidateCount(count ?? baseLabels.Count, 1, 16, "--count");
@@ -187,7 +211,7 @@ internal static class RunwayCliCreativeRecipes
         var normalizedMode = NormalizeChoice(mode, "ugc", AdVideoModes, "ad video mode");
         var resolvedShots = ValidateCount(shots ?? 1, 1, 6, "--shots");
         var resolvedRatio = FirstNonEmpty(ratio, DefaultVideoRatio)!;
-        var resolvedModel = FirstNonEmpty(model, DefaultVideoModel)!;
+        var resolvedModel = ResolveVideoModel(model, referenceImages);
         var resolvedDuration = duration ?? DefaultVideoDurationSeconds;
         if (resolvedDuration <= 0)
         {

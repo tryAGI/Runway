@@ -52,4 +52,6 @@ if (invocation.IsFailed)
 {
     Console.WriteLine($"Failure: {invocation.Failed!.Failure}");
 }
+
+EnsureWorkflowInvocationUsable(invocation, workflowId, "Fabric, Color, Texture Swap");
 ```

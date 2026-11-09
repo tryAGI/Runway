@@ -68,6 +68,8 @@ public partial class Tests
             Console.WriteLine($"Failure: {invocation.Failed!.Failure}");
         }
 
+        EnsureWorkflowInvocationUsable(invocation, workflowId, "Fabric, Color, Texture Swap");
+
         invocation.IsSucceeded.Should().BeTrue();
         invocation.Succeeded!.Output.Should().NotBeEmpty();
     }
