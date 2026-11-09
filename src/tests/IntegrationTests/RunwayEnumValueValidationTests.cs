@@ -55,6 +55,33 @@ public sealed class RunwayEnumValueValidationTests
     }
 
     [TestMethod]
+    public async Task CliEnumChecksAreNotMadeRedundantByTheStrictConverters()
+    {
+        // These two layers look like duplicates once `--reject-unknown-enum-values` is on, and they are
+        // not. The converters only reject; the CLI also normalizes. `VIVID` is not a value the spec
+        // declares, so the strict converter would throw on it, while the CLI accepts it and sends
+        // `vivid`. Deleting the CLI-side check would reject input that works today, so this test is
+        // here to say so before someone tidies it away.
+        var normalized = await RunwayCliGeneration.CreateVideoUpscaleRequestAsync(
+            VideoUri, null, null, null, null, null, null, flavor: "VIVID", fpsBoost: null,
+            cancellationToken: CancellationToken.None);
+
+        normalized.Should().NotBeNull("the CLI normalizes case before the converter ever sees the value");
+
+        // The converter also cannot produce a usable message: it reports
+        // `Unknown value 'x' for global::Runway.<GeneratedType>`, naming a generated type and listing
+        // no alternatives. The CLI check runs first, while building the request, so that message never
+        // reaches a user — every CLI-side failure names the flag and the accepted values instead.
+        var act = async () => await RunwayCliGeneration.CreateVideoUpscaleRequestAsync(
+            VideoUri, null, null, null, null, null, null, flavor: "bogus", fpsBoost: null,
+            cancellationToken: CancellationToken.None);
+
+        var thrown = await act.Should().ThrowAsync<ArgumentException>();
+        thrown.Which.Message.Should().Contain("Accepted values")
+            .And.NotContain("global::", "a generated type name is not an actionable CLI error");
+    }
+
+    [TestMethod]
     public async Task VideoUpscale_RejectsAnOutOfEnumFlavor()
     {
         var act = async () => await RunwayCliGeneration.CreateVideoUpscaleRequestAsync(
