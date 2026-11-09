@@ -14,6 +14,8 @@ public partial class Tests
     [TestMethod]
     public async Task Example_RunBuiltInWorkflowSdk_AiHairSalon_BytesInput()
     {
+        RequireBillableExamplesEnabled("The AI Hair Salon built-in workflow", approximateCredits: 90);
+
         using var client = GetAuthenticatedClient();
 
         var portraitPath = Path.Combine(

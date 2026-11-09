@@ -17,6 +17,11 @@ dotnet build Runway.slnx
 # Run all tests (requires RUNWAY_API_KEY env var)
 dotnet test src/tests/IntegrationTests
 
+# The three built-in-workflow examples (AI Hair Salon) each run a published Runway graph that fans out
+# into several image generations — roughly 90 credits per test, ~270 for the set. They report
+# inconclusive unless you opt in:
+RUNWAY_RUN_BILLABLE_EXAMPLES=1 dotnet test src/tests/IntegrationTests
+
 # Run a single test
 dotnet test src/tests/IntegrationTests --filter "CreateImageToVideo"
 

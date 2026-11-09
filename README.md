@@ -485,6 +485,9 @@ dnx Runway.Cli short-video "a tiny robot finds a glowing seed" \
   --reference-image ./robot.png \
   --output ./runway-short-video
 
+# See which models your account has that the embedded spec has not caught up with (free, no credits).
+dnx Runway.Cli models --account
+
 # Point the CLI at a proxy, staging, or a local stub. --base-url wins over RUNWAY_BASE_URL and .env.
 dnx Runway.Cli text-to-video "a smoke test" --base-url http://localhost:8080 --no-wait
 
@@ -684,6 +687,7 @@ rather than dropped or sent into a schema that rejects it:
 | `soul-id` | Local client-side registry under `~/.runway-cli/soul-ids/<id>/` | No API call; reference photos for face-faithful generation |
 | `auth` | Local credentials file under `~/.runway-cli/credentials.json` | No API call; `set/show/clear` API key |
 | `generate` | Router into `image`, `video`, `image-to-video`, `text-to-speech`, `sound-effect` by `--kind` | Per underlying command |
+| `models` | None (parses the embedded Runway OpenAPI spec) | Model IDs per endpoint, grouped by family. `models --account` additionally calls `GET /v1/organization` (no credits) and reports models your account is entitled to that the embedded spec does not describe yet, models reachable as dedicated endpoints rather than a `--model` value, and spec models your tier lacks |
 | `models schema <model>` | None (parses embedded Runway OpenAPI spec) | Auto-derived endpoints + required/optional request parameters per model id; pre-flight validates `--model` against the target endpoint on `image`/`video`/`text-to-video`/`image-to-video` |
 | `marketing-studio avatars list` | `GET /v1/avatars` | Alias of `avatar list`; for Higgsfield Marketing Studio parity |
 | `marketing-studio webproducts fetch --url` | None (client-side OG/Twitter metadata extraction) | No API call |

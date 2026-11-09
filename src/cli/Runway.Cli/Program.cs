@@ -2244,30 +2244,151 @@ voiceIsolationCommand.SetAction((ParseResult parseResult, CancellationToken canc
             ct).ConfigureAwait(false);
     }, cancellationToken));
 
-var modelsCommand = new Command("models", "List Runway API endpoint families and model IDs supported by the CLI.");
-rootCommand.Subcommands.Add(modelsCommand);
-modelsCommand.SetAction(_ =>
+var modelsAccountOption = new Option<bool>("--account")
 {
-    Console.WriteLine("Video generation:");
-    Console.WriteLine("  text-to-video: gen4.5, veo3.1, veo3.1_fast, veo3");
-    Console.WriteLine("  short-video: multi-shot text-to-video orchestration over gen4.5, veo3.1, veo3.1_fast, veo3");
-    Console.WriteLine("  image-to-video: gen4.5, gen4_turbo, veo3.1, veo3.1_fast, happyhorse_1_0, seedance2, seedance2_fast, veo3");
-    Console.WriteLine("  video-to-video: aleph2, seedance2, seedance2_fast");
-    Console.WriteLine("  character-performance: act_two");
+    Description = "Also call the Runway API and report models your account is entitled to that the embedded OpenAPI spec does not describe yet (and vice versa). Requires an API key; costs no credits.",
+};
+
+var modelsCommand = new Command("models", "List the model IDs each endpoint accepts, read from the embedded OpenAPI spec.")
+{
+    modelsAccountOption,
+};
+rootCommand.Subcommands.Add(modelsCommand);
+modelsCommand.SetAction((ParseResult parseResult, CancellationToken cancellationToken) =>
+{
+    // Endpoint families are grouped for readability, but the model lists themselves come from the spec,
+    // so this never drifts from what the SDK can actually send.
+    var groups = new (string Title, string[] Endpoints)[]
+    {
+        ("Video generation", ["text_to_video", "image_to_video", "video_to_video", "character_performance"]),
+        ("Video post-processing", ["video_upscale", "video_to_hdr"]),
+        ("Image generation", ["text_to_image", "image_upscale"]),
+        ("Audio and voice", ["sound_effect", "text_to_speech", "speech_to_speech", "voice_dubbing", "voice_isolation"]),
+        ("Avatars", ["avatar_videos"]),
+    };
+
+    var listed = new HashSet<string>(StringComparer.Ordinal);
+    foreach (var (title, endpoints) in groups)
+    {
+        var rendered = new List<string>();
+        foreach (var endpoint in endpoints)
+        {
+            var models = RunwayModelSchema.ModelsForEndpoint(endpoint);
+            if (models.Count == 0)
+            {
+                continue;
+            }
+
+            foreach (var model in models)
+            {
+                listed.Add(model);
+            }
+
+            rendered.Add($"  {endpoint.Replace('_', '-')}: {string.Join(", ", models)}");
+        }
+
+        if (rendered.Count > 0)
+        {
+            Console.WriteLine($"{title}:");
+            rendered.ForEach(Console.WriteLine);
+            Console.WriteLine();
+        }
+    }
+
+    var ungrouped = RunwayModelSchema.KnownModelIds()
+        .Where(model => !listed.Contains(model))
+        .OrderBy(model => model, StringComparer.Ordinal)
+        .ToList();
+    if (ungrouped.Count > 0)
+    {
+        Console.WriteLine("Other endpoints:");
+        foreach (var model in ungrouped)
+        {
+            var endpoints = RunwayModelSchema.Lookup(model).Select(e => e.Endpoint).Distinct(StringComparer.Ordinal);
+            Console.WriteLine($"  {model}: {string.Join(", ", endpoints)}");
+        }
+
+        Console.WriteLine();
+    }
+
+    // Orchestration commands are not spec endpoints, but they are the surface most users reach for, so
+    // name the endpoint each one drives rather than leaving them undiscoverable here.
+    Console.WriteLine("CLI orchestration (not spec endpoints):");
+    Console.WriteLine("  short-video: multi-shot planner over text-to-video, or image-to-video with --keyframes");
+    Console.WriteLine("  product-photoshoot, marketplace-cards: recipe planners over text-to-image");
+    Console.WriteLine("  ad-video: recipe planner over text-to-video, or image-to-video with --image");
+    Console.WriteLine("  built-ins, workflow: published Runway workflow graphs");
     Console.WriteLine();
-    Console.WriteLine("Image generation:");
-    Console.WriteLine("  text-to-image: gen4_image_turbo, gen4_image, gemini_image3_pro, gpt_image_2, gemini_2.5_flash");
-    Console.WriteLine();
-    Console.WriteLine("Audio generation:");
-    Console.WriteLine("  sound-effect: eleven_text_to_sound_v2");
-    Console.WriteLine("  speech-to-speech: eleven_multilingual_sts_v2");
-    Console.WriteLine("  text-to-speech: eleven_multilingual_v2");
-    Console.WriteLine("  voice-dubbing: eleven_voice_dubbing");
-    Console.WriteLine("  voice-isolation: eleven_voice_isolation");
-    Console.WriteLine();
-    Console.WriteLine("Realtime and avatar:");
-    Console.WriteLine("  realtime sessions, avatar videos: gwm1_avatars");
-    Console.WriteLine("  voice design: eleven_ttv_v3, eleven_multilingual_ttv_v2");
+    Console.WriteLine("Run `runway models schema <model>` for the per-endpoint parameter list.");
+
+    if (!parseResult.GetValue(modelsAccountOption))
+    {
+        return Task.FromResult(0);
+    }
+
+    return RunWithClientAsync(parseResult, async (client, runwayVersion, ct) =>
+    {
+        var organization = await client.Organization.GetOrganizationAsync(
+            xRunwayVersion: runwayVersion,
+            cancellationToken: ct).ConfigureAwait(false);
+
+        var entitled = organization.Tier.Models.Keys.ToHashSet(StringComparer.Ordinal);
+        var described = RunwayModelSchema.KnownModelIds().ToHashSet(StringComparer.Ordinal);
+
+        // The spec is refreshed on a schedule and lags the account's entitlements, so a model can be
+        // billable to this account while no endpoint in the spec accepts it yet.
+        // A capability can be an endpoint rather than a model value (the recipes are), so RunwayModelSchema
+        // is asked whether it can address the name at all before calling it absent.
+        var missingFromSpec = entitled
+            .Where(model => !RunwayModelSchema.IsKnown(model))
+            .OrderBy(model => model, StringComparer.Ordinal).ToList();
+        var asEndpoints = entitled
+            .Where(model => !described.Contains(model) && RunwayModelSchema.IsKnown(model))
+            .OrderBy(model => model, StringComparer.Ordinal).ToList();
+        var missingFromAccount = described.Except(entitled, StringComparer.Ordinal)
+            .OrderBy(model => model, StringComparer.Ordinal).ToList();
+
+        Console.WriteLine();
+        Console.WriteLine($"Account entitlements: {entitled.Count} models. Embedded spec: {described.Count} models.");
+
+        if (missingFromSpec.Count > 0)
+        {
+            Console.WriteLine();
+            Console.WriteLine($"In your account but not in the embedded spec ({missingFromSpec.Count}) — not reachable through the typed SDK until the spec catches up:");
+            foreach (var model in missingFromSpec)
+            {
+                Console.WriteLine($"  {model}");
+            }
+
+            Console.WriteLine();
+            Console.WriteLine("The spec refreshes every 3 hours via .github/workflows/auto-update.yml; re-run `generate.sh` after it lands.");
+        }
+
+        if (asEndpoints.Count > 0)
+        {
+            Console.WriteLine();
+            Console.WriteLine($"Reachable as dedicated endpoints rather than a --model value ({asEndpoints.Count}):");
+            foreach (var model in asEndpoints)
+            {
+                Console.WriteLine($"  {model}");
+            }
+        }
+
+        if (missingFromAccount.Count > 0)
+        {
+            Console.WriteLine();
+            Console.WriteLine($"In the spec but not in your account's tier ({missingFromAccount.Count}) — requests would be rejected:");
+            foreach (var model in missingFromAccount)
+            {
+                Console.WriteLine($"  {model}");
+            }
+        }
+
+        if (missingFromSpec.Count == 0 && missingFromAccount.Count == 0 && asEndpoints.Count == 0)
+        {
+            Console.WriteLine("The embedded spec and your account entitlements match exactly.");
+        }
+    }, cancellationToken);
 });
 
 var documentCommand = new Command("document", "Manage knowledge documents.");
@@ -2727,10 +2848,23 @@ organizationCommand.Subcommands.Add(organizationUsageCommand);
 organizationUsageCommand.SetAction((ParseResult parseResult, CancellationToken cancellationToken) =>
     RunWithClientAsync(parseResult, async (client, runwayVersion, ct) =>
     {
+        // The spec types these as `format: date`, but the generated model carries DateTime, which
+        // serializes as a full ISO-8601 timestamp and the API rejects ("Invalid ISO date"). Carry the
+        // plain dates through the request's extension data instead, which serializes verbatim.
+        var usageRequest = new CreateOrganizationUsageRequest();
+        if (parseResult.GetValue(startDateOption) is { } usageStartDate)
+        {
+            usageRequest.AdditionalProperties["startDate"] = usageStartDate.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
+        }
+
+        if (parseResult.GetValue(beforeDateOption) is { } usageBeforeDate)
+        {
+            usageRequest.AdditionalProperties["beforeDate"] = usageBeforeDate.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
+        }
+
         var response = await client.Organization.CreateOrganizationUsageAsync(
+            request: usageRequest,
             xRunwayVersion: runwayVersion,
-            startDate: parseResult.GetValue(startDateOption),
-            beforeDate: parseResult.GetValue(beforeDateOption),
             cancellationToken: ct).ConfigureAwait(false);
 
         WriteJson(response);
@@ -3695,28 +3829,14 @@ async Task<RunwayShortVideoOptions> CreateShortVideoOptionsAsync(
 // the image -> image-to-video chain. Local paths are inlined as data URIs here because the library-side
 // short-video runner takes URIs, not paths.
 async Task<IReadOnlyList<string>?> ResolveShortVideoReferenceImagesAsync(ParseResult parseResult, CancellationToken cancellationToken) =>
-    await NormalizeReferenceListAsync(
+    await RunwayCliGeneration.NormalizeReferenceAssetsAsync(
         MergeSoulIdImages(parseResult, parseResult.GetValue(videoReferenceImageOption)),
         cancellationToken).ConfigureAwait(false);
 
 async Task<IReadOnlyList<string>?> ResolveReferenceListAsync(ParseResult parseResult, Option<string[]> option, CancellationToken cancellationToken) =>
-    await NormalizeReferenceListAsync(parseResult.GetValue(option), cancellationToken).ConfigureAwait(false);
-
-async Task<IReadOnlyList<string>?> NormalizeReferenceListAsync(string[]? values, CancellationToken cancellationToken)
-{
-    if (values is not { Length: > 0 })
-    {
-        return null;
-    }
-
-    var normalized = new List<string>(values.Length);
-    foreach (var value in values)
-    {
-        normalized.Add(await RunwayCliGeneration.NormalizeInputAssetAsync(value, cancellationToken).ConfigureAwait(false));
-    }
-
-    return normalized;
-}
+    await RunwayCliGeneration.NormalizeReferenceAssetsAsync(
+        parseResult.GetValue(option),
+        cancellationToken).ConfigureAwait(false);
 
 RunwayCliShortVideoPlannerOptions CreateShortVideoPlannerOptions(ParseResult parseResult)
 {

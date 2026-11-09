@@ -1175,17 +1175,41 @@ internal static class RunwayCliGeneration
         body[name] = value.Value;
     }
 
+    /// <summary>
+    /// Normalizes a list of reference assets to URIs the API accepts: HTTPS and <c>runway://</c> URIs pass
+    /// through, local paths are inlined as <c>data:</c> URIs. The single place reference assets are resolved,
+    /// so every surface that takes references — the generation commands, the short-video runner, the
+    /// recipes — resolves them identically. Returns null for an empty list so callers can omit the field.
+    /// </summary>
+    public static async Task<IReadOnlyList<string>?> NormalizeReferenceAssetsAsync(
+        IReadOnlyList<string>? values,
+        CancellationToken cancellationToken)
+    {
+        if (values is not { Count: > 0 })
+        {
+            return null;
+        }
+
+        var normalized = new List<string>(values.Count);
+        foreach (var value in values)
+        {
+            normalized.Add(await NormalizeInputAssetAsync(value, cancellationToken).ConfigureAwait(false));
+        }
+
+        return normalized;
+    }
+
     private static async Task<JsonArray> CreateVideoReferenceArrayAsync(
         string[] values,
         string? type,
         CancellationToken cancellationToken)
     {
         var items = new JsonArray();
-        foreach (var value in values)
+        foreach (var uri in await NormalizeReferenceAssetsAsync(values, cancellationToken).ConfigureAwait(false) ?? [])
         {
             var item = new JsonObject
             {
-                ["uri"] = await NormalizeInputAssetAsync(value, cancellationToken).ConfigureAwait(false),
+                ["uri"] = uri,
             };
             if (type is { Length: > 0 })
             {

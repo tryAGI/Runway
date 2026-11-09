@@ -5,6 +5,8 @@
 This example assumes `using Runway;` is in scope and `apiKey` contains your Runway API key.
 
 ```csharp
+RequireBillableExamplesEnabled("The AI Hair Salon built-in workflow", approximateCredits: 90);
+
 using var client = new RunwayClient(apiKey);
 
 // Locate the asset the bot just uploaded — here we use a sample portrait from artifacts.

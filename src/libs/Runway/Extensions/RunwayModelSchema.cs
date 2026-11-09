@@ -55,6 +55,7 @@ public static class RunwayModelSchema
     private const string EmbeddedSpecResource = "Runway.openapi.json";
 
     private static readonly Lazy<Dictionary<string, IReadOnlyList<RunwayModelEndpoint>>> Map = new(LoadMap);
+    private static readonly Lazy<IReadOnlyList<string>> Endpoints = new(LoadEndpoints);
 
     /// <summary>
     /// Maps spec property names to the CLI flag the user should add to satisfy them.
@@ -138,6 +139,45 @@ public static class RunwayModelSchema
     /// Enumerates every model id discovered in the embedded spec.
     /// </summary>
     public static IEnumerable<string> KnownModelIds() => Map.Value.Keys;
+
+    /// <summary>
+    /// Every POST endpoint the embedded spec declares, named the way <see cref="RunwayModelEndpoint.Endpoint"/>
+    /// names them — <c>text_to_video</c>, <c>recipes/product_ad</c>, and so on. Some Runway capabilities are
+    /// whole endpoints rather than a <c>model</c> value (the recipes in particular), so a caller comparing a
+    /// list of model names against the spec needs these too.
+    /// </summary>
+    public static IReadOnlyList<string> KnownEndpoints() => Endpoints.Value;
+
+    /// <summary>
+    /// Returns true when the embedded spec can address <paramref name="name"/> at all: either as a
+    /// <c>model</c> value on some endpoint, or as an endpoint of its own (<c>product_ad</c> resolving to
+    /// <c>recipes/product_ad</c>). Lets callers tell "the spec has not caught up with this model yet" apart
+    /// from "this capability is an endpoint, not a model".
+    /// </summary>
+    public static bool IsKnown(string name)
+    {
+        if (string.IsNullOrWhiteSpace(name))
+        {
+            return false;
+        }
+
+        var trimmed = name.Trim();
+        if (Lookup(trimmed).Count > 0)
+        {
+            return true;
+        }
+
+        foreach (var endpoint in Endpoints.Value)
+        {
+            if (string.Equals(endpoint, trimmed, StringComparison.OrdinalIgnoreCase) ||
+                endpoint.EndsWith("/" + trimmed, StringComparison.OrdinalIgnoreCase))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
 
     /// <summary>
     /// Returns every model id the embedded spec accepts on <paramref name="endpoint"/> (e.g. <c>text_to_video</c>),
@@ -345,12 +385,49 @@ public static class RunwayModelSchema
         }
     }
 
-    private static Dictionary<string, IReadOnlyList<RunwayModelEndpoint>> LoadMap()
+    private static List<string> LoadEndpoints()
+    {
+        using var document = OpenSpec();
+        var root = document.RootElement;
+        var endpoints = new List<string>();
+
+        if (!root.TryGetProperty("paths", out var paths) || paths.ValueKind != JsonValueKind.Object)
+        {
+            return endpoints;
+        }
+
+        foreach (var pathProperty in paths.EnumerateObject())
+        {
+            if (pathProperty.Value.ValueKind != JsonValueKind.Object ||
+                !pathProperty.Value.TryGetProperty("post", out _))
+            {
+                continue;
+            }
+
+            endpoints.Add(NormalizeEndpointName(pathProperty.Name));
+        }
+
+        endpoints.Sort(StringComparer.Ordinal);
+        return endpoints;
+    }
+
+    private static string NormalizeEndpointName(string path)
+    {
+        var name = path.TrimStart('/');
+        return name.StartsWith("v1/", StringComparison.OrdinalIgnoreCase) ? name["v1/".Length..] : name;
+    }
+
+    private static JsonDocument OpenSpec()
     {
         var assembly = typeof(RunwayModelSchema).Assembly;
         using var stream = assembly.GetManifestResourceStream(EmbeddedSpecResource)
             ?? throw new InvalidOperationException($"Embedded resource `{EmbeddedSpecResource}` missing from Runway assembly.");
-        using var document = JsonDocument.Parse(stream, new JsonDocumentOptions { CommentHandling = JsonCommentHandling.Skip });
+        return JsonDocument.Parse(stream, new JsonDocumentOptions { CommentHandling = JsonCommentHandling.Skip });
+    }
+
+    private static Dictionary<string, IReadOnlyList<RunwayModelEndpoint>> LoadMap()
+    {
+        using var document = OpenSpec();
         var root = document.RootElement.Clone();
 
         var result = new Dictionary<string, List<RunwayModelEndpoint>>(StringComparer.OrdinalIgnoreCase);
@@ -382,11 +459,7 @@ public static class RunwayModelSchema
                     continue;
                 }
 
-                var endpointName = pathProperty.Name.TrimStart('/');
-                if (endpointName.StartsWith("v1/", StringComparison.OrdinalIgnoreCase))
-                {
-                    endpointName = endpointName["v1/".Length..];
-                }
+                var endpointName = NormalizeEndpointName(pathProperty.Name);
 
                 var resolvedSchema = Resolve(schema, root);
                 foreach (var variant in EnumerateVariants(resolvedSchema, root))

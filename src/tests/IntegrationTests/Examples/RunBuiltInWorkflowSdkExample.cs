@@ -15,6 +15,8 @@ public partial class Tests
     [TestMethod]
     public async Task Example_RunBuiltInWorkflowSdk_AiHairSalon()
     {
+        RequireBillableExamplesEnabled("The AI Hair Salon built-in workflow", approximateCredits: 90);
+
         using var client = GetAuthenticatedClient();
 
         // Locate the asset the bot just uploaded — here we use a sample portrait from artifacts.

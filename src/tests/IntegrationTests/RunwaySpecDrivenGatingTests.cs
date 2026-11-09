@@ -244,6 +244,61 @@ public sealed class RunwaySpecDrivenGatingTests
     }
 
     [TestMethod]
+    public async Task NormalizeReferenceAssets_IsTheSinglePathForEveryReferenceSurface()
+    {
+        // Remote URIs pass through untouched.
+        var remote = await RunwayCliGeneration.NormalizeReferenceAssetsAsync(
+            [ImageUri, "runway://token", "data:image/png;base64,AAAA"],
+            CancellationToken.None);
+        remote.Should().BeEquivalentTo([ImageUri, "runway://token", "data:image/png;base64,AAAA"]);
+
+        // A local path is inlined as a data URI — the short-video runner takes URIs, not paths, and sending
+        // a bare path is rejected by the API with "Invalid image input".
+        var pngPath = Path.Combine(Path.GetTempPath(), $"runway-ref-{Guid.NewGuid():N}.png");
+        await File.WriteAllBytesAsync(pngPath, [0x89, 0x50, 0x4E, 0x47], CancellationToken.None);
+        try
+        {
+            var local = await RunwayCliGeneration.NormalizeReferenceAssetsAsync([pngPath], CancellationToken.None);
+            local.Should().HaveCount(1);
+            local![0].Should().StartWith("data:image/png;base64,");
+        }
+        finally
+        {
+            File.Delete(pngPath);
+        }
+
+        // Empty and null collapse to null so callers omit the field entirely.
+        (await RunwayCliGeneration.NormalizeReferenceAssetsAsync([], CancellationToken.None)).Should().BeNull();
+        (await RunwayCliGeneration.NormalizeReferenceAssetsAsync(null, CancellationToken.None)).Should().BeNull();
+
+        var missing = async () => await RunwayCliGeneration.NormalizeReferenceAssetsAsync(
+            ["./definitely-not-here.png"], CancellationToken.None);
+        await missing.Should().ThrowAsync<FileNotFoundException>();
+    }
+
+    [TestMethod]
+    public void ModelSchema_SeparatesEndpointCapabilitiesFromModels()
+    {
+        var endpoints = RunwayModelSchema.KnownEndpoints();
+        endpoints.Should().Contain("text_to_video").And.Contain("recipes/product_ad").And.Contain("uploads");
+
+        // Some account entitlements are whole endpoints rather than a `model` value, so `models --account`
+        // must not report them as missing from the spec.
+        RunwayModelSchema.IsKnown("product_ad").Should().BeTrue();
+        RunwayModelSchema.IsKnown("multi_shot_video").Should().BeTrue();
+        RunwayModelSchema.IsKnown("ad_localization").Should().BeTrue();
+
+        // Ordinary model values resolve too.
+        RunwayModelSchema.IsKnown("seedance2_5").Should().BeTrue();
+        RunwayModelSchema.IsKnown("muse_image").Should().BeTrue();
+
+        // And models the account has but the spec has not caught up with do not.
+        RunwayModelSchema.IsKnown("kling3.0_pro").Should().BeFalse();
+        RunwayModelSchema.IsKnown("nano_banana_2.1").Should().BeFalse();
+        RunwayModelSchema.IsKnown("").Should().BeFalse();
+    }
+
+    [TestMethod]
     public void ModelSchema_ExposesEnumValuesAndArrayShapes()
     {
         RunwayModelSchema.GetAllowedValues("seedance2_5", "video_to_video", "mode")

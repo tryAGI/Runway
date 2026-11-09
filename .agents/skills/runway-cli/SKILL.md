@@ -56,6 +56,7 @@ Default to low-cost, practical choices:
 | Upscale a video | `video-upscale --video <file> --resolution 4k --creativity 40 --flavor vivid` |
 | Smoother motion (frame interpolation) | `video-upscale --video <file> --model enhance-frame-rate --target-framerate 59_94` |
 | Upscale a still | `image-upscale --image <file> --scale-factor 4 --flavor photo` |
+| Check the spec vs the account's models | `models --account` (free; lists models the account has that the embedded spec lacks) |
 | Text-to-speech | `text-to-speech --voice-preset clara` |
 | Generate by kind (Higgsfield-style) | `generate "<prompt>" --kind image\|video\|image-to-video\|text-to-speech\|sound-effect` |
 
@@ -412,7 +413,7 @@ The CLI ships a Higgsfield-parity surface so an agent trained on `higgsfield` ve
 | `higgsfield marketing-studio products/hooks/settings/ad-references` | _not supported_ | Runway has no analog. Use `workflow` and `document` for adjacent capabilities. |
 | `higgsfield auth login` (device flow) | `runway auth set/show/clear` | Runway uses an API key, not OAuth device flow. The stored credentials file is `~/.runway-cli/credentials.json` (mode 0600). |
 | `higgsfield account` | `runway account` | Alias of `runway organization get`. |
-| `higgsfield model list` / `higgsfield model schema <model>` | `runway models` / `runway models schema <model>` | `models` lists Runway endpoint families and supported model IDs. `models schema <model>` reads the embedded Runway OpenAPI spec at runtime, splits parameters into `required` vs `optional`, and adds a per-endpoint breakdown for multi-endpoint models. The same data backs a pre-flight model/endpoint check on `image`, `video`, `text-to-video`, and `image-to-video` — wrong-endpoint pairings (e.g. `video --model gpt_image_2`) fail with a spec-derived error before the API call. Unknown model IDs pass through so brand-new spec entries work without a CLI release. |
+| `higgsfield model list` / `higgsfield model schema <model>` | `runway models` / `runway models schema <model>` | `models` lists the model IDs each endpoint accepts, read from the embedded spec, and `models --account` reports the gap between the spec and the account's entitlements. `models schema <model>` reads the embedded Runway OpenAPI spec at runtime, splits parameters into `required` vs `optional`, and adds a per-endpoint breakdown for multi-endpoint models. The same data backs a pre-flight model/endpoint check on `image`, `video`, `text-to-video`, and `image-to-video` — wrong-endpoint pairings (e.g. `video --model gpt_image_2`) fail with a spec-derived error before the API call. Unknown model IDs pass through so brand-new spec entries work without a CLI release. |
 | `higgsfield upload` | `runway upload create` | Same shape, single subcommand. |
 | `higgsfield generate wait <task-id>` | `runway task get <task-id> --wait` | Same shape with `--download --kind image` or `--kind video` for one-step retrieval. |
 
