@@ -15,6 +15,8 @@ public partial class Tests
     [TestMethod]
     public async Task Example_CreateImageToVideoGen4Turbo()
     {
+        RequireBillableExamplesEnabled("A 5 second gen4_turbo image-to-video", approximateCredits: 25);
+
         using var client = GetAuthenticatedClient();
 
         var response = await client.StartGenerating.CreateImageToVideoAsync(

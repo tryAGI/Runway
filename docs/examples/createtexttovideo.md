@@ -5,6 +5,8 @@
 This example assumes `using Runway;` is in scope and `apiKey` contains your Runway API key.
 
 ```csharp
+RequireBillableExamplesEnabled("A 4 second text-to-video", approximateCredits: 25);
+
 using var client = new RunwayClient(apiKey);
 
 var response = await client.StartGenerating.CreateTextToVideoAsync(

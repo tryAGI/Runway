@@ -364,7 +364,7 @@ var customAvatarIdOption = new Option<Guid?>("--avatar-id")
 
 var videoVoicePresetOption = new Option<string?>("--voice-preset")
 {
-    Description = "Optional TTS voice preset override, for example clara.",
+    Description = "Optional TTS preset voice override, for example Maya or Claudia.",
 };
 
 var videoCustomVoiceIdOption = new Option<Guid?>("--custom-voice-id")
@@ -1999,12 +1999,126 @@ var loopOption = new Option<bool>("--loop")
     Description = "Loop the generated sound effect.",
 };
 
-var soundEffectCommand = new Command("sound-effect", "Start an eleven_text_to_sound_v2 sound effect task.")
+var audioModelOption = new Option<string?>("--model")
+{
+    Description = "Audio model, validated against the embedded OpenAPI spec. text-to-speech: eleven_multilingual_v2 (default), eleven_v3, seed_audio. sound-effect: eleven_text_to_sound_v2 (default), seed_audio.",
+};
+
+var audioReferenceOption = new Option<string[]>("--reference-audio")
+{
+    Description = "Reference audio clip. For seed_audio sound effects, repeat up to three times and address them in the prompt as @Audio1, @Audio2, @Audio3. For seed_audio text-to-speech, a single clip is cloned as the voice.",
+    Arity = ArgumentArity.ZeroOrMore,
+};
+
+var audioOutputFormatOption = new Option<string?>("--output-format")
+{
+    Description = "Output container for seed_audio: wav, mp3, or ogg_opus.",
+};
+
+var audioSampleRateOption = new Option<int?>("--sample-rate")
+{
+    Description = "Output sample rate in Hz for seed_audio: 8000, 16000, 24000, 32000, 44100, or 48000.",
+};
+
+var audioSpeechRateOption = new Option<int?>("--speech-rate")
+{
+    Description = "Speech rate for seed_audio, -50 to 100.",
+};
+
+var audioPitchRateOption = new Option<int?>("--pitch-rate")
+{
+    Description = "Pitch shift for seed_audio, -12 to 12 semitones.",
+};
+
+var audioLoudnessRateOption = new Option<int?>("--loudness-rate")
+{
+    Description = "Loudness adjustment for seed_audio, -50 to 100.",
+};
+
+var audioStabilityOption = new Option<double?>("--stability")
+{
+    Description = "Voice stability for eleven_v3, 0 to 1.",
+};
+
+var audioStyleOption = new Option<double?>("--style")
+{
+    Description = "Style exaggeration for eleven_v3, 0 to 1.",
+};
+
+var audioSpeedOption = new Option<double?>("--speed")
+{
+    Description = "Speaking speed for eleven_v3, 0.7 to 1.2.",
+};
+
+var audioSimilarityBoostOption = new Option<double?>("--similarity-boost")
+{
+    Description = "Similarity to the reference voice for eleven_v3, 0 to 1.",
+};
+
+var audioLanguageCodeOption = new Option<string?>("--language-code")
+{
+    Description = "BCP-47 language code for eleven_v3, for example ru or en-US.",
+};
+
+var audioTextNormalizationOption = new Option<string?>("--apply-text-normalization")
+{
+    Description = "Text normalization for eleven_v3: auto, on, or off.",
+};
+
+var audioSpeakerBoostOption = new Option<bool?>("--use-speaker-boost")
+{
+    Description = "Speaker boost for eleven_v3.",
+};
+
+var audioNumSpeakersOption = new Option<int?>("--num-speakers")
+{
+    Description = "Speaker count hint for voice dubbing.",
+};
+
+var audioDisableVoiceCloningOption = new Option<bool?>("--disable-voice-cloning")
+{
+    Description = "Keep the original speakers' voices instead of cloning them when dubbing.",
+};
+
+var audioDropBackgroundOption = new Option<bool?>("--drop-background-audio")
+{
+    Description = "Drop the background audio bed when dubbing.",
+};
+
+RunwayCliAudioExtras BuildAudioExtras(ParseResult parseResult) => new()
+{
+    ReferenceAudios = parseResult.GetValue(audioReferenceOption),
+    OutputFormat = parseResult.GetValue(audioOutputFormatOption),
+    LanguageCode = parseResult.GetValue(audioLanguageCodeOption),
+    ApplyTextNormalization = parseResult.GetValue(audioTextNormalizationOption),
+    SampleRate = parseResult.GetValue(audioSampleRateOption),
+    SpeechRate = parseResult.GetValue(audioSpeechRateOption),
+    PitchRate = parseResult.GetValue(audioPitchRateOption),
+    LoudnessRate = parseResult.GetValue(audioLoudnessRateOption),
+    NumSpeakers = parseResult.GetValue(audioNumSpeakersOption),
+    Seed = parseResult.GetValue(seedOption),
+    Stability = parseResult.GetValue(audioStabilityOption),
+    Style = parseResult.GetValue(audioStyleOption),
+    Speed = parseResult.GetValue(audioSpeedOption),
+    SimilarityBoost = parseResult.GetValue(audioSimilarityBoostOption),
+    UseSpeakerBoost = parseResult.GetValue(audioSpeakerBoostOption),
+    DisableVoiceCloning = parseResult.GetValue(audioDisableVoiceCloningOption),
+    DropBackgroundAudio = parseResult.GetValue(audioDropBackgroundOption),
+};
+
+var soundEffectCommand = new Command("sound-effect", "Generate a sound effect (eleven_text_to_sound_v2, or seed_audio with reference clips).")
 {
     soundEffectPromptArgument,
     outputOption,
+    audioModelOption,
     generationDurationOption,
     loopOption,
+    audioReferenceOption,
+    audioOutputFormatOption,
+    audioSampleRateOption,
+    audioSpeechRateOption,
+    audioPitchRateOption,
+    audioLoudnessRateOption,
     jsonOption,
     noWaitOption,
     pollIntervalOption,
@@ -2015,14 +2129,16 @@ rootCommand.Subcommands.Add(soundEffectCommand);
 soundEffectCommand.SetAction((ParseResult parseResult, CancellationToken cancellationToken) =>
     RunWithClientAsync(parseResult, async (client, runwayVersion, ct) =>
     {
-        RunwayModelSchema.EnsureModelSupportsEndpoint("eleven_text_to_sound_v2", "sound_effect");
         var json = parseResult.GetValue(jsonOption);
         var request = json is { Length: > 0 }
             ? await RunwayCliGeneration.ReadGeneratedJsonAsync<CreateSoundEffectRequest>(json, ct).ConfigureAwait(false)
-            : RunwayCliGeneration.CreateSoundEffectRequest(
+            : await RunwayCliGeneration.CreateSoundEffectRequestAsync(
                 RunwayCliGeneration.JoinPrompt(parseResult.GetValue(soundEffectPromptArgument)),
+                parseResult.GetValue(audioModelOption),
                 parseResult.GetValue(generationDurationOption),
-                parseResult.GetValue(loopOption));
+                parseResult.GetValue(loopOption),
+                BuildAudioExtras(parseResult),
+                ct).ConfigureAwait(false);
 
         await HandleGenerationTaskAsync(
             client,
@@ -2059,7 +2175,7 @@ var runwayVoiceIdOption = new Option<string?>("--runway-voice-id")
 
 var speechVoicePresetOption = new Option<string?>("--voice-preset")
 {
-    Description = "Runway voice preset ID.",
+    Description = "Runway preset voice ID, validated against the embedded spec. These are proper names (Maya, Arjun, Serene, Claudia, ...); run `runway voice presets` for the full list. Defaults to the first id the spec lists.",
 };
 
 var removeBackgroundNoiseOption = new Option<bool?>("--remove-background-noise")
@@ -2092,7 +2208,7 @@ speechToSpeechCommand.SetAction((ParseResult parseResult, CancellationToken canc
             : await RunwayCliGeneration.CreateSpeechToSpeechRequestAsync(
                 RequireOption(parseResult, mediaOption),
                 parseResult.GetValue(mediaTypeOption) ?? "audio",
-                parseResult.GetValue(speechVoicePresetOption) ?? "clara",
+                parseResult.GetValue(speechVoicePresetOption),
                 parseResult.GetValue(runwayVoiceIdOption),
                 parseResult.GetValue(removeBackgroundNoiseOption),
                 ct).ConfigureAwait(false);
@@ -2114,11 +2230,26 @@ speechToSpeechCommand.SetAction((ParseResult parseResult, CancellationToken canc
             ct).ConfigureAwait(false);
     }, cancellationToken));
 
-var textToSpeechCommand = new Command("text-to-speech", "Start an eleven_multilingual_v2 text-to-speech task.")
+var textToSpeechCommand = new Command("text-to-speech", "Synthesize speech (eleven_multilingual_v2, eleven_v3, or seed_audio voice cloning).")
 {
     textToSpeechPromptArgument,
     speechVoicePresetOption,
     outputOption,
+    audioModelOption,
+    audioReferenceOption,
+    audioStabilityOption,
+    audioStyleOption,
+    audioSpeedOption,
+    audioSimilarityBoostOption,
+    audioLanguageCodeOption,
+    audioTextNormalizationOption,
+    audioSpeakerBoostOption,
+    audioOutputFormatOption,
+    audioSampleRateOption,
+    audioSpeechRateOption,
+    audioPitchRateOption,
+    audioLoudnessRateOption,
+    seedOption,
     jsonOption,
     noWaitOption,
     pollIntervalOption,
@@ -2129,13 +2260,18 @@ rootCommand.Subcommands.Add(textToSpeechCommand);
 textToSpeechCommand.SetAction((ParseResult parseResult, CancellationToken cancellationToken) =>
     RunWithClientAsync(parseResult, async (client, runwayVersion, ct) =>
     {
-        RunwayModelSchema.EnsureModelSupportsEndpoint("eleven_multilingual_v2", "text_to_speech");
         var json = parseResult.GetValue(jsonOption);
         var request = json is { Length: > 0 }
             ? await RunwayCliGeneration.ReadGeneratedJsonAsync<CreateTextToSpeechRequest>(json, ct).ConfigureAwait(false)
-            : RunwayCliGeneration.CreateTextToSpeechRequest(
+            : await RunwayCliGeneration.CreateTextToSpeechRequestAsync(
                 RunwayCliGeneration.JoinPrompt(parseResult.GetValue(textToSpeechPromptArgument)),
-                parseResult.GetValue(speechVoicePresetOption) ?? "clara");
+                parseResult.GetValue(audioModelOption),
+                parseResult.GetValue(speechVoicePresetOption),
+                parseResult.GetValue(audioReferenceOption) is { Length: > 0 } ttsReference ? ttsReference[0] : null,
+                // On text-to-speech, --reference-audio is the cloned voice (handled above), not the
+                // `referenceAudios` array that seed_audio takes on the sound-effect endpoint.
+                BuildAudioExtras(parseResult) with { ReferenceAudios = null },
+                ct).ConfigureAwait(false);
 
         await HandleGenerationTaskAsync(
             client,
@@ -2169,6 +2305,9 @@ var voiceDubbingCommand = new Command("voice-dubbing", "Start an eleven_voice_du
     audioOption,
     targetLanguageOption,
     outputOption,
+    audioNumSpeakersOption,
+    audioDisableVoiceCloningOption,
+    audioDropBackgroundOption,
     jsonOption,
     noWaitOption,
     pollIntervalOption,
@@ -2186,6 +2325,7 @@ voiceDubbingCommand.SetAction((ParseResult parseResult, CancellationToken cancel
             : await RunwayCliGeneration.CreateVoiceDubbingRequestAsync(
                 RequireOption(parseResult, audioOption),
                 RequireOption(parseResult, targetLanguageOption),
+                BuildAudioExtras(parseResult),
                 ct).ConfigureAwait(false);
 
         await HandleGenerationTaskAsync(

@@ -5,6 +5,8 @@
 This example assumes `using Runway;` is in scope and `apiKey` contains your Runway API key.
 
 ```csharp
+RequireBillableExamplesEnabled("A voice dubbing job", approximateCredits: 15);
+
 using var client = new RunwayClient(apiKey);
 
 var response = await client.StartGenerating.CreateVoiceDubbingAsync(

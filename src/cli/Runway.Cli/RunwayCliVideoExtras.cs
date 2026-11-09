@@ -61,3 +61,65 @@ internal sealed record RunwayCliImageExtras
     /// <summary>No extras — every option left at the model default.</summary>
     public static RunwayCliImageExtras None { get; } = new();
 }
+
+/// <summary>
+/// The per-model audio knobs on `text_to_speech`, `sound_effect` and `voice_dubbing`. The CLI used to
+/// hardcode one model per endpoint, so the expressiveness controls of `eleven_v3` and the rate/format
+/// controls of `seed_audio` were unreachable. Each is gated against the embedded spec.
+/// </summary>
+internal sealed record RunwayCliAudioExtras
+{
+    /// <summary>Reference clips for `seed_audio` sound effects, addressed in the prompt as @Audio1..@Audio3.</summary>
+    public string[]? ReferenceAudios { get; init; }
+
+    /// <summary>Output container for `seed_audio`: wav, mp3, or ogg_opus.</summary>
+    public string? OutputFormat { get; init; }
+
+    /// <summary>BCP-47 language code (`eleven_v3`).</summary>
+    public string? LanguageCode { get; init; }
+
+    /// <summary>Text normalization for `eleven_v3`: auto, on, or off.</summary>
+    public string? ApplyTextNormalization { get; init; }
+
+    /// <summary>Output sample rate in Hz for `seed_audio`: 8000, 16000, 24000, 32000, 44100, or 48000.</summary>
+    public int? SampleRate { get; init; }
+
+    /// <summary>Speech rate for `seed_audio`, -50 to 100.</summary>
+    public int? SpeechRate { get; init; }
+
+    /// <summary>Pitch shift for `seed_audio`, -12 to 12 semitones.</summary>
+    public int? PitchRate { get; init; }
+
+    /// <summary>Loudness adjustment for `seed_audio`, -50 to 100.</summary>
+    public int? LoudnessRate { get; init; }
+
+    /// <summary>Speaker count hint for voice dubbing.</summary>
+    public int? NumSpeakers { get; init; }
+
+    /// <summary>Seed for reproducible `eleven_v3` output.</summary>
+    public int? Seed { get; init; }
+
+    /// <summary>Voice stability for `eleven_v3`, 0 to 1.</summary>
+    public double? Stability { get; init; }
+
+    /// <summary>Style exaggeration for `eleven_v3`, 0 to 1.</summary>
+    public double? Style { get; init; }
+
+    /// <summary>Speaking speed for `eleven_v3`, 0.7 to 1.2.</summary>
+    public double? Speed { get; init; }
+
+    /// <summary>Similarity to the reference voice for `eleven_v3`, 0 to 1.</summary>
+    public double? SimilarityBoost { get; init; }
+
+    /// <summary>Speaker boost for `eleven_v3`.</summary>
+    public bool? UseSpeakerBoost { get; init; }
+
+    /// <summary>Keep the original speakers' voices instead of cloning them (voice dubbing).</summary>
+    public bool? DisableVoiceCloning { get; init; }
+
+    /// <summary>Drop the background audio bed when dubbing.</summary>
+    public bool? DropBackgroundAudio { get; init; }
+
+    /// <summary>No extras — every option left at the model default.</summary>
+    public static RunwayCliAudioExtras None { get; } = new();
+}

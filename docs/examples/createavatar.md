@@ -5,6 +5,8 @@
 This example assumes `using Runway;` is in scope and `apiKey` contains your Runway API key.
 
 ```csharp
+RequireBillableExamplesEnabled("Creating a custom avatar", approximateCredits: 20);
+
 using var client = new RunwayClient(apiKey);
 
 var avatar = await client.Avatars.CreateAvatarsAsync(

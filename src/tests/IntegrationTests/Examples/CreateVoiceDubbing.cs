@@ -15,6 +15,8 @@ public partial class Tests
     [Ignore("Requires paid API credits and audio input")]
     public async Task Example_VoiceDubbing()
     {
+        RequireBillableExamplesEnabled("A voice dubbing job", approximateCredits: 15);
+
         using var client = GetAuthenticatedClient();
 
         var response = await client.StartGenerating.CreateVoiceDubbingAsync(

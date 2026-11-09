@@ -5,6 +5,8 @@
 This example assumes `using Runway;` is in scope and `apiKey` contains your Runway API key.
 
 ```csharp
+RequireBillableExamplesEnabled("A 15 second looping sound effect", approximateCredits: 10);
+
 using var client = new RunwayClient(apiKey);
 
 var response = await client.StartGenerating.CreateSoundEffectAsync(

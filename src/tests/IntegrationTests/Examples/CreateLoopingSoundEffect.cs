@@ -16,6 +16,8 @@ public partial class Tests
     [Ignore("Requires paid API credits")]
     public async Task Example_LoopingSoundEffect()
     {
+        RequireBillableExamplesEnabled("A 15 second looping sound effect", approximateCredits: 10);
+
         using var client = GetAuthenticatedClient();
 
         var response = await client.StartGenerating.CreateSoundEffectAsync(

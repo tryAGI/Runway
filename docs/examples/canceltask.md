@@ -5,6 +5,8 @@
 This example assumes `using Runway;` is in scope and `apiKey` contains your Runway API key.
 
 ```csharp
+RequireBillableExamplesEnabled("Submitting a seedance2 video just to cancel it", approximateCredits: 35);
+
 using var client = new RunwayClient(apiKey);
 
 // Start a generation task.

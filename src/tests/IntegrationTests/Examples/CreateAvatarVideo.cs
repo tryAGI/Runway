@@ -15,6 +15,8 @@ public partial class Tests
     [Ignore("Requires paid API credits")]
     public async Task Example_CreateAvatarVideo()
     {
+        RequireBillableExamplesEnabled("Generating an avatar video", approximateCredits: 40);
+
         using var client = GetAuthenticatedClient();
 
         var response = await client.AvatarVideos.CreateAvatarVideosAsync(

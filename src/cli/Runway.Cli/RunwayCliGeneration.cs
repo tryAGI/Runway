@@ -23,6 +23,17 @@ internal static class RunwayCliGeneration
     public const string TextToImageEndpoint = "text_to_image";
     public const string CharacterPerformanceEndpoint = "character_performance";
     public const string VideoUpscaleEndpoint = "video_upscale";
+    public const string TextToSpeechEndpoint = "text_to_speech";
+    public const string SoundEffectEndpoint = "sound_effect";
+    public const string VoiceDubbingEndpoint = "voice_dubbing";
+    public const string SpeechToSpeechEndpoint = "speech_to_speech";
+    public const string AvatarVideosEndpoint = "avatar_videos";
+
+    /// <inheritdoc cref="DefaultTextToVideoModel"/>
+    public const string DefaultTextToSpeechModel = "eleven_multilingual_v2";
+
+    /// <inheritdoc cref="DefaultTextToVideoModel"/>
+    public const string DefaultSoundEffectModel = "eleven_text_to_sound_v2";
     public const string ImageUpscaleEndpoint = "image_upscale";
 
     /// <inheritdoc cref="DefaultTextToVideoModel"/>
@@ -477,15 +488,30 @@ internal static class RunwayCliGeneration
         }
     }
 
-    public static CreateSoundEffectRequest CreateSoundEffectRequest(string prompt, double? duration, bool loop)
+    public static async Task<CreateSoundEffectRequest> CreateSoundEffectRequestAsync(
+        string prompt,
+        string? model,
+        double? duration,
+        bool loop,
+        RunwayCliAudioExtras? extras,
+        CancellationToken cancellationToken)
     {
+        var normalizedModel = NormalizeVideoModel(model, DefaultSoundEffectModel, SoundEffectEndpoint);
         var body = new JsonObject
         {
-            ["model"] = "eleven_text_to_sound_v2",
+            ["model"] = normalizedModel,
             ["promptText"] = prompt,
-            ["loop"] = loop,
         };
-        SetIfNotNull(body, "duration", duration);
+
+        // `loop` and `duration` belong to the ElevenLabs model; seed_audio takes rate/format knobs and
+        // reference clips instead, under additionalProperties:false.
+        if (RunwayModelSchema.SupportsParameter(normalizedModel, SoundEffectEndpoint, "loop"))
+        {
+            body["loop"] = loop;
+        }
+
+        SetIfSupported(body, normalizedModel, SoundEffectEndpoint, "duration", duration);
+        await ApplyAudioExtrasAsync(body, normalizedModel, SoundEffectEndpoint, extras, cancellationToken).ConfigureAwait(false);
         return ToGenerated<CreateSoundEffectRequest>(body);
     }
 
@@ -508,7 +534,7 @@ internal static class RunwayCliGeneration
             ["voice"] = new JsonObject
             {
                 ["type"] = "runway-preset",
-                ["presetId"] = voicePreset,
+                ["presetId"] = NormalizeVoicePreset(voicePreset, "eleven_multilingual_sts_v2", SpeechToSpeechEndpoint),
             },
         };
         SetIfNotNull(body, "runwayVoiceId", runwayVoiceId);
@@ -516,31 +542,182 @@ internal static class RunwayCliGeneration
         return ToGenerated<CreateSpeechToSpeechRequest>(body);
     }
 
-    public static CreateTextToSpeechRequest CreateTextToSpeechRequest(string prompt, string voicePreset)
+    public static async Task<CreateTextToSpeechRequest> CreateTextToSpeechRequestAsync(
+        string prompt,
+        string? model,
+        string voicePreset,
+        string? referenceAudio,
+        RunwayCliAudioExtras? extras,
+        CancellationToken cancellationToken)
     {
-        return ToGenerated<CreateTextToSpeechRequest>(new JsonObject
+        var normalizedModel = NormalizeVideoModel(model, DefaultTextToSpeechModel, TextToSpeechEndpoint);
+        var body = new JsonObject
         {
-            ["model"] = "eleven_multilingual_v2",
+            ["model"] = normalizedModel,
             ["promptText"] = prompt,
-            ["voice"] = new JsonObject
+        };
+
+        // The ElevenLabs models take a preset voice id; seed_audio clones from a reference clip instead,
+        // so the two voice shapes are not interchangeable.
+        var clonesVoice = RunwayModelSchema.SupportsItemProperty(normalizedModel, TextToSpeechEndpoint, "voice", "audioUri");
+        if (clonesVoice)
+        {
+            if (referenceAudio is { Length: > 0 })
+            {
+                body["voice"] = new JsonObject
+                {
+                    ["type"] = "reference-audio",
+                    ["audioUri"] = await NormalizeInputAssetAsync(referenceAudio, cancellationToken).ConfigureAwait(false),
+                };
+            }
+        }
+        else
+        {
+            if (referenceAudio is { Length: > 0 })
+            {
+                throw new ArgumentException(
+                    $"Model '{normalizedModel}' speaks with a preset voice, not a cloned one. Use --voice-preset, or switch to a model that accepts --reference-audio: {string.Join(", ", ModelsSupportingItemProperty(TextToSpeechEndpoint, "voice", "audioUri"))}.");
+            }
+
+            body["voice"] = new JsonObject
             {
                 ["type"] = "runway-preset",
-                ["presetId"] = voicePreset,
-            },
-        });
+                ["presetId"] = NormalizeVoicePreset(voicePreset, normalizedModel, TextToSpeechEndpoint),
+            };
+        }
+
+        await ApplyAudioExtrasAsync(body, normalizedModel, TextToSpeechEndpoint, extras, cancellationToken).ConfigureAwait(false);
+        return ToGenerated<CreateTextToSpeechRequest>(body);
+    }
+
+    /// <summary>
+    /// Validates a Runway preset voice id against the spec enum for the chosen model. The ids are proper
+    /// names (<c>Maya</c>, <c>Claudia</c>, ...), and the generated enum silently coerces an unknown value
+    /// to its first member, so an invalid id would otherwise reach the API as a different voice.
+    /// </summary>
+    public static string NormalizeVoicePreset(string? value, string model, string endpoint)
+    {
+        var allowed = RunwayModelSchema.GetItemPropertyValues(model, endpoint, "voice", "presetId");
+        if (allowed.Count == 0)
+        {
+            // Nothing enum-backed to check against (seed_audio clones instead of using presets).
+            return value ?? string.Empty;
+        }
+
+        if (string.IsNullOrWhiteSpace(value))
+        {
+            return allowed[0];
+        }
+
+        var candidate = value.Trim();
+        foreach (var option in allowed)
+        {
+            if (string.Equals(option, candidate, StringComparison.OrdinalIgnoreCase))
+            {
+                return option;
+            }
+        }
+
+        throw new ArgumentException(
+            $"Unknown --voice-preset '{value}' for {model}. Valid ids are proper names: {string.Join(", ", allowed.Take(8))}, … ({allowed.Count} total). Run `runway voice presets` for the full list.");
+    }
+
+    private static IReadOnlyList<string> ModelsSupportingItemProperty(string endpoint, string parameterName, string itemProperty)
+    {
+        return [.. RunwayModelSchema.ModelsForEndpoint(endpoint)
+            .Where(candidate => RunwayModelSchema.SupportsItemProperty(candidate, endpoint, parameterName, itemProperty))];
+    }
+
+    /// <summary>
+    /// Applies the per-model audio knobs, gated on the spec: the eleven_v3 expressiveness controls, the
+    /// seed_audio rate/format controls, and the voice-dubbing options. A flag the chosen model does not
+    /// declare is refused with the models that take it.
+    /// </summary>
+    private static async Task ApplyAudioExtrasAsync(
+        JsonObject body,
+        string model,
+        string endpoint,
+        RunwayCliAudioExtras? extras,
+        CancellationToken cancellationToken)
+    {
+        if (extras is null)
+        {
+            return;
+        }
+
+        if (extras.ReferenceAudios is { Length: > 0 } referenceAudios)
+        {
+            RequireSupport(model, endpoint, "referenceAudios", "--reference-audio");
+            var cap = RunwayModelSchema.GetMaxItems(model, endpoint, "referenceAudios");
+            if (cap is { } max && referenceAudios.Length > max)
+            {
+                throw new ArgumentException($"Model '{model}' accepts up to {max} reference audio clips.");
+            }
+
+            var items = new JsonArray();
+            foreach (var uri in await NormalizeReferenceAssetsAsync(referenceAudios, cancellationToken).ConfigureAwait(false) ?? [])
+            {
+                items.Add(uri);
+            }
+
+            body["referenceAudios"] = items;
+        }
+
+        RequireAndSet(body, model, endpoint, "outputFormat", "--output-format", extras.OutputFormat);
+        RequireAndSet(body, model, endpoint, "languageCode", "--language-code", extras.LanguageCode);
+        RequireAndSet(body, model, endpoint, "applyTextNormalization", "--apply-text-normalization", extras.ApplyTextNormalization);
+        RequireAndSet(body, model, endpoint, "sampleRate", "--sample-rate", extras.SampleRate);
+        RequireAndSet(body, model, endpoint, "speechRate", "--speech-rate", extras.SpeechRate);
+        RequireAndSet(body, model, endpoint, "pitchRate", "--pitch-rate", extras.PitchRate);
+        RequireAndSet(body, model, endpoint, "loudnessRate", "--loudness-rate", extras.LoudnessRate);
+        RequireAndSet(body, model, endpoint, "numSpeakers", "--num-speakers", extras.NumSpeakers);
+        RequireAndSet(body, model, endpoint, "seed", "--seed", extras.Seed);
+        RequireAndSetDouble(body, model, endpoint, "stability", "--stability", extras.Stability);
+        RequireAndSetDouble(body, model, endpoint, "style", "--style", extras.Style);
+        RequireAndSetDouble(body, model, endpoint, "speed", "--speed", extras.Speed);
+        RequireAndSetDouble(body, model, endpoint, "similarityBoost", "--similarity-boost", extras.SimilarityBoost);
+        RequireAndSetBool(body, model, endpoint, "useSpeakerBoost", "--use-speaker-boost", extras.UseSpeakerBoost);
+        RequireAndSetBool(body, model, endpoint, "disableVoiceCloning", "--disable-voice-cloning", extras.DisableVoiceCloning);
+        RequireAndSetBool(body, model, endpoint, "dropBackgroundAudio", "--drop-background-audio", extras.DropBackgroundAudio);
+    }
+
+    private static void RequireAndSetDouble(JsonObject body, string model, string endpoint, string name, string flag, double? value)
+    {
+        if (value is null)
+        {
+            return;
+        }
+
+        RequireSupport(model, endpoint, name, flag);
+        body[name] = value.Value;
+    }
+
+    private static void RequireAndSetBool(JsonObject body, string model, string endpoint, string name, string flag, bool? value)
+    {
+        if (value is null)
+        {
+            return;
+        }
+
+        RequireSupport(model, endpoint, name, flag);
+        body[name] = value.Value;
     }
 
     public static async Task<CreateVoiceDubbingRequest> CreateVoiceDubbingRequestAsync(
         string audio,
         string targetLanguage,
+        RunwayCliAudioExtras? extras,
         CancellationToken cancellationToken)
     {
-        return ToGenerated<CreateVoiceDubbingRequest>(new JsonObject
+        var dubbingBody = new JsonObject
         {
             ["model"] = "eleven_voice_dubbing",
             ["audioUri"] = await NormalizeInputAssetAsync(audio, cancellationToken).ConfigureAwait(false),
             ["targetLang"] = targetLanguage,
-        });
+        };
+
+        await ApplyAudioExtrasAsync(dubbingBody, "eleven_voice_dubbing", VoiceDubbingEndpoint, extras, cancellationToken).ConfigureAwait(false);
+        return ToGenerated<CreateVoiceDubbingRequest>(dubbingBody);
     }
 
     public static async Task<CreateVoiceIsolationRequest> CreateVoiceIsolationRequestAsync(

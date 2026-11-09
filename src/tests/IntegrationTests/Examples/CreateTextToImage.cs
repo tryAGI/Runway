@@ -14,6 +14,8 @@ public partial class Tests
     [TestMethod]
     public async Task Example_CreateTextToImage()
     {
+        RequireBillableExamplesEnabled("A text-to-image generation", approximateCredits: 5);
+
         using var client = GetAuthenticatedClient();
 
         var response = await client.StartGenerating.CreateTextToImageAsync(

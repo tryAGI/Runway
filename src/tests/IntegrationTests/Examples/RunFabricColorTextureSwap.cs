@@ -19,6 +19,8 @@ public partial class Tests
     [TestMethod]
     public async Task Example_RunFabricColorTextureSwap()
     {
+        RequireBillableExamplesEnabled("The Fabric, Color, Texture Swap built-in workflow", approximateCredits: 90);
+
         using var client = GetAuthenticatedClient();
 
         var workflowId = Guid.Parse("bd4dd01e-bb65-46ae-9db4-170c997c36f2");

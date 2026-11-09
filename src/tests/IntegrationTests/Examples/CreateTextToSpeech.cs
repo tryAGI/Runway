@@ -15,6 +15,8 @@ public partial class Tests
     [Ignore("Requires paid API credits")]
     public async Task Example_TextToSpeech()
     {
+        RequireBillableExamplesEnabled("A text-to-speech generation", approximateCredits: 5);
+
         using var client = GetAuthenticatedClient();
 
         var response = await client.StartGenerating.CreateTextToSpeechAsync(

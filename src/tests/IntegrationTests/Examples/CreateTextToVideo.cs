@@ -14,6 +14,8 @@ public partial class Tests
     [TestMethod]
     public async Task Example_CreateTextToVideo()
     {
+        RequireBillableExamplesEnabled("A 4 second text-to-video", approximateCredits: 25);
+
         using var client = GetAuthenticatedClient();
 
         var response = await client.StartGenerating.CreateTextToVideoAsync(

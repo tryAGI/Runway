@@ -16,6 +16,8 @@ public partial class Tests
     [Ignore("Requires paid API credits")]
     public async Task Example_CancelTask()
     {
+        RequireBillableExamplesEnabled("Submitting a seedance2 video just to cancel it", approximateCredits: 35);
+
         using var client = GetAuthenticatedClient();
 
         //// Start a generation task.

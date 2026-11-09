@@ -11,6 +11,8 @@ public partial class Tests
     [TestMethod]
     public async Task CreateImageToVideo()
     {
+        RequireBillableExamplesEnabled("A 5 second seedance2 image-to-video", approximateCredits: 35);
+
         using var client = GetAuthenticatedClient();
 
         var response = await client.StartGenerating.CreateImageToVideoAsync(

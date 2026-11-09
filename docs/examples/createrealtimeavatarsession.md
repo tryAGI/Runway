@@ -7,6 +7,8 @@ This example assumes `using Runway;` is in scope and `apiKey` contains your Runw
 ```csharp
 SkipUnlessRealtimeTestsEnabled();
 
+RequireBillableExamplesEnabled("A 60 second realtime avatar session", approximateCredits: 30);
+
 using var client = new RunwayClient(apiKey);
 
 var sessionId = default(Guid);

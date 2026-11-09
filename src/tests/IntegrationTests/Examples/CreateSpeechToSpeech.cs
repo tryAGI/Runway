@@ -16,6 +16,8 @@ public partial class Tests
     [Ignore("Requires paid API credits and audio input")]
     public async Task Example_SpeechToSpeech()
     {
+        RequireBillableExamplesEnabled("A speech-to-speech conversion", approximateCredits: 10);
+
         using var client = GetAuthenticatedClient();
 
         var response = await client.StartGenerating.CreateSpeechToSpeechAsync(

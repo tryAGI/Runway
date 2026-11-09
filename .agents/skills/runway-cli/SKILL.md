@@ -57,6 +57,10 @@ Default to low-cost, practical choices:
 | Smoother motion (frame interpolation) | `video-upscale --video <file> --model enhance-frame-rate --target-framerate 59_94` |
 | Upscale a still | `image-upscale --image <file> --scale-factor 4 --flavor photo` |
 | Check the spec vs the account's models | `models --account` (free; lists models the account has that the embedded spec lacks) |
+| Expressive speech | `text-to-speech "..." --model eleven_v3 --stability 0.4 --style 0.25 --language-code ru` |
+| Clone a voice from a clip | `text-to-speech "..." --model seed_audio --reference-audio <file>` |
+| Sound effect from reference clips | `sound-effect "like @Audio1 but wetter" --model seed_audio --reference-audio <file>` |
+| Dub with speaker control | `voice-dubbing --audio <file> --target-language ru --num-speakers 2 --disable-voice-cloning` |
 | Text-to-speech | `text-to-speech --voice-preset clara` |
 | Generate by kind (Higgsfield-style) | `generate "<prompt>" --kind image\|video\|image-to-video\|text-to-speech\|sound-effect` |
 

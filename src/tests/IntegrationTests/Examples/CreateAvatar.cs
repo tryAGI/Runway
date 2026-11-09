@@ -15,6 +15,8 @@ public partial class Tests
     [Ignore("Requires paid API credits and a reference image")]
     public async Task Example_CreateAvatar()
     {
+        RequireBillableExamplesEnabled("Creating a custom avatar", approximateCredits: 20);
+
         using var client = GetAuthenticatedClient();
 
         var avatar = await client.Avatars.CreateAvatarsAsync(

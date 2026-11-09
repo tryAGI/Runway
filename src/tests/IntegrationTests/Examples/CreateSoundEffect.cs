@@ -15,6 +15,8 @@ public partial class Tests
     [Ignore("Requires paid API credits")]
     public async Task Example_SoundEffect()
     {
+        RequireBillableExamplesEnabled("A 10 second sound effect", approximateCredits: 10);
+
         using var client = GetAuthenticatedClient();
 
         var response = await client.StartGenerating.CreateSoundEffectAsync(

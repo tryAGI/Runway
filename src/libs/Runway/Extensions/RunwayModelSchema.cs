@@ -22,7 +22,16 @@ public sealed record RunwayModelParameter(
     bool Required,
     IReadOnlyList<string> AllowedValues,
     int? MaxItems,
-    IReadOnlyList<string> ItemProperties);
+    IReadOnlyList<string> ItemProperties)
+{
+    /// <summary>
+    /// Enum values declared by the properties of this parameter's item/variant shapes, keyed by property
+    /// name — for example the 49 preset voice ids under <c>voice.presetId</c>. Empty for properties that
+    /// are not enum-backed.
+    /// </summary>
+    public IReadOnlyDictionary<string, IReadOnlyList<string>> ItemPropertyValues { get; init; }
+        = new Dictionary<string, IReadOnlyList<string>>(StringComparer.Ordinal);
+}
 
 /// <summary>
 /// One row of the Runway model→endpoint mapping derived from the embedded OpenAPI spec.
@@ -264,6 +273,25 @@ public static class RunwayModelSchema
     /// </summary>
     public static IReadOnlyList<string> GetAllowedValues(string modelId, string endpoint, string parameterName) =>
         GetParameter(modelId, endpoint, parameterName)?.AllowedValues ?? [];
+
+    /// <summary>
+    /// Returns the enum values declared by one property of a parameter's item/variant shapes — for
+    /// example the preset voice ids under <c>voice.presetId</c> on <c>text_to_speech</c>. Empty when the
+    /// property is not enum-backed or the model does not declare it.
+    /// </summary>
+    public static IReadOnlyList<string> GetItemPropertyValues(
+        string modelId,
+        string endpoint,
+        string parameterName,
+        string itemProperty)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(itemProperty);
+
+        return GetParameter(modelId, endpoint, parameterName)?.ItemPropertyValues
+            .TryGetValue(itemProperty, out var values) == true
+            ? values
+            : [];
+    }
 
     /// <summary>
     /// Returns true when the embedded spec says <paramref name="modelId"/> accepts
@@ -530,28 +558,11 @@ public static class RunwayModelSchema
         JsonElement schema,
         JsonElement root)
     {
-        var allowedValues = new List<string>();
-        if (schema.ValueKind == JsonValueKind.Object)
-        {
-            if (schema.TryGetProperty("enum", out var enumArray) && enumArray.ValueKind == JsonValueKind.Array)
-            {
-                foreach (var value in enumArray.EnumerateArray())
-                {
-                    if (value.ValueKind is JsonValueKind.String or JsonValueKind.Number)
-                    {
-                        allowedValues.Add(value.ToString());
-                    }
-                }
-            }
-            else if (schema.TryGetProperty("const", out var constValue) &&
-                     constValue.ValueKind is JsonValueKind.String or JsonValueKind.Number)
-            {
-                allowedValues.Add(constValue.ToString());
-            }
-        }
+        var allowedValues = ReadEnumValues(schema);
 
         int? maxItems = null;
         var itemProperties = new List<string>();
+        var itemPropertyValues = new Dictionary<string, IReadOnlyList<string>>(StringComparer.Ordinal);
         if (schema.ValueKind == JsonValueKind.Object)
         {
             if (schema.TryGetProperty("maxItems", out var maxItemsValue) &&
@@ -561,9 +572,15 @@ public static class RunwayModelSchema
                 maxItems = parsedMaxItems;
             }
 
-            if (schema.TryGetProperty("items", out var items))
+            // For an array parameter the shapes live under `items`; for a parameter that is itself a union
+            // of object shapes (text_to_speech `voice` is a preset id or a cloned reference clip) they are
+            // the union's own variants. Both cases answer "which properties may this value carry".
+            var hasItems = schema.TryGetProperty("items", out var items);
+            var shapeSource = hasItems ? Resolve(items, root) : schema;
+            var isUnion = schema.TryGetProperty("oneOf", out _) || schema.TryGetProperty("anyOf", out _);
+            if (hasItems || isUnion)
             {
-                foreach (var shape in EnumerateVariants(Resolve(items, root), root))
+                foreach (var shape in EnumerateVariants(shapeSource, root))
                 {
                     if (shape.ValueKind != JsonValueKind.Object ||
                         !shape.TryGetProperty("properties", out var itemProps) ||
@@ -578,6 +595,12 @@ public static class RunwayModelSchema
                         {
                             itemProperties.Add(itemProp.Name);
                         }
+
+                        if (ReadEnumValues(Resolve(itemProp.Value, root)) is { Count: > 0 } values &&
+                            !itemPropertyValues.ContainsKey(itemProp.Name))
+                        {
+                            itemPropertyValues[itemProp.Name] = values;
+                        }
                     }
                 }
 
@@ -585,7 +608,38 @@ public static class RunwayModelSchema
             }
         }
 
-        return new RunwayModelParameter(name, required, allowedValues, maxItems, itemProperties);
+        return new RunwayModelParameter(name, required, allowedValues, maxItems, itemProperties)
+        {
+            ItemPropertyValues = itemPropertyValues,
+        };
+    }
+
+    /// <summary>Reads a schema's <c>enum</c> values, or its single <c>const</c>, as strings.</summary>
+    private static List<string> ReadEnumValues(JsonElement schema)
+    {
+        var values = new List<string>();
+        if (schema.ValueKind != JsonValueKind.Object)
+        {
+            return values;
+        }
+
+        if (schema.TryGetProperty("enum", out var enumArray) && enumArray.ValueKind == JsonValueKind.Array)
+        {
+            foreach (var value in enumArray.EnumerateArray())
+            {
+                if (value.ValueKind is JsonValueKind.String or JsonValueKind.Number)
+                {
+                    values.Add(value.ToString());
+                }
+            }
+        }
+        else if (schema.TryGetProperty("const", out var constValue) &&
+                 constValue.ValueKind is JsonValueKind.String or JsonValueKind.Number)
+        {
+            values.Add(constValue.ToString());
+        }
+
+        return values;
     }
 
     private static HashSet<string> ReadRequiredSet(JsonElement variant)

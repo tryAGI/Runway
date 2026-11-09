@@ -5,6 +5,8 @@
 This example assumes `using Runway;` is in scope and `apiKey` contains your Runway API key.
 
 ```csharp
+RequireBillableExamplesEnabled("The Fabric, Color, Texture Swap built-in workflow", approximateCredits: 90);
+
 using var client = new RunwayClient(apiKey);
 
 var workflowId = Guid.Parse("bd4dd01e-bb65-46ae-9db4-170c997c36f2");

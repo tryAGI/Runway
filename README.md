@@ -485,6 +485,22 @@ dnx Runway.Cli short-video "a tiny robot finds a glowing seed" \
   --reference-image ./robot.png \
   --output ./runway-short-video
 
+# Expressive speech on eleven_v3, and voice cloning on seed_audio.
+dnx Runway.Cli text-to-speech "добрый вечер" \
+  --model eleven_v3 \
+  --voice-preset Claudia \
+  --stability 0.4 --style 0.25 --language-code ru
+
+dnx Runway.Cli text-to-speech "same voice, new line" \
+  --model seed_audio \
+  --reference-audio ./voice-sample.mp3 \
+  --output-format mp3 --sample-rate 48000
+
+# Sound effects conditioned on reference clips, addressed from the prompt.
+dnx Runway.Cli sound-effect "footsteps like @Audio1 over wet gravel" \
+  --model seed_audio \
+  --reference-audio ./footsteps.mp3
+
 # See which models your account has that the embedded spec has not caught up with (free, no credits).
 dnx Runway.Cli models --account
 
@@ -665,6 +681,8 @@ rather than dropped or sent into a schema that rejects it:
 | `video-to-video` | `POST /v1/video_to_video` | `aleph2`, `hailuo3`, `seedance2`, `seedance2_fast`, `seedance2_mini`, `seedance2_5`, `gemini_omni_flash` |
 | `video-upscale` | `POST /v1/video_upscale` | `magnific_video_upscaler_creative` (detail/grain/resolution), `enhance_frame_rate` (frame interpolation) |
 | `image-upscale` | `POST /v1/image_upscale` | `magnific_precision_upscaler_v2` |
+| `text-to-speech` | `POST /v1/text_to_speech` | `eleven_multilingual_v2` (default), `eleven_v3` (stability/style/speed/similarity/language/normalization/speaker-boost/seed), `seed_audio` (voice cloning from `--reference-audio`, plus output format and rate controls) |
+| `sound-effect` | `POST /v1/sound_effect` | `eleven_text_to_sound_v2` (default, `--duration`/`--loop`), `seed_audio` (up to 3 `--reference-audio` clips addressed as `@Audio1`..`@Audio3`) |
 | `image` | `POST /v1/text_to_image` | `gen4_image_turbo`, `gen4_image`, `gemini_image3_pro`, `gemini_image3.1_flash`, `gpt_image_2`, `gemini_2.5_flash`, `muse_image`, `seedream5_pro`, `seedream5_lite`, `grok_imagine_image_2` |
 | `product-photoshoot create` | Runway-native product photoshoot recipe planner over `POST /v1/text_to_image` | `gpt_image_2` by default; accepts image models |
 | `marketplace-cards create` | Runway-native marketplace-style card recipe planner over `POST /v1/text_to_image` | `gpt_image_2` by default; accepts image models |

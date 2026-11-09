@@ -17,6 +17,8 @@ public partial class Tests
     [TestMethod]
     public async Task Example_RunVideoStyleTransfer()
     {
+        RequireBillableExamplesEnabled("The Video to Video - Style Transfer built-in workflow", approximateCredits: 90);
+
         using var client = GetAuthenticatedClient();
 
         var workflowId = Guid.Parse("d1d344d1-8321-4f29-9d9d-90503abcd4fd");

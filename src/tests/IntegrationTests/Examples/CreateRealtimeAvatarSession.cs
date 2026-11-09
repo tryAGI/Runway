@@ -18,6 +18,8 @@ public partial class Tests
     {
         SkipUnlessRealtimeTestsEnabled();
 
+        RequireBillableExamplesEnabled("A 60 second realtime avatar session", approximateCredits: 30);
+
         using var client = GetAuthenticatedClient();
 
         var sessionId = default(Guid);
