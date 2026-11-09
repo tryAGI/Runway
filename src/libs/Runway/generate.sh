@@ -18,13 +18,16 @@ fetch_spec() {
 # in a response. An older autosdk.cli accepts the flag and hardens every enum, including task status
 # and the model ids the account returns, which would throw on ordinary replies.
 #
-# The floor is measured rather than guessed: 0.35.0-preview.2.170 is the newest published version whose
+# The floor is measured rather than guessed, and has moved once already: .171 narrowed the opt-in but
+# still hardened one-value response enums, which 0.35.0-preview.2.176 fixed. Each build reports the
+# commit it came from, e.g. 0.35.0-preview.2.176+fa115c6a21..., which is how both floors were pinned.
+# 0.35.0-preview.2.170 was the newest published version whose
 # `generate --help` does not describe the narrowing, and AutoSDK's main is linear with a monotonic
 # MinVer height, so anything above it contains the fix. 0.35.0-preview.2.170 reports itself as built
 # from 4e5f2e105c, the commit immediately before the narrowing landed, which pins the floor exactly. The help-text probe is kept as a backstop in
 # case a build ever lands out of order. Failing here is the safe outcome; regenerating with the wrong
 # behaviour is not.
-AUTOSDK_MIN_VERSION="0.35.0-preview.2.171"
+AUTOSDK_MIN_VERSION="0.35.0-preview.2.176"
 
 compare_autosdk_version() {
   python3 - "$1" "$2" <<'PYVER'
@@ -54,7 +57,7 @@ require_direction_aware_enum_rejection() {
   # Fail closed: a missing or unparseable version stops the regeneration rather than assuming the best.
   if ! compare_autosdk_version "$installed" "$AUTOSDK_MIN_VERSION"; then
     echo "error: autosdk.cli ${installed:-<not installed>} does not meet the required $AUTOSDK_MIN_VERSION," >&2
-    echo "       the first version that narrows --reject-unknown-enum-values to request-reachable enums." >&2
+    echo "       the first version that narrows --reject-unknown-enum-values to request-reachable enums correctly." >&2
     echo "       Run: dotnet tool update --global autosdk.cli --prerelease" >&2
     exit 1
   fi
