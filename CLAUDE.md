@@ -26,11 +26,11 @@ RUNWAY_RUN_BILLABLE_EXAMPLES=1 dotnet test src/tests/IntegrationTests
 dotnet test src/tests/IntegrationTests --filter "CreateImageToVideo"
 
 # Regenerate SDK from OpenAPI spec.
-# generate.sh refuses to run unless autosdk.cli is at least 0.35.0-preview.2.176, the version that
-# narrows --reject-unknown-enum-values to request-reachable enums. An older CLI accepts the flag but
-# hardens response enums too, which would throw on ordinary replies carrying a model id newer than the
-# spec. The version comes from `autosdk --version`, since `dotnet tool list --global` aborts on this
-# machine when any one global tool has an unparseable version.
+# generate.sh refuses to run unless the installed autosdk.cli reports
+# `behavior:request-scoped-enum-rejection` from `autosdk capabilities`. An older CLI accepts
+# --reject-unknown-enum-values but also hardens response enums, which would throw on ordinary replies
+# carrying a model id newer than the spec. Asking the build what it does replaces the version floor this
+# used to carry; a CLI with no `capabilities` subcommand fails the check, so it is fail-closed.
 cd src/libs/Runway && chmod +x ./generate.sh && ./generate.sh
 
 # Validate trimming/NativeAOT compatibility (requires: dotnet tool install -g autosdk.cli --prerelease)
