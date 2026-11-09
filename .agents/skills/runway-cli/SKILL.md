@@ -56,6 +56,8 @@ Default to low-cost, practical choices:
 | Machine-readable result | add `--format json --quiet`: one object on stdout with `taskId` and `outputs`, nothing on stderr |
 | Chain two commands | `runway image "..." --quiet \| runway text-to-video "..." --reference-image -` — `-` reads the asset from stdin |
 | Exit codes | `0` success, `2` bad invocation (unknown model, value outside the spec enum, missing option), `1` API or task failure |
+| Shell completion | `runway completion bash\|zsh\|fish` — generated from the spec, so `--model <TAB>` lists the right models per command |
+| Posted bodies are checked too | `--json` and the `runway api …` group validate the body against the spec and report every violation at once |
 | Upscale a video | `video-upscale --video <file> --resolution 4k --creativity 40 --flavor vivid` |
 | Smoother motion (frame interpolation) | `video-upscale --video <file> --model enhance-frame-rate --target-framerate 59_94` |
 | Upscale a still | `image-upscale --image <file> --scale-factor 4 --flavor photo` |

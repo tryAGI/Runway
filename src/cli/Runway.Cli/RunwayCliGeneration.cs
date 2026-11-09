@@ -787,6 +787,10 @@ internal static class RunwayCliGeneration
     public static async Task<T> ReadGeneratedJsonAsync<T>(string value, CancellationToken cancellationToken)
     {
         var json = await ReadJsonTextAsync(value, cancellationToken).ConfigureAwait(false);
+
+        // --json bypasses the friendly flags, so it bypassed their spec checks too. Validate the body
+        // before the generated converters get a chance to coerce an unknown enum value.
+        RunwayCliJsonBodyValidator.EnsureValid(json);
         return DeserializeGenerated<T>(json);
     }
 

@@ -979,7 +979,30 @@ runway models --account --json | jq -e '.missingFromSpec | length == 0'
 ```
 
 **Request bodies can come from anywhere.** `--json <inline>`, `--json @file.json` or `--json -` (stdin)
-bypasses the friendly flags entirely when you want to post an exact body.
+bypasses the friendly flags entirely when you want to post an exact body — and the body is checked
+against the spec too, including inside the generated `runway api …` group, which only ever takes a whole
+body. Every violation is reported at once rather than one per attempt:
+
+```bash
+$ runway video-upscale --json '{"model":"magnific_video_upscaler_creative","videoUri":"…","flavor":"viv1d"}'
+The request body does not match the Runway OpenAPI spec:
+  `flavor`: 'viv1d' is not accepted by magnific_video_upscaler_creative. Accepted values: vivid, natural.
+```
+
+The endpoint is inferred from the body's own `model`, so a model that several endpoints accept never
+produces a false positive, and a model the spec has not described yet is never blocked.
+
+**Shell completion** is generated from the live command tree and the embedded spec, so subcommands,
+options and the `--model` values for each command stay correct after a spec refresh:
+
+```bash
+runway completion bash > /usr/local/etc/bash_completion.d/runway
+runway completion zsh  > "${fpath[1]}/_runway"
+runway completion fish > ~/.config/fish/completions/runway.fish
+```
+
+`runway text-to-video --model <TAB>` then offers the twelve text-to-video models, while
+`runway image --model <TAB>` offers the ten image models — each list read from the spec, not hand-written.
 
 **Point it somewhere else** with `--base-url` or `RUNWAY_BASE_URL` for a proxy, a staging environment or a
 local stub — useful for smoke tests that must not reach production.
