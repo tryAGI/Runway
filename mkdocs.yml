@@ -11,9 +11,13 @@ nav:
   - CancelTask: examples/canceltask.md
   - CreateAvatar: examples/createavatar.md
   - CreateAvatarVideo: examples/createavatarvideo.md
-  - CreateRealtimeAvatarSession: examples/createrealtimeavatarsession.md
   - CreateImageToVideoGen4Turbo: examples/createimagetovideogen4turbo.md
   - CreateLoopingSoundEffect: examples/createloopingsoundeffect.md
+  - CreateMarketingStudioAvatar: examples/createmarketingstudioavatar.md
+  - CreateProductPhotoshootCloseup: examples/createproductphotoshootcloseup.md
+  - CreateProductPhotoshootMoodboardPin: examples/createproductphotoshootmoodboardpin.md
+  - CreateRealtimeAvatarSession: examples/createrealtimeavatarsession.md
+  - CreateSoulIdReference: examples/createsoulidreference.md
   - CreateSoundEffect: examples/createsoundeffect.md
   - CreateSpeechToSpeech: examples/createspeechtospeech.md
   - CreateTextToImage: examples/createtexttoimage.md
@@ -22,11 +26,18 @@ nav:
   - CreateVoiceDubbing: examples/createvoicedubbing.md
   - ErrorHandling: examples/errorhandling.md
   - GetTaskStatus: examples/gettaskstatus.md
+  - InspectModelSchema: examples/inspectmodelschema.md
   - ListAvatarConversations: examples/listavatarconversations.md
   - ListCustomVoices: examples/listcustomvoices.md
   - ListPresetAvatars: examples/listpresetavatars.md
   - ListPresetVoices: examples/listpresetvoices.md
   - ListPublishedWorkflows: examples/listpublishedworkflows.md
+  - RunBuiltInWorkflowSdkBytesExample: examples/runbuiltinworkflowsdkbytesexample.md
+  - RunBuiltInWorkflowSdkExample: examples/runbuiltinworkflowsdkexample.md
+  - RunBuiltInWorkflowSdkFilePathExample: examples/runbuiltinworkflowsdkfilepathexample.md
+  - RunFabricColorTextureSwap: examples/runfabriccolortextureswap.md
+  - RunVideoStyleTransfer: examples/runvideostyletransfer.md
+  - VideoReferenceInputs: examples/videoreferenceinputs.md
   - Create Image To Video: examples/create-image-to-video.md
 # EXAMPLES:END
 

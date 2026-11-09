@@ -1,48 +1,55 @@
 # CreateRealtimeAvatarSession
 
+
+
 This example assumes `using Runway;` is in scope and `apiKey` contains your Runway API key.
 
 ```csharp
+SkipUnlessRealtimeTestsEnabled();
+
 using var client = new RunwayClient(apiKey);
 
-var session = await client.RealtimeSessions.CreateRealtimeSessionsAsync(
-    request: new CreateRealtimeSessionsRequest
-    {
-        Avatar = new CreateRealtimeSessionsRequestAvatarRunwayPresetAvatar
+var sessionId = default(Guid);
+
+try
+{
+    var session = await client.RealtimeSessions.CreateRealtimeSessionsAsync(
+        request: new CreateRealtimeSessionsRequest
         {
-            PresetId = CreateRealtimeSessionsRequestAvatarRunwayPresetAvatarPresetId.Influencer,
-        },
-        MaxDuration = 60,
-    });
+            Avatar = new CreateRealtimeSessionsRequestAvatarRunwayPresetAvatar
+            {
+                PresetId = CreateRealtimeSessionsRequestAvatarRunwayPresetAvatarPresetId.Influencer,
+            },
+            MaxDuration = 60,
+        });
 
-Console.WriteLine($"Realtime session ID: {session.Id}");
+    sessionId = session.Id;
 
-GetRealtimeSessionsResponse status;
-do
-{
-    status = await client.RealtimeSessions.GetRealtimeSessionsByIdAsync(id: session.Id);
-    await Task.Delay(TimeSpan.FromSeconds(1));
+    Console.WriteLine($"Realtime session ID: {sessionId}");
+
+    var ready = await WaitForRealtimeSessionReadyAsync(
+        client: client,
+        sessionId: sessionId,
+        timeout: TimeSpan.FromSeconds(90));
+
+    var credentials = await client.RealtimeSessions.ConsumeRealtimeSessionAsync(
+        id: sessionId,
+        sessionKey: ready.SessionKey);
+
+    Console.WriteLine($"Realtime credentials received for room '{credentials.RoomName}' at {credentials.Url.Host}.");
 }
-while (status.IsNotReady);
-
-if (status.IsFailed)
+finally
 {
-    throw new InvalidOperationException(status.Failed!.Failure);
+    if (sessionId != default)
+    {
+        try
+        {
+            await client.RealtimeSessions.DeleteRealtimeSessionsByIdAsync(id: sessionId);
+        }
+        catch (ApiException exception)
+        {
+            Console.WriteLine($"Realtime session cleanup returned HTTP {(int)exception.StatusCode}.");
+        }
+    }
 }
-
-if (!status.IsReady)
-{
-    throw new InvalidOperationException("Realtime session did not become ready.");
-}
-
-var credentials = await client.RealtimeSessions.ConsumeRealtimeSessionAsync(
-    id: session.Id,
-    sessionKey: status.Ready!.SessionKey);
-
-Console.WriteLine($"LiveKit server: {credentials.Url}");
-Console.WriteLine($"LiveKit room: {credentials.RoomName}");
-
-await client.RealtimeSessions.DeleteRealtimeSessionsByIdAsync(id: session.Id);
 ```
-
-Use realtime sessions for live Characters calls and backend bridges. Use avatar videos or character performance for offline generated video.

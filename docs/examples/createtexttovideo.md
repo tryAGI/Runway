@@ -13,7 +13,7 @@ var response = await client.StartGenerating.CreateTextToVideoAsync(
     {
         PromptText = "A calm ocean with gentle waves under a starlit sky",
         Ratio = CreateTextToVideoRequestVeo31FastRatio.x1280_720,
-        Duration = 5,
+        Duration = 4,
     });
 
 Console.WriteLine($"Task ID: {response.Id}");
