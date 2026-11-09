@@ -50,6 +50,9 @@ Default to low-cost, practical choices:
 | Pin a restyle to specific stills | `video-to-video --video <file> --keyframe <img>@0 --keyframe <img>@90%` |
 | Reframe to vertical | `video-to-video --video <file> --target-aspect-ratio 9:16` |
 | ProRes / HDR delivery | `text-to-video --model gen4.5 --duration 5 --output-format hdr_prores --prores-profile "422 HQ"` |
+| Multi-shot short with a fixed subject | `short-video --model seedance2-5 --ratio 1280:720 --reference-image <file>` |
+| Image models beyond gen4/gemini/gpt | `image --model seedream5-pro --grounding --output-format jpeg`, `image --model muse-image`, `image --model grok-imagine-image-2 --edit --reference-image <file>` |
+| Proxy / staging / local stub | add `--base-url http://localhost:8080` (or set `RUNWAY_BASE_URL`) to any command |
 | Text-to-speech | `text-to-speech --voice-preset clara` |
 | Generate by kind (Higgsfield-style) | `generate "<prompt>" --kind image\|video\|image-to-video\|text-to-speech\|sound-effect` |
 
@@ -440,7 +443,7 @@ dnx Runway.Cli ad-video create --prompt "alice unboxes the new kettle" \
   --mode unboxing --shots 1 --soul-id <id-from-list> --plan-only
 ```
 
-The local soul-id registry stores reference photos only — it does not train a server-side identity model. `--soul-id` is wired into every command that accepts reference images: `image`, `image-to-video`, `product-photoshoot create`, `marketplace-cards create`, and `ad-video create`. It is NOT wired into `short-video`; for identity-faithful multi-shot stories, either run `image` with `--soul-id` to produce a keyframe and chain `image-to-video --image <keyframe> --soul-id <id>` per shot, or pass `--reference-image` directly to `text-to-video` with a reference-capable model (`seedance2`, `seedance2-fast`, `seedance2-mini`, `seedance2-5`, `hailuo3`, `wan3`, `grok-imagine-1-5`). For Runway-native talking-avatar workflows, use `runway avatar create` and `runway avatar video`.
+The local soul-id registry stores reference photos only — it does not train a server-side identity model. `--soul-id` is wired into every command that accepts reference images: `image`, `image-to-video`, `product-photoshoot create`, `marketplace-cards create`, and `ad-video create`. `--soul-id` and `--reference-image` are also wired into `short-video`, which attaches them to every shot when the chosen model is reference-capable (`seedance2`, `seedance2-fast`, `seedance2-mini`, `seedance2-5`, `hailuo3`, `wan3`, `grok-imagine-1-5`); a model that cannot take references fails while planning, with the list of models that can. The `image` -> `image-to-video --soul-id` chain per shot remains available when you want an explicit keyframe for each shot. For Runway-native talking-avatar workflows, use `runway avatar create` and `runway avatar video`.
 
 Auth and account:
 

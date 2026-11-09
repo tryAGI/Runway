@@ -38,3 +38,26 @@ internal sealed record RunwayCliVideoExtras
     /// <summary>No extras — every option left at the model default.</summary>
     public static RunwayCliVideoExtras None { get; } = new();
 }
+
+/// <summary>
+/// The per-model image generation knobs that only some `text_to_image` variants declare. Gated against
+/// the embedded spec so a flag the chosen model does not accept fails with the list of models that do,
+/// rather than being sent into an `additionalProperties: false` schema.
+/// </summary>
+internal sealed record RunwayCliImageExtras
+{
+    /// <summary>Output file format for the seedream models: `png` or `jpeg`.</summary>
+    public string? OutputFormat { get; init; }
+
+    /// <summary>Background treatment for `gpt_image_2`: `opaque` or `auto`.</summary>
+    public string? Background { get; init; }
+
+    /// <summary>Live web search for current brand/trend/event context (seedream models).</summary>
+    public bool? Grounding { get; init; }
+
+    /// <summary>Edit the single reference image directly instead of treating it as a style reference (`grok_imagine_image_2`).</summary>
+    public bool? Edit { get; init; }
+
+    /// <summary>No extras — every option left at the model default.</summary>
+    public static RunwayCliImageExtras None { get; } = new();
+}

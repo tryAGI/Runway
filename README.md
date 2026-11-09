@@ -476,6 +476,24 @@ dnx Runway.Cli video-to-video "continue the move past the counter" \
   --mode extend \
   --reference-image ./product.png
 
+# short-video shots are text-to-video, so references flow into every shot on a reference-capable model.
+# --soul-id photos are merged in the same way.
+dnx Runway.Cli short-video "a tiny robot finds a glowing seed" \
+  --shots 3 \
+  --model seedance2-5 \
+  --ratio 1280:720 \
+  --reference-image ./robot.png \
+  --output ./runway-short-video
+
+# Point the CLI at a proxy, staging, or a local stub. --base-url wins over RUNWAY_BASE_URL and .env.
+dnx Runway.Cli text-to-video "a smoke test" --base-url http://localhost:8080 --no-wait
+
+# Image models beyond the gen4/gemini/gpt families, with their own knobs.
+dnx Runway.Cli image "a product poster for a transparent speaker" \
+  --model seedream5-pro \
+  --grounding \
+  --output-format jpeg
+
 # ProRes/HDR delivery straight out of gen4.5.
 dnx Runway.Cli text-to-video "a cinematic drone shot over a neon desert highway" \
   --model gen4.5 \
@@ -623,9 +641,11 @@ dotnet run --project src/cli/Runway.Cli -- gallery create \
   --output ./runway-short-video/gallery.html
 ```
 
-CLI endpoint and model coverage. The accepted `--model` set for `text-to-video`, `image-to-video`, and
-`video-to-video` is read from the embedded OpenAPI spec at runtime, so every model Runway ships becomes
-usable on the next spec refresh without a CLI release:
+CLI endpoint and model coverage. The accepted `--model` set for `image`, `text-to-video`, `image-to-video`,
+`video-to-video`, and `short-video` is read from the embedded OpenAPI spec at runtime, so every model
+Runway ships becomes usable on the next spec refresh without a CLI release. The same source gates each
+optional flag: one the chosen model does not declare is refused with the list of models that take it,
+rather than dropped or sent into a schema that rejects it:
 
 | Command | Endpoint(s) | Models |
 | --- | --- | --- |
@@ -634,7 +654,7 @@ usable on the next spec refresh without a CLI release:
 | `ad-video create` | Runway-native ad recipe planner over `POST /v1/text_to_video` or `POST /v1/image_to_video` when `--image` is supplied | `veo3.1_fast` by default; accepts video models |
 | `image-to-video` | `POST /v1/image_to_video` | `gen4.5`, `gen4_turbo`, `veo3.1`, `veo3.1_fast`, `hailuo3`, `happyhorse_1_0`, `seedance2`, `seedance2_fast`, `seedance2_mini`, `seedance2_5`, `gemini_omni_flash`, `grok_imagine_1_5`, `wan3` |
 | `video-to-video` | `POST /v1/video_to_video` | `aleph2`, `hailuo3`, `seedance2`, `seedance2_fast`, `seedance2_mini`, `seedance2_5`, `gemini_omni_flash` |
-| `image` | `POST /v1/text_to_image` | `gen4_image_turbo`, `gen4_image`, `gemini_image3_pro`, `gpt_image_2`, `gemini_2.5_flash` |
+| `image` | `POST /v1/text_to_image` | `gen4_image_turbo`, `gen4_image`, `gemini_image3_pro`, `gemini_image3.1_flash`, `gpt_image_2`, `gemini_2.5_flash`, `muse_image`, `seedream5_pro`, `seedream5_lite`, `grok_imagine_image_2` |
 | `product-photoshoot create` | Runway-native product photoshoot recipe planner over `POST /v1/text_to_image` | `gpt_image_2` by default; accepts image models |
 | `marketplace-cards create` | Runway-native marketplace-style card recipe planner over `POST /v1/text_to_image` | `gpt_image_2` by default; accepts image models |
 | `character-performance` | `POST /v1/character_performance` | `act_two` |

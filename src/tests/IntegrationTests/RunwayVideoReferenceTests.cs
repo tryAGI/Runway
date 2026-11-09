@@ -101,7 +101,7 @@ public sealed class RunwayVideoReferenceTests
             model: "hailuo3",
             ratio: "16:9",
             duration: null,
-            seed: 7,
+            seed: null,
             audio: true,
             publicFigureThreshold: null,
             extras: new RunwayCliVideoExtras { Resolution = "2K" },
@@ -111,9 +111,29 @@ public sealed class RunwayVideoReferenceTests
         var root = json.RootElement;
         root.GetProperty("resolution").GetString().Should().Be("2K");
         root.GetProperty("ratio").GetString().Should().Be("16:9");
-        // hailuo3 declares neither `audio` nor `seed` on text_to_video, so neither may be sent.
+        // `--no-audio` has a value on every invocation, so an unsupported `audio` is dropped rather than
+        // refused — hailuo3 does not declare it on text_to_video.
         root.TryGetProperty("audio", out _).Should().BeFalse();
-        root.TryGetProperty("seed", out _).Should().BeFalse();
+    }
+
+    [TestMethod]
+    public async Task TextToVideo_SeedIsRefusedByModelsThatDoNotDeclareIt()
+    {
+        // Unlike --ratio and --no-audio, --seed has no default: a value means the user asked for it, so a
+        // model that cannot honor it is an error rather than a silent drop.
+        var act = async () => await RunwayCliGeneration.CreateTextToVideoRequestAsync(
+            prompt: "a slow dolly",
+            model: "hailuo3",
+            ratio: "16:9",
+            duration: null,
+            seed: 7,
+            audio: true,
+            publicFigureThreshold: null,
+            extras: RunwayCliVideoExtras.None,
+            cancellationToken: TestContext.CancellationTokenSource.Token);
+
+        (await act.Should().ThrowAsync<ArgumentException>())
+            .WithMessage("*hailuo3*does not accept --seed*gen4.5*");
     }
 
     [TestMethod]

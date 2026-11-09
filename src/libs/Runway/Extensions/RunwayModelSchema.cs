@@ -3,6 +3,28 @@ using System.Text.Json;
 namespace Runway;
 
 /// <summary>
+/// Spec detail for one request parameter of one model variant: whether it is required, the enum values
+/// it accepts, and — for array parameters such as <c>referenceImages</c> or <c>references</c> — the item
+/// ceiling and the properties each item may carry. Lets callers size and shape reference lists from the
+/// spec instead of hard-coding per-model limits that go stale.
+/// </summary>
+/// <param name="Name">The wire name of the parameter, e.g. <c>referenceImages</c>.</param>
+/// <param name="Required">Whether the model variant requires the parameter.</param>
+/// <param name="AllowedValues">The parameter's enum values, or empty when it is not an enum.</param>
+/// <param name="MaxItems">The array's <c>maxItems</c>, or null when the parameter is not a bounded array.</param>
+/// <param name="ItemProperties">
+/// The properties each array item may carry, e.g. <c>uri</c>, <c>tag</c>, <c>subject</c>. Empty for
+/// non-array parameters. Sending a property absent from this list is rejected by models whose schema is
+/// <c>additionalProperties: false</c>.
+/// </param>
+public sealed record RunwayModelParameter(
+    string Name,
+    bool Required,
+    IReadOnlyList<string> AllowedValues,
+    int? MaxItems,
+    IReadOnlyList<string> ItemProperties);
+
+/// <summary>
 /// One row of the Runway model→endpoint mapping derived from the embedded OpenAPI spec.
 /// </summary>
 public sealed record RunwayModelEndpoint(
@@ -14,6 +36,12 @@ public sealed record RunwayModelEndpoint(
     /// All parameters the endpoint accepts for this model — required first, then optional.
     /// </summary>
     public IEnumerable<string> Parameters => RequiredParameters.Concat(OptionalParameters);
+
+    /// <summary>
+    /// Per-parameter spec detail, keyed by wire name. Populated by <see cref="RunwayModelSchema"/>.
+    /// </summary>
+    public IReadOnlyDictionary<string, RunwayModelParameter> ParameterDetails { get; init; }
+        = new Dictionary<string, RunwayModelParameter>(StringComparer.Ordinal);
 }
 
 /// <summary>
@@ -125,6 +153,66 @@ public static class RunwayModelSchema
         models.Sort(StringComparer.Ordinal);
         return models;
     }
+
+    /// <summary>
+    /// Returns the spec detail for one parameter of <paramref name="modelId"/> on
+    /// <paramref name="endpoint"/>, or null when the model does not declare it.
+    /// </summary>
+    public static RunwayModelParameter? GetParameter(string modelId, string endpoint, string parameterName)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(endpoint);
+        ArgumentException.ThrowIfNullOrWhiteSpace(parameterName);
+
+        foreach (var entry in Lookup(modelId))
+        {
+            if (string.Equals(entry.Endpoint, endpoint, StringComparison.Ordinal) &&
+                entry.ParameterDetails.TryGetValue(parameterName, out var detail))
+            {
+                return detail;
+            }
+        }
+
+        return null;
+    }
+
+    /// <summary>
+    /// Returns the <c>maxItems</c> ceiling the spec sets for an array parameter (for example how many
+    /// <c>referenceImages</c> the model accepts), or null when it is unbounded or not an array.
+    /// </summary>
+    public static int? GetMaxItems(string modelId, string endpoint, string parameterName) =>
+        GetParameter(modelId, endpoint, parameterName)?.MaxItems;
+
+    /// <summary>
+    /// Returns true when items of an array parameter may carry <paramref name="itemProperty"/> — e.g.
+    /// whether a model's <c>referenceImages</c> entries accept a <c>tag</c> or a <c>subject</c>.
+    /// </summary>
+    public static bool SupportsItemProperty(string modelId, string endpoint, string parameterName, string itemProperty)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(itemProperty);
+
+        var detail = GetParameter(modelId, endpoint, parameterName);
+        if (detail is null)
+        {
+            return false;
+        }
+
+        foreach (var property in detail.ItemProperties)
+        {
+            if (string.Equals(property, itemProperty, StringComparison.Ordinal))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /// <summary>
+    /// Returns the enum values a parameter accepts for the given model, or an empty list when it is not
+    /// enum-backed or the model does not declare it.
+    /// </summary>
+    public static IReadOnlyList<string> GetAllowedValues(string modelId, string endpoint, string parameterName) =>
+        GetParameter(modelId, endpoint, parameterName)?.AllowedValues ?? [];
 
     /// <summary>
     /// Returns true when the embedded spec says <paramref name="modelId"/> accepts
@@ -303,6 +391,7 @@ public static class RunwayModelSchema
                     var requiredSet = ReadRequiredSet(variant);
                     var requiredParams = new List<string>();
                     var optionalParams = new List<string>();
+                    var details = new Dictionary<string, RunwayModelParameter>(StringComparer.Ordinal);
                     foreach (var prop in properties.EnumerateObject())
                     {
                         if (string.Equals(prop.Name, "model", StringComparison.Ordinal))
@@ -310,7 +399,8 @@ public static class RunwayModelSchema
                             continue;
                         }
 
-                        if (requiredSet.Contains(prop.Name))
+                        var isRequired = requiredSet.Contains(prop.Name);
+                        if (isRequired)
                         {
                             requiredParams.Add(prop.Name);
                         }
@@ -318,6 +408,8 @@ public static class RunwayModelSchema
                         {
                             optionalParams.Add(prop.Name);
                         }
+
+                        details[prop.Name] = ReadParameterDetail(prop.Name, isRequired, Resolve(prop.Value, root), root);
                     }
 
                     requiredParams.Sort(StringComparer.Ordinal);
@@ -331,13 +423,85 @@ public static class RunwayModelSchema
                             result[modelId] = list;
                         }
 
-                        list.Add(new RunwayModelEndpoint(endpointName, requiredParams, optionalParams));
+                        list.Add(new RunwayModelEndpoint(endpointName, requiredParams, optionalParams)
+                        {
+                            ParameterDetails = details,
+                        });
                     }
                 }
             }
         }
 
         return ToReadOnly(result);
+    }
+
+    /// <summary>
+    /// Reads enum values, the array ceiling, and the item property names for one request parameter.
+    /// Array items declared as a union (<c>anyOf</c>/<c>oneOf</c>) contribute the union of their
+    /// properties, so a caller sees every property some item shape accepts.
+    /// </summary>
+    private static RunwayModelParameter ReadParameterDetail(
+        string name,
+        bool required,
+        JsonElement schema,
+        JsonElement root)
+    {
+        var allowedValues = new List<string>();
+        if (schema.ValueKind == JsonValueKind.Object)
+        {
+            if (schema.TryGetProperty("enum", out var enumArray) && enumArray.ValueKind == JsonValueKind.Array)
+            {
+                foreach (var value in enumArray.EnumerateArray())
+                {
+                    if (value.ValueKind is JsonValueKind.String or JsonValueKind.Number)
+                    {
+                        allowedValues.Add(value.ToString());
+                    }
+                }
+            }
+            else if (schema.TryGetProperty("const", out var constValue) &&
+                     constValue.ValueKind is JsonValueKind.String or JsonValueKind.Number)
+            {
+                allowedValues.Add(constValue.ToString());
+            }
+        }
+
+        int? maxItems = null;
+        var itemProperties = new List<string>();
+        if (schema.ValueKind == JsonValueKind.Object)
+        {
+            if (schema.TryGetProperty("maxItems", out var maxItemsValue) &&
+                maxItemsValue.ValueKind == JsonValueKind.Number &&
+                maxItemsValue.TryGetInt32(out var parsedMaxItems))
+            {
+                maxItems = parsedMaxItems;
+            }
+
+            if (schema.TryGetProperty("items", out var items))
+            {
+                foreach (var shape in EnumerateVariants(Resolve(items, root), root))
+                {
+                    if (shape.ValueKind != JsonValueKind.Object ||
+                        !shape.TryGetProperty("properties", out var itemProps) ||
+                        itemProps.ValueKind != JsonValueKind.Object)
+                    {
+                        continue;
+                    }
+
+                    foreach (var itemProp in itemProps.EnumerateObject())
+                    {
+                        if (!itemProperties.Contains(itemProp.Name, StringComparer.Ordinal))
+                        {
+                            itemProperties.Add(itemProp.Name);
+                        }
+                    }
+                }
+
+                itemProperties.Sort(StringComparer.Ordinal);
+            }
+        }
+
+        return new RunwayModelParameter(name, required, allowedValues, maxItems, itemProperties);
     }
 
     private static HashSet<string> ReadRequiredSet(JsonElement variant)
@@ -399,6 +563,18 @@ public static class RunwayModelSchema
         if (schema.TryGetProperty("oneOf", out var oneOf) && oneOf.ValueKind == JsonValueKind.Array)
         {
             foreach (var variant in oneOf.EnumerateArray())
+            {
+                yield return Resolve(variant, root);
+            }
+
+            yield break;
+        }
+
+        // `anyOf` item shapes (e.g. an aleph2 keyframe addressed by `seconds` or by `at`) each contribute
+        // their own properties, so callers see every property some shape accepts.
+        if (schema.TryGetProperty("anyOf", out var anyOf) && anyOf.ValueKind == JsonValueKind.Array)
+        {
+            foreach (var variant in anyOf.EnumerateArray())
             {
                 yield return Resolve(variant, root);
             }

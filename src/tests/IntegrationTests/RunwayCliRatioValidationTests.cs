@@ -76,7 +76,8 @@ public sealed class RunwayCliRatioValidationTests
             seed: null,
             outputCount: null,
             publicFigureThreshold: null,
-            CancellationToken.None);
+            extras: null,
+            cancellationToken: CancellationToken.None);
 
         await act.Should().ThrowAsync<ArgumentException>().ConfigureAwait(false);
     }

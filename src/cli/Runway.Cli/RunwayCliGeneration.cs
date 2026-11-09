@@ -10,7 +10,20 @@ internal static class RunwayCliGeneration
     public const string TextToVideoEndpoint = "text_to_video";
     public const string ImageToVideoEndpoint = "image_to_video";
     public const string VideoToVideoEndpoint = "video_to_video";
-    private static readonly string[] TextToImageModels = ["gen4_image_turbo", "gen4_image", "gemini_image3_pro", "gpt_image_2", "gemini_2.5_flash"];
+
+    /// <summary>Model used when <c>--model</c> is omitted, per video endpoint.</summary>
+    public const string DefaultTextToVideoModel = "veo3.1_fast";
+
+    /// <inheritdoc cref="DefaultTextToVideoModel"/>
+    public const string DefaultImageToVideoModel = "gen4_turbo";
+
+    /// <inheritdoc cref="DefaultTextToVideoModel"/>
+    public const string DefaultVideoToVideoModel = "aleph2";
+
+    public const string TextToImageEndpoint = "text_to_image";
+
+    /// <inheritdoc cref="DefaultTextToVideoModel"/>
+    public const string DefaultTextToImageModel = "gemini_2.5_flash";
 
     public static string JoinPrompt(string[]? values)
     {
@@ -38,7 +51,7 @@ internal static class RunwayCliGeneration
     {
         ArgumentNullException.ThrowIfNull(extras);
 
-        var normalizedModel = NormalizeVideoModel(model, "veo3.1_fast", TextToVideoEndpoint);
+        var normalizedModel = NormalizeVideoModel(model, DefaultTextToVideoModel, TextToVideoEndpoint);
         var body = new JsonObject
         {
             ["model"] = normalizedModel,
@@ -47,7 +60,7 @@ internal static class RunwayCliGeneration
 
         SetIfSupported(body, normalizedModel, TextToVideoEndpoint, "ratio", ratio);
         SetIfSupported(body, normalizedModel, TextToVideoEndpoint, "duration", duration);
-        SetIfSupported(body, normalizedModel, TextToVideoEndpoint, "seed", seed);
+        RequireAndSet(body, normalizedModel, TextToVideoEndpoint, "seed", "--seed", seed);
         SetIfSupported(body, normalizedModel, TextToVideoEndpoint, "audio", audio);
 
         await ApplyVideoExtrasAsync(body, normalizedModel, TextToVideoEndpoint, extras, cancellationToken).ConfigureAwait(false);
@@ -70,7 +83,7 @@ internal static class RunwayCliGeneration
     {
         ArgumentNullException.ThrowIfNull(extras);
 
-        var normalizedModel = NormalizeVideoModel(model, "gen4_turbo", ImageToVideoEndpoint);
+        var normalizedModel = NormalizeVideoModel(model, DefaultImageToVideoModel, ImageToVideoEndpoint);
         var body = new JsonObject
         {
             ["model"] = normalizedModel,
@@ -84,7 +97,7 @@ internal static class RunwayCliGeneration
 
         SetIfSupported(body, normalizedModel, ImageToVideoEndpoint, "ratio", ratio);
         SetIfSupported(body, normalizedModel, ImageToVideoEndpoint, "duration", duration);
-        SetIfSupported(body, normalizedModel, ImageToVideoEndpoint, "seed", seed);
+        RequireAndSet(body, normalizedModel, ImageToVideoEndpoint, "seed", "--seed", seed);
         SetIfSupported(body, normalizedModel, ImageToVideoEndpoint, "audio", audio);
 
         await ApplyVideoExtrasAsync(body, normalizedModel, ImageToVideoEndpoint, extras, cancellationToken).ConfigureAwait(false);
@@ -101,6 +114,7 @@ internal static class RunwayCliGeneration
         int? seed,
         double? outputCount,
         string? publicFigureThreshold,
+        RunwayCliImageExtras? extras,
         CancellationToken cancellationToken)
     {
         var body = await CreateTextToImageJsonBodyAsync(
@@ -114,6 +128,7 @@ internal static class RunwayCliGeneration
             publicFigureThreshold,
             resolution: null,
             quality: null,
+            extras,
             cancellationToken).ConfigureAwait(false);
         return ToGenerated<CreateTextToImageRequest>(body);
     }
@@ -129,6 +144,7 @@ internal static class RunwayCliGeneration
         string? publicFigureThreshold,
         string? resolution,
         string? quality,
+        RunwayCliImageExtras? extras,
         CancellationToken cancellationToken)
     {
         var normalizedModel = NormalizeTextToImageModel(model);
@@ -140,23 +156,45 @@ internal static class RunwayCliGeneration
             ["ratio"] = ratio,
         };
 
-        SetIfNotNull(body, "seed", seed);
-        SetIfNotNull(body, "outputCount", outputCount);
-        AddContentModeration(body, publicFigureThreshold);
-        if (normalizedModel == "gpt_image_2")
+        // Several image variants are additionalProperties:false and accept different optional sets
+        // (muse_image has no seed, grok takes `edit`, the seedream pair takes `grounding`), so every
+        // optional field is gated on what the embedded spec says this model declares.
+        RequireAndSet(body, normalizedModel, TextToImageEndpoint, "seed", "--seed", seed);
+        SetIfSupported(body, normalizedModel, TextToImageEndpoint, "outputCount", outputCount);
+        RequireAndSet(body, normalizedModel, TextToImageEndpoint, "quality", "--quality", quality);
+        AddContentModeration(body, normalizedModel, TextToImageEndpoint, publicFigureThreshold);
+        RequireAndSet(body, normalizedModel, TextToImageEndpoint, "outputFormat", "--output-format", extras?.OutputFormat);
+        RequireAndSet(body, normalizedModel, TextToImageEndpoint, "background", "--background", extras?.Background);
+
+        if (extras?.Grounding is { } grounding)
         {
-            SetIfNotNull(body, "quality", quality);
+            RequireSupport(normalizedModel, TextToImageEndpoint, "grounding", "--grounding");
+            body["grounding"] = grounding;
+        }
+
+        if (extras?.Edit is { } edit)
+        {
+            RequireSupport(normalizedModel, TextToImageEndpoint, "edit", "--edit");
+            body["edit"] = edit;
         }
 
         var references = await CreateReferenceImagesNodeAsync(
             referenceImages,
             normalizedModel,
-            normalizedModel == "gemini_image3_pro" ? referenceSubject : null,
+            referenceSubject,
             cancellationToken).ConfigureAwait(false);
 
-        if (normalizedModel == "gen4_image_turbo" && references.Count == 0)
+        if (references.Count == 0 &&
+            RunwayModelSchema.Lookup(normalizedModel).Any(entry =>
+                entry.Endpoint == TextToImageEndpoint &&
+                entry.RequiredParameters.Contains("referenceImages", StringComparer.Ordinal)))
         {
-            throw new ArgumentException("gen4-image-turbo requires at least one --reference-image. Use gpt-image-2 or gemini-2.5-flash for text-only image generation.");
+            var textOnly = RunwayModelSchema.ModelsForEndpoint(TextToImageEndpoint)
+                .Where(candidate => !RunwayModelSchema.Lookup(candidate).Any(entry =>
+                    entry.Endpoint == TextToImageEndpoint &&
+                    entry.RequiredParameters.Contains("referenceImages", StringComparer.Ordinal)));
+            throw new ArgumentException(
+                $"Model `{normalizedModel}` on `{TextToImageEndpoint}` requires at least one --reference-image. Models that generate from text alone: {string.Join(", ", textOnly)}.");
         }
 
         if (references.Count > 0)
@@ -165,6 +203,39 @@ internal static class RunwayCliGeneration
         }
 
         return body;
+    }
+
+    /// <summary>
+    /// Rejects image extras the chosen model does not declare. The `gpt_image_2` path builds its request
+    /// from the generated convenience type rather than the JSON body builder, so without this it would
+    /// silently drop a flag like `--grounding` instead of telling the user which models accept it.
+    /// </summary>
+    public static void EnsureImageExtrasSupported(string normalizedModel, RunwayCliImageExtras? extras)
+    {
+        if (extras is null)
+        {
+            return;
+        }
+
+        if (!string.IsNullOrWhiteSpace(extras.OutputFormat))
+        {
+            RequireSupport(normalizedModel, TextToImageEndpoint, "outputFormat", "--output-format");
+        }
+
+        if (!string.IsNullOrWhiteSpace(extras.Background))
+        {
+            RequireSupport(normalizedModel, TextToImageEndpoint, "background", "--background");
+        }
+
+        if (extras.Grounding is not null)
+        {
+            RequireSupport(normalizedModel, TextToImageEndpoint, "grounding", "--grounding");
+        }
+
+        if (extras.Edit is not null)
+        {
+            RequireSupport(normalizedModel, TextToImageEndpoint, "edit", "--edit");
+        }
     }
 
     public static async Task<CreateGptImage2TextToImageRequest> CreateGptImage2TextToImageRequestAsync(
@@ -207,7 +278,7 @@ internal static class RunwayCliGeneration
     {
         ArgumentNullException.ThrowIfNull(extras);
 
-        var normalizedModel = NormalizeVideoModel(model, "aleph2", VideoToVideoEndpoint);
+        var normalizedModel = NormalizeVideoModel(model, DefaultVideoToVideoModel, VideoToVideoEndpoint);
         var videoUri = await NormalizeInputAssetAsync(video, cancellationToken).ConfigureAwait(false);
         var body = new JsonObject
         {
@@ -233,7 +304,7 @@ internal static class RunwayCliGeneration
             SetIfSupported(body, normalizedModel, VideoToVideoEndpoint, "ratio", ratio);
         }
         SetIfSupported(body, normalizedModel, VideoToVideoEndpoint, "duration", duration);
-        SetIfSupported(body, normalizedModel, VideoToVideoEndpoint, "seed", seed);
+        RequireAndSet(body, normalizedModel, VideoToVideoEndpoint, "seed", "--seed", seed);
         SetIfSupported(body, normalizedModel, VideoToVideoEndpoint, "audio", audio);
 
         await ApplyVideoExtrasAsync(body, normalizedModel, VideoToVideoEndpoint, extras, cancellationToken).ConfigureAwait(false);
@@ -435,6 +506,11 @@ internal static class RunwayCliGeneration
             "gemini-omni-flash" or "gemini_omni-flash" => "gemini_omni_flash",
             "grok" or "grok-imagine" or "grok-imagine-1.5" or "grok-imagine-1-5" or "grok_imagine_1.5" => "grok_imagine_1_5",
             "wan-3" or "wan_3" => "wan3",
+            "gemini-image3.1-flash" or "gemini-image3-1-flash" or "gemini_image3-1_flash" => "gemini_image3.1_flash",
+            "muse-image" or "muse" => "muse_image",
+            "seedream5-pro" or "seedream5.pro" or "seedream-5-pro" => "seedream5_pro",
+            "seedream5-lite" or "seedream5.lite" or "seedream-5-lite" => "seedream5_lite",
+            "grok-imagine-image-2" or "grok-imagine-image2" or "grok_imagine_image2" => "grok_imagine_image_2",
             "gen4_aleph" or "gen4-aleph" or "aleph" or "aleph-2" => "aleph2",
             _ => candidate,
         };
@@ -442,7 +518,7 @@ internal static class RunwayCliGeneration
 
     public static string NormalizeTextToImageModel(string? value)
     {
-        return NormalizeModel(value, "gemini_2.5_flash", TextToImageModels);
+        return NormalizeVideoModel(value, DefaultTextToImageModel, TextToImageEndpoint);
     }
 
     public static string ResolveTextToImageRatio(string? value, string normalizedModel)
@@ -788,26 +864,29 @@ internal static class RunwayCliGeneration
             return images;
         }
 
-        var maxReferenceImages = normalizedModel switch
+        // Cap and item shape both come from the spec: muse_image/seedream/grok accept `uri` only, the
+        // gemini pair also takes `subject`, and the gen4/gpt/gemini-flash family takes a `tag`.
+        var maxReferenceImages = RunwayModelSchema.GetMaxItems(normalizedModel, TextToImageEndpoint, "referenceImages");
+        if (maxReferenceImages is { } cap && values.Length > cap)
         {
-            "gemini_image3_pro" => 14,
-            "gpt_image_2" => 16,
-            _ => 3,
-        };
-
-        if (values.Length > maxReferenceImages)
-        {
-            throw new ArgumentException($"Runway accepts up to {maxReferenceImages} reference images for {normalizedModel}.");
+            throw new ArgumentException($"Runway accepts up to {cap} reference images for {normalizedModel}.");
         }
+
+        var supportsTag = RunwayModelSchema.SupportsItemProperty(normalizedModel, TextToImageEndpoint, "referenceImages", "tag");
+        var supportsSubject = RunwayModelSchema.SupportsItemProperty(normalizedModel, TextToImageEndpoint, "referenceImages", "subject");
 
         for (var index = 0; index < values.Length; index++)
         {
             var image = new JsonObject
             {
                 ["uri"] = await NormalizeInputAssetAsync(values[index], cancellationToken).ConfigureAwait(false),
-                ["tag"] = $"reference{index + 1}",
             };
-            if (subject is { Length: > 0 })
+            if (supportsTag)
+            {
+                image["tag"] = $"reference{index + 1}";
+            }
+
+            if (supportsSubject && subject is { Length: > 0 })
             {
                 image["subject"] = subject;
             }
@@ -951,6 +1030,21 @@ internal static class RunwayCliGeneration
 
         RequireSupport(model, endpoint, name, flag);
         body[name] = value;
+    }
+
+    /// <summary>
+    /// Same contract as the string overload, for flags with no default: a non-null value means the user
+    /// asked for it, so an unsupporting model is an error rather than a silent drop.
+    /// </summary>
+    private static void RequireAndSet(JsonObject body, string model, string endpoint, string name, string flag, int? value)
+    {
+        if (value is null)
+        {
+            return;
+        }
+
+        RequireSupport(model, endpoint, name, flag);
+        body[name] = value.Value;
     }
 
     private static async Task<JsonArray> CreateVideoReferenceArrayAsync(

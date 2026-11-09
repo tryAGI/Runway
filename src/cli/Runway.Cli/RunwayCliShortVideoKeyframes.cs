@@ -122,7 +122,8 @@ internal static class RunwayCliShortVideoKeyframes
                 seed: null,
                 outputCount: null,
                 publicFigureThreshold: options.PublicFigureThreshold,
-                cancellationToken).ConfigureAwait(false);
+                extras: RunwayCliImageExtras.None,
+                cancellationToken: cancellationToken).ConfigureAwait(false);
 
             var imageOutcome = await RunwayCliRetry.SubmitAndWaitAsync(
                 client,

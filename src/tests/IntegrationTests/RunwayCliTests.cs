@@ -1928,10 +1928,11 @@ public partial class Tests
             publicFigureThreshold: null,
             resolution: null,
             quality: null,
-            CancellationToken.None);
+            extras: null,
+            cancellationToken: CancellationToken.None);
 
         await act.Should().ThrowAsync<ArgumentException>()
-            .WithMessage("gen4-image-turbo requires at least one --reference-image. Use gpt-image-2 or gemini-2.5-flash for text-only image generation.").ConfigureAwait(false);
+            .WithMessage("*gen4_image_turbo*requires at least one --reference-image*").ConfigureAwait(false);
     }
 
     [TestMethod]

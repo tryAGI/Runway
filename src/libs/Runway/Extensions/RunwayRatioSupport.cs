@@ -1,9 +1,8 @@
 namespace Runway;
 
 /// <summary>
-/// Per-model output-ratio support matrix. Compiled directly from the per-model <c>Ratio</c>
-/// enums (<see cref="CreateTextToImageRequestGen4ImageRatio"/>, <see cref="CreateImageToVideoRequestVeo31FastRatio"/>,
-/// etc.) so it stays in sync with the spec on regeneration.
+/// Per-model output-ratio support matrix, read from the OpenAPI spec embedded in this assembly, so it
+/// covers every model and endpoint the spec declares and stays in sync on regeneration.
 ///
 /// <para>
 /// Helps consumers answer questions like "which models support 1:1?" without trial-and-error 400
@@ -34,8 +33,7 @@ public static class RunwayRatioEndpoints
 }
 
 /// <summary>
-/// Per-model output-ratio support matrix. Compiled directly from the per-model <c>Ratio</c>
-/// enums so it stays in sync with the spec on regeneration.
+/// Per-model output-ratio support matrix, read from the OpenAPI spec embedded in this assembly.
 /// </summary>
 public static class RunwayRatioSupport
 {
@@ -58,8 +56,8 @@ public static class RunwayRatioSupport
 
     /// <summary>
     /// Returns every output ratio the given <paramref name="model"/> accepts across all its endpoints.
-    /// Empty when the model has no enum-backed ratio set in the generated SDK (e.g. audio-only models
-    /// or models the client doesn't know about yet).
+    /// Empty when the model declares no enum-backed ratio in the spec (e.g. audio-only models, or models
+    /// such as <c>happyhorse_1_0</c> on image-to-video that size output by <c>resolution</c> instead).
     /// </summary>
     public static System.Collections.Generic.IReadOnlyList<string> GetSupportedRatios(string model)
     {
@@ -90,32 +88,26 @@ public static class RunwayRatioSupport
         return GetSupportingModels(ratio).Contains(model, StringComparer.Ordinal);
     }
 
+    /// <summary>
+    /// Enumerates every (ratio, model, endpoint) triple the embedded OpenAPI spec declares, by reading the
+    /// <c>ratio</c> enum of each model variant on each endpoint. Spec-driven rather than a hand-registered
+    /// list of generated enum types, so a model Runway adds is covered on the next spec refresh instead of
+    /// silently falling out of ratio validation.
+    /// </summary>
     private static System.Collections.Generic.List<(string ratio, string model, string endpoint)> BuildTriples()
     {
         var triples = new System.Collections.Generic.List<(string ratio, string model, string endpoint)>();
 
-        // text_to_image
-        Add<CreateTextToImageRequestGen4ImageRatio>(triples, "gen4_image", RunwayRatioEndpoints.TextToImage, v => v.ToValueString());
-        Add<CreateTextToImageRequestGen4ImageTurboRatio>(triples, "gen4_image_turbo", RunwayRatioEndpoints.TextToImage, v => v.ToValueString());
-        Add<CreateTextToImageRequestGptImage2Ratio>(triples, "gpt_image_2", RunwayRatioEndpoints.TextToImage, v => v.ToValueString());
-        Add<CreateTextToImageRequestGemini25FlashRatio>(triples, "gemini_2.5_flash", RunwayRatioEndpoints.TextToImage, v => v.ToValueString());
-        Add<CreateTextToImageRequestGeminiImage3ProRatio>(triples, "gemini_image3_pro", RunwayRatioEndpoints.TextToImage, v => v.ToValueString());
-        // text_to_video
-        Add<CreateTextToVideoRequestGen45Ratio>(triples, "gen4.5", RunwayRatioEndpoints.TextToVideo, v => v.ToValueString());
-        Add<CreateTextToVideoRequestVeo31Ratio>(triples, "veo3.1", RunwayRatioEndpoints.TextToVideo, v => v.ToValueString());
-        Add<CreateTextToVideoRequestVeo31FastRatio>(triples, "veo3.1_fast", RunwayRatioEndpoints.TextToVideo, v => v.ToValueString());
-        // image_to_video
-        Add<CreateImageToVideoRequestGen45Ratio>(triples, "gen4.5", RunwayRatioEndpoints.ImageToVideo, v => v.ToValueString());
-        Add<CreateImageToVideoRequestGen4TurboRatio>(triples, "gen4_turbo", RunwayRatioEndpoints.ImageToVideo, v => v.ToValueString());
-        Add<CreateImageToVideoRequestVeo31Ratio>(triples, "veo3.1", RunwayRatioEndpoints.ImageToVideo, v => v.ToValueString());
-        Add<CreateImageToVideoRequestVeo31FastRatio>(triples, "veo3.1_fast", RunwayRatioEndpoints.ImageToVideo, v => v.ToValueString());
-        Add<CreateImageToVideoRequestSeedance2Ratio>(triples, "seedance2", RunwayRatioEndpoints.ImageToVideo, v => v.ToValueString());
-        Add<CreateImageToVideoRequestSeedance2FastRatio>(triples, "seedance2_fast", RunwayRatioEndpoints.ImageToVideo, v => v.ToValueString());
-        // video_to_video
-        Add<CreateVideoToVideoRequestSeedance2Ratio>(triples, "seedance2", RunwayRatioEndpoints.VideoToVideo, v => v.ToValueString());
-        Add<CreateVideoToVideoRequestSeedance2FastRatio>(triples, "seedance2_fast", RunwayRatioEndpoints.VideoToVideo, v => v.ToValueString());
-        // character_performance
-        Add<CreateCharacterPerformanceRequestActTwoRatio>(triples, "act_two", RunwayRatioEndpoints.CharacterPerformance, v => v.ToValueString());
+        foreach (var model in RunwayModelSchema.KnownModelIds())
+        {
+            foreach (var entry in RunwayModelSchema.Lookup(model))
+            {
+                foreach (var ratio in RunwayModelSchema.GetAllowedValues(model, entry.Endpoint, "ratio"))
+                {
+                    triples.Add((ratio, model, entry.Endpoint));
+                }
+            }
+        }
 
         return triples;
     }

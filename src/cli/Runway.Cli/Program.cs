@@ -18,6 +18,12 @@ var apiKeyOption = new Option<string?>("--api-key", ["-k"])
     Recursive = true,
 };
 
+var baseUrlOption = new Option<string?>("--base-url")
+{
+    Description = "Runway API base URL. Defaults to RUNWAY_BASE_URL or .env, then the production API. Useful for proxies, staging, and local stubs.",
+    Recursive = true,
+};
+
 var runwayVersionOption = new Option<string>("--runway-version")
 {
     Description = "Runway API version header.",
@@ -28,6 +34,7 @@ var runwayVersionOption = new Option<string>("--runway-version")
 var rootCommand = new RootCommand("Runway API CLI for generation, task, upload, voice, realtime, workflow, organization, and avatar workflows.")
 {
     apiKeyOption,
+    baseUrlOption,
     runwayVersionOption,
 };
 rootCommand.Subcommands.Add(ApiCommand.Create());
@@ -526,7 +533,7 @@ var imageRatioOption = new Option<string?>("--ratio")
 
 var imageModelOption = new Option<string>("--model")
 {
-    Description = "Image model: gemini-2.5-flash, gemini-image3-pro, gpt-image-2, gen4-image, or gen4-image-turbo.",
+    Description = "Image model, validated against the embedded OpenAPI spec: gemini-2.5-flash, gemini-image3-pro, gemini-image3.1-flash, gpt-image-2, gen4-image, gen4-image-turbo, muse-image, seedream5-pro, seedream5-lite, grok-imagine-image-2. Run `runway models schema <model>` for the exact parameter list.",
     DefaultValueFactory = _ => "gemini-2.5-flash",
 };
 
@@ -537,7 +544,35 @@ var imageResolutionOption = new Option<string?>("--resolution")
 
 var imageQualityOption = new Option<string?>("--quality")
 {
-    Description = "Optional GPT Image 2 quality tier: low, medium, or high.",
+    Description = "Rendering quality for the models that accept it: gpt-image-2 (low, medium, high, auto) and grok-imagine-image-2 (low, medium).",
+};
+
+var imageOutputFormatOption = new Option<string?>("--output-format")
+{
+    Description = "Output file format for the seedream models: png or jpeg.",
+};
+
+var imageBackgroundOption = new Option<string?>("--background")
+{
+    Description = "Background treatment for gpt-image-2: opaque or auto.",
+};
+
+var imageGroundingOption = new Option<bool?>("--grounding")
+{
+    Description = "Enable live web search so the model can use current brand, trend, or event context (seedream5-pro, seedream5-lite).",
+};
+
+var imageEditOption = new Option<bool?>("--edit")
+{
+    Description = "With exactly one --reference-image, edit that image directly instead of using it as a style reference (grok-imagine-image-2).",
+};
+
+RunwayCliImageExtras BuildImageExtras(ParseResult parseResult) => new()
+{
+    OutputFormat = parseResult.GetValue(imageOutputFormatOption),
+    Background = parseResult.GetValue(imageBackgroundOption),
+    Grounding = parseResult.GetValue(imageGroundingOption),
+    Edit = parseResult.GetValue(imageEditOption),
 };
 
 var videoModelOption = new Option<string?>("--model")
@@ -1038,6 +1073,10 @@ var shortVideoCommand = new Command("short-video", "Expand a scenario into keyfr
     shortVideoStyleOption,
     shortVideoAudioOption,
     seedOption,
+    videoReferenceImageOption,
+    videoReferenceVideoOption,
+    videoReferenceAudioOption,
+    soulIdReferenceOption,
     publicFigureThresholdOption,
     shortVideoPlanOnlyOption,
     shortVideoNoInteractiveOption,
@@ -1112,6 +1151,10 @@ var shortVideoRunCommand = new Command("run", "Generate a short video from an ed
     generationDurationOption,
     shortVideoAudioOption,
     seedOption,
+    videoReferenceImageOption,
+    videoReferenceVideoOption,
+    videoReferenceAudioOption,
+    soulIdReferenceOption,
     publicFigureThresholdOption,
     shortVideoKeyframesOption,
     shortVideoNoConcatOption,
@@ -1410,6 +1453,10 @@ var generateImageCommand = new Command("image", "Generate an image locally from 
     imageModelOption,
     imageResolutionOption,
     imageQualityOption,
+    imageOutputFormatOption,
+    imageBackgroundOption,
+    imageGroundingOption,
+    imageEditOption,
     seedOption,
     referenceImageOption2,
     referenceSubjectOption,
@@ -1440,6 +1487,7 @@ generateImageCommand.SetAction((ParseResult parseResult, CancellationToken cance
             ["ratio"] = !string.IsNullOrWhiteSpace(ratio),
             ["referenceImages"] = referenceImages is { Length: > 0 },
         });
+        RunwayCliGeneration.EnsureImageExtrasSupported(normalizedImageModel, BuildImageExtras(parseResult));
         var seed = parseResult.GetValue(seedOption);
         var json = parseResult.GetValue(jsonOption);
 
@@ -1484,6 +1532,7 @@ generateImageCommand.SetAction((ParseResult parseResult, CancellationToken cance
                         seed,
                         parseResult.GetValue(outputCountOption),
                         parseResult.GetValue(publicFigureThresholdOption),
+                        BuildImageExtras(parseResult),
                         submitCt).ConfigureAwait(false),
                     xRunwayVersion: runwayVersion,
                     cancellationToken: submitCt).ConfigureAwait(false);
@@ -1525,7 +1574,10 @@ textToVideoCommand.SetAction((ParseResult parseResult, CancellationToken cancell
         var json = parseResult.GetValue(jsonOption);
         if (json is not { Length: > 0 })
         {
-            var t2vModel = parseResult.GetValue(videoModelOption) ?? string.Empty;
+            var t2vModel = RunwayCliGeneration.NormalizeVideoModel(
+                parseResult.GetValue(videoModelOption),
+                RunwayCliGeneration.DefaultTextToVideoModel,
+                RunwayCliGeneration.TextToVideoEndpoint);
             var t2vRatio = parseResult.GetValue(videoRatioOption) ?? "1280:720";
             RunwayModelSchema.EnsureModelSupportsEndpoint(t2vModel, "text_to_video");
             RunwayCliGeneration.ValidateTextToVideoRatio(t2vRatio, t2vModel);
@@ -1599,7 +1651,10 @@ imageToVideoCommand.SetAction((ParseResult parseResult, CancellationToken cancel
         var json = parseResult.GetValue(jsonOption);
         if (json is not { Length: > 0 })
         {
-            var i2vModel = parseResult.GetValue(videoModelOption) ?? string.Empty;
+            var i2vModel = RunwayCliGeneration.NormalizeVideoModel(
+                parseResult.GetValue(videoModelOption),
+                RunwayCliGeneration.DefaultImageToVideoModel,
+                RunwayCliGeneration.ImageToVideoEndpoint);
             var i2vPrompt = string.Join(' ', parseResult.GetValue(optionalVideoPromptArgument) ?? []).Trim();
             var i2vImages = MergeSoulIdImages(parseResult, parseResult.GetValue(promptImageOption));
             var i2vRatio = parseResult.GetValue(videoRatioOption) ?? "1280:720";
@@ -3474,6 +3529,9 @@ RunwayShortVideoOptions CreateShortVideoOptions(
         Seed = parseResult.GetValue(seedOption),
         Style = parseResult.GetValue(shortVideoStyleOption),
         PublicFigureThreshold = parseResult.GetValue(publicFigureThresholdOption),
+        ReferenceImageUris = ResolveShortVideoReferenceImages(parseResult),
+        ReferenceVideoUris = ResolveReferenceList(parseResult, videoReferenceVideoOption),
+        ReferenceAudioUris = ResolveReferenceList(parseResult, videoReferenceAudioOption),
         WaitForCompletion = !parseResult.GetValue(noWaitOption),
         DownloadOutputs = !parseResult.GetValue(noWaitOption),
         Output = segmentOutput,
@@ -3482,6 +3540,17 @@ RunwayShortVideoOptions CreateShortVideoOptions(
         RetryBackoff = TimeSpan.FromSeconds(parseResult.GetValue(retryBackoffSecondsOption)),
     };
 }
+
+// Short-video shots are text-to-video, which now accepts image references on the seedance/hailuo/wan3/
+// grok models — so --soul-id and --reference-image can flow straight into every shot instead of forcing
+// the image -> image-to-video chain.
+IReadOnlyList<string>? ResolveShortVideoReferenceImages(ParseResult parseResult) =>
+    MergeSoulIdImages(parseResult, parseResult.GetValue(videoReferenceImageOption)) is { Length: > 0 } merged
+        ? merged
+        : null;
+
+IReadOnlyList<string>? ResolveReferenceList(ParseResult parseResult, Option<string[]> option) =>
+    parseResult.GetValue(option) is { Length: > 0 } values ? values : null;
 
 RunwayCliShortVideoPlannerOptions CreateShortVideoPlannerOptions(ParseResult parseResult)
 {
@@ -3544,6 +3613,9 @@ RunwayShortVideoOptions CreateShortVideoOptionsFromPlan(
         Seed = parseResult.GetValue(seedOption),
         Style = plan.Style,
         PublicFigureThreshold = parseResult.GetValue(publicFigureThresholdOption),
+        ReferenceImageUris = ResolveShortVideoReferenceImages(parseResult),
+        ReferenceVideoUris = ResolveReferenceList(parseResult, videoReferenceVideoOption),
+        ReferenceAudioUris = ResolveReferenceList(parseResult, videoReferenceAudioOption),
         WaitForCompletion = !parseResult.GetValue(noWaitOption),
         DownloadOutputs = !parseResult.GetValue(noWaitOption),
         Output = segmentOutput,
@@ -3685,6 +3757,7 @@ Task<int> RunCreativeImageRecipeAsync(
                             null,
                             1,
                             parseResult.GetValue(publicFigureThresholdOption),
+                            RunwayCliImageExtras.None,
                             submitCt).ConfigureAwait(false),
                         xRunwayVersion: runwayVersion,
                         cancellationToken: submitCt).ConfigureAwait(false);
@@ -4039,6 +4112,19 @@ string[]? MergeSoulIdImages(ParseResult parseResult, string[]? baseImages)
     return [.. baseImages, .. resolved];
 }
 
+Uri? ResolveBaseUri(ParseResult parseResult)
+{
+    if (parseResult.GetValue(baseUrlOption) is not { Length: > 0 } value)
+    {
+        return RunwayEnvironment.GetBaseUrl();
+    }
+
+    return Uri.TryCreate(value.Trim(), UriKind.Absolute, out var uri) &&
+           (uri.Scheme == Uri.UriSchemeHttp || uri.Scheme == Uri.UriSchemeHttps)
+        ? uri
+        : throw new ArgumentException($"--base-url must be an absolute http or https URL, but was '{value}'.");
+}
+
 RunwayClient CreateClient(ParseResult parseResult)
 {
     var apiKey =
@@ -4047,7 +4133,11 @@ RunwayClient CreateClient(ParseResult parseResult)
         RunwayCliAuth.Read() is { Length: > 0 } storedApiKey ? storedApiKey :
         throw new InvalidOperationException("Set --api-key, RUNWAY_API_KEY, RUNWAYML_API_SECRET, run `runway auth set --api-key <key>`, or add a .env file.");
 
-    return new RunwayClient(apiKey);
+    // --base-url wins over RUNWAY_BASE_URL / .env, which in turn wins over the SDK's production default.
+    // The generated `api` command group already honored the env var; the curated commands did not.
+    var baseUri = ResolveBaseUri(parseResult);
+
+    return new RunwayClient(apiKey, baseUri: baseUri);
 }
 
 static async Task WriteErrorAsync(Exception exception)

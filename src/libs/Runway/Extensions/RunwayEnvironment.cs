@@ -45,6 +45,34 @@ public static class RunwayEnvironment
     }
 
     /// <summary>
+    /// Gets the Runway API base URL from process variables or a discovered .env file, for pointing the
+    /// SDK at a proxy, a record/replay harness, or a local stub instead of the production API.
+    /// Reads <c>RUNWAY_BASE_URL</c>.
+    /// </summary>
+    /// <returns>The configured absolute base URL, or null when none is configured.</returns>
+    /// <exception cref="FormatException">
+    /// The variable is set but is not an absolute <c>http</c> or <c>https</c> URL.
+    /// </exception>
+    public static Uri? GetBaseUrl()
+    {
+        LoadDotEnv();
+
+        if (Environment.GetEnvironmentVariable("RUNWAY_BASE_URL") is not { Length: > 0 } value)
+        {
+            return null;
+        }
+
+        if (!Uri.TryCreate(value.Trim(), UriKind.Absolute, out var uri) ||
+            (uri.Scheme != Uri.UriSchemeHttp && uri.Scheme != Uri.UriSchemeHttps))
+        {
+            throw new FormatException(
+                $"RUNWAY_BASE_URL must be an absolute http or https URL, but was '{value}'.");
+        }
+
+        return uri;
+    }
+
+    /// <summary>
     /// Gets the Runway API key from process variables or a discovered .env file.
     /// </summary>
     /// <returns>The configured Runway API key, or null when none is configured.</returns>

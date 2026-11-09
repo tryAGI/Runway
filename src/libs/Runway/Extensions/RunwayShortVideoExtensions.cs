@@ -63,6 +63,23 @@ public sealed class RunwayShortVideoOptions
     public string? PublicFigureThreshold { get; init; }
 
     /// <summary>
+    /// Optional image references (HTTPS, <c>runway://</c>, or <c>data:</c> URIs) attached to every shot, for
+    /// identity-, product-, or style-faithful multi-shot stories. Requires a reference-capable
+    /// <see cref="Model"/> such as <c>seedance2_5</c>, <c>hailuo3</c>, <c>wan3</c>, or <c>grok_imagine_1_5</c>.
+    /// </summary>
+    public IReadOnlyList<string>? ReferenceImageUris { get; init; }
+
+    /// <summary>
+    /// Optional video references attached to every shot, so the model can reuse a camera move or motion.
+    /// </summary>
+    public IReadOnlyList<string>? ReferenceVideoUris { get; init; }
+
+    /// <summary>
+    /// Optional audio references attached to every shot.
+    /// </summary>
+    public IReadOnlyList<string>? ReferenceAudioUris { get; init; }
+
+    /// <summary>
     /// Whether short-video generation waits for each shot task to finish.
     /// </summary>
     public bool WaitForCompletion { get; init; } = true;
@@ -292,7 +309,8 @@ public delegate ValueTask<RunwayShortVideoPlan?> RunwayShortVideoPlanner(
 /// </summary>
 public static class RunwayShortVideoExtensions
 {
-    private static readonly string[] SupportedTextToVideoModels = ["gen4.5", "veo3.1", "veo3.1_fast"];
+    private static IReadOnlyList<string> SupportedTextToVideoModels =>
+        RunwayModelSchema.ModelsForEndpoint(RunwayRatioEndpoints.TextToVideo);
 
     /// <summary>
     /// Creates a deterministic storyboard plan from a plain scenario prompt.
@@ -750,13 +768,122 @@ public static class RunwayShortVideoExtensions
             : (int?)null;
         var model = NormalizeTextToVideoModel(effectiveOptions.Model);
 
+        EnsureReferencesSupported(model, effectiveOptions);
+
         return model switch
         {
             "gen4.5" => CreateGen45Request(prompt, effectiveOptions, seed),
             "veo3.1" => CreateVeo31Request(prompt, effectiveOptions, seed),
             "veo3.1_fast" => CreateVeo31FastRequest(prompt, effectiveOptions, seed),
+            "hailuo3" => RunwayTextToVideo.Hailuo3(
+                prompt,
+                ratio: RequireRatio(model, CreateTextToVideoRequestHailuo3RatioExtensions.ToEnum(effectiveOptions.Ratio)),
+                duration: ToWholeDuration(effectiveOptions.ShotDurationSeconds, model),
+                referenceImageUris: effectiveOptions.ReferenceImageUris,
+                referenceVideoUris: effectiveOptions.ReferenceVideoUris,
+                referenceAudioUris: effectiveOptions.ReferenceAudioUris),
+            "happyhorse_1_0" => RunwayTextToVideo.HappyHorse10(
+                prompt,
+                ratio: RequireRatio(model, CreateTextToVideoRequestHappyhorse10RatioExtensions.ToEnum(effectiveOptions.Ratio)),
+                duration: ToWholeDuration(effectiveOptions.ShotDurationSeconds, model)),
+            "seedance2" => RunwayTextToVideo.Seedance2(
+                prompt,
+                audio: effectiveOptions.Audio,
+                duration: ToWholeDuration(effectiveOptions.ShotDurationSeconds, model),
+                ratio: RequireRatio(model, CreateTextToVideoRequestSeedance2RatioExtensions.ToEnum(effectiveOptions.Ratio)),
+                referenceImageUris: effectiveOptions.ReferenceImageUris,
+                referenceVideoUris: effectiveOptions.ReferenceVideoUris,
+                referenceAudioUris: effectiveOptions.ReferenceAudioUris),
+            "seedance2_fast" => RunwayTextToVideo.Seedance2Fast(
+                prompt,
+                audio: effectiveOptions.Audio,
+                duration: ToWholeDuration(effectiveOptions.ShotDurationSeconds, model),
+                ratio: RequireRatio(model, CreateTextToVideoRequestSeedance2FastRatioExtensions.ToEnum(effectiveOptions.Ratio)),
+                referenceImageUris: effectiveOptions.ReferenceImageUris,
+                referenceVideoUris: effectiveOptions.ReferenceVideoUris,
+                referenceAudioUris: effectiveOptions.ReferenceAudioUris),
+            "seedance2_mini" => RunwayTextToVideo.Seedance2Mini(
+                prompt,
+                audio: effectiveOptions.Audio,
+                duration: ToWholeDuration(effectiveOptions.ShotDurationSeconds, model),
+                ratio: RequireRatio(model, CreateTextToVideoRequestSeedance2MiniRatioExtensions.ToEnum(effectiveOptions.Ratio)),
+                referenceImageUris: effectiveOptions.ReferenceImageUris,
+                referenceVideoUris: effectiveOptions.ReferenceVideoUris,
+                referenceAudioUris: effectiveOptions.ReferenceAudioUris),
+            "seedance2_5" => RunwayTextToVideo.Seedance25(
+                prompt,
+                audio: effectiveOptions.Audio,
+                duration: ToWholeDuration(effectiveOptions.ShotDurationSeconds, model),
+                ratio: RequireRatio(model, CreateTextToVideoRequestSeedance25RatioExtensions.ToEnum(effectiveOptions.Ratio)),
+                referenceImageUris: effectiveOptions.ReferenceImageUris,
+                referenceVideoUris: effectiveOptions.ReferenceVideoUris,
+                referenceAudioUris: effectiveOptions.ReferenceAudioUris),
+            "gemini_omni_flash" => RunwayTextToVideo.GeminiOmniFlash(
+                prompt,
+                ratio: RequireRatio(model, CreateTextToVideoRequestGeminiOmniFlashRatioExtensions.ToEnum(effectiveOptions.Ratio)),
+                duration: ToWholeDuration(effectiveOptions.ShotDurationSeconds, model)),
+            "grok_imagine_1_5" => RunwayTextToVideo.GrokImagine15(
+                prompt,
+                ratio: RequireRatio(model, CreateTextToVideoRequestGrokImagine15RatioExtensions.ToEnum(effectiveOptions.Ratio)),
+                duration: ToWholeDuration(effectiveOptions.ShotDurationSeconds, model),
+                referenceImageUris: effectiveOptions.ReferenceImageUris,
+                referenceAudioUris: effectiveOptions.ReferenceAudioUris),
+            "wan3" => RunwayTextToVideo.Wan3(
+                prompt,
+                audio: effectiveOptions.Audio,
+                duration: ToWholeDuration(effectiveOptions.ShotDurationSeconds, model),
+                ratio: RequireRatio(model, CreateTextToVideoRequestWan3RatioExtensions.ToEnum(effectiveOptions.Ratio)),
+                referenceImageUris: effectiveOptions.ReferenceImageUris,
+                referenceVideoUris: effectiveOptions.ReferenceVideoUris,
+                referenceAudioUris: effectiveOptions.ReferenceAudioUris),
             _ => throw new ArgumentException($"Unsupported model '{effectiveOptions.Model}'."),
         };
+    }
+
+    /// <summary>
+    /// Converts a ratio string to a model's generated ratio enum, failing with the spec-derived list of
+    /// accepted values rather than letting the API reject the request.
+    /// </summary>
+    private static T RequireRatio<T>(string model, T? parsed)
+        where T : struct
+    {
+        if (parsed is { } value)
+        {
+            return value;
+        }
+
+        var supported = RunwayRatioSupport.GetSupportedRatios(model, RunwayRatioEndpoints.TextToVideo);
+        return supported.Count == 0
+            ? throw new ArgumentException($"{model} does not accept a ratio on text_to_video.")
+            : throw new ArgumentException($"{model} supports ratios: {string.Join(", ", supported)}.");
+    }
+
+    /// <summary>
+    /// Rejects reference inputs the chosen short-video model does not declare, naming the models that do.
+    /// </summary>
+    private static void EnsureReferencesSupported(string model, RunwayShortVideoOptions options)
+    {
+        EnsureReferenceKindSupported(model, "references", options.ReferenceImageUris, nameof(RunwayShortVideoOptions.ReferenceImageUris));
+        EnsureReferenceKindSupported(model, "referenceVideos", options.ReferenceVideoUris, nameof(RunwayShortVideoOptions.ReferenceVideoUris));
+        EnsureReferenceKindSupported(model, "referenceAudio", options.ReferenceAudioUris, nameof(RunwayShortVideoOptions.ReferenceAudioUris));
+    }
+
+    private static void EnsureReferenceKindSupported(
+        string model,
+        string specName,
+        IReadOnlyList<string>? values,
+        string optionName)
+    {
+        if (values is not { Count: > 0 } ||
+            RunwayModelSchema.SupportsParameter(model, RunwayRatioEndpoints.TextToVideo, specName))
+        {
+            return;
+        }
+
+        var alternatives = RunwayModelSchema.ModelsForEndpoint(RunwayRatioEndpoints.TextToVideo)
+            .Where(candidate => RunwayModelSchema.SupportsParameter(candidate, RunwayRatioEndpoints.TextToVideo, specName));
+        throw new ArgumentException(
+            $"Short-video model '{model}' does not accept {optionName} on text_to_video. Models that do: {string.Join(", ", alternatives)}.");
     }
 
     private static CreateTextToVideoRequest CreateGen45Request(
@@ -997,11 +1124,15 @@ public static class RunwayShortVideoExtensions
             throw new ArgumentOutOfRangeException(nameof(options), "ShotDurationSeconds must be greater than zero.");
         }
 
-        _ = NormalizeTextToVideoModel(effectiveOptions.Model);
+        var model = NormalizeTextToVideoModel(effectiveOptions.Model);
         if (string.IsNullOrWhiteSpace(effectiveOptions.Ratio))
         {
             throw new ArgumentException("Ratio is required.", nameof(options));
         }
+
+        // Checked here as well as in CreateTextToVideoRequest so a reference/model mismatch fails while
+        // planning, rather than after the plan has been written and the first shot submitted.
+        EnsureReferencesSupported(model, effectiveOptions);
 
         return effectiveOptions;
     }
@@ -1014,6 +1145,14 @@ public static class RunwayShortVideoExtensions
             "gen45" or "gen4_5" or "gen4-5" => "gen4.5",
             "veo3.1-fast" or "veo3_1_fast" or "veo3-1-fast" => "veo3.1_fast",
             "veo3_1" or "veo3-1" => "veo3.1",
+            "hailuo-3" or "hailuo_3" or "minimax-h3" => "hailuo3",
+            "happyhorse" or "happyhorse-1-0" or "happyhorse_1.0" or "happyhorse-1.0" => "happyhorse_1_0",
+            "seedance2-fast" => "seedance2_fast",
+            "seedance2-mini" => "seedance2_mini",
+            "seedance2.5" or "seedance2-5" or "seedance25" or "seedance-2.5" => "seedance2_5",
+            "gemini-omni-flash" => "gemini_omni_flash",
+            "grok" or "grok-imagine" or "grok-imagine-1.5" or "grok-imagine-1-5" or "grok_imagine_1.5" => "grok_imagine_1_5",
+            "wan-3" or "wan_3" => "wan3",
             _ => candidate,
         };
 
