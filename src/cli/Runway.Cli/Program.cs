@@ -482,8 +482,8 @@ var textToVideoPromptArgument = new Argument<string[]>("prompt")
 
 var videoToVideoPromptArgument = new Argument<string[]>("prompt")
 {
-    Description = "Prompt text. Multiple words are joined, so quotes are optional.",
-    Arity = ArgumentArity.OneOrMore,
+    Description = "Prompt text. Multiple words are joined, so quotes are optional. Optional for models that can be steered by references alone (seedance2 family).",
+    Arity = ArgumentArity.ZeroOrMore,
 };
 
 var soundEffectPromptArgument = new Argument<string[]>("prompt")
@@ -542,7 +542,75 @@ var imageQualityOption = new Option<string?>("--quality")
 
 var videoModelOption = new Option<string?>("--model")
 {
-    Description = "Video model. Text: gen4.5, veo3.1, veo3.1-fast, veo3. Image: gen4.5, gen4-turbo, veo3.1, veo3.1-fast, happyhorse-1-0, seedance2, seedance2-fast, veo3.",
+    Description = "Video model, validated against the embedded OpenAPI spec per endpoint. Text/image: gen4.5, gen4-turbo (image), veo3.1, veo3.1-fast, hailuo3, happyhorse-1-0, seedance2, seedance2-fast, seedance2-mini, seedance2-5, gemini-omni-flash, grok-imagine-1-5, wan3. Video-to-video: aleph2 (default), hailuo3, seedance2, seedance2-fast, seedance2-mini, seedance2-5, gemini-omni-flash. Run `runway models schema <model>` for the exact parameter list.",
+};
+
+var videoReferenceImageOption = new Option<string[]>("--reference-image")
+{
+    Description = "Image reference (local path, HTTPS URL, Runway URI, or data URI) passed as `references`. Repeat for more: up to 9 for hailuo3/seedance2, 10 for wan3, 7 for grok-imagine-1-5, 30 for seedance2-5.",
+    Arity = ArgumentArity.ZeroOrMore,
+};
+
+var videoReferenceVideoOption = new Option<string[]>("--reference-video")
+{
+    Description = "Video reference passed as `referenceVideos` for additional motion/context. Repeat for more; combined duration is capped by the model (15s for most, 30s for seedance2-5).",
+    Arity = ArgumentArity.ZeroOrMore,
+};
+
+var videoReferenceAudioOption = new Option<string[]>("--reference-audio")
+{
+    Description = "Audio reference passed as `referenceAudio` so the model can drive the output with the supplied audio. Repeat for more.",
+    Arity = ArgumentArity.ZeroOrMore,
+};
+
+var videoKeyframeOption = new Option<string[]>("--keyframe")
+{
+    Description = "aleph2 timed guidance still, as <image>@<seconds> or <image>@<percent>%. Repeat up to five times.",
+    Arity = ArgumentArity.ZeroOrMore,
+};
+
+var videoNegativePromptOption = new Option<string?>("--negative-prompt")
+{
+    Description = "What to avoid in the output (veo3.1 and veo3.1-fast).",
+};
+
+var videoResolutionOption = new Option<string?>("--resolution")
+{
+    Description = "Output resolution tier for models that size by resolution instead of ratio: hailuo3 (768P, 2K), happyhorse-1-0 (720P, 1080P), grok-imagine-1-5 (480p, 720p, 1080p).",
+};
+
+var videoModeOption = new Option<string?>("--mode")
+{
+    Description = "seedance2-5 video-to-video mode: reference or extend.",
+};
+
+var videoOutputFormatOption = new Option<string?>("--output-format")
+{
+    Description = "Delivery format for gen4.5 and aleph2: mp4, prores, png_sequence, sdr_rec709_10bit, and (gen4.5) hdr10, hlg, hdr_pq_12bit_master, hdr_prores, hdr_png_sequence, hdr_exr_sequence.",
+};
+
+var videoProresProfileOption = new Option<string?>("--prores-profile")
+{
+    Description = "ProRes tier when --output-format selects a ProRes mezzanine: 422, 422 Proxy, 422 LT, 422 HQ, 4444, 4444 XQ.",
+};
+
+var videoTargetAspectRatioOption = new Option<string?>("--target-aspect-ratio")
+{
+    Description = "aleph2 reframing target: 16:9, 4:3, 3:2, 1:1, 2:3, 3:4, 9:16, or 21:9. Replaces the deprecated --ratio on video-to-video.",
+};
+
+RunwayCliVideoExtras BuildVideoExtras(ParseResult parseResult) => new()
+{
+    ReferenceImages = parseResult.GetValue(videoReferenceImageOption),
+    ReferenceVideos = parseResult.GetValue(videoReferenceVideoOption),
+    ReferenceAudio = parseResult.GetValue(videoReferenceAudioOption),
+    Keyframes = parseResult.GetValue(videoKeyframeOption),
+    NegativePrompt = parseResult.GetValue(videoNegativePromptOption),
+    Resolution = parseResult.GetValue(videoResolutionOption),
+    Mode = parseResult.GetValue(videoModeOption),
+    OutputFormat = parseResult.GetValue(videoOutputFormatOption),
+    ProresProfile = parseResult.GetValue(videoProresProfileOption),
+    TargetAspectRatio = parseResult.GetValue(videoTargetAspectRatioOption),
 };
 
 var generationDurationOption = new Option<double?>("--duration")
@@ -926,6 +994,7 @@ generateVideoCommand.SetAction((ParseResult parseResult, CancellationToken cance
                         seed,
                         !parseResult.GetValue(noAudioOption),
                         publicFigureThreshold,
+                        BuildVideoExtras(parseResult),
                         submitCt).ConfigureAwait(false);
                     var i2vResponse = await client.StartGenerating.CreateImageToVideoAsync(
                         request: i2vRequest,
@@ -934,14 +1003,16 @@ generateVideoCommand.SetAction((ParseResult parseResult, CancellationToken cance
                     return i2vResponse.Id;
                 }
 
-                var t2vRequest = RunwayCliGeneration.CreateTextToVideoRequest(
+                var t2vRequest = await RunwayCliGeneration.CreateTextToVideoRequestAsync(
                     prompt,
                     model,
                     ratio,
                     duration,
                     seed,
                     !parseResult.GetValue(noAudioOption),
-                    publicFigureThreshold);
+                    publicFigureThreshold,
+                    BuildVideoExtras(parseResult),
+                    submitCt).ConfigureAwait(false);
                 var t2vResponse = await client.StartGenerating.CreateTextToVideoAsync(
                     request: t2vRequest,
                     xRunwayVersion: runwayVersion,
@@ -1433,6 +1504,13 @@ var textToVideoCommand = new Command("text-to-video", "Start a text-to-video gen
     generationDurationOption,
     seedOption,
     noAudioOption,
+    videoReferenceImageOption,
+    videoReferenceVideoOption,
+    videoReferenceAudioOption,
+    videoNegativePromptOption,
+    videoResolutionOption,
+    videoOutputFormatOption,
+    videoProresProfileOption,
     publicFigureThresholdOption,
     jsonOption,
     noWaitOption,
@@ -1465,14 +1543,16 @@ textToVideoCommand.SetAction((ParseResult parseResult, CancellationToken cancell
             async submitCt => json is { Length: > 0 }
                 ? await PostGenerationJsonAsync(client, runwayVersion, "v1/text_to_video", await RunwayCliGeneration.ReadJsonTextAsync(json, submitCt).ConfigureAwait(false), submitCt).ConfigureAwait(false)
                 : (await client.StartGenerating.CreateTextToVideoAsync(
-                    request: RunwayCliGeneration.CreateTextToVideoRequest(
+                    request: await RunwayCliGeneration.CreateTextToVideoRequestAsync(
                         RunwayCliGeneration.JoinPrompt(parseResult.GetValue(textToVideoPromptArgument)),
                         parseResult.GetValue(videoModelOption),
                         parseResult.GetValue(videoRatioOption) ?? "1280:720",
                         parseResult.GetValue(generationDurationOption),
                         parseResult.GetValue(seedOption),
                         !parseResult.GetValue(noAudioOption),
-                        parseResult.GetValue(publicFigureThresholdOption)),
+                        parseResult.GetValue(publicFigureThresholdOption),
+                        BuildVideoExtras(parseResult),
+                        submitCt).ConfigureAwait(false),
                     xRunwayVersion: runwayVersion,
                     cancellationToken: submitCt).ConfigureAwait(false)).Id,
             parseResult,
@@ -1499,6 +1579,12 @@ var imageToVideoCommand = new Command("image-to-video", "Start an image-to-video
     generationDurationOption,
     seedOption,
     noAudioOption,
+    videoReferenceVideoOption,
+    videoReferenceAudioOption,
+    videoNegativePromptOption,
+    videoResolutionOption,
+    videoOutputFormatOption,
+    videoProresProfileOption,
     publicFigureThresholdOption,
     jsonOption,
     noWaitOption,
@@ -1540,6 +1626,7 @@ imageToVideoCommand.SetAction((ParseResult parseResult, CancellationToken cancel
                 parseResult.GetValue(seedOption),
                 !parseResult.GetValue(noAudioOption),
                 parseResult.GetValue(publicFigureThresholdOption),
+                BuildVideoExtras(parseResult),
                 ct).ConfigureAwait(false);
 
         await HandleGenerationTaskAsync(
@@ -1564,14 +1651,25 @@ var sourceVideoOption = new Option<string?>("--video")
     Description = "Local path, HTTPS URL, Runway URI, or data URI video input.",
 };
 
-var videoToVideoCommand = new Command("video-to-video", "Start a video-to-video generation task with aleph2.")
+var videoToVideoCommand = new Command("video-to-video", "Start a video-to-video generation task (aleph2 restyle, or the seedance/hailuo/gemini reference models).")
 {
     videoToVideoPromptArgument,
     sourceVideoOption,
-    referenceImageOption2,
+    videoModelOption,
+    videoReferenceImageOption,
+    videoReferenceVideoOption,
+    videoReferenceAudioOption,
+    videoKeyframeOption,
     outputOption,
     videoRatioOption,
+    videoTargetAspectRatioOption,
+    videoResolutionOption,
+    videoModeOption,
+    videoOutputFormatOption,
+    videoProresProfileOption,
+    generationDurationOption,
     seedOption,
+    noAudioOption,
     publicFigureThresholdOption,
     jsonOption,
     noWaitOption,
@@ -1587,12 +1685,15 @@ videoToVideoCommand.SetAction((ParseResult parseResult, CancellationToken cancel
         var request = json is { Length: > 0 }
             ? await RunwayCliGeneration.ReadGeneratedJsonAsync<CreateVideoToVideoRequest>(json, ct).ConfigureAwait(false)
             : await RunwayCliGeneration.CreateVideoToVideoRequestAsync(
-                RunwayCliGeneration.JoinPrompt(parseResult.GetValue(videoToVideoPromptArgument)),
+                string.Join(' ', parseResult.GetValue(videoToVideoPromptArgument) ?? []).Trim(),
+                parseResult.GetValue(videoModelOption),
                 RequireOption(parseResult, sourceVideoOption),
                 parseResult.GetValue(videoRatioOption),
-                parseResult.GetValue(referenceImageOption2),
+                parseResult.GetValue(generationDurationOption),
                 parseResult.GetValue(seedOption),
+                !parseResult.GetValue(noAudioOption),
                 parseResult.GetValue(publicFigureThresholdOption),
+                BuildVideoExtras(parseResult),
                 ct).ConfigureAwait(false);
 
         await HandleGenerationTaskAsync(
@@ -3629,6 +3730,7 @@ Task<int> RunCreativeVideoRecipeAsync(
                                 parseResult.GetValue(seedOption),
                                 job.Audio == true,
                                 parseResult.GetValue(publicFigureThresholdOption),
+                                RunwayCliVideoExtras.None,
                                 submitCt).ConfigureAwait(false),
                             xRunwayVersion: runwayVersion,
                             cancellationToken: submitCt).ConfigureAwait(false);
@@ -3636,14 +3738,16 @@ Task<int> RunCreativeVideoRecipeAsync(
                     }
 
                     var fallback = await client.StartGenerating.CreateTextToVideoAsync(
-                        request: RunwayCliGeneration.CreateTextToVideoRequest(
+                        request: await RunwayCliGeneration.CreateTextToVideoRequestAsync(
                             job.Prompt,
                             job.Model,
                             job.Ratio,
                             job.DurationSeconds,
                             parseResult.GetValue(seedOption),
                             job.Audio == true,
-                            parseResult.GetValue(publicFigureThresholdOption)),
+                            parseResult.GetValue(publicFigureThresholdOption),
+                            RunwayCliVideoExtras.None,
+                            submitCt).ConfigureAwait(false),
                         xRunwayVersion: runwayVersion,
                         cancellationToken: submitCt).ConfigureAwait(false);
                     return fallback.Id;

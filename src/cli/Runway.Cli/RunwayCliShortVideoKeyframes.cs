@@ -180,7 +180,8 @@ internal static class RunwayCliShortVideoKeyframes
                 seed: options.Seed,
                 audio: options.Audio,
                 publicFigureThreshold: options.PublicFigureThreshold,
-                cancellationToken).ConfigureAwait(false);
+                extras: RunwayCliVideoExtras.None,
+                cancellationToken: cancellationToken).ConfigureAwait(false);
 
             IReadOnlyList<string> shotFiles = [];
             Guid videoTaskId = Guid.Empty;

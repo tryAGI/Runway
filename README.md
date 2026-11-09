@@ -446,6 +446,43 @@ dnx Runway.Cli image-to-video "a slow push in on the reference image" \
   --model gen4-turbo \
   --output ./runway-video
 
+# Image references: steer text-to-video with up to 30 stills (seedance2-5) instead of a single keyframe.
+# Local paths are inlined as data URIs; HTTPS and runway:// URIs pass through untouched.
+dnx Runway.Cli text-to-video "the hand places the bottle on the lit counter" \
+  --model seedance2-5 \
+  --reference-image ./bottle.png \
+  --reference-image ./counter.png \
+  --reference-audio ./room-tone.mp3 \
+  --output ./runway-video
+
+# Video references add motion/context; --resolution sizes the models that don't take --ratio.
+dnx Runway.Cli text-to-video "the same camera move, new product" \
+  --model wan3 \
+  --reference-video ./move.mp4 \
+  --reference-image ./product.png
+
+# aleph2 restyle pinned to timed guidance stills and reframed to vertical.
+dnx Runway.Cli video-to-video "restyle as a snowy street at night" \
+  --video ./source.mp4 \
+  --keyframe ./open.png@0 \
+  --keyframe ./close.png@90% \
+  --target-aspect-ratio 9:16 \
+  --output ./runway-video
+
+# Reference-driven video-to-video: extend a clip with seedance2-5 instead of restyling it.
+dnx Runway.Cli video-to-video "continue the move past the counter" \
+  --video ./source.mp4 \
+  --model seedance2-5 \
+  --mode extend \
+  --reference-image ./product.png
+
+# ProRes/HDR delivery straight out of gen4.5.
+dnx Runway.Cli text-to-video "a cinematic drone shot over a neon desert highway" \
+  --model gen4.5 \
+  --duration 5 \
+  --output-format hdr_prores \
+  --prores-profile "422 HQ"
+
 dnx Runway.Cli short-video "a tiny robot finds a glowing seed and turns a rooftop into a garden" \
   --shots 3 \
   --output ./runway-short-video
@@ -586,15 +623,17 @@ dotnet run --project src/cli/Runway.Cli -- gallery create \
   --output ./runway-short-video/gallery.html
 ```
 
-CLI endpoint and model coverage:
+CLI endpoint and model coverage. The accepted `--model` set for `text-to-video`, `image-to-video`, and
+`video-to-video` is read from the embedded OpenAPI spec at runtime, so every model Runway ships becomes
+usable on the next spec refresh without a CLI release:
 
 | Command | Endpoint(s) | Models |
 | --- | --- | --- |
-| `video`, `text-to-video` | `POST /v1/text_to_video` | `gen4.5`, `veo3.1`, `veo3.1_fast`, `veo3` |
-| `short-video` | Multi-shot planner over `POST /v1/text_to_video`; `short-video run --plan` executes edited plan JSON; optionally concatenates downloaded clips with `ffmpeg` | `gen4.5`, `veo3.1`, `veo3.1_fast`, `veo3` |
+| `video`, `text-to-video` | `POST /v1/text_to_video` | `gen4.5`, `veo3.1`, `veo3.1_fast`, `hailuo3`, `happyhorse_1_0`, `seedance2`, `seedance2_fast`, `seedance2_mini`, `seedance2_5`, `gemini_omni_flash`, `grok_imagine_1_5`, `wan3` |
+| `short-video` | Multi-shot planner over `POST /v1/text_to_video`; `short-video run --plan` executes edited plan JSON; optionally concatenates downloaded clips with `ffmpeg` | `gen4.5`, `veo3.1`, `veo3.1_fast`, `hailuo3`, `happyhorse_1_0`, `seedance2`, `seedance2_fast`, `seedance2_mini`, `seedance2_5`, `gemini_omni_flash`, `grok_imagine_1_5`, `wan3` |
 | `ad-video create` | Runway-native ad recipe planner over `POST /v1/text_to_video` or `POST /v1/image_to_video` when `--image` is supplied | `veo3.1_fast` by default; accepts video models |
-| `image-to-video` | `POST /v1/image_to_video` | `gen4.5`, `gen4_turbo`, `veo3.1`, `veo3.1_fast`, `happyhorse_1_0`, `seedance2`, `seedance2_fast`, `veo3` |
-| `video-to-video` | `POST /v1/video_to_video` | `aleph2`, `seedance2`, `seedance2_fast` |
+| `image-to-video` | `POST /v1/image_to_video` | `gen4.5`, `gen4_turbo`, `veo3.1`, `veo3.1_fast`, `hailuo3`, `happyhorse_1_0`, `seedance2`, `seedance2_fast`, `seedance2_mini`, `seedance2_5`, `gemini_omni_flash`, `grok_imagine_1_5`, `wan3` |
+| `video-to-video` | `POST /v1/video_to_video` | `aleph2`, `hailuo3`, `seedance2`, `seedance2_fast`, `seedance2_mini`, `seedance2_5`, `gemini_omni_flash` |
 | `image` | `POST /v1/text_to_image` | `gen4_image_turbo`, `gen4_image`, `gemini_image3_pro`, `gpt_image_2`, `gemini_2.5_flash` |
 | `product-photoshoot create` | Runway-native product photoshoot recipe planner over `POST /v1/text_to_image` | `gpt_image_2` by default; accepts image models |
 | `marketplace-cards create` | Runway-native marketplace-style card recipe planner over `POST /v1/text_to_image` | `gpt_image_2` by default; accepts image models |
@@ -634,7 +673,7 @@ The CLI ships a Higgsfield-parity surface so an agent trained on `higgsfield-ai/
 | Higgsfield CLI | Runway CLI | Notes |
 | --- | --- | --- |
 | `higgsfield generate create` | `runway generate <prompt> --kind image\|video\|image-to-video\|text-to-speech\|sound-effect` | Thin router. For per-modality options, prefer `runway image`, `runway video`, `runway image-to-video`, `runway text-to-speech`, `runway sound-effect` directly. |
-| `higgsfield soul-id create/list/get/wait` | `runway soul-id create/list/get/wait/delete` | Local registry under `~/.runway-cli/soul-ids/<id>/`. Photos are stored client-side; `wait` is a no-op. Pass `--soul-id <id>` to `image`, `image-to-video`, `product-photoshoot create`, `marketplace-cards create`, or `ad-video create` to auto-attach the registered photos as reference images. Not wired into `short-video` because text-to-video does not accept reference images; chain `image` → `image-to-video` per shot for identity-faithful multi-shot stories. |
+| `higgsfield soul-id create/list/get/wait` | `runway soul-id create/list/get/wait/delete` | Local registry under `~/.runway-cli/soul-ids/<id>/`. Photos are stored client-side; `wait` is a no-op. Pass `--soul-id <id>` to `image`, `image-to-video`, `product-photoshoot create`, `marketplace-cards create`, or `ad-video create` to auto-attach the registered photos as reference images. Not wired into `short-video`; chain `image` → `image-to-video` per shot, or pass `--reference-image` directly to `text-to-video` with a reference-capable model (`seedance2*`, `hailuo3`, `wan3`, `grok_imagine_1_5`) for identity-faithful multi-shot stories. |
 | `higgsfield product-photoshoot --mode` (10 modes) | `runway product-photoshoot create --mode` (10 modes) | All Higgsfield modes mapped: `product_shot`, `lifestyle_scene`, `closeup_product_with_person`, `moodboard_pin`, `hero_banner`, `social_carousel`, `ad_creative_pack`, `virtual_model_tryout`, `conceptual_product`, `restyle`. |
 | `higgsfield marketplace-cards --scope` | `runway marketplace-cards create --scope` | All four scopes match: `main`, `product-images`, `aplus`, `full-set`. |
 | `higgsfield marketing-studio avatars` | `runway marketing-studio avatars list` | Re-exposes the existing avatar list endpoints. |
@@ -750,11 +789,28 @@ var characterRequest = RunwayCharacterPerformance.ActTwo(
     referenceVideoUri: "https://example.com/performance.mp4",
     bodyControl: true);
 
+// /v1/text_to_video — image/video/audio references (seedance2_5 takes up to 30 image references)
+var referenced = RunwayTextToVideo.Seedance25(
+    "the hand places the bottle on the lit counter",
+    referenceImageUris: ["https://example.com/bottle.png", "https://example.com/counter.png"],
+    referenceAudioUris: ["https://example.com/room-tone.mp3"]);
+
 // /v1/video_to_video — aleph2 passthrough
 var restyle = RunwayVideoToVideo.Aleph2(
     "https://example.com/source.mp4",
     "Restyle as a watercolor painting.",
     seed: 7);
+
+// /v1/video_to_video — aleph2 restyle pinned to timed guidance stills, reframed to vertical
+var pinned = RunwayVideoToVideo.Aleph2(
+    "https://example.com/source.mp4",
+    "Restyle as a snowy street at night.",
+    targetAspectRatio: CreateVideoToVideoRequestVariant1TargetAspectRatio.x9_16,
+    keyframes:
+    [
+        RunwayVideoKeyframes.AtSeconds("https://example.com/open.png", 0),
+        RunwayVideoKeyframes.AtFraction("https://example.com/close.png", 0.9),
+    ]);
 
 // Avatar variants: a custom avatar + custom voice
 var custom = new CreateAvatarVideosRequest

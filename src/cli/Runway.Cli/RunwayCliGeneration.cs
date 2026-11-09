@@ -5,8 +5,11 @@ using Runway;
 
 internal static class RunwayCliGeneration
 {
-    private static readonly string[] TextToVideoModels = ["gen4.5", "veo3.1", "veo3.1_fast"];
-    private static readonly string[] ImageToVideoModels = ["gen4.5", "gen4_turbo", "veo3.1", "veo3.1_fast", "happyhorse_1_0", "seedance2", "seedance2_fast"];
+    // Video model allow-lists are read from the embedded OpenAPI spec (see NormalizeVideoModel) so that
+    // every model Runway ships becomes available on the next spec refresh without a CLI code change.
+    public const string TextToVideoEndpoint = "text_to_video";
+    public const string ImageToVideoEndpoint = "image_to_video";
+    public const string VideoToVideoEndpoint = "video_to_video";
     private static readonly string[] TextToImageModels = ["gen4_image_turbo", "gen4_image", "gemini_image3_pro", "gpt_image_2", "gemini_2.5_flash"];
 
     public static string JoinPrompt(string[]? values)
@@ -22,32 +25,33 @@ internal static class RunwayCliGeneration
             ?? throw new ArgumentException("Unsupported video ratio. Supported values: 1080:1920, 1280:720, 1920:1080, 720:1280.");
     }
 
-    public static CreateTextToVideoRequest CreateTextToVideoRequest(
+    public static async Task<CreateTextToVideoRequest> CreateTextToVideoRequestAsync(
         string prompt,
         string? model,
         string ratio,
         double? duration,
         int? seed,
         bool audio,
-        string? publicFigureThreshold)
+        string? publicFigureThreshold,
+        RunwayCliVideoExtras extras,
+        CancellationToken cancellationToken)
     {
-        var normalizedModel = NormalizeModel(model, "veo3.1_fast", TextToVideoModels);
+        ArgumentNullException.ThrowIfNull(extras);
+
+        var normalizedModel = NormalizeVideoModel(model, "veo3.1_fast", TextToVideoEndpoint);
         var body = new JsonObject
         {
             ["model"] = normalizedModel,
             ["promptText"] = prompt,
-            ["ratio"] = ratio,
         };
 
-        SetIfNotNull(body, "duration", duration);
-        SetIfNotNull(body, "seed", seed);
+        SetIfSupported(body, normalizedModel, TextToVideoEndpoint, "ratio", ratio);
+        SetIfSupported(body, normalizedModel, TextToVideoEndpoint, "duration", duration);
+        SetIfSupported(body, normalizedModel, TextToVideoEndpoint, "seed", seed);
+        SetIfSupported(body, normalizedModel, TextToVideoEndpoint, "audio", audio);
 
-        if (normalizedModel is "veo3.1" or "veo3.1_fast" or "seedance2" or "seedance2_fast")
-        {
-            body["audio"] = audio;
-        }
-
-        AddContentModeration(body, publicFigureThreshold);
+        await ApplyVideoExtrasAsync(body, normalizedModel, TextToVideoEndpoint, extras, cancellationToken).ConfigureAwait(false);
+        AddContentModeration(body, normalizedModel, TextToVideoEndpoint, publicFigureThreshold);
         return ToGenerated<CreateTextToVideoRequest>(body);
     }
 
@@ -61,14 +65,16 @@ internal static class RunwayCliGeneration
         int? seed,
         bool audio,
         string? publicFigureThreshold,
+        RunwayCliVideoExtras extras,
         CancellationToken cancellationToken)
     {
-        var normalizedModel = NormalizeModel(model, "gen4_turbo", ImageToVideoModels);
+        ArgumentNullException.ThrowIfNull(extras);
+
+        var normalizedModel = NormalizeVideoModel(model, "gen4_turbo", ImageToVideoEndpoint);
         var body = new JsonObject
         {
             ["model"] = normalizedModel,
             ["promptImage"] = await CreatePromptImageNodeAsync(promptImages, lastImage, cancellationToken).ConfigureAwait(false),
-            ["ratio"] = ratio,
         };
 
         if (!string.IsNullOrWhiteSpace(prompt))
@@ -76,15 +82,13 @@ internal static class RunwayCliGeneration
             body["promptText"] = prompt;
         }
 
-        SetIfNotNull(body, "duration", duration);
-        SetIfNotNull(body, "seed", seed);
+        SetIfSupported(body, normalizedModel, ImageToVideoEndpoint, "ratio", ratio);
+        SetIfSupported(body, normalizedModel, ImageToVideoEndpoint, "duration", duration);
+        SetIfSupported(body, normalizedModel, ImageToVideoEndpoint, "seed", seed);
+        SetIfSupported(body, normalizedModel, ImageToVideoEndpoint, "audio", audio);
 
-        if (normalizedModel is "veo3.1" or "veo3.1_fast")
-        {
-            body["audio"] = audio;
-        }
-
-        AddContentModeration(body, publicFigureThreshold);
+        await ApplyVideoExtrasAsync(body, normalizedModel, ImageToVideoEndpoint, extras, cancellationToken).ConfigureAwait(false);
+        AddContentModeration(body, normalizedModel, ImageToVideoEndpoint, publicFigureThreshold);
         return ToGenerated<CreateImageToVideoRequest>(body);
     }
 
@@ -190,40 +194,50 @@ internal static class RunwayCliGeneration
     }
 
     public static async Task<CreateVideoToVideoRequest> CreateVideoToVideoRequestAsync(
-        string prompt,
+        string? prompt,
+        string? model,
         string video,
         string? ratio,
-        string[]? references,
+        double? duration,
         int? seed,
+        bool audio,
         string? publicFigureThreshold,
+        RunwayCliVideoExtras extras,
         CancellationToken cancellationToken)
     {
+        ArgumentNullException.ThrowIfNull(extras);
+
+        var normalizedModel = NormalizeVideoModel(model, "aleph2", VideoToVideoEndpoint);
+        var videoUri = await NormalizeInputAssetAsync(video, cancellationToken).ConfigureAwait(false);
         var body = new JsonObject
         {
-            ["model"] = "aleph2",
-            ["promptText"] = prompt,
-            ["videoUri"] = await NormalizeInputAssetAsync(video, cancellationToken).ConfigureAwait(false),
+            ["model"] = normalizedModel,
         };
 
-        SetIfNotNull(body, "ratio", ratio);
-        SetIfNotNull(body, "seed", seed);
-        AddContentModeration(body, publicFigureThreshold);
+        // aleph2 and gemini_omni_flash name the input `videoUri`; the seedance/hailuo families use `promptVideo`.
+        body[RunwayModelSchema.SupportsParameter(normalizedModel, VideoToVideoEndpoint, "promptVideo") ? "promptVideo" : "videoUri"] = videoUri;
 
-        if (references is { Length: > 0 })
+        if (!string.IsNullOrWhiteSpace(prompt))
         {
-            var referenceNodes = new JsonArray();
-            foreach (var reference in references)
-            {
-                referenceNodes.Add(new JsonObject
-                {
-                    ["type"] = "image",
-                    ["uri"] = await NormalizeInputAssetAsync(reference, cancellationToken).ConfigureAwait(false),
-                });
-            }
-
-            body["references"] = referenceNodes;
+            body["promptText"] = prompt;
+        }
+        else if (RunwayModelSchema.Lookup(normalizedModel)
+            .Any(entry => entry.Endpoint == VideoToVideoEndpoint && entry.RequiredParameters.Contains("promptText", StringComparer.Ordinal)))
+        {
+            throw new ArgumentException($"Model '{normalizedModel}' requires a prompt on {VideoToVideoEndpoint}.");
         }
 
+        // aleph2 deprecated `ratio` in favour of `targetAspectRatio`: never send both.
+        if (string.IsNullOrWhiteSpace(extras.TargetAspectRatio))
+        {
+            SetIfSupported(body, normalizedModel, VideoToVideoEndpoint, "ratio", ratio);
+        }
+        SetIfSupported(body, normalizedModel, VideoToVideoEndpoint, "duration", duration);
+        SetIfSupported(body, normalizedModel, VideoToVideoEndpoint, "seed", seed);
+        SetIfSupported(body, normalizedModel, VideoToVideoEndpoint, "audio", audio);
+
+        await ApplyVideoExtrasAsync(body, normalizedModel, VideoToVideoEndpoint, extras, cancellationToken).ConfigureAwait(false);
+        AddContentModeration(body, normalizedModel, VideoToVideoEndpoint, publicFigureThreshold);
         return ToGenerated<CreateVideoToVideoRequest>(body);
     }
 
@@ -371,24 +385,26 @@ internal static class RunwayCliGeneration
         return value;
     }
 
+    /// <summary>
+    /// Normalizes a model id for one of the video endpoints against the embedded OpenAPI spec, so the
+    /// accepted set tracks whatever Runway currently ships instead of a hand-maintained list.
+    /// </summary>
+    public static string NormalizeVideoModel(string? value, string fallback, string endpoint)
+    {
+        var candidate = ApplyModelAliases(string.IsNullOrWhiteSpace(value) ? fallback : value.Trim());
+        var supported = RunwayModelSchema.ModelsForEndpoint(endpoint);
+        if (supported.Count == 0 || supported.Contains(candidate, StringComparer.Ordinal))
+        {
+            return candidate;
+        }
+
+        throw new ArgumentException(
+            $"Unsupported model '{value}' for {endpoint}. Supported values: {string.Join(", ", supported)}.");
+    }
+
     public static string NormalizeModel(string? value, string fallback, IReadOnlyCollection<string> supported)
     {
-        var candidate = string.IsNullOrWhiteSpace(value) ? fallback : value.Trim();
-        candidate = candidate switch
-        {
-            "gen45" or "gen4_5" or "gen4-5" => "gen4.5",
-            "gen4-turbo" => "gen4_turbo",
-            "happyhorse-1-0" or "happyhorse_1.0" => "happyhorse_1_0",
-            "seedance2-fast" or "seedance2_fast" => "seedance2_fast",
-            "veo3.1-fast" or "veo3_1_fast" or "veo3-1-fast" => "veo3.1_fast",
-            "veo3_1" or "veo3-1" => "veo3.1",
-            "gemini-2.5-flash" => "gemini_2.5_flash",
-            "gemini-image3-pro" or "gemini-image-3-pro" => "gemini_image3_pro",
-            "gpt-image-2" => "gpt_image_2",
-            "gen4-image" => "gen4_image",
-            "gen4-image-turbo" => "gen4_image_turbo",
-            _ => candidate,
-        };
+        var candidate = ApplyModelAliases(string.IsNullOrWhiteSpace(value) ? fallback : value.Trim());
 
         if (supported.Contains(candidate))
         {
@@ -396,6 +412,32 @@ internal static class RunwayCliGeneration
         }
 
         throw new ArgumentException($"Unsupported model '{value}'. Supported values: {string.Join(", ", supported)}.");
+    }
+
+    private static string ApplyModelAliases(string candidate)
+    {
+        return candidate switch
+        {
+            "gen45" or "gen4_5" or "gen4-5" => "gen4.5",
+            "gen4-turbo" => "gen4_turbo",
+            "seedance2-fast" => "seedance2_fast",
+            "veo3.1-fast" or "veo3_1_fast" or "veo3-1-fast" => "veo3.1_fast",
+            "veo3_1" or "veo3-1" => "veo3.1",
+            "gemini-2.5-flash" => "gemini_2.5_flash",
+            "gemini-image3-pro" or "gemini-image-3-pro" => "gemini_image3_pro",
+            "gpt-image-2" => "gpt_image_2",
+            "gen4-image" => "gen4_image",
+            "gen4-image-turbo" => "gen4_image_turbo",
+            "hailuo-3" or "hailuo_3" or "minimax-h3" => "hailuo3",
+            "happyhorse" or "happyhorse-1-0" or "happyhorse_1.0" or "happyhorse-1.0" => "happyhorse_1_0",
+            "seedance2-mini" => "seedance2_mini",
+            "seedance2.5" or "seedance2-5" or "seedance25" or "seedance-2.5" => "seedance2_5",
+            "gemini-omni-flash" or "gemini_omni-flash" => "gemini_omni_flash",
+            "grok" or "grok-imagine" or "grok-imagine-1.5" or "grok-imagine-1-5" or "grok_imagine_1.5" => "grok_imagine_1_5",
+            "wan-3" or "wan_3" => "wan3",
+            "gen4_aleph" or "gen4-aleph" or "aleph" or "aleph-2" => "aleph2",
+            _ => candidate,
+        };
     }
 
     public static string NormalizeTextToImageModel(string? value)
@@ -782,6 +824,203 @@ internal static class RunwayCliGeneration
         {
             body["contentModeration"] = contentModeration;
         }
+    }
+
+    /// <summary>
+    /// Adds <c>contentModeration</c> only when the chosen model declares it. Most third-party video models
+    /// (seedance, hailuo, wan, grok, gemini) use <c>additionalProperties: false</c> and reject the field.
+    /// </summary>
+    private static void AddContentModeration(JsonObject body, string model, string endpoint, string? publicFigureThreshold)
+    {
+        if (string.IsNullOrWhiteSpace(publicFigureThreshold))
+        {
+            return;
+        }
+
+        RequireSupport(model, endpoint, "contentModeration", "--public-figure-threshold");
+        AddContentModeration(body, publicFigureThreshold);
+    }
+
+    /// <summary>
+    /// Lists the models on <paramref name="endpoint"/> that accept <paramref name="parameterName"/>, so a
+    /// rejected flag can tell the user which model to switch to.
+    /// </summary>
+    private static IReadOnlyList<string> ModelsSupporting(string endpoint, string parameterName)
+    {
+        return [.. RunwayModelSchema.ModelsForEndpoint(endpoint)
+            .Where(candidate => RunwayModelSchema.SupportsParameter(candidate, endpoint, parameterName))];
+    }
+
+    private static void RequireSupport(string model, string endpoint, string parameterName, string flag)
+    {
+        if (RunwayModelSchema.SupportsParameter(model, endpoint, parameterName))
+        {
+            return;
+        }
+
+        var alternatives = ModelsSupporting(endpoint, parameterName);
+        var trailer = alternatives.Count == 0
+            ? $"No model on {endpoint} accepts it."
+            : $"Models that do: {string.Join(", ", alternatives)}.";
+        throw new ArgumentException($"Model '{model}' does not accept {flag} on {endpoint}. {trailer}");
+    }
+
+    private static void SetIfSupported(JsonObject body, string model, string endpoint, string name, string? value)
+    {
+        if (!string.IsNullOrWhiteSpace(value) && RunwayModelSchema.SupportsParameter(model, endpoint, name))
+        {
+            body[name] = value;
+        }
+    }
+
+    private static void SetIfSupported(JsonObject body, string model, string endpoint, string name, int? value)
+    {
+        if (value is not null && RunwayModelSchema.SupportsParameter(model, endpoint, name))
+        {
+            body[name] = value.Value;
+        }
+    }
+
+    private static void SetIfSupported(JsonObject body, string model, string endpoint, string name, double? value)
+    {
+        if (value is not null && RunwayModelSchema.SupportsParameter(model, endpoint, name))
+        {
+            body[name] = value.Value;
+        }
+    }
+
+    private static void SetIfSupported(JsonObject body, string model, string endpoint, string name, bool? value)
+    {
+        if (value is not null && RunwayModelSchema.SupportsParameter(model, endpoint, name))
+        {
+            body[name] = value.Value;
+        }
+    }
+
+    /// <summary>
+    /// Applies the reference inputs and the per-model delivery/steering knobs that are not part of every
+    /// variant. A flag the chosen model does not declare is rejected with the list of models that take it,
+    /// rather than being silently dropped or sent into an <c>additionalProperties: false</c> schema.
+    /// </summary>
+    private static async Task ApplyVideoExtrasAsync(
+        JsonObject body,
+        string model,
+        string endpoint,
+        RunwayCliVideoExtras extras,
+        CancellationToken cancellationToken)
+    {
+        // Image references are bare `{ "uri": ... }` objects — no `type` discriminator, unlike video/audio.
+        if (extras.ReferenceImages is { Length: > 0 } referenceImages)
+        {
+            RequireSupport(model, endpoint, "references", "--reference-image");
+            body["references"] = await CreateVideoReferenceArrayAsync(referenceImages, type: null, cancellationToken).ConfigureAwait(false);
+        }
+
+        if (extras.ReferenceVideos is { Length: > 0 } referenceVideos)
+        {
+            RequireSupport(model, endpoint, "referenceVideos", "--reference-video");
+            body["referenceVideos"] = await CreateVideoReferenceArrayAsync(referenceVideos, "video", cancellationToken).ConfigureAwait(false);
+        }
+
+        if (extras.ReferenceAudio is { Length: > 0 } referenceAudio)
+        {
+            RequireSupport(model, endpoint, "referenceAudio", "--reference-audio");
+            body["referenceAudio"] = await CreateVideoReferenceArrayAsync(referenceAudio, "audio", cancellationToken).ConfigureAwait(false);
+        }
+
+        if (extras.Keyframes is { Length: > 0 } keyframes)
+        {
+            RequireSupport(model, endpoint, "keyframes", "--keyframe");
+            body["keyframes"] = await CreateKeyframeArrayAsync(keyframes, cancellationToken).ConfigureAwait(false);
+        }
+
+        RequireAndSet(body, model, endpoint, "negativePrompt", "--negative-prompt", extras.NegativePrompt);
+        RequireAndSet(body, model, endpoint, "resolution", "--resolution", extras.Resolution);
+        RequireAndSet(body, model, endpoint, "mode", "--mode", extras.Mode);
+        RequireAndSet(body, model, endpoint, "outputFormat", "--output-format", extras.OutputFormat);
+        RequireAndSet(body, model, endpoint, "proresProfile", "--prores-profile", extras.ProresProfile);
+        RequireAndSet(body, model, endpoint, "targetAspectRatio", "--target-aspect-ratio", extras.TargetAspectRatio);
+    }
+
+    private static void RequireAndSet(JsonObject body, string model, string endpoint, string name, string flag, string? value)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+        {
+            return;
+        }
+
+        RequireSupport(model, endpoint, name, flag);
+        body[name] = value;
+    }
+
+    private static async Task<JsonArray> CreateVideoReferenceArrayAsync(
+        string[] values,
+        string? type,
+        CancellationToken cancellationToken)
+    {
+        var items = new JsonArray();
+        foreach (var value in values)
+        {
+            var item = new JsonObject
+            {
+                ["uri"] = await NormalizeInputAssetAsync(value, cancellationToken).ConfigureAwait(false),
+            };
+            if (type is { Length: > 0 })
+            {
+                item["type"] = type;
+            }
+
+            items.Add(item);
+        }
+
+        return items;
+    }
+
+    /// <summary>
+    /// Parses <c>--keyframe</c> values shaped as <c>&lt;uri&gt;@&lt;seconds&gt;</c> (absolute offset) or
+    /// <c>&lt;uri&gt;@&lt;fraction&gt;%</c> (fraction of the clip) into aleph2 keyframe objects.
+    /// </summary>
+    private static async Task<JsonArray> CreateKeyframeArrayAsync(string[] values, CancellationToken cancellationToken)
+    {
+        var items = new JsonArray();
+        foreach (var value in values)
+        {
+            var separator = value.LastIndexOf('@');
+            if (separator <= 0 || separator == value.Length - 1)
+            {
+                throw new ArgumentException($"Invalid --keyframe '{value}'. Use <image>@<seconds> or <image>@<percent>%.");
+            }
+
+            var asset = value[..separator];
+            var position = value[(separator + 1)..].Trim();
+            var fractional = position.EndsWith('%');
+            if (fractional)
+            {
+                position = position[..^1];
+            }
+
+            if (!double.TryParse(position, NumberStyles.Float, CultureInfo.InvariantCulture, out var parsed))
+            {
+                throw new ArgumentException($"Invalid --keyframe position '{position}' in '{value}'.");
+            }
+
+            var item = new JsonObject
+            {
+                ["uri"] = await NormalizeInputAssetAsync(asset, cancellationToken).ConfigureAwait(false),
+            };
+            if (fractional)
+            {
+                item["at"] = parsed / 100d;
+            }
+            else
+            {
+                item["seconds"] = parsed;
+            }
+
+            items.Add(item);
+        }
+
+        return items;
     }
 
     private static void SetIfNotNull(JsonObject body, string name, string? value)

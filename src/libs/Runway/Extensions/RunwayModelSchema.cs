@@ -42,7 +42,17 @@ public static class RunwayModelSchema
         ["seed"] = "--seed",
         ["audio"] = "--audio (or remove --no-audio)",
         ["videoUri"] = "--video",
+        ["promptVideo"] = "--video",
         ["references"] = "--reference-image",
+        ["referenceVideos"] = "--reference-video",
+        ["referenceAudio"] = "--reference-audio",
+        ["resolution"] = "--resolution",
+        ["negativePrompt"] = "--negative-prompt",
+        ["mode"] = "--mode",
+        ["outputFormat"] = "--output-format",
+        ["proresProfile"] = "--prores-profile",
+        ["targetAspectRatio"] = "--target-aspect-ratio",
+        ["keyframes"] = "--keyframe",
         ["media"] = "--media",
         ["voice"] = "--voice-preset / --custom-voice-id",
         ["audioUri"] = "--audio",
@@ -89,6 +99,61 @@ public static class RunwayModelSchema
     /// Enumerates every model id discovered in the embedded spec.
     /// </summary>
     public static IEnumerable<string> KnownModelIds() => Map.Value.Keys;
+
+    /// <summary>
+    /// Returns every model id the embedded spec accepts on <paramref name="endpoint"/> (e.g. <c>text_to_video</c>),
+    /// sorted for stable help output. Lets callers build model allow-lists straight from the spec instead of
+    /// hand-maintaining one that goes stale whenever Runway ships a new model.
+    /// </summary>
+    public static IReadOnlyList<string> ModelsForEndpoint(string endpoint)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(endpoint);
+
+        var models = new List<string>();
+        foreach (var kvp in Map.Value)
+        {
+            foreach (var entry in kvp.Value)
+            {
+                if (string.Equals(entry.Endpoint, endpoint, StringComparison.Ordinal))
+                {
+                    models.Add(kvp.Key);
+                    break;
+                }
+            }
+        }
+
+        models.Sort(StringComparer.Ordinal);
+        return models;
+    }
+
+    /// <summary>
+    /// Returns true when the embedded spec says <paramref name="modelId"/> accepts
+    /// <paramref name="parameterName"/> on <paramref name="endpoint"/> (required or optional).
+    /// Unknown models return false so callers omit parameters they can't prove are supported.
+    /// </summary>
+    public static bool SupportsParameter(string modelId, string endpoint, string parameterName)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(endpoint);
+        ArgumentException.ThrowIfNullOrWhiteSpace(parameterName);
+
+        foreach (var entry in Lookup(modelId))
+        {
+            if (!string.Equals(entry.Endpoint, endpoint, StringComparison.Ordinal))
+            {
+                continue;
+            }
+
+            foreach (var parameter in entry.Parameters)
+            {
+                if (string.Equals(parameter, parameterName, StringComparison.Ordinal))
+                {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
 
     /// <summary>
     /// Annotates a spec property name with the CLI flag a Runway.Cli user should add (e.g.

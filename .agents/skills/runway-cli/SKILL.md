@@ -41,8 +41,15 @@ Default to low-cost, practical choices:
 | Ad-video recipe | `ad-video create --mode ugc --shots 1 --duration 4` |
 | Scenario to short film | `short-video --planner auto --shots 3 --duration 4 --ratio 1280:720` |
 | Image-to-video from a local file | `image-to-video --model gen4-turbo --image <file>` |
-| Highest quality video | `video --model gen4.5` or `video --model veo3` |
-| Video edit / transformation | `video-to-video --video <file>` |
+| Highest quality video | `video --model gen4.5` |
+| Video edit / transformation | `video-to-video --video <file>` (aleph2 restyle) |
+| Video from image references | `text-to-video --model seedance2-5 --reference-image <file> --reference-image <file>` |
+| Reuse a camera move / motion | `text-to-video --model wan3 --reference-video <file> --reference-image <file>` |
+| Lip-sync or music-driven shot | `text-to-video --model grok-imagine-1-5 --reference-image <file> --reference-audio <file>` |
+| Extend an existing clip | `video-to-video --model seedance2-5 --mode extend --video <file>` |
+| Pin a restyle to specific stills | `video-to-video --video <file> --keyframe <img>@0 --keyframe <img>@90%` |
+| Reframe to vertical | `video-to-video --video <file> --target-aspect-ratio 9:16` |
+| ProRes / HDR delivery | `text-to-video --model gen4.5 --duration 5 --output-format hdr_prores --prores-profile "422 HQ"` |
 | Text-to-speech | `text-to-speech --voice-preset clara` |
 | Generate by kind (Higgsfield-style) | `generate "<prompt>" --kind image\|video\|image-to-video\|text-to-speech\|sound-effect` |
 
@@ -433,7 +440,7 @@ dnx Runway.Cli ad-video create --prompt "alice unboxes the new kettle" \
   --mode unboxing --shots 1 --soul-id <id-from-list> --plan-only
 ```
 
-The local soul-id registry stores reference photos only — it does not train a server-side identity model. `--soul-id` is wired into every command that accepts reference images: `image`, `image-to-video`, `product-photoshoot create`, `marketplace-cards create`, and `ad-video create`. It is NOT wired into `short-video` because Runway's text-to-video endpoint does not accept reference images; for identity-faithful multi-shot stories, run `image` with `--soul-id` to produce a keyframe and then chain `image-to-video --image <keyframe> --soul-id <id>` per shot. For Runway-native talking-avatar workflows, use `runway avatar create` and `runway avatar video`.
+The local soul-id registry stores reference photos only — it does not train a server-side identity model. `--soul-id` is wired into every command that accepts reference images: `image`, `image-to-video`, `product-photoshoot create`, `marketplace-cards create`, and `ad-video create`. It is NOT wired into `short-video`; for identity-faithful multi-shot stories, either run `image` with `--soul-id` to produce a keyframe and chain `image-to-video --image <keyframe> --soul-id <id>` per shot, or pass `--reference-image` directly to `text-to-video` with a reference-capable model (`seedance2`, `seedance2-fast`, `seedance2-mini`, `seedance2-5`, `hailuo3`, `wan3`, `grok-imagine-1-5`). For Runway-native talking-avatar workflows, use `runway avatar create` and `runway avatar video`.
 
 Auth and account:
 
