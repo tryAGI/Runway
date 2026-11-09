@@ -100,6 +100,47 @@ public sealed class RunwayCliBodyAndCompletionTests
     }
 
     [TestMethod]
+    public async Task BodiesPipedIntoTheGeneratedGroupAreValidatedToo()
+    {
+        const string bad =
+            """{"model":"magnific_video_upscaler_creative","videoUri":"https://example.com/a.mp4","flavor":"viv1d"}""";
+
+        // A parse validator cannot read stdin — the stream is consumable once and the handler needs the
+        // same content — so the body is buffered before invocation, checked, and handed back through
+        // Console.In. Both spellings of the flag go through that path.
+        foreach (var arguments in new[]
+                 {
+                     "api start-generating create-video-upscale --input -",
+                     "api start-generating create-video-upscale --input=-",
+                     "api start-generating create-video-upscale --request-file -",
+                 })
+        {
+            var result = await CliHarness.RunCliAsync(
+                arguments, environment: OfflineEnvironment, standardInput: bad).ConfigureAwait(false);
+
+            result.ExitCode.Should().Be(2, $"`{arguments}` should reject the piped body");
+            result.Stderr.Should().Contain("vivid, natural");
+        }
+    }
+
+    [TestMethod]
+    public async Task AGoodPipedBodyStillReachesTheHandler()
+    {
+        // The re-injected stdin must carry the identical content, otherwise valid bodies would break.
+        const string good =
+            """{"model":"magnific_video_upscaler_creative","videoUri":"https://example.com/a.mp4","flavor":"vivid"}""";
+
+        var result = await CliHarness.RunCliAsync(
+            "api start-generating create-video-upscale --input -",
+            environment: OfflineEnvironment,
+            standardInput: good).ConfigureAwait(false);
+
+        // 1, not 2: the body passed validation and the request failed at the closed port.
+        result.ExitCode.Should().Be(1);
+        result.Stderr.Should().NotContain("does not match the Runway OpenAPI spec");
+    }
+
+    [TestMethod]
     public async Task CompletionScriptsAreEmittedForEverySupportedShell()
     {
         foreach (var shell in RunwayCliCompletion.SupportedShells)

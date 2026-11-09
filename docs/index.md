@@ -990,7 +990,8 @@ The request body does not match the Runway OpenAPI spec:
 ```
 
 The endpoint is inferred from the body's own `model`, so a model that several endpoints accept never
-produces a false positive, and a model the spec has not described yet is never blocked.
+produces a false positive, and a model the spec has not described yet is never blocked. Bodies piped in
+(`--json -`, `runway api … --input -`) are checked the same way.
 
 **Shell completion** is generated from the live command tree and the embedded spec, so subcommands,
 options and the `--model` values for each command stay correct after a spec refresh:

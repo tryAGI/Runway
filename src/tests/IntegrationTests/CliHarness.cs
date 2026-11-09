@@ -8,10 +8,15 @@ namespace Runway.IntegrationTests;
 /// </summary>
 internal static class CliHarness
 {
+    /// <param name="standardInput">
+    /// Text to pipe into the process, for the paths that read a request body or an asset from stdin.
+    /// When null, stdin is closed as before so nothing blocks on a read.
+    /// </param>
     public static async Task<CliResult> RunCliAsync(
         string arguments,
         bool removeApiKey = false,
-        IReadOnlyDictionary<string, string?>? environment = null)
+        IReadOnlyDictionary<string, string?>? environment = null,
+        string? standardInput = null)
     {
         var runwayRoot = FindRunwayRoot();
         var startInfo = new ProcessStartInfo(FindDotnetExecutable())
@@ -72,6 +77,12 @@ internal static class CliHarness
 
         using var process = Process.Start(startInfo)
             ?? throw new InvalidOperationException("Failed to start Runway CLI process.");
+
+        if (standardInput is not null)
+        {
+            await process.StandardInput.WriteAsync(standardInput).ConfigureAwait(false);
+            await process.StandardInput.FlushAsync().ConfigureAwait(false);
+        }
 
         process.StandardInput.Close();
 

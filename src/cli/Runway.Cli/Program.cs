@@ -3904,6 +3904,28 @@ completionCommand.SetAction(parseResult =>
     }
 });
 
+// A body piped into the generated `runway api …` group cannot be checked from a parse validator: the
+// stream can only be read once, and the generated handler needs that same content. So buffer it here,
+// validate it, and hand the identical text back through Console.In. The curated `--json -` path needs
+// none of this — it reads stdin into a string itself and validates before deserializing.
+if (TryFindStdinBodyOption(args) is { } stdinBodyFlag && Console.IsInputRedirected)
+{
+    var bufferedBody = await Console.In.ReadToEndAsync().ConfigureAwait(false);
+    Console.SetIn(new StringReader(bufferedBody));
+
+    if (RunwayCliJsonBodyValidator.FindViolations(bufferedBody) is { Count: > 0 } stdinViolations)
+    {
+        await Console.Error.WriteLineAsync(
+            $"The request body piped into {stdinBodyFlag} does not match the Runway OpenAPI spec:").ConfigureAwait(false);
+        foreach (var violation in stdinViolations)
+        {
+            await Console.Error.WriteLineAsync($"  {violation}").ConfigureAwait(false);
+        }
+
+        return 2;
+    }
+}
+
 var parseResultForInvocation = rootCommand.Parse(args);
 
 // System.CommandLine exits 1 for a parse or validation error, which is the same code a failed
@@ -4696,6 +4718,35 @@ string[]? MergeSoulIdImages(ParseResult parseResult, string[]? baseImages)
     }
 
     return [.. baseImages, .. resolved];
+}
+
+/// <summary>
+/// Returns the body option that was given <c>-</c>, meaning "read the request body from stdin", or null
+/// when no such option is present. Covers both <c>--input -</c> and <c>--input=-</c>.
+/// </summary>
+static string? TryFindStdinBodyOption(string[] arguments)
+{
+    string[] bodyFlags = ["--input", "--request-file", "--request-json"];
+    for (var index = 0; index < arguments.Length; index++)
+    {
+        var argument = arguments[index];
+        foreach (var flag in bodyFlags)
+        {
+            if (string.Equals(argument, flag, StringComparison.Ordinal) &&
+                index + 1 < arguments.Length &&
+                arguments[index + 1] == "-")
+            {
+                return flag;
+            }
+
+            if (string.Equals(argument, flag + "=-", StringComparison.Ordinal))
+            {
+                return flag;
+            }
+        }
+    }
+
+    return null;
 }
 
 /// <summary>
