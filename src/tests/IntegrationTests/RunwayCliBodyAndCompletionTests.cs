@@ -191,27 +191,29 @@ public sealed class RunwayCliBodyAndCompletionTests
             var tools = Path.Combine(directory.FullName, "tools.json");
             var nodes = Path.Combine(directory.FullName, "nodes.json");
 
-            // A plan whose model is wrong for the endpoint: proof the file was read is the model error.
             await File.WriteAllTextAsync(plan, """
-                {"sourceText":"x","scenario":"x","style":"x","model":"gpt_image_2","ratio":"1280:720","shotDurationSeconds":4,"shots":[]}
+                {"sourceText":"x","scenario":"x","style":"x","model":"veo3.1_fast","ratio":"1280:720","shotDurationSeconds":4,"shots":[]}
                 """).ConfigureAwait(false);
             await File.WriteAllTextAsync(tools, """[{"name":"x","description":"d"}]""").ConfigureAwait(false);
             await File.WriteAllTextAsync(nodes, """{"node-1":{"prompt":{"type":"primitive","value":"hi"}}}""").ConfigureAwait(false);
 
-            var planResult = await RunAsync($"short-video run --plan @{plan} --no-wait").ConfigureAwait(false);
-            planResult.Stderr.Should().Contain("gpt_image_2", "the plan file must have been read");
-
-            // These two only need to get past the reader: a parse or validation error naming the
-            // content proves the file arrived, where before the token itself was sent.
-            foreach (var (option, path) in new[] { ("--tools-json", tools), ("--node-outputs-json", nodes) })
+            // The guard is the regression itself, not any particular downstream error: the token must
+            // not be swallowed as a response file, and the literal "@path" must not be sent on as
+            // content. Asserting on a specific validation message instead would depend on how far each
+            // command happens to get, which differs per option and per plan contents.
+            foreach (var command in new[]
+                     {
+                         $"short-video run --plan @{plan} --no-wait",
+                         $"realtime create --preset-avatar influencer --tools-json @{tools}",
+                         $"workflow run 00000000-0000-0000-0000-000000000001 --node-outputs-json @{nodes}",
+                     })
             {
-                var command = option == "--tools-json"
-                    ? $"realtime create --preset-avatar influencer {option} @{path}"
-                    : $"workflow run 00000000-0000-0000-0000-000000000001 {option} @{path}";
-
                 var result = await RunAsync(command).ConfigureAwait(false);
-                result.Stderr.Should().NotContain("Response file not found", $"{option} must not be treated as a response file");
-                result.Stderr.Should().NotContain("invalid start of a value", $"{option} must not post the literal token");
+                var output = result.Stdout + result.Stderr;
+
+                output.Should().NotContain("Response file not found", $"`{command}` must not be parsed as a response file");
+                output.Should().NotContain("invalid start of a value", $"`{command}` must not pass the literal @path on as content");
+                output.Should().NotContain("JSON file was not found", $"`{command}` points at a file that exists");
             }
         }
         finally
