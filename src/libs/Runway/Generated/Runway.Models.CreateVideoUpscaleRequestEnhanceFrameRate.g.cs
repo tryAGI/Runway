@@ -9,7 +9,7 @@ namespace Runway
     public sealed partial class CreateVideoUpscaleRequestEnhanceFrameRate
     {
         /// <summary>
-        /// Input video to interpolate. Maximum duration is 300 seconds; output keeps the source resolution up to 4K.<br/>
+        /// The video to convert. See [video inputs](/assets/inputs#videos) for URL, upload, and file size limits. Maximum duration is 300 seconds.<br/>
         /// Example: https://example.com/video.mp4
         /// </summary>
         /// <example>https://example.com/video.mp4</example>
@@ -18,7 +18,7 @@ namespace Runway
         public required string VideoUri { get; set; }
 
         /// <summary>
-        /// Target frames per second. NTSC rates use underscored values (23_98, 29_97, 59_94).
+        /// The output frame rate.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("targetFramerate")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.CreateVideoUpscaleRequestEnhanceFrameRateTargetFramerateJsonConverter))]
@@ -42,11 +42,11 @@ namespace Runway
         /// Initializes a new instance of the <see cref="CreateVideoUpscaleRequestEnhanceFrameRate" /> class.
         /// </summary>
         /// <param name="videoUri">
-        /// Input video to interpolate. Maximum duration is 300 seconds; output keeps the source resolution up to 4K.<br/>
+        /// The video to convert. See [video inputs](/assets/inputs#videos) for URL, upload, and file size limits. Maximum duration is 300 seconds.<br/>
         /// Example: https://example.com/video.mp4
         /// </param>
         /// <param name="targetFramerate">
-        /// Target frames per second. NTSC rates use underscored values (23_98, 29_97, 59_94).
+        /// The output frame rate.
         /// </param>
         /// <param name="model"></param>
 #if NET7_0_OR_GREATER

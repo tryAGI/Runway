@@ -15,6 +15,10 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
+        MireloSfx20,
+        /// <summary>
+        ///
+        /// </summary>
         SeedAudio,
     }
 
@@ -31,6 +35,7 @@ namespace Runway
             return value switch
             {
                 CreateSoundEffectRequestDiscriminatorModel.ElevenTextToSoundV2 => "eleven_text_to_sound_v2",
+                CreateSoundEffectRequestDiscriminatorModel.MireloSfx20 => "mirelo_sfx_2_0",
                 CreateSoundEffectRequestDiscriminatorModel.SeedAudio => "seed_audio",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
@@ -43,6 +48,7 @@ namespace Runway
             return value switch
             {
                 "eleven_text_to_sound_v2" => CreateSoundEffectRequestDiscriminatorModel.ElevenTextToSoundV2,
+                "mirelo_sfx_2_0" => CreateSoundEffectRequestDiscriminatorModel.MireloSfx20,
                 "seed_audio" => CreateSoundEffectRequestDiscriminatorModel.SeedAudio,
                 _ => null,
             };

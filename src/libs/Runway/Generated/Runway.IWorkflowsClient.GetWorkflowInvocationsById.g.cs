@@ -6,7 +6,7 @@ namespace Runway
     {
         /// <summary>
         /// Get workflow invocation detail<br/>
-        /// Return details about a workflow invocation. Consumers of this API should not expect updates more frequent than once every five seconds for a given workflow invocation.
+        /// Return details about a workflow invocation. Consumers of this API should not expect updates more frequent than once every five seconds for a given workflow invocation. A `SUCCEEDED` invocation may still have had individual nodes fail, so check `nodeErrors` to detect a partial run rather than relying on `status` alone.
         /// </summary>
         /// <param name="id"></param>
         /// <param name="xRunwayVersion">
@@ -36,7 +36,7 @@ namespace Runway
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Get workflow invocation detail<br/>
-        /// Return details about a workflow invocation. Consumers of this API should not expect updates more frequent than once every five seconds for a given workflow invocation.
+        /// Return details about a workflow invocation. Consumers of this API should not expect updates more frequent than once every five seconds for a given workflow invocation. A `SUCCEEDED` invocation may still have had individual nodes fail, so check `nodeErrors` to detect a partial run rather than relying on `status` alone.
         /// </summary>
         /// <param name="id"></param>
         /// <param name="xRunwayVersion">

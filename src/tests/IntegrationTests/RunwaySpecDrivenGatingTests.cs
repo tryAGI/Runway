@@ -284,7 +284,7 @@ public sealed class RunwaySpecDrivenGatingTests
         {
             SpecModelCount = 39,
             AccountModelCount = 81,
-            MissingFromSpec = ["kling_4", "nano_banana_2.1"],
+            MissingFromSpec = ["some_unreleased_model", "another_unreleased_model"],
             EndpointCapabilities = ["product_ad"],
             MissingFromAccount = ["eleven_ttv_v3"],
         };
@@ -294,7 +294,7 @@ public sealed class RunwaySpecDrivenGatingTests
         root.GetProperty("specModelCount").GetInt32().Should().Be(39);
         root.GetProperty("accountModelCount").GetInt32().Should().Be(81);
         root.GetProperty("missingFromSpec").GetArrayLength().Should().Be(2);
-        root.GetProperty("missingFromSpec")[0].GetString().Should().Be("kling_4");
+        root.GetProperty("missingFromSpec")[0].GetString().Should().Be("some_unreleased_model");
         root.GetProperty("endpointCapabilities")[0].GetString().Should().Be("product_ad");
         root.GetProperty("missingFromAccount")[0].GetString().Should().Be("eleven_ttv_v3");
 
@@ -319,10 +319,46 @@ public sealed class RunwaySpecDrivenGatingTests
         RunwayModelSchema.IsKnown("seedance2_5").Should().BeTrue();
         RunwayModelSchema.IsKnown("muse_image").Should().BeTrue();
 
-        // And models the account has but the spec has not caught up with do not.
-        RunwayModelSchema.IsKnown("kling3.0_pro").Should().BeFalse();
-        RunwayModelSchema.IsKnown("nano_banana_2.1").Should().BeFalse();
+        // These two used to be pinned here as "the account has them, the spec has not caught up". That
+        // was the wrong diagnosis: the spec was fetched from the `next` branch, which Runway had frozen,
+        // and both were in the default branch all along. Pinned the other way round now, so that a
+        // regression back to a stale source fails here instead of looking like upstream's fault.
+        RunwayModelSchema.IsKnown("kling3.0_pro").Should().BeTrue();
+        RunwayModelSchema.IsKnown("nano_banana_2.1").Should().BeTrue();
+
+        // An id that is genuinely not a model still does not resolve.
+        RunwayModelSchema.IsKnown("definitely_not_a_runway_model").Should().BeFalse();
         RunwayModelSchema.IsKnown("").Should().BeFalse();
+    }
+
+    [TestMethod]
+    public void ModelSchema_CarriesTheModelsPatchedInAheadOfUpstream()
+    {
+        // patch_openapi.py adds four models Runway released on 2026-11-05 and documents on its model
+        // index, but has not put in its OpenAPI repository yet. Each is cloned from a sibling already
+        // in the spec, so the shape is the API's and only the limits the changelog states differ.
+        // Delete an entry here together with its entry in the script once upstream ships it.
+        foreach (var model in new[] { "kling_4_flash", "gemini_omni_flash_1.2", "gpt_image_2_6_flare", "gpt_image_2_6_sunburst" })
+        {
+            RunwayModelSchema.IsKnown(model).Should().BeTrue($"{model} is patched into the spec");
+        }
+
+        foreach (var endpoint in new[] { RunwayRatioEndpoints.TextToVideo, RunwayRatioEndpoints.ImageToVideo, RunwayRatioEndpoints.VideoToVideo })
+        {
+            // Kling 4.0 Flash is 720p only, where Kling 4.0 also offers 1080p.
+            RunwayRatioSupport.GetSupportedRatios("kling_4_flash", endpoint).Should().Equal(["auto_720p"]);
+            RunwayRatioSupport.GetSupportedRatios("kling_4", endpoint).Should().Contain("auto_1080p");
+        }
+
+        // The endpoints that start a new clip carry a duration; video-to-video edits the source and has
+        // none, so the clone must not have invented one.
+        RunwayModelSchema.SupportsParameter("kling_4_flash", "image_to_video", "duration").Should().BeTrue();
+        RunwayModelSchema.SupportsParameter("kling_4_flash", "video_to_video", "duration").Should().BeFalse();
+
+        // GPT Image 2.6 takes a reasoning effort, which 2.5 does not.
+        RunwayModelSchema.GetAllowedValues("gpt_image_2_6_flare", "text_to_image", "reasoningEffort")
+            .Should().Equal(["low", "medium", "high"]);
+        RunwayModelSchema.SupportsParameter("gpt_image_2_5_flare", "text_to_image", "reasoningEffort").Should().BeFalse();
     }
 
     [TestMethod]

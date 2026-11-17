@@ -31,7 +31,20 @@ namespace Runway
         public bool? Audio { get; set; }
 
         /// <summary>
-        /// How the input video is used. `reference` (the default) generates a new video conditioned on the input video and accepts `duration` and `ratio`. `extend` continues the input video, requires `promptText`, and matches the input aspect ratio, so `ratio` may not be provided.<br/>
+        /// If unspecified, a random number is chosen. Varying the seed integer is a way to get different results for the same other request parameters. Using the same seed integer for an identical request will produce similar results.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("seed")]
+        public int? Seed { get; set; }
+
+        /// <summary>
+        /// Container for the output video. `mov` keeps high colour precision for grading and compositing. Defaults to `mp4`. Draft mode only supports `mp4`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("outputFormat")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance25OutputFormatJsonConverter))]
+        public global::Runway.CreateVideoToVideoRequestSeedance25OutputFormat? OutputFormat { get; set; }
+
+        /// <summary>
+        /// How the input video is used. `reference` (the default) generates a new video conditioned on the input video and accepts `duration` and `ratio`. `extend` continues the input video, requires `promptText`, and matches the input aspect ratio, so `ratio` may not be provided. `edit` modifies the input video in place, requires `promptText`, requires `duration: "auto"`, and does not accept `ratio`.<br/>
         /// Default Value: reference
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("mode")]
@@ -39,10 +52,11 @@ namespace Runway
         public global::Runway.CreateVideoToVideoRequestSeedance25Mode? Mode { get; set; }
 
         /// <summary>
-        /// The number of seconds of duration for the output video. Defaults to 5.
+        /// Seconds of video to generate, or `auto` to let the model choose. `auto` is billed at the variant maximum up front; unused credits are refunded after the generation finishes. Defaults to 5.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("duration")]
-        public int? Duration { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.AnyOfJsonConverter<int?, string>))]
+        public global::Runway.AnyOf<int?, string>? Duration { get; set; }
 
         /// <summary>
         /// The resolution of the output video. Seedance 2.5 supports 480p, 720p, and 1080p.
@@ -68,6 +82,12 @@ namespace Runway
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("referenceAudio")]
         public global::System.Collections.Generic.IList<global::Runway.CreateVideoToVideoRequestSeedance25ReferenceAudioItem>? ReferenceAudio { get; set; }
+
+        /// <summary>
+        /// Generate a cheap 480p preview instead of a full-quality video. The returned task ID can later be enhanced to a 1080p video with the same content by passing it as `draftTaskId` to `text_to_video`. Drafts can be enhanced within 7 days of creation. Defaults to false.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("draft")]
+        public bool? Draft { get; set; }
 
         /// <summary>
         ///
@@ -96,12 +116,18 @@ namespace Runway
         /// Whether to generate audio for the video.<br/>
         /// Default Value: true
         /// </param>
+        /// <param name="seed">
+        /// If unspecified, a random number is chosen. Varying the seed integer is a way to get different results for the same other request parameters. Using the same seed integer for an identical request will produce similar results.
+        /// </param>
+        /// <param name="outputFormat">
+        /// Container for the output video. `mov` keeps high colour precision for grading and compositing. Defaults to `mp4`. Draft mode only supports `mp4`.
+        /// </param>
         /// <param name="mode">
-        /// How the input video is used. `reference` (the default) generates a new video conditioned on the input video and accepts `duration` and `ratio`. `extend` continues the input video, requires `promptText`, and matches the input aspect ratio, so `ratio` may not be provided.<br/>
+        /// How the input video is used. `reference` (the default) generates a new video conditioned on the input video and accepts `duration` and `ratio`. `extend` continues the input video, requires `promptText`, and matches the input aspect ratio, so `ratio` may not be provided. `edit` modifies the input video in place, requires `promptText`, requires `duration: "auto"`, and does not accept `ratio`.<br/>
         /// Default Value: reference
         /// </param>
         /// <param name="duration">
-        /// The number of seconds of duration for the output video. Defaults to 5.
+        /// Seconds of video to generate, or `auto` to let the model choose. `auto` is billed at the variant maximum up front; unused credits are refunded after the generation finishes. Defaults to 5.
         /// </param>
         /// <param name="ratio">
         /// The resolution of the output video. Seedance 2.5 supports 480p, 720p, and 1080p.
@@ -115,6 +141,9 @@ namespace Runway
         /// <param name="referenceAudio">
         /// An optional array of audio references. The total combined duration must be less than 30 seconds.
         /// </param>
+        /// <param name="draft">
+        /// Generate a cheap 480p preview instead of a full-quality video. The returned task ID can later be enhanced to a 1080p video with the same content by passing it as `draftTaskId` to `text_to_video`. Drafts can be enhanced within 7 days of creation. Defaults to false.
+        /// </param>
         /// <param name="model"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -123,23 +152,29 @@ namespace Runway
             string promptVideo,
             string? promptText,
             bool? audio,
+            int? seed,
+            global::Runway.CreateVideoToVideoRequestSeedance25OutputFormat? outputFormat,
             global::Runway.CreateVideoToVideoRequestSeedance25Mode? mode,
-            int? duration,
+            global::Runway.AnyOf<int?, string>? duration,
             global::Runway.CreateVideoToVideoRequestSeedance25Ratio? ratio,
             global::System.Collections.Generic.IList<global::Runway.CreateVideoToVideoRequestSeedance25Reference>? references,
             global::System.Collections.Generic.IList<global::Runway.CreateVideoToVideoRequestSeedance25ReferenceVideo>? referenceVideos,
             global::System.Collections.Generic.IList<global::Runway.CreateVideoToVideoRequestSeedance25ReferenceAudioItem>? referenceAudio,
+            bool? draft,
             string model = "seedance2_5")
         {
             this.PromptVideo = promptVideo;
             this.PromptText = promptText;
             this.Audio = audio;
+            this.Seed = seed;
+            this.OutputFormat = outputFormat;
             this.Mode = mode;
             this.Duration = duration;
             this.Ratio = ratio;
             this.References = references;
             this.ReferenceVideos = referenceVideos;
             this.ReferenceAudio = referenceAudio;
+            this.Draft = draft;
             this.Model = model;
         }
 

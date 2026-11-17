@@ -9,7 +9,7 @@ namespace Runway
     public sealed partial class CreateImageToVideoRequestGrokImagine15
     {
         /// <summary>
-        ///
+        /// The start frame of the output video. The output keeps its aspect ratio, which (width / height) must be between 0.4 and 2.5. See [our docs](/assets/inputs#images) for image input requirements.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("promptImage")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestGrokImagine15PromptImagePromptImage>>))]
@@ -51,7 +51,9 @@ namespace Runway
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateImageToVideoRequestGrokImagine15" /> class.
         /// </summary>
-        /// <param name="promptImage"></param>
+        /// <param name="promptImage">
+        /// The start frame of the output video. The output keeps its aspect ratio, which (width / height) must be between 0.4 and 2.5. See [our docs](/assets/inputs#images) for image input requirements.
+        /// </param>
         /// <param name="resolution">
         /// The output resolution. Output aspect ratio follows the input image.
         /// </param>

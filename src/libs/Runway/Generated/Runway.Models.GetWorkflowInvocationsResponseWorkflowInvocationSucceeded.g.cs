@@ -37,10 +37,16 @@ namespace Runway
         public required global::System.Collections.Generic.Dictionary<string, global::System.Collections.Generic.IList<string>> Output { get; set; }
 
         /// <summary>
-        /// A record mapping workflow node IDs to their error details. Even when the overall workflow succeeds, individual nodes may have encountered non-fatal errors. Only present when one or more nodes have errored.
+        /// A record mapping workflow node IDs to their error details. Only present when one or more nodes have errored.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("nodeErrors")]
         public global::System.Collections.Generic.Dictionary<string, global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationSucceededNodeErrors2>? NodeErrors { get; set; }
+
+        /// <summary>
+        /// Omitted until every descendant task is terminal, so a later GET cannot return a larger value.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("cost")]
+        public global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationSucceededCost? Cost { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -61,7 +67,10 @@ namespace Runway
         /// A record mapping workflow node IDs to arrays of output URLs. Each key is the UUID of a workflow node that produced output, and each value is an array of URLs for that node's artifacts. These URLs will expire within 24-48 hours; fetch the invocation again to get fresh URLs. It is expected that you download the assets at these URLs and store them in your own storage system.
         /// </param>
         /// <param name="nodeErrors">
-        /// A record mapping workflow node IDs to their error details. Even when the overall workflow succeeds, individual nodes may have encountered non-fatal errors. Only present when one or more nodes have errored.
+        /// A record mapping workflow node IDs to their error details. Only present when one or more nodes have errored.
+        /// </param>
+        /// <param name="cost">
+        /// Omitted until every descendant task is terminal, so a later GET cannot return a larger value.
         /// </param>
         /// <param name="status"></param>
 #if NET7_0_OR_GREATER
@@ -72,6 +81,7 @@ namespace Runway
             global::System.DateTime createdAt,
             global::System.Collections.Generic.Dictionary<string, global::System.Collections.Generic.IList<string>> output,
             global::System.Collections.Generic.Dictionary<string, global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationSucceededNodeErrors2>? nodeErrors,
+            global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationSucceededCost? cost,
             string status = "SUCCEEDED")
         {
             this.Id = id;
@@ -79,6 +89,7 @@ namespace Runway
             this.Status = status;
             this.Output = output ?? throw new global::System.ArgumentNullException(nameof(output));
             this.NodeErrors = nodeErrors;
+            this.Cost = cost;
         }
 
         /// <summary>

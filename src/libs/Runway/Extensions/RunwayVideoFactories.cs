@@ -351,6 +351,258 @@ public static class RunwayTextToVideo
             ReferenceAudio = RunwayReferenceMapper.Map(referenceAudioUris, static uri => new CreateTextToVideoRequestWan3ReferenceAudioItem { Uri = uri }),
         });
     }
+
+    /// <summary>Builds a <c>gemini_omni_flash_1.1</c> text-to-video request. Up to 5 image and 3 video references.</summary>
+    public static CreateTextToVideoRequest GeminiOmniFlash11(
+        string promptText,
+        CreateTextToVideoRequestGeminiOmniFlash11Ratio? ratio = null,
+        global::System.Collections.Generic.IEnumerable<string>? referenceImageUris = null,
+        global::System.Collections.Generic.IEnumerable<string>? referenceVideoUris = null)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(promptText);
+
+        return new CreateTextToVideoRequest(new CreateTextToVideoRequestGeminiOmniFlash11
+        {
+            PromptText = promptText,
+            Ratio = ratio,
+            References = RunwayReferenceMapper.Map(referenceImageUris, static uri => new CreateTextToVideoRequestGeminiOmniFlash11Reference { Uri = uri }),
+            ReferenceVideos = RunwayReferenceMapper.Map(referenceVideoUris, static uri => new CreateTextToVideoRequestGeminiOmniFlash11ReferenceVideo { Uri = uri }),
+        });
+    }
+
+    /// <summary>Builds a <c>gemini_omni_flash_1.2</c> text-to-video request. Up to 5 image and 3 video references. 3-15 seconds.</summary>
+    public static CreateTextToVideoRequest GeminiOmniFlash12(
+        string promptText,
+        CreateTextToVideoRequestGeminiOmniFlash12Ratio? ratio = null,
+        global::System.Collections.Generic.IEnumerable<string>? referenceImageUris = null,
+        global::System.Collections.Generic.IEnumerable<string>? referenceVideoUris = null)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(promptText);
+
+        return new CreateTextToVideoRequest(new CreateTextToVideoRequestGeminiOmniFlash12
+        {
+            PromptText = promptText,
+            Ratio = ratio,
+            References = RunwayReferenceMapper.Map(referenceImageUris, static uri => new CreateTextToVideoRequestGeminiOmniFlash12Reference { Uri = uri }),
+            ReferenceVideos = RunwayReferenceMapper.Map(referenceVideoUris, static uri => new CreateTextToVideoRequestGeminiOmniFlash12ReferenceVideo { Uri = uri }),
+        });
+    }
+
+    /// <summary>Builds a <c>grok_imagine_1_5_lite</c> text-to-video request. The lite tier of Grok Imagine 1.5.</summary>
+    public static CreateTextToVideoRequest GrokImagine15Lite(
+        string promptText,
+        CreateTextToVideoRequestGrokImagine15LiteRatio? ratio = null,
+        int? duration = null)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(promptText);
+
+        return new CreateTextToVideoRequest(new CreateTextToVideoRequestGrokImagine15Lite
+        {
+            PromptText = promptText,
+            Ratio = ratio,
+            Duration = duration,
+        });
+    }
+
+    /// <summary>Builds a <c>h3_max</c> text-to-video request. Takes a resolution and an optional prompt-expansion mode rather than a ratio.</summary>
+    public static CreateTextToVideoRequest H3Max(
+        string promptText,
+        CreateTextToVideoRequestH3MaxResolution? resolution = null,
+        CreateTextToVideoRequestH3MaxPromptExpansionMode? promptExpansionMode = null,
+        int? duration = null,
+        int? seed = null)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(promptText);
+
+        return new CreateTextToVideoRequest(new CreateTextToVideoRequestH3Max
+        {
+            PromptText = promptText,
+            Resolution = resolution,
+            PromptExpansionMode = promptExpansionMode,
+            Duration = duration,
+            Seed = seed,
+        });
+    }
+
+    /// <summary>Builds a <c>kling2.5_turbo_pro</c> text-to-video request. Duration is fractional seconds here, unlike the other Kling tiers.</summary>
+    public static CreateTextToVideoRequest Kling25TurboPro(
+        string promptText,
+        CreateTextToVideoRequestKling25TurboProRatio? ratio = null,
+        double? duration = null,
+        double? cfgScale = null)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(promptText);
+
+        return new CreateTextToVideoRequest(new CreateTextToVideoRequestKling25TurboPro
+        {
+            PromptText = promptText,
+            Ratio = ratio,
+            Duration = duration,
+            CfgScale = cfgScale,
+        });
+    }
+
+    /// <summary>Builds a <c>kling3.0_4k</c> text-to-video request. Ratio is required. Provider settings are set on the request directly.</summary>
+    public static CreateTextToVideoRequest Kling304k(
+        CreateTextToVideoRequestKling304kRatio ratio,
+        string? promptText = null,
+        int? duration = null,
+        bool? audio = null,
+        double? cfgScale = null)
+    {
+        return new CreateTextToVideoRequest(new CreateTextToVideoRequestKling304k
+        {
+            Ratio = ratio,
+            PromptText = promptText,
+            Duration = duration,
+            Audio = audio,
+            CfgScale = cfgScale,
+        });
+    }
+
+    /// <summary>Builds a <c>kling3.0_pro</c> text-to-video request. Ratio is required. Provider settings are set on the request directly.</summary>
+    public static CreateTextToVideoRequest Kling30Pro(
+        CreateTextToVideoRequestKling30ProRatio ratio,
+        string? promptText = null,
+        int? duration = null,
+        bool? audio = null,
+        double? cfgScale = null)
+    {
+        return new CreateTextToVideoRequest(new CreateTextToVideoRequestKling30Pro
+        {
+            Ratio = ratio,
+            PromptText = promptText,
+            Duration = duration,
+            Audio = audio,
+            CfgScale = cfgScale,
+        });
+    }
+
+    /// <summary>Builds a <c>kling3.0_standard</c> text-to-video request. Ratio is required. Provider settings are set on the request directly.</summary>
+    public static CreateTextToVideoRequest Kling30Standard(
+        CreateTextToVideoRequestKling30StandardRatio ratio,
+        string? promptText = null,
+        int? duration = null,
+        bool? audio = null,
+        double? cfgScale = null)
+    {
+        return new CreateTextToVideoRequest(new CreateTextToVideoRequestKling30Standard
+        {
+            Ratio = ratio,
+            PromptText = promptText,
+            Duration = duration,
+            Audio = audio,
+            CfgScale = cfgScale,
+        });
+    }
+
+    /// <summary>Builds a <c>klingO3_4k</c> text-to-video request. Ratio is required.</summary>
+    public static CreateTextToVideoRequest KlingO34k(
+        CreateTextToVideoRequestKlingO34kRatio ratio,
+        string? promptText = null,
+        int? duration = null,
+        bool? audio = null)
+    {
+        return new CreateTextToVideoRequest(new CreateTextToVideoRequestKlingO34k
+        {
+            Ratio = ratio,
+            PromptText = promptText,
+            Duration = duration,
+            Audio = audio,
+        });
+    }
+
+    /// <summary>Builds a <c>klingO3_pro</c> text-to-video request. Ratio is required.</summary>
+    public static CreateTextToVideoRequest KlingO3Pro(
+        CreateTextToVideoRequestKlingO3ProRatio ratio,
+        string? promptText = null,
+        int? duration = null,
+        bool? audio = null)
+    {
+        return new CreateTextToVideoRequest(new CreateTextToVideoRequestKlingO3Pro
+        {
+            Ratio = ratio,
+            PromptText = promptText,
+            Duration = duration,
+            Audio = audio,
+        });
+    }
+
+    /// <summary>Builds a <c>klingO3_standard</c> text-to-video request. Ratio is required.</summary>
+    public static CreateTextToVideoRequest KlingO3Standard(
+        CreateTextToVideoRequestKlingO3StandardRatio ratio,
+        string? promptText = null,
+        int? duration = null,
+        bool? audio = null)
+    {
+        return new CreateTextToVideoRequest(new CreateTextToVideoRequestKlingO3Standard
+        {
+            Ratio = ratio,
+            PromptText = promptText,
+            Duration = duration,
+            Audio = audio,
+        });
+    }
+
+    /// <summary>Builds a <c>kling_4</c> text-to-video request. Up to 10 image references, 3-30 seconds. The spec leaves `referenceVideos` untyped, so set that property on the request directly.</summary>
+    public static CreateTextToVideoRequest Kling4(
+        string promptText,
+        CreateTextToVideoRequestKling4Ratio? ratio = null,
+        int? duration = null,
+        global::System.Collections.Generic.IEnumerable<string>? referenceImageUris = null)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(promptText);
+
+        return new CreateTextToVideoRequest(new CreateTextToVideoRequestKling4
+        {
+            PromptText = promptText,
+            Ratio = ratio,
+            Duration = duration,
+            References = RunwayReferenceMapper.Map(referenceImageUris, static uri => new CreateTextToVideoRequestKling4Reference { Uri = uri }),
+        });
+    }
+
+    /// <summary>Builds a <c>kling_4_flash</c> text-to-video request. 720p, 3-20 seconds, audio in every clip. The spec leaves `referenceVideos` untyped, so set that property on the request directly.</summary>
+    public static CreateTextToVideoRequest Kling4Flash(
+        string promptText,
+        CreateTextToVideoRequestKling4FlashRatio? ratio = null,
+        int? duration = null,
+        global::System.Collections.Generic.IEnumerable<string>? referenceImageUris = null)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(promptText);
+
+        return new CreateTextToVideoRequest(new CreateTextToVideoRequestKling4Flash
+        {
+            PromptText = promptText,
+            Ratio = ratio,
+            Duration = duration,
+            References = RunwayReferenceMapper.Map(referenceImageUris, static uri => new CreateTextToVideoRequestKling4FlashReference { Uri = uri }),
+        });
+    }
+
+    /// <summary>Builds a <c>wan3_prime</c> text-to-video request. Image, video and audio references.</summary>
+    public static CreateTextToVideoRequest Wan3Prime(
+        string promptText,
+        CreateTextToVideoRequestWan3PrimeRatio? ratio = null,
+        int? duration = null,
+        bool? audio = null,
+        global::System.Collections.Generic.IEnumerable<string>? referenceImageUris = null,
+        global::System.Collections.Generic.IEnumerable<string>? referenceVideoUris = null,
+        global::System.Collections.Generic.IEnumerable<string>? referenceAudioUris = null)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(promptText);
+
+        return new CreateTextToVideoRequest(new CreateTextToVideoRequestWan3Prime
+        {
+            PromptText = promptText,
+            Ratio = ratio,
+            Duration = duration,
+            Audio = audio,
+            References = RunwayReferenceMapper.Map(referenceImageUris, static uri => new CreateTextToVideoRequestWan3PrimeReference { Uri = uri }),
+            ReferenceVideos = RunwayReferenceMapper.Map(referenceVideoUris, static uri => new CreateTextToVideoRequestWan3PrimeReferenceVideo { Uri = uri }),
+            ReferenceAudio = RunwayReferenceMapper.Map(referenceAudioUris, static uri => new CreateTextToVideoRequestWan3PrimeReferenceAudioItem { Uri = uri }),
+        });
+    }
 }
 
 /// <summary>

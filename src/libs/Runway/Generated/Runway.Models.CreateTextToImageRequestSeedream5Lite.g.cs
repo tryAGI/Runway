@@ -16,12 +16,12 @@ namespace Runway
         public required string PromptText { get; set; }
 
         /// <summary>
-        /// The resolution of the output image, expressed as `&lt;width&gt;:&lt;height&gt;`.
+        /// The resolution of the output image, expressed as `&lt;width&gt;:&lt;height&gt;`. Also accepts freeform sizes whose width*height is between 3686400 and 16777216 pixels.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ratio")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.CreateTextToImageRequestSeedream5LiteRatioJsonConverter))]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.AnyOfJsonConverter<global::Runway.CreateTextToImageRequestSeedream5LiteRatio?, string>))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Runway.CreateTextToImageRequestSeedream5LiteRatio Ratio { get; set; }
+        public required global::Runway.AnyOf<global::Runway.CreateTextToImageRequestSeedream5LiteRatio?, string> Ratio { get; set; }
 
         /// <summary>
         /// The file format of the output image. Defaults to png.
@@ -68,7 +68,7 @@ namespace Runway
         /// A non-empty string up to 4,000 characters describing the desired image.
         /// </param>
         /// <param name="ratio">
-        /// The resolution of the output image, expressed as `&lt;width&gt;:&lt;height&gt;`.
+        /// The resolution of the output image, expressed as `&lt;width&gt;:&lt;height&gt;`. Also accepts freeform sizes whose width*height is between 3686400 and 16777216 pixels.
         /// </param>
         /// <param name="outputFormat">
         /// The file format of the output image. Defaults to png.
@@ -88,7 +88,7 @@ namespace Runway
 #endif
         public CreateTextToImageRequestSeedream5Lite(
             string promptText,
-            global::Runway.CreateTextToImageRequestSeedream5LiteRatio ratio,
+            global::Runway.AnyOf<global::Runway.CreateTextToImageRequestSeedream5LiteRatio?, string> ratio,
             global::Runway.CreateTextToImageRequestSeedream5LiteOutputFormat? outputFormat,
             global::System.Collections.Generic.IList<global::Runway.CreateTextToImageRequestSeedream5LiteReferenceImage>? referenceImages,
             int? outputCount,

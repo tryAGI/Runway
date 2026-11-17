@@ -31,14 +31,14 @@ namespace Runway
         public global::Runway.CreateTextToImageRequestGptImage2Quality? Quality { get; set; }
 
         /// <summary>
-        /// Background treatment. Defaults to `auto`, which lets the model pick. `transparent` is not supported by this model.
+        /// Background treatment. Defaults to `auto`, which lets the model pick. Use `transparent` to generate a PNG with an alpha-channel background.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("background")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.CreateTextToImageRequestGptImage2BackgroundJsonConverter))]
         public global::Runway.CreateTextToImageRequestGptImage2Background? Background { get; set; }
 
         /// <summary>
-        /// An array of up to 16 images to be used as references for the generated image output.
+        /// An array of up to 16 images to be used as references for the generated image output. No two images may share the same tag.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("referenceImages")]
         public global::System.Collections.Generic.IList<global::Runway.CreateTextToImageRequestGptImage2ReferenceImage>? ReferenceImages { get; set; }
@@ -75,10 +75,10 @@ namespace Runway
         /// Rendering quality. Higher qualities consume more credits. Defaults to `high`.
         /// </param>
         /// <param name="background">
-        /// Background treatment. Defaults to `auto`, which lets the model pick. `transparent` is not supported by this model.
+        /// Background treatment. Defaults to `auto`, which lets the model pick. Use `transparent` to generate a PNG with an alpha-channel background.
         /// </param>
         /// <param name="referenceImages">
-        /// An array of up to 16 images to be used as references for the generated image output.
+        /// An array of up to 16 images to be used as references for the generated image output. No two images may share the same tag.
         /// </param>
         /// <param name="outputCount">
         /// The number of images to generate (1-10). Increasing this number will affect the number of credits consumed by the generation.

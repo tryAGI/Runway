@@ -24,8 +24,10 @@ namespace Runway
         public required string PromptText { get; set; }
 
         /// <summary>
-        /// The output resolution. MiniMax H3 supports 768P and 2K.
+        /// The output resolution. Hailuo 3.0 supports 768p and 2k.<br/>
+        /// Example: 2k
         /// </summary>
+        /// <example>2k</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("resolution")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.CreateImageToVideoRequestHailuo3ResolutionJsonConverter))]
         public global::Runway.CreateImageToVideoRequestHailuo3Resolution? Resolution { get; set; }
@@ -72,7 +74,8 @@ namespace Runway
         /// A non-empty text prompt describing what should appear in the output.
         /// </param>
         /// <param name="resolution">
-        /// The output resolution. MiniMax H3 supports 768P and 2K.
+        /// The output resolution. Hailuo 3.0 supports 768p and 2k.<br/>
+        /// Example: 2k
         /// </param>
         /// <param name="duration">
         /// The number of seconds of duration for the output video.

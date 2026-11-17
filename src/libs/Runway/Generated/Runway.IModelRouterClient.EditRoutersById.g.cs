@@ -55,7 +55,7 @@ namespace Runway
         /// </param>
         /// <param name="description"></param>
         /// <param name="settings">
-        /// Nested merge: omitted settings fields keep their current values. When models is present, omitted models.mode or models.ids are preserved (sending only optimizeFor does not clear the model allowlist or credit ceiling).
+        /// Nested merge: omitted settings fields keep their current values. When models is present, omitted models.mode or models.ids are preserved (sending only optimizeFor does not clear the model allowlist or credit ceiling). Set maxCreditsPerGeneration, or one of its modalities, to null to remove those credit caps.
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>

@@ -12,15 +12,15 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterDiscriminatorType? Type { get; }
+        public global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterDiscriminatorType? Type { get; }
 
         /// <summary>
         ///
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterStringParameter? String { get; init; }
+        public global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterStringParameter? String { get; init; }
 #else
-        public global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterStringParameter? String { get; }
+        public global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterStringParameter? String { get; }
 #endif
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace Runway
 #if NET6_0_OR_GREATER
             [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
 #endif
-            out global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterStringParameter? value)
+            out global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterStringParameter? value)
         {
             value = String;
             return IsString;
@@ -47,7 +47,7 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterStringParameter PickString() => String is { } value
+        public global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterStringParameter PickString() => String is { } value
             ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'String' but the value was {ToString()}.");
 
@@ -55,9 +55,9 @@ namespace Runway
         ///
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterIntegerParameter? Integer { get; init; }
+        public global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterIntegerParameter? Integer { get; init; }
 #else
-        public global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterIntegerParameter? Integer { get; }
+        public global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterIntegerParameter? Integer { get; }
 #endif
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace Runway
 #if NET6_0_OR_GREATER
             [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
 #endif
-            out global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterIntegerParameter? value)
+            out global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterIntegerParameter? value)
         {
             value = Integer;
             return IsInteger;
@@ -84,7 +84,7 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterIntegerParameter PickInteger() => Integer is { } value
+        public global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterIntegerParameter PickInteger() => Integer is { } value
             ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Integer' but the value was {ToString()}.");
 
@@ -92,9 +92,9 @@ namespace Runway
         ///
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterNumberParameter? Number { get; init; }
+        public global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterNumberParameter? Number { get; init; }
 #else
-        public global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterNumberParameter? Number { get; }
+        public global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterNumberParameter? Number { get; }
 #endif
 
         /// <summary>
@@ -112,7 +112,7 @@ namespace Runway
 #if NET6_0_OR_GREATER
             [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
 #endif
-            out global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterNumberParameter? value)
+            out global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterNumberParameter? value)
         {
             value = Number;
             return IsNumber;
@@ -121,7 +121,7 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterNumberParameter PickNumber() => Number is { } value
+        public global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterNumberParameter PickNumber() => Number is { } value
             ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Number' but the value was {ToString()}.");
 
@@ -129,9 +129,9 @@ namespace Runway
         ///
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterBooleanParameter? Boolean { get; init; }
+        public global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterBooleanParameter? Boolean { get; init; }
 #else
-        public global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterBooleanParameter? Boolean { get; }
+        public global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterBooleanParameter? Boolean { get; }
 #endif
 
         /// <summary>
@@ -149,7 +149,7 @@ namespace Runway
 #if NET6_0_OR_GREATER
             [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
 #endif
-            out global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterBooleanParameter? value)
+            out global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterBooleanParameter? value)
         {
             value = Boolean;
             return IsBoolean;
@@ -158,7 +158,7 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterBooleanParameter PickBoolean() => Boolean is { } value
+        public global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterBooleanParameter PickBoolean() => Boolean is { } value
             ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Boolean' but the value was {ToString()}.");
 
@@ -166,9 +166,9 @@ namespace Runway
         ///
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterArrayParameter? Array { get; init; }
+        public global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterArrayParameter? Array { get; init; }
 #else
-        public global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterArrayParameter? Array { get; }
+        public global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterArrayParameter? Array { get; }
 #endif
 
         /// <summary>
@@ -186,7 +186,7 @@ namespace Runway
 #if NET6_0_OR_GREATER
             [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
 #endif
-            out global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterArrayParameter? value)
+            out global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterArrayParameter? value)
         {
             value = Array;
             return IsArray;
@@ -195,7 +195,7 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterArrayParameter PickArray() => Array is { } value
+        public global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterArrayParameter PickArray() => Array is { } value
             ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Array' but the value was {ToString()}.");
 
@@ -203,9 +203,9 @@ namespace Runway
         ///
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterObjectParameter? ObjectValue { get; init; }
+        public global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterObjectParameter? ObjectValue { get; init; }
 #else
-        public global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterObjectParameter? ObjectValue { get; }
+        public global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterObjectParameter? ObjectValue { get; }
 #endif
 
         /// <summary>
@@ -223,7 +223,7 @@ namespace Runway
 #if NET6_0_OR_GREATER
             [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
 #endif
-            out global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterObjectParameter? value)
+            out global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterObjectParameter? value)
         {
             value = ObjectValue;
             return IsObjectValue;
@@ -232,23 +232,23 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterObjectParameter PickObjectValue() => ObjectValue is { } value
+        public global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterObjectParameter PickObjectValue() => ObjectValue is { } value
             ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ObjectValue' but the value was {ToString()}.");
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator ParametersItem2(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterStringParameter value) => new ParametersItem2((global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterStringParameter?)value);
+        public static implicit operator ParametersItem2(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterStringParameter value) => new ParametersItem2((global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterStringParameter?)value);
 
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterStringParameter?(ParametersItem2 @this) => @this.String;
+        public static implicit operator global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterStringParameter?(ParametersItem2 @this) => @this.String;
 
         /// <summary>
         ///
         /// </summary>
-        public ParametersItem2(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterStringParameter? value)
+        public ParametersItem2(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterStringParameter? value)
         {
             String = value;
         }
@@ -256,22 +256,22 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public static ParametersItem2 FromString(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterStringParameter? value) => new ParametersItem2(value);
+        public static ParametersItem2 FromString(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterStringParameter? value) => new ParametersItem2(value);
 
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator ParametersItem2(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterIntegerParameter value) => new ParametersItem2((global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterIntegerParameter?)value);
+        public static implicit operator ParametersItem2(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterIntegerParameter value) => new ParametersItem2((global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterIntegerParameter?)value);
 
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterIntegerParameter?(ParametersItem2 @this) => @this.Integer;
+        public static implicit operator global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterIntegerParameter?(ParametersItem2 @this) => @this.Integer;
 
         /// <summary>
         ///
         /// </summary>
-        public ParametersItem2(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterIntegerParameter? value)
+        public ParametersItem2(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterIntegerParameter? value)
         {
             Integer = value;
         }
@@ -279,22 +279,22 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public static ParametersItem2 FromInteger(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterIntegerParameter? value) => new ParametersItem2(value);
+        public static ParametersItem2 FromInteger(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterIntegerParameter? value) => new ParametersItem2(value);
 
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator ParametersItem2(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterNumberParameter value) => new ParametersItem2((global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterNumberParameter?)value);
+        public static implicit operator ParametersItem2(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterNumberParameter value) => new ParametersItem2((global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterNumberParameter?)value);
 
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterNumberParameter?(ParametersItem2 @this) => @this.Number;
+        public static implicit operator global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterNumberParameter?(ParametersItem2 @this) => @this.Number;
 
         /// <summary>
         ///
         /// </summary>
-        public ParametersItem2(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterNumberParameter? value)
+        public ParametersItem2(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterNumberParameter? value)
         {
             Number = value;
         }
@@ -302,22 +302,22 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public static ParametersItem2 FromNumber(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterNumberParameter? value) => new ParametersItem2(value);
+        public static ParametersItem2 FromNumber(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterNumberParameter? value) => new ParametersItem2(value);
 
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator ParametersItem2(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterBooleanParameter value) => new ParametersItem2((global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterBooleanParameter?)value);
+        public static implicit operator ParametersItem2(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterBooleanParameter value) => new ParametersItem2((global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterBooleanParameter?)value);
 
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterBooleanParameter?(ParametersItem2 @this) => @this.Boolean;
+        public static implicit operator global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterBooleanParameter?(ParametersItem2 @this) => @this.Boolean;
 
         /// <summary>
         ///
         /// </summary>
-        public ParametersItem2(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterBooleanParameter? value)
+        public ParametersItem2(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterBooleanParameter? value)
         {
             Boolean = value;
         }
@@ -325,22 +325,22 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public static ParametersItem2 FromBoolean(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterBooleanParameter? value) => new ParametersItem2(value);
+        public static ParametersItem2 FromBoolean(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterBooleanParameter? value) => new ParametersItem2(value);
 
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator ParametersItem2(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterArrayParameter value) => new ParametersItem2((global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterArrayParameter?)value);
+        public static implicit operator ParametersItem2(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterArrayParameter value) => new ParametersItem2((global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterArrayParameter?)value);
 
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterArrayParameter?(ParametersItem2 @this) => @this.Array;
+        public static implicit operator global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterArrayParameter?(ParametersItem2 @this) => @this.Array;
 
         /// <summary>
         ///
         /// </summary>
-        public ParametersItem2(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterArrayParameter? value)
+        public ParametersItem2(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterArrayParameter? value)
         {
             Array = value;
         }
@@ -348,22 +348,22 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public static ParametersItem2 FromArray(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterArrayParameter? value) => new ParametersItem2(value);
+        public static ParametersItem2 FromArray(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterArrayParameter? value) => new ParametersItem2(value);
 
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator ParametersItem2(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterObjectParameter value) => new ParametersItem2((global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterObjectParameter?)value);
+        public static implicit operator ParametersItem2(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterObjectParameter value) => new ParametersItem2((global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterObjectParameter?)value);
 
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterObjectParameter?(ParametersItem2 @this) => @this.ObjectValue;
+        public static implicit operator global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterObjectParameter?(ParametersItem2 @this) => @this.ObjectValue;
 
         /// <summary>
         ///
         /// </summary>
-        public ParametersItem2(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterObjectParameter? value)
+        public ParametersItem2(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterObjectParameter? value)
         {
             ObjectValue = value;
         }
@@ -371,19 +371,19 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public static ParametersItem2 FromObjectValue(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterObjectParameter? value) => new ParametersItem2(value);
+        public static ParametersItem2 FromObjectValue(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterObjectParameter? value) => new ParametersItem2(value);
 
         /// <summary>
         ///
         /// </summary>
         public ParametersItem2(
-            global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterDiscriminatorType? type,
-            global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterStringParameter? @string,
-            global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterIntegerParameter? integer,
-            global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterNumberParameter? number,
-            global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterBooleanParameter? boolean,
-            global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterArrayParameter? array,
-            global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterObjectParameter? objectValue
+            global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterDiscriminatorType? type,
+            global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterStringParameter? @string,
+            global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterIntegerParameter? integer,
+            global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterNumberParameter? number,
+            global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterBooleanParameter? boolean,
+            global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterArrayParameter? array,
+            global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterObjectParameter? objectValue
             )
         {
             Type = type;
@@ -432,12 +432,12 @@ namespace Runway
         ///
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterStringParameter, TResult>? @string = null,
-            global::System.Func<global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterIntegerParameter, TResult>? integer = null,
-            global::System.Func<global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterNumberParameter, TResult>? number = null,
-            global::System.Func<global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterBooleanParameter, TResult>? boolean = null,
-            global::System.Func<global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterArrayParameter, TResult>? array = null,
-            global::System.Func<global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterObjectParameter, TResult>? objectValue = null,
+            global::System.Func<global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterStringParameter, TResult>? @string = null,
+            global::System.Func<global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterIntegerParameter, TResult>? integer = null,
+            global::System.Func<global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterNumberParameter, TResult>? number = null,
+            global::System.Func<global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterBooleanParameter, TResult>? boolean = null,
+            global::System.Func<global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterArrayParameter, TResult>? array = null,
+            global::System.Func<global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterObjectParameter, TResult>? objectValue = null,
             bool validate = true)
         {
             if (validate)
@@ -477,17 +477,17 @@ namespace Runway
         ///
         /// </summary>
         public void Match(
-            global::System.Action<global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterStringParameter>? @string = null,
+            global::System.Action<global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterStringParameter>? @string = null,
 
-            global::System.Action<global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterIntegerParameter>? integer = null,
+            global::System.Action<global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterIntegerParameter>? integer = null,
 
-            global::System.Action<global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterNumberParameter>? number = null,
+            global::System.Action<global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterNumberParameter>? number = null,
 
-            global::System.Action<global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterBooleanParameter>? boolean = null,
+            global::System.Action<global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterBooleanParameter>? boolean = null,
 
-            global::System.Action<global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterArrayParameter>? array = null,
+            global::System.Action<global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterArrayParameter>? array = null,
 
-            global::System.Action<global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterObjectParameter>? objectValue = null,
+            global::System.Action<global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterObjectParameter>? objectValue = null,
             bool validate = true)
         {
             if (validate)
@@ -525,12 +525,12 @@ namespace Runway
         ///
         /// </summary>
         public void Switch(
-            global::System.Action<global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterStringParameter>? @string = null,
-            global::System.Action<global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterIntegerParameter>? integer = null,
-            global::System.Action<global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterNumberParameter>? number = null,
-            global::System.Action<global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterBooleanParameter>? boolean = null,
-            global::System.Action<global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterArrayParameter>? array = null,
-            global::System.Action<global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterObjectParameter>? objectValue = null,
+            global::System.Action<global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterStringParameter>? @string = null,
+            global::System.Action<global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterIntegerParameter>? integer = null,
+            global::System.Action<global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterNumberParameter>? number = null,
+            global::System.Action<global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterBooleanParameter>? boolean = null,
+            global::System.Action<global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterArrayParameter>? array = null,
+            global::System.Action<global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterObjectParameter>? objectValue = null,
             bool validate = true)
         {
             if (validate)
@@ -572,17 +572,17 @@ namespace Runway
             var fields = new object?[]
             {
                 String,
-                typeof(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterStringParameter),
+                typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterStringParameter),
                 Integer,
-                typeof(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterIntegerParameter),
+                typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterIntegerParameter),
                 Number,
-                typeof(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterNumberParameter),
+                typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterNumberParameter),
                 Boolean,
-                typeof(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterBooleanParameter),
+                typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterBooleanParameter),
                 Array,
-                typeof(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterArrayParameter),
+                typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterArrayParameter),
                 ObjectValue,
-                typeof(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterObjectParameter),
+                typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterObjectParameter),
             };
             const int offset = unchecked((int)2166136261);
             const int prime = 16777619;
@@ -599,12 +599,12 @@ namespace Runway
         public bool Equals(ParametersItem2 other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterStringParameter?>.Default.Equals(String, other.String) &&
-                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterIntegerParameter?>.Default.Equals(Integer, other.Integer) &&
-                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterNumberParameter?>.Default.Equals(Number, other.Number) &&
-                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterBooleanParameter?>.Default.Equals(Boolean, other.Boolean) &&
-                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterArrayParameter?>.Default.Equals(Array, other.Array) &&
-                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterObjectParameter?>.Default.Equals(ObjectValue, other.ObjectValue)
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterStringParameter?>.Default.Equals(String, other.String) &&
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterIntegerParameter?>.Default.Equals(Integer, other.Integer) &&
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterNumberParameter?>.Default.Equals(Number, other.Number) &&
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterBooleanParameter?>.Default.Equals(Boolean, other.Boolean) &&
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterArrayParameter?>.Default.Equals(Array, other.Array) &&
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterObjectParameter?>.Default.Equals(ObjectValue, other.ObjectValue)
                 ;
         }
 

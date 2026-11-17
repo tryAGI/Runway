@@ -35,7 +35,7 @@ internal static partial class ModelRouterEditRoutersByIdCommandApiCommand
     private static Option<global::Runway.PatchRoutersRequestSettings?> Settings { get; } = new(
         name: @"--settings")
     {
-        Description = @"Nested merge: omitted settings fields keep their current values. When models is present, omitted models.mode or models.ids are preserved (sending only optimizeFor does not clear the model allowlist or credit ceiling).",
+        Description = @"Nested merge: omitted settings fields keep their current values. When models is present, omitted models.mode or models.ids are preserved (sending only optimizeFor does not clear the model allowlist or credit ceiling). Set maxCreditsPerGeneration, or one of its modalities, to null to remove those credit caps.",
     };
       private static Option<string?> Input { get; } = new(@"--input")
       {

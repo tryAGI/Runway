@@ -23,8 +23,10 @@ namespace Runway
         public required global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestHappyhorse10PromptImagePromptImage>> PromptImage { get; set; }
 
         /// <summary>
-        /// Output quality tier. Output aspect ratio follows the input image.
+        /// Output quality tier. Output aspect ratio follows the input image.<br/>
+        /// Example: 720p
         /// </summary>
+        /// <example>720p</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("resolution")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.CreateImageToVideoRequestHappyhorse10ResolutionJsonConverter))]
         public global::Runway.CreateImageToVideoRequestHappyhorse10Resolution? Resolution { get; set; }
@@ -56,7 +58,8 @@ namespace Runway
         /// A string up to 2500 characters (measured in UTF-16 code units) describing motion or changes in the output video.
         /// </param>
         /// <param name="resolution">
-        /// Output quality tier. Output aspect ratio follows the input image.
+        /// Output quality tier. Output aspect ratio follows the input image.<br/>
+        /// Example: 720p
         /// </param>
         /// <param name="duration">
         /// The number of seconds of duration for the output video.

@@ -19,7 +19,35 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
+        GeminiOmniFlash11,
+        /// <summary>
+        ///
+        /// </summary>
+        GeminiOmniFlash12,
+        /// <summary>
+        ///
+        /// </summary>
         Hailuo3,
+        /// <summary>
+        ///
+        /// </summary>
+        KlingO34k,
+        /// <summary>
+        ///
+        /// </summary>
+        KlingO3Pro,
+        /// <summary>
+        ///
+        /// </summary>
+        KlingO3Standard,
+        /// <summary>
+        ///
+        /// </summary>
+        Kling4,
+        /// <summary>
+        ///
+        /// </summary>
+        Kling4Flash,
         /// <summary>
         ///
         /// </summary>
@@ -52,7 +80,14 @@ namespace Runway
             {
                 CreateVideoToVideoRequestDiscriminatorModel.Aleph2 => "aleph2",
                 CreateVideoToVideoRequestDiscriminatorModel.GeminiOmniFlash => "gemini_omni_flash",
+                CreateVideoToVideoRequestDiscriminatorModel.GeminiOmniFlash11 => "gemini_omni_flash_1.1",
+                CreateVideoToVideoRequestDiscriminatorModel.GeminiOmniFlash12 => "gemini_omni_flash_1.2",
                 CreateVideoToVideoRequestDiscriminatorModel.Hailuo3 => "hailuo3",
+                CreateVideoToVideoRequestDiscriminatorModel.KlingO34k => "klingO3_4k",
+                CreateVideoToVideoRequestDiscriminatorModel.KlingO3Pro => "klingO3_pro",
+                CreateVideoToVideoRequestDiscriminatorModel.KlingO3Standard => "klingO3_standard",
+                CreateVideoToVideoRequestDiscriminatorModel.Kling4 => "kling_4",
+                CreateVideoToVideoRequestDiscriminatorModel.Kling4Flash => "kling_4_flash",
                 CreateVideoToVideoRequestDiscriminatorModel.Seedance2 => "seedance2",
                 CreateVideoToVideoRequestDiscriminatorModel.Seedance25 => "seedance2_5",
                 CreateVideoToVideoRequestDiscriminatorModel.Seedance2Fast => "seedance2_fast",
@@ -69,7 +104,14 @@ namespace Runway
             {
                 "aleph2" => CreateVideoToVideoRequestDiscriminatorModel.Aleph2,
                 "gemini_omni_flash" => CreateVideoToVideoRequestDiscriminatorModel.GeminiOmniFlash,
+                "gemini_omni_flash_1.1" => CreateVideoToVideoRequestDiscriminatorModel.GeminiOmniFlash11,
+                "gemini_omni_flash_1.2" => CreateVideoToVideoRequestDiscriminatorModel.GeminiOmniFlash12,
                 "hailuo3" => CreateVideoToVideoRequestDiscriminatorModel.Hailuo3,
+                "klingO3_4k" => CreateVideoToVideoRequestDiscriminatorModel.KlingO34k,
+                "klingO3_pro" => CreateVideoToVideoRequestDiscriminatorModel.KlingO3Pro,
+                "klingO3_standard" => CreateVideoToVideoRequestDiscriminatorModel.KlingO3Standard,
+                "kling_4" => CreateVideoToVideoRequestDiscriminatorModel.Kling4,
+                "kling_4_flash" => CreateVideoToVideoRequestDiscriminatorModel.Kling4Flash,
                 "seedance2" => CreateVideoToVideoRequestDiscriminatorModel.Seedance2,
                 "seedance2_5" => CreateVideoToVideoRequestDiscriminatorModel.Seedance25,
                 "seedance2_fast" => CreateVideoToVideoRequestDiscriminatorModel.Seedance2Fast,

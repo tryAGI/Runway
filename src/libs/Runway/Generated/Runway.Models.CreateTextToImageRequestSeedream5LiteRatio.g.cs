@@ -4,7 +4,7 @@
 namespace Runway
 {
     /// <summary>
-    /// The resolution of the output image, expressed as `&lt;width&gt;:&lt;height&gt;`.
+    ///
     /// </summary>
     public enum CreateTextToImageRequestSeedream5LiteRatio
     {

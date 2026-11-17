@@ -4,7 +4,7 @@
 namespace Runway
 {
     /// <summary>
-    /// Nested merge: omitted settings fields keep their current values. When models is present, omitted models.mode or models.ids are preserved (sending only optimizeFor does not clear the model allowlist or credit ceiling).
+    /// Nested merge: omitted settings fields keep their current values. When models is present, omitted models.mode or models.ids are preserved (sending only optimizeFor does not clear the model allowlist or credit ceiling). Set maxCreditsPerGeneration, or one of its modalities, to null to remove those credit caps.
     /// </summary>
     public sealed partial class PatchRoutersRequestSettings
     {
@@ -21,7 +21,7 @@ namespace Runway
         public global::Runway.PatchRoutersRequestSettingsModels? Models { get; set; }
 
         /// <summary>
-        /// Optional per-modality credit caps, applied per generated output. Models whose estimated per-output cost exceeds the cap are excluded.
+        /// Per-modality credit caps to change. Set a modality to null to remove its cap, or set maxCreditsPerGeneration to null to remove every cap.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("maxCreditsPerGeneration")]
         public global::Runway.PatchRoutersRequestSettingsMaxCreditsPerGeneration? MaxCreditsPerGeneration { get; set; }
@@ -55,7 +55,7 @@ namespace Runway
         /// When mode is allow_new_except, ids are excluded; when allowlist_only, ids are the only allowed values. Each id must be a known public video or image model name (unknown ids are rejected on create/update).
         /// </param>
         /// <param name="maxCreditsPerGeneration">
-        /// Optional per-modality credit caps, applied per generated output. Models whose estimated per-output cost exceeds the cap are excluded.
+        /// Per-modality credit caps to change. Set a modality to null to remove its cap, or set maxCreditsPerGeneration to null to remove every cap.
         /// </param>
         /// <param name="optimizeFor">
         /// Soft preference among eligible models: cost, latency, or quality.

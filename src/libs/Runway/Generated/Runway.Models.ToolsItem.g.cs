@@ -12,15 +12,15 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRealtimeSessionsRequestToolDiscriminatorType? Type { get; }
+        public global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolDiscriminatorType? Type { get; }
 
         /// <summary>
         /// A fire-and-forget tool that sends arguments to the frontend client of the realtime session.
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Runway.CreateRealtimeSessionsRequestToolClientEventTool? ClientEvent { get; init; }
+        public global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolClientEventTool? ClientEvent { get; init; }
 #else
-        public global::Runway.CreateRealtimeSessionsRequestToolClientEventTool? ClientEvent { get; }
+        public global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolClientEventTool? ClientEvent { get; }
 #endif
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace Runway
 #if NET6_0_OR_GREATER
             [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
 #endif
-            out global::Runway.CreateRealtimeSessionsRequestToolClientEventTool? value)
+            out global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolClientEventTool? value)
         {
             value = ClientEvent;
             return IsClientEvent;
@@ -47,7 +47,7 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRealtimeSessionsRequestToolClientEventTool PickClientEvent() => ClientEvent is { } value
+        public global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolClientEventTool PickClientEvent() => ClientEvent is { } value
             ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ClientEvent' but the value was {ToString()}.");
 
@@ -55,9 +55,9 @@ namespace Runway
         /// A tool that makes a round-trip RPC call to your backend server during the session.
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Runway.CreateRealtimeSessionsRequestToolBackendRPCTool? BackendRpc { get; init; }
+        public global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCTool? BackendRpc { get; init; }
 #else
-        public global::Runway.CreateRealtimeSessionsRequestToolBackendRPCTool? BackendRpc { get; }
+        public global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCTool? BackendRpc { get; }
 #endif
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace Runway
 #if NET6_0_OR_GREATER
             [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
 #endif
-            out global::Runway.CreateRealtimeSessionsRequestToolBackendRPCTool? value)
+            out global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCTool? value)
         {
             value = BackendRpc;
             return IsBackendRpc;
@@ -84,23 +84,23 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRealtimeSessionsRequestToolBackendRPCTool PickBackendRpc() => BackendRpc is { } value
+        public global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCTool PickBackendRpc() => BackendRpc is { } value
             ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'BackendRpc' but the value was {ToString()}.");
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator ToolsItem(global::Runway.CreateRealtimeSessionsRequestToolClientEventTool value) => new ToolsItem((global::Runway.CreateRealtimeSessionsRequestToolClientEventTool?)value);
+        public static implicit operator ToolsItem(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolClientEventTool value) => new ToolsItem((global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolClientEventTool?)value);
 
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator global::Runway.CreateRealtimeSessionsRequestToolClientEventTool?(ToolsItem @this) => @this.ClientEvent;
+        public static implicit operator global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolClientEventTool?(ToolsItem @this) => @this.ClientEvent;
 
         /// <summary>
         ///
         /// </summary>
-        public ToolsItem(global::Runway.CreateRealtimeSessionsRequestToolClientEventTool? value)
+        public ToolsItem(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolClientEventTool? value)
         {
             ClientEvent = value;
         }
@@ -108,22 +108,22 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public static ToolsItem FromClientEvent(global::Runway.CreateRealtimeSessionsRequestToolClientEventTool? value) => new ToolsItem(value);
+        public static ToolsItem FromClientEvent(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolClientEventTool? value) => new ToolsItem(value);
 
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator ToolsItem(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCTool value) => new ToolsItem((global::Runway.CreateRealtimeSessionsRequestToolBackendRPCTool?)value);
+        public static implicit operator ToolsItem(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCTool value) => new ToolsItem((global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCTool?)value);
 
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator global::Runway.CreateRealtimeSessionsRequestToolBackendRPCTool?(ToolsItem @this) => @this.BackendRpc;
+        public static implicit operator global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCTool?(ToolsItem @this) => @this.BackendRpc;
 
         /// <summary>
         ///
         /// </summary>
-        public ToolsItem(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCTool? value)
+        public ToolsItem(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCTool? value)
         {
             BackendRpc = value;
         }
@@ -131,15 +131,15 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public static ToolsItem FromBackendRpc(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCTool? value) => new ToolsItem(value);
+        public static ToolsItem FromBackendRpc(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCTool? value) => new ToolsItem(value);
 
         /// <summary>
         ///
         /// </summary>
         public ToolsItem(
-            global::Runway.CreateRealtimeSessionsRequestToolDiscriminatorType? type,
-            global::Runway.CreateRealtimeSessionsRequestToolClientEventTool? clientEvent,
-            global::Runway.CreateRealtimeSessionsRequestToolBackendRPCTool? backendRpc
+            global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolDiscriminatorType? type,
+            global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolClientEventTool? clientEvent,
+            global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCTool? backendRpc
             )
         {
             Type = type;
@@ -176,8 +176,8 @@ namespace Runway
         ///
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Runway.CreateRealtimeSessionsRequestToolClientEventTool, TResult>? clientEvent = null,
-            global::System.Func<global::Runway.CreateRealtimeSessionsRequestToolBackendRPCTool, TResult>? backendRpc = null,
+            global::System.Func<global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolClientEventTool, TResult>? clientEvent = null,
+            global::System.Func<global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCTool, TResult>? backendRpc = null,
             bool validate = true)
         {
             if (validate)
@@ -201,9 +201,9 @@ namespace Runway
         ///
         /// </summary>
         public void Match(
-            global::System.Action<global::Runway.CreateRealtimeSessionsRequestToolClientEventTool>? clientEvent = null,
+            global::System.Action<global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolClientEventTool>? clientEvent = null,
 
-            global::System.Action<global::Runway.CreateRealtimeSessionsRequestToolBackendRPCTool>? backendRpc = null,
+            global::System.Action<global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCTool>? backendRpc = null,
             bool validate = true)
         {
             if (validate)
@@ -225,8 +225,8 @@ namespace Runway
         ///
         /// </summary>
         public void Switch(
-            global::System.Action<global::Runway.CreateRealtimeSessionsRequestToolClientEventTool>? clientEvent = null,
-            global::System.Action<global::Runway.CreateRealtimeSessionsRequestToolBackendRPCTool>? backendRpc = null,
+            global::System.Action<global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolClientEventTool>? clientEvent = null,
+            global::System.Action<global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCTool>? backendRpc = null,
             bool validate = true)
         {
             if (validate)
@@ -252,9 +252,9 @@ namespace Runway
             var fields = new object?[]
             {
                 ClientEvent,
-                typeof(global::Runway.CreateRealtimeSessionsRequestToolClientEventTool),
+                typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolClientEventTool),
                 BackendRpc,
-                typeof(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCTool),
+                typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCTool),
             };
             const int offset = unchecked((int)2166136261);
             const int prime = 16777619;
@@ -271,8 +271,8 @@ namespace Runway
         public bool Equals(ToolsItem other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateRealtimeSessionsRequestToolClientEventTool?>.Default.Equals(ClientEvent, other.ClientEvent) &&
-                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateRealtimeSessionsRequestToolBackendRPCTool?>.Default.Equals(BackendRpc, other.BackendRpc)
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolClientEventTool?>.Default.Equals(ClientEvent, other.ClientEvent) &&
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCTool?>.Default.Equals(BackendRpc, other.BackendRpc)
                 ;
         }
 

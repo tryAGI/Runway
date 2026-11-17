@@ -187,7 +187,7 @@ public sealed class WatchBridgeSessionStore(
         ValidateRequest(request);
 
         var runwaySession = await runway.RealtimeSessions.CreateRealtimeSessionsAsync(
-            request: new CreateRealtimeSessionsRequest
+            request: new CreateRealtimeSessionsRequestGwm1Avatars
             {
                 Avatar = CreateAvatar(request),
                 MaxDuration = request.MaxDurationSeconds,
@@ -447,16 +447,16 @@ public sealed class WatchBridgeSessionStore(
     {
         if (request.AvatarId is { } avatarId)
         {
-            return new CreateRealtimeSessionsRequestAvatarCustomAvatar
+            return new CreateRealtimeSessionsRequestGwm1AvatarsAvatarCustomAvatar
             {
                 AvatarId = avatarId,
             };
         }
 
-        var preset = CreateRealtimeSessionsRequestAvatarRunwayPresetAvatarPresetIdExtensions.ToEnum(request.PresetAvatar!)
+        var preset = CreateRealtimeSessionsRequestGwm1AvatarsAvatarRunwayPresetAvatarPresetIdExtensions.ToEnum(request.PresetAvatar!)
             ?? throw new ArgumentException($"Unknown preset avatar '{request.PresetAvatar}'.");
 
-        return new CreateRealtimeSessionsRequestAvatarRunwayPresetAvatar
+        return new CreateRealtimeSessionsRequestGwm1AvatarsAvatarRunwayPresetAvatar
         {
             PresetId = preset,
         };

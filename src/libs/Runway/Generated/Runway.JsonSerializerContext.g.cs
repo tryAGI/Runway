@@ -54,56 +54,59 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateAvatarVideosRequestSpeechDiscriminatorType), TypeInfoPropertyName = "CreateAvatarVideosRequestSpeechDiscriminatorType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateDocumentsRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.PatchDocumentsRequest))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequest))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequest), TypeInfoPropertyName = "CreateRealtimeSessionsRequest2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestGwm1Avatars))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.Avatar2), TypeInfoPropertyName = "Avatar22")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestAvatarRunwayPresetAvatar))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestAvatarRunwayPresetAvatarPresetId), TypeInfoPropertyName = "CreateRealtimeSessionsRequestAvatarRunwayPresetAvatarPresetId2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestAvatarCustomAvatar))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestAvatarDiscriminator))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestAvatarDiscriminatorType), TypeInfoPropertyName = "CreateRealtimeSessionsRequestAvatarDiscriminatorType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsAvatarRunwayPresetAvatar))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsAvatarRunwayPresetAvatarPresetId), TypeInfoPropertyName = "CreateRealtimeSessionsRequestGwm1AvatarsAvatarRunwayPresetAvatarPresetId2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsAvatarCustomAvatar))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsAvatarDiscriminator))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsAvatarDiscriminatorType), TypeInfoPropertyName = "CreateRealtimeSessionsRequestGwm1AvatarsAvatarDiscriminatorType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(int))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.ToolsItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.ToolsItem), TypeInfoPropertyName = "ToolsItem2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestToolClientEventTool))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolClientEventTool))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.ParametersItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.ParametersItem), TypeInfoPropertyName = "ParametersItem2_3")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterStringParameter))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolClientEventToolParameterStringParameter))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(bool))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<string>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterIntegerParameter))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterNumberParameter))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterBooleanParameter))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterArrayParameter))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterArrayParameterItems))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterArrayParameterItemsType), TypeInfoPropertyName = "CreateRealtimeSessionsRequestToolClientEventToolParameterArrayParameterItemsType2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterObjectParameter))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolClientEventToolParameterIntegerParameter))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolClientEventToolParameterNumberParameter))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolClientEventToolParameterBooleanParameter))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolClientEventToolParameterArrayParameter))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolClientEventToolParameterArrayParameterItems))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolClientEventToolParameterArrayParameterItemsType), TypeInfoPropertyName = "CreateRealtimeSessionsRequestGwm1AvatarsToolClientEventToolParameterArrayParameterItemsType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolClientEventToolParameterObjectParameter))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<object>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterDiscriminator))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterDiscriminatorType), TypeInfoPropertyName = "CreateRealtimeSessionsRequestToolClientEventToolParameterDiscriminatorType2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCTool))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolClientEventToolParameterDiscriminator))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolClientEventToolParameterDiscriminatorType), TypeInfoPropertyName = "CreateRealtimeSessionsRequestGwm1AvatarsToolClientEventToolParameterDiscriminatorType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCTool))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.ParametersItem2>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.ParametersItem2), TypeInfoPropertyName = "ParametersItem22")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterStringParameter))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterIntegerParameter))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterNumberParameter))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterBooleanParameter))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterArrayParameter))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterArrayParameterItems))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterArrayParameterItemsType), TypeInfoPropertyName = "CreateRealtimeSessionsRequestToolBackendRPCToolParameterArrayParameterItemsType2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterObjectParameter))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterDiscriminator))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterDiscriminatorType), TypeInfoPropertyName = "CreateRealtimeSessionsRequestToolBackendRPCToolParameterDiscriminatorType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterStringParameter))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterIntegerParameter))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterNumberParameter))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterBooleanParameter))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterArrayParameter))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterArrayParameterItems))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterArrayParameterItemsType), TypeInfoPropertyName = "CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterArrayParameterItemsType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterObjectParameter))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterDiscriminator))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterDiscriminatorType), TypeInfoPropertyName = "CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterDiscriminatorType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(double))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestToolDiscriminator))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestToolDiscriminatorType), TypeInfoPropertyName = "CreateRealtimeSessionsRequestToolDiscriminatorType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolDiscriminator))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolDiscriminatorType), TypeInfoPropertyName = "CreateRealtimeSessionsRequestGwm1AvatarsToolDiscriminatorType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.Integration), TypeInfoPropertyName = "Integration2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestIntegrationElevenLabsIntegration))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestIntegrationLiveKitIntegration))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestIntegrationDiscriminator))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestIntegrationDiscriminatorType), TypeInfoPropertyName = "CreateRealtimeSessionsRequestIntegrationDiscriminatorType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsIntegrationElevenLabsIntegration))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsIntegrationLiveKitIntegration))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsIntegrationDiscriminator))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsIntegrationDiscriminatorType), TypeInfoPropertyName = "CreateRealtimeSessionsRequestGwm1AvatarsIntegrationDiscriminatorType2")]
     #pragma warning disable CS0618 // This registration names a deprecated API model.
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestLivekit))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsLivekit))]
     #pragma warning restore CS0618
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestDiscriminator))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestDiscriminatorModel), TypeInfoPropertyName = "CreateRealtimeSessionsRequestDiscriminatorModel2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequest), TypeInfoPropertyName = "CreateImageToVideoRequest2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestGen45))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestGen45PromptImagePromptImage>>), TypeInfoPropertyName = "AnyOfStringIListCreateImageToVideoRequestGen45PromptImagePromptImage2")]
@@ -133,22 +136,100 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestVeo31FastPromptImagePromptImage))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestVeo31FastPromptImagePromptImagePosition), TypeInfoPropertyName = "CreateImageToVideoRequestVeo31FastPromptImagePromptImagePosition2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestVeo31FastRatio), TypeInfoPropertyName = "CreateImageToVideoRequestVeo31FastRatio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKlingO34k))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKlingO34kProviderSettings))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestKlingO34kProviderSettingsMultiPromptItem>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKlingO34kProviderSettingsMultiPromptItem))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKlingO34kProviderSettingsShotType), TypeInfoPropertyName = "CreateImageToVideoRequestKlingO34kProviderSettingsShotType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestKlingO34kPromptImagePromptImage>>), TypeInfoPropertyName = "AnyOfStringIListCreateImageToVideoRequestKlingO34kPromptImagePromptImage2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestKlingO34kPromptImagePromptImage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKlingO34kPromptImagePromptImage))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKlingO34kPromptImagePromptImagePosition), TypeInfoPropertyName = "CreateImageToVideoRequestKlingO34kPromptImagePromptImagePosition2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKlingO34kRatio), TypeInfoPropertyName = "CreateImageToVideoRequestKlingO34kRatio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestKlingO34kReferencesReferenceImage>>), TypeInfoPropertyName = "AnyOfStringIListCreateImageToVideoRequestKlingO34kReferencesReferenceImage2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestKlingO34kReferencesReferenceImage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKlingO34kReferencesReferenceImage))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKlingO34kReferencesReferenceImagePosition), TypeInfoPropertyName = "CreateImageToVideoRequestKlingO34kReferencesReferenceImagePosition2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestHailuo3))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<object>>), TypeInfoPropertyName = "AnyOfStringIListObject2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestHailuo3Resolution), TypeInfoPropertyName = "CreateImageToVideoRequestHailuo3Resolution2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestHailuo3Ratio), TypeInfoPropertyName = "CreateImageToVideoRequestHailuo3Ratio2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestHailuo3ReferenceAudioItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestHailuo3ReferenceAudioItem))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKling304k))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKling304kProviderSettings))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestKling304kProviderSettingsMultiPromptItem>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKling304kProviderSettingsMultiPromptItem))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKling304kProviderSettingsShotType), TypeInfoPropertyName = "CreateImageToVideoRequestKling304kProviderSettingsShotType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestKling304kPromptImagePromptImage>>), TypeInfoPropertyName = "AnyOfStringIListCreateImageToVideoRequestKling304kPromptImagePromptImage2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestKling304kPromptImagePromptImage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKling304kPromptImagePromptImage))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKling304kPromptImagePromptImagePosition), TypeInfoPropertyName = "CreateImageToVideoRequestKling304kPromptImagePromptImagePosition2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKling304kRatio), TypeInfoPropertyName = "CreateImageToVideoRequestKling304kRatio2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestHappyhorse10))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestHappyhorse10PromptImagePromptImage>>), TypeInfoPropertyName = "AnyOfStringIListCreateImageToVideoRequestHappyhorse10PromptImagePromptImage2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestHappyhorse10PromptImagePromptImage>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestHappyhorse10PromptImagePromptImage))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestHappyhorse10Resolution), TypeInfoPropertyName = "CreateImageToVideoRequestHappyhorse10Resolution2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKling25TurboPro))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestKling25TurboProPromptImagePromptImage>>), TypeInfoPropertyName = "AnyOfStringIListCreateImageToVideoRequestKling25TurboProPromptImagePromptImage2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestKling25TurboProPromptImagePromptImage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKling25TurboProPromptImagePromptImage))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKling25TurboProPromptImagePromptImagePosition), TypeInfoPropertyName = "CreateImageToVideoRequestKling25TurboProPromptImagePromptImagePosition2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKling30Pro))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKling30ProProviderSettings))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestKling30ProProviderSettingsMultiPromptItem>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKling30ProProviderSettingsMultiPromptItem))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKling30ProProviderSettingsShotType), TypeInfoPropertyName = "CreateImageToVideoRequestKling30ProProviderSettingsShotType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestKling30ProPromptImagePromptImage>>), TypeInfoPropertyName = "AnyOfStringIListCreateImageToVideoRequestKling30ProPromptImagePromptImage2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestKling30ProPromptImagePromptImage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKling30ProPromptImagePromptImage))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKling30ProPromptImagePromptImagePosition), TypeInfoPropertyName = "CreateImageToVideoRequestKling30ProPromptImagePromptImagePosition2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKling30ProRatio), TypeInfoPropertyName = "CreateImageToVideoRequestKling30ProRatio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKling30Standard))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKling30StandardProviderSettings))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestKling30StandardProviderSettingsMultiPromptItem>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKling30StandardProviderSettingsMultiPromptItem))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKling30StandardProviderSettingsShotType), TypeInfoPropertyName = "CreateImageToVideoRequestKling30StandardProviderSettingsShotType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestKling30StandardPromptImagePromptImage>>), TypeInfoPropertyName = "AnyOfStringIListCreateImageToVideoRequestKling30StandardPromptImagePromptImage2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestKling30StandardPromptImagePromptImage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKling30StandardPromptImagePromptImage))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKling30StandardPromptImagePromptImagePosition), TypeInfoPropertyName = "CreateImageToVideoRequestKling30StandardPromptImagePromptImagePosition2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKling30StandardRatio), TypeInfoPropertyName = "CreateImageToVideoRequestKling30StandardRatio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKlingO3Pro))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKlingO3ProProviderSettings))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestKlingO3ProProviderSettingsMultiPromptItem>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKlingO3ProProviderSettingsMultiPromptItem))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKlingO3ProProviderSettingsShotType), TypeInfoPropertyName = "CreateImageToVideoRequestKlingO3ProProviderSettingsShotType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestKlingO3ProPromptImagePromptImage>>), TypeInfoPropertyName = "AnyOfStringIListCreateImageToVideoRequestKlingO3ProPromptImagePromptImage2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestKlingO3ProPromptImagePromptImage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKlingO3ProPromptImagePromptImage))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKlingO3ProPromptImagePromptImagePosition), TypeInfoPropertyName = "CreateImageToVideoRequestKlingO3ProPromptImagePromptImagePosition2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKlingO3ProRatio), TypeInfoPropertyName = "CreateImageToVideoRequestKlingO3ProRatio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestKlingO3ProReferencesReferenceImage>>), TypeInfoPropertyName = "AnyOfStringIListCreateImageToVideoRequestKlingO3ProReferencesReferenceImage2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestKlingO3ProReferencesReferenceImage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKlingO3ProReferencesReferenceImage))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKlingO3ProReferencesReferenceImagePosition), TypeInfoPropertyName = "CreateImageToVideoRequestKlingO3ProReferencesReferenceImagePosition2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKlingO3Standard))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKlingO3StandardProviderSettings))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestKlingO3StandardProviderSettingsMultiPromptItem>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKlingO3StandardProviderSettingsMultiPromptItem))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKlingO3StandardProviderSettingsShotType), TypeInfoPropertyName = "CreateImageToVideoRequestKlingO3StandardProviderSettingsShotType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestKlingO3StandardPromptImagePromptImage>>), TypeInfoPropertyName = "AnyOfStringIListCreateImageToVideoRequestKlingO3StandardPromptImagePromptImage2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestKlingO3StandardPromptImagePromptImage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKlingO3StandardPromptImagePromptImage))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKlingO3StandardPromptImagePromptImagePosition), TypeInfoPropertyName = "CreateImageToVideoRequestKlingO3StandardPromptImagePromptImagePosition2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKlingO3StandardRatio), TypeInfoPropertyName = "CreateImageToVideoRequestKlingO3StandardRatio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestKlingO3StandardReferencesReferenceImage>>), TypeInfoPropertyName = "AnyOfStringIListCreateImageToVideoRequestKlingO3StandardReferencesReferenceImage2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestKlingO3StandardReferencesReferenceImage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKlingO3StandardReferencesReferenceImage))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKlingO3StandardReferencesReferenceImagePosition), TypeInfoPropertyName = "CreateImageToVideoRequestKlingO3StandardReferencesReferenceImagePosition2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestSeedance2))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestSeedance2PromptImagePromptImage>>), TypeInfoPropertyName = "AnyOfStringIListCreateImageToVideoRequestSeedance2PromptImagePromptImage2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestSeedance2PromptImagePromptImage>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestSeedance2PromptImagePromptImage))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestSeedance2PromptImagePromptImagePosition), TypeInfoPropertyName = "CreateImageToVideoRequestSeedance2PromptImagePromptImagePosition2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<int?, string>), TypeInfoPropertyName = "AnyOfInt32String2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestSeedance2Ratio), TypeInfoPropertyName = "CreateImageToVideoRequestSeedance2Ratio2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestSeedance2ReferenceAudioItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestSeedance2ReferenceAudioItem))]
@@ -173,14 +254,6 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestGeminiOmniFlashPromptImagePromptImage>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestGeminiOmniFlashPromptImagePromptImage))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestGeminiOmniFlashRatio), TypeInfoPropertyName = "CreateImageToVideoRequestGeminiOmniFlashRatio2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestSeedance25))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestSeedance25PromptImagePromptImage>>), TypeInfoPropertyName = "AnyOfStringIListCreateImageToVideoRequestSeedance25PromptImagePromptImage2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestSeedance25PromptImagePromptImage>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestSeedance25PromptImagePromptImage))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestSeedance25PromptImagePromptImagePosition), TypeInfoPropertyName = "CreateImageToVideoRequestSeedance25PromptImagePromptImagePosition2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestSeedance25Ratio), TypeInfoPropertyName = "CreateImageToVideoRequestSeedance25Ratio2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestSeedance25ReferenceAudioItem>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestSeedance25ReferenceAudioItem))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestGrokImagine15))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestGrokImagine15PromptImagePromptImage>>), TypeInfoPropertyName = "AnyOfStringIListCreateImageToVideoRequestGrokImagine15PromptImagePromptImage2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestGrokImagine15PromptImagePromptImage>))]
@@ -192,6 +265,54 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestWan3ReferenceVideo))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestWan3ReferenceAudioItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestWan3ReferenceAudioItem))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestGeminiOmniFlash11))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestGeminiOmniFlash11PromptImagePromptImage>>), TypeInfoPropertyName = "AnyOfStringIListCreateImageToVideoRequestGeminiOmniFlash11PromptImagePromptImage2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestGeminiOmniFlash11PromptImagePromptImage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestGeminiOmniFlash11PromptImagePromptImage))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestGeminiOmniFlash11PromptImagePromptImagePosition), TypeInfoPropertyName = "CreateImageToVideoRequestGeminiOmniFlash11PromptImagePromptImagePosition2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestGeminiOmniFlash11Ratio), TypeInfoPropertyName = "CreateImageToVideoRequestGeminiOmniFlash11Ratio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string, int?>), TypeInfoPropertyName = "AnyOfStringInt322")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestWan3Prime))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestWan3PrimeRatio), TypeInfoPropertyName = "CreateImageToVideoRequestWan3PrimeRatio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestWan3PrimeReferenceVideo>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestWan3PrimeReferenceVideo))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestWan3PrimeReferenceAudioItem>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestWan3PrimeReferenceAudioItem))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestH3Max))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestH3MaxPromptImagePromptImage>>), TypeInfoPropertyName = "AnyOfStringIListCreateImageToVideoRequestH3MaxPromptImagePromptImage2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestH3MaxPromptImagePromptImage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestH3MaxPromptImagePromptImage))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestH3MaxPromptImagePromptImagePosition), TypeInfoPropertyName = "CreateImageToVideoRequestH3MaxPromptImagePromptImagePosition2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestH3MaxResolution), TypeInfoPropertyName = "CreateImageToVideoRequestH3MaxResolution2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestH3MaxPromptExpansionMode), TypeInfoPropertyName = "CreateImageToVideoRequestH3MaxPromptExpansionMode2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestSeedance25))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestSeedance25PromptImagePromptImage>>), TypeInfoPropertyName = "AnyOfStringIListCreateImageToVideoRequestSeedance25PromptImagePromptImage2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestSeedance25PromptImagePromptImage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestSeedance25PromptImagePromptImage))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestSeedance25PromptImagePromptImagePosition), TypeInfoPropertyName = "CreateImageToVideoRequestSeedance25PromptImagePromptImagePosition2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestSeedance25OutputFormat), TypeInfoPropertyName = "CreateImageToVideoRequestSeedance25OutputFormat2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestSeedance25Ratio), TypeInfoPropertyName = "CreateImageToVideoRequestSeedance25Ratio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestSeedance25ReferenceAudioItem>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestSeedance25ReferenceAudioItem))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestGrokImagine15Lite))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestGrokImagine15LitePromptImagePromptImage>>), TypeInfoPropertyName = "AnyOfStringIListCreateImageToVideoRequestGrokImagine15LitePromptImagePromptImage2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestGrokImagine15LitePromptImagePromptImage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestGrokImagine15LitePromptImagePromptImage))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestGrokImagine15LiteRatio), TypeInfoPropertyName = "CreateImageToVideoRequestGrokImagine15LiteRatio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKling4))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKling4Ratio), TypeInfoPropertyName = "CreateImageToVideoRequestKling4Ratio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestKling4Reference>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKling4Reference))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKling4Flash))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKling4FlashRatio), TypeInfoPropertyName = "CreateImageToVideoRequestKling4FlashRatio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestKling4FlashReference>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKling4FlashReference))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestGeminiOmniFlash12))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestGeminiOmniFlash12PromptImagePromptImage>>), TypeInfoPropertyName = "AnyOfStringIListCreateImageToVideoRequestGeminiOmniFlash12PromptImagePromptImage2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestGeminiOmniFlash12PromptImagePromptImage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestGeminiOmniFlash12PromptImagePromptImage))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestGeminiOmniFlash12PromptImagePromptImagePosition), TypeInfoPropertyName = "CreateImageToVideoRequestGeminiOmniFlash12PromptImagePromptImagePosition2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestGeminiOmniFlash12Ratio), TypeInfoPropertyName = "CreateImageToVideoRequestGeminiOmniFlash12Ratio2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestDiscriminator))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestDiscriminatorModel), TypeInfoPropertyName = "CreateImageToVideoRequestDiscriminatorModel2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequest), TypeInfoPropertyName = "CreateTextToVideoRequest2")]
@@ -205,6 +326,12 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestVeo31Ratio), TypeInfoPropertyName = "CreateTextToVideoRequestVeo31Ratio2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestVeo31Fast))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestVeo31FastRatio), TypeInfoPropertyName = "CreateTextToVideoRequestVeo31FastRatio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestKlingO34k))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestKlingO34kProviderSettings))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateTextToVideoRequestKlingO34kProviderSettingsMultiPromptItem>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestKlingO34kProviderSettingsMultiPromptItem))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestKlingO34kProviderSettingsShotType), TypeInfoPropertyName = "CreateTextToVideoRequestKlingO34kProviderSettingsShotType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestKlingO34kRatio), TypeInfoPropertyName = "CreateTextToVideoRequestKlingO34kRatio2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestHailuo3))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestHailuo3Resolution), TypeInfoPropertyName = "CreateTextToVideoRequestHailuo3Resolution2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestHailuo3Ratio), TypeInfoPropertyName = "CreateTextToVideoRequestHailuo3Ratio2")]
@@ -214,8 +341,40 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestHailuo3ReferenceVideo))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateTextToVideoRequestHailuo3ReferenceAudioItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestHailuo3ReferenceAudioItem))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestKling304k))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestKling304kProviderSettings))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateTextToVideoRequestKling304kProviderSettingsMultiPromptItem>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestKling304kProviderSettingsMultiPromptItem))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestKling304kProviderSettingsShotType), TypeInfoPropertyName = "CreateTextToVideoRequestKling304kProviderSettingsShotType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestKling304kRatio), TypeInfoPropertyName = "CreateTextToVideoRequestKling304kRatio2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestHappyhorse10))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestHappyhorse10Ratio), TypeInfoPropertyName = "CreateTextToVideoRequestHappyhorse10Ratio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestKling25TurboPro))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestKling25TurboProRatio), TypeInfoPropertyName = "CreateTextToVideoRequestKling25TurboProRatio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestKling30Pro))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestKling30ProProviderSettings))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateTextToVideoRequestKling30ProProviderSettingsMultiPromptItem>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestKling30ProProviderSettingsMultiPromptItem))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestKling30ProProviderSettingsShotType), TypeInfoPropertyName = "CreateTextToVideoRequestKling30ProProviderSettingsShotType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestKling30ProRatio), TypeInfoPropertyName = "CreateTextToVideoRequestKling30ProRatio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestKling30Standard))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestKling30StandardProviderSettings))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateTextToVideoRequestKling30StandardProviderSettingsMultiPromptItem>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestKling30StandardProviderSettingsMultiPromptItem))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestKling30StandardProviderSettingsShotType), TypeInfoPropertyName = "CreateTextToVideoRequestKling30StandardProviderSettingsShotType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestKling30StandardRatio), TypeInfoPropertyName = "CreateTextToVideoRequestKling30StandardRatio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestKlingO3Pro))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestKlingO3ProProviderSettings))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateTextToVideoRequestKlingO3ProProviderSettingsMultiPromptItem>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestKlingO3ProProviderSettingsMultiPromptItem))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestKlingO3ProProviderSettingsShotType), TypeInfoPropertyName = "CreateTextToVideoRequestKlingO3ProProviderSettingsShotType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestKlingO3ProRatio), TypeInfoPropertyName = "CreateTextToVideoRequestKlingO3ProRatio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestKlingO3Standard))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestKlingO3StandardProviderSettings))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateTextToVideoRequestKlingO3StandardProviderSettingsMultiPromptItem>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestKlingO3StandardProviderSettingsMultiPromptItem))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestKlingO3StandardProviderSettingsShotType), TypeInfoPropertyName = "CreateTextToVideoRequestKlingO3StandardProviderSettingsShotType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestKlingO3StandardRatio), TypeInfoPropertyName = "CreateTextToVideoRequestKlingO3StandardRatio2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestSeedance2))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestSeedance2Ratio), TypeInfoPropertyName = "CreateTextToVideoRequestSeedance2Ratio2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateTextToVideoRequestSeedance2Reference>))]
@@ -242,14 +401,6 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestSeedance2MiniReferenceAudioItem))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestGeminiOmniFlash))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestGeminiOmniFlashRatio), TypeInfoPropertyName = "CreateTextToVideoRequestGeminiOmniFlashRatio2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestSeedance25))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestSeedance25Ratio), TypeInfoPropertyName = "CreateTextToVideoRequestSeedance25Ratio2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateTextToVideoRequestSeedance25Reference>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestSeedance25Reference))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateTextToVideoRequestSeedance25ReferenceVideo>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestSeedance25ReferenceVideo))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateTextToVideoRequestSeedance25ReferenceAudioItem>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestSeedance25ReferenceAudioItem))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestGrokImagine15))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestGrokImagine15Resolution), TypeInfoPropertyName = "CreateTextToVideoRequestGrokImagine15Resolution2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestGrokImagine15Ratio), TypeInfoPropertyName = "CreateTextToVideoRequestGrokImagine15Ratio2")]
@@ -265,6 +416,48 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestWan3ReferenceVideo))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateTextToVideoRequestWan3ReferenceAudioItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestWan3ReferenceAudioItem))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestGeminiOmniFlash11))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestGeminiOmniFlash11Ratio), TypeInfoPropertyName = "CreateTextToVideoRequestGeminiOmniFlash11Ratio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateTextToVideoRequestGeminiOmniFlash11Reference>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestGeminiOmniFlash11Reference))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateTextToVideoRequestGeminiOmniFlash11ReferenceVideo>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestGeminiOmniFlash11ReferenceVideo))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestWan3Prime))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestWan3PrimeRatio), TypeInfoPropertyName = "CreateTextToVideoRequestWan3PrimeRatio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateTextToVideoRequestWan3PrimeReference>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestWan3PrimeReference))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateTextToVideoRequestWan3PrimeReferenceVideo>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestWan3PrimeReferenceVideo))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateTextToVideoRequestWan3PrimeReferenceAudioItem>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestWan3PrimeReferenceAudioItem))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestH3Max))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestH3MaxResolution), TypeInfoPropertyName = "CreateTextToVideoRequestH3MaxResolution2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestH3MaxPromptExpansionMode), TypeInfoPropertyName = "CreateTextToVideoRequestH3MaxPromptExpansionMode2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestSeedance25))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestSeedance25OutputFormat), TypeInfoPropertyName = "CreateTextToVideoRequestSeedance25OutputFormat2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestSeedance25Ratio), TypeInfoPropertyName = "CreateTextToVideoRequestSeedance25Ratio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateTextToVideoRequestSeedance25Reference>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestSeedance25Reference))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateTextToVideoRequestSeedance25ReferenceVideo>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestSeedance25ReferenceVideo))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateTextToVideoRequestSeedance25ReferenceAudioItem>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestSeedance25ReferenceAudioItem))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestGrokImagine15Lite))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestGrokImagine15LiteRatio), TypeInfoPropertyName = "CreateTextToVideoRequestGrokImagine15LiteRatio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestKling4))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestKling4Ratio), TypeInfoPropertyName = "CreateTextToVideoRequestKling4Ratio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateTextToVideoRequestKling4Reference>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestKling4Reference))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestKling4Flash))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestKling4FlashRatio), TypeInfoPropertyName = "CreateTextToVideoRequestKling4FlashRatio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateTextToVideoRequestKling4FlashReference>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestKling4FlashReference))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestGeminiOmniFlash12))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestGeminiOmniFlash12Ratio), TypeInfoPropertyName = "CreateTextToVideoRequestGeminiOmniFlash12Ratio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateTextToVideoRequestGeminiOmniFlash12Reference>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestGeminiOmniFlash12Reference))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateTextToVideoRequestGeminiOmniFlash12ReferenceVideo>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestGeminiOmniFlash12ReferenceVideo))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestDiscriminator))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestDiscriminatorModel), TypeInfoPropertyName = "CreateTextToVideoRequestDiscriminatorModel2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequest), TypeInfoPropertyName = "CreateVideoToVideoRequest2")]
@@ -280,6 +473,15 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestVariant1ContentModerationPublicFigureThreshold), TypeInfoPropertyName = "CreateVideoToVideoRequestVariant1ContentModerationPublicFigureThreshold2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestVariant1OutputFormat), TypeInfoPropertyName = "CreateVideoToVideoRequestVariant1OutputFormat2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestVariant1ProresProfile), TypeInfoPropertyName = "CreateVideoToVideoRequestVariant1ProresProfile2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestKlingO34k))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestKlingO34kProviderSettings))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateVideoToVideoRequestKlingO34kProviderSettingsMultiPromptItem>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestKlingO34kProviderSettingsMultiPromptItem))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestKlingO34kProviderSettingsShotType), TypeInfoPropertyName = "CreateVideoToVideoRequestKlingO34kProviderSettingsShotType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<global::Runway.CreateVideoToVideoRequestKlingO34kReferencesPromptImage>>), TypeInfoPropertyName = "AnyOfStringIListCreateVideoToVideoRequestKlingO34kReferencesPromptImage2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateVideoToVideoRequestKlingO34kReferencesPromptImage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestKlingO34kReferencesPromptImage))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestKlingO34kReferencesPromptImagePosition), TypeInfoPropertyName = "CreateVideoToVideoRequestKlingO34kReferencesPromptImagePosition2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestHailuo3))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestHailuo3Resolution), TypeInfoPropertyName = "CreateVideoToVideoRequestHailuo3Resolution2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestHailuo3Ratio), TypeInfoPropertyName = "CreateVideoToVideoRequestHailuo3Ratio2")]
@@ -289,8 +491,36 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestHailuo3ReferenceVideo))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateVideoToVideoRequestHailuo3ReferenceAudioItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestHailuo3ReferenceAudioItem))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestKlingO3Pro))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestKlingO3ProProviderSettings))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateVideoToVideoRequestKlingO3ProProviderSettingsMultiPromptItem>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestKlingO3ProProviderSettingsMultiPromptItem))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestKlingO3ProProviderSettingsShotType), TypeInfoPropertyName = "CreateVideoToVideoRequestKlingO3ProProviderSettingsShotType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<global::Runway.CreateVideoToVideoRequestKlingO3ProReferencesPromptImage>>), TypeInfoPropertyName = "AnyOfStringIListCreateVideoToVideoRequestKlingO3ProReferencesPromptImage2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateVideoToVideoRequestKlingO3ProReferencesPromptImage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestKlingO3ProReferencesPromptImage))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestKlingO3ProReferencesPromptImagePosition), TypeInfoPropertyName = "CreateVideoToVideoRequestKlingO3ProReferencesPromptImagePosition2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestKlingO3Standard))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestKlingO3StandardProviderSettings))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateVideoToVideoRequestKlingO3StandardProviderSettingsMultiPromptItem>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestKlingO3StandardProviderSettingsMultiPromptItem))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestKlingO3StandardProviderSettingsShotType), TypeInfoPropertyName = "CreateVideoToVideoRequestKlingO3StandardProviderSettingsShotType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<global::Runway.CreateVideoToVideoRequestKlingO3StandardReferencesPromptImage>>), TypeInfoPropertyName = "AnyOfStringIListCreateVideoToVideoRequestKlingO3StandardReferencesPromptImage2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateVideoToVideoRequestKlingO3StandardReferencesPromptImage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestKlingO3StandardReferencesPromptImage))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestKlingO3StandardReferencesPromptImagePosition), TypeInfoPropertyName = "CreateVideoToVideoRequestKlingO3StandardReferencesPromptImagePosition2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestSeedance2))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestSeedance2Ratio), TypeInfoPropertyName = "CreateVideoToVideoRequestSeedance2Ratio2")]
+    internal sealed partial class SourceGenerationContextChunk0 : global::System.Text.Json.Serialization.JsonSerializerContext
+    {
+    }
+
+    /// <summary>
+    ///
+    /// </summary>
+    [global::System.Text.Json.Serialization.JsonSourceGenerationOptions(
+        DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
+    )]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateVideoToVideoRequestSeedance2Reference>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestSeedance2Reference))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateVideoToVideoRequestSeedance2ReferenceVideo>))]
@@ -316,7 +546,13 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestGeminiOmniFlash))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateVideoToVideoRequestGeminiOmniFlashReference>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestGeminiOmniFlashReference))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestGeminiOmniFlash11))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestGeminiOmniFlash11Mode), TypeInfoPropertyName = "CreateVideoToVideoRequestGeminiOmniFlash11Mode2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestGeminiOmniFlash11Ratio), TypeInfoPropertyName = "CreateVideoToVideoRequestGeminiOmniFlash11Ratio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateVideoToVideoRequestGeminiOmniFlash11Reference>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestGeminiOmniFlash11Reference))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestSeedance25))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestSeedance25OutputFormat), TypeInfoPropertyName = "CreateVideoToVideoRequestSeedance25OutputFormat2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestSeedance25Mode), TypeInfoPropertyName = "CreateVideoToVideoRequestSeedance25Mode2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestSeedance25Ratio), TypeInfoPropertyName = "CreateVideoToVideoRequestSeedance25Ratio2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateVideoToVideoRequestSeedance25Reference>))]
@@ -325,14 +561,21 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestSeedance25ReferenceVideo))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateVideoToVideoRequestSeedance25ReferenceAudioItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestSeedance25ReferenceAudioItem))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestKling4))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestKling4Ratio), TypeInfoPropertyName = "CreateVideoToVideoRequestKling4Ratio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateVideoToVideoRequestKling4Reference>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestKling4Reference))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestKling4Flash))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestKling4FlashRatio), TypeInfoPropertyName = "CreateVideoToVideoRequestKling4FlashRatio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateVideoToVideoRequestKling4FlashReference>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestKling4FlashReference))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestGeminiOmniFlash12))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestGeminiOmniFlash12Mode), TypeInfoPropertyName = "CreateVideoToVideoRequestGeminiOmniFlash12Mode2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestGeminiOmniFlash12Ratio), TypeInfoPropertyName = "CreateVideoToVideoRequestGeminiOmniFlash12Ratio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateVideoToVideoRequestGeminiOmniFlash12Reference>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestGeminiOmniFlash12Reference))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestDiscriminator))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestDiscriminatorModel), TypeInfoPropertyName = "CreateVideoToVideoRequestDiscriminatorModel2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToHdrRequest), TypeInfoPropertyName = "CreateVideoToHdrRequest2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToHdrRequestRuby))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToHdrRequestRubyOutputFormat), TypeInfoPropertyName = "CreateVideoToHdrRequestRubyOutputFormat2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToHdrRequestRubyProresProfile), TypeInfoPropertyName = "CreateVideoToHdrRequestRubyProresProfile2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToHdrRequestDiscriminator))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToHdrRequestDiscriminatorModel), TypeInfoPropertyName = "CreateVideoToHdrRequestDiscriminatorModel2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequest), TypeInfoPropertyName = "CreateTextToImageRequest2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGen4ImageTurbo))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGen4ImageTurboRatio), TypeInfoPropertyName = "CreateTextToImageRequestGen4ImageTurboRatio2")]
@@ -352,11 +595,6 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGptImage2Background), TypeInfoPropertyName = "CreateTextToImageRequestGptImage2Background2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateTextToImageRequestGptImage2ReferenceImage>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGptImage2ReferenceImage))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGeminiImage3Pro))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGeminiImage3ProRatio), TypeInfoPropertyName = "CreateTextToImageRequestGeminiImage3ProRatio2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateTextToImageRequestGeminiImage3ProReferenceImage>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGeminiImage3ProReferenceImage))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGeminiImage3ProReferenceImageSubject), TypeInfoPropertyName = "CreateTextToImageRequestGeminiImage3ProReferenceImageSubject2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGeminiImage31Flash))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGeminiImage31FlashRatio), TypeInfoPropertyName = "CreateTextToImageRequestGeminiImage31FlashRatio2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateTextToImageRequestGeminiImage31FlashReferenceImage>))]
@@ -364,6 +602,7 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGeminiImage31FlashReferenceImageSubject), TypeInfoPropertyName = "CreateTextToImageRequestGeminiImage31FlashReferenceImageSubject2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestMuseImage))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestMuseImageRatio), TypeInfoPropertyName = "CreateTextToImageRequestMuseImageRatio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestMuseImageOutputFormat), TypeInfoPropertyName = "CreateTextToImageRequestMuseImageOutputFormat2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateTextToImageRequestMuseImageReferenceImage>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestMuseImageReferenceImage))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestSeedream5Pro))]
@@ -372,6 +611,7 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateTextToImageRequestSeedream5ProReferenceImage>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestSeedream5ProReferenceImage))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestSeedream5Lite))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<global::Runway.CreateTextToImageRequestSeedream5LiteRatio?, string>), TypeInfoPropertyName = "AnyOfCreateTextToImageRequestSeedream5LiteRatioString2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestSeedream5LiteRatio), TypeInfoPropertyName = "CreateTextToImageRequestSeedream5LiteRatio2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestSeedream5LiteOutputFormat), TypeInfoPropertyName = "CreateTextToImageRequestSeedream5LiteOutputFormat2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateTextToImageRequestSeedream5LiteReferenceImage>))]
@@ -381,10 +621,81 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGrokImagineImage2Quality), TypeInfoPropertyName = "CreateTextToImageRequestGrokImagineImage2Quality2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateTextToImageRequestGrokImagineImage2ReferenceImage>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGrokImagineImage2ReferenceImage))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGeminiImage31FlashLite))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGeminiImage31FlashLiteRatio), TypeInfoPropertyName = "CreateTextToImageRequestGeminiImage31FlashLiteRatio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateTextToImageRequestGeminiImage31FlashLiteReferenceImage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGeminiImage31FlashLiteReferenceImage))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGeminiImage31FlashLiteReferenceImageSubject), TypeInfoPropertyName = "CreateTextToImageRequestGeminiImage31FlashLiteReferenceImageSubject2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGeminiImage3Pro))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGeminiImage3ProRatio), TypeInfoPropertyName = "CreateTextToImageRequestGeminiImage3ProRatio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateTextToImageRequestGeminiImage3ProReferenceImage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGeminiImage3ProReferenceImage))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGeminiImage3ProReferenceImageSubject), TypeInfoPropertyName = "CreateTextToImageRequestGeminiImage3ProReferenceImageSubject2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGptImage25Flare))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGptImage25FlareRatio), TypeInfoPropertyName = "CreateTextToImageRequestGptImage25FlareRatio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGptImage25FlareQuality), TypeInfoPropertyName = "CreateTextToImageRequestGptImage25FlareQuality2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGptImage25FlareBackground), TypeInfoPropertyName = "CreateTextToImageRequestGptImage25FlareBackground2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateTextToImageRequestGptImage25FlareReferenceImage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGptImage25FlareReferenceImage))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGptImage25Sunburst))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGptImage25SunburstRatio), TypeInfoPropertyName = "CreateTextToImageRequestGptImage25SunburstRatio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGptImage25SunburstQuality), TypeInfoPropertyName = "CreateTextToImageRequestGptImage25SunburstQuality2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGptImage25SunburstBackground), TypeInfoPropertyName = "CreateTextToImageRequestGptImage25SunburstBackground2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateTextToImageRequestGptImage25SunburstReferenceImage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGptImage25SunburstReferenceImage))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestBriaFibo15))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestBriaFibo15Ratio), TypeInfoPropertyName = "CreateTextToImageRequestBriaFibo15Ratio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestBriaFibo15OutputFormat), TypeInfoPropertyName = "CreateTextToImageRequestBriaFibo15OutputFormat2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateTextToImageRequestBriaFibo15ReferenceImage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestBriaFibo15ReferenceImage))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestBriaFiboEdit15))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestBriaFiboEdit15OutputFormat), TypeInfoPropertyName = "CreateTextToImageRequestBriaFiboEdit15OutputFormat2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateTextToImageRequestBriaFiboEdit15ReferenceImage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestBriaFiboEdit15ReferenceImage))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestBriaFiboEdit15Ratio), TypeInfoPropertyName = "CreateTextToImageRequestBriaFiboEdit15Ratio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestIdeogram40))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestIdeogram40Quality), TypeInfoPropertyName = "CreateTextToImageRequestIdeogram40Quality2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestIdeogram40Ratio), TypeInfoPropertyName = "CreateTextToImageRequestIdeogram40Ratio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateTextToImageRequestIdeogram40ReferenceImage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestIdeogram40ReferenceImage))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestIdeogram45))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestIdeogram45Quality), TypeInfoPropertyName = "CreateTextToImageRequestIdeogram45Quality2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestIdeogram45Ratio), TypeInfoPropertyName = "CreateTextToImageRequestIdeogram45Ratio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateTextToImageRequestIdeogram45ReferenceImage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestIdeogram45ReferenceImage))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestSeedream5Flash))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestSeedream5FlashRatio), TypeInfoPropertyName = "CreateTextToImageRequestSeedream5FlashRatio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestSeedream5FlashOutputFormat), TypeInfoPropertyName = "CreateTextToImageRequestSeedream5FlashOutputFormat2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateTextToImageRequestSeedream5FlashReferenceImage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestSeedream5FlashReferenceImage))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestNanoBanana21))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestNanoBanana21Ratio), TypeInfoPropertyName = "CreateTextToImageRequestNanoBanana21Ratio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestNanoBanana21ThinkingLevel), TypeInfoPropertyName = "CreateTextToImageRequestNanoBanana21ThinkingLevel2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateTextToImageRequestNanoBanana21ReferenceImage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestNanoBanana21ReferenceImage))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestRecraftV41Flash))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestRecraftV41FlashRatio), TypeInfoPropertyName = "CreateTextToImageRequestRecraftV41FlashRatio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestRecraftV41FlashOutputFormat), TypeInfoPropertyName = "CreateTextToImageRequestRecraftV41FlashOutputFormat2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestRecraftV41Vector))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestRecraftV41VectorRatio), TypeInfoPropertyName = "CreateTextToImageRequestRecraftV41VectorRatio2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGemini25Flash))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGemini25FlashRatio), TypeInfoPropertyName = "CreateTextToImageRequestGemini25FlashRatio2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateTextToImageRequestGemini25FlashReferenceImage>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGemini25FlashReferenceImage))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGptImage26Flare))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGptImage26FlareRatio), TypeInfoPropertyName = "CreateTextToImageRequestGptImage26FlareRatio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGptImage26FlareQuality), TypeInfoPropertyName = "CreateTextToImageRequestGptImage26FlareQuality2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGptImage26FlareBackground), TypeInfoPropertyName = "CreateTextToImageRequestGptImage26FlareBackground2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateTextToImageRequestGptImage26FlareReferenceImage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGptImage26FlareReferenceImage))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGptImage26FlareReasoningEffort), TypeInfoPropertyName = "CreateTextToImageRequestGptImage26FlareReasoningEffort2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGptImage26Sunburst))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGptImage26SunburstRatio), TypeInfoPropertyName = "CreateTextToImageRequestGptImage26SunburstRatio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGptImage26SunburstQuality), TypeInfoPropertyName = "CreateTextToImageRequestGptImage26SunburstQuality2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGptImage26SunburstBackground), TypeInfoPropertyName = "CreateTextToImageRequestGptImage26SunburstBackground2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateTextToImageRequestGptImage26SunburstReferenceImage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGptImage26SunburstReferenceImage))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGptImage26SunburstReasoningEffort), TypeInfoPropertyName = "CreateTextToImageRequestGptImage26SunburstReasoningEffort2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestDiscriminator))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestDiscriminatorModel), TypeInfoPropertyName = "CreateTextToImageRequestDiscriminatorModel2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageUpscaleRequest), TypeInfoPropertyName = "CreateImageUpscaleRequest2")]
@@ -400,6 +711,12 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoUpscaleRequestEnhanceFrameRateTargetFramerate), TypeInfoPropertyName = "CreateVideoUpscaleRequestEnhanceFrameRateTargetFramerate2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoUpscaleRequestDiscriminator))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoUpscaleRequestDiscriminatorModel), TypeInfoPropertyName = "CreateVideoUpscaleRequestDiscriminatorModel2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToHdrRequest), TypeInfoPropertyName = "CreateVideoToHdrRequest2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToHdrRequestRuby))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToHdrRequestRubyOutputFormat), TypeInfoPropertyName = "CreateVideoToHdrRequestRubyOutputFormat2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToHdrRequestRubyProresProfile), TypeInfoPropertyName = "CreateVideoToHdrRequestRubyProresProfile2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToHdrRequestDiscriminator))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToHdrRequestDiscriminatorModel), TypeInfoPropertyName = "CreateVideoToHdrRequestDiscriminatorModel2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateCharacterPerformanceRequest), TypeInfoPropertyName = "CreateCharacterPerformanceRequest2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateCharacterPerformanceRequestActTwo))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.Character), TypeInfoPropertyName = "Character2")]
@@ -418,9 +735,16 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateSoundEffectRequest), TypeInfoPropertyName = "CreateSoundEffectRequest2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateSoundEffectRequestSeedAudio))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateSoundEffectRequestSeedAudioOutputFormat), TypeInfoPropertyName = "CreateSoundEffectRequestSeedAudioOutputFormat2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateSoundEffectRequestMireloSfx20))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateSoundEffectRequestMireloSfx20Format), TypeInfoPropertyName = "CreateSoundEffectRequestMireloSfx20Format2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateSoundEffectRequestElevenTextToSoundV2))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateSoundEffectRequestDiscriminator))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateSoundEffectRequestDiscriminatorModel), TypeInfoPropertyName = "CreateSoundEffectRequestDiscriminatorModel2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToAudioRequest), TypeInfoPropertyName = "CreateVideoToAudioRequest2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToAudioRequestMireloSfx20))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToAudioRequestMireloSfx20Format), TypeInfoPropertyName = "CreateVideoToAudioRequestMireloSfx20Format2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToAudioRequestDiscriminator))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToAudioRequestDiscriminatorModel), TypeInfoPropertyName = "CreateVideoToAudioRequestDiscriminatorModel2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateSpeechToSpeechRequest), TypeInfoPropertyName = "CreateSpeechToSpeechRequest2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.Media), TypeInfoPropertyName = "Media2")]
@@ -436,10 +760,13 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateSpeechToSpeechRequestDiscriminatorModel), TypeInfoPropertyName = "CreateSpeechToSpeechRequestDiscriminatorModel2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToSpeechRequest), TypeInfoPropertyName = "CreateTextToSpeechRequest2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToSpeechRequestSeedAudio))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToSpeechRequestSeedAudioVoiceSeedReferenceVoice))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToSpeechRequestSeedAudioVoiceDiscriminator))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToSpeechRequestSeedAudioVoiceDiscriminatorType), TypeInfoPropertyName = "CreateTextToSpeechRequestSeedAudioVoiceDiscriminatorType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToSpeechRequestSeedAudioVoice))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToSpeechRequestSeedAudioOutputFormat), TypeInfoPropertyName = "CreateTextToSpeechRequestSeedAudioOutputFormat2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToSpeechRequestElevenV4))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToSpeechRequestElevenV4VoiceRunwayPresetVoice))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToSpeechRequestElevenV4VoiceRunwayPresetVoicePresetId), TypeInfoPropertyName = "CreateTextToSpeechRequestElevenV4VoiceRunwayPresetVoicePresetId2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToSpeechRequestElevenV4VoiceDiscriminator))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToSpeechRequestElevenV4VoiceDiscriminatorType), TypeInfoPropertyName = "CreateTextToSpeechRequestElevenV4VoiceDiscriminatorType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToSpeechRequestElevenMultilingualV2))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToSpeechRequestElevenMultilingualV2VoiceRunwayPresetVoice))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToSpeechRequestElevenMultilingualV2VoiceRunwayPresetVoicePresetId), TypeInfoPropertyName = "CreateTextToSpeechRequestElevenMultilingualV2VoiceRunwayPresetVoicePresetId2")]
@@ -511,16 +838,6 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRecipesAdLocalizationRequestTargetLanguage), TypeInfoPropertyName = "CreateRecipesAdLocalizationRequestTargetLanguage2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRecipesMarketingStockImageRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRecipesMarketingStockImageRequestVersion), TypeInfoPropertyName = "CreateRecipesMarketingStockImageRequestVersion2")]
-    internal sealed partial class SourceGenerationContextChunk0 : global::System.Text.Json.Serialization.JsonSerializerContext
-    {
-    }
-
-    /// <summary>
-    ///
-    /// </summary>
-    [global::System.Text.Json.Serialization.JsonSourceGenerationOptions(
-        DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
-    )]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRecipesMarketingStockImageRequestReferenceImage))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRecipesMarketingStockImageRequestQuality), TypeInfoPropertyName = "CreateRecipesMarketingStockImageRequestQuality2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRecipesProductAdRequest))]
@@ -704,6 +1021,16 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.GetAvatarConversationsResponseVariant3TranscriptItemToolResult>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetAvatarConversationsResponseVariant3TranscriptItemToolResult))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.GetAvatarConversationsResponseVariant3Tool>))]
+    internal sealed partial class SourceGenerationContextChunk1 : global::System.Text.Json.Serialization.JsonSerializerContext
+    {
+    }
+
+    /// <summary>
+    ///
+    /// </summary>
+    [global::System.Text.Json.Serialization.JsonSourceGenerationOptions(
+        DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
+    )]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetAvatarConversationsResponseVariant3Tool))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetAvatarConversationsResponseVariant3ToolType), TypeInfoPropertyName = "GetAvatarConversationsResponseVariant3ToolType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetAvatarConversationsResponseDiscriminator))]
@@ -818,12 +1145,6 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateVideoToVideoResponseIssue>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoResponseIssue))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoResponse3))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToHdrResponse))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToHdrResponseEstimatedCost))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToHdrResponse2))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateVideoToHdrResponseIssue>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToHdrResponseIssue))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToHdrResponse3))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageResponseEstimatedCost))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageResponse2))]
@@ -842,6 +1163,12 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateVideoUpscaleResponseIssue>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoUpscaleResponseIssue))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoUpscaleResponse3))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToHdrResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToHdrResponseEstimatedCost))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToHdrResponse2))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateVideoToHdrResponseIssue>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToHdrResponseIssue))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToHdrResponse3))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateCharacterPerformanceResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateCharacterPerformanceResponseEstimatedCost))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateCharacterPerformanceResponse2))]
@@ -854,6 +1181,12 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateSoundEffectResponseIssue>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateSoundEffectResponseIssue))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateSoundEffectResponse3))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToAudioResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToAudioResponseEstimatedCost))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToAudioResponse2))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.CreateVideoToAudioResponseIssue>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToAudioResponseIssue))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToAudioResponse3))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateSpeechToSpeechResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateSpeechToSpeechResponseEstimatedCost))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateSpeechToSpeechResponse2))]
@@ -942,6 +1275,8 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetOrganizationWebappAuditLogsResponse2))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetOrganizationWebappAuditLogsResponseAction), TypeInfoPropertyName = "GetOrganizationWebappAuditLogsResponseAction2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetOrganizationWebappAuditLogsResponseMetadata))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string, double?, bool?, global::System.Collections.Generic.Dictionary<string, bool>>), TypeInfoPropertyName = "AnyOfStringDoubleBooleanDictionaryStringBoolean2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.Dictionary<string, bool>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetOrganizationWebappAuditLogsResponse3))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetOrganizationResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetOrganizationResponseTier))]
@@ -1021,16 +1356,6 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRoutersResponseSettingsModelsMode), TypeInfoPropertyName = "CreateRoutersResponseSettingsModelsMode2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRoutersResponseSettingsMaxCreditsPerGeneration))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRoutersResponseSettingsOptimizeFor), TypeInfoPropertyName = "CreateRoutersResponseSettingsOptimizeFor2")]
-    internal sealed partial class SourceGenerationContextChunk1 : global::System.Text.Json.Serialization.JsonSerializerContext
-    {
-    }
-
-    /// <summary>
-    ///
-    /// </summary>
-    [global::System.Text.Json.Serialization.JsonSourceGenerationOptions(
-        DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
-    )]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRoutersResponseSettingsFallback))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetRoutersResponse2))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetRoutersResponseSettings))]
@@ -1105,9 +1430,11 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationFailed))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.Dictionary<string, global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationFailedNodeErrors2>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationFailedNodeErrors2))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationFailedCost))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationSucceeded))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.Dictionary<string, global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationSucceededNodeErrors2>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationSucceededNodeErrors2))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationSucceededCost))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetWorkflowInvocationsResponseDiscriminator))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetWorkflowInvocationsResponseDiscriminatorStatus), TypeInfoPropertyName = "GetWorkflowInvocationsResponseDiscriminatorStatus2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetWorkflowInvocationsResponse2))]
@@ -1128,22 +1455,24 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceRunwayPresetVoicePresetId?), TypeInfoPropertyName = "NullableCreateAvatarVideosRequestSpeechTextInputVoiceRunwayPresetVoicePresetId2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceDiscriminatorType?), TypeInfoPropertyName = "NullableCreateAvatarVideosRequestSpeechTextInputVoiceDiscriminatorType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateAvatarVideosRequestSpeechDiscriminatorType?), TypeInfoPropertyName = "NullableCreateAvatarVideosRequestSpeechDiscriminatorType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequest?), TypeInfoPropertyName = "NullableCreateRealtimeSessionsRequest2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.Avatar2?), TypeInfoPropertyName = "NullableAvatar22")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestAvatarRunwayPresetAvatarPresetId?), TypeInfoPropertyName = "NullableCreateRealtimeSessionsRequestAvatarRunwayPresetAvatarPresetId2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestAvatarDiscriminatorType?), TypeInfoPropertyName = "NullableCreateRealtimeSessionsRequestAvatarDiscriminatorType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsAvatarRunwayPresetAvatarPresetId?), TypeInfoPropertyName = "NullableCreateRealtimeSessionsRequestGwm1AvatarsAvatarRunwayPresetAvatarPresetId2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsAvatarDiscriminatorType?), TypeInfoPropertyName = "NullableCreateRealtimeSessionsRequestGwm1AvatarsAvatarDiscriminatorType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(int?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.ToolsItem?), TypeInfoPropertyName = "NullableToolsItem2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.ParametersItem?), TypeInfoPropertyName = "NullableParametersItem2_3")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(bool?))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterArrayParameterItemsType?), TypeInfoPropertyName = "NullableCreateRealtimeSessionsRequestToolClientEventToolParameterArrayParameterItemsType2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterDiscriminatorType?), TypeInfoPropertyName = "NullableCreateRealtimeSessionsRequestToolClientEventToolParameterDiscriminatorType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolClientEventToolParameterArrayParameterItemsType?), TypeInfoPropertyName = "NullableCreateRealtimeSessionsRequestGwm1AvatarsToolClientEventToolParameterArrayParameterItemsType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolClientEventToolParameterDiscriminatorType?), TypeInfoPropertyName = "NullableCreateRealtimeSessionsRequestGwm1AvatarsToolClientEventToolParameterDiscriminatorType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.ParametersItem2?), TypeInfoPropertyName = "NullableParametersItem22")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterArrayParameterItemsType?), TypeInfoPropertyName = "NullableCreateRealtimeSessionsRequestToolBackendRPCToolParameterArrayParameterItemsType2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterDiscriminatorType?), TypeInfoPropertyName = "NullableCreateRealtimeSessionsRequestToolBackendRPCToolParameterDiscriminatorType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterArrayParameterItemsType?), TypeInfoPropertyName = "NullableCreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterArrayParameterItemsType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterDiscriminatorType?), TypeInfoPropertyName = "NullableCreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterDiscriminatorType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(double?))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestToolDiscriminatorType?), TypeInfoPropertyName = "NullableCreateRealtimeSessionsRequestToolDiscriminatorType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolDiscriminatorType?), TypeInfoPropertyName = "NullableCreateRealtimeSessionsRequestGwm1AvatarsToolDiscriminatorType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.Integration?), TypeInfoPropertyName = "NullableIntegration2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestIntegrationDiscriminatorType?), TypeInfoPropertyName = "NullableCreateRealtimeSessionsRequestIntegrationDiscriminatorType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsIntegrationDiscriminatorType?), TypeInfoPropertyName = "NullableCreateRealtimeSessionsRequestGwm1AvatarsIntegrationDiscriminatorType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateRealtimeSessionsRequestDiscriminatorModel?), TypeInfoPropertyName = "NullableCreateRealtimeSessionsRequestDiscriminatorModel2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequest?), TypeInfoPropertyName = "NullableCreateImageToVideoRequest2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestGen45PromptImagePromptImage>>?), TypeInfoPropertyName = "NullableAnyOfStringIListCreateImageToVideoRequestGen45PromptImagePromptImage2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestGen45Ratio?), TypeInfoPropertyName = "NullableCreateImageToVideoRequestGen45Ratio2")]
@@ -1159,28 +1488,88 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestVeo31FastPromptImagePromptImage>>?), TypeInfoPropertyName = "NullableAnyOfStringIListCreateImageToVideoRequestVeo31FastPromptImagePromptImage2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestVeo31FastPromptImagePromptImagePosition?), TypeInfoPropertyName = "NullableCreateImageToVideoRequestVeo31FastPromptImagePromptImagePosition2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestVeo31FastRatio?), TypeInfoPropertyName = "NullableCreateImageToVideoRequestVeo31FastRatio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKlingO34kProviderSettingsShotType?), TypeInfoPropertyName = "NullableCreateImageToVideoRequestKlingO34kProviderSettingsShotType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestKlingO34kPromptImagePromptImage>>?), TypeInfoPropertyName = "NullableAnyOfStringIListCreateImageToVideoRequestKlingO34kPromptImagePromptImage2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKlingO34kPromptImagePromptImagePosition?), TypeInfoPropertyName = "NullableCreateImageToVideoRequestKlingO34kPromptImagePromptImagePosition2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKlingO34kRatio?), TypeInfoPropertyName = "NullableCreateImageToVideoRequestKlingO34kRatio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestKlingO34kReferencesReferenceImage>>?), TypeInfoPropertyName = "NullableAnyOfStringIListCreateImageToVideoRequestKlingO34kReferencesReferenceImage2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKlingO34kReferencesReferenceImagePosition?), TypeInfoPropertyName = "NullableCreateImageToVideoRequestKlingO34kReferencesReferenceImagePosition2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<object>>?), TypeInfoPropertyName = "NullableAnyOfStringIListObject2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestHailuo3Resolution?), TypeInfoPropertyName = "NullableCreateImageToVideoRequestHailuo3Resolution2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestHailuo3Ratio?), TypeInfoPropertyName = "NullableCreateImageToVideoRequestHailuo3Ratio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKling304kProviderSettingsShotType?), TypeInfoPropertyName = "NullableCreateImageToVideoRequestKling304kProviderSettingsShotType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestKling304kPromptImagePromptImage>>?), TypeInfoPropertyName = "NullableAnyOfStringIListCreateImageToVideoRequestKling304kPromptImagePromptImage2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKling304kPromptImagePromptImagePosition?), TypeInfoPropertyName = "NullableCreateImageToVideoRequestKling304kPromptImagePromptImagePosition2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKling304kRatio?), TypeInfoPropertyName = "NullableCreateImageToVideoRequestKling304kRatio2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestHappyhorse10PromptImagePromptImage>>?), TypeInfoPropertyName = "NullableAnyOfStringIListCreateImageToVideoRequestHappyhorse10PromptImagePromptImage2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestHappyhorse10Resolution?), TypeInfoPropertyName = "NullableCreateImageToVideoRequestHappyhorse10Resolution2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestKling25TurboProPromptImagePromptImage>>?), TypeInfoPropertyName = "NullableAnyOfStringIListCreateImageToVideoRequestKling25TurboProPromptImagePromptImage2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKling25TurboProPromptImagePromptImagePosition?), TypeInfoPropertyName = "NullableCreateImageToVideoRequestKling25TurboProPromptImagePromptImagePosition2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKling30ProProviderSettingsShotType?), TypeInfoPropertyName = "NullableCreateImageToVideoRequestKling30ProProviderSettingsShotType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestKling30ProPromptImagePromptImage>>?), TypeInfoPropertyName = "NullableAnyOfStringIListCreateImageToVideoRequestKling30ProPromptImagePromptImage2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKling30ProPromptImagePromptImagePosition?), TypeInfoPropertyName = "NullableCreateImageToVideoRequestKling30ProPromptImagePromptImagePosition2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKling30ProRatio?), TypeInfoPropertyName = "NullableCreateImageToVideoRequestKling30ProRatio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKling30StandardProviderSettingsShotType?), TypeInfoPropertyName = "NullableCreateImageToVideoRequestKling30StandardProviderSettingsShotType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestKling30StandardPromptImagePromptImage>>?), TypeInfoPropertyName = "NullableAnyOfStringIListCreateImageToVideoRequestKling30StandardPromptImagePromptImage2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKling30StandardPromptImagePromptImagePosition?), TypeInfoPropertyName = "NullableCreateImageToVideoRequestKling30StandardPromptImagePromptImagePosition2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKling30StandardRatio?), TypeInfoPropertyName = "NullableCreateImageToVideoRequestKling30StandardRatio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKlingO3ProProviderSettingsShotType?), TypeInfoPropertyName = "NullableCreateImageToVideoRequestKlingO3ProProviderSettingsShotType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestKlingO3ProPromptImagePromptImage>>?), TypeInfoPropertyName = "NullableAnyOfStringIListCreateImageToVideoRequestKlingO3ProPromptImagePromptImage2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKlingO3ProPromptImagePromptImagePosition?), TypeInfoPropertyName = "NullableCreateImageToVideoRequestKlingO3ProPromptImagePromptImagePosition2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKlingO3ProRatio?), TypeInfoPropertyName = "NullableCreateImageToVideoRequestKlingO3ProRatio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestKlingO3ProReferencesReferenceImage>>?), TypeInfoPropertyName = "NullableAnyOfStringIListCreateImageToVideoRequestKlingO3ProReferencesReferenceImage2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKlingO3ProReferencesReferenceImagePosition?), TypeInfoPropertyName = "NullableCreateImageToVideoRequestKlingO3ProReferencesReferenceImagePosition2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKlingO3StandardProviderSettingsShotType?), TypeInfoPropertyName = "NullableCreateImageToVideoRequestKlingO3StandardProviderSettingsShotType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestKlingO3StandardPromptImagePromptImage>>?), TypeInfoPropertyName = "NullableAnyOfStringIListCreateImageToVideoRequestKlingO3StandardPromptImagePromptImage2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKlingO3StandardPromptImagePromptImagePosition?), TypeInfoPropertyName = "NullableCreateImageToVideoRequestKlingO3StandardPromptImagePromptImagePosition2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKlingO3StandardRatio?), TypeInfoPropertyName = "NullableCreateImageToVideoRequestKlingO3StandardRatio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestKlingO3StandardReferencesReferenceImage>>?), TypeInfoPropertyName = "NullableAnyOfStringIListCreateImageToVideoRequestKlingO3StandardReferencesReferenceImage2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKlingO3StandardReferencesReferenceImagePosition?), TypeInfoPropertyName = "NullableCreateImageToVideoRequestKlingO3StandardReferencesReferenceImagePosition2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestSeedance2PromptImagePromptImage>>?), TypeInfoPropertyName = "NullableAnyOfStringIListCreateImageToVideoRequestSeedance2PromptImagePromptImage2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestSeedance2PromptImagePromptImagePosition?), TypeInfoPropertyName = "NullableCreateImageToVideoRequestSeedance2PromptImagePromptImagePosition2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<int?, string>?), TypeInfoPropertyName = "NullableAnyOfInt32String2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestSeedance2Ratio?), TypeInfoPropertyName = "NullableCreateImageToVideoRequestSeedance2Ratio2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestSeedance2FastPromptImagePromptImage>>?), TypeInfoPropertyName = "NullableAnyOfStringIListCreateImageToVideoRequestSeedance2FastPromptImagePromptImage2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestSeedance2FastPromptImagePromptImagePosition?), TypeInfoPropertyName = "NullableCreateImageToVideoRequestSeedance2FastPromptImagePromptImagePosition2")]
+    internal sealed partial class SourceGenerationContextChunk2 : global::System.Text.Json.Serialization.JsonSerializerContext
+    {
+    }
+
+    /// <summary>
+    ///
+    /// </summary>
+    [global::System.Text.Json.Serialization.JsonSourceGenerationOptions(
+        DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
+    )]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestSeedance2FastRatio?), TypeInfoPropertyName = "NullableCreateImageToVideoRequestSeedance2FastRatio2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestSeedance2MiniPromptImagePromptImage>>?), TypeInfoPropertyName = "NullableAnyOfStringIListCreateImageToVideoRequestSeedance2MiniPromptImagePromptImage2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestSeedance2MiniPromptImagePromptImagePosition?), TypeInfoPropertyName = "NullableCreateImageToVideoRequestSeedance2MiniPromptImagePromptImagePosition2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestSeedance2MiniRatio?), TypeInfoPropertyName = "NullableCreateImageToVideoRequestSeedance2MiniRatio2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestGeminiOmniFlashPromptImagePromptImage>>?), TypeInfoPropertyName = "NullableAnyOfStringIListCreateImageToVideoRequestGeminiOmniFlashPromptImagePromptImage2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestGeminiOmniFlashRatio?), TypeInfoPropertyName = "NullableCreateImageToVideoRequestGeminiOmniFlashRatio2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestSeedance25PromptImagePromptImage>>?), TypeInfoPropertyName = "NullableAnyOfStringIListCreateImageToVideoRequestSeedance25PromptImagePromptImage2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestSeedance25PromptImagePromptImagePosition?), TypeInfoPropertyName = "NullableCreateImageToVideoRequestSeedance25PromptImagePromptImagePosition2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestSeedance25Ratio?), TypeInfoPropertyName = "NullableCreateImageToVideoRequestSeedance25Ratio2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestGrokImagine15PromptImagePromptImage>>?), TypeInfoPropertyName = "NullableAnyOfStringIListCreateImageToVideoRequestGrokImagine15PromptImagePromptImage2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestGrokImagine15Resolution?), TypeInfoPropertyName = "NullableCreateImageToVideoRequestGrokImagine15Resolution2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestWan3Ratio?), TypeInfoPropertyName = "NullableCreateImageToVideoRequestWan3Ratio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestGeminiOmniFlash11PromptImagePromptImage>>?), TypeInfoPropertyName = "NullableAnyOfStringIListCreateImageToVideoRequestGeminiOmniFlash11PromptImagePromptImage2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestGeminiOmniFlash11PromptImagePromptImagePosition?), TypeInfoPropertyName = "NullableCreateImageToVideoRequestGeminiOmniFlash11PromptImagePromptImagePosition2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestGeminiOmniFlash11Ratio?), TypeInfoPropertyName = "NullableCreateImageToVideoRequestGeminiOmniFlash11Ratio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string, int?>?), TypeInfoPropertyName = "NullableAnyOfStringInt322")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestWan3PrimeRatio?), TypeInfoPropertyName = "NullableCreateImageToVideoRequestWan3PrimeRatio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestH3MaxPromptImagePromptImage>>?), TypeInfoPropertyName = "NullableAnyOfStringIListCreateImageToVideoRequestH3MaxPromptImagePromptImage2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestH3MaxPromptImagePromptImagePosition?), TypeInfoPropertyName = "NullableCreateImageToVideoRequestH3MaxPromptImagePromptImagePosition2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestH3MaxResolution?), TypeInfoPropertyName = "NullableCreateImageToVideoRequestH3MaxResolution2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestH3MaxPromptExpansionMode?), TypeInfoPropertyName = "NullableCreateImageToVideoRequestH3MaxPromptExpansionMode2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestSeedance25PromptImagePromptImage>>?), TypeInfoPropertyName = "NullableAnyOfStringIListCreateImageToVideoRequestSeedance25PromptImagePromptImage2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestSeedance25PromptImagePromptImagePosition?), TypeInfoPropertyName = "NullableCreateImageToVideoRequestSeedance25PromptImagePromptImagePosition2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestSeedance25OutputFormat?), TypeInfoPropertyName = "NullableCreateImageToVideoRequestSeedance25OutputFormat2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestSeedance25Ratio?), TypeInfoPropertyName = "NullableCreateImageToVideoRequestSeedance25Ratio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestGrokImagine15LitePromptImagePromptImage>>?), TypeInfoPropertyName = "NullableAnyOfStringIListCreateImageToVideoRequestGrokImagine15LitePromptImagePromptImage2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestGrokImagine15LiteRatio?), TypeInfoPropertyName = "NullableCreateImageToVideoRequestGrokImagine15LiteRatio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKling4Ratio?), TypeInfoPropertyName = "NullableCreateImageToVideoRequestKling4Ratio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestKling4FlashRatio?), TypeInfoPropertyName = "NullableCreateImageToVideoRequestKling4FlashRatio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestGeminiOmniFlash12PromptImagePromptImage>>?), TypeInfoPropertyName = "NullableAnyOfStringIListCreateImageToVideoRequestGeminiOmniFlash12PromptImagePromptImage2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestGeminiOmniFlash12PromptImagePromptImagePosition?), TypeInfoPropertyName = "NullableCreateImageToVideoRequestGeminiOmniFlash12PromptImagePromptImagePosition2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestGeminiOmniFlash12Ratio?), TypeInfoPropertyName = "NullableCreateImageToVideoRequestGeminiOmniFlash12Ratio2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageToVideoRequestDiscriminatorModel?), TypeInfoPropertyName = "NullableCreateImageToVideoRequestDiscriminatorModel2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequest?), TypeInfoPropertyName = "NullableCreateTextToVideoRequest2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestGen45Ratio?), TypeInfoPropertyName = "NullableCreateTextToVideoRequestGen45Ratio2")]
@@ -1189,17 +1578,39 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestGen45ProresProfile?), TypeInfoPropertyName = "NullableCreateTextToVideoRequestGen45ProresProfile2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestVeo31Ratio?), TypeInfoPropertyName = "NullableCreateTextToVideoRequestVeo31Ratio2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestVeo31FastRatio?), TypeInfoPropertyName = "NullableCreateTextToVideoRequestVeo31FastRatio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestKlingO34kProviderSettingsShotType?), TypeInfoPropertyName = "NullableCreateTextToVideoRequestKlingO34kProviderSettingsShotType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestKlingO34kRatio?), TypeInfoPropertyName = "NullableCreateTextToVideoRequestKlingO34kRatio2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestHailuo3Resolution?), TypeInfoPropertyName = "NullableCreateTextToVideoRequestHailuo3Resolution2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestHailuo3Ratio?), TypeInfoPropertyName = "NullableCreateTextToVideoRequestHailuo3Ratio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestKling304kProviderSettingsShotType?), TypeInfoPropertyName = "NullableCreateTextToVideoRequestKling304kProviderSettingsShotType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestKling304kRatio?), TypeInfoPropertyName = "NullableCreateTextToVideoRequestKling304kRatio2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestHappyhorse10Ratio?), TypeInfoPropertyName = "NullableCreateTextToVideoRequestHappyhorse10Ratio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestKling25TurboProRatio?), TypeInfoPropertyName = "NullableCreateTextToVideoRequestKling25TurboProRatio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestKling30ProProviderSettingsShotType?), TypeInfoPropertyName = "NullableCreateTextToVideoRequestKling30ProProviderSettingsShotType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestKling30ProRatio?), TypeInfoPropertyName = "NullableCreateTextToVideoRequestKling30ProRatio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestKling30StandardProviderSettingsShotType?), TypeInfoPropertyName = "NullableCreateTextToVideoRequestKling30StandardProviderSettingsShotType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestKling30StandardRatio?), TypeInfoPropertyName = "NullableCreateTextToVideoRequestKling30StandardRatio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestKlingO3ProProviderSettingsShotType?), TypeInfoPropertyName = "NullableCreateTextToVideoRequestKlingO3ProProviderSettingsShotType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestKlingO3ProRatio?), TypeInfoPropertyName = "NullableCreateTextToVideoRequestKlingO3ProRatio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestKlingO3StandardProviderSettingsShotType?), TypeInfoPropertyName = "NullableCreateTextToVideoRequestKlingO3StandardProviderSettingsShotType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestKlingO3StandardRatio?), TypeInfoPropertyName = "NullableCreateTextToVideoRequestKlingO3StandardRatio2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestSeedance2Ratio?), TypeInfoPropertyName = "NullableCreateTextToVideoRequestSeedance2Ratio2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestSeedance2FastRatio?), TypeInfoPropertyName = "NullableCreateTextToVideoRequestSeedance2FastRatio2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestSeedance2MiniRatio?), TypeInfoPropertyName = "NullableCreateTextToVideoRequestSeedance2MiniRatio2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestGeminiOmniFlashRatio?), TypeInfoPropertyName = "NullableCreateTextToVideoRequestGeminiOmniFlashRatio2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestSeedance25Ratio?), TypeInfoPropertyName = "NullableCreateTextToVideoRequestSeedance25Ratio2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestGrokImagine15Resolution?), TypeInfoPropertyName = "NullableCreateTextToVideoRequestGrokImagine15Resolution2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestGrokImagine15Ratio?), TypeInfoPropertyName = "NullableCreateTextToVideoRequestGrokImagine15Ratio2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestWan3Ratio?), TypeInfoPropertyName = "NullableCreateTextToVideoRequestWan3Ratio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestGeminiOmniFlash11Ratio?), TypeInfoPropertyName = "NullableCreateTextToVideoRequestGeminiOmniFlash11Ratio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestWan3PrimeRatio?), TypeInfoPropertyName = "NullableCreateTextToVideoRequestWan3PrimeRatio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestH3MaxResolution?), TypeInfoPropertyName = "NullableCreateTextToVideoRequestH3MaxResolution2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestH3MaxPromptExpansionMode?), TypeInfoPropertyName = "NullableCreateTextToVideoRequestH3MaxPromptExpansionMode2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestSeedance25OutputFormat?), TypeInfoPropertyName = "NullableCreateTextToVideoRequestSeedance25OutputFormat2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestSeedance25Ratio?), TypeInfoPropertyName = "NullableCreateTextToVideoRequestSeedance25Ratio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestGrokImagine15LiteRatio?), TypeInfoPropertyName = "NullableCreateTextToVideoRequestGrokImagine15LiteRatio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestKling4Ratio?), TypeInfoPropertyName = "NullableCreateTextToVideoRequestKling4Ratio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestKling4FlashRatio?), TypeInfoPropertyName = "NullableCreateTextToVideoRequestKling4FlashRatio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestGeminiOmniFlash12Ratio?), TypeInfoPropertyName = "NullableCreateTextToVideoRequestGeminiOmniFlash12Ratio2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToVideoRequestDiscriminatorModel?), TypeInfoPropertyName = "NullableCreateTextToVideoRequestDiscriminatorModel2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequest?), TypeInfoPropertyName = "NullableCreateVideoToVideoRequest2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<global::Runway.CreateVideoToVideoRequestVariant1KeyframeVariant1, global::Runway.CreateVideoToVideoRequestVariant1KeyframeVariant2>?), TypeInfoPropertyName = "NullableAnyOfCreateVideoToVideoRequestVariant1KeyframeVariant1CreateVideoToVideoRequestVariant1KeyframeVariant22")]
@@ -1207,18 +1618,30 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestVariant1ContentModerationPublicFigureThreshold?), TypeInfoPropertyName = "NullableCreateVideoToVideoRequestVariant1ContentModerationPublicFigureThreshold2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestVariant1OutputFormat?), TypeInfoPropertyName = "NullableCreateVideoToVideoRequestVariant1OutputFormat2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestVariant1ProresProfile?), TypeInfoPropertyName = "NullableCreateVideoToVideoRequestVariant1ProresProfile2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestKlingO34kProviderSettingsShotType?), TypeInfoPropertyName = "NullableCreateVideoToVideoRequestKlingO34kProviderSettingsShotType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<global::Runway.CreateVideoToVideoRequestKlingO34kReferencesPromptImage>>?), TypeInfoPropertyName = "NullableAnyOfStringIListCreateVideoToVideoRequestKlingO34kReferencesPromptImage2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestKlingO34kReferencesPromptImagePosition?), TypeInfoPropertyName = "NullableCreateVideoToVideoRequestKlingO34kReferencesPromptImagePosition2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestHailuo3Resolution?), TypeInfoPropertyName = "NullableCreateVideoToVideoRequestHailuo3Resolution2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestHailuo3Ratio?), TypeInfoPropertyName = "NullableCreateVideoToVideoRequestHailuo3Ratio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestKlingO3ProProviderSettingsShotType?), TypeInfoPropertyName = "NullableCreateVideoToVideoRequestKlingO3ProProviderSettingsShotType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<global::Runway.CreateVideoToVideoRequestKlingO3ProReferencesPromptImage>>?), TypeInfoPropertyName = "NullableAnyOfStringIListCreateVideoToVideoRequestKlingO3ProReferencesPromptImage2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestKlingO3ProReferencesPromptImagePosition?), TypeInfoPropertyName = "NullableCreateVideoToVideoRequestKlingO3ProReferencesPromptImagePosition2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestKlingO3StandardProviderSettingsShotType?), TypeInfoPropertyName = "NullableCreateVideoToVideoRequestKlingO3StandardProviderSettingsShotType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<global::Runway.CreateVideoToVideoRequestKlingO3StandardReferencesPromptImage>>?), TypeInfoPropertyName = "NullableAnyOfStringIListCreateVideoToVideoRequestKlingO3StandardReferencesPromptImage2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestKlingO3StandardReferencesPromptImagePosition?), TypeInfoPropertyName = "NullableCreateVideoToVideoRequestKlingO3StandardReferencesPromptImagePosition2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestSeedance2Ratio?), TypeInfoPropertyName = "NullableCreateVideoToVideoRequestSeedance2Ratio2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestSeedance2FastRatio?), TypeInfoPropertyName = "NullableCreateVideoToVideoRequestSeedance2FastRatio2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestSeedance2MiniRatio?), TypeInfoPropertyName = "NullableCreateVideoToVideoRequestSeedance2MiniRatio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestGeminiOmniFlash11Mode?), TypeInfoPropertyName = "NullableCreateVideoToVideoRequestGeminiOmniFlash11Mode2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestGeminiOmniFlash11Ratio?), TypeInfoPropertyName = "NullableCreateVideoToVideoRequestGeminiOmniFlash11Ratio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestSeedance25OutputFormat?), TypeInfoPropertyName = "NullableCreateVideoToVideoRequestSeedance25OutputFormat2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestSeedance25Mode?), TypeInfoPropertyName = "NullableCreateVideoToVideoRequestSeedance25Mode2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestSeedance25Ratio?), TypeInfoPropertyName = "NullableCreateVideoToVideoRequestSeedance25Ratio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestKling4Ratio?), TypeInfoPropertyName = "NullableCreateVideoToVideoRequestKling4Ratio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestKling4FlashRatio?), TypeInfoPropertyName = "NullableCreateVideoToVideoRequestKling4FlashRatio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestGeminiOmniFlash12Mode?), TypeInfoPropertyName = "NullableCreateVideoToVideoRequestGeminiOmniFlash12Mode2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestGeminiOmniFlash12Ratio?), TypeInfoPropertyName = "NullableCreateVideoToVideoRequestGeminiOmniFlash12Ratio2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToVideoRequestDiscriminatorModel?), TypeInfoPropertyName = "NullableCreateVideoToVideoRequestDiscriminatorModel2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToHdrRequest?), TypeInfoPropertyName = "NullableCreateVideoToHdrRequest2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToHdrRequestRubyOutputFormat?), TypeInfoPropertyName = "NullableCreateVideoToHdrRequestRubyOutputFormat2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToHdrRequestRubyProresProfile?), TypeInfoPropertyName = "NullableCreateVideoToHdrRequestRubyProresProfile2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToHdrRequestDiscriminatorModel?), TypeInfoPropertyName = "NullableCreateVideoToHdrRequestDiscriminatorModel2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequest?), TypeInfoPropertyName = "NullableCreateTextToImageRequest2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGen4ImageTurboRatio?), TypeInfoPropertyName = "NullableCreateTextToImageRequestGen4ImageTurboRatio2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGen4ImageTurboContentModerationPublicFigureThreshold?), TypeInfoPropertyName = "NullableCreateTextToImageRequestGen4ImageTurboContentModerationPublicFigureThreshold2")]
@@ -1227,18 +1650,51 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGptImage2Ratio?), TypeInfoPropertyName = "NullableCreateTextToImageRequestGptImage2Ratio2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGptImage2Quality?), TypeInfoPropertyName = "NullableCreateTextToImageRequestGptImage2Quality2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGptImage2Background?), TypeInfoPropertyName = "NullableCreateTextToImageRequestGptImage2Background2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGeminiImage3ProRatio?), TypeInfoPropertyName = "NullableCreateTextToImageRequestGeminiImage3ProRatio2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGeminiImage3ProReferenceImageSubject?), TypeInfoPropertyName = "NullableCreateTextToImageRequestGeminiImage3ProReferenceImageSubject2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGeminiImage31FlashRatio?), TypeInfoPropertyName = "NullableCreateTextToImageRequestGeminiImage31FlashRatio2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGeminiImage31FlashReferenceImageSubject?), TypeInfoPropertyName = "NullableCreateTextToImageRequestGeminiImage31FlashReferenceImageSubject2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestMuseImageRatio?), TypeInfoPropertyName = "NullableCreateTextToImageRequestMuseImageRatio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestMuseImageOutputFormat?), TypeInfoPropertyName = "NullableCreateTextToImageRequestMuseImageOutputFormat2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestSeedream5ProRatio?), TypeInfoPropertyName = "NullableCreateTextToImageRequestSeedream5ProRatio2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestSeedream5ProOutputFormat?), TypeInfoPropertyName = "NullableCreateTextToImageRequestSeedream5ProOutputFormat2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<global::Runway.CreateTextToImageRequestSeedream5LiteRatio?, string>?), TypeInfoPropertyName = "NullableAnyOfCreateTextToImageRequestSeedream5LiteRatioString2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestSeedream5LiteRatio?), TypeInfoPropertyName = "NullableCreateTextToImageRequestSeedream5LiteRatio2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestSeedream5LiteOutputFormat?), TypeInfoPropertyName = "NullableCreateTextToImageRequestSeedream5LiteOutputFormat2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGrokImagineImage2Ratio?), TypeInfoPropertyName = "NullableCreateTextToImageRequestGrokImagineImage2Ratio2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGrokImagineImage2Quality?), TypeInfoPropertyName = "NullableCreateTextToImageRequestGrokImagineImage2Quality2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGeminiImage31FlashLiteRatio?), TypeInfoPropertyName = "NullableCreateTextToImageRequestGeminiImage31FlashLiteRatio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGeminiImage31FlashLiteReferenceImageSubject?), TypeInfoPropertyName = "NullableCreateTextToImageRequestGeminiImage31FlashLiteReferenceImageSubject2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGeminiImage3ProRatio?), TypeInfoPropertyName = "NullableCreateTextToImageRequestGeminiImage3ProRatio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGeminiImage3ProReferenceImageSubject?), TypeInfoPropertyName = "NullableCreateTextToImageRequestGeminiImage3ProReferenceImageSubject2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGptImage25FlareRatio?), TypeInfoPropertyName = "NullableCreateTextToImageRequestGptImage25FlareRatio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGptImage25FlareQuality?), TypeInfoPropertyName = "NullableCreateTextToImageRequestGptImage25FlareQuality2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGptImage25FlareBackground?), TypeInfoPropertyName = "NullableCreateTextToImageRequestGptImage25FlareBackground2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGptImage25SunburstRatio?), TypeInfoPropertyName = "NullableCreateTextToImageRequestGptImage25SunburstRatio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGptImage25SunburstQuality?), TypeInfoPropertyName = "NullableCreateTextToImageRequestGptImage25SunburstQuality2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGptImage25SunburstBackground?), TypeInfoPropertyName = "NullableCreateTextToImageRequestGptImage25SunburstBackground2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestBriaFibo15Ratio?), TypeInfoPropertyName = "NullableCreateTextToImageRequestBriaFibo15Ratio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestBriaFibo15OutputFormat?), TypeInfoPropertyName = "NullableCreateTextToImageRequestBriaFibo15OutputFormat2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestBriaFiboEdit15OutputFormat?), TypeInfoPropertyName = "NullableCreateTextToImageRequestBriaFiboEdit15OutputFormat2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestBriaFiboEdit15Ratio?), TypeInfoPropertyName = "NullableCreateTextToImageRequestBriaFiboEdit15Ratio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestIdeogram40Quality?), TypeInfoPropertyName = "NullableCreateTextToImageRequestIdeogram40Quality2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestIdeogram40Ratio?), TypeInfoPropertyName = "NullableCreateTextToImageRequestIdeogram40Ratio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestIdeogram45Quality?), TypeInfoPropertyName = "NullableCreateTextToImageRequestIdeogram45Quality2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestIdeogram45Ratio?), TypeInfoPropertyName = "NullableCreateTextToImageRequestIdeogram45Ratio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestSeedream5FlashRatio?), TypeInfoPropertyName = "NullableCreateTextToImageRequestSeedream5FlashRatio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestSeedream5FlashOutputFormat?), TypeInfoPropertyName = "NullableCreateTextToImageRequestSeedream5FlashOutputFormat2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestNanoBanana21Ratio?), TypeInfoPropertyName = "NullableCreateTextToImageRequestNanoBanana21Ratio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestNanoBanana21ThinkingLevel?), TypeInfoPropertyName = "NullableCreateTextToImageRequestNanoBanana21ThinkingLevel2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestRecraftV41FlashRatio?), TypeInfoPropertyName = "NullableCreateTextToImageRequestRecraftV41FlashRatio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestRecraftV41FlashOutputFormat?), TypeInfoPropertyName = "NullableCreateTextToImageRequestRecraftV41FlashOutputFormat2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestRecraftV41VectorRatio?), TypeInfoPropertyName = "NullableCreateTextToImageRequestRecraftV41VectorRatio2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGemini25FlashRatio?), TypeInfoPropertyName = "NullableCreateTextToImageRequestGemini25FlashRatio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGptImage26FlareRatio?), TypeInfoPropertyName = "NullableCreateTextToImageRequestGptImage26FlareRatio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGptImage26FlareQuality?), TypeInfoPropertyName = "NullableCreateTextToImageRequestGptImage26FlareQuality2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGptImage26FlareBackground?), TypeInfoPropertyName = "NullableCreateTextToImageRequestGptImage26FlareBackground2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGptImage26FlareReasoningEffort?), TypeInfoPropertyName = "NullableCreateTextToImageRequestGptImage26FlareReasoningEffort2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGptImage26SunburstRatio?), TypeInfoPropertyName = "NullableCreateTextToImageRequestGptImage26SunburstRatio2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGptImage26SunburstQuality?), TypeInfoPropertyName = "NullableCreateTextToImageRequestGptImage26SunburstQuality2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGptImage26SunburstBackground?), TypeInfoPropertyName = "NullableCreateTextToImageRequestGptImage26SunburstBackground2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestGptImage26SunburstReasoningEffort?), TypeInfoPropertyName = "NullableCreateTextToImageRequestGptImage26SunburstReasoningEffort2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToImageRequestDiscriminatorModel?), TypeInfoPropertyName = "NullableCreateTextToImageRequestDiscriminatorModel2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageUpscaleRequest?), TypeInfoPropertyName = "NullableCreateImageUpscaleRequest2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateImageUpscaleRequestMagnificPrecisionUpscalerV2Flavor?), TypeInfoPropertyName = "NullableCreateImageUpscaleRequestMagnificPrecisionUpscalerV2Flavor2")]
@@ -1248,6 +1704,10 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoUpscaleRequestMagnificVideoUpscalerCreativeFlavor?), TypeInfoPropertyName = "NullableCreateVideoUpscaleRequestMagnificVideoUpscalerCreativeFlavor2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoUpscaleRequestEnhanceFrameRateTargetFramerate?), TypeInfoPropertyName = "NullableCreateVideoUpscaleRequestEnhanceFrameRateTargetFramerate2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoUpscaleRequestDiscriminatorModel?), TypeInfoPropertyName = "NullableCreateVideoUpscaleRequestDiscriminatorModel2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToHdrRequest?), TypeInfoPropertyName = "NullableCreateVideoToHdrRequest2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToHdrRequestRubyOutputFormat?), TypeInfoPropertyName = "NullableCreateVideoToHdrRequestRubyOutputFormat2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToHdrRequestRubyProresProfile?), TypeInfoPropertyName = "NullableCreateVideoToHdrRequestRubyProresProfile2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToHdrRequestDiscriminatorModel?), TypeInfoPropertyName = "NullableCreateVideoToHdrRequestDiscriminatorModel2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateCharacterPerformanceRequest?), TypeInfoPropertyName = "NullableCreateCharacterPerformanceRequest2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.Character?), TypeInfoPropertyName = "NullableCharacter2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateCharacterPerformanceRequestActTwoCharacterDiscriminatorType?), TypeInfoPropertyName = "NullableCreateCharacterPerformanceRequestActTwoCharacterDiscriminatorType2")]
@@ -1257,7 +1717,11 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateCharacterPerformanceRequestDiscriminatorModel?), TypeInfoPropertyName = "NullableCreateCharacterPerformanceRequestDiscriminatorModel2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateSoundEffectRequest?), TypeInfoPropertyName = "NullableCreateSoundEffectRequest2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateSoundEffectRequestSeedAudioOutputFormat?), TypeInfoPropertyName = "NullableCreateSoundEffectRequestSeedAudioOutputFormat2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateSoundEffectRequestMireloSfx20Format?), TypeInfoPropertyName = "NullableCreateSoundEffectRequestMireloSfx20Format2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateSoundEffectRequestDiscriminatorModel?), TypeInfoPropertyName = "NullableCreateSoundEffectRequestDiscriminatorModel2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToAudioRequest?), TypeInfoPropertyName = "NullableCreateVideoToAudioRequest2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToAudioRequestMireloSfx20Format?), TypeInfoPropertyName = "NullableCreateVideoToAudioRequestMireloSfx20Format2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateVideoToAudioRequestDiscriminatorModel?), TypeInfoPropertyName = "NullableCreateVideoToAudioRequestDiscriminatorModel2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateSpeechToSpeechRequest?), TypeInfoPropertyName = "NullableCreateSpeechToSpeechRequest2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.Media?), TypeInfoPropertyName = "NullableMedia2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaDiscriminatorType?), TypeInfoPropertyName = "NullableCreateSpeechToSpeechRequestElevenMultilingualStsV2MediaDiscriminatorType2")]
@@ -1265,8 +1729,9 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2VoiceDiscriminatorType?), TypeInfoPropertyName = "NullableCreateSpeechToSpeechRequestElevenMultilingualStsV2VoiceDiscriminatorType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateSpeechToSpeechRequestDiscriminatorModel?), TypeInfoPropertyName = "NullableCreateSpeechToSpeechRequestDiscriminatorModel2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToSpeechRequest?), TypeInfoPropertyName = "NullableCreateTextToSpeechRequest2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToSpeechRequestSeedAudioVoiceDiscriminatorType?), TypeInfoPropertyName = "NullableCreateTextToSpeechRequestSeedAudioVoiceDiscriminatorType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToSpeechRequestSeedAudioOutputFormat?), TypeInfoPropertyName = "NullableCreateTextToSpeechRequestSeedAudioOutputFormat2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToSpeechRequestElevenV4VoiceRunwayPresetVoicePresetId?), TypeInfoPropertyName = "NullableCreateTextToSpeechRequestElevenV4VoiceRunwayPresetVoicePresetId2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToSpeechRequestElevenV4VoiceDiscriminatorType?), TypeInfoPropertyName = "NullableCreateTextToSpeechRequestElevenV4VoiceDiscriminatorType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToSpeechRequestElevenMultilingualV2VoiceRunwayPresetVoicePresetId?), TypeInfoPropertyName = "NullableCreateTextToSpeechRequestElevenMultilingualV2VoiceRunwayPresetVoicePresetId2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToSpeechRequestElevenMultilingualV2VoiceDiscriminatorType?), TypeInfoPropertyName = "NullableCreateTextToSpeechRequestElevenMultilingualV2VoiceDiscriminatorType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateTextToSpeechRequestElevenV3VoiceRunwayPresetVoicePresetId?), TypeInfoPropertyName = "NullableCreateTextToSpeechRequestElevenV3VoiceRunwayPresetVoicePresetId2")]
@@ -1407,6 +1872,7 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetOrganizationWebappUsageResponseDataItemType?), TypeInfoPropertyName = "NullableGetOrganizationWebappUsageResponseDataItemType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetOrganizationWebappAuditLogsResponseDataItemAction?), TypeInfoPropertyName = "NullableGetOrganizationWebappAuditLogsResponseDataItemAction2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetOrganizationWebappAuditLogsResponseAction?), TypeInfoPropertyName = "NullableGetOrganizationWebappAuditLogsResponseAction2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string, double?, bool?, global::System.Collections.Generic.Dictionary<string, bool>>?), TypeInfoPropertyName = "NullableAnyOfStringDoubleBooleanDictionaryStringBoolean2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateOrganizationUsageResponseResultUsedCreditModel?), TypeInfoPropertyName = "NullableCreateOrganizationUsageResponseResultUsedCreditModel2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateOrganizationUsageResponseModel?), TypeInfoPropertyName = "NullableCreateOrganizationUsageResponseModel2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetRoutersResponseDataItemSettingsModelsMode?), TypeInfoPropertyName = "NullableGetRoutersResponseDataItemSettingsModelsMode2")]
@@ -1445,10 +1911,36 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestVeo31PromptImagePromptImage>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestVeo31FastPromptImagePromptImage>>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestVeo31FastPromptImagePromptImage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestKlingO34kProviderSettingsMultiPromptItem>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestKlingO34kPromptImagePromptImage>>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestKlingO34kPromptImagePromptImage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestKlingO34kReferencesReferenceImage>>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestKlingO34kReferencesReferenceImage>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.List<object>>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestHailuo3ReferenceAudioItem>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestKling304kProviderSettingsMultiPromptItem>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestKling304kPromptImagePromptImage>>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestKling304kPromptImagePromptImage>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestHappyhorse10PromptImagePromptImage>>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestHappyhorse10PromptImagePromptImage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestKling25TurboProPromptImagePromptImage>>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestKling25TurboProPromptImagePromptImage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestKling30ProProviderSettingsMultiPromptItem>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestKling30ProPromptImagePromptImage>>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestKling30ProPromptImagePromptImage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestKling30StandardProviderSettingsMultiPromptItem>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestKling30StandardPromptImagePromptImage>>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestKling30StandardPromptImagePromptImage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestKlingO3ProProviderSettingsMultiPromptItem>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestKlingO3ProPromptImagePromptImage>>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestKlingO3ProPromptImagePromptImage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestKlingO3ProReferencesReferenceImage>>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestKlingO3ProReferencesReferenceImage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestKlingO3StandardProviderSettingsMultiPromptItem>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestKlingO3StandardPromptImagePromptImage>>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestKlingO3StandardPromptImagePromptImage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestKlingO3StandardReferencesReferenceImage>>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestKlingO3StandardReferencesReferenceImage>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestSeedance2PromptImagePromptImage>>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestSeedance2PromptImagePromptImage>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestSeedance2ReferenceAudioItem>))]
@@ -1460,16 +1952,34 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestSeedance2MiniReferenceAudioItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestGeminiOmniFlashPromptImagePromptImage>>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestGeminiOmniFlashPromptImagePromptImage>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestSeedance25PromptImagePromptImage>>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestSeedance25PromptImagePromptImage>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestSeedance25ReferenceAudioItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestGrokImagine15PromptImagePromptImage>>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestGrokImagine15PromptImagePromptImage>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestWan3ReferenceVideo>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestWan3ReferenceAudioItem>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestGeminiOmniFlash11PromptImagePromptImage>>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestGeminiOmniFlash11PromptImagePromptImage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestWan3PrimeReferenceVideo>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestWan3PrimeReferenceAudioItem>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestH3MaxPromptImagePromptImage>>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestH3MaxPromptImagePromptImage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestSeedance25PromptImagePromptImage>>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestSeedance25PromptImagePromptImage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestSeedance25ReferenceAudioItem>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestGrokImagine15LitePromptImagePromptImage>>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestGrokImagine15LitePromptImagePromptImage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestKling4Reference>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestKling4FlashReference>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestGeminiOmniFlash12PromptImagePromptImage>>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateImageToVideoRequestGeminiOmniFlash12PromptImagePromptImage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateTextToVideoRequestKlingO34kProviderSettingsMultiPromptItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateTextToVideoRequestHailuo3Reference>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateTextToVideoRequestHailuo3ReferenceVideo>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateTextToVideoRequestHailuo3ReferenceAudioItem>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateTextToVideoRequestKling304kProviderSettingsMultiPromptItem>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateTextToVideoRequestKling30ProProviderSettingsMultiPromptItem>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateTextToVideoRequestKling30StandardProviderSettingsMultiPromptItem>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateTextToVideoRequestKlingO3ProProviderSettingsMultiPromptItem>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateTextToVideoRequestKlingO3StandardProviderSettingsMultiPromptItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateTextToVideoRequestSeedance2Reference>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateTextToVideoRequestSeedance2ReferenceVideo>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateTextToVideoRequestSeedance2ReferenceAudioItem>))]
@@ -1479,18 +1989,36 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateTextToVideoRequestSeedance2MiniReference>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateTextToVideoRequestSeedance2MiniReferenceVideo>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateTextToVideoRequestSeedance2MiniReferenceAudioItem>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateTextToVideoRequestSeedance25Reference>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateTextToVideoRequestSeedance25ReferenceVideo>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateTextToVideoRequestSeedance25ReferenceAudioItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateTextToVideoRequestGrokImagine15Reference>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateTextToVideoRequestGrokImagine15ReferenceAudioItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateTextToVideoRequestWan3Reference>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateTextToVideoRequestWan3ReferenceVideo>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateTextToVideoRequestWan3ReferenceAudioItem>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateTextToVideoRequestGeminiOmniFlash11Reference>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateTextToVideoRequestGeminiOmniFlash11ReferenceVideo>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateTextToVideoRequestWan3PrimeReference>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateTextToVideoRequestWan3PrimeReferenceVideo>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateTextToVideoRequestWan3PrimeReferenceAudioItem>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateTextToVideoRequestSeedance25Reference>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateTextToVideoRequestSeedance25ReferenceVideo>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateTextToVideoRequestSeedance25ReferenceAudioItem>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateTextToVideoRequestKling4Reference>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateTextToVideoRequestKling4FlashReference>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateTextToVideoRequestGeminiOmniFlash12Reference>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateTextToVideoRequestGeminiOmniFlash12ReferenceVideo>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.AnyOf<global::Runway.CreateVideoToVideoRequestVariant1KeyframeVariant1, global::Runway.CreateVideoToVideoRequestVariant1KeyframeVariant2>>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateVideoToVideoRequestKlingO34kProviderSettingsMultiPromptItem>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.List<global::Runway.CreateVideoToVideoRequestKlingO34kReferencesPromptImage>>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateVideoToVideoRequestKlingO34kReferencesPromptImage>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateVideoToVideoRequestHailuo3Reference>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateVideoToVideoRequestHailuo3ReferenceVideo>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateVideoToVideoRequestHailuo3ReferenceAudioItem>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateVideoToVideoRequestKlingO3ProProviderSettingsMultiPromptItem>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.List<global::Runway.CreateVideoToVideoRequestKlingO3ProReferencesPromptImage>>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateVideoToVideoRequestKlingO3ProReferencesPromptImage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateVideoToVideoRequestKlingO3StandardProviderSettingsMultiPromptItem>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.AnyOf<string?, global::System.Collections.Generic.List<global::Runway.CreateVideoToVideoRequestKlingO3StandardReferencesPromptImage>>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateVideoToVideoRequestKlingO3StandardReferencesPromptImage>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateVideoToVideoRequestSeedance2Reference>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateVideoToVideoRequestSeedance2ReferenceVideo>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateVideoToVideoRequestSeedance2ReferenceAudioItem>))]
@@ -1501,19 +2029,44 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateVideoToVideoRequestSeedance2MiniReferenceVideo>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateVideoToVideoRequestSeedance2MiniReferenceAudioItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateVideoToVideoRequestGeminiOmniFlashReference>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateVideoToVideoRequestGeminiOmniFlash11Reference>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateVideoToVideoRequestSeedance25Reference>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateVideoToVideoRequestSeedance25ReferenceVideo>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateVideoToVideoRequestSeedance25ReferenceAudioItem>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateVideoToVideoRequestKling4Reference>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateVideoToVideoRequestKling4FlashReference>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateVideoToVideoRequestGeminiOmniFlash12Reference>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateTextToImageRequestGen4ImageTurboReferenceImage>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateTextToImageRequestGen4ImageReferenceImage>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateTextToImageRequestGptImage2ReferenceImage>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateTextToImageRequestGeminiImage3ProReferenceImage>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateTextToImageRequestGeminiImage31FlashReferenceImage>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateTextToImageRequestMuseImageReferenceImage>))]
+    internal sealed partial class SourceGenerationContextChunk3 : global::System.Text.Json.Serialization.JsonSerializerContext
+    {
+    }
+
+    /// <summary>
+    ///
+    /// </summary>
+    [global::System.Text.Json.Serialization.JsonSourceGenerationOptions(
+        DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
+    )]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateTextToImageRequestSeedream5ProReferenceImage>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateTextToImageRequestSeedream5LiteReferenceImage>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateTextToImageRequestGrokImagineImage2ReferenceImage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateTextToImageRequestGeminiImage31FlashLiteReferenceImage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateTextToImageRequestGeminiImage3ProReferenceImage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateTextToImageRequestGptImage25FlareReferenceImage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateTextToImageRequestGptImage25SunburstReferenceImage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateTextToImageRequestBriaFibo15ReferenceImage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateTextToImageRequestBriaFiboEdit15ReferenceImage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateTextToImageRequestIdeogram40ReferenceImage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateTextToImageRequestIdeogram45ReferenceImage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateTextToImageRequestSeedream5FlashReferenceImage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateTextToImageRequestNanoBanana21ReferenceImage>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateTextToImageRequestGemini25FlashReferenceImage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateTextToImageRequestGptImage26FlareReferenceImage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateTextToImageRequestGptImage26SunburstReferenceImage>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateGenerateVideoRequestInputReferenceImage>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateGenerateVideoRequestInputReferenceVideo>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateGenerateVideoRequestInputReferenceAudioItem>))]
@@ -1531,16 +2084,6 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.GetAvatarConversationsResponseVariant1TranscriptItemToolCall>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.GetAvatarConversationsResponseVariant1TranscriptItemToolResult>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.GetAvatarConversationsResponseVariant1Tool>))]
-    internal sealed partial class SourceGenerationContextChunk2 : global::System.Text.Json.Serialization.JsonSerializerContext
-    {
-    }
-
-    /// <summary>
-    ///
-    /// </summary>
-    [global::System.Text.Json.Serialization.JsonSourceGenerationOptions(
-        DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
-    )]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.GetAvatarConversationsResponseVariant2TranscriptItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.GetAvatarConversationsResponseVariant2TranscriptItemToolCall>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.GetAvatarConversationsResponseVariant2TranscriptItemToolResult>))]
@@ -1557,12 +2100,13 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.AnyOf<string, double?>>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateTextToVideoResponseIssue>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateVideoToVideoResponseIssue>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateVideoToHdrResponseIssue>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateTextToImageResponseIssue>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateImageUpscaleResponseIssue>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateVideoUpscaleResponseIssue>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateVideoToHdrResponseIssue>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateCharacterPerformanceResponseIssue>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateSoundEffectResponseIssue>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateVideoToAudioResponseIssue>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateSpeechToSpeechResponseIssue>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateTextToSpeechResponseIssue>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.CreateVoiceDubbingResponseIssue>))]
@@ -1595,7 +2139,7 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.GetWorkflowsResponseDataItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Runway.GetWorkflowsResponseDataItemVersion>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.Dictionary<string, global::System.Collections.Generic.List<string>>))]
-    internal sealed partial class SourceGenerationContextChunk3 : global::System.Text.Json.Serialization.JsonSerializerContext
+    internal sealed partial class SourceGenerationContextChunk4 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }
     /// <summary>
@@ -1637,6 +2181,7 @@ namespace Runway
             options.Converters.Add(new global::Runway.JsonConverters.AvatarJsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.SpeechJsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.Voice3JsonConverter());
+            options.Converters.Add(new global::Runway.JsonConverters.CreateRealtimeSessionsRequestJsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.Avatar2JsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.ToolsItemJsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.ParametersItemJsonConverter());
@@ -1645,13 +2190,14 @@ namespace Runway
             options.Converters.Add(new global::Runway.JsonConverters.CreateImageToVideoRequestJsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.CreateTextToVideoRequestJsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.CreateVideoToVideoRequestJsonConverter());
-            options.Converters.Add(new global::Runway.JsonConverters.CreateVideoToHdrRequestJsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.CreateTextToImageRequestJsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.CreateImageUpscaleRequestJsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.CreateVideoUpscaleRequestJsonConverter());
+            options.Converters.Add(new global::Runway.JsonConverters.CreateVideoToHdrRequestJsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.CreateCharacterPerformanceRequestJsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.CharacterJsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.CreateSoundEffectRequestJsonConverter());
+            options.Converters.Add(new global::Runway.JsonConverters.CreateVideoToAudioRequestJsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.CreateSpeechToSpeechRequestJsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.MediaJsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.CreateTextToSpeechRequestJsonConverter());
@@ -1693,16 +2239,55 @@ namespace Runway
             options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestGen4TurboPromptImagePromptImage>>());
             options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestVeo31PromptImagePromptImage>>());
             options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestVeo31FastPromptImagePromptImage>>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestKlingO34kPromptImagePromptImage>>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestKlingO34kReferencesReferenceImage>>());
             options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<object>>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestKling304kPromptImagePromptImage>>());
             options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestHappyhorse10PromptImagePromptImage>>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestKling25TurboProPromptImagePromptImage>>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestKling30ProPromptImagePromptImage>>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestKling30StandardPromptImagePromptImage>>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestKlingO3ProPromptImagePromptImage>>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestKlingO3ProReferencesReferenceImage>>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestKlingO3StandardPromptImagePromptImage>>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestKlingO3StandardReferencesReferenceImage>>());
             options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestSeedance2PromptImagePromptImage>>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<int?, string>());
             options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestSeedance2FastPromptImagePromptImage>>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<int?, string>());
             options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestSeedance2MiniPromptImagePromptImage>>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<int?, string>());
             options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestGeminiOmniFlashPromptImagePromptImage>>());
-            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestSeedance25PromptImagePromptImage>>());
             options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestGrokImagine15PromptImagePromptImage>>());
             options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<object>>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestGeminiOmniFlash11PromptImagePromptImage>>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string, int?>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<object>>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestH3MaxPromptImagePromptImage>>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestSeedance25PromptImagePromptImage>>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<int?, string>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestGrokImagine15LitePromptImagePromptImage>>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<object>>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<object>>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestGeminiOmniFlash12PromptImagePromptImage>>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string, int?>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<int?, string>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<int?, string>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<int?, string>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string, int?>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<int?, string>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string, int?>());
             options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<global::Runway.CreateVideoToVideoRequestVariant1KeyframeVariant1, global::Runway.CreateVideoToVideoRequestVariant1KeyframeVariant2>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateVideoToVideoRequestKlingO34kReferencesPromptImage>>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateVideoToVideoRequestKlingO3ProReferencesPromptImage>>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<global::Runway.CreateVideoToVideoRequestKlingO3StandardReferencesPromptImage>>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<int?, string>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<int?, string>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<int?, string>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string, int?>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<int?, string>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string, int?>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<global::Runway.CreateTextToImageRequestSeedream5LiteRatio?, string>());
             options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<global::Runway.CreateGenerateVideoRequestInputKeyframeVariant1, global::Runway.CreateGenerateVideoRequestInputKeyframeVariant2>());
             options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string, double?, bool?>());
             options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<object, string>());
@@ -1721,9 +2306,12 @@ namespace Runway
             options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>());
             options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>());
             options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>());
             options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<global::Runway.CreateGenerateVideoResponseVariant1, global::Runway.CreateGenerateVideoResponseVariant2>());
             options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<global::Runway.CreateGenerateImageResponseVariant1, global::Runway.CreateGenerateImageResponseVariant2>());
             options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<global::Runway.CreateGenerateAudioResponseVariant1, global::Runway.CreateGenerateAudioResponseVariant2>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string, double?, bool?, global::System.Collections.Generic.Dictionary<string, bool>>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string, double?, bool?, global::System.Collections.Generic.Dictionary<string, bool>>());
             options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>());
             options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>());
             options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>());
@@ -1797,37 +2385,41 @@ namespace Runway
 
                     || typeToConvert == typeof(global::Runway.CreateAvatarVideosRequestSpeechDiscriminatorType?)
 
-                    || typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestAvatarRunwayPresetAvatarPresetId)
+                    || typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsAvatarRunwayPresetAvatarPresetId)
 
-                    || typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestAvatarRunwayPresetAvatarPresetId?)
+                    || typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsAvatarRunwayPresetAvatarPresetId?)
 
-                    || typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestAvatarDiscriminatorType)
+                    || typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsAvatarDiscriminatorType)
 
-                    || typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestAvatarDiscriminatorType?)
+                    || typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsAvatarDiscriminatorType?)
 
-                    || typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterArrayParameterItemsType)
+                    || typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolClientEventToolParameterArrayParameterItemsType)
 
-                    || typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterArrayParameterItemsType?)
+                    || typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolClientEventToolParameterArrayParameterItemsType?)
 
-                    || typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterDiscriminatorType)
+                    || typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolClientEventToolParameterDiscriminatorType)
 
-                    || typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterDiscriminatorType?)
+                    || typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolClientEventToolParameterDiscriminatorType?)
 
-                    || typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterArrayParameterItemsType)
+                    || typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterArrayParameterItemsType)
 
-                    || typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterArrayParameterItemsType?)
+                    || typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterArrayParameterItemsType?)
 
-                    || typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterDiscriminatorType)
+                    || typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterDiscriminatorType)
 
-                    || typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterDiscriminatorType?)
+                    || typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterDiscriminatorType?)
 
-                    || typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestToolDiscriminatorType)
+                    || typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolDiscriminatorType)
 
-                    || typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestToolDiscriminatorType?)
+                    || typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolDiscriminatorType?)
 
-                    || typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestIntegrationDiscriminatorType)
+                    || typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsIntegrationDiscriminatorType)
 
-                    || typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestIntegrationDiscriminatorType?)
+                    || typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsIntegrationDiscriminatorType?)
+
+                    || typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestDiscriminatorModel)
+
+                    || typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestDiscriminatorModel?)
 
                     || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestGen45Ratio)
 
@@ -1869,6 +2461,22 @@ namespace Runway
 
                     || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestVeo31FastRatio?)
 
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKlingO34kProviderSettingsShotType)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKlingO34kProviderSettingsShotType?)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKlingO34kPromptImagePromptImagePosition)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKlingO34kPromptImagePromptImagePosition?)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKlingO34kRatio)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKlingO34kRatio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKlingO34kReferencesReferenceImagePosition)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKlingO34kReferencesReferenceImagePosition?)
+
                     || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestHailuo3Resolution)
 
                     || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestHailuo3Resolution?)
@@ -1877,9 +2485,81 @@ namespace Runway
 
                     || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestHailuo3Ratio?)
 
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKling304kProviderSettingsShotType)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKling304kProviderSettingsShotType?)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKling304kPromptImagePromptImagePosition)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKling304kPromptImagePromptImagePosition?)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKling304kRatio)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKling304kRatio?)
+
                     || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestHappyhorse10Resolution)
 
                     || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestHappyhorse10Resolution?)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKling25TurboProPromptImagePromptImagePosition)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKling25TurboProPromptImagePromptImagePosition?)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKling30ProProviderSettingsShotType)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKling30ProProviderSettingsShotType?)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKling30ProPromptImagePromptImagePosition)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKling30ProPromptImagePromptImagePosition?)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKling30ProRatio)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKling30ProRatio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKling30StandardProviderSettingsShotType)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKling30StandardProviderSettingsShotType?)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKling30StandardPromptImagePromptImagePosition)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKling30StandardPromptImagePromptImagePosition?)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKling30StandardRatio)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKling30StandardRatio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKlingO3ProProviderSettingsShotType)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKlingO3ProProviderSettingsShotType?)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKlingO3ProPromptImagePromptImagePosition)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKlingO3ProPromptImagePromptImagePosition?)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKlingO3ProRatio)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKlingO3ProRatio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKlingO3ProReferencesReferenceImagePosition)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKlingO3ProReferencesReferenceImagePosition?)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKlingO3StandardProviderSettingsShotType)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKlingO3StandardProviderSettingsShotType?)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKlingO3StandardPromptImagePromptImagePosition)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKlingO3StandardPromptImagePromptImagePosition?)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKlingO3StandardRatio)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKlingO3StandardRatio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKlingO3StandardReferencesReferenceImagePosition)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKlingO3StandardReferencesReferenceImagePosition?)
 
                     || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestSeedance2PromptImagePromptImagePosition)
 
@@ -1909,14 +2589,6 @@ namespace Runway
 
                     || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestGeminiOmniFlashRatio?)
 
-                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestSeedance25PromptImagePromptImagePosition)
-
-                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestSeedance25PromptImagePromptImagePosition?)
-
-                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestSeedance25Ratio)
-
-                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestSeedance25Ratio?)
-
                     || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestGrokImagine15Resolution)
 
                     || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestGrokImagine15Resolution?)
@@ -1924,6 +2596,62 @@ namespace Runway
                     || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestWan3Ratio)
 
                     || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestWan3Ratio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestGeminiOmniFlash11PromptImagePromptImagePosition)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestGeminiOmniFlash11PromptImagePromptImagePosition?)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestGeminiOmniFlash11Ratio)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestGeminiOmniFlash11Ratio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestWan3PrimeRatio)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestWan3PrimeRatio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestH3MaxPromptImagePromptImagePosition)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestH3MaxPromptImagePromptImagePosition?)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestH3MaxResolution)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestH3MaxResolution?)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestH3MaxPromptExpansionMode)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestH3MaxPromptExpansionMode?)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestSeedance25PromptImagePromptImagePosition)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestSeedance25PromptImagePromptImagePosition?)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestSeedance25OutputFormat)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestSeedance25OutputFormat?)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestSeedance25Ratio)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestSeedance25Ratio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestGrokImagine15LiteRatio)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestGrokImagine15LiteRatio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKling4Ratio)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKling4Ratio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKling4FlashRatio)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKling4FlashRatio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestGeminiOmniFlash12PromptImagePromptImagePosition)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestGeminiOmniFlash12PromptImagePromptImagePosition?)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestGeminiOmniFlash12Ratio)
+
+                    || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestGeminiOmniFlash12Ratio?)
 
                     || typeToConvert == typeof(global::Runway.CreateImageToVideoRequestDiscriminatorModel)
 
@@ -1953,6 +2681,14 @@ namespace Runway
 
                     || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestVeo31FastRatio?)
 
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestKlingO34kProviderSettingsShotType)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestKlingO34kProviderSettingsShotType?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestKlingO34kRatio)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestKlingO34kRatio?)
+
                     || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestHailuo3Resolution)
 
                     || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestHailuo3Resolution?)
@@ -1961,9 +2697,53 @@ namespace Runway
 
                     || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestHailuo3Ratio?)
 
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestKling304kProviderSettingsShotType)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestKling304kProviderSettingsShotType?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestKling304kRatio)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestKling304kRatio?)
+
                     || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestHappyhorse10Ratio)
 
                     || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestHappyhorse10Ratio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestKling25TurboProRatio)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestKling25TurboProRatio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestKling30ProProviderSettingsShotType)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestKling30ProProviderSettingsShotType?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestKling30ProRatio)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestKling30ProRatio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestKling30StandardProviderSettingsShotType)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestKling30StandardProviderSettingsShotType?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestKling30StandardRatio)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestKling30StandardRatio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestKlingO3ProProviderSettingsShotType)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestKlingO3ProProviderSettingsShotType?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestKlingO3ProRatio)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestKlingO3ProRatio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestKlingO3StandardProviderSettingsShotType)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestKlingO3StandardProviderSettingsShotType?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestKlingO3StandardRatio)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestKlingO3StandardRatio?)
 
                     || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestSeedance2Ratio)
 
@@ -1981,10 +2761,6 @@ namespace Runway
 
                     || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestGeminiOmniFlashRatio?)
 
-                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestSeedance25Ratio)
-
-                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestSeedance25Ratio?)
-
                     || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestGrokImagine15Resolution)
 
                     || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestGrokImagine15Resolution?)
@@ -1996,6 +2772,46 @@ namespace Runway
                     || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestWan3Ratio)
 
                     || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestWan3Ratio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestGeminiOmniFlash11Ratio)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestGeminiOmniFlash11Ratio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestWan3PrimeRatio)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestWan3PrimeRatio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestH3MaxResolution)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestH3MaxResolution?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestH3MaxPromptExpansionMode)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestH3MaxPromptExpansionMode?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestSeedance25OutputFormat)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestSeedance25OutputFormat?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestSeedance25Ratio)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestSeedance25Ratio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestGrokImagine15LiteRatio)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestGrokImagine15LiteRatio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestKling4Ratio)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestKling4Ratio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestKling4FlashRatio)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestKling4FlashRatio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestGeminiOmniFlash12Ratio)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestGeminiOmniFlash12Ratio?)
 
                     || typeToConvert == typeof(global::Runway.CreateTextToVideoRequestDiscriminatorModel)
 
@@ -2017,6 +2833,14 @@ namespace Runway
 
                     || typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestVariant1ProresProfile?)
 
+                    || typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestKlingO34kProviderSettingsShotType)
+
+                    || typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestKlingO34kProviderSettingsShotType?)
+
+                    || typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestKlingO34kReferencesPromptImagePosition)
+
+                    || typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestKlingO34kReferencesPromptImagePosition?)
+
                     || typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestHailuo3Resolution)
 
                     || typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestHailuo3Resolution?)
@@ -2024,6 +2848,22 @@ namespace Runway
                     || typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestHailuo3Ratio)
 
                     || typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestHailuo3Ratio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestKlingO3ProProviderSettingsShotType)
+
+                    || typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestKlingO3ProProviderSettingsShotType?)
+
+                    || typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestKlingO3ProReferencesPromptImagePosition)
+
+                    || typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestKlingO3ProReferencesPromptImagePosition?)
+
+                    || typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestKlingO3StandardProviderSettingsShotType)
+
+                    || typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestKlingO3StandardProviderSettingsShotType?)
+
+                    || typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestKlingO3StandardReferencesPromptImagePosition)
+
+                    || typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestKlingO3StandardReferencesPromptImagePosition?)
 
                     || typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestSeedance2Ratio)
 
@@ -2037,6 +2877,18 @@ namespace Runway
 
                     || typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestSeedance2MiniRatio?)
 
+                    || typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestGeminiOmniFlash11Mode)
+
+                    || typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestGeminiOmniFlash11Mode?)
+
+                    || typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestGeminiOmniFlash11Ratio)
+
+                    || typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestGeminiOmniFlash11Ratio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestSeedance25OutputFormat)
+
+                    || typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestSeedance25OutputFormat?)
+
                     || typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestSeedance25Mode)
 
                     || typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestSeedance25Mode?)
@@ -2045,21 +2897,25 @@ namespace Runway
 
                     || typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestSeedance25Ratio?)
 
+                    || typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestKling4Ratio)
+
+                    || typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestKling4Ratio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestKling4FlashRatio)
+
+                    || typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestKling4FlashRatio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestGeminiOmniFlash12Mode)
+
+                    || typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestGeminiOmniFlash12Mode?)
+
+                    || typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestGeminiOmniFlash12Ratio)
+
+                    || typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestGeminiOmniFlash12Ratio?)
+
                     || typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestDiscriminatorModel)
 
                     || typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestDiscriminatorModel?)
-
-                    || typeToConvert == typeof(global::Runway.CreateVideoToHdrRequestRubyOutputFormat)
-
-                    || typeToConvert == typeof(global::Runway.CreateVideoToHdrRequestRubyOutputFormat?)
-
-                    || typeToConvert == typeof(global::Runway.CreateVideoToHdrRequestRubyProresProfile)
-
-                    || typeToConvert == typeof(global::Runway.CreateVideoToHdrRequestRubyProresProfile?)
-
-                    || typeToConvert == typeof(global::Runway.CreateVideoToHdrRequestDiscriminatorModel)
-
-                    || typeToConvert == typeof(global::Runway.CreateVideoToHdrRequestDiscriminatorModel?)
 
                     || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGen4ImageTurboRatio)
 
@@ -2089,14 +2945,6 @@ namespace Runway
 
                     || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage2Background?)
 
-                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGeminiImage3ProRatio)
-
-                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGeminiImage3ProRatio?)
-
-                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGeminiImage3ProReferenceImageSubject)
-
-                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGeminiImage3ProReferenceImageSubject?)
-
                     || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGeminiImage31FlashRatio)
 
                     || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGeminiImage31FlashRatio?)
@@ -2108,6 +2956,10 @@ namespace Runway
                     || typeToConvert == typeof(global::Runway.CreateTextToImageRequestMuseImageRatio)
 
                     || typeToConvert == typeof(global::Runway.CreateTextToImageRequestMuseImageRatio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestMuseImageOutputFormat)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestMuseImageOutputFormat?)
 
                     || typeToConvert == typeof(global::Runway.CreateTextToImageRequestSeedream5ProRatio)
 
@@ -2133,9 +2985,141 @@ namespace Runway
 
                     || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGrokImagineImage2Quality?)
 
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGeminiImage31FlashLiteRatio)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGeminiImage31FlashLiteRatio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGeminiImage31FlashLiteReferenceImageSubject)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGeminiImage31FlashLiteReferenceImageSubject?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGeminiImage3ProRatio)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGeminiImage3ProRatio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGeminiImage3ProReferenceImageSubject)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGeminiImage3ProReferenceImageSubject?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage25FlareRatio)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage25FlareRatio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage25FlareQuality)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage25FlareQuality?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage25FlareBackground)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage25FlareBackground?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage25SunburstRatio)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage25SunburstRatio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage25SunburstQuality)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage25SunburstQuality?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage25SunburstBackground)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage25SunburstBackground?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestBriaFibo15Ratio)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestBriaFibo15Ratio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestBriaFibo15OutputFormat)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestBriaFibo15OutputFormat?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestBriaFiboEdit15OutputFormat)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestBriaFiboEdit15OutputFormat?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestBriaFiboEdit15Ratio)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestBriaFiboEdit15Ratio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestIdeogram40Quality)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestIdeogram40Quality?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestIdeogram40Ratio)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestIdeogram40Ratio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestIdeogram45Quality)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestIdeogram45Quality?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestIdeogram45Ratio)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestIdeogram45Ratio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestSeedream5FlashRatio)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestSeedream5FlashRatio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestSeedream5FlashOutputFormat)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestSeedream5FlashOutputFormat?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestNanoBanana21Ratio)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestNanoBanana21Ratio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestNanoBanana21ThinkingLevel)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestNanoBanana21ThinkingLevel?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestRecraftV41FlashRatio)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestRecraftV41FlashRatio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestRecraftV41FlashOutputFormat)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestRecraftV41FlashOutputFormat?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestRecraftV41VectorRatio)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestRecraftV41VectorRatio?)
+
                     || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGemini25FlashRatio)
 
                     || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGemini25FlashRatio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage26FlareRatio)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage26FlareRatio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage26FlareQuality)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage26FlareQuality?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage26FlareBackground)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage26FlareBackground?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage26FlareReasoningEffort)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage26FlareReasoningEffort?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage26SunburstRatio)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage26SunburstRatio?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage26SunburstQuality)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage26SunburstQuality?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage26SunburstBackground)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage26SunburstBackground?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage26SunburstReasoningEffort)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage26SunburstReasoningEffort?)
 
                     || typeToConvert == typeof(global::Runway.CreateTextToImageRequestDiscriminatorModel)
 
@@ -2165,6 +3149,18 @@ namespace Runway
 
                     || typeToConvert == typeof(global::Runway.CreateVideoUpscaleRequestDiscriminatorModel?)
 
+                    || typeToConvert == typeof(global::Runway.CreateVideoToHdrRequestRubyOutputFormat)
+
+                    || typeToConvert == typeof(global::Runway.CreateVideoToHdrRequestRubyOutputFormat?)
+
+                    || typeToConvert == typeof(global::Runway.CreateVideoToHdrRequestRubyProresProfile)
+
+                    || typeToConvert == typeof(global::Runway.CreateVideoToHdrRequestRubyProresProfile?)
+
+                    || typeToConvert == typeof(global::Runway.CreateVideoToHdrRequestDiscriminatorModel)
+
+                    || typeToConvert == typeof(global::Runway.CreateVideoToHdrRequestDiscriminatorModel?)
+
                     || typeToConvert == typeof(global::Runway.CreateCharacterPerformanceRequestActTwoCharacterDiscriminatorType)
 
                     || typeToConvert == typeof(global::Runway.CreateCharacterPerformanceRequestActTwoCharacterDiscriminatorType?)
@@ -2189,9 +3185,21 @@ namespace Runway
 
                     || typeToConvert == typeof(global::Runway.CreateSoundEffectRequestSeedAudioOutputFormat?)
 
+                    || typeToConvert == typeof(global::Runway.CreateSoundEffectRequestMireloSfx20Format)
+
+                    || typeToConvert == typeof(global::Runway.CreateSoundEffectRequestMireloSfx20Format?)
+
                     || typeToConvert == typeof(global::Runway.CreateSoundEffectRequestDiscriminatorModel)
 
                     || typeToConvert == typeof(global::Runway.CreateSoundEffectRequestDiscriminatorModel?)
+
+                    || typeToConvert == typeof(global::Runway.CreateVideoToAudioRequestMireloSfx20Format)
+
+                    || typeToConvert == typeof(global::Runway.CreateVideoToAudioRequestMireloSfx20Format?)
+
+                    || typeToConvert == typeof(global::Runway.CreateVideoToAudioRequestDiscriminatorModel)
+
+                    || typeToConvert == typeof(global::Runway.CreateVideoToAudioRequestDiscriminatorModel?)
 
                     || typeToConvert == typeof(global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaDiscriminatorType)
 
@@ -2209,13 +3217,17 @@ namespace Runway
 
                     || typeToConvert == typeof(global::Runway.CreateSpeechToSpeechRequestDiscriminatorModel?)
 
-                    || typeToConvert == typeof(global::Runway.CreateTextToSpeechRequestSeedAudioVoiceDiscriminatorType)
-
-                    || typeToConvert == typeof(global::Runway.CreateTextToSpeechRequestSeedAudioVoiceDiscriminatorType?)
-
                     || typeToConvert == typeof(global::Runway.CreateTextToSpeechRequestSeedAudioOutputFormat)
 
                     || typeToConvert == typeof(global::Runway.CreateTextToSpeechRequestSeedAudioOutputFormat?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToSpeechRequestElevenV4VoiceRunwayPresetVoicePresetId)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToSpeechRequestElevenV4VoiceRunwayPresetVoicePresetId?)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToSpeechRequestElevenV4VoiceDiscriminatorType)
+
+                    || typeToConvert == typeof(global::Runway.CreateTextToSpeechRequestElevenV4VoiceDiscriminatorType?)
 
                     || typeToConvert == typeof(global::Runway.CreateTextToSpeechRequestElevenMultilingualV2VoiceRunwayPresetVoicePresetId)
 
@@ -2840,84 +3852,94 @@ namespace Runway
                     return new global::Runway.JsonConverters.CreateAvatarVideosRequestSpeechDiscriminatorTypeNullableJsonConverter();
                 }
 
-                if (typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestAvatarRunwayPresetAvatarPresetId))
+                if (typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsAvatarRunwayPresetAvatarPresetId))
                 {
-                    return new global::Runway.JsonConverters.CreateRealtimeSessionsRequestAvatarRunwayPresetAvatarPresetIdJsonConverter();
+                    return new global::Runway.JsonConverters.CreateRealtimeSessionsRequestGwm1AvatarsAvatarRunwayPresetAvatarPresetIdJsonConverter();
                 }
 
-                if (typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestAvatarRunwayPresetAvatarPresetId?))
+                if (typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsAvatarRunwayPresetAvatarPresetId?))
                 {
-                    return new global::Runway.JsonConverters.CreateRealtimeSessionsRequestAvatarRunwayPresetAvatarPresetIdNullableJsonConverter();
+                    return new global::Runway.JsonConverters.CreateRealtimeSessionsRequestGwm1AvatarsAvatarRunwayPresetAvatarPresetIdNullableJsonConverter();
                 }
 
-                if (typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestAvatarDiscriminatorType))
+                if (typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsAvatarDiscriminatorType))
                 {
-                    return new global::Runway.JsonConverters.CreateRealtimeSessionsRequestAvatarDiscriminatorTypeJsonConverter();
+                    return new global::Runway.JsonConverters.CreateRealtimeSessionsRequestGwm1AvatarsAvatarDiscriminatorTypeJsonConverter();
                 }
 
-                if (typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestAvatarDiscriminatorType?))
+                if (typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsAvatarDiscriminatorType?))
                 {
-                    return new global::Runway.JsonConverters.CreateRealtimeSessionsRequestAvatarDiscriminatorTypeNullableJsonConverter();
+                    return new global::Runway.JsonConverters.CreateRealtimeSessionsRequestGwm1AvatarsAvatarDiscriminatorTypeNullableJsonConverter();
                 }
 
-                if (typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterArrayParameterItemsType))
+                if (typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolClientEventToolParameterArrayParameterItemsType))
                 {
-                    return new global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolClientEventToolParameterArrayParameterItemsTypeJsonConverter();
+                    return new global::Runway.JsonConverters.CreateRealtimeSessionsRequestGwm1AvatarsToolClientEventToolParameterArrayParameterItemsTypeJsonConverter();
                 }
 
-                if (typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterArrayParameterItemsType?))
+                if (typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolClientEventToolParameterArrayParameterItemsType?))
                 {
-                    return new global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolClientEventToolParameterArrayParameterItemsTypeNullableJsonConverter();
+                    return new global::Runway.JsonConverters.CreateRealtimeSessionsRequestGwm1AvatarsToolClientEventToolParameterArrayParameterItemsTypeNullableJsonConverter();
                 }
 
-                if (typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterDiscriminatorType))
+                if (typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolClientEventToolParameterDiscriminatorType))
                 {
-                    return new global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolClientEventToolParameterDiscriminatorTypeJsonConverter();
+                    return new global::Runway.JsonConverters.CreateRealtimeSessionsRequestGwm1AvatarsToolClientEventToolParameterDiscriminatorTypeJsonConverter();
                 }
 
-                if (typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestToolClientEventToolParameterDiscriminatorType?))
+                if (typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolClientEventToolParameterDiscriminatorType?))
                 {
-                    return new global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolClientEventToolParameterDiscriminatorTypeNullableJsonConverter();
+                    return new global::Runway.JsonConverters.CreateRealtimeSessionsRequestGwm1AvatarsToolClientEventToolParameterDiscriminatorTypeNullableJsonConverter();
                 }
 
-                if (typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterArrayParameterItemsType))
+                if (typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterArrayParameterItemsType))
                 {
-                    return new global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolBackendRPCToolParameterArrayParameterItemsTypeJsonConverter();
+                    return new global::Runway.JsonConverters.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterArrayParameterItemsTypeJsonConverter();
                 }
 
-                if (typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterArrayParameterItemsType?))
+                if (typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterArrayParameterItemsType?))
                 {
-                    return new global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolBackendRPCToolParameterArrayParameterItemsTypeNullableJsonConverter();
+                    return new global::Runway.JsonConverters.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterArrayParameterItemsTypeNullableJsonConverter();
                 }
 
-                if (typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterDiscriminatorType))
+                if (typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterDiscriminatorType))
                 {
-                    return new global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolBackendRPCToolParameterDiscriminatorTypeJsonConverter();
+                    return new global::Runway.JsonConverters.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterDiscriminatorTypeJsonConverter();
                 }
 
-                if (typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestToolBackendRPCToolParameterDiscriminatorType?))
+                if (typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterDiscriminatorType?))
                 {
-                    return new global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolBackendRPCToolParameterDiscriminatorTypeNullableJsonConverter();
+                    return new global::Runway.JsonConverters.CreateRealtimeSessionsRequestGwm1AvatarsToolBackendRPCToolParameterDiscriminatorTypeNullableJsonConverter();
                 }
 
-                if (typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestToolDiscriminatorType))
+                if (typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolDiscriminatorType))
                 {
-                    return new global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolDiscriminatorTypeJsonConverter();
+                    return new global::Runway.JsonConverters.CreateRealtimeSessionsRequestGwm1AvatarsToolDiscriminatorTypeJsonConverter();
                 }
 
-                if (typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestToolDiscriminatorType?))
+                if (typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsToolDiscriminatorType?))
                 {
-                    return new global::Runway.JsonConverters.CreateRealtimeSessionsRequestToolDiscriminatorTypeNullableJsonConverter();
+                    return new global::Runway.JsonConverters.CreateRealtimeSessionsRequestGwm1AvatarsToolDiscriminatorTypeNullableJsonConverter();
                 }
 
-                if (typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestIntegrationDiscriminatorType))
+                if (typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsIntegrationDiscriminatorType))
                 {
-                    return new global::Runway.JsonConverters.CreateRealtimeSessionsRequestIntegrationDiscriminatorTypeJsonConverter();
+                    return new global::Runway.JsonConverters.CreateRealtimeSessionsRequestGwm1AvatarsIntegrationDiscriminatorTypeJsonConverter();
                 }
 
-                if (typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestIntegrationDiscriminatorType?))
+                if (typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsIntegrationDiscriminatorType?))
                 {
-                    return new global::Runway.JsonConverters.CreateRealtimeSessionsRequestIntegrationDiscriminatorTypeNullableJsonConverter();
+                    return new global::Runway.JsonConverters.CreateRealtimeSessionsRequestGwm1AvatarsIntegrationDiscriminatorTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestDiscriminatorModel))
+                {
+                    return new global::Runway.JsonConverters.CreateRealtimeSessionsRequestDiscriminatorModelJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateRealtimeSessionsRequestDiscriminatorModel?))
+                {
+                    return new global::Runway.JsonConverters.CreateRealtimeSessionsRequestDiscriminatorModelNullableJsonConverter();
                 }
 
                 if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestGen45Ratio))
@@ -3020,6 +4042,46 @@ namespace Runway
                     return new global::Runway.JsonConverters.CreateImageToVideoRequestVeo31FastRatioNullableJsonConverter();
                 }
 
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKlingO34kProviderSettingsShotType))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestKlingO34kProviderSettingsShotTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKlingO34kProviderSettingsShotType?))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestKlingO34kProviderSettingsShotTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKlingO34kPromptImagePromptImagePosition))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestKlingO34kPromptImagePromptImagePositionJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKlingO34kPromptImagePromptImagePosition?))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestKlingO34kPromptImagePromptImagePositionNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKlingO34kRatio))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestKlingO34kRatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKlingO34kRatio?))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestKlingO34kRatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKlingO34kReferencesReferenceImagePosition))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestKlingO34kReferencesReferenceImagePositionJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKlingO34kReferencesReferenceImagePosition?))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestKlingO34kReferencesReferenceImagePositionNullableJsonConverter();
+                }
+
                 if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestHailuo3Resolution))
                 {
                     return new global::Runway.JsonConverters.CreateImageToVideoRequestHailuo3ResolutionJsonConverter();
@@ -3040,6 +4102,36 @@ namespace Runway
                     return new global::Runway.JsonConverters.CreateImageToVideoRequestHailuo3RatioNullableJsonConverter();
                 }
 
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKling304kProviderSettingsShotType))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestKling304kProviderSettingsShotTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKling304kProviderSettingsShotType?))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestKling304kProviderSettingsShotTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKling304kPromptImagePromptImagePosition))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestKling304kPromptImagePromptImagePositionJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKling304kPromptImagePromptImagePosition?))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestKling304kPromptImagePromptImagePositionNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKling304kRatio))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestKling304kRatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKling304kRatio?))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestKling304kRatioNullableJsonConverter();
+                }
+
                 if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestHappyhorse10Resolution))
                 {
                     return new global::Runway.JsonConverters.CreateImageToVideoRequestHappyhorse10ResolutionJsonConverter();
@@ -3048,6 +4140,156 @@ namespace Runway
                 if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestHappyhorse10Resolution?))
                 {
                     return new global::Runway.JsonConverters.CreateImageToVideoRequestHappyhorse10ResolutionNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKling25TurboProPromptImagePromptImagePosition))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestKling25TurboProPromptImagePromptImagePositionJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKling25TurboProPromptImagePromptImagePosition?))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestKling25TurboProPromptImagePromptImagePositionNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKling30ProProviderSettingsShotType))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestKling30ProProviderSettingsShotTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKling30ProProviderSettingsShotType?))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestKling30ProProviderSettingsShotTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKling30ProPromptImagePromptImagePosition))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestKling30ProPromptImagePromptImagePositionJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKling30ProPromptImagePromptImagePosition?))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestKling30ProPromptImagePromptImagePositionNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKling30ProRatio))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestKling30ProRatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKling30ProRatio?))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestKling30ProRatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKling30StandardProviderSettingsShotType))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestKling30StandardProviderSettingsShotTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKling30StandardProviderSettingsShotType?))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestKling30StandardProviderSettingsShotTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKling30StandardPromptImagePromptImagePosition))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestKling30StandardPromptImagePromptImagePositionJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKling30StandardPromptImagePromptImagePosition?))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestKling30StandardPromptImagePromptImagePositionNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKling30StandardRatio))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestKling30StandardRatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKling30StandardRatio?))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestKling30StandardRatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKlingO3ProProviderSettingsShotType))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestKlingO3ProProviderSettingsShotTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKlingO3ProProviderSettingsShotType?))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestKlingO3ProProviderSettingsShotTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKlingO3ProPromptImagePromptImagePosition))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestKlingO3ProPromptImagePromptImagePositionJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKlingO3ProPromptImagePromptImagePosition?))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestKlingO3ProPromptImagePromptImagePositionNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKlingO3ProRatio))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestKlingO3ProRatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKlingO3ProRatio?))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestKlingO3ProRatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKlingO3ProReferencesReferenceImagePosition))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestKlingO3ProReferencesReferenceImagePositionJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKlingO3ProReferencesReferenceImagePosition?))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestKlingO3ProReferencesReferenceImagePositionNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKlingO3StandardProviderSettingsShotType))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestKlingO3StandardProviderSettingsShotTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKlingO3StandardProviderSettingsShotType?))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestKlingO3StandardProviderSettingsShotTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKlingO3StandardPromptImagePromptImagePosition))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestKlingO3StandardPromptImagePromptImagePositionJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKlingO3StandardPromptImagePromptImagePosition?))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestKlingO3StandardPromptImagePromptImagePositionNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKlingO3StandardRatio))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestKlingO3StandardRatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKlingO3StandardRatio?))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestKlingO3StandardRatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKlingO3StandardReferencesReferenceImagePosition))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestKlingO3StandardReferencesReferenceImagePositionJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKlingO3StandardReferencesReferenceImagePosition?))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestKlingO3StandardReferencesReferenceImagePositionNullableJsonConverter();
                 }
 
                 if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestSeedance2PromptImagePromptImagePosition))
@@ -3120,26 +4362,6 @@ namespace Runway
                     return new global::Runway.JsonConverters.CreateImageToVideoRequestGeminiOmniFlashRatioNullableJsonConverter();
                 }
 
-                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestSeedance25PromptImagePromptImagePosition))
-                {
-                    return new global::Runway.JsonConverters.CreateImageToVideoRequestSeedance25PromptImagePromptImagePositionJsonConverter();
-                }
-
-                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestSeedance25PromptImagePromptImagePosition?))
-                {
-                    return new global::Runway.JsonConverters.CreateImageToVideoRequestSeedance25PromptImagePromptImagePositionNullableJsonConverter();
-                }
-
-                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestSeedance25Ratio))
-                {
-                    return new global::Runway.JsonConverters.CreateImageToVideoRequestSeedance25RatioJsonConverter();
-                }
-
-                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestSeedance25Ratio?))
-                {
-                    return new global::Runway.JsonConverters.CreateImageToVideoRequestSeedance25RatioNullableJsonConverter();
-                }
-
                 if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestGrokImagine15Resolution))
                 {
                     return new global::Runway.JsonConverters.CreateImageToVideoRequestGrokImagine15ResolutionJsonConverter();
@@ -3158,6 +4380,146 @@ namespace Runway
                 if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestWan3Ratio?))
                 {
                     return new global::Runway.JsonConverters.CreateImageToVideoRequestWan3RatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestGeminiOmniFlash11PromptImagePromptImagePosition))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestGeminiOmniFlash11PromptImagePromptImagePositionJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestGeminiOmniFlash11PromptImagePromptImagePosition?))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestGeminiOmniFlash11PromptImagePromptImagePositionNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestGeminiOmniFlash11Ratio))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestGeminiOmniFlash11RatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestGeminiOmniFlash11Ratio?))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestGeminiOmniFlash11RatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestWan3PrimeRatio))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestWan3PrimeRatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestWan3PrimeRatio?))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestWan3PrimeRatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestH3MaxPromptImagePromptImagePosition))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestH3MaxPromptImagePromptImagePositionJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestH3MaxPromptImagePromptImagePosition?))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestH3MaxPromptImagePromptImagePositionNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestH3MaxResolution))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestH3MaxResolutionJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestH3MaxResolution?))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestH3MaxResolutionNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestH3MaxPromptExpansionMode))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestH3MaxPromptExpansionModeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestH3MaxPromptExpansionMode?))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestH3MaxPromptExpansionModeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestSeedance25PromptImagePromptImagePosition))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestSeedance25PromptImagePromptImagePositionJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestSeedance25PromptImagePromptImagePosition?))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestSeedance25PromptImagePromptImagePositionNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestSeedance25OutputFormat))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestSeedance25OutputFormatJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestSeedance25OutputFormat?))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestSeedance25OutputFormatNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestSeedance25Ratio))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestSeedance25RatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestSeedance25Ratio?))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestSeedance25RatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestGrokImagine15LiteRatio))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestGrokImagine15LiteRatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestGrokImagine15LiteRatio?))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestGrokImagine15LiteRatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKling4Ratio))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestKling4RatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKling4Ratio?))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestKling4RatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKling4FlashRatio))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestKling4FlashRatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestKling4FlashRatio?))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestKling4FlashRatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestGeminiOmniFlash12PromptImagePromptImagePosition))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestGeminiOmniFlash12PromptImagePromptImagePositionJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestGeminiOmniFlash12PromptImagePromptImagePosition?))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestGeminiOmniFlash12PromptImagePromptImagePositionNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestGeminiOmniFlash12Ratio))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestGeminiOmniFlash12RatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestGeminiOmniFlash12Ratio?))
+                {
+                    return new global::Runway.JsonConverters.CreateImageToVideoRequestGeminiOmniFlash12RatioNullableJsonConverter();
                 }
 
                 if (typeToConvert == typeof(global::Runway.CreateImageToVideoRequestDiscriminatorModel))
@@ -3230,6 +4592,26 @@ namespace Runway
                     return new global::Runway.JsonConverters.CreateTextToVideoRequestVeo31FastRatioNullableJsonConverter();
                 }
 
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestKlingO34kProviderSettingsShotType))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestKlingO34kProviderSettingsShotTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestKlingO34kProviderSettingsShotType?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestKlingO34kProviderSettingsShotTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestKlingO34kRatio))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestKlingO34kRatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestKlingO34kRatio?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestKlingO34kRatioNullableJsonConverter();
+                }
+
                 if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestHailuo3Resolution))
                 {
                     return new global::Runway.JsonConverters.CreateTextToVideoRequestHailuo3ResolutionJsonConverter();
@@ -3250,6 +4632,26 @@ namespace Runway
                     return new global::Runway.JsonConverters.CreateTextToVideoRequestHailuo3RatioNullableJsonConverter();
                 }
 
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestKling304kProviderSettingsShotType))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestKling304kProviderSettingsShotTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestKling304kProviderSettingsShotType?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestKling304kProviderSettingsShotTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestKling304kRatio))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestKling304kRatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestKling304kRatio?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestKling304kRatioNullableJsonConverter();
+                }
+
                 if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestHappyhorse10Ratio))
                 {
                     return new global::Runway.JsonConverters.CreateTextToVideoRequestHappyhorse10RatioJsonConverter();
@@ -3258,6 +4660,96 @@ namespace Runway
                 if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestHappyhorse10Ratio?))
                 {
                     return new global::Runway.JsonConverters.CreateTextToVideoRequestHappyhorse10RatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestKling25TurboProRatio))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestKling25TurboProRatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestKling25TurboProRatio?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestKling25TurboProRatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestKling30ProProviderSettingsShotType))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestKling30ProProviderSettingsShotTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestKling30ProProviderSettingsShotType?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestKling30ProProviderSettingsShotTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestKling30ProRatio))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestKling30ProRatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestKling30ProRatio?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestKling30ProRatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestKling30StandardProviderSettingsShotType))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestKling30StandardProviderSettingsShotTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestKling30StandardProviderSettingsShotType?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestKling30StandardProviderSettingsShotTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestKling30StandardRatio))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestKling30StandardRatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestKling30StandardRatio?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestKling30StandardRatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestKlingO3ProProviderSettingsShotType))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestKlingO3ProProviderSettingsShotTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestKlingO3ProProviderSettingsShotType?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestKlingO3ProProviderSettingsShotTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestKlingO3ProRatio))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestKlingO3ProRatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestKlingO3ProRatio?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestKlingO3ProRatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestKlingO3StandardProviderSettingsShotType))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestKlingO3StandardProviderSettingsShotTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestKlingO3StandardProviderSettingsShotType?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestKlingO3StandardProviderSettingsShotTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestKlingO3StandardRatio))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestKlingO3StandardRatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestKlingO3StandardRatio?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestKlingO3StandardRatioNullableJsonConverter();
                 }
 
                 if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestSeedance2Ratio))
@@ -3300,16 +4792,6 @@ namespace Runway
                     return new global::Runway.JsonConverters.CreateTextToVideoRequestGeminiOmniFlashRatioNullableJsonConverter();
                 }
 
-                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestSeedance25Ratio))
-                {
-                    return new global::Runway.JsonConverters.CreateTextToVideoRequestSeedance25RatioJsonConverter();
-                }
-
-                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestSeedance25Ratio?))
-                {
-                    return new global::Runway.JsonConverters.CreateTextToVideoRequestSeedance25RatioNullableJsonConverter();
-                }
-
                 if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestGrokImagine15Resolution))
                 {
                     return new global::Runway.JsonConverters.CreateTextToVideoRequestGrokImagine15ResolutionJsonConverter();
@@ -3338,6 +4820,106 @@ namespace Runway
                 if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestWan3Ratio?))
                 {
                     return new global::Runway.JsonConverters.CreateTextToVideoRequestWan3RatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestGeminiOmniFlash11Ratio))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestGeminiOmniFlash11RatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestGeminiOmniFlash11Ratio?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestGeminiOmniFlash11RatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestWan3PrimeRatio))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestWan3PrimeRatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestWan3PrimeRatio?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestWan3PrimeRatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestH3MaxResolution))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestH3MaxResolutionJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestH3MaxResolution?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestH3MaxResolutionNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestH3MaxPromptExpansionMode))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestH3MaxPromptExpansionModeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestH3MaxPromptExpansionMode?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestH3MaxPromptExpansionModeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestSeedance25OutputFormat))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestSeedance25OutputFormatJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestSeedance25OutputFormat?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestSeedance25OutputFormatNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestSeedance25Ratio))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestSeedance25RatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestSeedance25Ratio?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestSeedance25RatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestGrokImagine15LiteRatio))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestGrokImagine15LiteRatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestGrokImagine15LiteRatio?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestGrokImagine15LiteRatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestKling4Ratio))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestKling4RatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestKling4Ratio?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestKling4RatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestKling4FlashRatio))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestKling4FlashRatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestKling4FlashRatio?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestKling4FlashRatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestGeminiOmniFlash12Ratio))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestGeminiOmniFlash12RatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestGeminiOmniFlash12Ratio?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToVideoRequestGeminiOmniFlash12RatioNullableJsonConverter();
                 }
 
                 if (typeToConvert == typeof(global::Runway.CreateTextToVideoRequestDiscriminatorModel))
@@ -3390,6 +4972,26 @@ namespace Runway
                     return new global::Runway.JsonConverters.CreateVideoToVideoRequestVariant1ProresProfileNullableJsonConverter();
                 }
 
+                if (typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestKlingO34kProviderSettingsShotType))
+                {
+                    return new global::Runway.JsonConverters.CreateVideoToVideoRequestKlingO34kProviderSettingsShotTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestKlingO34kProviderSettingsShotType?))
+                {
+                    return new global::Runway.JsonConverters.CreateVideoToVideoRequestKlingO34kProviderSettingsShotTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestKlingO34kReferencesPromptImagePosition))
+                {
+                    return new global::Runway.JsonConverters.CreateVideoToVideoRequestKlingO34kReferencesPromptImagePositionJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestKlingO34kReferencesPromptImagePosition?))
+                {
+                    return new global::Runway.JsonConverters.CreateVideoToVideoRequestKlingO34kReferencesPromptImagePositionNullableJsonConverter();
+                }
+
                 if (typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestHailuo3Resolution))
                 {
                     return new global::Runway.JsonConverters.CreateVideoToVideoRequestHailuo3ResolutionJsonConverter();
@@ -3408,6 +5010,46 @@ namespace Runway
                 if (typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestHailuo3Ratio?))
                 {
                     return new global::Runway.JsonConverters.CreateVideoToVideoRequestHailuo3RatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestKlingO3ProProviderSettingsShotType))
+                {
+                    return new global::Runway.JsonConverters.CreateVideoToVideoRequestKlingO3ProProviderSettingsShotTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestKlingO3ProProviderSettingsShotType?))
+                {
+                    return new global::Runway.JsonConverters.CreateVideoToVideoRequestKlingO3ProProviderSettingsShotTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestKlingO3ProReferencesPromptImagePosition))
+                {
+                    return new global::Runway.JsonConverters.CreateVideoToVideoRequestKlingO3ProReferencesPromptImagePositionJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestKlingO3ProReferencesPromptImagePosition?))
+                {
+                    return new global::Runway.JsonConverters.CreateVideoToVideoRequestKlingO3ProReferencesPromptImagePositionNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestKlingO3StandardProviderSettingsShotType))
+                {
+                    return new global::Runway.JsonConverters.CreateVideoToVideoRequestKlingO3StandardProviderSettingsShotTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestKlingO3StandardProviderSettingsShotType?))
+                {
+                    return new global::Runway.JsonConverters.CreateVideoToVideoRequestKlingO3StandardProviderSettingsShotTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestKlingO3StandardReferencesPromptImagePosition))
+                {
+                    return new global::Runway.JsonConverters.CreateVideoToVideoRequestKlingO3StandardReferencesPromptImagePositionJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestKlingO3StandardReferencesPromptImagePosition?))
+                {
+                    return new global::Runway.JsonConverters.CreateVideoToVideoRequestKlingO3StandardReferencesPromptImagePositionNullableJsonConverter();
                 }
 
                 if (typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestSeedance2Ratio))
@@ -3440,6 +5082,36 @@ namespace Runway
                     return new global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance2MiniRatioNullableJsonConverter();
                 }
 
+                if (typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestGeminiOmniFlash11Mode))
+                {
+                    return new global::Runway.JsonConverters.CreateVideoToVideoRequestGeminiOmniFlash11ModeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestGeminiOmniFlash11Mode?))
+                {
+                    return new global::Runway.JsonConverters.CreateVideoToVideoRequestGeminiOmniFlash11ModeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestGeminiOmniFlash11Ratio))
+                {
+                    return new global::Runway.JsonConverters.CreateVideoToVideoRequestGeminiOmniFlash11RatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestGeminiOmniFlash11Ratio?))
+                {
+                    return new global::Runway.JsonConverters.CreateVideoToVideoRequestGeminiOmniFlash11RatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestSeedance25OutputFormat))
+                {
+                    return new global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance25OutputFormatJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestSeedance25OutputFormat?))
+                {
+                    return new global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance25OutputFormatNullableJsonConverter();
+                }
+
                 if (typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestSeedance25Mode))
                 {
                     return new global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance25ModeJsonConverter();
@@ -3460,6 +5132,46 @@ namespace Runway
                     return new global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance25RatioNullableJsonConverter();
                 }
 
+                if (typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestKling4Ratio))
+                {
+                    return new global::Runway.JsonConverters.CreateVideoToVideoRequestKling4RatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestKling4Ratio?))
+                {
+                    return new global::Runway.JsonConverters.CreateVideoToVideoRequestKling4RatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestKling4FlashRatio))
+                {
+                    return new global::Runway.JsonConverters.CreateVideoToVideoRequestKling4FlashRatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestKling4FlashRatio?))
+                {
+                    return new global::Runway.JsonConverters.CreateVideoToVideoRequestKling4FlashRatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestGeminiOmniFlash12Mode))
+                {
+                    return new global::Runway.JsonConverters.CreateVideoToVideoRequestGeminiOmniFlash12ModeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestGeminiOmniFlash12Mode?))
+                {
+                    return new global::Runway.JsonConverters.CreateVideoToVideoRequestGeminiOmniFlash12ModeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestGeminiOmniFlash12Ratio))
+                {
+                    return new global::Runway.JsonConverters.CreateVideoToVideoRequestGeminiOmniFlash12RatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestGeminiOmniFlash12Ratio?))
+                {
+                    return new global::Runway.JsonConverters.CreateVideoToVideoRequestGeminiOmniFlash12RatioNullableJsonConverter();
+                }
+
                 if (typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestDiscriminatorModel))
                 {
                     return new global::Runway.JsonConverters.CreateVideoToVideoRequestDiscriminatorModelJsonConverter();
@@ -3468,36 +5180,6 @@ namespace Runway
                 if (typeToConvert == typeof(global::Runway.CreateVideoToVideoRequestDiscriminatorModel?))
                 {
                     return new global::Runway.JsonConverters.CreateVideoToVideoRequestDiscriminatorModelNullableJsonConverter();
-                }
-
-                if (typeToConvert == typeof(global::Runway.CreateVideoToHdrRequestRubyOutputFormat))
-                {
-                    return new global::Runway.JsonConverters.CreateVideoToHdrRequestRubyOutputFormatJsonConverter();
-                }
-
-                if (typeToConvert == typeof(global::Runway.CreateVideoToHdrRequestRubyOutputFormat?))
-                {
-                    return new global::Runway.JsonConverters.CreateVideoToHdrRequestRubyOutputFormatNullableJsonConverter();
-                }
-
-                if (typeToConvert == typeof(global::Runway.CreateVideoToHdrRequestRubyProresProfile))
-                {
-                    return new global::Runway.JsonConverters.CreateVideoToHdrRequestRubyProresProfileJsonConverter();
-                }
-
-                if (typeToConvert == typeof(global::Runway.CreateVideoToHdrRequestRubyProresProfile?))
-                {
-                    return new global::Runway.JsonConverters.CreateVideoToHdrRequestRubyProresProfileNullableJsonConverter();
-                }
-
-                if (typeToConvert == typeof(global::Runway.CreateVideoToHdrRequestDiscriminatorModel))
-                {
-                    return new global::Runway.JsonConverters.CreateVideoToHdrRequestDiscriminatorModelJsonConverter();
-                }
-
-                if (typeToConvert == typeof(global::Runway.CreateVideoToHdrRequestDiscriminatorModel?))
-                {
-                    return new global::Runway.JsonConverters.CreateVideoToHdrRequestDiscriminatorModelNullableJsonConverter();
                 }
 
                 if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestGen4ImageTurboRatio))
@@ -3570,26 +5252,6 @@ namespace Runway
                     return new global::Runway.JsonConverters.CreateTextToImageRequestGptImage2BackgroundNullableJsonConverter();
                 }
 
-                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestGeminiImage3ProRatio))
-                {
-                    return new global::Runway.JsonConverters.CreateTextToImageRequestGeminiImage3ProRatioJsonConverter();
-                }
-
-                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestGeminiImage3ProRatio?))
-                {
-                    return new global::Runway.JsonConverters.CreateTextToImageRequestGeminiImage3ProRatioNullableJsonConverter();
-                }
-
-                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestGeminiImage3ProReferenceImageSubject))
-                {
-                    return new global::Runway.JsonConverters.CreateTextToImageRequestGeminiImage3ProReferenceImageSubjectJsonConverter();
-                }
-
-                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestGeminiImage3ProReferenceImageSubject?))
-                {
-                    return new global::Runway.JsonConverters.CreateTextToImageRequestGeminiImage3ProReferenceImageSubjectNullableJsonConverter();
-                }
-
                 if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestGeminiImage31FlashRatio))
                 {
                     return new global::Runway.JsonConverters.CreateTextToImageRequestGeminiImage31FlashRatioJsonConverter();
@@ -3618,6 +5280,16 @@ namespace Runway
                 if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestMuseImageRatio?))
                 {
                     return new global::Runway.JsonConverters.CreateTextToImageRequestMuseImageRatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestMuseImageOutputFormat))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestMuseImageOutputFormatJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestMuseImageOutputFormat?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestMuseImageOutputFormatNullableJsonConverter();
                 }
 
                 if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestSeedream5ProRatio))
@@ -3680,6 +5352,256 @@ namespace Runway
                     return new global::Runway.JsonConverters.CreateTextToImageRequestGrokImagineImage2QualityNullableJsonConverter();
                 }
 
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestGeminiImage31FlashLiteRatio))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestGeminiImage31FlashLiteRatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestGeminiImage31FlashLiteRatio?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestGeminiImage31FlashLiteRatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestGeminiImage31FlashLiteReferenceImageSubject))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestGeminiImage31FlashLiteReferenceImageSubjectJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestGeminiImage31FlashLiteReferenceImageSubject?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestGeminiImage31FlashLiteReferenceImageSubjectNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestGeminiImage3ProRatio))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestGeminiImage3ProRatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestGeminiImage3ProRatio?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestGeminiImage3ProRatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestGeminiImage3ProReferenceImageSubject))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestGeminiImage3ProReferenceImageSubjectJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestGeminiImage3ProReferenceImageSubject?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestGeminiImage3ProReferenceImageSubjectNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage25FlareRatio))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestGptImage25FlareRatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage25FlareRatio?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestGptImage25FlareRatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage25FlareQuality))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestGptImage25FlareQualityJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage25FlareQuality?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestGptImage25FlareQualityNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage25FlareBackground))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestGptImage25FlareBackgroundJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage25FlareBackground?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestGptImage25FlareBackgroundNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage25SunburstRatio))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestGptImage25SunburstRatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage25SunburstRatio?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestGptImage25SunburstRatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage25SunburstQuality))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestGptImage25SunburstQualityJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage25SunburstQuality?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestGptImage25SunburstQualityNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage25SunburstBackground))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestGptImage25SunburstBackgroundJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage25SunburstBackground?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestGptImage25SunburstBackgroundNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestBriaFibo15Ratio))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestBriaFibo15RatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestBriaFibo15Ratio?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestBriaFibo15RatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestBriaFibo15OutputFormat))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestBriaFibo15OutputFormatJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestBriaFibo15OutputFormat?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestBriaFibo15OutputFormatNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestBriaFiboEdit15OutputFormat))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestBriaFiboEdit15OutputFormatJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestBriaFiboEdit15OutputFormat?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestBriaFiboEdit15OutputFormatNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestBriaFiboEdit15Ratio))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestBriaFiboEdit15RatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestBriaFiboEdit15Ratio?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestBriaFiboEdit15RatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestIdeogram40Quality))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestIdeogram40QualityJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestIdeogram40Quality?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestIdeogram40QualityNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestIdeogram40Ratio))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestIdeogram40RatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestIdeogram40Ratio?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestIdeogram40RatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestIdeogram45Quality))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestIdeogram45QualityJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestIdeogram45Quality?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestIdeogram45QualityNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestIdeogram45Ratio))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestIdeogram45RatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestIdeogram45Ratio?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestIdeogram45RatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestSeedream5FlashRatio))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestSeedream5FlashRatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestSeedream5FlashRatio?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestSeedream5FlashRatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestSeedream5FlashOutputFormat))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestSeedream5FlashOutputFormatJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestSeedream5FlashOutputFormat?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestSeedream5FlashOutputFormatNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestNanoBanana21Ratio))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestNanoBanana21RatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestNanoBanana21Ratio?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestNanoBanana21RatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestNanoBanana21ThinkingLevel))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestNanoBanana21ThinkingLevelJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestNanoBanana21ThinkingLevel?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestNanoBanana21ThinkingLevelNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestRecraftV41FlashRatio))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestRecraftV41FlashRatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestRecraftV41FlashRatio?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestRecraftV41FlashRatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestRecraftV41FlashOutputFormat))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestRecraftV41FlashOutputFormatJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestRecraftV41FlashOutputFormat?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestRecraftV41FlashOutputFormatNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestRecraftV41VectorRatio))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestRecraftV41VectorRatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestRecraftV41VectorRatio?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestRecraftV41VectorRatioNullableJsonConverter();
+                }
+
                 if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestGemini25FlashRatio))
                 {
                     return new global::Runway.JsonConverters.CreateTextToImageRequestGemini25FlashRatioJsonConverter();
@@ -3688,6 +5610,86 @@ namespace Runway
                 if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestGemini25FlashRatio?))
                 {
                     return new global::Runway.JsonConverters.CreateTextToImageRequestGemini25FlashRatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage26FlareRatio))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestGptImage26FlareRatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage26FlareRatio?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestGptImage26FlareRatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage26FlareQuality))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestGptImage26FlareQualityJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage26FlareQuality?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestGptImage26FlareQualityNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage26FlareBackground))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestGptImage26FlareBackgroundJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage26FlareBackground?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestGptImage26FlareBackgroundNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage26FlareReasoningEffort))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestGptImage26FlareReasoningEffortJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage26FlareReasoningEffort?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestGptImage26FlareReasoningEffortNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage26SunburstRatio))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestGptImage26SunburstRatioJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage26SunburstRatio?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestGptImage26SunburstRatioNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage26SunburstQuality))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestGptImage26SunburstQualityJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage26SunburstQuality?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestGptImage26SunburstQualityNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage26SunburstBackground))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestGptImage26SunburstBackgroundJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage26SunburstBackground?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestGptImage26SunburstBackgroundNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage26SunburstReasoningEffort))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestGptImage26SunburstReasoningEffortJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestGptImage26SunburstReasoningEffort?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToImageRequestGptImage26SunburstReasoningEffortNullableJsonConverter();
                 }
 
                 if (typeToConvert == typeof(global::Runway.CreateTextToImageRequestDiscriminatorModel))
@@ -3760,6 +5762,36 @@ namespace Runway
                     return new global::Runway.JsonConverters.CreateVideoUpscaleRequestDiscriminatorModelNullableJsonConverter();
                 }
 
+                if (typeToConvert == typeof(global::Runway.CreateVideoToHdrRequestRubyOutputFormat))
+                {
+                    return new global::Runway.JsonConverters.CreateVideoToHdrRequestRubyOutputFormatJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVideoToHdrRequestRubyOutputFormat?))
+                {
+                    return new global::Runway.JsonConverters.CreateVideoToHdrRequestRubyOutputFormatNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVideoToHdrRequestRubyProresProfile))
+                {
+                    return new global::Runway.JsonConverters.CreateVideoToHdrRequestRubyProresProfileJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVideoToHdrRequestRubyProresProfile?))
+                {
+                    return new global::Runway.JsonConverters.CreateVideoToHdrRequestRubyProresProfileNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVideoToHdrRequestDiscriminatorModel))
+                {
+                    return new global::Runway.JsonConverters.CreateVideoToHdrRequestDiscriminatorModelJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVideoToHdrRequestDiscriminatorModel?))
+                {
+                    return new global::Runway.JsonConverters.CreateVideoToHdrRequestDiscriminatorModelNullableJsonConverter();
+                }
+
                 if (typeToConvert == typeof(global::Runway.CreateCharacterPerformanceRequestActTwoCharacterDiscriminatorType))
                 {
                     return new global::Runway.JsonConverters.CreateCharacterPerformanceRequestActTwoCharacterDiscriminatorTypeJsonConverter();
@@ -3820,6 +5852,16 @@ namespace Runway
                     return new global::Runway.JsonConverters.CreateSoundEffectRequestSeedAudioOutputFormatNullableJsonConverter();
                 }
 
+                if (typeToConvert == typeof(global::Runway.CreateSoundEffectRequestMireloSfx20Format))
+                {
+                    return new global::Runway.JsonConverters.CreateSoundEffectRequestMireloSfx20FormatJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateSoundEffectRequestMireloSfx20Format?))
+                {
+                    return new global::Runway.JsonConverters.CreateSoundEffectRequestMireloSfx20FormatNullableJsonConverter();
+                }
+
                 if (typeToConvert == typeof(global::Runway.CreateSoundEffectRequestDiscriminatorModel))
                 {
                     return new global::Runway.JsonConverters.CreateSoundEffectRequestDiscriminatorModelJsonConverter();
@@ -3828,6 +5870,26 @@ namespace Runway
                 if (typeToConvert == typeof(global::Runway.CreateSoundEffectRequestDiscriminatorModel?))
                 {
                     return new global::Runway.JsonConverters.CreateSoundEffectRequestDiscriminatorModelNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVideoToAudioRequestMireloSfx20Format))
+                {
+                    return new global::Runway.JsonConverters.CreateVideoToAudioRequestMireloSfx20FormatJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVideoToAudioRequestMireloSfx20Format?))
+                {
+                    return new global::Runway.JsonConverters.CreateVideoToAudioRequestMireloSfx20FormatNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVideoToAudioRequestDiscriminatorModel))
+                {
+                    return new global::Runway.JsonConverters.CreateVideoToAudioRequestDiscriminatorModelJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateVideoToAudioRequestDiscriminatorModel?))
+                {
+                    return new global::Runway.JsonConverters.CreateVideoToAudioRequestDiscriminatorModelNullableJsonConverter();
                 }
 
                 if (typeToConvert == typeof(global::Runway.CreateSpeechToSpeechRequestElevenMultilingualStsV2MediaDiscriminatorType))
@@ -3870,16 +5932,6 @@ namespace Runway
                     return new global::Runway.JsonConverters.CreateSpeechToSpeechRequestDiscriminatorModelNullableJsonConverter();
                 }
 
-                if (typeToConvert == typeof(global::Runway.CreateTextToSpeechRequestSeedAudioVoiceDiscriminatorType))
-                {
-                    return new global::Runway.JsonConverters.CreateTextToSpeechRequestSeedAudioVoiceDiscriminatorTypeJsonConverter();
-                }
-
-                if (typeToConvert == typeof(global::Runway.CreateTextToSpeechRequestSeedAudioVoiceDiscriminatorType?))
-                {
-                    return new global::Runway.JsonConverters.CreateTextToSpeechRequestSeedAudioVoiceDiscriminatorTypeNullableJsonConverter();
-                }
-
                 if (typeToConvert == typeof(global::Runway.CreateTextToSpeechRequestSeedAudioOutputFormat))
                 {
                     return new global::Runway.JsonConverters.CreateTextToSpeechRequestSeedAudioOutputFormatJsonConverter();
@@ -3888,6 +5940,26 @@ namespace Runway
                 if (typeToConvert == typeof(global::Runway.CreateTextToSpeechRequestSeedAudioOutputFormat?))
                 {
                     return new global::Runway.JsonConverters.CreateTextToSpeechRequestSeedAudioOutputFormatNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToSpeechRequestElevenV4VoiceRunwayPresetVoicePresetId))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToSpeechRequestElevenV4VoiceRunwayPresetVoicePresetIdJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToSpeechRequestElevenV4VoiceRunwayPresetVoicePresetId?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToSpeechRequestElevenV4VoiceRunwayPresetVoicePresetIdNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToSpeechRequestElevenV4VoiceDiscriminatorType))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToSpeechRequestElevenV4VoiceDiscriminatorTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Runway.CreateTextToSpeechRequestElevenV4VoiceDiscriminatorType?))
+                {
+                    return new global::Runway.JsonConverters.CreateTextToSpeechRequestElevenV4VoiceDiscriminatorTypeNullableJsonConverter();
                 }
 
                 if (typeToConvert == typeof(global::Runway.CreateTextToSpeechRequestElevenMultilingualV2VoiceRunwayPresetVoicePresetId))
@@ -5166,7 +7238,7 @@ namespace Runway
         private sealed class LazyChunkResolver : global::System.Text.Json.Serialization.Metadata.IJsonTypeInfoResolver
         {
             private readonly object _gate = new();
-            private readonly global::System.Text.Json.Serialization.Metadata.IJsonTypeInfoResolver?[] _resolvers = new global::System.Text.Json.Serialization.Metadata.IJsonTypeInfoResolver?[4];
+            private readonly global::System.Text.Json.Serialization.Metadata.IJsonTypeInfoResolver?[] _resolvers = new global::System.Text.Json.Serialization.Metadata.IJsonTypeInfoResolver?[5];
 
             public global::System.Text.Json.Serialization.Metadata.JsonTypeInfo? GetTypeInfo(
                 global::System.Type type,
@@ -5209,6 +7281,8 @@ namespace Runway
                     2 => new SourceGenerationContextChunk2(new global::System.Text.Json.JsonSerializerOptions()),
 
                     3 => new SourceGenerationContextChunk3(new global::System.Text.Json.JsonSerializerOptions()),
+
+                    4 => new SourceGenerationContextChunk4(new global::System.Text.Json.JsonSerializerOptions()),
                     _ => throw new global::System.ArgumentOutOfRangeException(nameof(index)),
                 };
             }

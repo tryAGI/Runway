@@ -1,4 +1,3 @@
-
 #pragma warning disable CS0618 // Type or member is obsolete
 
 #nullable enable
@@ -8,122 +7,214 @@ namespace Runway
     /// <summary>
     ///
     /// </summary>
-    public sealed partial class CreateRealtimeSessionsRequest
+    public readonly partial struct CreateRealtimeSessionsRequest : global::System.IEquatable<CreateRealtimeSessionsRequest>
     {
         /// <summary>
-        /// The realtime session model type.
+        ///
         /// </summary>
-        /// <default>"gwm1_avatars"</default>
-        [global::System.Text.Json.Serialization.JsonPropertyName("model")]
-        public string Model { get; set; } = "gwm1_avatars";
+        public global::Runway.CreateRealtimeSessionsRequestDiscriminatorModel? Model { get; }
 
         /// <summary>
-        /// The avatar configuration for the session.
+        ///
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("avatar")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.Avatar2JsonConverter))]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Runway.Avatar2 Avatar { get; set; }
-
-        /// <summary>
-        /// Maximum session duration in seconds.<br/>
-        /// Default Value: 300
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("maxDuration")]
-        public int? MaxDuration { get; set; }
-
-        /// <summary>
-        /// Override the avatar personality for this session. If not provided, uses the avatar default.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("personality")]
-        public string? Personality { get; set; }
-
-        /// <summary>
-        /// Override the avatar start script for this session. If not provided, uses the avatar default.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("startScript")]
-        public string? StartScript { get; set; }
-
-        /// <summary>
-        /// Tools available to the avatar during the session.<br/>
-        /// Default Value: []
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("tools")]
-        public global::System.Collections.Generic.IList<global::Runway.ToolsItem>? Tools { get; set; }
-
-        /// <summary>
-        /// External integration. Runway renders the avatar; the integration owns conversation or audio.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("integration")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.IntegrationJsonConverter))]
-        public global::Runway.Integration? Integration { get; set; }
-
-        /// <summary>
-        /// Use integration with type "livekit" instead.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("livekit")]
-        [global::System.Obsolete("This property marked as deprecated.")]
-        public global::Runway.CreateRealtimeSessionsRequestLivekit? Livekit { get; set; }
-
-        /// <summary>
-        /// Additional properties that are not explicitly defined in the schema
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonExtensionData]
-        public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="CreateRealtimeSessionsRequest" /> class.
-        /// </summary>
-        /// <param name="avatar">
-        /// The avatar configuration for the session.
-        /// </param>
-        /// <param name="maxDuration">
-        /// Maximum session duration in seconds.<br/>
-        /// Default Value: 300
-        /// </param>
-        /// <param name="personality">
-        /// Override the avatar personality for this session. If not provided, uses the avatar default.
-        /// </param>
-        /// <param name="startScript">
-        /// Override the avatar start script for this session. If not provided, uses the avatar default.
-        /// </param>
-        /// <param name="tools">
-        /// Tools available to the avatar during the session.<br/>
-        /// Default Value: []
-        /// </param>
-        /// <param name="integration">
-        /// External integration. Runway renders the avatar; the integration owns conversation or audio.
-        /// </param>
-        /// <param name="model">
-        /// The realtime session model type.
-        /// </param>
-#if NET7_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#if NET6_0_OR_GREATER
+        public global::Runway.CreateRealtimeSessionsRequestGwm1Avatars? Gwm1Avatars { get; init; }
+#else
+        public global::Runway.CreateRealtimeSessionsRequestGwm1Avatars? Gwm1Avatars { get; }
 #endif
-        public CreateRealtimeSessionsRequest(
-            global::Runway.Avatar2 avatar,
-            int? maxDuration,
-            string? personality,
-            string? startScript,
-            global::System.Collections.Generic.IList<global::Runway.ToolsItem>? tools,
-            global::Runway.Integration? integration,
-            string model = "gwm1_avatars")
+
+        /// <summary>
+        ///
+        /// </summary>
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Gwm1Avatars))]
+#endif
+        public bool IsGwm1Avatars => Gwm1Avatars != null;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public bool TryPickGwm1Avatars(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Runway.CreateRealtimeSessionsRequestGwm1Avatars? value)
         {
-            this.Model = model;
-            this.Avatar = avatar;
-            this.MaxDuration = maxDuration;
-            this.Personality = personality;
-            this.StartScript = startScript;
-            this.Tools = tools;
-            this.Integration = integration;
+            value = Gwm1Avatars;
+            return IsGwm1Avatars;
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CreateRealtimeSessionsRequest" /> class.
+        ///
         /// </summary>
-        public CreateRealtimeSessionsRequest()
+        public global::Runway.CreateRealtimeSessionsRequestGwm1Avatars PickGwm1Avatars() => Gwm1Avatars is { } value
+            ? value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Gwm1Avatars' but the value was {ToString()}.");
+        /// <summary>
+        ///
+        /// </summary>
+        public static implicit operator CreateRealtimeSessionsRequest(global::Runway.CreateRealtimeSessionsRequestGwm1Avatars value) => new CreateRealtimeSessionsRequest((global::Runway.CreateRealtimeSessionsRequestGwm1Avatars?)value);
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static implicit operator global::Runway.CreateRealtimeSessionsRequestGwm1Avatars?(CreateRealtimeSessionsRequest @this) => @this.Gwm1Avatars;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public CreateRealtimeSessionsRequest(global::Runway.CreateRealtimeSessionsRequestGwm1Avatars? value)
         {
+            Gwm1Avatars = value;
         }
 
+        /// <summary>
+        ///
+        /// </summary>
+        public static CreateRealtimeSessionsRequest FromGwm1Avatars(global::Runway.CreateRealtimeSessionsRequestGwm1Avatars? value) => new CreateRealtimeSessionsRequest(value);
+
+        /// <summary>
+        ///
+        /// </summary>
+        public CreateRealtimeSessionsRequest(
+            global::Runway.CreateRealtimeSessionsRequestDiscriminatorModel? model,
+            global::Runway.CreateRealtimeSessionsRequestGwm1Avatars? gwm1Avatars
+            )
+        {
+            Model = model;
+
+            Gwm1Avatars = gwm1Avatars;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public object? Object =>
+            Gwm1Avatars as object
+            ;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public override string? ToString() =>
+            Gwm1Avatars?.ToString()
+            ;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public bool Validate()
+        {
+            return IsGwm1Avatars;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public TResult? Match<TResult>(
+            global::System.Func<global::Runway.CreateRealtimeSessionsRequestGwm1Avatars, TResult>? gwm1Avatars = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (Gwm1Avatars is { } __value0 && gwm1Avatars != null)
+            {
+                return gwm1Avatars(__value0);
+            }
+
+            return default(TResult);
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public void Match(
+            global::System.Action<global::Runway.CreateRealtimeSessionsRequestGwm1Avatars>? gwm1Avatars = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (Gwm1Avatars is { } __value0)
+            {
+                gwm1Avatars?.Invoke(__value0);
+            }
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::Runway.CreateRealtimeSessionsRequestGwm1Avatars>? gwm1Avatars = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (Gwm1Avatars is { } __value0)
+            {
+                gwm1Avatars?.Invoke(__value0);
+            }
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public override int GetHashCode()
+        {
+            var fields = new object?[]
+            {
+                Gwm1Avatars,
+                typeof(global::Runway.CreateRealtimeSessionsRequestGwm1Avatars),
+            };
+            const int offset = unchecked((int)2166136261);
+            const int prime = 16777619;
+            static int HashCodeAggregator(int hashCode, object? value) => value == null
+                ? (hashCode ^ 0) * prime
+                : (hashCode ^ value.GetHashCode()) * prime;
+
+            return global::System.Linq.Enumerable.Aggregate(fields, offset, HashCodeAggregator);
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public bool Equals(CreateRealtimeSessionsRequest other)
+        {
+            return
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateRealtimeSessionsRequestGwm1Avatars?>.Default.Equals(Gwm1Avatars, other.Gwm1Avatars)
+                ;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static bool operator ==(CreateRealtimeSessionsRequest obj1, CreateRealtimeSessionsRequest obj2)
+        {
+            return global::System.Collections.Generic.EqualityComparer<CreateRealtimeSessionsRequest>.Default.Equals(obj1, obj2);
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static bool operator !=(CreateRealtimeSessionsRequest obj1, CreateRealtimeSessionsRequest obj2)
+        {
+            return !(obj1 == obj2);
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public override bool Equals(object? obj)
+        {
+            return obj is CreateRealtimeSessionsRequest o && Equals(o);
+        }
     }
 }

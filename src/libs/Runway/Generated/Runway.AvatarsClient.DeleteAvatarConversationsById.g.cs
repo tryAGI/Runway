@@ -40,7 +40,7 @@ namespace Runway
 
         /// <summary>
         /// Delete conversation<br/>
-        /// Delete a conversation and its associated data.
+        /// Permanently delete a conversation, including its transcript and recording.
         /// </summary>
         /// <param name="id"></param>
         /// <param name="xRunwayVersion">
@@ -73,7 +73,7 @@ namespace Runway
         }
         /// <summary>
         /// Delete conversation<br/>
-        /// Delete a conversation and its associated data.
+        /// Permanently delete a conversation, including its transcript and recording.
         /// </summary>
         /// <param name="id"></param>
         /// <param name="xRunwayVersion">

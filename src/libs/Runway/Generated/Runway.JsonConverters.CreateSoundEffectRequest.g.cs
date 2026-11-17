@@ -28,6 +28,13 @@ namespace Runway.JsonConverters
                                throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.CreateSoundEffectRequestSeedAudio)}");
                 seedAudio = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
+            global::Runway.CreateSoundEffectRequestMireloSfx20? mireloSfx20 = default;
+            if (discriminator?.Model == global::Runway.CreateSoundEffectRequestDiscriminatorModel.MireloSfx20)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateSoundEffectRequestMireloSfx20), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateSoundEffectRequestMireloSfx20> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.CreateSoundEffectRequestMireloSfx20)}");
+                mireloSfx20 = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+            }
             global::Runway.CreateSoundEffectRequestElevenTextToSoundV2? elevenTextToSoundV2 = default;
             if (discriminator?.Model == global::Runway.CreateSoundEffectRequestDiscriminatorModel.ElevenTextToSoundV2)
             {
@@ -39,6 +46,8 @@ namespace Runway.JsonConverters
             var __value = new global::Runway.CreateSoundEffectRequest(
                 discriminator?.Model,
                 seedAudio,
+
+                mireloSfx20,
 
                 elevenTextToSoundV2
                 );
@@ -60,6 +69,12 @@ namespace Runway.JsonConverters
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateSoundEffectRequestSeedAudio), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateSoundEffectRequestSeedAudio?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateSoundEffectRequestSeedAudio).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickSeedAudio(), typeInfo);
+            }
+            else if (value.IsMireloSfx20)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateSoundEffectRequestMireloSfx20), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateSoundEffectRequestMireloSfx20?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateSoundEffectRequestMireloSfx20).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickMireloSfx20(), typeInfo);
             }
             else if (value.IsElevenTextToSoundV2)
             {

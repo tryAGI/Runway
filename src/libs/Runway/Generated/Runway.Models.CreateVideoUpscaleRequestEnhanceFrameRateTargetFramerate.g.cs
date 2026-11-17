@@ -4,7 +4,7 @@
 namespace Runway
 {
     /// <summary>
-    /// Target frames per second. NTSC rates use underscored values (23_98, 29_97, 59_94).
+    /// The output frame rate.
     /// </summary>
     public enum CreateVideoUpscaleRequestEnhanceFrameRateTargetFramerate
     {

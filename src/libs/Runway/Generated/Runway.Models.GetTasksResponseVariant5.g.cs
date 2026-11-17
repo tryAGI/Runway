@@ -43,7 +43,7 @@ namespace Runway
         public string? FailureCode { get; set; }
 
         /// <summary>
-        /// Final cost in credits for a terminal task. A refunded task reports 0.
+        /// Final cost in credits for a terminal task. Fully refunded tasks report 0; tasks that later returned unused prepaid credits report what remains charged.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("cost")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -68,7 +68,7 @@ namespace Runway
         /// A human-friendly reason for the failure. We do not recommend returning this to users directly without adding context.
         /// </param>
         /// <param name="cost">
-        /// Final cost in credits for a terminal task. A refunded task reports 0.
+        /// Final cost in credits for a terminal task. Fully refunded tasks report 0; tasks that later returned unused prepaid credits report what remains charged.
         /// </param>
         /// <param name="failureCode">
         /// A machine-readable error code for the failure. See https://docs.dev.runwayml.com/errors/task-failures/ for more information.

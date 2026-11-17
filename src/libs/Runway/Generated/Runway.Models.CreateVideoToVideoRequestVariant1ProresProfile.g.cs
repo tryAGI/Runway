@@ -4,7 +4,7 @@
 namespace Runway
 {
     /// <summary>
-    /// The ProRes profile to use. Only valid when `outputFormat` is `prores`. Defaults to `4444`.
+    /// The ProRes profile to use. Only valid when `outputFormat` is `prores`. Defaults to `4444`. Note: generated content contains no transparency — the alpha channel in `4444` / `4444 XQ` outputs is present but fully opaque; choose these tiers for 12-bit 4:4:4 color fidelity, not for mattes.
     /// </summary>
     public enum CreateVideoToVideoRequestVariant1ProresProfile
     {
@@ -25,11 +25,11 @@ namespace Runway
         /// </summary>
         x422Proxy,
         /// <summary>
-        ///
+        /// generated content contains no transparency — the alpha channel in `4444` / `4444 XQ` outputs is present but fully opaque; choose these tiers for 12-bit 4:4:4 color fidelity, not for mattes.
         /// </summary>
         x4444,
         /// <summary>
-        ///
+        /// generated content contains no transparency — the alpha channel in `4444` / `4444 XQ` outputs is present but fully opaque; choose these tiers for 12-bit 4:4:4 color fidelity, not for mattes.
         /// </summary>
         x4444Xq,
     }

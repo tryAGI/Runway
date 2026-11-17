@@ -55,7 +55,7 @@ npx skills add tryAGI/Runway -a claude-code -y
 After install, the skill's instructions live at `.agents/skills/runway-cli/SKILL.md`. Listing on [skills.sh/tryAGI/Runway](https://skills.sh/tryAGI/Runway) is updated automatically from anonymous install telemetry.
 
 ## Features 🔥
-- Fully generated C# SDK based on the [official Runway OpenAPI specification](https://raw.githubusercontent.com/runwayml/openapi/refs/heads/next/openapi.json), with a small [documented feature patch](src/libs/Runway/patch_openapi.py) while the published spec catches up, using [AutoSDK](https://github.com/tryAGI/AutoSDK)
+- Fully generated C# SDK based on the [official Runway OpenAPI specification](https://raw.githubusercontent.com/runwayml/openapi/refs/heads/main/openapi.json), with a small [documented feature patch](src/libs/Runway/patch_openapi.py) while the published spec catches up, using [AutoSDK](https://github.com/tryAGI/AutoSDK)
 - Same day update to support new features
 - Updated and supported automatically if there are no breaking changes
 - All modern .NET features - nullability, trimming, NativeAOT, etc.

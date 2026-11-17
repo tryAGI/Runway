@@ -19,6 +19,66 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
+        AdAccountSelectionUpdated,
+        /// <summary>
+        ///
+        /// </summary>
+        AdAccountSyncRequested,
+        /// <summary>
+        ///
+        /// </summary>
+        AdConnectionAuthorizationStarted,
+        /// <summary>
+        ///
+        /// </summary>
+        AdConnectionConnected,
+        /// <summary>
+        ///
+        /// </summary>
+        AdConnectionDisconnected,
+        /// <summary>
+        ///
+        /// </summary>
+        AdCreativeApprovalRevoked,
+        /// <summary>
+        ///
+        /// </summary>
+        AdCreativeArchived,
+        /// <summary>
+        ///
+        /// </summary>
+        AdCreativeReviewCancelled,
+        /// <summary>
+        ///
+        /// </summary>
+        AdCreativeReviewDecided,
+        /// <summary>
+        ///
+        /// </summary>
+        AdCreativeReviewSubmitted,
+        /// <summary>
+        ///
+        /// </summary>
+        AdCreativeUnarchived,
+        /// <summary>
+        ///
+        /// </summary>
+        AdPublishBatchCancelled,
+        /// <summary>
+        ///
+        /// </summary>
+        AdPublishBatchQueued,
+        /// <summary>
+        ///
+        /// </summary>
+        AdPublishBatchRetried,
+        /// <summary>
+        ///
+        /// </summary>
+        AdWorkspaceOnboardingUpdated,
+        /// <summary>
+        ///
+        /// </summary>
         AgentConnectorAssetExported,
         /// <summary>
         ///
@@ -67,6 +127,10 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
+        AppStudioAiRunOpened,
+        /// <summary>
+        ///
+        /// </summary>
         AssetCreated,
         /// <summary>
         ///
@@ -91,11 +155,43 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
+        AwsMarketplaceEnterpriseSubscriptionLinked,
+        /// <summary>
+        ///
+        /// </summary>
         BrandKitShared,
         /// <summary>
         ///
         /// </summary>
         BrandKitUnshared,
+        /// <summary>
+        ///
+        /// </summary>
+        CommentAgentCallRun,
+        /// <summary>
+        ///
+        /// </summary>
+        CommentCreated,
+        /// <summary>
+        ///
+        /// </summary>
+        CommentDeleted,
+        /// <summary>
+        ///
+        /// </summary>
+        CommentEdited,
+        /// <summary>
+        ///
+        /// </summary>
+        CommentRemovalReasonChanged,
+        /// <summary>
+        ///
+        /// </summary>
+        CommentRemovedByModerator,
+        /// <summary>
+        ///
+        /// </summary>
+        CommentRestoredByModerator,
         /// <summary>
         ///
         /// </summary>
@@ -127,7 +223,15 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
+        MemberInviteReminderSent,
+        /// <summary>
+        ///
+        /// </summary>
         MemberInvited,
+        /// <summary>
+        ///
+        /// </summary>
+        MemberJoinedViaDomain,
         /// <summary>
         ///
         /// </summary>
@@ -148,6 +252,30 @@ namespace Runway
         ///
         /// </summary>
         MeteredBillingRetryTriggered,
+        /// <summary>
+        ///
+        /// </summary>
+        OnboardingBonusGranted,
+        /// <summary>
+        ///
+        /// </summary>
+        OrganizationAgentSandboxUpdated,
+        /// <summary>
+        ///
+        /// </summary>
+        OrganizationApiAccountMemberInvited,
+        /// <summary>
+        ///
+        /// </summary>
+        OrganizationApiAccountMemberRemoved,
+        /// <summary>
+        ///
+        /// </summary>
+        OrganizationApiAccountMemberRoleChanged,
+        /// <summary>
+        ///
+        /// </summary>
+        OrganizationApiAccountReleased,
         /// <summary>
         ///
         /// </summary>
@@ -211,11 +339,19 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
+        StudioSessionOpened,
+        /// <summary>
+        ///
+        /// </summary>
         SubscriptionCancelled,
         /// <summary>
         ///
         /// </summary>
         SubscriptionPlanSwitched,
+        /// <summary>
+        ///
+        /// </summary>
+        SubscriptionReactivatedWithOffer,
         /// <summary>
         ///
         /// </summary>
@@ -227,7 +363,15 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
+        UserGroupArchived,
+        /// <summary>
+        ///
+        /// </summary>
         UserGroupCreated,
+        /// <summary>
+        ///
+        /// </summary>
+        UserGroupCreditCapUpdated,
         /// <summary>
         ///
         /// </summary>
@@ -240,6 +384,18 @@ namespace Runway
         ///
         /// </summary>
         UserGroupMemberRemoved,
+        /// <summary>
+        ///
+        /// </summary>
+        UserGroupRestored,
+        /// <summary>
+        ///
+        /// </summary>
+        UserGroupUpdated,
+        /// <summary>
+        ///
+        /// </summary>
+        UserGroupVisibilityUpdated,
         /// <summary>
         ///
         /// </summary>
@@ -304,6 +460,21 @@ namespace Runway
             {
                 GetOrganizationWebappAuditLogsResponseDataItemAction.AccountLinkCreated => "AccountLinkCreated",
                 GetOrganizationWebappAuditLogsResponseDataItemAction.AccountLinkDeleted => "AccountLinkDeleted",
+                GetOrganizationWebappAuditLogsResponseDataItemAction.AdAccountSelectionUpdated => "AdAccountSelectionUpdated",
+                GetOrganizationWebappAuditLogsResponseDataItemAction.AdAccountSyncRequested => "AdAccountSyncRequested",
+                GetOrganizationWebappAuditLogsResponseDataItemAction.AdConnectionAuthorizationStarted => "AdConnectionAuthorizationStarted",
+                GetOrganizationWebappAuditLogsResponseDataItemAction.AdConnectionConnected => "AdConnectionConnected",
+                GetOrganizationWebappAuditLogsResponseDataItemAction.AdConnectionDisconnected => "AdConnectionDisconnected",
+                GetOrganizationWebappAuditLogsResponseDataItemAction.AdCreativeApprovalRevoked => "AdCreativeApprovalRevoked",
+                GetOrganizationWebappAuditLogsResponseDataItemAction.AdCreativeArchived => "AdCreativeArchived",
+                GetOrganizationWebappAuditLogsResponseDataItemAction.AdCreativeReviewCancelled => "AdCreativeReviewCancelled",
+                GetOrganizationWebappAuditLogsResponseDataItemAction.AdCreativeReviewDecided => "AdCreativeReviewDecided",
+                GetOrganizationWebappAuditLogsResponseDataItemAction.AdCreativeReviewSubmitted => "AdCreativeReviewSubmitted",
+                GetOrganizationWebappAuditLogsResponseDataItemAction.AdCreativeUnarchived => "AdCreativeUnarchived",
+                GetOrganizationWebappAuditLogsResponseDataItemAction.AdPublishBatchCancelled => "AdPublishBatchCancelled",
+                GetOrganizationWebappAuditLogsResponseDataItemAction.AdPublishBatchQueued => "AdPublishBatchQueued",
+                GetOrganizationWebappAuditLogsResponseDataItemAction.AdPublishBatchRetried => "AdPublishBatchRetried",
+                GetOrganizationWebappAuditLogsResponseDataItemAction.AdWorkspaceOnboardingUpdated => "AdWorkspaceOnboardingUpdated",
                 GetOrganizationWebappAuditLogsResponseDataItemAction.AgentConnectorAssetExported => "AgentConnectorAssetExported",
                 GetOrganizationWebappAuditLogsResponseDataItemAction.AgentConnectorConnected => "AgentConnectorConnected",
                 GetOrganizationWebappAuditLogsResponseDataItemAction.AgentConnectorDisconnected => "AgentConnectorDisconnected",
@@ -316,14 +487,23 @@ namespace Runway
                 GetOrganizationWebappAuditLogsResponseDataItemAction.AgentCustomSkillUnshared => "AgentCustomSkillUnshared",
                 GetOrganizationWebappAuditLogsResponseDataItemAction.AgentSessionShared => "AgentSessionShared",
                 GetOrganizationWebappAuditLogsResponseDataItemAction.AgentSessionUnshared => "AgentSessionUnshared",
+                GetOrganizationWebappAuditLogsResponseDataItemAction.AppStudioAiRunOpened => "AppStudioAiRunOpened",
                 GetOrganizationWebappAuditLogsResponseDataItemAction.AssetCreated => "AssetCreated",
                 GetOrganizationWebappAuditLogsResponseDataItemAction.AssetDeleted => "AssetDeleted",
                 GetOrganizationWebappAuditLogsResponseDataItemAction.AssetDownloaded => "AssetDownloaded",
                 GetOrganizationWebappAuditLogsResponseDataItemAction.AssetShared => "AssetShared",
                 GetOrganizationWebappAuditLogsResponseDataItemAction.AssetUnshared => "AssetUnshared",
                 GetOrganizationWebappAuditLogsResponseDataItemAction.AssetUpdated => "AssetUpdated",
+                GetOrganizationWebappAuditLogsResponseDataItemAction.AwsMarketplaceEnterpriseSubscriptionLinked => "AwsMarketplaceEnterpriseSubscriptionLinked",
                 GetOrganizationWebappAuditLogsResponseDataItemAction.BrandKitShared => "BrandKitShared",
                 GetOrganizationWebappAuditLogsResponseDataItemAction.BrandKitUnshared => "BrandKitUnshared",
+                GetOrganizationWebappAuditLogsResponseDataItemAction.CommentAgentCallRun => "CommentAgentCallRun",
+                GetOrganizationWebappAuditLogsResponseDataItemAction.CommentCreated => "CommentCreated",
+                GetOrganizationWebappAuditLogsResponseDataItemAction.CommentDeleted => "CommentDeleted",
+                GetOrganizationWebappAuditLogsResponseDataItemAction.CommentEdited => "CommentEdited",
+                GetOrganizationWebappAuditLogsResponseDataItemAction.CommentRemovalReasonChanged => "CommentRemovalReasonChanged",
+                GetOrganizationWebappAuditLogsResponseDataItemAction.CommentRemovedByModerator => "CommentRemovedByModerator",
+                GetOrganizationWebappAuditLogsResponseDataItemAction.CommentRestoredByModerator => "CommentRestoredByModerator",
                 GetOrganizationWebappAuditLogsResponseDataItemAction.CreditsTransferred => "CreditsTransferred",
                 GetOrganizationWebappAuditLogsResponseDataItemAction.EmailChangeRequested => "EmailChangeRequested",
                 GetOrganizationWebappAuditLogsResponseDataItemAction.EmailChanged => "EmailChanged",
@@ -331,12 +511,20 @@ namespace Runway
                 GetOrganizationWebappAuditLogsResponseDataItemAction.GenerationCreated => "GenerationCreated",
                 GetOrganizationWebappAuditLogsResponseDataItemAction.InviteAccepted => "InviteAccepted",
                 GetOrganizationWebappAuditLogsResponseDataItemAction.InviteLinkToggled => "InviteLinkToggled",
+                GetOrganizationWebappAuditLogsResponseDataItemAction.MemberInviteReminderSent => "MemberInviteReminderSent",
                 GetOrganizationWebappAuditLogsResponseDataItemAction.MemberInvited => "MemberInvited",
+                GetOrganizationWebappAuditLogsResponseDataItemAction.MemberJoinedViaDomain => "MemberJoinedViaDomain",
                 GetOrganizationWebappAuditLogsResponseDataItemAction.MemberRemoved => "MemberRemoved",
                 GetOrganizationWebappAuditLogsResponseDataItemAction.MemberRoleChanged => "MemberRoleChanged",
                 GetOrganizationWebappAuditLogsResponseDataItemAction.MeteredBillingConfigUpdated => "MeteredBillingConfigUpdated",
                 GetOrganizationWebappAuditLogsResponseDataItemAction.MeteredBillingRefillTriggered => "MeteredBillingRefillTriggered",
                 GetOrganizationWebappAuditLogsResponseDataItemAction.MeteredBillingRetryTriggered => "MeteredBillingRetryTriggered",
+                GetOrganizationWebappAuditLogsResponseDataItemAction.OnboardingBonusGranted => "OnboardingBonusGranted",
+                GetOrganizationWebappAuditLogsResponseDataItemAction.OrganizationAgentSandboxUpdated => "OrganizationAgentSandboxUpdated",
+                GetOrganizationWebappAuditLogsResponseDataItemAction.OrganizationApiAccountMemberInvited => "OrganizationApiAccountMemberInvited",
+                GetOrganizationWebappAuditLogsResponseDataItemAction.OrganizationApiAccountMemberRemoved => "OrganizationApiAccountMemberRemoved",
+                GetOrganizationWebappAuditLogsResponseDataItemAction.OrganizationApiAccountMemberRoleChanged => "OrganizationApiAccountMemberRoleChanged",
+                GetOrganizationWebappAuditLogsResponseDataItemAction.OrganizationApiAccountReleased => "OrganizationApiAccountReleased",
                 GetOrganizationWebappAuditLogsResponseDataItemAction.OrganizationDisabledModelsUpdated => "OrganizationDisabledModelsUpdated",
                 GetOrganizationWebappAuditLogsResponseDataItemAction.OrganizationSettingsUpdated => "OrganizationSettingsUpdated",
                 GetOrganizationWebappAuditLogsResponseDataItemAction.PasswordChanged => "PasswordChanged",
@@ -352,14 +540,21 @@ namespace Runway
                 GetOrganizationWebappAuditLogsResponseDataItemAction.SeatsTransferred => "SeatsTransferred",
                 GetOrganizationWebappAuditLogsResponseDataItemAction.SessionShared => "SessionShared",
                 GetOrganizationWebappAuditLogsResponseDataItemAction.SessionUnshared => "SessionUnshared",
+                GetOrganizationWebappAuditLogsResponseDataItemAction.StudioSessionOpened => "StudioSessionOpened",
                 GetOrganizationWebappAuditLogsResponseDataItemAction.SubscriptionCancelled => "SubscriptionCancelled",
                 GetOrganizationWebappAuditLogsResponseDataItemAction.SubscriptionPlanSwitched => "SubscriptionPlanSwitched",
+                GetOrganizationWebappAuditLogsResponseDataItemAction.SubscriptionReactivatedWithOffer => "SubscriptionReactivatedWithOffer",
                 GetOrganizationWebappAuditLogsResponseDataItemAction.TeamSettingsUpdated => "TeamSettingsUpdated",
                 GetOrganizationWebappAuditLogsResponseDataItemAction.UserAccountDeleted => "UserAccountDeleted",
+                GetOrganizationWebappAuditLogsResponseDataItemAction.UserGroupArchived => "UserGroupArchived",
                 GetOrganizationWebappAuditLogsResponseDataItemAction.UserGroupCreated => "UserGroupCreated",
+                GetOrganizationWebappAuditLogsResponseDataItemAction.UserGroupCreditCapUpdated => "UserGroupCreditCapUpdated",
                 GetOrganizationWebappAuditLogsResponseDataItemAction.UserGroupDeleted => "UserGroupDeleted",
                 GetOrganizationWebappAuditLogsResponseDataItemAction.UserGroupMemberAdded => "UserGroupMemberAdded",
                 GetOrganizationWebappAuditLogsResponseDataItemAction.UserGroupMemberRemoved => "UserGroupMemberRemoved",
+                GetOrganizationWebappAuditLogsResponseDataItemAction.UserGroupRestored => "UserGroupRestored",
+                GetOrganizationWebappAuditLogsResponseDataItemAction.UserGroupUpdated => "UserGroupUpdated",
+                GetOrganizationWebappAuditLogsResponseDataItemAction.UserGroupVisibilityUpdated => "UserGroupVisibilityUpdated",
                 GetOrganizationWebappAuditLogsResponseDataItemAction.UserLogin => "UserLogin",
                 GetOrganizationWebappAuditLogsResponseDataItemAction.UserRegistered => "UserRegistered",
                 GetOrganizationWebappAuditLogsResponseDataItemAction.VideoProjectShared => "VideoProjectShared",
@@ -384,6 +579,21 @@ namespace Runway
             {
                 "AccountLinkCreated" => GetOrganizationWebappAuditLogsResponseDataItemAction.AccountLinkCreated,
                 "AccountLinkDeleted" => GetOrganizationWebappAuditLogsResponseDataItemAction.AccountLinkDeleted,
+                "AdAccountSelectionUpdated" => GetOrganizationWebappAuditLogsResponseDataItemAction.AdAccountSelectionUpdated,
+                "AdAccountSyncRequested" => GetOrganizationWebappAuditLogsResponseDataItemAction.AdAccountSyncRequested,
+                "AdConnectionAuthorizationStarted" => GetOrganizationWebappAuditLogsResponseDataItemAction.AdConnectionAuthorizationStarted,
+                "AdConnectionConnected" => GetOrganizationWebappAuditLogsResponseDataItemAction.AdConnectionConnected,
+                "AdConnectionDisconnected" => GetOrganizationWebappAuditLogsResponseDataItemAction.AdConnectionDisconnected,
+                "AdCreativeApprovalRevoked" => GetOrganizationWebappAuditLogsResponseDataItemAction.AdCreativeApprovalRevoked,
+                "AdCreativeArchived" => GetOrganizationWebappAuditLogsResponseDataItemAction.AdCreativeArchived,
+                "AdCreativeReviewCancelled" => GetOrganizationWebappAuditLogsResponseDataItemAction.AdCreativeReviewCancelled,
+                "AdCreativeReviewDecided" => GetOrganizationWebappAuditLogsResponseDataItemAction.AdCreativeReviewDecided,
+                "AdCreativeReviewSubmitted" => GetOrganizationWebappAuditLogsResponseDataItemAction.AdCreativeReviewSubmitted,
+                "AdCreativeUnarchived" => GetOrganizationWebappAuditLogsResponseDataItemAction.AdCreativeUnarchived,
+                "AdPublishBatchCancelled" => GetOrganizationWebappAuditLogsResponseDataItemAction.AdPublishBatchCancelled,
+                "AdPublishBatchQueued" => GetOrganizationWebappAuditLogsResponseDataItemAction.AdPublishBatchQueued,
+                "AdPublishBatchRetried" => GetOrganizationWebappAuditLogsResponseDataItemAction.AdPublishBatchRetried,
+                "AdWorkspaceOnboardingUpdated" => GetOrganizationWebappAuditLogsResponseDataItemAction.AdWorkspaceOnboardingUpdated,
                 "AgentConnectorAssetExported" => GetOrganizationWebappAuditLogsResponseDataItemAction.AgentConnectorAssetExported,
                 "AgentConnectorConnected" => GetOrganizationWebappAuditLogsResponseDataItemAction.AgentConnectorConnected,
                 "AgentConnectorDisconnected" => GetOrganizationWebappAuditLogsResponseDataItemAction.AgentConnectorDisconnected,
@@ -396,14 +606,23 @@ namespace Runway
                 "AgentCustomSkillUnshared" => GetOrganizationWebappAuditLogsResponseDataItemAction.AgentCustomSkillUnshared,
                 "AgentSessionShared" => GetOrganizationWebappAuditLogsResponseDataItemAction.AgentSessionShared,
                 "AgentSessionUnshared" => GetOrganizationWebappAuditLogsResponseDataItemAction.AgentSessionUnshared,
+                "AppStudioAiRunOpened" => GetOrganizationWebappAuditLogsResponseDataItemAction.AppStudioAiRunOpened,
                 "AssetCreated" => GetOrganizationWebappAuditLogsResponseDataItemAction.AssetCreated,
                 "AssetDeleted" => GetOrganizationWebappAuditLogsResponseDataItemAction.AssetDeleted,
                 "AssetDownloaded" => GetOrganizationWebappAuditLogsResponseDataItemAction.AssetDownloaded,
                 "AssetShared" => GetOrganizationWebappAuditLogsResponseDataItemAction.AssetShared,
                 "AssetUnshared" => GetOrganizationWebappAuditLogsResponseDataItemAction.AssetUnshared,
                 "AssetUpdated" => GetOrganizationWebappAuditLogsResponseDataItemAction.AssetUpdated,
+                "AwsMarketplaceEnterpriseSubscriptionLinked" => GetOrganizationWebappAuditLogsResponseDataItemAction.AwsMarketplaceEnterpriseSubscriptionLinked,
                 "BrandKitShared" => GetOrganizationWebappAuditLogsResponseDataItemAction.BrandKitShared,
                 "BrandKitUnshared" => GetOrganizationWebappAuditLogsResponseDataItemAction.BrandKitUnshared,
+                "CommentAgentCallRun" => GetOrganizationWebappAuditLogsResponseDataItemAction.CommentAgentCallRun,
+                "CommentCreated" => GetOrganizationWebappAuditLogsResponseDataItemAction.CommentCreated,
+                "CommentDeleted" => GetOrganizationWebappAuditLogsResponseDataItemAction.CommentDeleted,
+                "CommentEdited" => GetOrganizationWebappAuditLogsResponseDataItemAction.CommentEdited,
+                "CommentRemovalReasonChanged" => GetOrganizationWebappAuditLogsResponseDataItemAction.CommentRemovalReasonChanged,
+                "CommentRemovedByModerator" => GetOrganizationWebappAuditLogsResponseDataItemAction.CommentRemovedByModerator,
+                "CommentRestoredByModerator" => GetOrganizationWebappAuditLogsResponseDataItemAction.CommentRestoredByModerator,
                 "CreditsTransferred" => GetOrganizationWebappAuditLogsResponseDataItemAction.CreditsTransferred,
                 "EmailChangeRequested" => GetOrganizationWebappAuditLogsResponseDataItemAction.EmailChangeRequested,
                 "EmailChanged" => GetOrganizationWebappAuditLogsResponseDataItemAction.EmailChanged,
@@ -411,12 +630,20 @@ namespace Runway
                 "GenerationCreated" => GetOrganizationWebappAuditLogsResponseDataItemAction.GenerationCreated,
                 "InviteAccepted" => GetOrganizationWebappAuditLogsResponseDataItemAction.InviteAccepted,
                 "InviteLinkToggled" => GetOrganizationWebappAuditLogsResponseDataItemAction.InviteLinkToggled,
+                "MemberInviteReminderSent" => GetOrganizationWebappAuditLogsResponseDataItemAction.MemberInviteReminderSent,
                 "MemberInvited" => GetOrganizationWebappAuditLogsResponseDataItemAction.MemberInvited,
+                "MemberJoinedViaDomain" => GetOrganizationWebappAuditLogsResponseDataItemAction.MemberJoinedViaDomain,
                 "MemberRemoved" => GetOrganizationWebappAuditLogsResponseDataItemAction.MemberRemoved,
                 "MemberRoleChanged" => GetOrganizationWebappAuditLogsResponseDataItemAction.MemberRoleChanged,
                 "MeteredBillingConfigUpdated" => GetOrganizationWebappAuditLogsResponseDataItemAction.MeteredBillingConfigUpdated,
                 "MeteredBillingRefillTriggered" => GetOrganizationWebappAuditLogsResponseDataItemAction.MeteredBillingRefillTriggered,
                 "MeteredBillingRetryTriggered" => GetOrganizationWebappAuditLogsResponseDataItemAction.MeteredBillingRetryTriggered,
+                "OnboardingBonusGranted" => GetOrganizationWebappAuditLogsResponseDataItemAction.OnboardingBonusGranted,
+                "OrganizationAgentSandboxUpdated" => GetOrganizationWebappAuditLogsResponseDataItemAction.OrganizationAgentSandboxUpdated,
+                "OrganizationApiAccountMemberInvited" => GetOrganizationWebappAuditLogsResponseDataItemAction.OrganizationApiAccountMemberInvited,
+                "OrganizationApiAccountMemberRemoved" => GetOrganizationWebappAuditLogsResponseDataItemAction.OrganizationApiAccountMemberRemoved,
+                "OrganizationApiAccountMemberRoleChanged" => GetOrganizationWebappAuditLogsResponseDataItemAction.OrganizationApiAccountMemberRoleChanged,
+                "OrganizationApiAccountReleased" => GetOrganizationWebappAuditLogsResponseDataItemAction.OrganizationApiAccountReleased,
                 "OrganizationDisabledModelsUpdated" => GetOrganizationWebappAuditLogsResponseDataItemAction.OrganizationDisabledModelsUpdated,
                 "OrganizationSettingsUpdated" => GetOrganizationWebappAuditLogsResponseDataItemAction.OrganizationSettingsUpdated,
                 "PasswordChanged" => GetOrganizationWebappAuditLogsResponseDataItemAction.PasswordChanged,
@@ -432,14 +659,21 @@ namespace Runway
                 "SeatsTransferred" => GetOrganizationWebappAuditLogsResponseDataItemAction.SeatsTransferred,
                 "SessionShared" => GetOrganizationWebappAuditLogsResponseDataItemAction.SessionShared,
                 "SessionUnshared" => GetOrganizationWebappAuditLogsResponseDataItemAction.SessionUnshared,
+                "StudioSessionOpened" => GetOrganizationWebappAuditLogsResponseDataItemAction.StudioSessionOpened,
                 "SubscriptionCancelled" => GetOrganizationWebappAuditLogsResponseDataItemAction.SubscriptionCancelled,
                 "SubscriptionPlanSwitched" => GetOrganizationWebappAuditLogsResponseDataItemAction.SubscriptionPlanSwitched,
+                "SubscriptionReactivatedWithOffer" => GetOrganizationWebappAuditLogsResponseDataItemAction.SubscriptionReactivatedWithOffer,
                 "TeamSettingsUpdated" => GetOrganizationWebappAuditLogsResponseDataItemAction.TeamSettingsUpdated,
                 "UserAccountDeleted" => GetOrganizationWebappAuditLogsResponseDataItemAction.UserAccountDeleted,
+                "UserGroupArchived" => GetOrganizationWebappAuditLogsResponseDataItemAction.UserGroupArchived,
                 "UserGroupCreated" => GetOrganizationWebappAuditLogsResponseDataItemAction.UserGroupCreated,
+                "UserGroupCreditCapUpdated" => GetOrganizationWebappAuditLogsResponseDataItemAction.UserGroupCreditCapUpdated,
                 "UserGroupDeleted" => GetOrganizationWebappAuditLogsResponseDataItemAction.UserGroupDeleted,
                 "UserGroupMemberAdded" => GetOrganizationWebappAuditLogsResponseDataItemAction.UserGroupMemberAdded,
                 "UserGroupMemberRemoved" => GetOrganizationWebappAuditLogsResponseDataItemAction.UserGroupMemberRemoved,
+                "UserGroupRestored" => GetOrganizationWebappAuditLogsResponseDataItemAction.UserGroupRestored,
+                "UserGroupUpdated" => GetOrganizationWebappAuditLogsResponseDataItemAction.UserGroupUpdated,
+                "UserGroupVisibilityUpdated" => GetOrganizationWebappAuditLogsResponseDataItemAction.UserGroupVisibilityUpdated,
                 "UserLogin" => GetOrganizationWebappAuditLogsResponseDataItemAction.UserLogin,
                 "UserRegistered" => GetOrganizationWebappAuditLogsResponseDataItemAction.UserRegistered,
                 "VideoProjectShared" => GetOrganizationWebappAuditLogsResponseDataItemAction.VideoProjectShared,

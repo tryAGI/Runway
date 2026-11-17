@@ -30,7 +30,7 @@ namespace Runway
         public string Status { get; set; } = "CANCELLED";
 
         /// <summary>
-        /// Final cost in credits for a terminal task. A refunded task reports 0.
+        /// Final cost in credits for a terminal task. Fully refunded tasks report 0; tasks that later returned unused prepaid credits report what remains charged.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("cost")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -52,7 +52,7 @@ namespace Runway
         /// The timestamp that the task was submitted at.
         /// </param>
         /// <param name="cost">
-        /// Final cost in credits for a terminal task. A refunded task reports 0.
+        /// Final cost in credits for a terminal task. Fully refunded tasks report 0; tasks that later returned unused prepaid credits report what remains charged.
         /// </param>
         /// <param name="status"></param>
 #if NET7_0_OR_GREATER

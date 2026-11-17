@@ -55,6 +55,43 @@ namespace Runway
         ///
         /// </summary>
 #if NET6_0_OR_GREATER
+        public global::Runway.CreateSoundEffectRequestMireloSfx20? MireloSfx20 { get; init; }
+#else
+        public global::Runway.CreateSoundEffectRequestMireloSfx20? MireloSfx20 { get; }
+#endif
+
+        /// <summary>
+        ///
+        /// </summary>
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(MireloSfx20))]
+#endif
+        public bool IsMireloSfx20 => MireloSfx20 != null;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public bool TryPickMireloSfx20(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Runway.CreateSoundEffectRequestMireloSfx20? value)
+        {
+            value = MireloSfx20;
+            return IsMireloSfx20;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Runway.CreateSoundEffectRequestMireloSfx20 PickMireloSfx20() => MireloSfx20 is { } value
+            ? value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'MireloSfx20' but the value was {ToString()}.");
+
+        /// <summary>
+        ///
+        /// </summary>
+#if NET6_0_OR_GREATER
         public global::Runway.CreateSoundEffectRequestElevenTextToSoundV2? ElevenTextToSoundV2 { get; init; }
 #else
         public global::Runway.CreateSoundEffectRequestElevenTextToSoundV2? ElevenTextToSoundV2 { get; }
@@ -113,6 +150,29 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
+        public static implicit operator CreateSoundEffectRequest(global::Runway.CreateSoundEffectRequestMireloSfx20 value) => new CreateSoundEffectRequest((global::Runway.CreateSoundEffectRequestMireloSfx20?)value);
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static implicit operator global::Runway.CreateSoundEffectRequestMireloSfx20?(CreateSoundEffectRequest @this) => @this.MireloSfx20;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public CreateSoundEffectRequest(global::Runway.CreateSoundEffectRequestMireloSfx20? value)
+        {
+            MireloSfx20 = value;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static CreateSoundEffectRequest FromMireloSfx20(global::Runway.CreateSoundEffectRequestMireloSfx20? value) => new CreateSoundEffectRequest(value);
+
+        /// <summary>
+        ///
+        /// </summary>
         public static implicit operator CreateSoundEffectRequest(global::Runway.CreateSoundEffectRequestElevenTextToSoundV2 value) => new CreateSoundEffectRequest((global::Runway.CreateSoundEffectRequestElevenTextToSoundV2?)value);
 
         /// <summary>
@@ -139,12 +199,14 @@ namespace Runway
         public CreateSoundEffectRequest(
             global::Runway.CreateSoundEffectRequestDiscriminatorModel? model,
             global::Runway.CreateSoundEffectRequestSeedAudio? seedAudio,
+            global::Runway.CreateSoundEffectRequestMireloSfx20? mireloSfx20,
             global::Runway.CreateSoundEffectRequestElevenTextToSoundV2? elevenTextToSoundV2
             )
         {
             Model = model;
 
             SeedAudio = seedAudio;
+            MireloSfx20 = mireloSfx20;
             ElevenTextToSoundV2 = elevenTextToSoundV2;
         }
 
@@ -153,6 +215,7 @@ namespace Runway
         /// </summary>
         public object? Object =>
             ElevenTextToSoundV2 as object ??
+            MireloSfx20 as object ??
             SeedAudio as object
             ;
 
@@ -161,6 +224,7 @@ namespace Runway
         /// </summary>
         public override string? ToString() =>
             SeedAudio?.ToString() ??
+            MireloSfx20?.ToString() ??
             ElevenTextToSoundV2?.ToString()
             ;
 
@@ -169,7 +233,7 @@ namespace Runway
         /// </summary>
         public bool Validate()
         {
-            return IsSeedAudio && !IsElevenTextToSoundV2 || !IsSeedAudio && IsElevenTextToSoundV2;
+            return IsSeedAudio && !IsMireloSfx20 && !IsElevenTextToSoundV2 || !IsSeedAudio && IsMireloSfx20 && !IsElevenTextToSoundV2 || !IsSeedAudio && !IsMireloSfx20 && IsElevenTextToSoundV2;
         }
 
         /// <summary>
@@ -177,6 +241,7 @@ namespace Runway
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Runway.CreateSoundEffectRequestSeedAudio, TResult>? seedAudio = null,
+            global::System.Func<global::Runway.CreateSoundEffectRequestMireloSfx20, TResult>? mireloSfx20 = null,
             global::System.Func<global::Runway.CreateSoundEffectRequestElevenTextToSoundV2, TResult>? elevenTextToSoundV2 = null,
             bool validate = true)
         {
@@ -189,9 +254,13 @@ namespace Runway
             {
                 return seedAudio(__value0);
             }
-            else if (ElevenTextToSoundV2 is { } __value1 && elevenTextToSoundV2 != null)
+            else if (MireloSfx20 is { } __value1 && mireloSfx20 != null)
             {
-                return elevenTextToSoundV2(__value1);
+                return mireloSfx20(__value1);
+            }
+            else if (ElevenTextToSoundV2 is { } __value2 && elevenTextToSoundV2 != null)
+            {
+                return elevenTextToSoundV2(__value2);
             }
 
             return default(TResult);
@@ -203,6 +272,8 @@ namespace Runway
         public void Match(
             global::System.Action<global::Runway.CreateSoundEffectRequestSeedAudio>? seedAudio = null,
 
+            global::System.Action<global::Runway.CreateSoundEffectRequestMireloSfx20>? mireloSfx20 = null,
+
             global::System.Action<global::Runway.CreateSoundEffectRequestElevenTextToSoundV2>? elevenTextToSoundV2 = null,
             bool validate = true)
         {
@@ -215,9 +286,13 @@ namespace Runway
             {
                 seedAudio?.Invoke(__value0);
             }
-            else if (ElevenTextToSoundV2 is { } __value1)
+            else if (MireloSfx20 is { } __value1)
             {
-                elevenTextToSoundV2?.Invoke(__value1);
+                mireloSfx20?.Invoke(__value1);
+            }
+            else if (ElevenTextToSoundV2 is { } __value2)
+            {
+                elevenTextToSoundV2?.Invoke(__value2);
             }
         }
 
@@ -226,6 +301,7 @@ namespace Runway
         /// </summary>
         public void Switch(
             global::System.Action<global::Runway.CreateSoundEffectRequestSeedAudio>? seedAudio = null,
+            global::System.Action<global::Runway.CreateSoundEffectRequestMireloSfx20>? mireloSfx20 = null,
             global::System.Action<global::Runway.CreateSoundEffectRequestElevenTextToSoundV2>? elevenTextToSoundV2 = null,
             bool validate = true)
         {
@@ -238,9 +314,13 @@ namespace Runway
             {
                 seedAudio?.Invoke(__value0);
             }
-            else if (ElevenTextToSoundV2 is { } __value1)
+            else if (MireloSfx20 is { } __value1)
             {
-                elevenTextToSoundV2?.Invoke(__value1);
+                mireloSfx20?.Invoke(__value1);
+            }
+            else if (ElevenTextToSoundV2 is { } __value2)
+            {
+                elevenTextToSoundV2?.Invoke(__value2);
             }
         }
 
@@ -253,6 +333,8 @@ namespace Runway
             {
                 SeedAudio,
                 typeof(global::Runway.CreateSoundEffectRequestSeedAudio),
+                MireloSfx20,
+                typeof(global::Runway.CreateSoundEffectRequestMireloSfx20),
                 ElevenTextToSoundV2,
                 typeof(global::Runway.CreateSoundEffectRequestElevenTextToSoundV2),
             };
@@ -272,6 +354,7 @@ namespace Runway
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::Runway.CreateSoundEffectRequestSeedAudio?>.Default.Equals(SeedAudio, other.SeedAudio) &&
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateSoundEffectRequestMireloSfx20?>.Default.Equals(MireloSfx20, other.MireloSfx20) &&
                 global::System.Collections.Generic.EqualityComparer<global::Runway.CreateSoundEffectRequestElevenTextToSoundV2?>.Default.Equals(ElevenTextToSoundV2, other.ElevenTextToSoundV2)
                 ;
         }

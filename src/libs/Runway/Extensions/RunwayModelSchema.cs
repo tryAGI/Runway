@@ -31,6 +31,16 @@ public sealed record RunwayModelParameter(
     /// </summary>
     public IReadOnlyDictionary<string, IReadOnlyList<string>> ItemPropertyValues { get; init; }
         = new Dictionary<string, IReadOnlyList<string>>(StringComparer.Ordinal);
+
+    /// <summary>
+    /// The parameter's <c>minimum</c>, or null when the spec sets none. A parameter written as a union
+    /// of <c>"auto"</c> and a number reports the number's bound, since that is the one a caller passing a
+    /// number has to satisfy.
+    /// </summary>
+    public double? Minimum { get; init; }
+
+    /// <summary>The parameter's <c>maximum</c>, or null when the spec sets none.</summary>
+    public double? Maximum { get; init; }
 }
 
 /// <summary>
@@ -626,10 +636,59 @@ public static class RunwayModelSchema
             }
         }
 
+        var (minimum, maximum) = ReadNumericBounds(schema, root);
+
         return new RunwayModelParameter(name, required, allowedValues, maxItems, itemProperties)
         {
             ItemPropertyValues = itemPropertyValues,
+            Minimum = minimum,
+            Maximum = maximum,
         };
+    }
+
+    /// <summary>
+    /// Reads a schema's numeric bounds, looking inside a union for the numeric branch. Duration is
+    /// written both ways in this spec: a plain integer with a range, or a union of <c>"auto"</c> and an
+    /// integer with a range.
+    /// </summary>
+    private static (double? Minimum, double? Maximum) ReadNumericBounds(JsonElement schema, JsonElement root)
+    {
+        if (schema.ValueKind != JsonValueKind.Object)
+        {
+            return (null, null);
+        }
+
+        double? minimum = schema.TryGetProperty("minimum", out var min) && min.ValueKind == JsonValueKind.Number
+            ? min.GetDouble()
+            : null;
+        double? maximum = schema.TryGetProperty("maximum", out var max) && max.ValueKind == JsonValueKind.Number
+            ? max.GetDouble()
+            : null;
+        if (minimum is not null || maximum is not null)
+        {
+            return (minimum, maximum);
+        }
+
+        // EnumerateVariants yields the schema itself when there is no union, so recursing on its output
+        // unconditionally would never terminate. Only a schema that really branches is worth descending.
+        var branches = schema.TryGetProperty("oneOf", out _) ||
+            schema.TryGetProperty("anyOf", out _) ||
+            schema.TryGetProperty("allOf", out _);
+        if (!branches)
+        {
+            return (null, null);
+        }
+
+        foreach (var variant in EnumerateVariants(schema, root))
+        {
+            var (variantMinimum, variantMaximum) = ReadNumericBounds(variant, root);
+            if (variantMinimum is not null || variantMaximum is not null)
+            {
+                return (variantMinimum, variantMaximum);
+            }
+        }
+
+        return (null, null);
     }
 
     /// <summary>Reads a schema's <c>enum</c> values, or its single <c>const</c>, as strings.</summary>

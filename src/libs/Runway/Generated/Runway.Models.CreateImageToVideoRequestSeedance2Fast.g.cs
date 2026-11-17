@@ -30,10 +30,17 @@ namespace Runway
         public bool? Audio { get; set; }
 
         /// <summary>
-        /// The number of seconds of duration for the output video.
+        /// If unspecified, a random number is chosen. Varying the seed integer is a way to get different results for the same other request parameters. Using the same seed integer for an identical request will produce similar results.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("seed")]
+        public int? Seed { get; set; }
+
+        /// <summary>
+        /// Seconds of video to generate, or `auto` to let the model choose. `auto` is billed at the variant maximum up front; unused credits are refunded after the generation finishes.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("duration")]
-        public int? Duration { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.AnyOfJsonConverter<int?, string>))]
+        public global::Runway.AnyOf<int?, string>? Duration { get; set; }
 
         /// <summary>
         /// The resolution of the output video. Seedance 2.0 Fast supports 480p and 720p only.
@@ -74,8 +81,11 @@ namespace Runway
         /// Whether to generate audio for the video.<br/>
         /// Default Value: true
         /// </param>
+        /// <param name="seed">
+        /// If unspecified, a random number is chosen. Varying the seed integer is a way to get different results for the same other request parameters. Using the same seed integer for an identical request will produce similar results.
+        /// </param>
         /// <param name="duration">
-        /// The number of seconds of duration for the output video.
+        /// Seconds of video to generate, or `auto` to let the model choose. `auto` is billed at the variant maximum up front; unused credits are refunded after the generation finishes.
         /// </param>
         /// <param name="ratio">
         /// The resolution of the output video. Seedance 2.0 Fast supports 480p and 720p only.
@@ -91,7 +101,8 @@ namespace Runway
             global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestSeedance2FastPromptImagePromptImage>> promptImage,
             string? promptText,
             bool? audio,
-            int? duration,
+            int? seed,
+            global::Runway.AnyOf<int?, string>? duration,
             global::Runway.CreateImageToVideoRequestSeedance2FastRatio? ratio,
             global::System.Collections.Generic.IList<global::Runway.CreateImageToVideoRequestSeedance2FastReferenceAudioItem>? referenceAudio,
             string model = "seedance2_fast")
@@ -99,6 +110,7 @@ namespace Runway
             this.PromptImage = promptImage;
             this.PromptText = promptText;
             this.Audio = audio;
+            this.Seed = seed;
             this.Duration = duration;
             this.Ratio = ratio;
             this.ReferenceAudio = referenceAudio;

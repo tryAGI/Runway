@@ -4,7 +4,7 @@
 namespace Runway
 {
     /// <summary>
-    /// The ProRes tier of the `hdr_prores` mezzanine. Only valid when `outputFormat` is `hdr_prores`. Defaults to `422 HQ`; sources with alpha are delivered as `4444` regardless of this value.
+    /// The ProRes tier of the `hdr_prores` mezzanine. Only valid when `outputFormat` is `hdr_prores`. Defaults to `422 HQ`. A source with an alpha channel is always delivered as `4444`, the only tier with an alpha plane, whatever tier is requested.
     /// </summary>
     public enum CreateVideoToHdrRequestRubyProresProfile
     {

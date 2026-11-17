@@ -22,6 +22,12 @@ namespace Runway
         public required string Message { get; set; }
 
         /// <summary>
+        /// A machine-readable error code for the node failure. See https://docs.dev.runwayml.com/errors/task-failures/ for more information. Absent for nodes that failed before generation began, such as an input validation error.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("failureCode")]
+        public string? FailureCode { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -36,15 +42,20 @@ namespace Runway
         /// <param name="nodeName">
         /// The human-readable name of the node that errored.
         /// </param>
+        /// <param name="failureCode">
+        /// A machine-readable error code for the node failure. See https://docs.dev.runwayml.com/errors/task-failures/ for more information. Absent for nodes that failed before generation began, such as an input validation error.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public GetWorkflowInvocationsResponseWorkflowInvocationFailedNodeErrors2(
             string message,
-            string? nodeName)
+            string? nodeName,
+            string? failureCode)
         {
             this.NodeName = nodeName;
             this.Message = message ?? throw new global::System.ArgumentNullException(nameof(message));
+            this.FailureCode = failureCode;
         }
 
         /// <summary>

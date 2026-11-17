@@ -1,8 +1,6 @@
 
 #nullable enable
 
-#pragma warning disable CS0618 // Type or member is obsolete
-
 namespace Runway
 {
     public partial class RealtimeSessionsClient
@@ -119,8 +117,6 @@ namespace Runway
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            request = request ?? throw new global::System.ArgumentNullException(nameof(request));
-
             PrepareArguments(
                 client: HttpClient);
             PrepareCreateRealtimeSessionsArguments(
@@ -486,53 +482,16 @@ namespace Runway
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
-        /// <param name="model">
-        /// The realtime session model type.
-        /// </param>
-        /// <param name="avatar">
-        /// The avatar configuration for the session.
-        /// </param>
-        /// <param name="maxDuration">
-        /// Maximum session duration in seconds.<br/>
-        /// Default Value: 300
-        /// </param>
-        /// <param name="personality">
-        /// Override the avatar personality for this session. If not provided, uses the avatar default.
-        /// </param>
-        /// <param name="startScript">
-        /// Override the avatar start script for this session. If not provided, uses the avatar default.
-        /// </param>
-        /// <param name="tools">
-        /// Tools available to the avatar during the session.<br/>
-        /// Default Value: []
-        /// </param>
-        /// <param name="integration">
-        /// External integration. Runway renders the avatar; the integration owns conversation or audio.
-        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Runway.CreateRealtimeSessionsResponse> CreateRealtimeSessionsAsync(
-            global::Runway.Avatar2 avatar,
             string xRunwayVersion = "2024-11-06",
-            string model = "gwm1_avatars",
-            int? maxDuration = default,
-            string? personality = default,
-            string? startScript = default,
-            global::System.Collections.Generic.IList<global::Runway.ToolsItem>? tools = default,
-            global::Runway.Integration? integration = default,
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Runway.CreateRealtimeSessionsRequest
             {
-                Model = model,
-                Avatar = avatar,
-                MaxDuration = maxDuration,
-                Personality = personality,
-                StartScript = startScript,
-                Tools = tools,
-                Integration = integration,
             };
 
             return await CreateRealtimeSessionsAsync(

@@ -55,6 +55,43 @@ namespace Runway
         ///
         /// </summary>
 #if NET6_0_OR_GREATER
+        public global::Runway.CreateTextToSpeechRequestElevenV4? ElevenV4 { get; init; }
+#else
+        public global::Runway.CreateTextToSpeechRequestElevenV4? ElevenV4 { get; }
+#endif
+
+        /// <summary>
+        ///
+        /// </summary>
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ElevenV4))]
+#endif
+        public bool IsElevenV4 => ElevenV4 != null;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public bool TryPickElevenV4(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Runway.CreateTextToSpeechRequestElevenV4? value)
+        {
+            value = ElevenV4;
+            return IsElevenV4;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Runway.CreateTextToSpeechRequestElevenV4 PickElevenV4() => ElevenV4 is { } value
+            ? value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'ElevenV4' but the value was {ToString()}.");
+
+        /// <summary>
+        ///
+        /// </summary>
+#if NET6_0_OR_GREATER
         public global::Runway.CreateTextToSpeechRequestElevenMultilingualV2? ElevenMultilingualV2 { get; init; }
 #else
         public global::Runway.CreateTextToSpeechRequestElevenMultilingualV2? ElevenMultilingualV2 { get; }
@@ -150,6 +187,29 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
+        public static implicit operator CreateTextToSpeechRequest(global::Runway.CreateTextToSpeechRequestElevenV4 value) => new CreateTextToSpeechRequest((global::Runway.CreateTextToSpeechRequestElevenV4?)value);
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static implicit operator global::Runway.CreateTextToSpeechRequestElevenV4?(CreateTextToSpeechRequest @this) => @this.ElevenV4;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public CreateTextToSpeechRequest(global::Runway.CreateTextToSpeechRequestElevenV4? value)
+        {
+            ElevenV4 = value;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static CreateTextToSpeechRequest FromElevenV4(global::Runway.CreateTextToSpeechRequestElevenV4? value) => new CreateTextToSpeechRequest(value);
+
+        /// <summary>
+        ///
+        /// </summary>
         public static implicit operator CreateTextToSpeechRequest(global::Runway.CreateTextToSpeechRequestElevenMultilingualV2 value) => new CreateTextToSpeechRequest((global::Runway.CreateTextToSpeechRequestElevenMultilingualV2?)value);
 
         /// <summary>
@@ -199,6 +259,7 @@ namespace Runway
         public CreateTextToSpeechRequest(
             global::Runway.CreateTextToSpeechRequestDiscriminatorModel? model,
             global::Runway.CreateTextToSpeechRequestSeedAudio? seedAudio,
+            global::Runway.CreateTextToSpeechRequestElevenV4? elevenV4,
             global::Runway.CreateTextToSpeechRequestElevenMultilingualV2? elevenMultilingualV2,
             global::Runway.CreateTextToSpeechRequestElevenV3? elevenV3
             )
@@ -206,6 +267,7 @@ namespace Runway
             Model = model;
 
             SeedAudio = seedAudio;
+            ElevenV4 = elevenV4;
             ElevenMultilingualV2 = elevenMultilingualV2;
             ElevenV3 = elevenV3;
         }
@@ -216,6 +278,7 @@ namespace Runway
         public object? Object =>
             ElevenV3 as object ??
             ElevenMultilingualV2 as object ??
+            ElevenV4 as object ??
             SeedAudio as object
             ;
 
@@ -224,6 +287,7 @@ namespace Runway
         /// </summary>
         public override string? ToString() =>
             SeedAudio?.ToString() ??
+            ElevenV4?.ToString() ??
             ElevenMultilingualV2?.ToString() ??
             ElevenV3?.ToString()
             ;
@@ -233,7 +297,7 @@ namespace Runway
         /// </summary>
         public bool Validate()
         {
-            return IsSeedAudio && !IsElevenMultilingualV2 && !IsElevenV3 || !IsSeedAudio && IsElevenMultilingualV2 && !IsElevenV3 || !IsSeedAudio && !IsElevenMultilingualV2 && IsElevenV3;
+            return IsSeedAudio && !IsElevenV4 && !IsElevenMultilingualV2 && !IsElevenV3 || !IsSeedAudio && IsElevenV4 && !IsElevenMultilingualV2 && !IsElevenV3 || !IsSeedAudio && !IsElevenV4 && IsElevenMultilingualV2 && !IsElevenV3 || !IsSeedAudio && !IsElevenV4 && !IsElevenMultilingualV2 && IsElevenV3;
         }
 
         /// <summary>
@@ -241,6 +305,7 @@ namespace Runway
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Runway.CreateTextToSpeechRequestSeedAudio, TResult>? seedAudio = null,
+            global::System.Func<global::Runway.CreateTextToSpeechRequestElevenV4, TResult>? elevenV4 = null,
             global::System.Func<global::Runway.CreateTextToSpeechRequestElevenMultilingualV2, TResult>? elevenMultilingualV2 = null,
             global::System.Func<global::Runway.CreateTextToSpeechRequestElevenV3, TResult>? elevenV3 = null,
             bool validate = true)
@@ -254,13 +319,17 @@ namespace Runway
             {
                 return seedAudio(__value0);
             }
-            else if (ElevenMultilingualV2 is { } __value1 && elevenMultilingualV2 != null)
+            else if (ElevenV4 is { } __value1 && elevenV4 != null)
             {
-                return elevenMultilingualV2(__value1);
+                return elevenV4(__value1);
             }
-            else if (ElevenV3 is { } __value2 && elevenV3 != null)
+            else if (ElevenMultilingualV2 is { } __value2 && elevenMultilingualV2 != null)
             {
-                return elevenV3(__value2);
+                return elevenMultilingualV2(__value2);
+            }
+            else if (ElevenV3 is { } __value3 && elevenV3 != null)
+            {
+                return elevenV3(__value3);
             }
 
             return default(TResult);
@@ -272,6 +341,8 @@ namespace Runway
         public void Match(
             global::System.Action<global::Runway.CreateTextToSpeechRequestSeedAudio>? seedAudio = null,
 
+            global::System.Action<global::Runway.CreateTextToSpeechRequestElevenV4>? elevenV4 = null,
+
             global::System.Action<global::Runway.CreateTextToSpeechRequestElevenMultilingualV2>? elevenMultilingualV2 = null,
 
             global::System.Action<global::Runway.CreateTextToSpeechRequestElevenV3>? elevenV3 = null,
@@ -286,13 +357,17 @@ namespace Runway
             {
                 seedAudio?.Invoke(__value0);
             }
-            else if (ElevenMultilingualV2 is { } __value1)
+            else if (ElevenV4 is { } __value1)
             {
-                elevenMultilingualV2?.Invoke(__value1);
+                elevenV4?.Invoke(__value1);
             }
-            else if (ElevenV3 is { } __value2)
+            else if (ElevenMultilingualV2 is { } __value2)
             {
-                elevenV3?.Invoke(__value2);
+                elevenMultilingualV2?.Invoke(__value2);
+            }
+            else if (ElevenV3 is { } __value3)
+            {
+                elevenV3?.Invoke(__value3);
             }
         }
 
@@ -301,6 +376,7 @@ namespace Runway
         /// </summary>
         public void Switch(
             global::System.Action<global::Runway.CreateTextToSpeechRequestSeedAudio>? seedAudio = null,
+            global::System.Action<global::Runway.CreateTextToSpeechRequestElevenV4>? elevenV4 = null,
             global::System.Action<global::Runway.CreateTextToSpeechRequestElevenMultilingualV2>? elevenMultilingualV2 = null,
             global::System.Action<global::Runway.CreateTextToSpeechRequestElevenV3>? elevenV3 = null,
             bool validate = true)
@@ -314,13 +390,17 @@ namespace Runway
             {
                 seedAudio?.Invoke(__value0);
             }
-            else if (ElevenMultilingualV2 is { } __value1)
+            else if (ElevenV4 is { } __value1)
             {
-                elevenMultilingualV2?.Invoke(__value1);
+                elevenV4?.Invoke(__value1);
             }
-            else if (ElevenV3 is { } __value2)
+            else if (ElevenMultilingualV2 is { } __value2)
             {
-                elevenV3?.Invoke(__value2);
+                elevenMultilingualV2?.Invoke(__value2);
+            }
+            else if (ElevenV3 is { } __value3)
+            {
+                elevenV3?.Invoke(__value3);
             }
         }
 
@@ -333,6 +413,8 @@ namespace Runway
             {
                 SeedAudio,
                 typeof(global::Runway.CreateTextToSpeechRequestSeedAudio),
+                ElevenV4,
+                typeof(global::Runway.CreateTextToSpeechRequestElevenV4),
                 ElevenMultilingualV2,
                 typeof(global::Runway.CreateTextToSpeechRequestElevenMultilingualV2),
                 ElevenV3,
@@ -354,6 +436,7 @@ namespace Runway
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::Runway.CreateTextToSpeechRequestSeedAudio?>.Default.Equals(SeedAudio, other.SeedAudio) &&
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateTextToSpeechRequestElevenV4?>.Default.Equals(ElevenV4, other.ElevenV4) &&
                 global::System.Collections.Generic.EqualityComparer<global::Runway.CreateTextToSpeechRequestElevenMultilingualV2?>.Default.Equals(ElevenMultilingualV2, other.ElevenMultilingualV2) &&
                 global::System.Collections.Generic.EqualityComparer<global::Runway.CreateTextToSpeechRequestElevenV3?>.Default.Equals(ElevenV3, other.ElevenV3)
                 ;

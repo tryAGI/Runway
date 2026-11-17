@@ -4,7 +4,7 @@
 namespace Runway
 {
     /// <summary>
-    /// Final cost in credits for a terminal task. A refunded task reports 0.
+    /// Final cost in credits for a terminal task. Fully refunded tasks report 0; tasks that later returned unused prepaid credits report what remains charged.
     /// </summary>
     public sealed partial class GetTasksResponseVariant3Cost
     {

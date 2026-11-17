@@ -13,50 +13,6 @@ internal static partial class RealtimeSessionsCreateRealtimeSessionsCommandApiCo
         Description = @"The version of the RunwayML API being used. You can read more about versioning [here](/api-details/versioning).",
         DefaultValueFactory = _ => "2024-11-06",
     };
-
-    private static Option<string> Model { get; } = new(
-        name: @"--model")
-    {
-        Description = @"The realtime session model type.",
-        DefaultValueFactory = _ => "gwm1_avatars",
-    };
-
-    private static Option<global::Runway.Avatar2> Avatar { get; } = new(
-        name: @"--avatar")
-    {
-        Description = @"The avatar configuration for the session.",
-        Required = true,
-    };
-
-    private static Option<int?> MaxDuration { get; } = new(
-        name: @"--max-duration")
-    {
-        Description = @"Maximum session duration in seconds.",
-    };
-
-    private static Option<string?> Personality { get; } = new(
-        name: @"--personality")
-    {
-        Description = @"Override the avatar personality for this session. If not provided, uses the avatar default.",
-    };
-
-    private static Option<string?> StartScript { get; } = new(
-        name: @"--start-script")
-    {
-        Description = @"Override the avatar start script for this session. If not provided, uses the avatar default.",
-    };
-
-    private static Option<global::System.Collections.Generic.IList<global::Runway.ToolsItem>?> Tools { get; } = new(
-        name: @"--tools")
-    {
-        Description = @"Tools available to the avatar during the session.",
-    };
-
-    private static Option<global::Runway.Integration?> Integration { get; } = new(
-        name: @"--integration")
-    {
-        Description = @"External integration. Runway renders the avatar; the integration owns conversation or audio.",
-    };
       private static Option<string?> Input { get; } = new(@"--input")
       {
           Description = "Load request JSON from a file path, '-' for stdin, or an inline JSON object/array string.",
@@ -117,13 +73,6 @@ internal static partial class RealtimeSessionsCreateRealtimeSessionsCommandApiCo
         var command = new Command(commandName ?? @"create-realtime-sessions", @"Create realtime session
 Create a new realtime session with the specified model configuration. The returned ID is also the conversation ID used later to fetch transcripts and recordings from the avatar conversation endpoints.");
                         command.Options.Add(XRunwayVersion);
-                        command.Options.Add(Model);
-                        command.Options.Add(Avatar);
-                        command.Options.Add(MaxDuration);
-                        command.Options.Add(Personality);
-                        command.Options.Add(StartScript);
-                        command.Options.Add(Tools);
-                        command.Options.Add(Integration);
           command.Options.Add(Input);
           command.Options.Add(RequestJson);
           command.Options.Add(RequestFile);
@@ -133,9 +82,9 @@ Create a new realtime session with the specified model configuration. The return
               var hasRequestJson = result.GetResult(RequestJson) is not null;
               var hasRequestFile = result.GetResult(RequestFile) is not null;
               var specifiedCount = (hasInput ? 1 : 0) + (hasRequestJson ? 1 : 0) + (hasRequestFile ? 1 : 0);
-              if (specifiedCount > 1)
+              if (specifiedCount != 1)
               {
-                  result.AddError(@"Specify at most one of --input, --request-json, or --request-file.");
+                  result.AddError(@"Specify exactly one of --input, --request-json, or --request-file.");
               }
           });
           command.Options.Add(Wait);
@@ -144,21 +93,14 @@ Create a new realtime session with the specified model configuration. The return
         command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
             await CliRuntime.RunAsync(async () =>
             {
-                        var __requestBase = await CliRuntime.ReadRequestOrDefaultAsync<global::Runway.CreateRealtimeSessionsRequest>(
+                        var xRunwayVersion = parseResult.GetRequiredValue(XRunwayVersion);
+                        var request = await CliRuntime.ReadRequestAsync<global::Runway.CreateRealtimeSessionsRequest>(
                             parseResult,
                             Input,
                             RequestJson,
                             RequestFile,
                             global::Runway.SourceGenerationContext.Default,
-                            cancellationToken).ConfigureAwait(false);
-                        var xRunwayVersion = parseResult.GetRequiredValue(XRunwayVersion);
-                        var model = parseResult.GetRequiredValue(Model);
-                        var avatar = parseResult.GetRequiredValue(Avatar);
-                        var maxDuration = CliRuntime.WasSpecified(parseResult, MaxDuration) ? parseResult.GetValue(MaxDuration) : (__requestBase is { } __MaxDurationBaseValue ? __MaxDurationBaseValue.MaxDuration : default);
-                        var personality = CliRuntime.WasSpecified(parseResult, Personality) ? parseResult.GetValue(Personality) : (__requestBase is { } __PersonalityBaseValue ? __PersonalityBaseValue.Personality : default);
-                        var startScript = CliRuntime.WasSpecified(parseResult, StartScript) ? parseResult.GetValue(StartScript) : (__requestBase is { } __StartScriptBaseValue ? __StartScriptBaseValue.StartScript : default);
-                        var tools = CliRuntime.WasSpecified(parseResult, Tools) ? parseResult.GetValue(Tools) : (__requestBase is { } __ToolsBaseValue ? __ToolsBaseValue.Tools : default);
-                        var integration = CliRuntime.WasSpecified(parseResult, Integration) ? parseResult.GetValue(Integration) : (__requestBase is { } __IntegrationBaseValue ? __IntegrationBaseValue.Integration : default);          var wait = parseResult.GetValue(Wait);
+                            cancellationToken).ConfigureAwait(false);          var wait = parseResult.GetValue(Wait);
           var pollInterval = wait ? CliRuntime.ParseDuration(parseResult.GetRequiredValue(PollInterval), PollInterval.Name) : default;
           var waitTimeout = wait ? CliRuntime.ParseDuration(parseResult.GetRequiredValue(WaitTimeout), WaitTimeout.Name) : default;
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
@@ -167,13 +109,7 @@ Create a new realtime session with the specified model configuration. The return
                                 {
                                 var createResponse = await client.RealtimeSessions.CreateRealtimeSessionsAsync(
                                     xRunwayVersion: xRunwayVersion,
-                                    model: model,
-                                    avatar: avatar,
-                                    maxDuration: maxDuration,
-                                    personality: personality,
-                                    startScript: startScript,
-                                    tools: tools,
-                                    integration: integration,
+                                    request: request,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
                                     var resourceId = global::System.Convert.ToString(
                                         createResponse.Id,
@@ -201,13 +137,7 @@ Create a new realtime session with the specified model configuration. The return
 
                                 var response = await client.RealtimeSessions.CreateRealtimeSessionsAsync(
                                     xRunwayVersion: xRunwayVersion,
-                                    model: model,
-                                    avatar: avatar,
-                                    maxDuration: maxDuration,
-                                    personality: personality,
-                                    startScript: startScript,
-                                    tools: tools,
-                                    integration: integration,
+                                    request: request,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 

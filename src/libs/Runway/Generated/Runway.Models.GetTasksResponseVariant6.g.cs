@@ -37,7 +37,7 @@ namespace Runway
         public required global::System.Collections.Generic.IList<string> Output { get; set; }
 
         /// <summary>
-        /// Final cost in credits for a terminal task. A refunded task reports 0.
+        /// Final cost in credits for a terminal task. Fully refunded tasks report 0; tasks that later returned unused prepaid credits report what remains charged.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("cost")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -62,7 +62,7 @@ namespace Runway
         /// An array of URLs that return the output of the task. These URLs will expire within 24-48 hours; fetch the task again to get fresh URLs. It is expected that you download the assets at these URLs and store them in your own storage system.
         /// </param>
         /// <param name="cost">
-        /// Final cost in credits for a terminal task. A refunded task reports 0.
+        /// Final cost in credits for a terminal task. Fully refunded tasks report 0; tasks that later returned unused prepaid credits report what remains charged.
         /// </param>
         /// <param name="status"></param>
 #if NET7_0_OR_GREATER

@@ -16,7 +16,7 @@ namespace Runway
         public string Type { get; set; } = "audio";
 
         /// <summary>
-        /// Audio sample to clone the voice from. Must be between 10 seconds and 5 minutes long and at most 10MB. For best results, use a clear recording with minimal background noise and varied tone.<br/>
+        /// Audio sample to clone the voice from. Must be between 10 seconds and 5 minutes long. At most 10MB as a URL or Runway upload URI; at most 5MB as an inline data URI. For best results, use a clear recording with minimal background noise and varied tone.<br/>
         /// Example: https://example.com/audio.mp3
         /// </summary>
         /// <example>https://example.com/audio.mp3</example>
@@ -34,7 +34,7 @@ namespace Runway
         /// Initializes a new instance of the <see cref="CreateVoicesRequestFromVoiceFromAudio" /> class.
         /// </summary>
         /// <param name="audio">
-        /// Audio sample to clone the voice from. Must be between 10 seconds and 5 minutes long and at most 10MB. For best results, use a clear recording with minimal background noise and varied tone.<br/>
+        /// Audio sample to clone the voice from. Must be between 10 seconds and 5 minutes long. At most 10MB as a URL or Runway upload URI; at most 5MB as an inline data URI. For best results, use a clear recording with minimal background noise and varied tone.<br/>
         /// Example: https://example.com/audio.mp3
         /// </param>
         /// <param name="type"></param>

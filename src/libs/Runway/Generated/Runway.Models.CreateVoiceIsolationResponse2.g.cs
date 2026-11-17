@@ -22,6 +22,12 @@ namespace Runway
         public global::System.Collections.Generic.IList<global::Runway.CreateVoiceIsolationResponseIssue>? Issues { get; set; }
 
         /// <summary>
+        /// A machine-readable rejection reason when one applies — e.g. DEPRECATED_MODEL when the requested model has reached its sunset date.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("reason")]
+        public string? Reason { get; set; }
+
+        /// <summary>
         /// A link to the public API documentation.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("docUrl")]
@@ -42,6 +48,9 @@ namespace Runway
         /// <param name="issues">
         /// Field-level validation issues when the request failed Zod body/query validation. Omitted for other 400s.
         /// </param>
+        /// <param name="reason">
+        /// A machine-readable rejection reason when one applies — e.g. DEPRECATED_MODEL when the requested model has reached its sunset date.
+        /// </param>
         /// <param name="docUrl">
         /// A link to the public API documentation.
         /// </param>
@@ -51,10 +60,12 @@ namespace Runway
         public CreateVoiceIsolationResponse2(
             string error,
             global::System.Collections.Generic.IList<global::Runway.CreateVoiceIsolationResponseIssue>? issues,
+            string? reason,
             string? docUrl)
         {
             this.Error = error ?? throw new global::System.ArgumentNullException(nameof(error));
             this.Issues = issues;
+            this.Reason = reason;
             this.DocUrl = docUrl;
         }
 

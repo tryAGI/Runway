@@ -13,7 +13,10 @@ fetch_spec() {
     --connect-timeout 30 --max-time 300
 }
 
-# OpenAPI spec: https://raw.githubusercontent.com/runwayml/openapi/refs/heads/next/openapi.json
+# OpenAPI spec: https://raw.githubusercontent.com/runwayml/openapi/refs/heads/main/openapi.json
+# `main` is the repository's default branch and the one Runway actually publishes to. The `next`
+# branch this used to fetch is a frozen fork of it: as of 2026-11-11 it was missing /v1/video_to_audio
+# and about twenty models, Kling 4.0 and GPT Image 2.5 among them.
 # --reject-unknown-enum-values is only safe on a build that narrows it to enums which cannot appear in
 # a response; an older one accepts the flag and hardens every enum, so ordinary replies start throwing.
 # `autosdk capabilities --require` asks the build itself, which replaces both a version floor (had to be
@@ -29,7 +32,7 @@ require_autosdk_capability() {
 
 install_autosdk_cli
 require_autosdk_capability behavior:request-scoped-enum-rejection
-fetch_spec --fail --silent --show-error -L -o openapi.json https://raw.githubusercontent.com/runwayml/openapi/refs/heads/next/openapi.json
+fetch_spec --fail --silent --show-error -L -o openapi.json https://raw.githubusercontent.com/runwayml/openapi/refs/heads/main/openapi.json
 python3 patch_openapi.py openapi.json
 rm -rf Generated
 # --reject-unknown-enum-values: this SDK's CLI passes user input straight into enum-typed options, so a

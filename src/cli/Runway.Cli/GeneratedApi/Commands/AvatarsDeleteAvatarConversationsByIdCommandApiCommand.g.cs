@@ -25,7 +25,7 @@ internal static partial class AvatarsDeleteAvatarConversationsByIdCommandApiComm
     public static Command Create(string? commandName = null)
     {
         var command = new Command(commandName ?? @"delete-avatar-conversations-by-id", @"Delete conversation
-Delete a conversation and its associated data.");
+Permanently delete a conversation, including its transcript and recording.");
                         command.Arguments.Add(Id);
                         command.Options.Add(XRunwayVersion);
 

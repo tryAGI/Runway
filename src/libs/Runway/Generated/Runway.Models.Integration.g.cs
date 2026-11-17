@@ -12,15 +12,15 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRealtimeSessionsRequestIntegrationDiscriminatorType? Type { get; }
+        public global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsIntegrationDiscriminatorType? Type { get; }
 
         /// <summary>
         /// ElevenLabs handles conversation; Runway renders the avatar video.
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Runway.CreateRealtimeSessionsRequestIntegrationElevenLabsIntegration? Elevenlabs { get; init; }
+        public global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsIntegrationElevenLabsIntegration? Elevenlabs { get; init; }
 #else
-        public global::Runway.CreateRealtimeSessionsRequestIntegrationElevenLabsIntegration? Elevenlabs { get; }
+        public global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsIntegrationElevenLabsIntegration? Elevenlabs { get; }
 #endif
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace Runway
 #if NET6_0_OR_GREATER
             [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
 #endif
-            out global::Runway.CreateRealtimeSessionsRequestIntegrationElevenLabsIntegration? value)
+            out global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsIntegrationElevenLabsIntegration? value)
         {
             value = Elevenlabs;
             return IsElevenlabs;
@@ -47,7 +47,7 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRealtimeSessionsRequestIntegrationElevenLabsIntegration PickElevenlabs() => Elevenlabs is { } value
+        public global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsIntegrationElevenLabsIntegration PickElevenlabs() => Elevenlabs is { } value
             ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Elevenlabs' but the value was {ToString()}.");
 
@@ -55,9 +55,9 @@ namespace Runway
         /// Join an external LiveKit room; Runway publishes video, your agent supplies audio.
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Runway.CreateRealtimeSessionsRequestIntegrationLiveKitIntegration? Livekit { get; init; }
+        public global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsIntegrationLiveKitIntegration? Livekit { get; init; }
 #else
-        public global::Runway.CreateRealtimeSessionsRequestIntegrationLiveKitIntegration? Livekit { get; }
+        public global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsIntegrationLiveKitIntegration? Livekit { get; }
 #endif
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace Runway
 #if NET6_0_OR_GREATER
             [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
 #endif
-            out global::Runway.CreateRealtimeSessionsRequestIntegrationLiveKitIntegration? value)
+            out global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsIntegrationLiveKitIntegration? value)
         {
             value = Livekit;
             return IsLivekit;
@@ -84,23 +84,23 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateRealtimeSessionsRequestIntegrationLiveKitIntegration PickLivekit() => Livekit is { } value
+        public global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsIntegrationLiveKitIntegration PickLivekit() => Livekit is { } value
             ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Livekit' but the value was {ToString()}.");
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator Integration(global::Runway.CreateRealtimeSessionsRequestIntegrationElevenLabsIntegration value) => new Integration((global::Runway.CreateRealtimeSessionsRequestIntegrationElevenLabsIntegration?)value);
+        public static implicit operator Integration(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsIntegrationElevenLabsIntegration value) => new Integration((global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsIntegrationElevenLabsIntegration?)value);
 
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator global::Runway.CreateRealtimeSessionsRequestIntegrationElevenLabsIntegration?(Integration @this) => @this.Elevenlabs;
+        public static implicit operator global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsIntegrationElevenLabsIntegration?(Integration @this) => @this.Elevenlabs;
 
         /// <summary>
         ///
         /// </summary>
-        public Integration(global::Runway.CreateRealtimeSessionsRequestIntegrationElevenLabsIntegration? value)
+        public Integration(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsIntegrationElevenLabsIntegration? value)
         {
             Elevenlabs = value;
         }
@@ -108,22 +108,22 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public static Integration FromElevenlabs(global::Runway.CreateRealtimeSessionsRequestIntegrationElevenLabsIntegration? value) => new Integration(value);
+        public static Integration FromElevenlabs(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsIntegrationElevenLabsIntegration? value) => new Integration(value);
 
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator Integration(global::Runway.CreateRealtimeSessionsRequestIntegrationLiveKitIntegration value) => new Integration((global::Runway.CreateRealtimeSessionsRequestIntegrationLiveKitIntegration?)value);
+        public static implicit operator Integration(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsIntegrationLiveKitIntegration value) => new Integration((global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsIntegrationLiveKitIntegration?)value);
 
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator global::Runway.CreateRealtimeSessionsRequestIntegrationLiveKitIntegration?(Integration @this) => @this.Livekit;
+        public static implicit operator global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsIntegrationLiveKitIntegration?(Integration @this) => @this.Livekit;
 
         /// <summary>
         ///
         /// </summary>
-        public Integration(global::Runway.CreateRealtimeSessionsRequestIntegrationLiveKitIntegration? value)
+        public Integration(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsIntegrationLiveKitIntegration? value)
         {
             Livekit = value;
         }
@@ -131,15 +131,15 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public static Integration FromLivekit(global::Runway.CreateRealtimeSessionsRequestIntegrationLiveKitIntegration? value) => new Integration(value);
+        public static Integration FromLivekit(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsIntegrationLiveKitIntegration? value) => new Integration(value);
 
         /// <summary>
         ///
         /// </summary>
         public Integration(
-            global::Runway.CreateRealtimeSessionsRequestIntegrationDiscriminatorType? type,
-            global::Runway.CreateRealtimeSessionsRequestIntegrationElevenLabsIntegration? elevenlabs,
-            global::Runway.CreateRealtimeSessionsRequestIntegrationLiveKitIntegration? livekit
+            global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsIntegrationDiscriminatorType? type,
+            global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsIntegrationElevenLabsIntegration? elevenlabs,
+            global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsIntegrationLiveKitIntegration? livekit
             )
         {
             Type = type;
@@ -176,8 +176,8 @@ namespace Runway
         ///
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Runway.CreateRealtimeSessionsRequestIntegrationElevenLabsIntegration, TResult>? elevenlabs = null,
-            global::System.Func<global::Runway.CreateRealtimeSessionsRequestIntegrationLiveKitIntegration, TResult>? livekit = null,
+            global::System.Func<global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsIntegrationElevenLabsIntegration, TResult>? elevenlabs = null,
+            global::System.Func<global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsIntegrationLiveKitIntegration, TResult>? livekit = null,
             bool validate = true)
         {
             if (validate)
@@ -201,9 +201,9 @@ namespace Runway
         ///
         /// </summary>
         public void Match(
-            global::System.Action<global::Runway.CreateRealtimeSessionsRequestIntegrationElevenLabsIntegration>? elevenlabs = null,
+            global::System.Action<global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsIntegrationElevenLabsIntegration>? elevenlabs = null,
 
-            global::System.Action<global::Runway.CreateRealtimeSessionsRequestIntegrationLiveKitIntegration>? livekit = null,
+            global::System.Action<global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsIntegrationLiveKitIntegration>? livekit = null,
             bool validate = true)
         {
             if (validate)
@@ -225,8 +225,8 @@ namespace Runway
         ///
         /// </summary>
         public void Switch(
-            global::System.Action<global::Runway.CreateRealtimeSessionsRequestIntegrationElevenLabsIntegration>? elevenlabs = null,
-            global::System.Action<global::Runway.CreateRealtimeSessionsRequestIntegrationLiveKitIntegration>? livekit = null,
+            global::System.Action<global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsIntegrationElevenLabsIntegration>? elevenlabs = null,
+            global::System.Action<global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsIntegrationLiveKitIntegration>? livekit = null,
             bool validate = true)
         {
             if (validate)
@@ -252,9 +252,9 @@ namespace Runway
             var fields = new object?[]
             {
                 Elevenlabs,
-                typeof(global::Runway.CreateRealtimeSessionsRequestIntegrationElevenLabsIntegration),
+                typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsIntegrationElevenLabsIntegration),
                 Livekit,
-                typeof(global::Runway.CreateRealtimeSessionsRequestIntegrationLiveKitIntegration),
+                typeof(global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsIntegrationLiveKitIntegration),
             };
             const int offset = unchecked((int)2166136261);
             const int prime = 16777619;
@@ -271,8 +271,8 @@ namespace Runway
         public bool Equals(Integration other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateRealtimeSessionsRequestIntegrationElevenLabsIntegration?>.Default.Equals(Elevenlabs, other.Elevenlabs) &&
-                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateRealtimeSessionsRequestIntegrationLiveKitIntegration?>.Default.Equals(Livekit, other.Livekit)
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsIntegrationElevenLabsIntegration?>.Default.Equals(Elevenlabs, other.Elevenlabs) &&
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateRealtimeSessionsRequestGwm1AvatarsIntegrationLiveKitIntegration?>.Default.Equals(Livekit, other.Livekit)
                 ;
         }
 

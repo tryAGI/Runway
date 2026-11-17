@@ -4,7 +4,7 @@
 namespace Runway
 {
     /// <summary>
-    /// A record mapping workflow node IDs to their error details. Even when the overall workflow succeeds, individual nodes may have encountered non-fatal errors. Only present when one or more nodes have errored.
+    /// A record mapping workflow node IDs to their error details. Only present when one or more nodes have errored.
     /// </summary>
     public sealed partial class GetWorkflowInvocationsResponseWorkflowInvocationSucceededNodeErrors
     {

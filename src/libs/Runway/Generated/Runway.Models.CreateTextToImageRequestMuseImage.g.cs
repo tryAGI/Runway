@@ -24,6 +24,13 @@ namespace Runway
         public required global::Runway.CreateTextToImageRequestMuseImageRatio Ratio { get; set; }
 
         /// <summary>
+        /// The file format of the output image. Defaults to png.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("outputFormat")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.CreateTextToImageRequestMuseImageOutputFormatJsonConverter))]
+        public global::Runway.CreateTextToImageRequestMuseImageOutputFormat? OutputFormat { get; set; }
+
+        /// <summary>
         /// Up to 10 images to guide the generation. When provided, the model edits and combines them as your prompt describes instead of generating from the prompt alone.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("referenceImages")]
@@ -57,6 +64,9 @@ namespace Runway
         /// <param name="ratio">
         /// The resolution of the output image, expressed as `&lt;width&gt;:&lt;height&gt;`. Use `auto` to let the model choose the framing from the prompt.
         /// </param>
+        /// <param name="outputFormat">
+        /// The file format of the output image. Defaults to png.
+        /// </param>
         /// <param name="referenceImages">
         /// Up to 10 images to guide the generation. When provided, the model edits and combines them as your prompt describes instead of generating from the prompt alone.
         /// </param>
@@ -70,12 +80,14 @@ namespace Runway
         public CreateTextToImageRequestMuseImage(
             string promptText,
             global::Runway.CreateTextToImageRequestMuseImageRatio ratio,
+            global::Runway.CreateTextToImageRequestMuseImageOutputFormat? outputFormat,
             global::System.Collections.Generic.IList<global::Runway.CreateTextToImageRequestMuseImageReferenceImage>? referenceImages,
             int? outputCount,
             string model = "muse_image")
         {
             this.PromptText = promptText ?? throw new global::System.ArgumentNullException(nameof(promptText));
             this.Ratio = ratio;
+            this.OutputFormat = outputFormat;
             this.ReferenceImages = referenceImages;
             this.OutputCount = outputCount;
             this.Model = model;

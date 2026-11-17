@@ -19,6 +19,10 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
+        ElevenV4,
+        /// <summary>
+        ///
+        /// </summary>
         SeedAudio,
     }
 
@@ -36,6 +40,7 @@ namespace Runway
             {
                 CreateTextToSpeechRequestDiscriminatorModel.ElevenMultilingualV2 => "eleven_multilingual_v2",
                 CreateTextToSpeechRequestDiscriminatorModel.ElevenV3 => "eleven_v3",
+                CreateTextToSpeechRequestDiscriminatorModel.ElevenV4 => "eleven_v4",
                 CreateTextToSpeechRequestDiscriminatorModel.SeedAudio => "seed_audio",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
@@ -49,6 +54,7 @@ namespace Runway
             {
                 "eleven_multilingual_v2" => CreateTextToSpeechRequestDiscriminatorModel.ElevenMultilingualV2,
                 "eleven_v3" => CreateTextToSpeechRequestDiscriminatorModel.ElevenV3,
+                "eleven_v4" => CreateTextToSpeechRequestDiscriminatorModel.ElevenV4,
                 "seed_audio" => CreateTextToSpeechRequestDiscriminatorModel.SeedAudio,
                 _ => null,
             };

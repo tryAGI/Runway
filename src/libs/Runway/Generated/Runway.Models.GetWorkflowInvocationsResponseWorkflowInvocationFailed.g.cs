@@ -49,6 +49,12 @@ namespace Runway
         public global::System.Collections.Generic.Dictionary<string, global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationFailedNodeErrors2>? NodeErrors { get; set; }
 
         /// <summary>
+        /// Omitted until every descendant task is terminal, so a later GET cannot return a larger value.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("cost")]
+        public global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationFailedCost? Cost { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -72,6 +78,9 @@ namespace Runway
         /// <param name="nodeErrors">
         /// A record mapping workflow node IDs to their error details. Only present when one or more nodes have errored.
         /// </param>
+        /// <param name="cost">
+        /// Omitted until every descendant task is terminal, so a later GET cannot return a larger value.
+        /// </param>
         /// <param name="status"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -82,6 +91,7 @@ namespace Runway
             string failure,
             string? failureCode,
             global::System.Collections.Generic.Dictionary<string, global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationFailedNodeErrors2>? nodeErrors,
+            global::Runway.GetWorkflowInvocationsResponseWorkflowInvocationFailedCost? cost,
             string status = "FAILED")
         {
             this.Id = id;
@@ -90,6 +100,7 @@ namespace Runway
             this.Failure = failure ?? throw new global::System.ArgumentNullException(nameof(failure));
             this.FailureCode = failureCode;
             this.NodeErrors = nodeErrors;
+            this.Cost = cost;
         }
 
         /// <summary>

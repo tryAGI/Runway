@@ -45,7 +45,7 @@ internal static partial class WorkflowsGetWorkflowInvocationsByIdCommandApiComma
     public static Command Create(string? commandName = null)
     {
         var command = new Command(commandName ?? @"get-workflow-invocations-by-id", @"Get workflow invocation detail
-Return details about a workflow invocation. Consumers of this API should not expect updates more frequent than once every five seconds for a given workflow invocation.");
+Return details about a workflow invocation. Consumers of this API should not expect updates more frequent than once every five seconds for a given workflow invocation. A `SUCCEEDED` invocation may still have had individual nodes fail, so check `nodeErrors` to detect a partial run rather than relying on `status` alone.");
                         command.Arguments.Add(Id);
                         command.Options.Add(XRunwayVersion);
 

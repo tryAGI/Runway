@@ -2,7 +2,7 @@
 
 namespace Runway
 {
-    public sealed partial class CreateRealtimeSessionsRequest
+    public readonly partial struct CreateRealtimeSessionsRequest
     {
         /// <summary>
         /// Serializes the current instance to a JSON string using the provided JsonSerializerContext.
@@ -54,7 +54,7 @@ namespace Runway
             return global::System.Text.Json.JsonSerializer.Deserialize(
                 json,
                 typeof(global::Runway.CreateRealtimeSessionsRequest),
-                jsonSerializerContext) as global::Runway.CreateRealtimeSessionsRequest;
+                jsonSerializerContext) as global::Runway.CreateRealtimeSessionsRequest?;
         }
 
         /// <summary>
@@ -101,7 +101,7 @@ namespace Runway
             return (await global::System.Text.Json.JsonSerializer.DeserializeAsync(
                 jsonStream,
                 typeof(global::Runway.CreateRealtimeSessionsRequest),
-                jsonSerializerContext).ConfigureAwait(false)) as global::Runway.CreateRealtimeSessionsRequest;
+                jsonSerializerContext).ConfigureAwait(false)) as global::Runway.CreateRealtimeSessionsRequest?;
         }
 
         /// <summary>

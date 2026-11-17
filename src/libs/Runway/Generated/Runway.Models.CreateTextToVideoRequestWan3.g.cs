@@ -28,7 +28,7 @@ namespace Runway
         public int? Duration { get; set; }
 
         /// <summary>
-        /// The resolution of the output video, as `&lt;width&gt;:&lt;height&gt;`. Use `auto_480p`, `auto_720p`, or `auto_1080p` to let the model pick framing at that quality tier.
+        /// The resolution of the output video, as `&lt;width&gt;:&lt;height&gt;`. Keyframe image-to-video requests must use `auto_480p`, `auto_720p`, or `auto_1080p` because their aspect ratio follows the first frame.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ratio")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.CreateTextToVideoRequestWan3RatioJsonConverter))]
@@ -78,7 +78,7 @@ namespace Runway
         /// The number of seconds of duration for the output video.
         /// </param>
         /// <param name="ratio">
-        /// The resolution of the output video, as `&lt;width&gt;:&lt;height&gt;`. Use `auto_480p`, `auto_720p`, or `auto_1080p` to let the model pick framing at that quality tier.
+        /// The resolution of the output video, as `&lt;width&gt;:&lt;height&gt;`. Keyframe image-to-video requests must use `auto_480p`, `auto_720p`, or `auto_1080p` because their aspect ratio follows the first frame.
         /// </param>
         /// <param name="references">
         /// An optional array of image references (up to 10). See [our docs](/assets/inputs#images) on image inputs for more information.

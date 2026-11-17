@@ -166,8 +166,8 @@ namespace Runway
                             __pathBuilder
                                 .AddOptionalParameter("cursor", cursor)
                                 .AddRequiredParameter("limit", limit.ToString() ?? throw new global::System.InvalidOperationException("A required query parameter returned null from ToString()."))
-                                .AddRequiredParameter("from", from.ToString("yyyy-MM-ddTHH:mm:ssZ"))
-                                .AddRequiredParameter("to", to.ToString("yyyy-MM-ddTHH:mm:ssZ"))
+                                .AddRequiredParameter("from", from.ToString() ?? throw new global::System.InvalidOperationException("A required query parameter returned null from ToString()."))
+                                .AddRequiredParameter("to", to.ToString() ?? throw new global::System.InvalidOperationException("A required query parameter returned null from ToString()."))
                                 .AddOptionalParameter("organizationId", organizationId?.ToString())
                                 .AddOptionalParameter("workspaceIds", workspaceIds)
                                 ;

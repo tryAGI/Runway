@@ -4,7 +4,7 @@
 namespace Runway
 {
     /// <summary>
-    /// The resolution of the output video. Seedance 2.5 supports 480p, 720p, and 1080p.
+    /// The resolution of the output video. Seedance 2.5 supports 480p, 720p, and 1080p. Defaults to `1280:720`.
     /// </summary>
     public enum CreateTextToVideoRequestSeedance25Ratio
     {
@@ -21,7 +21,7 @@ namespace Runway
         /// </summary>
         x1248_1664,
         /// <summary>
-        ///
+        /// 720`.
         /// </summary>
         x1280_720,
         /// <summary>

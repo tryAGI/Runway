@@ -6,7 +6,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Auto-generated C# SDK for the [Runway ML API](https://docs.dev.runwayml.com/), built with [AutoSDK](https://github.com/tryAGI/AutoSDK) from an OpenAPI specification. Published as the `Runway` NuGet package.
 
-**Supported APIs:** Image-to-video (Gen3a Turbo, Gen4 Turbo), text-to-video (Veo 3.1 Fast), text-to-image (Gen4 Image Turbo), text-to-speech (ElevenLabs Multilingual V2 with 48 preset voices), sound effects generation, voice dubbing (multi-language with voice cloning), and task management.
+**Supported APIs:** Image-to-video, text-to-video, video-to-video, text-to-image, image and video upscaling, video-to-HDR, video-to-audio, character performance, text-to-speech and speech-to-speech, sound effects, voice dubbing and isolation, avatars and realtime sessions, workflows, and task management.
+
+Which models each endpoint accepts comes from the spec, so this file deliberately names none: a model list written here goes stale on the next regeneration. Ask the SDK instead — `RunwayModelSchema.KnownEndpoints()` and `RunwayModelSchema.IsKnown(id)`, or `runway models --account` to compare the spec against what the account can actually call.
 
 ## Build & Test Commands
 
@@ -40,6 +42,15 @@ autosdk trim src/libs/*//*.csproj
 ## Architecture
 
 **Code generation pipeline:** `openapi.json` → AutoSDK (`autosdk.cli`) → `Generated/*.g.cs` files
+
+The spec is fetched from `runwayml/openapi`'s **default branch**. It used to come from that repository's
+`next` branch, which upstream froze while publishing elsewhere; auto-update kept fetching the frozen file,
+saw no change, opened no PR, and the SDK sat 29 models and a whole endpoint behind while looking current.
+`scripts/check-spec-source.sh` now fails CI if the fetch points anywhere but the default branch.
+
+`patch_openapi.py` adds models Runway has announced and documented but not yet published in its spec.
+Each is cloned from a sibling already in the spec, so no field is invented, and the script fails loudly if
+that sibling disappears. Delete an entry once upstream ships it.
 
 - `src/libs/Runway/` — Main SDK library (net10.0)
   - `openapi.json` — Source OpenAPI specification

@@ -37,6 +37,12 @@ namespace Runway
         public string? NegativePrompt { get; set; }
 
         /// <summary>
+        /// If unspecified, a random number is chosen. Varying the seed integer is a way to get different results for the same other request parameters. Using the same seed integer for an identical request will produce similar results.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("seed")]
+        public int? Seed { get; set; }
+
+        /// <summary>
         /// The number of seconds of duration for the output video.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("duration")]
@@ -71,6 +77,9 @@ namespace Runway
         /// <param name="negativePrompt">
         /// Text describing what should not appear in the output video.
         /// </param>
+        /// <param name="seed">
+        /// If unspecified, a random number is chosen. Varying the seed integer is a way to get different results for the same other request parameters. Using the same seed integer for an identical request will produce similar results.
+        /// </param>
         /// <param name="duration">
         /// The number of seconds of duration for the output video.
         /// </param>
@@ -83,6 +92,7 @@ namespace Runway
             global::Runway.CreateTextToVideoRequestVeo31Ratio ratio,
             bool? audio,
             string? negativePrompt,
+            int? seed,
             double? duration,
             string model = "veo3.1")
         {
@@ -90,6 +100,7 @@ namespace Runway
             this.Ratio = ratio;
             this.Audio = audio;
             this.NegativePrompt = negativePrompt;
+            this.Seed = seed;
             this.Duration = duration;
             this.Model = model;
         }

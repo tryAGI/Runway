@@ -27,11 +27,11 @@ public partial class Tests
         try
         {
             var session = await client.RealtimeSessions.CreateRealtimeSessionsAsync(
-                request: new CreateRealtimeSessionsRequest
+                request: new CreateRealtimeSessionsRequestGwm1Avatars
                 {
-                    Avatar = new CreateRealtimeSessionsRequestAvatarRunwayPresetAvatar
+                    Avatar = new CreateRealtimeSessionsRequestGwm1AvatarsAvatarRunwayPresetAvatar
                     {
-                        PresetId = CreateRealtimeSessionsRequestAvatarRunwayPresetAvatarPresetId.Influencer,
+                        PresetId = CreateRealtimeSessionsRequestGwm1AvatarsAvatarRunwayPresetAvatarPresetId.Influencer,
                     },
                     MaxDuration = 60,
                 });

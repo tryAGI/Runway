@@ -15,3 +15,15 @@ jobs:
     with:
       library-path: src/libs/Runway
     secrets: inherit
+
+  # auto-update only notices a spec that changed. It cannot notice a spec that stopped changing because
+  # the branch it fetches was abandoned, which is exactly what happened with `next`. This job watches the
+  # source itself rather than its contents.
+  spec-source:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Check the spec comes from the upstream default branch
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: ./scripts/check-spec-source.sh

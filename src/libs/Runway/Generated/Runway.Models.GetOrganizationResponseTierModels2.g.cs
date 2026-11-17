@@ -9,18 +9,16 @@ namespace Runway
     public sealed partial class GetOrganizationResponseTierModels2
     {
         /// <summary>
-        /// The maximum number of generations that can be run concurrently for this model.
+        /// The maximum number of generations that can be run concurrently for this model. null means no limit.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("maxConcurrentGenerations")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required int MaxConcurrentGenerations { get; set; }
+        public int? MaxConcurrentGenerations { get; set; }
 
         /// <summary>
-        /// The maximum number of generations that can be created each day for this model.
+        /// The maximum number of generations that can be created each day for this model. null means no limit.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("maxDailyGenerations")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required int MaxDailyGenerations { get; set; }
+        public int? MaxDailyGenerations { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -32,17 +30,17 @@ namespace Runway
         /// Initializes a new instance of the <see cref="GetOrganizationResponseTierModels2" /> class.
         /// </summary>
         /// <param name="maxConcurrentGenerations">
-        /// The maximum number of generations that can be run concurrently for this model.
+        /// The maximum number of generations that can be run concurrently for this model. null means no limit.
         /// </param>
         /// <param name="maxDailyGenerations">
-        /// The maximum number of generations that can be created each day for this model.
+        /// The maximum number of generations that can be created each day for this model. null means no limit.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public GetOrganizationResponseTierModels2(
-            int maxConcurrentGenerations,
-            int maxDailyGenerations)
+            int? maxConcurrentGenerations,
+            int? maxDailyGenerations)
         {
             this.MaxConcurrentGenerations = maxConcurrentGenerations;
             this.MaxDailyGenerations = maxDailyGenerations;

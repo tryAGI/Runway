@@ -836,7 +836,82 @@ public static class RunwayShortVideoExtensions
                 referenceImageUris: effectiveOptions.ReferenceImageUris,
                 referenceVideoUris: effectiveOptions.ReferenceVideoUris,
                 referenceAudioUris: effectiveOptions.ReferenceAudioUris),
-            _ => throw new ArgumentException($"Unsupported model '{effectiveOptions.Model}'."),
+            "gemini_omni_flash_1.1" => RunwayTextToVideo.GeminiOmniFlash11(
+                prompt,
+                ratio: RequireRatio(model, CreateTextToVideoRequestGeminiOmniFlash11RatioExtensions.ToEnum(effectiveOptions.Ratio)),
+                referenceImageUris: effectiveOptions.ReferenceImageUris,
+                referenceVideoUris: effectiveOptions.ReferenceVideoUris),
+            "gemini_omni_flash_1.2" => RunwayTextToVideo.GeminiOmniFlash12(
+                prompt,
+                ratio: RequireRatio(model, CreateTextToVideoRequestGeminiOmniFlash12RatioExtensions.ToEnum(effectiveOptions.Ratio)),
+                referenceImageUris: effectiveOptions.ReferenceImageUris,
+                referenceVideoUris: effectiveOptions.ReferenceVideoUris),
+            "grok_imagine_1_5_lite" => RunwayTextToVideo.GrokImagine15Lite(
+                prompt,
+                ratio: RequireRatio(model, CreateTextToVideoRequestGrokImagine15LiteRatioExtensions.ToEnum(effectiveOptions.Ratio)),
+                duration: ToWholeDuration(effectiveOptions.ShotDurationSeconds, model)),
+            // h3_max takes a resolution rather than a ratio, so the plan's ratio does not apply to it.
+            "h3_max" => RunwayTextToVideo.H3Max(
+                prompt,
+                duration: ToWholeDuration(effectiveOptions.ShotDurationSeconds, model)),
+            "kling2.5_turbo_pro" => RunwayTextToVideo.Kling25TurboPro(
+                prompt,
+                ratio: RequireRatio(model, CreateTextToVideoRequestKling25TurboProRatioExtensions.ToEnum(effectiveOptions.Ratio)),
+                duration: ToWholeDuration(effectiveOptions.ShotDurationSeconds, model)),
+            "kling3.0_4k" => RunwayTextToVideo.Kling304k(
+                ratio: RequireRatio(model, CreateTextToVideoRequestKling304kRatioExtensions.ToEnum(effectiveOptions.Ratio)),
+                promptText: prompt,
+                duration: ToWholeDuration(effectiveOptions.ShotDurationSeconds, model),
+                audio: effectiveOptions.Audio),
+            "kling3.0_pro" => RunwayTextToVideo.Kling30Pro(
+                ratio: RequireRatio(model, CreateTextToVideoRequestKling30ProRatioExtensions.ToEnum(effectiveOptions.Ratio)),
+                promptText: prompt,
+                duration: ToWholeDuration(effectiveOptions.ShotDurationSeconds, model),
+                audio: effectiveOptions.Audio),
+            "kling3.0_standard" => RunwayTextToVideo.Kling30Standard(
+                ratio: RequireRatio(model, CreateTextToVideoRequestKling30StandardRatioExtensions.ToEnum(effectiveOptions.Ratio)),
+                promptText: prompt,
+                duration: ToWholeDuration(effectiveOptions.ShotDurationSeconds, model),
+                audio: effectiveOptions.Audio),
+            "klingO3_4k" => RunwayTextToVideo.KlingO34k(
+                ratio: RequireRatio(model, CreateTextToVideoRequestKlingO34kRatioExtensions.ToEnum(effectiveOptions.Ratio)),
+                promptText: prompt,
+                duration: ToWholeDuration(effectiveOptions.ShotDurationSeconds, model),
+                audio: effectiveOptions.Audio),
+            "klingO3_pro" => RunwayTextToVideo.KlingO3Pro(
+                ratio: RequireRatio(model, CreateTextToVideoRequestKlingO3ProRatioExtensions.ToEnum(effectiveOptions.Ratio)),
+                promptText: prompt,
+                duration: ToWholeDuration(effectiveOptions.ShotDurationSeconds, model),
+                audio: effectiveOptions.Audio),
+            "klingO3_standard" => RunwayTextToVideo.KlingO3Standard(
+                ratio: RequireRatio(model, CreateTextToVideoRequestKlingO3StandardRatioExtensions.ToEnum(effectiveOptions.Ratio)),
+                promptText: prompt,
+                duration: ToWholeDuration(effectiveOptions.ShotDurationSeconds, model),
+                audio: effectiveOptions.Audio),
+            "kling_4" => RunwayTextToVideo.Kling4(
+                prompt,
+                ratio: RequireRatio(model, CreateTextToVideoRequestKling4RatioExtensions.ToEnum(effectiveOptions.Ratio)),
+                duration: ToWholeDuration(effectiveOptions.ShotDurationSeconds, model),
+                referenceImageUris: effectiveOptions.ReferenceImageUris),
+            "kling_4_flash" => RunwayTextToVideo.Kling4Flash(
+                prompt,
+                ratio: RequireRatio(model, CreateTextToVideoRequestKling4FlashRatioExtensions.ToEnum(effectiveOptions.Ratio)),
+                duration: ToWholeDuration(effectiveOptions.ShotDurationSeconds, model),
+                referenceImageUris: effectiveOptions.ReferenceImageUris),
+            "wan3_prime" => RunwayTextToVideo.Wan3Prime(
+                prompt,
+                ratio: RequireRatio(model, CreateTextToVideoRequestWan3PrimeRatioExtensions.ToEnum(effectiveOptions.Ratio)),
+                duration: ToWholeDuration(effectiveOptions.ShotDurationSeconds, model),
+                audio: effectiveOptions.Audio,
+                referenceImageUris: effectiveOptions.ReferenceImageUris,
+                referenceVideoUris: effectiveOptions.ReferenceVideoUris,
+                referenceAudioUris: effectiveOptions.ReferenceAudioUris),
+            // NormalizeTextToVideoModel already accepts every model the spec lists for text_to_video, so
+            // reaching this means the spec gained one and this switch has not caught up. Say that, rather
+            // than calling a model the API supports "unsupported".
+            _ => throw new ArgumentException(
+                $"Short-video support for model '{effectiveOptions.Model}' is not implemented yet, although the spec lists it. " +
+                "Call RunwayTextToVideo directly, or add a case here."),
         };
     }
 
@@ -1216,10 +1291,19 @@ public static class RunwayShortVideoExtensions
             throw new ArgumentException($"{model} short-video duration must be a whole number of seconds.");
         }
 
+        // The bounds come from the model's own schema. They used to be a flat 2-10 for every model, which
+        // was right for the dozen models this helper knew and wrong for the ones it has since gained:
+        // kling_4 runs to 30 seconds and kling_4_flash to 20.
+        var parameter = RunwayModelSchema.GetParameter(model, RunwayRatioEndpoints.TextToVideo, "duration");
+        var minimum = parameter?.Minimum is { } specMinimum ? (int)specMinimum : 2;
+        var maximum = parameter?.Maximum is { } specMaximum ? (int)specMaximum : 10;
+
         var wholeDuration = checked((int)duration);
-        if (wholeDuration is < 2 or > 10)
+        if (wholeDuration < minimum || wholeDuration > maximum)
         {
-            throw new ArgumentOutOfRangeException(nameof(duration), $"{model} short-video duration must be between 2 and 10 seconds.");
+            throw new ArgumentOutOfRangeException(
+                nameof(duration),
+                $"{model} short-video duration must be between {minimum} and {maximum} seconds.");
         }
 
         return wholeDuration;

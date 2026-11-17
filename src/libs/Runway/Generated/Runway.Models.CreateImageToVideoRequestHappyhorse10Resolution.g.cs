@@ -4,14 +4,23 @@
 namespace Runway
 {
     /// <summary>
-    /// Output quality tier. Output aspect ratio follows the input image.
+    /// Output quality tier. Output aspect ratio follows the input image.<br/>
+    /// Example: 720p
     /// </summary>
     public enum CreateImageToVideoRequestHappyhorse10Resolution
     {
         /// <summary>
         ///
         /// </summary>
+        x1080p2,
+        /// <summary>
+        ///
+        /// </summary>
         x1080p,
+        /// <summary>
+        ///
+        /// </summary>
+        x720p2,
         /// <summary>
         ///
         /// </summary>
@@ -30,8 +39,10 @@ namespace Runway
         {
             return value switch
             {
-                CreateImageToVideoRequestHappyhorse10Resolution.x1080p => "1080P",
-                CreateImageToVideoRequestHappyhorse10Resolution.x720p => "720P",
+                CreateImageToVideoRequestHappyhorse10Resolution.x1080p2 => "1080P",
+                CreateImageToVideoRequestHappyhorse10Resolution.x1080p => "1080p",
+                CreateImageToVideoRequestHappyhorse10Resolution.x720p2 => "720P",
+                CreateImageToVideoRequestHappyhorse10Resolution.x720p => "720p",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -42,8 +53,10 @@ namespace Runway
         {
             return value switch
             {
-                "1080P" => CreateImageToVideoRequestHappyhorse10Resolution.x1080p,
-                "720P" => CreateImageToVideoRequestHappyhorse10Resolution.x720p,
+                "1080P" => CreateImageToVideoRequestHappyhorse10Resolution.x1080p2,
+                "1080p" => CreateImageToVideoRequestHappyhorse10Resolution.x1080p,
+                "720P" => CreateImageToVideoRequestHappyhorse10Resolution.x720p2,
+                "720p" => CreateImageToVideoRequestHappyhorse10Resolution.x720p,
                 _ => null,
             };
         }
