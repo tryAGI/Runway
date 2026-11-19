@@ -22,7 +22,7 @@ jobs:
   spec-source:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
       - name: Check the spec comes from the upstream default branch
         env:
           GITHUB_TOKEN: ${{ github.token }}
