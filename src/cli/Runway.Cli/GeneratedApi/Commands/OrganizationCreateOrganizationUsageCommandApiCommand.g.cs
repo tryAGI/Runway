@@ -25,6 +25,18 @@ internal static partial class OrganizationCreateOrganizationUsageCommandApiComma
     {
         Description = @"The end date of the usage data in ISO-8601 format (YYYY-MM-DD), not inclusive. If unspecified, it will default to thirty days after the start date. Must be less than or equal to 90 days after the start date. All dates are in UTC.",
     };
+
+    private static Option<global::System.Collections.Generic.IList<string>?> Tags { get; } = new(
+        name: @"--tags")
+    {
+        Description = @"Only count generations that were created with every one of these tags in the `X-Runway-Tags` header. Tags are case-insensitive. Up to 10 tags.",
+    };
+
+    private static Option<string?> GroupBy { get; } = new(
+        name: @"--group-by")
+    {
+        Description = @"Also break usage down by tag in `resultsByTag`. `""tag""` gives one bucket per tag; a generation with several tags counts toward each of them. `""tag:<key>""` (for example `""tag:team""`) gives one bucket per value of that key, so each generation counts once. Generations without a matching tag fall under a `null` tag.",
+    };
       private static Option<string?> Input { get; } = new(@"--input")
       {
           Description = "Load request JSON from a file path, '-' for stdin, or an inline JSON object/array string.",
@@ -67,10 +79,12 @@ internal static partial class OrganizationCreateOrganizationUsageCommandApiComma
     public static Command Create(string? commandName = null)
     {
         var command = new Command(commandName ?? @"create-organization-usage", @"Query credit usage
-Fetch credit usage data broken down by model and day for the organization associated with the API key used to make the request. Up to 90 days of data can be queried at a time.");
+Fetch credit usage data broken down by model and day for the organization associated with the API key used to make the request. Up to 90 days of data can be queried at a time. Usage updates hourly; recent activity may not appear yet.");
                         command.Options.Add(XRunwayVersion);
                         command.Options.Add(StartDate);
                         command.Options.Add(BeforeDate);
+                        command.Options.Add(Tags);
+                        command.Options.Add(GroupBy);
           command.Options.Add(Input);
           command.Options.Add(RequestJson);
           command.Options.Add(RequestFile);
@@ -99,6 +113,8 @@ Fetch credit usage data broken down by model and day for the organization associ
                         var xRunwayVersion = parseResult.GetRequiredValue(XRunwayVersion);
                         var startDate = CliRuntime.WasSpecified(parseResult, StartDate) ? parseResult.GetValue(StartDate) : (__requestBase is { } __StartDateBaseValue ? __StartDateBaseValue.StartDate : default);
                         var beforeDate = CliRuntime.WasSpecified(parseResult, BeforeDate) ? parseResult.GetValue(BeforeDate) : (__requestBase is { } __BeforeDateBaseValue ? __BeforeDateBaseValue.BeforeDate : default);
+                        var tags = CliRuntime.WasSpecified(parseResult, Tags) ? parseResult.GetValue(Tags) : (__requestBase is { } __TagsBaseValue ? __TagsBaseValue.Tags : default);
+                        var groupBy = CliRuntime.WasSpecified(parseResult, GroupBy) ? parseResult.GetValue(GroupBy) : (__requestBase is { } __GroupByBaseValue ? __GroupByBaseValue.GroupBy : default);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
@@ -106,6 +122,8 @@ Fetch credit usage data broken down by model and day for the organization associ
                                     xRunwayVersion: xRunwayVersion,
                                     startDate: startDate,
                                     beforeDate: beforeDate,
+                                    tags: tags,
+                                    groupBy: groupBy,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 

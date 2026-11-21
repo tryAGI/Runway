@@ -7,6 +7,14 @@ namespace Runway.Cli.GeneratedApi.Commands;
 
 internal static partial class StartGeneratingCreateVideoToHdrCommandApiCommand
 {
+    private static Option<string?> XRunwayTags { get; } = new(
+        name: @"--x-runway-tags")
+    {
+        Description = @"Comma-separated tags to attribute this generation's credit usage to, so you can filter and break down usage with `POST /v1/organization/usage`. Each tag is a plain label (`campaign-q4`) or a `key:value` pair (`team:growth`), split at the first colon. Tags are case-insensitive and stored lowercase. Up to 10 tags, each up to 64 characters of letters, numbers, and `_ - . / :`. An invalid tag rejects the request with a 400. Workflow runs pass their tags on to every generation they start.
+
+**Tags appear in usage reports. Do not put end-user PII (like names or emails) in them.**",
+    };
+
     private static Option<string> XRunwayVersion { get; } = new(
         name: @"--x-runway-version")
     {
@@ -72,6 +80,7 @@ internal static partial class StartGeneratingCreateVideoToHdrCommandApiCommand
     {
         var command = new Command(commandName ?? @"create-video-to-hdr", @"Video to HDR
 This endpoint starts a task to upconvert an SDR video to true HDR with Ruby, Runway's HDR grading model. The output keeps the source's own pixels — luma and color are extended into the HDR range, nothing is re-synthesized. Set `outputFormat` to choose the delivery profile: `hdr10` (HEVC Main 10, BT.2020 + PQ, the default), `hlg` (HEVC Main 10, BT.2020 + HLG), `hdr_prores` (BT.2020 + PQ ProRes .mov editorial mezzanine, tier selectable with `proresProfile`), `hdr_exr_sequence` (a .zip of half-float OpenEXR frames in linear BT.2020 display light, for compositing), or `hdr_exr_acescg_sequence_1_3` (the same delivery as scene-referred ACEScg for ACES pipelines — reads with the stock ACES - ACEScg input transform). Tasks bill per second of output at 20 credits per second, rising to 40 credits per second when the source is larger than 4 megapixels (roughly 4K) — an upconvert delivers at the source's own resolution.");
+                        command.Options.Add(XRunwayTags);
                         command.Options.Add(XRunwayVersion);
           command.Options.Add(Input);
           command.Options.Add(RequestJson);
@@ -93,6 +102,7 @@ This endpoint starts a task to upconvert an SDR video to true HDR with Ruby, Run
         command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
             await CliRuntime.RunAsync(async () =>
             {
+                        var xRunwayTags = parseResult.GetValue(XRunwayTags);
                         var xRunwayVersion = parseResult.GetRequiredValue(XRunwayVersion);
                         var request = await CliRuntime.ReadRequestAsync<global::Runway.CreateVideoToHdrRequest>(
                             parseResult,
@@ -108,6 +118,7 @@ This endpoint starts a task to upconvert an SDR video to true HDR with Ruby, Run
                                 if (wait)
                                 {
                                 var createResponse = await client.StartGenerating.CreateVideoToHdrAsync(
+                                    xRunwayTags: xRunwayTags,
                                     xRunwayVersion: xRunwayVersion,
                                     request: request,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
@@ -136,6 +147,7 @@ This endpoint starts a task to upconvert an SDR video to true HDR with Ruby, Run
                                 }
 
                                 var response = await client.StartGenerating.CreateVideoToHdrAsync(
+                                    xRunwayTags: xRunwayTags,
                                     xRunwayVersion: xRunwayVersion,
                                     request: request,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);

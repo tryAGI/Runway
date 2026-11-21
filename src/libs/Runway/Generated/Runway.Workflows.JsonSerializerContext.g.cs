@@ -34,10 +34,10 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateWorkflowsRequestNodeOutputsDiscriminatorType), TypeInfoPropertyName = "CreateWorkflowsRequestNodeOutputsDiscriminatorType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateWorkflowsResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateWorkflowsResponse2))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetWorkflowsResponse))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetWorkflowsResponseGraph))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetWorkflowsResponse2))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetWorkflowsResponseGraph))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetWorkflowsResponse3))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetWorkflowsResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.GetWorkflowsResponseDataItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.GetWorkflowsResponseDataItem))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Runway.GetWorkflowsResponseDataItemVersion>))]
@@ -133,20 +133,23 @@ namespace Runway
             options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<object>>());
             options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<int?, string>());
             options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<object>>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string, int?>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<int?, string>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<int?, string>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<int?, string>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<int?, string>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string, int?>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<int?, string>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string, int?>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<int?, string>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<int?, string>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<int?, string>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<int?, string>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string, int?>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<int?, string>());
             options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<object>>());
             options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string, int?>());
             options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<int?, string>());
-            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<int?, string>());
-            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<int?, string>());
-            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string, int?>());
-            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<int?, string>());
-            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string, int?>());
-            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<int?, string>());
-            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<int?, string>());
-            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<int?, string>());
-            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string, int?>());
-            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<int?, string>());
-            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string, int?>());
             options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string, double?, bool?>());
             options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<object, string>());
             options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<object, string>());
@@ -165,6 +168,10 @@ namespace Runway
             options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>());
             options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>());
             options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string, double?, bool?, global::System.Collections.Generic.Dictionary<string, bool>>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string, double?, bool?, global::System.Collections.Generic.Dictionary<string, bool>>());
             options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string, double?, bool?, global::System.Collections.Generic.Dictionary<string, bool>>());
             options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string, double?, bool?, global::System.Collections.Generic.Dictionary<string, bool>>());
             options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>());

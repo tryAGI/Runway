@@ -13,11 +13,10 @@ internal static partial class AvatarsGetAvatarConversationsCommandApiCommand
         Description = @"Cursor from a previous response for fetching the next page of results.",
     };
 
-    private static Option<int> Limit { get; } = new(
+    private static Option<int?> Limit { get; } = new(
         name: @"--limit")
     {
         Description = @"The maximum number of items to return per page.",
-        Required = true,
     };
 
     private static Option<global::System.Guid?> Avatar { get; } = new(
@@ -83,7 +82,7 @@ List realtime avatar conversations for the authenticated user with cursor-based 
             await CliRuntime.RunAsync(async () =>
             {
                         var cursor = parseResult.GetValue(Cursor);
-                        var limit = parseResult.GetRequiredValue(Limit);
+                        var limit = parseResult.GetValue(Limit);
                         var avatar = parseResult.GetValue(Avatar);
                         var startDate = parseResult.GetValue(StartDate);
                         var endDate = parseResult.GetValue(EndDate);

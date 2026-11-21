@@ -8,6 +8,9 @@ namespace Runway
         /// Routed image generation<br/>
         /// Start an image generation task using a saved Model Router config instead of naming a model.
         /// </summary>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -18,6 +21,7 @@ namespace Runway
         global::System.Threading.Tasks.Task<global::Runway.CreateGenerateImageResponse2> CreateGenerateImageAsync(
 
             global::Runway.CreateGenerateImageRequest request,
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
@@ -25,6 +29,9 @@ namespace Runway
         /// Routed image generation<br/>
         /// Start an image generation task using a saved Model Router config instead of naming a model.
         /// </summary>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -35,6 +42,7 @@ namespace Runway
         global::System.Threading.Tasks.Task<global::Runway.AutoSDKHttpResponse<global::Runway.CreateGenerateImageResponse2>> CreateGenerateImageAsResponseAsync(
 
             global::Runway.CreateGenerateImageRequest request,
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
@@ -42,6 +50,9 @@ namespace Runway
         /// Routed image generation<br/>
         /// Start an image generation task using a saved Model Router config instead of naming a model.
         /// </summary>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -57,6 +68,7 @@ namespace Runway
         global::System.Threading.Tasks.Task<global::Runway.CreateGenerateImageResponse2> CreateGenerateImageAsync(
             string configId,
             global::Runway.CreateGenerateImageRequestInput input,
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);

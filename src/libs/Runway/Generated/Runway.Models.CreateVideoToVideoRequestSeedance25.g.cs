@@ -59,7 +59,7 @@ namespace Runway
         public global::Runway.AnyOf<int?, string>? Duration { get; set; }
 
         /// <summary>
-        /// The resolution of the output video. Seedance 2.5 supports 480p, 720p, and 1080p.
+        /// The resolution of the output video. Seedance 2.5 supports 480p, 720p, 1080p, and 4K.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ratio")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance25RatioJsonConverter))]
@@ -130,7 +130,7 @@ namespace Runway
         /// Seconds of video to generate, or `auto` to let the model choose. `auto` is billed at the variant maximum up front; unused credits are refunded after the generation finishes. Defaults to 5.
         /// </param>
         /// <param name="ratio">
-        /// The resolution of the output video. Seedance 2.5 supports 480p, 720p, and 1080p.
+        /// The resolution of the output video. Seedance 2.5 supports 480p, 720p, 1080p, and 4K.
         /// </param>
         /// <param name="references">
         /// An optional array of image references (up to 30). See [our docs](/assets/inputs#images) on image inputs for more information.

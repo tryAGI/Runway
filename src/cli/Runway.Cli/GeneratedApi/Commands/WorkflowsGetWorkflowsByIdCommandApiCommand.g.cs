@@ -20,7 +20,7 @@ internal static partial class WorkflowsGetWorkflowsByIdCommandApiCommand
         DefaultValueFactory = _ => "2024-11-06",
     };
 
-                    private static string FormatResponse(ParseResult parseResult, global::Runway.GetWorkflowsResponse value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
+                    private static string FormatResponse(ParseResult parseResult, global::Runway.GetWorkflowsResponse2 value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
                     {
                         string? text = null;
                         CustomizeResponseText(parseResult, value, ref text);
@@ -36,7 +36,7 @@ internal static partial class WorkflowsGetWorkflowsByIdCommandApiCommand
                         return CliRuntime.FormatHumanReadable(value, context, truncateLongStrings, hints);
                     }
 
-                    static partial void CustomizeResponseText(ParseResult parseResult, global::Runway.GetWorkflowsResponse value, ref string? text);
+                    static partial void CustomizeResponseText(ParseResult parseResult, global::Runway.GetWorkflowsResponse2 value, ref string? text);
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 

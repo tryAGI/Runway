@@ -19,8 +19,9 @@ namespace Runway
         /// The voice to use for the generated speech.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("voice")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.Voice6JsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Runway.CreateTextToSpeechRequestElevenV3VoiceRunwayPresetVoice Voice { get; set; }
+        public required global::Runway.Voice6 Voice { get; set; }
 
         /// <summary>
         /// Voice stability (0–1). Lower values allow broader emotional range; higher values are steadier.
@@ -123,7 +124,7 @@ namespace Runway
 #endif
         public CreateTextToSpeechRequestElevenV3(
             string promptText,
-            global::Runway.CreateTextToSpeechRequestElevenV3VoiceRunwayPresetVoice voice,
+            global::Runway.Voice6 voice,
             double? stability,
             double? similarityBoost,
             double? style,
@@ -135,7 +136,7 @@ namespace Runway
             string model = "eleven_v3")
         {
             this.PromptText = promptText ?? throw new global::System.ArgumentNullException(nameof(promptText));
-            this.Voice = voice ?? throw new global::System.ArgumentNullException(nameof(voice));
+            this.Voice = voice;
             this.Stability = stability;
             this.SimilarityBoost = similarityBoost;
             this.Style = style;

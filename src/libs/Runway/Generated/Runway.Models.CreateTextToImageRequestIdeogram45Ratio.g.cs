@@ -4,7 +4,7 @@
 namespace Runway
 {
     /// <summary>
-    /// The resolution of the output image, expressed as `&lt;width&gt;:&lt;height&gt;`. Omit it or use `auto` to let the model choose. With reference images, widescreen 1K sizes are `1024:576`, `576:1024`, `1408:704`, `704:1408` instead of `1280:720`, `720:1280`, `1440:720`, `720:1440`. Not available with `maskUri` or `preciseEdit`, which keep the size of the first reference image.
+    /// The resolution of the output image, expressed as `&lt;width&gt;:&lt;height&gt;`. Omit it or use `auto` to let the model choose. With reference images, widescreen 1K sizes are `1024:576`, `576:1024`, `1408:704`, `704:1408` instead of `1280:720`, `720:1280`, `1440:720`, `720:1440`. Not available with `maskUri` or `preciseEdit`, where the source and edit window determine output dimensions.
     /// </summary>
     public enum CreateTextToImageRequestIdeogram45Ratio
     {
@@ -13,7 +13,7 @@ namespace Runway
         /// </summary>
         x1024_1024,
         /// <summary>
-        /// &lt;height&gt;`. Omit it or use `auto` to let the model choose. With reference images, widescreen 1K sizes are `1024:576`, `576:1024`, `1408:704`, `704:1408` instead of `1280:720`, `720:1280`, `1440:720`, `720:1440`. Not available with `maskUri` or `preciseEdit`, which keep the size of the first reference image.
+        /// &lt;height&gt;`. Omit it or use `auto` to let the model choose. With reference images, widescreen 1K sizes are `1024:576`, `576:1024`, `1408:704`, `704:1408` instead of `1280:720`, `720:1280`, `1440:720`, `720:1440`. Not available with `maskUri` or `preciseEdit`, where the source and edit window determine output dimensions.
         /// </summary>
         x1024_576,
         /// <summary>
@@ -29,11 +29,11 @@ namespace Runway
         /// </summary>
         x1248_832,
         /// <summary>
-        /// &lt;height&gt;`. Omit it or use `auto` to let the model choose. With reference images, widescreen 1K sizes are `1024:576`, `576:1024`, `1408:704`, `704:1408` instead of `1280:720`, `720:1280`, `1440:720`, `720:1440`. Not available with `maskUri` or `preciseEdit`, which keep the size of the first reference image.
+        /// &lt;height&gt;`. Omit it or use `auto` to let the model choose. With reference images, widescreen 1K sizes are `1024:576`, `576:1024`, `1408:704`, `704:1408` instead of `1280:720`, `720:1280`, `1440:720`, `720:1440`. Not available with `maskUri` or `preciseEdit`, where the source and edit window determine output dimensions.
         /// </summary>
         x1280_720,
         /// <summary>
-        /// &lt;height&gt;`. Omit it or use `auto` to let the model choose. With reference images, widescreen 1K sizes are `1024:576`, `576:1024`, `1408:704`, `704:1408` instead of `1280:720`, `720:1280`, `1440:720`, `720:1440`. Not available with `maskUri` or `preciseEdit`, which keep the size of the first reference image.
+        /// &lt;height&gt;`. Omit it or use `auto` to let the model choose. With reference images, widescreen 1K sizes are `1024:576`, `576:1024`, `1408:704`, `704:1408` instead of `1280:720`, `720:1280`, `1440:720`, `720:1440`. Not available with `maskUri` or `preciseEdit`, where the source and edit window determine output dimensions.
         /// </summary>
         x1408_704,
         /// <summary>
@@ -45,7 +45,7 @@ namespace Runway
         /// </summary>
         x1440_2880,
         /// <summary>
-        /// &lt;height&gt;`. Omit it or use `auto` to let the model choose. With reference images, widescreen 1K sizes are `1024:576`, `576:1024`, `1408:704`, `704:1408` instead of `1280:720`, `720:1280`, `1440:720`, `720:1440`. Not available with `maskUri` or `preciseEdit`, which keep the size of the first reference image.
+        /// &lt;height&gt;`. Omit it or use `auto` to let the model choose. With reference images, widescreen 1K sizes are `1024:576`, `576:1024`, `1408:704`, `704:1408` instead of `1280:720`, `720:1280`, `1440:720`, `720:1440`. Not available with `maskUri` or `preciseEdit`, where the source and edit window determine output dimensions.
         /// </summary>
         x1440_720,
         /// <summary>
@@ -85,19 +85,19 @@ namespace Runway
         /// </summary>
         x2880_1440,
         /// <summary>
-        /// &lt;height&gt;`. Omit it or use `auto` to let the model choose. With reference images, widescreen 1K sizes are `1024:576`, `576:1024`, `1408:704`, `704:1408` instead of `1280:720`, `720:1280`, `1440:720`, `720:1440`. Not available with `maskUri` or `preciseEdit`, which keep the size of the first reference image.
+        /// &lt;height&gt;`. Omit it or use `auto` to let the model choose. With reference images, widescreen 1K sizes are `1024:576`, `576:1024`, `1408:704`, `704:1408` instead of `1280:720`, `720:1280`, `1440:720`, `720:1440`. Not available with `maskUri` or `preciseEdit`, where the source and edit window determine output dimensions.
         /// </summary>
         x576_1024,
         /// <summary>
-        /// &lt;height&gt;`. Omit it or use `auto` to let the model choose. With reference images, widescreen 1K sizes are `1024:576`, `576:1024`, `1408:704`, `704:1408` instead of `1280:720`, `720:1280`, `1440:720`, `720:1440`. Not available with `maskUri` or `preciseEdit`, which keep the size of the first reference image.
+        /// &lt;height&gt;`. Omit it or use `auto` to let the model choose. With reference images, widescreen 1K sizes are `1024:576`, `576:1024`, `1408:704`, `704:1408` instead of `1280:720`, `720:1280`, `1440:720`, `720:1440`. Not available with `maskUri` or `preciseEdit`, where the source and edit window determine output dimensions.
         /// </summary>
         x704_1408,
         /// <summary>
-        /// &lt;height&gt;`. Omit it or use `auto` to let the model choose. With reference images, widescreen 1K sizes are `1024:576`, `576:1024`, `1408:704`, `704:1408` instead of `1280:720`, `720:1280`, `1440:720`, `720:1440`. Not available with `maskUri` or `preciseEdit`, which keep the size of the first reference image.
+        /// &lt;height&gt;`. Omit it or use `auto` to let the model choose. With reference images, widescreen 1K sizes are `1024:576`, `576:1024`, `1408:704`, `704:1408` instead of `1280:720`, `720:1280`, `1440:720`, `720:1440`. Not available with `maskUri` or `preciseEdit`, where the source and edit window determine output dimensions.
         /// </summary>
         x720_1280,
         /// <summary>
-        /// &lt;height&gt;`. Omit it or use `auto` to let the model choose. With reference images, widescreen 1K sizes are `1024:576`, `576:1024`, `1408:704`, `704:1408` instead of `1280:720`, `720:1280`, `1440:720`, `720:1440`. Not available with `maskUri` or `preciseEdit`, which keep the size of the first reference image.
+        /// &lt;height&gt;`. Omit it or use `auto` to let the model choose. With reference images, widescreen 1K sizes are `1024:576`, `576:1024`, `1408:704`, `704:1408` instead of `1280:720`, `720:1280`, `1440:720`, `720:1440`. Not available with `maskUri` or `preciseEdit`, where the source and edit window determine output dimensions.
         /// </summary>
         x720_1440,
         /// <summary>
@@ -113,7 +113,7 @@ namespace Runway
         /// </summary>
         x896_1120,
         /// <summary>
-        /// &lt;height&gt;`. Omit it or use `auto` to let the model choose. With reference images, widescreen 1K sizes are `1024:576`, `576:1024`, `1408:704`, `704:1408` instead of `1280:720`, `720:1280`, `1440:720`, `720:1440`. Not available with `maskUri` or `preciseEdit`, which keep the size of the first reference image.
+        /// &lt;height&gt;`. Omit it or use `auto` to let the model choose. With reference images, widescreen 1K sizes are `1024:576`, `576:1024`, `1408:704`, `704:1408` instead of `1280:720`, `720:1280`, `1440:720`, `720:1440`. Not available with `maskUri` or `preciseEdit`, where the source and edit window determine output dimensions.
         /// </summary>
         Auto,
     }

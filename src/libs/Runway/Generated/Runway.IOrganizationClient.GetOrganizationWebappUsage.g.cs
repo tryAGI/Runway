@@ -23,10 +23,10 @@ namespace Runway
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Runway.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Runway.GetOrganizationWebappUsageResponse> GetOrganizationWebappUsageAsync(
-            int limit,
             global::System.DateTime from,
             global::System.DateTime to,
             string? cursor = default,
+            int? limit = default,
             global::System.Guid? organizationId = default,
             string? workspaceIds = default,
             string xRunwayVersion = "2024-11-06",
@@ -51,10 +51,10 @@ namespace Runway
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Runway.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Runway.AutoSDKHttpResponse<global::Runway.GetOrganizationWebappUsageResponse>> GetOrganizationWebappUsageAsResponseAsync(
-            int limit,
             global::System.DateTime from,
             global::System.DateTime to,
             string? cursor = default,
+            int? limit = default,
             global::System.Guid? organizationId = default,
             string? workspaceIds = default,
             string xRunwayVersion = "2024-11-06",

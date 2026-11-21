@@ -11,6 +11,10 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
+        Custom,
+        /// <summary>
+        ///
+        /// </summary>
         RunwayPreset,
     }
 
@@ -26,6 +30,7 @@ namespace Runway
         {
             return value switch
             {
+                CreateTextToSpeechRequestElevenV4VoiceDiscriminatorType.Custom => "custom",
                 CreateTextToSpeechRequestElevenV4VoiceDiscriminatorType.RunwayPreset => "runway-preset",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
@@ -37,6 +42,7 @@ namespace Runway
         {
             return value switch
             {
+                "custom" => CreateTextToSpeechRequestElevenV4VoiceDiscriminatorType.Custom,
                 "runway-preset" => CreateTextToSpeechRequestElevenV4VoiceDiscriminatorType.RunwayPreset,
                 _ => null,
             };

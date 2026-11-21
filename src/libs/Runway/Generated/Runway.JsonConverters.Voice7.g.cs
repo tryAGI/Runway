@@ -17,22 +17,22 @@ namespace Runway.JsonConverters
 
 
             var readerCopy = reader;
-            var discriminatorTypeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetAvatarsResponseDataItemAvatarFailedVoiceDiscriminator), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetAvatarsResponseDataItemAvatarFailedVoiceDiscriminator> ??
-                            throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.GetAvatarsResponseDataItemAvatarFailedVoiceDiscriminator)}");
+            var discriminatorTypeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.PatchAvatarsRequestVoiceDiscriminator), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.PatchAvatarsRequestVoiceDiscriminator> ??
+                            throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.PatchAvatarsRequestVoiceDiscriminator)}");
             var discriminator = global::System.Text.Json.JsonSerializer.Deserialize(ref readerCopy, discriminatorTypeInfo);
 
-            global::Runway.GetAvatarsResponseDataItemAvatarFailedVoiceRunwayLivePresetVoiceResponse? runwayLivePreset = default;
-            if (discriminator?.Type == global::Runway.GetAvatarsResponseDataItemAvatarFailedVoiceDiscriminatorType.RunwayLivePreset)
+            global::Runway.PatchAvatarsRequestVoiceRunwayLivePresetVoice? runwayLivePreset = default;
+            if (discriminator?.Type == global::Runway.PatchAvatarsRequestVoiceDiscriminatorType.RunwayLivePreset)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetAvatarsResponseDataItemAvatarFailedVoiceRunwayLivePresetVoiceResponse), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetAvatarsResponseDataItemAvatarFailedVoiceRunwayLivePresetVoiceResponse> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.GetAvatarsResponseDataItemAvatarFailedVoiceRunwayLivePresetVoiceResponse)}");
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.PatchAvatarsRequestVoiceRunwayLivePresetVoice), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.PatchAvatarsRequestVoiceRunwayLivePresetVoice> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.PatchAvatarsRequestVoiceRunwayLivePresetVoice)}");
                 runwayLivePreset = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
-            global::Runway.GetAvatarsResponseDataItemAvatarFailedVoiceCustomVoiceResponse? custom = default;
-            if (discriminator?.Type == global::Runway.GetAvatarsResponseDataItemAvatarFailedVoiceDiscriminatorType.Custom)
+            global::Runway.PatchAvatarsRequestVoiceCustomVoice? custom = default;
+            if (discriminator?.Type == global::Runway.PatchAvatarsRequestVoiceDiscriminatorType.Custom)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetAvatarsResponseDataItemAvatarFailedVoiceCustomVoiceResponse), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetAvatarsResponseDataItemAvatarFailedVoiceCustomVoiceResponse> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.GetAvatarsResponseDataItemAvatarFailedVoiceCustomVoiceResponse)}");
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.PatchAvatarsRequestVoiceCustomVoice), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.PatchAvatarsRequestVoiceCustomVoice> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.PatchAvatarsRequestVoiceCustomVoice)}");
                 custom = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
 
@@ -57,14 +57,14 @@ namespace Runway.JsonConverters
 
             if (value.IsRunwayLivePreset)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetAvatarsResponseDataItemAvatarFailedVoiceRunwayLivePresetVoiceResponse), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetAvatarsResponseDataItemAvatarFailedVoiceRunwayLivePresetVoiceResponse?> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.GetAvatarsResponseDataItemAvatarFailedVoiceRunwayLivePresetVoiceResponse).Name}");
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.PatchAvatarsRequestVoiceRunwayLivePresetVoice), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.PatchAvatarsRequestVoiceRunwayLivePresetVoice?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.PatchAvatarsRequestVoiceRunwayLivePresetVoice).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickRunwayLivePreset(), typeInfo);
             }
             else if (value.IsCustom)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetAvatarsResponseDataItemAvatarFailedVoiceCustomVoiceResponse), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetAvatarsResponseDataItemAvatarFailedVoiceCustomVoiceResponse?> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.GetAvatarsResponseDataItemAvatarFailedVoiceCustomVoiceResponse).Name}");
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.PatchAvatarsRequestVoiceCustomVoice), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.PatchAvatarsRequestVoiceCustomVoice?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.PatchAvatarsRequestVoiceCustomVoice).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickCustom(), typeInfo);
             }
         }

@@ -7,6 +7,14 @@ namespace Runway.Cli.GeneratedApi.Commands;
 
 internal static partial class ModelRouterCreateGenerateImageCommandApiCommand
 {
+    private static Option<string?> XRunwayTags { get; } = new(
+        name: @"--x-runway-tags")
+    {
+        Description = @"Comma-separated tags to attribute this generation's credit usage to, so you can filter and break down usage with `POST /v1/organization/usage`. Each tag is a plain label (`campaign-q4`) or a `key:value` pair (`team:growth`), split at the first colon. Tags are case-insensitive and stored lowercase. Up to 10 tags, each up to 64 characters of letters, numbers, and `_ - . / :`. An invalid tag rejects the request with a 400. Workflow runs pass their tags on to every generation they start.
+
+**Tags appear in usage reports. Do not put end-user PII (like names or emails) in them.**",
+    };
+
     private static Option<string> XRunwayVersion { get; } = new(
         name: @"--x-runway-version")
     {
@@ -70,6 +78,7 @@ internal static partial class ModelRouterCreateGenerateImageCommandApiCommand
     {
         var command = new Command(commandName ?? @"create-generate-image", @"Routed image generation
 Start an image generation task using a saved Model Router config instead of naming a model.");
+                        command.Options.Add(XRunwayTags);
                         command.Options.Add(XRunwayVersion);
                         command.Options.Add(ConfigId);
                         command.Options.Add(InputOption);
@@ -80,6 +89,7 @@ Start an image generation task using a saved Model Router config instead of nami
         command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
             await CliRuntime.RunAsync(async () =>
             {
+                        var xRunwayTags = parseResult.GetValue(XRunwayTags);
                         var xRunwayVersion = parseResult.GetRequiredValue(XRunwayVersion);
                         var configId = parseResult.GetRequiredValue(ConfigId);
                         var input = parseResult.GetRequiredValue(InputOption);          var wait = parseResult.GetValue(Wait);
@@ -90,6 +100,7 @@ Start an image generation task using a saved Model Router config instead of nami
                                 if (wait)
                                 {
                                 var createResponse = await client.ModelRouter.CreateGenerateImageAsync(
+                                    xRunwayTags: xRunwayTags,
                                     xRunwayVersion: xRunwayVersion,
                                     configId: configId,
                                     input: input,
@@ -119,6 +130,7 @@ Start an image generation task using a saved Model Router config instead of nami
                                 }
 
                                 var response = await client.ModelRouter.CreateGenerateImageAsync(
+                                    xRunwayTags: xRunwayTags,
                                     xRunwayVersion: xRunwayVersion,
                                     configId: configId,
                                     input: input,

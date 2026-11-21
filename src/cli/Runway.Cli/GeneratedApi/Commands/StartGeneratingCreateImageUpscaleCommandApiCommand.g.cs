@@ -7,6 +7,14 @@ namespace Runway.Cli.GeneratedApi.Commands;
 
 internal static partial class StartGeneratingCreateImageUpscaleCommandApiCommand
 {
+    private static Option<string?> XRunwayTags { get; } = new(
+        name: @"--x-runway-tags")
+    {
+        Description = @"Comma-separated tags to attribute this generation's credit usage to, so you can filter and break down usage with `POST /v1/organization/usage`. Each tag is a plain label (`campaign-q4`) or a `key:value` pair (`team:growth`), split at the first colon. Tags are case-insensitive and stored lowercase. Up to 10 tags, each up to 64 characters of letters, numbers, and `_ - . / :`. An invalid tag rejects the request with a 400. Workflow runs pass their tags on to every generation they start.
+
+**Tags appear in usage reports. Do not put end-user PII (like names or emails) in them.**",
+    };
+
     private static Option<string> XRunwayVersion { get; } = new(
         name: @"--x-runway-version")
     {
@@ -72,6 +80,7 @@ internal static partial class StartGeneratingCreateImageUpscaleCommandApiCommand
     {
         var command = new Command(commandName ?? @"create-image-upscale", @"Image upscale
 Upscale an image with Magnific precision upscaling. Each input dimension must be between 300px and 8000px. Output width and height are the input dimensions multiplied by `scaleFactor` (default 2). Output width times height cannot exceed 25,300,000 pixels (~25.3 million).");
+                        command.Options.Add(XRunwayTags);
                         command.Options.Add(XRunwayVersion);
           command.Options.Add(Input);
           command.Options.Add(RequestJson);
@@ -93,6 +102,7 @@ Upscale an image with Magnific precision upscaling. Each input dimension must be
         command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
             await CliRuntime.RunAsync(async () =>
             {
+                        var xRunwayTags = parseResult.GetValue(XRunwayTags);
                         var xRunwayVersion = parseResult.GetRequiredValue(XRunwayVersion);
                         var request = await CliRuntime.ReadRequestAsync<global::Runway.CreateImageUpscaleRequest>(
                             parseResult,
@@ -108,6 +118,7 @@ Upscale an image with Magnific precision upscaling. Each input dimension must be
                                 if (wait)
                                 {
                                 var createResponse = await client.StartGenerating.CreateImageUpscaleAsync(
+                                    xRunwayTags: xRunwayTags,
                                     xRunwayVersion: xRunwayVersion,
                                     request: request,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
@@ -136,6 +147,7 @@ Upscale an image with Magnific precision upscaling. Each input dimension must be
                                 }
 
                                 var response = await client.StartGenerating.CreateImageUpscaleAsync(
+                                    xRunwayTags: xRunwayTags,
                                     xRunwayVersion: xRunwayVersion,
                                     request: request,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);

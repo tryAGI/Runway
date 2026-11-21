@@ -9,7 +9,7 @@ namespace Runway
     public sealed partial class CreateGenerateAudioRequestInput
     {
         /// <summary>
-        /// How promptText is interpreted: `speech` speaks it verbatim as a script; `audio` treats it as a description of the desired audio, which may combine speech, music, ambience, and sound effects.
+        /// How promptText is interpreted: `speech` speaks it verbatim as a script; `audio` treats it as a description of the desired audio, which may combine speech, music, ambience, and sound effects; `music` treats it as a description of a song or instrumental track.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.CreateGenerateAudioRequestInputTypeJsonConverter))]
@@ -17,7 +17,7 @@ namespace Runway
         public required global::Runway.CreateGenerateAudioRequestInputType Type { get; set; }
 
         /// <summary>
-        /// For `speech`, the words to speak. For `audio`, a description of the desired output.
+        /// For `speech`, the words to speak. For `audio` and `music`, a description of the desired output.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("promptText")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -27,8 +27,8 @@ namespace Runway
         /// The voice to speak with. When omitted, models that support a default voice remain eligible.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("voice")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.Voice4JsonConverter))]
-        public global::Runway.Voice4? Voice { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.Voice3JsonConverter))]
+        public global::Runway.Voice3? Voice { get; set; }
 
         /// <summary>
         /// Optional reference audio clips guiding `audio` generation, for models that support them. Reference each clip in promptText as @Audio1, @Audio2, and @Audio3 in order.
@@ -37,7 +37,7 @@ namespace Runway
         public global::System.Collections.Generic.IList<global::Runway.CreateGenerateAudioRequestInputReferenceAudio>? ReferenceAudios { get; set; }
 
         /// <summary>
-        /// Desired output duration in seconds for `audio` generation. Models that cannot honor an explicit duration are excluded.
+        /// Desired output duration in seconds: 0.5–30 for `audio`, or whole seconds from 3 to 600 for `music`. Models that cannot honor an explicit duration are excluded.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("duration")]
         public double? Duration { get; set; }
@@ -58,10 +58,10 @@ namespace Runway
         /// Initializes a new instance of the <see cref="CreateGenerateAudioRequestInput" /> class.
         /// </summary>
         /// <param name="type">
-        /// How promptText is interpreted: `speech` speaks it verbatim as a script; `audio` treats it as a description of the desired audio, which may combine speech, music, ambience, and sound effects.
+        /// How promptText is interpreted: `speech` speaks it verbatim as a script; `audio` treats it as a description of the desired audio, which may combine speech, music, ambience, and sound effects; `music` treats it as a description of a song or instrumental track.
         /// </param>
         /// <param name="promptText">
-        /// For `speech`, the words to speak. For `audio`, a description of the desired output.
+        /// For `speech`, the words to speak. For `audio` and `music`, a description of the desired output.
         /// </param>
         /// <param name="voice">
         /// The voice to speak with. When omitted, models that support a default voice remain eligible.
@@ -70,7 +70,7 @@ namespace Runway
         /// Optional reference audio clips guiding `audio` generation, for models that support them. Reference each clip in promptText as @Audio1, @Audio2, and @Audio3 in order.
         /// </param>
         /// <param name="duration">
-        /// Desired output duration in seconds for `audio` generation. Models that cannot honor an explicit duration are excluded.
+        /// Desired output duration in seconds: 0.5–30 for `audio`, or whole seconds from 3 to 600 for `music`. Models that cannot honor an explicit duration are excluded.
         /// </param>
         /// <param name="loop">
         /// When true, the `audio` output is designed to loop seamlessly. Models without loop support are excluded.
@@ -81,7 +81,7 @@ namespace Runway
         public CreateGenerateAudioRequestInput(
             global::Runway.CreateGenerateAudioRequestInputType type,
             string promptText,
-            global::Runway.Voice4? voice,
+            global::Runway.Voice3? voice,
             global::System.Collections.Generic.IList<global::Runway.CreateGenerateAudioRequestInputReferenceAudio>? referenceAudios,
             double? duration,
             bool? loop)

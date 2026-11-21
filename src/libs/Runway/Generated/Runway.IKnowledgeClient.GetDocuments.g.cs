@@ -35,10 +35,10 @@ namespace Runway
         /// }
         /// </remarks>
         global::System.Threading.Tasks.Task<global::Runway.GetDocumentsResponse> GetDocumentsAsync(
-            int limit,
             string? cursor = default,
-            global::Runway.GetDocumentsSort sort = global::Runway.GetDocumentsSort.CreatedAt,
-            global::Runway.GetDocumentsOrder order = global::Runway.GetDocumentsOrder.Desc,
+            int? limit = default,
+            global::Runway.GetDocumentsSort? sort = default,
+            global::Runway.GetDocumentsOrder? order = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
@@ -73,10 +73,10 @@ namespace Runway
         /// }
         /// </remarks>
         global::System.Threading.Tasks.Task<global::Runway.AutoSDKHttpResponse<global::Runway.GetDocumentsResponse>> GetDocumentsAsResponseAsync(
-            int limit,
             string? cursor = default,
-            global::Runway.GetDocumentsSort sort = global::Runway.GetDocumentsSort.CreatedAt,
-            global::Runway.GetDocumentsOrder order = global::Runway.GetDocumentsOrder.Desc,
+            int? limit = default,
+            global::Runway.GetDocumentsSort? sort = default,
+            global::Runway.GetDocumentsOrder? order = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);

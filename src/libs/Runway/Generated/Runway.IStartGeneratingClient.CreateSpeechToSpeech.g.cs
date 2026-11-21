@@ -8,6 +8,9 @@ namespace Runway
         /// Speech to speech<br/>
         /// This endpoint will start a new task to convert speech from one voice to another in audio or video.
         /// </summary>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -52,6 +55,7 @@ namespace Runway
         global::System.Threading.Tasks.Task<global::Runway.CreateSpeechToSpeechResponse> CreateSpeechToSpeechAsync(
 
             global::Runway.CreateSpeechToSpeechRequest request,
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
@@ -59,6 +63,9 @@ namespace Runway
         /// Speech to speech<br/>
         /// This endpoint will start a new task to convert speech from one voice to another in audio or video.
         /// </summary>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -103,6 +110,7 @@ namespace Runway
         global::System.Threading.Tasks.Task<global::Runway.AutoSDKHttpResponse<global::Runway.CreateSpeechToSpeechResponse>> CreateSpeechToSpeechAsResponseAsync(
 
             global::Runway.CreateSpeechToSpeechRequest request,
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
@@ -110,6 +118,9 @@ namespace Runway
         /// Speech to speech<br/>
         /// This endpoint will start a new task to convert speech from one voice to another in audio or video.
         /// </summary>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -117,6 +128,7 @@ namespace Runway
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Runway.CreateSpeechToSpeechResponse> CreateSpeechToSpeechAsync(
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);

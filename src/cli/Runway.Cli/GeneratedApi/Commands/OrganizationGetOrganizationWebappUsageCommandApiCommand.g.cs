@@ -13,11 +13,10 @@ internal static partial class OrganizationGetOrganizationWebappUsageCommandApiCo
         Description = @"Cursor from a previous response for fetching the next page of results.",
     };
 
-    private static Option<int> Limit { get; } = new(
+    private static Option<int?> Limit { get; } = new(
         name: @"--limit")
     {
         Description = @"The maximum number of items to return per page.",
-        Required = true,
     };
 
     private static Option<global::System.DateTime> From { get; } = new(
@@ -37,7 +36,7 @@ internal static partial class OrganizationGetOrganizationWebappUsageCommandApiCo
     private static Option<global::System.Guid?> OrganizationId { get; } = new(
         name: @"--organization-id")
     {
-        Description = @"Organization to report on. Optional when this API project is linked to a single organization; required when it is linked to more than one.",
+        Description = @"Organization to report on. Optional when this API project is linked to a single organization; required when it is linked to more than one. If it is missing then, the 400 response lists the IDs and names of the linked organizations in `details.organizations`.",
     };
 
     private static Option<string?> WorkspaceIds { get; } = new(
@@ -92,7 +91,7 @@ List per-generation credit-usage rows for the linked Runway workspaces you admin
             await CliRuntime.RunAsync(async () =>
             {
                         var cursor = parseResult.GetValue(Cursor);
-                        var limit = parseResult.GetRequiredValue(Limit);
+                        var limit = parseResult.GetValue(Limit);
                         var from = parseResult.GetRequiredValue(From);
                         var to = parseResult.GetRequiredValue(To);
                         var organizationId = parseResult.GetValue(OrganizationId);

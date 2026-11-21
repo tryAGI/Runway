@@ -462,6 +462,43 @@ namespace Runway
         ///
         /// </summary>
 #if NET6_0_OR_GREATER
+        public global::Runway.CreateVideoToVideoRequestGeminiOmniFlash12? GeminiOmniFlash12 { get; init; }
+#else
+        public global::Runway.CreateVideoToVideoRequestGeminiOmniFlash12? GeminiOmniFlash12 { get; }
+#endif
+
+        /// <summary>
+        ///
+        /// </summary>
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(GeminiOmniFlash12))]
+#endif
+        public bool IsGeminiOmniFlash12 => GeminiOmniFlash12 != null;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public bool TryPickGeminiOmniFlash12(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Runway.CreateVideoToVideoRequestGeminiOmniFlash12? value)
+        {
+            value = GeminiOmniFlash12;
+            return IsGeminiOmniFlash12;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Runway.CreateVideoToVideoRequestGeminiOmniFlash12 PickGeminiOmniFlash12() => GeminiOmniFlash12 is { } value
+            ? value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'GeminiOmniFlash12' but the value was {ToString()}.");
+
+        /// <summary>
+        ///
+        /// </summary>
+#if NET6_0_OR_GREATER
         public global::Runway.CreateVideoToVideoRequestKling4Flash? Kling4Flash { get; init; }
 #else
         public global::Runway.CreateVideoToVideoRequestKling4Flash? Kling4Flash { get; }
@@ -499,38 +536,112 @@ namespace Runway
         ///
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Runway.CreateVideoToVideoRequestGeminiOmniFlash12? GeminiOmniFlash12 { get; init; }
+        public global::Runway.CreateVideoToVideoRequestHailuo3Highspeed? Hailuo3Highspeed { get; init; }
 #else
-        public global::Runway.CreateVideoToVideoRequestGeminiOmniFlash12? GeminiOmniFlash12 { get; }
+        public global::Runway.CreateVideoToVideoRequestHailuo3Highspeed? Hailuo3Highspeed { get; }
 #endif
 
         /// <summary>
         ///
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(GeminiOmniFlash12))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Hailuo3Highspeed))]
 #endif
-        public bool IsGeminiOmniFlash12 => GeminiOmniFlash12 != null;
+        public bool IsHailuo3Highspeed => Hailuo3Highspeed != null;
 
         /// <summary>
         ///
         /// </summary>
-        public bool TryPickGeminiOmniFlash12(
+        public bool TryPickHailuo3Highspeed(
 #if NET6_0_OR_GREATER
             [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
 #endif
-            out global::Runway.CreateVideoToVideoRequestGeminiOmniFlash12? value)
+            out global::Runway.CreateVideoToVideoRequestHailuo3Highspeed? value)
         {
-            value = GeminiOmniFlash12;
-            return IsGeminiOmniFlash12;
+            value = Hailuo3Highspeed;
+            return IsHailuo3Highspeed;
         }
 
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateVideoToVideoRequestGeminiOmniFlash12 PickGeminiOmniFlash12() => GeminiOmniFlash12 is { } value
+        public global::Runway.CreateVideoToVideoRequestHailuo3Highspeed PickHailuo3Highspeed() => Hailuo3Highspeed is { } value
             ? value
-            : throw new global::System.InvalidOperationException($"Expected union variant 'GeminiOmniFlash12' but the value was {ToString()}.");
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Hailuo3Highspeed' but the value was {ToString()}.");
+
+        /// <summary>
+        ///
+        /// </summary>
+#if NET6_0_OR_GREATER
+        public global::Runway.CreateVideoToVideoRequestHailuo3Lite? Hailuo3Lite { get; init; }
+#else
+        public global::Runway.CreateVideoToVideoRequestHailuo3Lite? Hailuo3Lite { get; }
+#endif
+
+        /// <summary>
+        ///
+        /// </summary>
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Hailuo3Lite))]
+#endif
+        public bool IsHailuo3Lite => Hailuo3Lite != null;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public bool TryPickHailuo3Lite(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Runway.CreateVideoToVideoRequestHailuo3Lite? value)
+        {
+            value = Hailuo3Lite;
+            return IsHailuo3Lite;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Runway.CreateVideoToVideoRequestHailuo3Lite PickHailuo3Lite() => Hailuo3Lite is { } value
+            ? value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Hailuo3Lite' but the value was {ToString()}.");
+
+        /// <summary>
+        ///
+        /// </summary>
+#if NET6_0_OR_GREATER
+        public global::Runway.CreateVideoToVideoRequestSeedance25Flash? Seedance25Flash { get; init; }
+#else
+        public global::Runway.CreateVideoToVideoRequestSeedance25Flash? Seedance25Flash { get; }
+#endif
+
+        /// <summary>
+        ///
+        /// </summary>
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Seedance25Flash))]
+#endif
+        public bool IsSeedance25Flash => Seedance25Flash != null;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public bool TryPickSeedance25Flash(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Runway.CreateVideoToVideoRequestSeedance25Flash? value)
+        {
+            value = Seedance25Flash;
+            return IsSeedance25Flash;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Runway.CreateVideoToVideoRequestSeedance25Flash PickSeedance25Flash() => Seedance25Flash is { } value
+            ? value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Seedance25Flash' but the value was {ToString()}.");
         /// <summary>
         ///
         /// </summary>
@@ -810,29 +921,6 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator CreateVideoToVideoRequest(global::Runway.CreateVideoToVideoRequestKling4Flash value) => new CreateVideoToVideoRequest((global::Runway.CreateVideoToVideoRequestKling4Flash?)value);
-
-        /// <summary>
-        ///
-        /// </summary>
-        public static implicit operator global::Runway.CreateVideoToVideoRequestKling4Flash?(CreateVideoToVideoRequest @this) => @this.Kling4Flash;
-
-        /// <summary>
-        ///
-        /// </summary>
-        public CreateVideoToVideoRequest(global::Runway.CreateVideoToVideoRequestKling4Flash? value)
-        {
-            Kling4Flash = value;
-        }
-
-        /// <summary>
-        ///
-        /// </summary>
-        public static CreateVideoToVideoRequest FromKling4Flash(global::Runway.CreateVideoToVideoRequestKling4Flash? value) => new CreateVideoToVideoRequest(value);
-
-        /// <summary>
-        ///
-        /// </summary>
         public static implicit operator CreateVideoToVideoRequest(global::Runway.CreateVideoToVideoRequestGeminiOmniFlash12 value) => new CreateVideoToVideoRequest((global::Runway.CreateVideoToVideoRequestGeminiOmniFlash12?)value);
 
         /// <summary>
@@ -856,6 +944,98 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
+        public static implicit operator CreateVideoToVideoRequest(global::Runway.CreateVideoToVideoRequestKling4Flash value) => new CreateVideoToVideoRequest((global::Runway.CreateVideoToVideoRequestKling4Flash?)value);
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static implicit operator global::Runway.CreateVideoToVideoRequestKling4Flash?(CreateVideoToVideoRequest @this) => @this.Kling4Flash;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public CreateVideoToVideoRequest(global::Runway.CreateVideoToVideoRequestKling4Flash? value)
+        {
+            Kling4Flash = value;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static CreateVideoToVideoRequest FromKling4Flash(global::Runway.CreateVideoToVideoRequestKling4Flash? value) => new CreateVideoToVideoRequest(value);
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static implicit operator CreateVideoToVideoRequest(global::Runway.CreateVideoToVideoRequestHailuo3Highspeed value) => new CreateVideoToVideoRequest((global::Runway.CreateVideoToVideoRequestHailuo3Highspeed?)value);
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static implicit operator global::Runway.CreateVideoToVideoRequestHailuo3Highspeed?(CreateVideoToVideoRequest @this) => @this.Hailuo3Highspeed;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public CreateVideoToVideoRequest(global::Runway.CreateVideoToVideoRequestHailuo3Highspeed? value)
+        {
+            Hailuo3Highspeed = value;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static CreateVideoToVideoRequest FromHailuo3Highspeed(global::Runway.CreateVideoToVideoRequestHailuo3Highspeed? value) => new CreateVideoToVideoRequest(value);
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static implicit operator CreateVideoToVideoRequest(global::Runway.CreateVideoToVideoRequestHailuo3Lite value) => new CreateVideoToVideoRequest((global::Runway.CreateVideoToVideoRequestHailuo3Lite?)value);
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static implicit operator global::Runway.CreateVideoToVideoRequestHailuo3Lite?(CreateVideoToVideoRequest @this) => @this.Hailuo3Lite;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public CreateVideoToVideoRequest(global::Runway.CreateVideoToVideoRequestHailuo3Lite? value)
+        {
+            Hailuo3Lite = value;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static CreateVideoToVideoRequest FromHailuo3Lite(global::Runway.CreateVideoToVideoRequestHailuo3Lite? value) => new CreateVideoToVideoRequest(value);
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static implicit operator CreateVideoToVideoRequest(global::Runway.CreateVideoToVideoRequestSeedance25Flash value) => new CreateVideoToVideoRequest((global::Runway.CreateVideoToVideoRequestSeedance25Flash?)value);
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static implicit operator global::Runway.CreateVideoToVideoRequestSeedance25Flash?(CreateVideoToVideoRequest @this) => @this.Seedance25Flash;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public CreateVideoToVideoRequest(global::Runway.CreateVideoToVideoRequestSeedance25Flash? value)
+        {
+            Seedance25Flash = value;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static CreateVideoToVideoRequest FromSeedance25Flash(global::Runway.CreateVideoToVideoRequestSeedance25Flash? value) => new CreateVideoToVideoRequest(value);
+
+        /// <summary>
+        ///
+        /// </summary>
         public CreateVideoToVideoRequest(
             global::Runway.CreateVideoToVideoRequestDiscriminatorModel? model,
             global::Runway.CreateVideoToVideoRequestVariant1? aleph2,
@@ -870,8 +1050,11 @@ namespace Runway
             global::Runway.CreateVideoToVideoRequestGeminiOmniFlash11? geminiOmniFlash11,
             global::Runway.CreateVideoToVideoRequestSeedance25? seedance25,
             global::Runway.CreateVideoToVideoRequestKling4? kling4,
+            global::Runway.CreateVideoToVideoRequestGeminiOmniFlash12? geminiOmniFlash12,
             global::Runway.CreateVideoToVideoRequestKling4Flash? kling4Flash,
-            global::Runway.CreateVideoToVideoRequestGeminiOmniFlash12? geminiOmniFlash12
+            global::Runway.CreateVideoToVideoRequestHailuo3Highspeed? hailuo3Highspeed,
+            global::Runway.CreateVideoToVideoRequestHailuo3Lite? hailuo3Lite,
+            global::Runway.CreateVideoToVideoRequestSeedance25Flash? seedance25Flash
             )
         {
             Model = model;
@@ -888,16 +1071,22 @@ namespace Runway
             GeminiOmniFlash11 = geminiOmniFlash11;
             Seedance25 = seedance25;
             Kling4 = kling4;
-            Kling4Flash = kling4Flash;
             GeminiOmniFlash12 = geminiOmniFlash12;
+            Kling4Flash = kling4Flash;
+            Hailuo3Highspeed = hailuo3Highspeed;
+            Hailuo3Lite = hailuo3Lite;
+            Seedance25Flash = seedance25Flash;
         }
 
         /// <summary>
         ///
         /// </summary>
         public object? Object =>
-            GeminiOmniFlash12 as object ??
+            Seedance25Flash as object ??
+            Hailuo3Lite as object ??
+            Hailuo3Highspeed as object ??
             Kling4Flash as object ??
+            GeminiOmniFlash12 as object ??
             Kling4 as object ??
             Seedance25 as object ??
             GeminiOmniFlash11 as object ??
@@ -928,8 +1117,11 @@ namespace Runway
             GeminiOmniFlash11?.ToString() ??
             Seedance25?.ToString() ??
             Kling4?.ToString() ??
+            GeminiOmniFlash12?.ToString() ??
             Kling4Flash?.ToString() ??
-            GeminiOmniFlash12?.ToString()
+            Hailuo3Highspeed?.ToString() ??
+            Hailuo3Lite?.ToString() ??
+            Seedance25Flash?.ToString()
             ;
 
         /// <summary>
@@ -937,7 +1129,7 @@ namespace Runway
         /// </summary>
         public bool Validate()
         {
-            return IsAleph2 && !IsKlingO34k && !IsHailuo3 && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGeminiOmniFlash11 && !IsSeedance25 && !IsKling4 && !IsKling4Flash && !IsGeminiOmniFlash12 || !IsAleph2 && IsKlingO34k && !IsHailuo3 && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGeminiOmniFlash11 && !IsSeedance25 && !IsKling4 && !IsKling4Flash && !IsGeminiOmniFlash12 || !IsAleph2 && !IsKlingO34k && IsHailuo3 && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGeminiOmniFlash11 && !IsSeedance25 && !IsKling4 && !IsKling4Flash && !IsGeminiOmniFlash12 || !IsAleph2 && !IsKlingO34k && !IsHailuo3 && IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGeminiOmniFlash11 && !IsSeedance25 && !IsKling4 && !IsKling4Flash && !IsGeminiOmniFlash12 || !IsAleph2 && !IsKlingO34k && !IsHailuo3 && !IsKlingO3Pro && IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGeminiOmniFlash11 && !IsSeedance25 && !IsKling4 && !IsKling4Flash && !IsGeminiOmniFlash12 || !IsAleph2 && !IsKlingO34k && !IsHailuo3 && !IsKlingO3Pro && !IsKlingO3Standard && IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGeminiOmniFlash11 && !IsSeedance25 && !IsKling4 && !IsKling4Flash && !IsGeminiOmniFlash12 || !IsAleph2 && !IsKlingO34k && !IsHailuo3 && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGeminiOmniFlash11 && !IsSeedance25 && !IsKling4 && !IsKling4Flash && !IsGeminiOmniFlash12 || !IsAleph2 && !IsKlingO34k && !IsHailuo3 && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && IsSeedance2Mini && !IsGeminiOmniFlash && !IsGeminiOmniFlash11 && !IsSeedance25 && !IsKling4 && !IsKling4Flash && !IsGeminiOmniFlash12 || !IsAleph2 && !IsKlingO34k && !IsHailuo3 && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && IsGeminiOmniFlash && !IsGeminiOmniFlash11 && !IsSeedance25 && !IsKling4 && !IsKling4Flash && !IsGeminiOmniFlash12 || !IsAleph2 && !IsKlingO34k && !IsHailuo3 && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && IsGeminiOmniFlash11 && !IsSeedance25 && !IsKling4 && !IsKling4Flash && !IsGeminiOmniFlash12 || !IsAleph2 && !IsKlingO34k && !IsHailuo3 && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGeminiOmniFlash11 && IsSeedance25 && !IsKling4 && !IsKling4Flash && !IsGeminiOmniFlash12 || !IsAleph2 && !IsKlingO34k && !IsHailuo3 && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGeminiOmniFlash11 && !IsSeedance25 && IsKling4 && !IsKling4Flash && !IsGeminiOmniFlash12 || !IsAleph2 && !IsKlingO34k && !IsHailuo3 && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGeminiOmniFlash11 && !IsSeedance25 && !IsKling4 && IsKling4Flash && !IsGeminiOmniFlash12 || !IsAleph2 && !IsKlingO34k && !IsHailuo3 && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGeminiOmniFlash11 && !IsSeedance25 && !IsKling4 && !IsKling4Flash && IsGeminiOmniFlash12;
+            return IsAleph2 && !IsKlingO34k && !IsHailuo3 && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGeminiOmniFlash11 && !IsSeedance25 && !IsKling4 && !IsGeminiOmniFlash12 && !IsKling4Flash && !IsHailuo3Highspeed && !IsHailuo3Lite && !IsSeedance25Flash || !IsAleph2 && IsKlingO34k && !IsHailuo3 && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGeminiOmniFlash11 && !IsSeedance25 && !IsKling4 && !IsGeminiOmniFlash12 && !IsKling4Flash && !IsHailuo3Highspeed && !IsHailuo3Lite && !IsSeedance25Flash || !IsAleph2 && !IsKlingO34k && IsHailuo3 && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGeminiOmniFlash11 && !IsSeedance25 && !IsKling4 && !IsGeminiOmniFlash12 && !IsKling4Flash && !IsHailuo3Highspeed && !IsHailuo3Lite && !IsSeedance25Flash || !IsAleph2 && !IsKlingO34k && !IsHailuo3 && IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGeminiOmniFlash11 && !IsSeedance25 && !IsKling4 && !IsGeminiOmniFlash12 && !IsKling4Flash && !IsHailuo3Highspeed && !IsHailuo3Lite && !IsSeedance25Flash || !IsAleph2 && !IsKlingO34k && !IsHailuo3 && !IsKlingO3Pro && IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGeminiOmniFlash11 && !IsSeedance25 && !IsKling4 && !IsGeminiOmniFlash12 && !IsKling4Flash && !IsHailuo3Highspeed && !IsHailuo3Lite && !IsSeedance25Flash || !IsAleph2 && !IsKlingO34k && !IsHailuo3 && !IsKlingO3Pro && !IsKlingO3Standard && IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGeminiOmniFlash11 && !IsSeedance25 && !IsKling4 && !IsGeminiOmniFlash12 && !IsKling4Flash && !IsHailuo3Highspeed && !IsHailuo3Lite && !IsSeedance25Flash || !IsAleph2 && !IsKlingO34k && !IsHailuo3 && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGeminiOmniFlash11 && !IsSeedance25 && !IsKling4 && !IsGeminiOmniFlash12 && !IsKling4Flash && !IsHailuo3Highspeed && !IsHailuo3Lite && !IsSeedance25Flash || !IsAleph2 && !IsKlingO34k && !IsHailuo3 && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && IsSeedance2Mini && !IsGeminiOmniFlash && !IsGeminiOmniFlash11 && !IsSeedance25 && !IsKling4 && !IsGeminiOmniFlash12 && !IsKling4Flash && !IsHailuo3Highspeed && !IsHailuo3Lite && !IsSeedance25Flash || !IsAleph2 && !IsKlingO34k && !IsHailuo3 && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && IsGeminiOmniFlash && !IsGeminiOmniFlash11 && !IsSeedance25 && !IsKling4 && !IsGeminiOmniFlash12 && !IsKling4Flash && !IsHailuo3Highspeed && !IsHailuo3Lite && !IsSeedance25Flash || !IsAleph2 && !IsKlingO34k && !IsHailuo3 && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && IsGeminiOmniFlash11 && !IsSeedance25 && !IsKling4 && !IsGeminiOmniFlash12 && !IsKling4Flash && !IsHailuo3Highspeed && !IsHailuo3Lite && !IsSeedance25Flash || !IsAleph2 && !IsKlingO34k && !IsHailuo3 && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGeminiOmniFlash11 && IsSeedance25 && !IsKling4 && !IsGeminiOmniFlash12 && !IsKling4Flash && !IsHailuo3Highspeed && !IsHailuo3Lite && !IsSeedance25Flash || !IsAleph2 && !IsKlingO34k && !IsHailuo3 && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGeminiOmniFlash11 && !IsSeedance25 && IsKling4 && !IsGeminiOmniFlash12 && !IsKling4Flash && !IsHailuo3Highspeed && !IsHailuo3Lite && !IsSeedance25Flash || !IsAleph2 && !IsKlingO34k && !IsHailuo3 && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGeminiOmniFlash11 && !IsSeedance25 && !IsKling4 && IsGeminiOmniFlash12 && !IsKling4Flash && !IsHailuo3Highspeed && !IsHailuo3Lite && !IsSeedance25Flash || !IsAleph2 && !IsKlingO34k && !IsHailuo3 && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGeminiOmniFlash11 && !IsSeedance25 && !IsKling4 && !IsGeminiOmniFlash12 && IsKling4Flash && !IsHailuo3Highspeed && !IsHailuo3Lite && !IsSeedance25Flash || !IsAleph2 && !IsKlingO34k && !IsHailuo3 && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGeminiOmniFlash11 && !IsSeedance25 && !IsKling4 && !IsGeminiOmniFlash12 && !IsKling4Flash && IsHailuo3Highspeed && !IsHailuo3Lite && !IsSeedance25Flash || !IsAleph2 && !IsKlingO34k && !IsHailuo3 && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGeminiOmniFlash11 && !IsSeedance25 && !IsKling4 && !IsGeminiOmniFlash12 && !IsKling4Flash && !IsHailuo3Highspeed && IsHailuo3Lite && !IsSeedance25Flash || !IsAleph2 && !IsKlingO34k && !IsHailuo3 && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGeminiOmniFlash11 && !IsSeedance25 && !IsKling4 && !IsGeminiOmniFlash12 && !IsKling4Flash && !IsHailuo3Highspeed && !IsHailuo3Lite && IsSeedance25Flash;
         }
 
         /// <summary>
@@ -956,8 +1148,11 @@ namespace Runway
             global::System.Func<global::Runway.CreateVideoToVideoRequestGeminiOmniFlash11, TResult>? geminiOmniFlash11 = null,
             global::System.Func<global::Runway.CreateVideoToVideoRequestSeedance25, TResult>? seedance25 = null,
             global::System.Func<global::Runway.CreateVideoToVideoRequestKling4, TResult>? kling4 = null,
-            global::System.Func<global::Runway.CreateVideoToVideoRequestKling4Flash, TResult>? kling4Flash = null,
             global::System.Func<global::Runway.CreateVideoToVideoRequestGeminiOmniFlash12, TResult>? geminiOmniFlash12 = null,
+            global::System.Func<global::Runway.CreateVideoToVideoRequestKling4Flash, TResult>? kling4Flash = null,
+            global::System.Func<global::Runway.CreateVideoToVideoRequestHailuo3Highspeed, TResult>? hailuo3Highspeed = null,
+            global::System.Func<global::Runway.CreateVideoToVideoRequestHailuo3Lite, TResult>? hailuo3Lite = null,
+            global::System.Func<global::Runway.CreateVideoToVideoRequestSeedance25Flash, TResult>? seedance25Flash = null,
             bool validate = true)
         {
             if (validate)
@@ -1013,13 +1208,25 @@ namespace Runway
             {
                 return kling4(__value11);
             }
-            else if (Kling4Flash is { } __value12 && kling4Flash != null)
+            else if (GeminiOmniFlash12 is { } __value12 && geminiOmniFlash12 != null)
             {
-                return kling4Flash(__value12);
+                return geminiOmniFlash12(__value12);
             }
-            else if (GeminiOmniFlash12 is { } __value13 && geminiOmniFlash12 != null)
+            else if (Kling4Flash is { } __value13 && kling4Flash != null)
             {
-                return geminiOmniFlash12(__value13);
+                return kling4Flash(__value13);
+            }
+            else if (Hailuo3Highspeed is { } __value14 && hailuo3Highspeed != null)
+            {
+                return hailuo3Highspeed(__value14);
+            }
+            else if (Hailuo3Lite is { } __value15 && hailuo3Lite != null)
+            {
+                return hailuo3Lite(__value15);
+            }
+            else if (Seedance25Flash is { } __value16 && seedance25Flash != null)
+            {
+                return seedance25Flash(__value16);
             }
 
             return default(TResult);
@@ -1053,9 +1260,15 @@ namespace Runway
 
             global::System.Action<global::Runway.CreateVideoToVideoRequestKling4>? kling4 = null,
 
+            global::System.Action<global::Runway.CreateVideoToVideoRequestGeminiOmniFlash12>? geminiOmniFlash12 = null,
+
             global::System.Action<global::Runway.CreateVideoToVideoRequestKling4Flash>? kling4Flash = null,
 
-            global::System.Action<global::Runway.CreateVideoToVideoRequestGeminiOmniFlash12>? geminiOmniFlash12 = null,
+            global::System.Action<global::Runway.CreateVideoToVideoRequestHailuo3Highspeed>? hailuo3Highspeed = null,
+
+            global::System.Action<global::Runway.CreateVideoToVideoRequestHailuo3Lite>? hailuo3Lite = null,
+
+            global::System.Action<global::Runway.CreateVideoToVideoRequestSeedance25Flash>? seedance25Flash = null,
             bool validate = true)
         {
             if (validate)
@@ -1111,13 +1324,25 @@ namespace Runway
             {
                 kling4?.Invoke(__value11);
             }
-            else if (Kling4Flash is { } __value12)
+            else if (GeminiOmniFlash12 is { } __value12)
             {
-                kling4Flash?.Invoke(__value12);
+                geminiOmniFlash12?.Invoke(__value12);
             }
-            else if (GeminiOmniFlash12 is { } __value13)
+            else if (Kling4Flash is { } __value13)
             {
-                geminiOmniFlash12?.Invoke(__value13);
+                kling4Flash?.Invoke(__value13);
+            }
+            else if (Hailuo3Highspeed is { } __value14)
+            {
+                hailuo3Highspeed?.Invoke(__value14);
+            }
+            else if (Hailuo3Lite is { } __value15)
+            {
+                hailuo3Lite?.Invoke(__value15);
+            }
+            else if (Seedance25Flash is { } __value16)
+            {
+                seedance25Flash?.Invoke(__value16);
             }
         }
 
@@ -1137,8 +1362,11 @@ namespace Runway
             global::System.Action<global::Runway.CreateVideoToVideoRequestGeminiOmniFlash11>? geminiOmniFlash11 = null,
             global::System.Action<global::Runway.CreateVideoToVideoRequestSeedance25>? seedance25 = null,
             global::System.Action<global::Runway.CreateVideoToVideoRequestKling4>? kling4 = null,
-            global::System.Action<global::Runway.CreateVideoToVideoRequestKling4Flash>? kling4Flash = null,
             global::System.Action<global::Runway.CreateVideoToVideoRequestGeminiOmniFlash12>? geminiOmniFlash12 = null,
+            global::System.Action<global::Runway.CreateVideoToVideoRequestKling4Flash>? kling4Flash = null,
+            global::System.Action<global::Runway.CreateVideoToVideoRequestHailuo3Highspeed>? hailuo3Highspeed = null,
+            global::System.Action<global::Runway.CreateVideoToVideoRequestHailuo3Lite>? hailuo3Lite = null,
+            global::System.Action<global::Runway.CreateVideoToVideoRequestSeedance25Flash>? seedance25Flash = null,
             bool validate = true)
         {
             if (validate)
@@ -1194,13 +1422,25 @@ namespace Runway
             {
                 kling4?.Invoke(__value11);
             }
-            else if (Kling4Flash is { } __value12)
+            else if (GeminiOmniFlash12 is { } __value12)
             {
-                kling4Flash?.Invoke(__value12);
+                geminiOmniFlash12?.Invoke(__value12);
             }
-            else if (GeminiOmniFlash12 is { } __value13)
+            else if (Kling4Flash is { } __value13)
             {
-                geminiOmniFlash12?.Invoke(__value13);
+                kling4Flash?.Invoke(__value13);
+            }
+            else if (Hailuo3Highspeed is { } __value14)
+            {
+                hailuo3Highspeed?.Invoke(__value14);
+            }
+            else if (Hailuo3Lite is { } __value15)
+            {
+                hailuo3Lite?.Invoke(__value15);
+            }
+            else if (Seedance25Flash is { } __value16)
+            {
+                seedance25Flash?.Invoke(__value16);
             }
         }
 
@@ -1235,10 +1475,16 @@ namespace Runway
                 typeof(global::Runway.CreateVideoToVideoRequestSeedance25),
                 Kling4,
                 typeof(global::Runway.CreateVideoToVideoRequestKling4),
-                Kling4Flash,
-                typeof(global::Runway.CreateVideoToVideoRequestKling4Flash),
                 GeminiOmniFlash12,
                 typeof(global::Runway.CreateVideoToVideoRequestGeminiOmniFlash12),
+                Kling4Flash,
+                typeof(global::Runway.CreateVideoToVideoRequestKling4Flash),
+                Hailuo3Highspeed,
+                typeof(global::Runway.CreateVideoToVideoRequestHailuo3Highspeed),
+                Hailuo3Lite,
+                typeof(global::Runway.CreateVideoToVideoRequestHailuo3Lite),
+                Seedance25Flash,
+                typeof(global::Runway.CreateVideoToVideoRequestSeedance25Flash),
             };
             const int offset = unchecked((int)2166136261);
             const int prime = 16777619;
@@ -1267,8 +1513,11 @@ namespace Runway
                 global::System.Collections.Generic.EqualityComparer<global::Runway.CreateVideoToVideoRequestGeminiOmniFlash11?>.Default.Equals(GeminiOmniFlash11, other.GeminiOmniFlash11) &&
                 global::System.Collections.Generic.EqualityComparer<global::Runway.CreateVideoToVideoRequestSeedance25?>.Default.Equals(Seedance25, other.Seedance25) &&
                 global::System.Collections.Generic.EqualityComparer<global::Runway.CreateVideoToVideoRequestKling4?>.Default.Equals(Kling4, other.Kling4) &&
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateVideoToVideoRequestGeminiOmniFlash12?>.Default.Equals(GeminiOmniFlash12, other.GeminiOmniFlash12) &&
                 global::System.Collections.Generic.EqualityComparer<global::Runway.CreateVideoToVideoRequestKling4Flash?>.Default.Equals(Kling4Flash, other.Kling4Flash) &&
-                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateVideoToVideoRequestGeminiOmniFlash12?>.Default.Equals(GeminiOmniFlash12, other.GeminiOmniFlash12)
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateVideoToVideoRequestHailuo3Highspeed?>.Default.Equals(Hailuo3Highspeed, other.Hailuo3Highspeed) &&
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateVideoToVideoRequestHailuo3Lite?>.Default.Equals(Hailuo3Lite, other.Hailuo3Lite) &&
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateVideoToVideoRequestSeedance25Flash?>.Default.Equals(Seedance25Flash, other.Seedance25Flash)
                 ;
         }
 

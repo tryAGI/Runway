@@ -8,6 +8,9 @@ namespace Runway
         /// Create a product UGC video<br/>
         /// Generate a vertical user-generated content ad from a character image, product image, product details, and optional creative direction.
         /// </summary>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -32,6 +35,7 @@ namespace Runway
         global::System.Threading.Tasks.Task<global::Runway.CreateRecipesProductUgcResponse> CreateRecipesProductUgcAsync(
 
             global::Runway.CreateRecipesProductUgcRequest request,
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
@@ -39,6 +43,9 @@ namespace Runway
         /// Create a product UGC video<br/>
         /// Generate a vertical user-generated content ad from a character image, product image, product details, and optional creative direction.
         /// </summary>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -63,6 +70,7 @@ namespace Runway
         global::System.Threading.Tasks.Task<global::Runway.AutoSDKHttpResponse<global::Runway.CreateRecipesProductUgcResponse>> CreateRecipesProductUgcAsResponseAsync(
 
             global::Runway.CreateRecipesProductUgcRequest request,
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
@@ -70,6 +78,9 @@ namespace Runway
         /// Create a product UGC video<br/>
         /// Generate a vertical user-generated content ad from a character image, product image, product details, and optional creative direction.
         /// </summary>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -105,6 +116,7 @@ namespace Runway
             global::Runway.CreateRecipesProductUgcRequestVersion version,
             global::Runway.CreateRecipesProductUgcRequestCharacterImage characterImage,
             global::Runway.CreateRecipesProductUgcRequestProductImage productImage,
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             string? productInfo = default,
             string? userConcept = default,
