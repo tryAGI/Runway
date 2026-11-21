@@ -31,8 +31,8 @@ namespace Runway
         /// }
         /// </remarks>
         global::System.Threading.Tasks.Task<global::Runway.GetAvatarConversationsResponse> GetAvatarConversationsAsync(
-            int limit,
             string? cursor = default,
+            int? limit = default,
             global::System.Guid? avatar = default,
             global::System.DateTime? startDate = default,
             global::System.DateTime? endDate = default,
@@ -66,8 +66,8 @@ namespace Runway
         /// }
         /// </remarks>
         global::System.Threading.Tasks.Task<global::Runway.AutoSDKHttpResponse<global::Runway.GetAvatarConversationsResponse>> GetAvatarConversationsAsResponseAsync(
-            int limit,
             string? cursor = default,
+            int? limit = default,
             global::System.Guid? avatar = default,
             global::System.DateTime? startDate = default,
             global::System.DateTime? endDate = default,

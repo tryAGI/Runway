@@ -28,7 +28,7 @@ namespace Runway
         partial void PrepareGetOrganizationWebappUsageArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string? cursor,
-            ref int limit,
+            ref int? limit,
             ref global::System.DateTime from,
             ref global::System.DateTime to,
             ref global::System.Guid? organizationId,
@@ -38,7 +38,7 @@ namespace Runway
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string? cursor,
-            int limit,
+            int? limit,
             global::System.DateTime from,
             global::System.DateTime to,
             global::System.Guid? organizationId,
@@ -72,10 +72,10 @@ namespace Runway
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Runway.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Runway.GetOrganizationWebappUsageResponse> GetOrganizationWebappUsageAsync(
-            int limit,
             global::System.DateTime from,
             global::System.DateTime to,
             string? cursor = default,
+            int? limit = default,
             global::System.Guid? organizationId = default,
             string? workspaceIds = default,
             string xRunwayVersion = "2024-11-06",
@@ -83,10 +83,10 @@ namespace Runway
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __response = await GetOrganizationWebappUsageAsResponseAsync(
-                limit: limit,
                 from: from,
                 to: to,
                 cursor: cursor,
+                limit: limit,
                 organizationId: organizationId,
                 workspaceIds: workspaceIds,
                 xRunwayVersion: xRunwayVersion,
@@ -115,10 +115,10 @@ namespace Runway
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Runway.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Runway.AutoSDKHttpResponse<global::Runway.GetOrganizationWebappUsageResponse>> GetOrganizationWebappUsageAsResponseAsync(
-            int limit,
             global::System.DateTime from,
             global::System.DateTime to,
             string? cursor = default,
+            int? limit = default,
             global::System.Guid? organizationId = default,
             string? workspaceIds = default,
             string xRunwayVersion = "2024-11-06",
@@ -165,7 +165,7 @@ namespace Runway
                                 baseUri: HttpClient.BaseAddress);
                             __pathBuilder
                                 .AddOptionalParameter("cursor", cursor)
-                                .AddRequiredParameter("limit", limit.ToString() ?? throw new global::System.InvalidOperationException("A required query parameter returned null from ToString()."))
+                                .AddOptionalParameter("limit", limit?.ToString())
                                 .AddRequiredParameter("from", from.ToString() ?? throw new global::System.InvalidOperationException("A required query parameter returned null from ToString()."))
                                 .AddRequiredParameter("to", to.ToString() ?? throw new global::System.InvalidOperationException("A required query parameter returned null from ToString()."))
                                 .AddOptionalParameter("organizationId", organizationId?.ToString())
@@ -433,7 +433,7 @@ namespace Runway
                                 {
                                     throw global::Runway.ApiException.Create(
                                         statusCode: __response.StatusCode,
-                                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
+                                        message: __content is { Length: > 0 } ? __content : __response.ReasonPhrase ?? string.Empty,
                                         innerException: __ex,
                                         responseBody: __content,
                                         responseHeaders: global::System.Linq.Enumerable.ToDictionary(
@@ -478,7 +478,7 @@ namespace Runway
 
                                     throw global::Runway.ApiException.Create(
                                         statusCode: __response.StatusCode,
-                                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
+                                        message: __content is { Length: > 0 } ? __content : __response.ReasonPhrase ?? string.Empty,
                                         innerException: __ex,
                                         responseBody: __content,
                                         responseHeaders: global::System.Linq.Enumerable.ToDictionary(

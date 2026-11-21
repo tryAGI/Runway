@@ -16,30 +16,29 @@ namespace Runway
         public required string PromptText { get; set; }
 
         /// <summary>
-        /// The target output size. Use a pixel ratio such as `1280:720` or `auto_720p` / `auto_1080p` for adaptive framing.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("ratio")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.CreateTextToVideoRequestKling4FlashRatioJsonConverter))]
-        public global::Runway.CreateTextToVideoRequestKling4FlashRatio? Ratio { get; set; }
-
-        /// <summary>
-        /// The duration of the output video in seconds. Defaults to 5.<br/>
-        /// Default Value: 5
+        /// The duration of the output video in seconds.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("duration")]
         public int? Duration { get; set; }
 
         /// <summary>
-        /// Images of characters, objects or styles to use in the video. Up to 10 images in total, frames included.
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("references")]
         public global::System.Collections.Generic.IList<global::Runway.CreateTextToVideoRequestKling4FlashReference>? References { get; set; }
 
         /// <summary>
-        /// Up to 5 videos whose style, motion or camera work should guide the output, together at most 30 seconds long.
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("referenceVideos")]
-        public global::System.Collections.Generic.IList<object>? ReferenceVideos { get; set; }
+        public global::System.Collections.Generic.IList<global::Runway.CreateTextToVideoRequestKling4FlashReferenceVideo>? ReferenceVideos { get; set; }
+
+        /// <summary>
+        /// The output size, or auto_720p for adaptive framing. Legacy values 940:940 and 1460:624 are accepted as aliases for 960:960 and 1464:628, respectively.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("ratio")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.CreateTextToVideoRequestKling4FlashRatioJsonConverter))]
+        public global::Runway.CreateTextToVideoRequestKling4FlashRatio? Ratio { get; set; }
 
         /// <summary>
         ///
@@ -60,18 +59,13 @@ namespace Runway
         /// <param name="promptText">
         /// A text prompt describing what should happen in the video.
         /// </param>
-        /// <param name="ratio">
-        /// The target output size. Use a pixel ratio such as `1280:720` or `auto_720p` / `auto_1080p` for adaptive framing.
-        /// </param>
         /// <param name="duration">
-        /// The duration of the output video in seconds. Defaults to 5.<br/>
-        /// Default Value: 5
+        /// The duration of the output video in seconds.
         /// </param>
-        /// <param name="references">
-        /// Images of characters, objects or styles to use in the video. Up to 10 images in total, frames included.
-        /// </param>
-        /// <param name="referenceVideos">
-        /// Up to 5 videos whose style, motion or camera work should guide the output, together at most 30 seconds long.
+        /// <param name="references"></param>
+        /// <param name="referenceVideos"></param>
+        /// <param name="ratio">
+        /// The output size, or auto_720p for adaptive framing. Legacy values 940:940 and 1460:624 are accepted as aliases for 960:960 and 1464:628, respectively.
         /// </param>
         /// <param name="model"></param>
 #if NET7_0_OR_GREATER
@@ -79,17 +73,17 @@ namespace Runway
 #endif
         public CreateTextToVideoRequestKling4Flash(
             string promptText,
-            global::Runway.CreateTextToVideoRequestKling4FlashRatio? ratio,
             int? duration,
             global::System.Collections.Generic.IList<global::Runway.CreateTextToVideoRequestKling4FlashReference>? references,
-            global::System.Collections.Generic.IList<object>? referenceVideos,
+            global::System.Collections.Generic.IList<global::Runway.CreateTextToVideoRequestKling4FlashReferenceVideo>? referenceVideos,
+            global::Runway.CreateTextToVideoRequestKling4FlashRatio? ratio,
             string model = "kling_4_flash")
         {
             this.PromptText = promptText ?? throw new global::System.ArgumentNullException(nameof(promptText));
-            this.Ratio = ratio;
             this.Duration = duration;
             this.References = references;
             this.ReferenceVideos = referenceVideos;
+            this.Ratio = ratio;
             this.Model = model;
         }
 

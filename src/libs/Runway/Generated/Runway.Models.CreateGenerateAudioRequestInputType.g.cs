@@ -4,16 +4,20 @@
 namespace Runway
 {
     /// <summary>
-    /// How promptText is interpreted: `speech` speaks it verbatim as a script; `audio` treats it as a description of the desired audio, which may combine speech, music, ambience, and sound effects.
+    /// How promptText is interpreted: `speech` speaks it verbatim as a script; `audio` treats it as a description of the desired audio, which may combine speech, music, ambience, and sound effects; `music` treats it as a description of a song or instrumental track.
     /// </summary>
     public enum CreateGenerateAudioRequestInputType
     {
         /// <summary>
-        /// `speech` speaks it verbatim as a script; `audio` treats it as a description of the desired audio, which may combine speech, music, ambience, and sound effects.
+        /// `speech` speaks it verbatim as a script; `audio` treats it as a description of the desired audio, which may combine speech, music, ambience, and sound effects; `music` treats it as a description of a song or instrumental track.
         /// </summary>
         Audio,
         /// <summary>
-        /// `speech` speaks it verbatim as a script; `audio` treats it as a description of the desired audio, which may combine speech, music, ambience, and sound effects.
+        /// `speech` speaks it verbatim as a script; `audio` treats it as a description of the desired audio, which may combine speech, music, ambience, and sound effects; `music` treats it as a description of a song or instrumental track.
+        /// </summary>
+        Music,
+        /// <summary>
+        /// `speech` speaks it verbatim as a script; `audio` treats it as a description of the desired audio, which may combine speech, music, ambience, and sound effects; `music` treats it as a description of a song or instrumental track.
         /// </summary>
         Speech,
     }
@@ -31,6 +35,7 @@ namespace Runway
             return value switch
             {
                 CreateGenerateAudioRequestInputType.Audio => "audio",
+                CreateGenerateAudioRequestInputType.Music => "music",
                 CreateGenerateAudioRequestInputType.Speech => "speech",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
@@ -43,6 +48,7 @@ namespace Runway
             return value switch
             {
                 "audio" => CreateGenerateAudioRequestInputType.Audio,
+                "music" => CreateGenerateAudioRequestInputType.Music,
                 "speech" => CreateGenerateAudioRequestInputType.Speech,
                 _ => null,
             };

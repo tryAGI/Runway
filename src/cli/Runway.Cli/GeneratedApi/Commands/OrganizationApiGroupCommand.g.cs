@@ -15,6 +15,7 @@ internal static partial class OrganizationApiGroupCommand
                          command.Subcommands.Add(OrganizationGetOrganizationCommandApiCommand.Create());
                          command.Subcommands.Add(OrganizationGetOrganizationWebappAuditLogsCommandApiCommand.Create());
                          command.Subcommands.Add(OrganizationGetOrganizationWebappAuditLogsByEventIdCommandApiCommand.Create());
+                         command.Subcommands.Add(OrganizationGetOrganizationWebappMembersCommandApiCommand.Create());
                          command.Subcommands.Add(OrganizationGetOrganizationWebappUsageCommandApiCommand.Create());
         CustomizeCommand(ref command);
         return command;

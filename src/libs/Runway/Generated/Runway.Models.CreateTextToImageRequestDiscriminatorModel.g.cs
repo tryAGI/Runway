@@ -75,6 +75,14 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
+        IdeogramVector,
+        /// <summary>
+        ///
+        /// </summary>
+        MinimaxH3Image,
+        /// <summary>
+        ///
+        /// </summary>
         MuseImage,
         /// <summary>
         ///
@@ -91,6 +99,14 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
+        Seedream55,
+        /// <summary>
+        ///
+        /// </summary>
+        Seedream55Layers,
+        /// <summary>
+        ///
+        /// </summary>
         Seedream5Flash,
         /// <summary>
         ///
@@ -100,6 +116,10 @@ namespace Runway
         ///
         /// </summary>
         Seedream5Pro,
+        /// <summary>
+        ///
+        /// </summary>
+        Seedream5ProLayers,
     }
 
     /// <summary>
@@ -130,13 +150,18 @@ namespace Runway
                 CreateTextToImageRequestDiscriminatorModel.GrokImagineImage2 => "grok_imagine_image_2",
                 CreateTextToImageRequestDiscriminatorModel.Ideogram40 => "ideogram_4_0",
                 CreateTextToImageRequestDiscriminatorModel.Ideogram45 => "ideogram_4_5",
+                CreateTextToImageRequestDiscriminatorModel.IdeogramVector => "ideogram_vector",
+                CreateTextToImageRequestDiscriminatorModel.MinimaxH3Image => "minimax_h3_image",
                 CreateTextToImageRequestDiscriminatorModel.MuseImage => "muse_image",
                 CreateTextToImageRequestDiscriminatorModel.NanoBanana21 => "nano_banana_2.1",
                 CreateTextToImageRequestDiscriminatorModel.RecraftV41Flash => "recraft_v4_1_flash",
                 CreateTextToImageRequestDiscriminatorModel.RecraftV41Vector => "recraft_v4_1_vector",
+                CreateTextToImageRequestDiscriminatorModel.Seedream55 => "seedream5.5",
+                CreateTextToImageRequestDiscriminatorModel.Seedream55Layers => "seedream5.5_layers",
                 CreateTextToImageRequestDiscriminatorModel.Seedream5Flash => "seedream5_flash",
                 CreateTextToImageRequestDiscriminatorModel.Seedream5Lite => "seedream5_lite",
                 CreateTextToImageRequestDiscriminatorModel.Seedream5Pro => "seedream5_pro",
+                CreateTextToImageRequestDiscriminatorModel.Seedream5ProLayers => "seedream5_pro_layers",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -163,13 +188,18 @@ namespace Runway
                 "grok_imagine_image_2" => CreateTextToImageRequestDiscriminatorModel.GrokImagineImage2,
                 "ideogram_4_0" => CreateTextToImageRequestDiscriminatorModel.Ideogram40,
                 "ideogram_4_5" => CreateTextToImageRequestDiscriminatorModel.Ideogram45,
+                "ideogram_vector" => CreateTextToImageRequestDiscriminatorModel.IdeogramVector,
+                "minimax_h3_image" => CreateTextToImageRequestDiscriminatorModel.MinimaxH3Image,
                 "muse_image" => CreateTextToImageRequestDiscriminatorModel.MuseImage,
                 "nano_banana_2.1" => CreateTextToImageRequestDiscriminatorModel.NanoBanana21,
                 "recraft_v4_1_flash" => CreateTextToImageRequestDiscriminatorModel.RecraftV41Flash,
                 "recraft_v4_1_vector" => CreateTextToImageRequestDiscriminatorModel.RecraftV41Vector,
+                "seedream5.5" => CreateTextToImageRequestDiscriminatorModel.Seedream55,
+                "seedream5.5_layers" => CreateTextToImageRequestDiscriminatorModel.Seedream55Layers,
                 "seedream5_flash" => CreateTextToImageRequestDiscriminatorModel.Seedream5Flash,
                 "seedream5_lite" => CreateTextToImageRequestDiscriminatorModel.Seedream5Lite,
                 "seedream5_pro" => CreateTextToImageRequestDiscriminatorModel.Seedream5Pro,
+                "seedream5_pro_layers" => CreateTextToImageRequestDiscriminatorModel.Seedream5ProLayers,
                 _ => null,
             };
         }

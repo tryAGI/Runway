@@ -13,25 +13,22 @@ internal static partial class KnowledgeGetDocumentsCommandApiCommand
         Description = @"Cursor from a previous response for fetching the next page of results.",
     };
 
-    private static Option<int> Limit { get; } = new(
+    private static Option<int?> Limit { get; } = new(
         name: @"--limit")
     {
         Description = @"The maximum number of items to return per page.",
-        Required = true,
     };
 
-    private static Option<global::Runway.GetDocumentsSort> Sort { get; } = new(
+    private static Option<global::Runway.GetDocumentsSort?> Sort { get; } = new(
         name: @"--sort")
     {
         Description = @"Field to sort results by.",
-        DefaultValueFactory = _ => global::Runway.GetDocumentsSort.CreatedAt,
     };
 
-    private static Option<global::Runway.GetDocumentsOrder> Order { get; } = new(
+    private static Option<global::Runway.GetDocumentsOrder?> Order { get; } = new(
         name: @"--order")
     {
         Description = @"Sort direction.",
-        DefaultValueFactory = _ => global::Runway.GetDocumentsOrder.Desc,
     };
 
     private static Option<string> XRunwayVersion { get; } = new(
@@ -78,9 +75,9 @@ List knowledge documents for the authenticated user with cursor-based pagination
             await CliRuntime.RunAsync(async () =>
             {
                         var cursor = parseResult.GetValue(Cursor);
-                        var limit = parseResult.GetRequiredValue(Limit);
-                        var sort = parseResult.GetRequiredValue(Sort);
-                        var order = parseResult.GetRequiredValue(Order);
+                        var limit = parseResult.GetValue(Limit);
+                        var sort = parseResult.GetValue(Sort);
+                        var order = parseResult.GetValue(Order);
                         var xRunwayVersion = parseResult.GetRequiredValue(XRunwayVersion);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 

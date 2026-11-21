@@ -27,11 +27,13 @@ namespace Runway
             };
         partial void PrepareCreateTextToImageArguments(
             global::System.Net.Http.HttpClient httpClient,
+            ref string? xRunwayTags,
             ref string xRunwayVersion,
             global::Runway.CreateTextToImageRequest request);
         partial void PrepareCreateTextToImageRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
+            string? xRunwayTags,
             string xRunwayVersion,
             global::Runway.CreateTextToImageRequest request);
         partial void ProcessCreateTextToImageResponse(
@@ -47,6 +49,9 @@ namespace Runway
         /// Text/Image to Image<br/>
         /// This endpoint will start a new task to generate images from text and/or image(s)
         /// </summary>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -61,9 +66,10 @@ namespace Runway
         /// const client = new RunwayML();<br/>
         /// const task = await client.textToImage<br/>
         ///   .create({<br/>
-        ///     model: 'gen4_image',<br/>
+        ///     model: 'gpt_image_2_6_sunburst',<br/>
         ///     promptText: 'A serene landscape with mountains',<br/>
-        ///     ratio: '1360:768',<br/>
+        ///     ratio: '1920:1088',<br/>
+        ///     reasoningEffort: 'high',<br/>
         ///   })<br/>
         ///   .waitForTaskOutput();<br/>
         /// console.log(task);
@@ -71,6 +77,7 @@ namespace Runway
         public async global::System.Threading.Tasks.Task<global::Runway.CreateTextToImageResponse> CreateTextToImageAsync(
 
             global::Runway.CreateTextToImageRequest request,
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -78,6 +85,7 @@ namespace Runway
             var __response = await CreateTextToImageAsResponseAsync(
 
                 request: request,
+                xRunwayTags: xRunwayTags,
                 xRunwayVersion: xRunwayVersion,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
@@ -89,6 +97,9 @@ namespace Runway
         /// Text/Image to Image<br/>
         /// This endpoint will start a new task to generate images from text and/or image(s)
         /// </summary>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -103,9 +114,10 @@ namespace Runway
         /// const client = new RunwayML();<br/>
         /// const task = await client.textToImage<br/>
         ///   .create({<br/>
-        ///     model: 'gen4_image',<br/>
+        ///     model: 'gpt_image_2_6_sunburst',<br/>
         ///     promptText: 'A serene landscape with mountains',<br/>
-        ///     ratio: '1360:768',<br/>
+        ///     ratio: '1920:1088',<br/>
+        ///     reasoningEffort: 'high',<br/>
         ///   })<br/>
         ///   .waitForTaskOutput();<br/>
         /// console.log(task);
@@ -113,6 +125,7 @@ namespace Runway
         public async global::System.Threading.Tasks.Task<global::Runway.AutoSDKHttpResponse<global::Runway.CreateTextToImageResponse>> CreateTextToImageAsResponseAsync(
 
             global::Runway.CreateTextToImageRequest request,
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -121,6 +134,7 @@ namespace Runway
                 client: HttpClient);
             PrepareCreateTextToImageArguments(
                 httpClient: HttpClient,
+                xRunwayTags: ref xRunwayTags,
                 xRunwayVersion: ref xRunwayVersion,
                 request: request);
 
@@ -181,6 +195,10 @@ namespace Runway
             }
 
                 __httpRequest.Headers.TryAddWithoutValidation("X-Runway-Version", xRunwayVersion.ToString());
+            if (xRunwayTags != default)
+            {
+                __httpRequest.Headers.TryAddWithoutValidation("X-Runway-Tags", xRunwayTags.ToString());
+            }
 
                             var __httpRequestContentBody = request.ToJson(JsonSerializerContext);
                             var __httpRequestContent = new global::System.Net.Http.StringContent(
@@ -199,6 +217,7 @@ namespace Runway
                 PrepareCreateTextToImageRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
+                    xRunwayTags: xRunwayTags,
                     xRunwayVersion: xRunwayVersion,
                     request: request);
 
@@ -390,13 +409,13 @@ namespace Runway
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_400 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_400 = global::Runway.CreateTextToImageResponse2.FromJson(__content_400, JsonSerializerContext);
+                                        __value_400 = __content_400 is not { Length: > 0 } ? null : global::Runway.CreateTextToImageResponse2.FromJson(__content_400, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_400 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_400 = global::Runway.CreateTextToImageResponse2.FromJson(__content_400, JsonSerializerContext);
+                                        __value_400 = __content_400 is not { Length: > 0 } ? null : global::Runway.CreateTextToImageResponse2.FromJson(__content_400, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -407,7 +426,7 @@ namespace Runway
 
                                 throw global::Runway.ApiException<global::Runway.CreateTextToImageResponse2>.Create(
                                     statusCode: __response.StatusCode,
-                                    message: __content_400 ?? __response.ReasonPhrase ?? string.Empty,
+                                    message: __content_400 is { Length: > 0 } ? __content_400 : __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_400,
                                     responseBody: __content_400,
                                     responseObject: __value_400,
@@ -427,13 +446,13 @@ namespace Runway
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_429 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_429 = global::Runway.CreateTextToImageResponse3.FromJson(__content_429, JsonSerializerContext);
+                                        __value_429 = __content_429 is not { Length: > 0 } ? null : global::Runway.CreateTextToImageResponse3.FromJson(__content_429, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_429 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_429 = global::Runway.CreateTextToImageResponse3.FromJson(__content_429, JsonSerializerContext);
+                                        __value_429 = __content_429 is not { Length: > 0 } ? null : global::Runway.CreateTextToImageResponse3.FromJson(__content_429, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -444,7 +463,7 @@ namespace Runway
 
                                 throw global::Runway.ApiException<global::Runway.CreateTextToImageResponse3>.Create(
                                     statusCode: __response.StatusCode,
-                                    message: __content_429 ?? __response.ReasonPhrase ?? string.Empty,
+                                    message: __content_429 is { Length: > 0 } ? __content_429 : __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_429,
                                     responseBody: __content_429,
                                     responseObject: __value_429,
@@ -487,7 +506,7 @@ namespace Runway
                                 {
                                     throw global::Runway.ApiException.Create(
                                         statusCode: __response.StatusCode,
-                                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
+                                        message: __content is { Length: > 0 } ? __content : __response.ReasonPhrase ?? string.Empty,
                                         innerException: __ex,
                                         responseBody: __content,
                                         responseHeaders: global::System.Linq.Enumerable.ToDictionary(
@@ -532,7 +551,7 @@ namespace Runway
 
                                     throw global::Runway.ApiException.Create(
                                         statusCode: __response.StatusCode,
-                                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
+                                        message: __content is { Length: > 0 } ? __content : __response.ReasonPhrase ?? string.Empty,
                                         innerException: __ex,
                                         responseBody: __content,
                                         responseHeaders: global::System.Linq.Enumerable.ToDictionary(
@@ -553,6 +572,9 @@ namespace Runway
         /// Text/Image to Image<br/>
         /// This endpoint will start a new task to generate images from text and/or image(s)
         /// </summary>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -560,6 +582,7 @@ namespace Runway
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Runway.CreateTextToImageResponse> CreateTextToImageAsync(
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -569,6 +592,7 @@ namespace Runway
             };
 
             return await CreateTextToImageAsync(
+                xRunwayTags: xRunwayTags,
                 xRunwayVersion: xRunwayVersion,
                 request: __request,
                 requestOptions: requestOptions,

@@ -13,7 +13,7 @@ namespace Runway
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("data")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<global::Runway.DataItem2> Data { get; set; }
+        public required global::System.Collections.Generic.IList<global::Runway.DataItem> Data { get; set; }
 
         /// <summary>
         /// Whether there are more items available after this page.
@@ -50,7 +50,7 @@ namespace Runway
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public GetVoicesResponse(
-            global::System.Collections.Generic.IList<global::Runway.DataItem2> data,
+            global::System.Collections.Generic.IList<global::Runway.DataItem> data,
             bool hasMore,
             string? nextCursor)
         {

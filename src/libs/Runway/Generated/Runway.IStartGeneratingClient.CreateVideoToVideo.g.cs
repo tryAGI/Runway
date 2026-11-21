@@ -8,6 +8,9 @@ namespace Runway
         /// Video to video<br/>
         /// This endpoint will start a new task to generate a video from a video.
         /// </summary>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -38,6 +41,7 @@ namespace Runway
         global::System.Threading.Tasks.Task<global::Runway.CreateVideoToVideoResponse> CreateVideoToVideoAsync(
 
             global::Runway.CreateVideoToVideoRequest request,
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
@@ -45,6 +49,9 @@ namespace Runway
         /// Video to video<br/>
         /// This endpoint will start a new task to generate a video from a video.
         /// </summary>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -75,6 +82,7 @@ namespace Runway
         global::System.Threading.Tasks.Task<global::Runway.AutoSDKHttpResponse<global::Runway.CreateVideoToVideoResponse>> CreateVideoToVideoAsResponseAsync(
 
             global::Runway.CreateVideoToVideoRequest request,
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
@@ -82,6 +90,9 @@ namespace Runway
         /// Video to video<br/>
         /// This endpoint will start a new task to generate a video from a video.
         /// </summary>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -89,6 +100,7 @@ namespace Runway
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Runway.CreateVideoToVideoResponse> CreateVideoToVideoAsync(
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);

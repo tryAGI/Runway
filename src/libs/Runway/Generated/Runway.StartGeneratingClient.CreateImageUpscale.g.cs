@@ -27,11 +27,13 @@ namespace Runway
             };
         partial void PrepareCreateImageUpscaleArguments(
             global::System.Net.Http.HttpClient httpClient,
+            ref string? xRunwayTags,
             ref string xRunwayVersion,
             global::Runway.CreateImageUpscaleRequest request);
         partial void PrepareCreateImageUpscaleRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
+            string? xRunwayTags,
             string xRunwayVersion,
             global::Runway.CreateImageUpscaleRequest request);
         partial void ProcessCreateImageUpscaleResponse(
@@ -47,6 +49,9 @@ namespace Runway
         /// Image upscale<br/>
         /// Upscale an image with Magnific precision upscaling. Each input dimension must be between 300px and 8000px. Output width and height are the input dimensions multiplied by `scaleFactor` (default 2). Output width times height cannot exceed 25,300,000 pixels (~25.3 million).
         /// </summary>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -71,6 +76,7 @@ namespace Runway
         public async global::System.Threading.Tasks.Task<global::Runway.CreateImageUpscaleResponse> CreateImageUpscaleAsync(
 
             global::Runway.CreateImageUpscaleRequest request,
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -78,6 +84,7 @@ namespace Runway
             var __response = await CreateImageUpscaleAsResponseAsync(
 
                 request: request,
+                xRunwayTags: xRunwayTags,
                 xRunwayVersion: xRunwayVersion,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
@@ -89,6 +96,9 @@ namespace Runway
         /// Image upscale<br/>
         /// Upscale an image with Magnific precision upscaling. Each input dimension must be between 300px and 8000px. Output width and height are the input dimensions multiplied by `scaleFactor` (default 2). Output width times height cannot exceed 25,300,000 pixels (~25.3 million).
         /// </summary>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -113,6 +123,7 @@ namespace Runway
         public async global::System.Threading.Tasks.Task<global::Runway.AutoSDKHttpResponse<global::Runway.CreateImageUpscaleResponse>> CreateImageUpscaleAsResponseAsync(
 
             global::Runway.CreateImageUpscaleRequest request,
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -121,6 +132,7 @@ namespace Runway
                 client: HttpClient);
             PrepareCreateImageUpscaleArguments(
                 httpClient: HttpClient,
+                xRunwayTags: ref xRunwayTags,
                 xRunwayVersion: ref xRunwayVersion,
                 request: request);
 
@@ -181,6 +193,10 @@ namespace Runway
             }
 
                 __httpRequest.Headers.TryAddWithoutValidation("X-Runway-Version", xRunwayVersion.ToString());
+            if (xRunwayTags != default)
+            {
+                __httpRequest.Headers.TryAddWithoutValidation("X-Runway-Tags", xRunwayTags.ToString());
+            }
 
                             var __httpRequestContentBody = request.ToJson(JsonSerializerContext);
                             var __httpRequestContent = new global::System.Net.Http.StringContent(
@@ -199,6 +215,7 @@ namespace Runway
                 PrepareCreateImageUpscaleRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
+                    xRunwayTags: xRunwayTags,
                     xRunwayVersion: xRunwayVersion,
                     request: request);
 
@@ -390,13 +407,13 @@ namespace Runway
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_400 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_400 = global::Runway.CreateImageUpscaleResponse2.FromJson(__content_400, JsonSerializerContext);
+                                        __value_400 = __content_400 is not { Length: > 0 } ? null : global::Runway.CreateImageUpscaleResponse2.FromJson(__content_400, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_400 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_400 = global::Runway.CreateImageUpscaleResponse2.FromJson(__content_400, JsonSerializerContext);
+                                        __value_400 = __content_400 is not { Length: > 0 } ? null : global::Runway.CreateImageUpscaleResponse2.FromJson(__content_400, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -407,7 +424,7 @@ namespace Runway
 
                                 throw global::Runway.ApiException<global::Runway.CreateImageUpscaleResponse2>.Create(
                                     statusCode: __response.StatusCode,
-                                    message: __content_400 ?? __response.ReasonPhrase ?? string.Empty,
+                                    message: __content_400 is { Length: > 0 } ? __content_400 : __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_400,
                                     responseBody: __content_400,
                                     responseObject: __value_400,
@@ -427,13 +444,13 @@ namespace Runway
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_429 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_429 = global::Runway.CreateImageUpscaleResponse3.FromJson(__content_429, JsonSerializerContext);
+                                        __value_429 = __content_429 is not { Length: > 0 } ? null : global::Runway.CreateImageUpscaleResponse3.FromJson(__content_429, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_429 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_429 = global::Runway.CreateImageUpscaleResponse3.FromJson(__content_429, JsonSerializerContext);
+                                        __value_429 = __content_429 is not { Length: > 0 } ? null : global::Runway.CreateImageUpscaleResponse3.FromJson(__content_429, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -444,7 +461,7 @@ namespace Runway
 
                                 throw global::Runway.ApiException<global::Runway.CreateImageUpscaleResponse3>.Create(
                                     statusCode: __response.StatusCode,
-                                    message: __content_429 ?? __response.ReasonPhrase ?? string.Empty,
+                                    message: __content_429 is { Length: > 0 } ? __content_429 : __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_429,
                                     responseBody: __content_429,
                                     responseObject: __value_429,
@@ -487,7 +504,7 @@ namespace Runway
                                 {
                                     throw global::Runway.ApiException.Create(
                                         statusCode: __response.StatusCode,
-                                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
+                                        message: __content is { Length: > 0 } ? __content : __response.ReasonPhrase ?? string.Empty,
                                         innerException: __ex,
                                         responseBody: __content,
                                         responseHeaders: global::System.Linq.Enumerable.ToDictionary(
@@ -532,7 +549,7 @@ namespace Runway
 
                                     throw global::Runway.ApiException.Create(
                                         statusCode: __response.StatusCode,
-                                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
+                                        message: __content is { Length: > 0 } ? __content : __response.ReasonPhrase ?? string.Empty,
                                         innerException: __ex,
                                         responseBody: __content,
                                         responseHeaders: global::System.Linq.Enumerable.ToDictionary(
@@ -553,6 +570,9 @@ namespace Runway
         /// Image upscale<br/>
         /// Upscale an image with Magnific precision upscaling. Each input dimension must be between 300px and 8000px. Output width and height are the input dimensions multiplied by `scaleFactor` (default 2). Output width times height cannot exceed 25,300,000 pixels (~25.3 million).
         /// </summary>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -560,6 +580,7 @@ namespace Runway
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Runway.CreateImageUpscaleResponse> CreateImageUpscaleAsync(
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -569,6 +590,7 @@ namespace Runway
             };
 
             return await CreateImageUpscaleAsync(
+                xRunwayTags: xRunwayTags,
                 xRunwayVersion: xRunwayVersion,
                 request: __request,
                 requestOptions: requestOptions,

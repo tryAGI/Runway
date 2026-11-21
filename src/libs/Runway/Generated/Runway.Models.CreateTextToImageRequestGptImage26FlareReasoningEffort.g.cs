@@ -4,8 +4,7 @@
 namespace Runway
 {
     /// <summary>
-    /// How much reasoning the model spends on the image. Defaults to `high`.<br/>
-    /// Default Value: high
+    /// How much reasoning to use before rendering. Defaults to `high`.
     /// </summary>
     public enum CreateTextToImageRequestGptImage26FlareReasoningEffort
     {

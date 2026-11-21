@@ -108,7 +108,7 @@ namespace Runway
             string? referenceImage = default,
             string? personality = default,
             string? startScript = default,
-            global::Runway.Voice2? voice = default,
+            global::Runway.Voice7? voice = default,
             global::System.Collections.Generic.IList<global::System.Guid>? documentIds = default,
             global::Runway.PatchAvatarsRequestImageProcessing? imageProcessing = default,
             global::Runway.AutoSDKRequestOptions? requestOptions = default,

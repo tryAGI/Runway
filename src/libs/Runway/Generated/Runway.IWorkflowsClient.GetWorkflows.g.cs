@@ -22,7 +22,7 @@ namespace Runway
         /// const { data: workflows } = await client.workflows.list();<br/>
         /// console.log(workflows);
         /// </remarks>
-        global::System.Threading.Tasks.Task<global::Runway.GetWorkflowsResponse3> GetWorkflowsAsync(
+        global::System.Threading.Tasks.Task<global::Runway.GetWorkflowsResponse> GetWorkflowsAsync(
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
@@ -44,7 +44,7 @@ namespace Runway
         /// const { data: workflows } = await client.workflows.list();<br/>
         /// console.log(workflows);
         /// </remarks>
-        global::System.Threading.Tasks.Task<global::Runway.AutoSDKHttpResponse<global::Runway.GetWorkflowsResponse3>> GetWorkflowsAsResponseAsync(
+        global::System.Threading.Tasks.Task<global::Runway.AutoSDKHttpResponse<global::Runway.GetWorkflowsResponse>> GetWorkflowsAsResponseAsync(
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);

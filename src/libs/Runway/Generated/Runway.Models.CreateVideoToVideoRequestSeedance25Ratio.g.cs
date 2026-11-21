@@ -4,7 +4,7 @@
 namespace Runway
 {
     /// <summary>
-    /// The resolution of the output video. Seedance 2.5 supports 480p, 720p, and 1080p.
+    /// The resolution of the output video. Seedance 2.5 supports 480p, 720p, 1080p, and 4K.
     /// </summary>
     public enum CreateVideoToVideoRequestSeedance25Ratio
     {
@@ -43,7 +43,31 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
+        x2160_3840,
+        /// <summary>
+        ///
+        /// </summary>
         x2206_946,
+        /// <summary>
+        ///
+        /// </summary>
+        x2880_3840,
+        /// <summary>
+        ///
+        /// </summary>
+        x3840_1646,
+        /// <summary>
+        ///
+        /// </summary>
+        x3840_2160,
+        /// <summary>
+        ///
+        /// </summary>
+        x3840_2880,
+        /// <summary>
+        ///
+        /// </summary>
+        x3840_3840,
         /// <summary>
         ///
         /// </summary>
@@ -102,7 +126,13 @@ namespace Runway
                 CreateVideoToVideoRequestSeedance25Ratio.x1470_630 => "1470:630",
                 CreateVideoToVideoRequestSeedance25Ratio.x1664_1248 => "1664:1248",
                 CreateVideoToVideoRequestSeedance25Ratio.x1920_1080 => "1920:1080",
+                CreateVideoToVideoRequestSeedance25Ratio.x2160_3840 => "2160:3840",
                 CreateVideoToVideoRequestSeedance25Ratio.x2206_946 => "2206:946",
+                CreateVideoToVideoRequestSeedance25Ratio.x2880_3840 => "2880:3840",
+                CreateVideoToVideoRequestSeedance25Ratio.x3840_1646 => "3840:1646",
+                CreateVideoToVideoRequestSeedance25Ratio.x3840_2160 => "3840:2160",
+                CreateVideoToVideoRequestSeedance25Ratio.x3840_2880 => "3840:2880",
+                CreateVideoToVideoRequestSeedance25Ratio.x3840_3840 => "3840:3840",
                 CreateVideoToVideoRequestSeedance25Ratio.x480_854 => "480:854",
                 CreateVideoToVideoRequestSeedance25Ratio.x560_752 => "560:752",
                 CreateVideoToVideoRequestSeedance25Ratio.x640_640 => "640:640",
@@ -130,7 +160,13 @@ namespace Runway
                 "1470:630" => CreateVideoToVideoRequestSeedance25Ratio.x1470_630,
                 "1664:1248" => CreateVideoToVideoRequestSeedance25Ratio.x1664_1248,
                 "1920:1080" => CreateVideoToVideoRequestSeedance25Ratio.x1920_1080,
+                "2160:3840" => CreateVideoToVideoRequestSeedance25Ratio.x2160_3840,
                 "2206:946" => CreateVideoToVideoRequestSeedance25Ratio.x2206_946,
+                "2880:3840" => CreateVideoToVideoRequestSeedance25Ratio.x2880_3840,
+                "3840:1646" => CreateVideoToVideoRequestSeedance25Ratio.x3840_1646,
+                "3840:2160" => CreateVideoToVideoRequestSeedance25Ratio.x3840_2160,
+                "3840:2880" => CreateVideoToVideoRequestSeedance25Ratio.x3840_2880,
+                "3840:3840" => CreateVideoToVideoRequestSeedance25Ratio.x3840_3840,
                 "480:854" => CreateVideoToVideoRequestSeedance25Ratio.x480_854,
                 "560:752" => CreateVideoToVideoRequestSeedance25Ratio.x560_752,
                 "640:640" => CreateVideoToVideoRequestSeedance25Ratio.x640_640,

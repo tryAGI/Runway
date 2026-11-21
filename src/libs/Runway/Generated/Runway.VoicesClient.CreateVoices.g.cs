@@ -27,11 +27,13 @@ namespace Runway
             };
         partial void PrepareCreateVoicesArguments(
             global::System.Net.Http.HttpClient httpClient,
+            ref string? xRunwayTags,
             ref string xRunwayVersion,
             global::Runway.CreateVoicesRequest request);
         partial void PrepareCreateVoicesRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
+            string? xRunwayTags,
             string xRunwayVersion,
             global::Runway.CreateVoicesRequest request);
         partial void ProcessCreateVoicesResponse(
@@ -47,6 +49,9 @@ namespace Runway
         /// Create a voice<br/>
         /// Create a custom voice from a text description, or clone a voice from an audio sample.
         /// </summary>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -72,6 +77,7 @@ namespace Runway
         public async global::System.Threading.Tasks.Task<global::Runway.CreateVoicesResponse> CreateVoicesAsync(
 
             global::Runway.CreateVoicesRequest request,
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -79,6 +85,7 @@ namespace Runway
             var __response = await CreateVoicesAsResponseAsync(
 
                 request: request,
+                xRunwayTags: xRunwayTags,
                 xRunwayVersion: xRunwayVersion,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
@@ -90,6 +97,9 @@ namespace Runway
         /// Create a voice<br/>
         /// Create a custom voice from a text description, or clone a voice from an audio sample.
         /// </summary>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -115,6 +125,7 @@ namespace Runway
         public async global::System.Threading.Tasks.Task<global::Runway.AutoSDKHttpResponse<global::Runway.CreateVoicesResponse>> CreateVoicesAsResponseAsync(
 
             global::Runway.CreateVoicesRequest request,
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -125,6 +136,7 @@ namespace Runway
                 client: HttpClient);
             PrepareCreateVoicesArguments(
                 httpClient: HttpClient,
+                xRunwayTags: ref xRunwayTags,
                 xRunwayVersion: ref xRunwayVersion,
                 request: request);
 
@@ -185,6 +197,10 @@ namespace Runway
             }
 
                 __httpRequest.Headers.TryAddWithoutValidation("X-Runway-Version", xRunwayVersion.ToString());
+            if (xRunwayTags != default)
+            {
+                __httpRequest.Headers.TryAddWithoutValidation("X-Runway-Tags", xRunwayTags.ToString());
+            }
 
                             var __httpRequestContentBody = request.ToJson(JsonSerializerContext);
                             var __httpRequestContent = new global::System.Net.Http.StringContent(
@@ -203,6 +219,7 @@ namespace Runway
                 PrepareCreateVoicesRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
+                    xRunwayTags: xRunwayTags,
                     xRunwayVersion: xRunwayVersion,
                     request: request);
 
@@ -417,7 +434,7 @@ namespace Runway
                                 {
                                     throw global::Runway.ApiException.Create(
                                         statusCode: __response.StatusCode,
-                                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
+                                        message: __content is { Length: > 0 } ? __content : __response.ReasonPhrase ?? string.Empty,
                                         innerException: __ex,
                                         responseBody: __content,
                                         responseHeaders: global::System.Linq.Enumerable.ToDictionary(
@@ -462,7 +479,7 @@ namespace Runway
 
                                     throw global::Runway.ApiException.Create(
                                         statusCode: __response.StatusCode,
-                                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
+                                        message: __content is { Length: > 0 } ? __content : __response.ReasonPhrase ?? string.Empty,
                                         innerException: __ex,
                                         responseBody: __content,
                                         responseHeaders: global::System.Linq.Enumerable.ToDictionary(
@@ -483,6 +500,9 @@ namespace Runway
         /// Create a voice<br/>
         /// Create a custom voice from a text description, or clone a voice from an audio sample.
         /// </summary>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -499,6 +519,7 @@ namespace Runway
         public async global::System.Threading.Tasks.Task<global::Runway.CreateVoicesResponse> CreateVoicesAsync(
             string name,
             global::Runway.From from,
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             string? description = default,
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
@@ -512,6 +533,7 @@ namespace Runway
             };
 
             return await CreateVoicesAsync(
+                xRunwayTags: xRunwayTags,
                 xRunwayVersion: xRunwayVersion,
                 request: __request,
                 requestOptions: requestOptions,

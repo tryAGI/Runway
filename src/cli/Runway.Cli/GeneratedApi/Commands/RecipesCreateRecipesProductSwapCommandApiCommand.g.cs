@@ -7,6 +7,14 @@ namespace Runway.Cli.GeneratedApi.Commands;
 
 internal static partial class RecipesCreateRecipesProductSwapCommandApiCommand
 {
+    private static Option<string?> XRunwayTags { get; } = new(
+        name: @"--x-runway-tags")
+    {
+        Description = @"Comma-separated tags to attribute this generation's credit usage to, so you can filter and break down usage with `POST /v1/organization/usage`. Each tag is a plain label (`campaign-q4`) or a `key:value` pair (`team:growth`), split at the first colon. Tags are case-insensitive and stored lowercase. Up to 10 tags, each up to 64 characters of letters, numbers, and `_ - . / :`. An invalid tag rejects the request with a 400. Workflow runs pass their tags on to every generation they start.
+
+**Tags appear in usage reports. Do not put end-user PII (like names or emails) in them.**",
+    };
+
     private static Option<string> XRunwayVersion { get; } = new(
         name: @"--x-runway-version")
     {
@@ -116,6 +124,7 @@ internal static partial class RecipesCreateRecipesProductSwapCommandApiCommand
     {
         var command = new Command(commandName ?? @"create-recipes-product-swap", @"Swap a product in a reference video
 Replace the product in a reference video with a new product, preserving camera motion, lighting, and scene composition.");
+                        command.Options.Add(XRunwayTags);
                         command.Options.Add(XRunwayVersion);
                         command.Options.Add(Version);
                         command.Options.Add(ReferenceVideo);
@@ -151,6 +160,7 @@ Replace the product in a reference video with a new product, preserving camera m
                             RequestFile,
                             global::Runway.SourceGenerationContext.Default,
                             cancellationToken).ConfigureAwait(false);
+                        var xRunwayTags = parseResult.GetValue(XRunwayTags);
                         var xRunwayVersion = parseResult.GetRequiredValue(XRunwayVersion);
                         var version = parseResult.GetRequiredValue(Version);
                         var referenceVideo = parseResult.GetRequiredValue(ReferenceVideo);
@@ -166,6 +176,7 @@ Replace the product in a reference video with a new product, preserving camera m
                                 if (wait)
                                 {
                                 var createResponse = await client.Recipes.CreateRecipesProductSwapAsync(
+                                    xRunwayTags: xRunwayTags,
                                     xRunwayVersion: xRunwayVersion,
                                     version: version,
                                     referenceVideo: referenceVideo,
@@ -200,6 +211,7 @@ Replace the product in a reference video with a new product, preserving camera m
                                 }
 
                                 var response = await client.Recipes.CreateRecipesProductSwapAsync(
+                                    xRunwayTags: xRunwayTags,
                                     xRunwayVersion: xRunwayVersion,
                                     version: version,
                                     referenceVideo: referenceVideo,

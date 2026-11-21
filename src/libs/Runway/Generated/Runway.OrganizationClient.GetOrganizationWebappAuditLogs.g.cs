@@ -28,7 +28,7 @@ namespace Runway
         partial void PrepareGetOrganizationWebappAuditLogsArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string? cursor,
-            ref int limit,
+            ref int? limit,
             ref global::System.Guid? organizationId,
             ref string? workspaceIds,
             ref string? actions,
@@ -40,7 +40,7 @@ namespace Runway
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string? cursor,
-            int limit,
+            int? limit,
             global::System.Guid? organizationId,
             string? workspaceIds,
             string? actions,
@@ -78,8 +78,8 @@ namespace Runway
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Runway.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Runway.GetOrganizationWebappAuditLogsResponse> GetOrganizationWebappAuditLogsAsync(
-            int limit,
             string? cursor = default,
+            int? limit = default,
             global::System.Guid? organizationId = default,
             string? workspaceIds = default,
             string? actions = default,
@@ -91,8 +91,8 @@ namespace Runway
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __response = await GetOrganizationWebappAuditLogsAsResponseAsync(
-                limit: limit,
                 cursor: cursor,
+                limit: limit,
                 organizationId: organizationId,
                 workspaceIds: workspaceIds,
                 actions: actions,
@@ -127,8 +127,8 @@ namespace Runway
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Runway.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Runway.AutoSDKHttpResponse<global::Runway.GetOrganizationWebappAuditLogsResponse>> GetOrganizationWebappAuditLogsAsResponseAsync(
-            int limit,
             string? cursor = default,
+            int? limit = default,
             global::System.Guid? organizationId = default,
             string? workspaceIds = default,
             string? actions = default,
@@ -181,7 +181,7 @@ namespace Runway
                                 baseUri: HttpClient.BaseAddress);
                             __pathBuilder
                                 .AddOptionalParameter("cursor", cursor)
-                                .AddRequiredParameter("limit", limit.ToString() ?? throw new global::System.InvalidOperationException("A required query parameter returned null from ToString()."))
+                                .AddOptionalParameter("limit", limit?.ToString())
                                 .AddOptionalParameter("organizationId", organizationId?.ToString())
                                 .AddOptionalParameter("workspaceIds", workspaceIds)
                                 .AddOptionalParameter("actions", actions)
@@ -453,7 +453,7 @@ namespace Runway
                                 {
                                     throw global::Runway.ApiException.Create(
                                         statusCode: __response.StatusCode,
-                                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
+                                        message: __content is { Length: > 0 } ? __content : __response.ReasonPhrase ?? string.Empty,
                                         innerException: __ex,
                                         responseBody: __content,
                                         responseHeaders: global::System.Linq.Enumerable.ToDictionary(
@@ -498,7 +498,7 @@ namespace Runway
 
                                     throw global::Runway.ApiException.Create(
                                         statusCode: __response.StatusCode,
-                                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
+                                        message: __content is { Length: > 0 } ? __content : __response.ReasonPhrase ?? string.Empty,
                                         innerException: __ex,
                                         responseBody: __content,
                                         responseHeaders: global::System.Linq.Enumerable.ToDictionary(

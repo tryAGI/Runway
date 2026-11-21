@@ -19,8 +19,9 @@ namespace Runway
         /// The voice to use for the generated speech.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("voice")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.Voice5JsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Runway.CreateTextToSpeechRequestElevenMultilingualV2VoiceRunwayPresetVoice Voice { get; set; }
+        public required global::Runway.Voice5 Voice { get; set; }
 
         /// <summary>
         ///
@@ -50,11 +51,11 @@ namespace Runway
 #endif
         public CreateTextToSpeechRequestElevenMultilingualV2(
             string promptText,
-            global::Runway.CreateTextToSpeechRequestElevenMultilingualV2VoiceRunwayPresetVoice voice,
+            global::Runway.Voice5 voice,
             string model = "eleven_multilingual_v2")
         {
             this.PromptText = promptText ?? throw new global::System.ArgumentNullException(nameof(promptText));
-            this.Voice = voice ?? throw new global::System.ArgumentNullException(nameof(voice));
+            this.Voice = voice;
             this.Model = model;
         }
 

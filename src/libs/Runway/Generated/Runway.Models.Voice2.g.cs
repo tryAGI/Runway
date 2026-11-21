@@ -5,60 +5,59 @@
 namespace Runway
 {
     /// <summary>
-    /// The voice configuration for the avatar.<br/>
-    /// Example: {"type":"runway-live-preset","presetId":"adrian"}
+    /// Optional voice override for TTS. If not provided, the avatar's configured voice is used.
     /// </summary>
     public readonly partial struct Voice2 : global::System.IEquatable<Voice2>
     {
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.PatchAvatarsRequestVoiceDiscriminatorType? Type { get; }
+        public global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceDiscriminatorType? Type { get; }
 
         /// <summary>
         /// A preset voice from the Runway API.
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Runway.PatchAvatarsRequestVoiceRunwayLivePresetVoice? RunwayLivePreset { get; init; }
+        public global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceRunwayPresetVoice? Preset { get; init; }
 #else
-        public global::Runway.PatchAvatarsRequestVoiceRunwayLivePresetVoice? RunwayLivePreset { get; }
+        public global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceRunwayPresetVoice? Preset { get; }
 #endif
 
         /// <summary>
         ///
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(RunwayLivePreset))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Preset))]
 #endif
-        public bool IsRunwayLivePreset => RunwayLivePreset != null;
+        public bool IsPreset => Preset != null;
 
         /// <summary>
         ///
         /// </summary>
-        public bool TryPickRunwayLivePreset(
+        public bool TryPickPreset(
 #if NET6_0_OR_GREATER
             [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
 #endif
-            out global::Runway.PatchAvatarsRequestVoiceRunwayLivePresetVoice? value)
+            out global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceRunwayPresetVoice? value)
         {
-            value = RunwayLivePreset;
-            return IsRunwayLivePreset;
+            value = Preset;
+            return IsPreset;
         }
 
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.PatchAvatarsRequestVoiceRunwayLivePresetVoice PickRunwayLivePreset() => RunwayLivePreset is { } value
+        public global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceRunwayPresetVoice PickPreset() => Preset is { } value
             ? value
-            : throw new global::System.InvalidOperationException($"Expected union variant 'RunwayLivePreset' but the value was {ToString()}.");
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Preset' but the value was {ToString()}.");
 
         /// <summary>
         /// A custom voice created via the Voices API.
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Runway.PatchAvatarsRequestVoiceCustomVoice? Custom { get; init; }
+        public global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceCustomVoice? Custom { get; init; }
 #else
-        public global::Runway.PatchAvatarsRequestVoiceCustomVoice? Custom { get; }
+        public global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceCustomVoice? Custom { get; }
 #endif
 
         /// <summary>
@@ -76,7 +75,7 @@ namespace Runway
 #if NET6_0_OR_GREATER
             [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
 #endif
-            out global::Runway.PatchAvatarsRequestVoiceCustomVoice? value)
+            out global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceCustomVoice? value)
         {
             value = Custom;
             return IsCustom;
@@ -85,46 +84,46 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.PatchAvatarsRequestVoiceCustomVoice PickCustom() => Custom is { } value
+        public global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceCustomVoice PickCustom() => Custom is { } value
             ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Custom' but the value was {ToString()}.");
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator Voice2(global::Runway.PatchAvatarsRequestVoiceRunwayLivePresetVoice value) => new Voice2((global::Runway.PatchAvatarsRequestVoiceRunwayLivePresetVoice?)value);
+        public static implicit operator Voice2(global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceRunwayPresetVoice value) => new Voice2((global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceRunwayPresetVoice?)value);
 
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator global::Runway.PatchAvatarsRequestVoiceRunwayLivePresetVoice?(Voice2 @this) => @this.RunwayLivePreset;
+        public static implicit operator global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceRunwayPresetVoice?(Voice2 @this) => @this.Preset;
 
         /// <summary>
         ///
         /// </summary>
-        public Voice2(global::Runway.PatchAvatarsRequestVoiceRunwayLivePresetVoice? value)
+        public Voice2(global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceRunwayPresetVoice? value)
         {
-            RunwayLivePreset = value;
+            Preset = value;
         }
 
         /// <summary>
         ///
         /// </summary>
-        public static Voice2 FromRunwayLivePreset(global::Runway.PatchAvatarsRequestVoiceRunwayLivePresetVoice? value) => new Voice2(value);
+        public static Voice2 FromPreset(global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceRunwayPresetVoice? value) => new Voice2(value);
 
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator Voice2(global::Runway.PatchAvatarsRequestVoiceCustomVoice value) => new Voice2((global::Runway.PatchAvatarsRequestVoiceCustomVoice?)value);
+        public static implicit operator Voice2(global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceCustomVoice value) => new Voice2((global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceCustomVoice?)value);
 
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator global::Runway.PatchAvatarsRequestVoiceCustomVoice?(Voice2 @this) => @this.Custom;
+        public static implicit operator global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceCustomVoice?(Voice2 @this) => @this.Custom;
 
         /// <summary>
         ///
         /// </summary>
-        public Voice2(global::Runway.PatchAvatarsRequestVoiceCustomVoice? value)
+        public Voice2(global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceCustomVoice? value)
         {
             Custom = value;
         }
@@ -132,20 +131,20 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public static Voice2 FromCustom(global::Runway.PatchAvatarsRequestVoiceCustomVoice? value) => new Voice2(value);
+        public static Voice2 FromCustom(global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceCustomVoice? value) => new Voice2(value);
 
         /// <summary>
         ///
         /// </summary>
         public Voice2(
-            global::Runway.PatchAvatarsRequestVoiceDiscriminatorType? type,
-            global::Runway.PatchAvatarsRequestVoiceRunwayLivePresetVoice? runwayLivePreset,
-            global::Runway.PatchAvatarsRequestVoiceCustomVoice? custom
+            global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceDiscriminatorType? type,
+            global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceRunwayPresetVoice? preset,
+            global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceCustomVoice? custom
             )
         {
             Type = type;
 
-            RunwayLivePreset = runwayLivePreset;
+            Preset = preset;
             Custom = custom;
         }
 
@@ -154,14 +153,14 @@ namespace Runway
         /// </summary>
         public object? Object =>
             Custom as object ??
-            RunwayLivePreset as object
+            Preset as object
             ;
 
         /// <summary>
         ///
         /// </summary>
         public override string? ToString() =>
-            RunwayLivePreset?.ToString() ??
+            Preset?.ToString() ??
             Custom?.ToString()
             ;
 
@@ -170,15 +169,15 @@ namespace Runway
         /// </summary>
         public bool Validate()
         {
-            return IsRunwayLivePreset && !IsCustom || !IsRunwayLivePreset && IsCustom;
+            return IsPreset && !IsCustom || !IsPreset && IsCustom;
         }
 
         /// <summary>
         ///
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Runway.PatchAvatarsRequestVoiceRunwayLivePresetVoice, TResult>? runwayLivePreset = null,
-            global::System.Func<global::Runway.PatchAvatarsRequestVoiceCustomVoice, TResult>? custom = null,
+            global::System.Func<global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceRunwayPresetVoice, TResult>? preset = null,
+            global::System.Func<global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceCustomVoice, TResult>? custom = null,
             bool validate = true)
         {
             if (validate)
@@ -186,9 +185,9 @@ namespace Runway
                 Validate();
             }
 
-            if (RunwayLivePreset is { } __value0 && runwayLivePreset != null)
+            if (Preset is { } __value0 && preset != null)
             {
-                return runwayLivePreset(__value0);
+                return preset(__value0);
             }
             else if (Custom is { } __value1 && custom != null)
             {
@@ -202,9 +201,9 @@ namespace Runway
         ///
         /// </summary>
         public void Match(
-            global::System.Action<global::Runway.PatchAvatarsRequestVoiceRunwayLivePresetVoice>? runwayLivePreset = null,
+            global::System.Action<global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceRunwayPresetVoice>? preset = null,
 
-            global::System.Action<global::Runway.PatchAvatarsRequestVoiceCustomVoice>? custom = null,
+            global::System.Action<global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceCustomVoice>? custom = null,
             bool validate = true)
         {
             if (validate)
@@ -212,9 +211,9 @@ namespace Runway
                 Validate();
             }
 
-            if (RunwayLivePreset is { } __value0)
+            if (Preset is { } __value0)
             {
-                runwayLivePreset?.Invoke(__value0);
+                preset?.Invoke(__value0);
             }
             else if (Custom is { } __value1)
             {
@@ -226,8 +225,8 @@ namespace Runway
         ///
         /// </summary>
         public void Switch(
-            global::System.Action<global::Runway.PatchAvatarsRequestVoiceRunwayLivePresetVoice>? runwayLivePreset = null,
-            global::System.Action<global::Runway.PatchAvatarsRequestVoiceCustomVoice>? custom = null,
+            global::System.Action<global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceRunwayPresetVoice>? preset = null,
+            global::System.Action<global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceCustomVoice>? custom = null,
             bool validate = true)
         {
             if (validate)
@@ -235,9 +234,9 @@ namespace Runway
                 Validate();
             }
 
-            if (RunwayLivePreset is { } __value0)
+            if (Preset is { } __value0)
             {
-                runwayLivePreset?.Invoke(__value0);
+                preset?.Invoke(__value0);
             }
             else if (Custom is { } __value1)
             {
@@ -252,10 +251,10 @@ namespace Runway
         {
             var fields = new object?[]
             {
-                RunwayLivePreset,
-                typeof(global::Runway.PatchAvatarsRequestVoiceRunwayLivePresetVoice),
+                Preset,
+                typeof(global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceRunwayPresetVoice),
                 Custom,
-                typeof(global::Runway.PatchAvatarsRequestVoiceCustomVoice),
+                typeof(global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceCustomVoice),
             };
             const int offset = unchecked((int)2166136261);
             const int prime = 16777619;
@@ -272,8 +271,8 @@ namespace Runway
         public bool Equals(Voice2 other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::Runway.PatchAvatarsRequestVoiceRunwayLivePresetVoice?>.Default.Equals(RunwayLivePreset, other.RunwayLivePreset) &&
-                global::System.Collections.Generic.EqualityComparer<global::Runway.PatchAvatarsRequestVoiceCustomVoice?>.Default.Equals(Custom, other.Custom)
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceRunwayPresetVoice?>.Default.Equals(Preset, other.Preset) &&
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceCustomVoice?>.Default.Equals(Custom, other.Custom)
                 ;
         }
 

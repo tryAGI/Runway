@@ -53,7 +53,7 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateAudioRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateAudioRequestInput))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateAudioRequestInputType), TypeInfoPropertyName = "CreateGenerateAudioRequestInputType2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.Voice4), TypeInfoPropertyName = "Voice42")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.Voice3), TypeInfoPropertyName = "Voice32")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateAudioRequestInputVoiceAudioPresetVoice))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateAudioRequestInputVoiceAudioPresetVoicePresetId), TypeInfoPropertyName = "CreateGenerateAudioRequestInputVoiceAudioPresetVoicePresetId2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateAudioRequestInputVoiceAudioReferenceVoice))]
@@ -189,7 +189,7 @@ namespace Runway
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateImageRequestInputResolution?), TypeInfoPropertyName = "NullableCreateGenerateImageRequestInputResolution2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateImageRequestInputContentModerationPublicFigureThreshold?), TypeInfoPropertyName = "NullableCreateGenerateImageRequestInputContentModerationPublicFigureThreshold2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateAudioRequestInputType?), TypeInfoPropertyName = "NullableCreateGenerateAudioRequestInputType2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.Voice4?), TypeInfoPropertyName = "NullableVoice42")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.Voice3?), TypeInfoPropertyName = "NullableVoice32")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateAudioRequestInputVoiceAudioPresetVoicePresetId?), TypeInfoPropertyName = "NullableCreateGenerateAudioRequestInputVoiceAudioPresetVoicePresetId2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Runway.CreateGenerateAudioRequestInputVoiceDiscriminatorType?), TypeInfoPropertyName = "NullableCreateGenerateAudioRequestInputVoiceDiscriminatorType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.DateTime?))]
@@ -290,7 +290,7 @@ namespace Runway
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
         public static void AddConverters(global::System.Text.Json.JsonSerializerOptions options)
         {
-            options.Converters.Add(new global::Runway.JsonConverters.Voice4JsonConverter());
+            options.Converters.Add(new global::Runway.JsonConverters.Voice3JsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.PipelineItemJsonConverter());
             options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<object>>());
             options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<int?, string>());
@@ -301,20 +301,23 @@ namespace Runway
             options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<object>>());
             options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<int?, string>());
             options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<object>>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string, int?>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<int?, string>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<int?, string>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<int?, string>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<int?, string>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string, int?>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<int?, string>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string, int?>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<int?, string>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<int?, string>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<int?, string>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<int?, string>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string, int?>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<int?, string>());
             options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<object>>());
             options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string, int?>());
             options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<int?, string>());
-            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<int?, string>());
-            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<int?, string>());
-            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string, int?>());
-            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<int?, string>());
-            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string, int?>());
-            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<int?, string>());
-            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<int?, string>());
-            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<int?, string>());
-            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string, int?>());
-            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<int?, string>());
-            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string, int?>());
             options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<global::Runway.CreateGenerateVideoRequestInputKeyframeVariant1, global::Runway.CreateGenerateVideoRequestInputKeyframeVariant2>());
             options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string, double?, bool?>());
             options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<object, string>());
@@ -334,9 +337,13 @@ namespace Runway
             options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>());
             options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>());
             options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>());
             options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<global::Runway.CreateGenerateVideoResponseVariant1, global::Runway.CreateGenerateVideoResponseVariant2>());
             options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<global::Runway.CreateGenerateImageResponseVariant1, global::Runway.CreateGenerateImageResponseVariant2>());
             options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<global::Runway.CreateGenerateAudioResponseVariant1, global::Runway.CreateGenerateAudioResponseVariant2>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string, double?, bool?, global::System.Collections.Generic.Dictionary<string, bool>>());
+            options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string, double?, bool?, global::System.Collections.Generic.Dictionary<string, bool>>());
             options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string, double?, bool?, global::System.Collections.Generic.Dictionary<string, bool>>());
             options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string, double?, bool?, global::System.Collections.Generic.Dictionary<string, bool>>());
             options.Converters.Add(new global::Runway.JsonConverters.AnyOfJsonConverter<string, double?>());

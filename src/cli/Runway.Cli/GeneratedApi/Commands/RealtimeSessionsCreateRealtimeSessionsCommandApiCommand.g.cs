@@ -7,6 +7,14 @@ namespace Runway.Cli.GeneratedApi.Commands;
 
 internal static partial class RealtimeSessionsCreateRealtimeSessionsCommandApiCommand
 {
+    private static Option<string?> XRunwayTags { get; } = new(
+        name: @"--x-runway-tags")
+    {
+        Description = @"Comma-separated tags to attribute this generation's credit usage to, so you can filter and break down usage with `POST /v1/organization/usage`. Each tag is a plain label (`campaign-q4`) or a `key:value` pair (`team:growth`), split at the first colon. Tags are case-insensitive and stored lowercase. Up to 10 tags, each up to 64 characters of letters, numbers, and `_ - . / :`. An invalid tag rejects the request with a 400. Workflow runs pass their tags on to every generation they start.
+
+**Tags appear in usage reports. Do not put end-user PII (like names or emails) in them.**",
+    };
+
     private static Option<string> XRunwayVersion { get; } = new(
         name: @"--x-runway-version")
     {
@@ -72,6 +80,7 @@ internal static partial class RealtimeSessionsCreateRealtimeSessionsCommandApiCo
     {
         var command = new Command(commandName ?? @"create-realtime-sessions", @"Create realtime session
 Create a new realtime session with the specified model configuration. The returned ID is also the conversation ID used later to fetch transcripts and recordings from the avatar conversation endpoints.");
+                        command.Options.Add(XRunwayTags);
                         command.Options.Add(XRunwayVersion);
           command.Options.Add(Input);
           command.Options.Add(RequestJson);
@@ -93,6 +102,7 @@ Create a new realtime session with the specified model configuration. The return
         command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
             await CliRuntime.RunAsync(async () =>
             {
+                        var xRunwayTags = parseResult.GetValue(XRunwayTags);
                         var xRunwayVersion = parseResult.GetRequiredValue(XRunwayVersion);
                         var request = await CliRuntime.ReadRequestAsync<global::Runway.CreateRealtimeSessionsRequest>(
                             parseResult,
@@ -108,6 +118,7 @@ Create a new realtime session with the specified model configuration. The return
                                 if (wait)
                                 {
                                 var createResponse = await client.RealtimeSessions.CreateRealtimeSessionsAsync(
+                                    xRunwayTags: xRunwayTags,
                                     xRunwayVersion: xRunwayVersion,
                                     request: request,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
@@ -136,6 +147,7 @@ Create a new realtime session with the specified model configuration. The return
                                 }
 
                                 var response = await client.RealtimeSessions.CreateRealtimeSessionsAsync(
+                                    xRunwayTags: xRunwayTags,
                                     xRunwayVersion: xRunwayVersion,
                                     request: request,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);

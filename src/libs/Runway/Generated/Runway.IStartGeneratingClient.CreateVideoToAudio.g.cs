@@ -8,6 +8,9 @@ namespace Runway
         /// Generate audio from a video<br/>
         /// Generate synchronized sound effects for a video, optionally guided by a text description. Returns audio, not a video with a replacement soundtrack.
         /// </summary>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -35,6 +38,7 @@ namespace Runway
         global::System.Threading.Tasks.Task<global::Runway.CreateVideoToAudioResponse> CreateVideoToAudioAsync(
 
             global::Runway.CreateVideoToAudioRequest request,
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
@@ -42,6 +46,9 @@ namespace Runway
         /// Generate audio from a video<br/>
         /// Generate synchronized sound effects for a video, optionally guided by a text description. Returns audio, not a video with a replacement soundtrack.
         /// </summary>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -69,6 +76,7 @@ namespace Runway
         global::System.Threading.Tasks.Task<global::Runway.AutoSDKHttpResponse<global::Runway.CreateVideoToAudioResponse>> CreateVideoToAudioAsResponseAsync(
 
             global::Runway.CreateVideoToAudioRequest request,
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
@@ -76,6 +84,9 @@ namespace Runway
         /// Generate audio from a video<br/>
         /// Generate synchronized sound effects for a video, optionally guided by a text description. Returns audio, not a video with a replacement soundtrack.
         /// </summary>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -83,6 +94,7 @@ namespace Runway
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Runway.CreateVideoToAudioResponse> CreateVideoToAudioAsync(
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);

@@ -28,12 +28,14 @@ namespace Runway
         partial void PrepareCreateWorkflowsByIdArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref global::System.Guid id,
+            ref string? xRunwayTags,
             ref string xRunwayVersion,
             global::Runway.CreateWorkflowsRequest request);
         partial void PrepareCreateWorkflowsByIdRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             global::System.Guid id,
+            string? xRunwayTags,
             string xRunwayVersion,
             global::Runway.CreateWorkflowsRequest request);
         partial void ProcessCreateWorkflowsByIdResponse(
@@ -50,6 +52,9 @@ namespace Runway
         /// Start a new task to execute a published workflow. You can optionally provide custom input values via `nodeOutputs` to override the defaults defined in the workflow graph.
         /// </summary>
         /// <param name="id"></param>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -82,6 +87,7 @@ namespace Runway
             global::System.Guid id,
 
             global::Runway.CreateWorkflowsRequest request,
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -90,6 +96,7 @@ namespace Runway
                 id: id,
 
                 request: request,
+                xRunwayTags: xRunwayTags,
                 xRunwayVersion: xRunwayVersion,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
@@ -102,6 +109,9 @@ namespace Runway
         /// Start a new task to execute a published workflow. You can optionally provide custom input values via `nodeOutputs` to override the defaults defined in the workflow graph.
         /// </summary>
         /// <param name="id"></param>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -134,6 +144,7 @@ namespace Runway
             global::System.Guid id,
 
             global::Runway.CreateWorkflowsRequest request,
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -145,6 +156,7 @@ namespace Runway
             PrepareCreateWorkflowsByIdArguments(
                 httpClient: HttpClient,
                 id: ref id,
+                xRunwayTags: ref xRunwayTags,
                 xRunwayVersion: ref xRunwayVersion,
                 request: request);
 
@@ -205,6 +217,10 @@ namespace Runway
             }
 
                 __httpRequest.Headers.TryAddWithoutValidation("X-Runway-Version", xRunwayVersion.ToString());
+            if (xRunwayTags != default)
+            {
+                __httpRequest.Headers.TryAddWithoutValidation("X-Runway-Tags", xRunwayTags.ToString());
+            }
 
                             var __httpRequestContentBody = request.ToJson(JsonSerializerContext);
                             var __httpRequestContent = new global::System.Net.Http.StringContent(
@@ -224,6 +240,7 @@ namespace Runway
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
                     id: id,
+                    xRunwayTags: xRunwayTags,
                     xRunwayVersion: xRunwayVersion,
                     request: request);
 
@@ -415,13 +432,13 @@ namespace Runway
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_404 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_404 = global::Runway.CreateWorkflowsResponse2.FromJson(__content_404, JsonSerializerContext);
+                                        __value_404 = __content_404 is not { Length: > 0 } ? null : global::Runway.CreateWorkflowsResponse2.FromJson(__content_404, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_404 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_404 = global::Runway.CreateWorkflowsResponse2.FromJson(__content_404, JsonSerializerContext);
+                                        __value_404 = __content_404 is not { Length: > 0 } ? null : global::Runway.CreateWorkflowsResponse2.FromJson(__content_404, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -432,7 +449,7 @@ namespace Runway
 
                                 throw global::Runway.ApiException<global::Runway.CreateWorkflowsResponse2>.Create(
                                     statusCode: __response.StatusCode,
-                                    message: __content_404 ?? __response.ReasonPhrase ?? string.Empty,
+                                    message: __content_404 is { Length: > 0 } ? __content_404 : __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_404,
                                     responseBody: __content_404,
                                     responseObject: __value_404,
@@ -475,7 +492,7 @@ namespace Runway
                                 {
                                     throw global::Runway.ApiException.Create(
                                         statusCode: __response.StatusCode,
-                                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
+                                        message: __content is { Length: > 0 } ? __content : __response.ReasonPhrase ?? string.Empty,
                                         innerException: __ex,
                                         responseBody: __content,
                                         responseHeaders: global::System.Linq.Enumerable.ToDictionary(
@@ -520,7 +537,7 @@ namespace Runway
 
                                     throw global::Runway.ApiException.Create(
                                         statusCode: __response.StatusCode,
-                                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
+                                        message: __content is { Length: > 0 } ? __content : __response.ReasonPhrase ?? string.Empty,
                                         innerException: __ex,
                                         responseBody: __content,
                                         responseHeaders: global::System.Linq.Enumerable.ToDictionary(
@@ -542,6 +559,9 @@ namespace Runway
         /// Start a new task to execute a published workflow. You can optionally provide custom input values via `nodeOutputs` to override the defaults defined in the workflow graph.
         /// </summary>
         /// <param name="id"></param>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -553,6 +573,7 @@ namespace Runway
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Runway.CreateWorkflowsResponse> CreateWorkflowsByIdAsync(
             global::System.Guid id,
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             global::System.Collections.Generic.Dictionary<string, object>? nodeOutputs = default,
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
@@ -565,6 +586,7 @@ namespace Runway
 
             return await CreateWorkflowsByIdAsync(
                 id: id,
+                xRunwayTags: xRunwayTags,
                 xRunwayVersion: xRunwayVersion,
                 request: __request,
                 requestOptions: requestOptions,

@@ -8,6 +8,9 @@ namespace Runway
         /// Create a multi-shot video<br/>
         /// Generate a multi-cut video from a story prompt (auto mode) or a custom shot list (custom mode).
         /// </summary>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -30,6 +33,7 @@ namespace Runway
         global::System.Threading.Tasks.Task<global::Runway.CreateRecipesMultiShotVideoResponse> CreateRecipesMultiShotVideoAsync(
 
             global::Runway.CreateRecipesMultiShotVideoRequest request,
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
@@ -37,6 +41,9 @@ namespace Runway
         /// Create a multi-shot video<br/>
         /// Generate a multi-cut video from a story prompt (auto mode) or a custom shot list (custom mode).
         /// </summary>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -59,6 +66,7 @@ namespace Runway
         global::System.Threading.Tasks.Task<global::Runway.AutoSDKHttpResponse<global::Runway.CreateRecipesMultiShotVideoResponse>> CreateRecipesMultiShotVideoAsResponseAsync(
 
             global::Runway.CreateRecipesMultiShotVideoRequest request,
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
@@ -66,6 +74,9 @@ namespace Runway
         /// Create a multi-shot video<br/>
         /// Generate a multi-cut video from a story prompt (auto mode) or a custom shot list (custom mode).
         /// </summary>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -73,6 +84,7 @@ namespace Runway
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Runway.CreateRecipesMultiShotVideoResponse> CreateRecipesMultiShotVideoAsync(
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);

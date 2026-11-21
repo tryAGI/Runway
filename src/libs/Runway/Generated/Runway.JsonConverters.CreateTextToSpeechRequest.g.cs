@@ -35,6 +35,20 @@ namespace Runway.JsonConverters
                                throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.CreateTextToSpeechRequestElevenV4)}");
                 elevenV4 = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
+            global::Runway.CreateTextToSpeechRequestGemini38FlashTts? gemini38FlashTts = default;
+            if (discriminator?.Model == global::Runway.CreateTextToSpeechRequestDiscriminatorModel.Gemini38FlashTts)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateTextToSpeechRequestGemini38FlashTts), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateTextToSpeechRequestGemini38FlashTts> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.CreateTextToSpeechRequestGemini38FlashTts)}");
+                gemini38FlashTts = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+            }
+            global::Runway.CreateTextToSpeechRequestGemini38FlashLiteTts? gemini38FlashLiteTts = default;
+            if (discriminator?.Model == global::Runway.CreateTextToSpeechRequestDiscriminatorModel.Gemini38FlashLiteTts)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateTextToSpeechRequestGemini38FlashLiteTts), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateTextToSpeechRequestGemini38FlashLiteTts> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.CreateTextToSpeechRequestGemini38FlashLiteTts)}");
+                gemini38FlashLiteTts = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+            }
             global::Runway.CreateTextToSpeechRequestElevenMultilingualV2? elevenMultilingualV2 = default;
             if (discriminator?.Model == global::Runway.CreateTextToSpeechRequestDiscriminatorModel.ElevenMultilingualV2)
             {
@@ -55,6 +69,10 @@ namespace Runway.JsonConverters
                 seedAudio,
 
                 elevenV4,
+
+                gemini38FlashTts,
+
+                gemini38FlashLiteTts,
 
                 elevenMultilingualV2,
 
@@ -84,6 +102,18 @@ namespace Runway.JsonConverters
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateTextToSpeechRequestElevenV4), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateTextToSpeechRequestElevenV4?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateTextToSpeechRequestElevenV4).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickElevenV4(), typeInfo);
+            }
+            else if (value.IsGemini38FlashTts)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateTextToSpeechRequestGemini38FlashTts), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateTextToSpeechRequestGemini38FlashTts?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateTextToSpeechRequestGemini38FlashTts).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickGemini38FlashTts(), typeInfo);
+            }
+            else if (value.IsGemini38FlashLiteTts)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateTextToSpeechRequestGemini38FlashLiteTts), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateTextToSpeechRequestGemini38FlashLiteTts?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateTextToSpeechRequestGemini38FlashLiteTts).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickGemini38FlashLiteTts(), typeInfo);
             }
             else if (value.IsElevenMultilingualV2)
             {
