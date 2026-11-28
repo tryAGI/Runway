@@ -17,30 +17,30 @@ namespace Runway.JsonConverters
 
 
             var readerCopy = reader;
-            var discriminatorTypeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceDiscriminator), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceDiscriminator> ??
-                            throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceDiscriminator)}");
+            var discriminatorTypeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateGenerateAudioRequestInputVoiceDiscriminator), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateGenerateAudioRequestInputVoiceDiscriminator> ??
+                            throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.CreateGenerateAudioRequestInputVoiceDiscriminator)}");
             var discriminator = global::System.Text.Json.JsonSerializer.Deserialize(ref readerCopy, discriminatorTypeInfo);
 
-            global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceRunwayPresetVoice? preset = default;
-            if (discriminator?.Type == global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceDiscriminatorType.Preset)
+            global::Runway.CreateGenerateAudioRequestInputVoiceAudioPresetVoice? preset = default;
+            if (discriminator?.Type == global::Runway.CreateGenerateAudioRequestInputVoiceDiscriminatorType.Preset)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceRunwayPresetVoice), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceRunwayPresetVoice> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceRunwayPresetVoice)}");
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateGenerateAudioRequestInputVoiceAudioPresetVoice), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateGenerateAudioRequestInputVoiceAudioPresetVoice> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.CreateGenerateAudioRequestInputVoiceAudioPresetVoice)}");
                 preset = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
-            global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceCustomVoice? custom = default;
-            if (discriminator?.Type == global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceDiscriminatorType.Custom)
+            global::Runway.CreateGenerateAudioRequestInputVoiceAudioReferenceVoice? referenceAudio = default;
+            if (discriminator?.Type == global::Runway.CreateGenerateAudioRequestInputVoiceDiscriminatorType.ReferenceAudio)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceCustomVoice), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceCustomVoice> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceCustomVoice)}");
-                custom = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateGenerateAudioRequestInputVoiceAudioReferenceVoice), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateGenerateAudioRequestInputVoiceAudioReferenceVoice> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.CreateGenerateAudioRequestInputVoiceAudioReferenceVoice)}");
+                referenceAudio = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
 
             var __value = new global::Runway.Voice3(
                 discriminator?.Type,
                 preset,
 
-                custom
+                referenceAudio
                 );
 
             return __value;
@@ -57,15 +57,15 @@ namespace Runway.JsonConverters
 
             if (value.IsPreset)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceRunwayPresetVoice), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceRunwayPresetVoice?> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceRunwayPresetVoice).Name}");
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateGenerateAudioRequestInputVoiceAudioPresetVoice), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateGenerateAudioRequestInputVoiceAudioPresetVoice?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateGenerateAudioRequestInputVoiceAudioPresetVoice).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickPreset(), typeInfo);
             }
-            else if (value.IsCustom)
+            else if (value.IsReferenceAudio)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceCustomVoice), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceCustomVoice?> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateAvatarVideosRequestSpeechTextInputVoiceCustomVoice).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickCustom(), typeInfo);
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateGenerateAudioRequestInputVoiceAudioReferenceVoice), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateGenerateAudioRequestInputVoiceAudioReferenceVoice?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateGenerateAudioRequestInputVoiceAudioReferenceVoice).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickReferenceAudio(), typeInfo);
             }
         }
     }

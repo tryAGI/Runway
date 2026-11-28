@@ -25,17 +25,36 @@ namespace Runway
         public required string PromptText { get; set; }
 
         /// <summary>
-        /// Output quality tier. The video keeps the input media framing.
+        /// The target output size. Use a pixel ratio such as `1280:720` or `auto_720p` / `auto_1080p` for adaptive framing.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ratio")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestKling4RatioJsonConverter))]
         public global::Runway.CreateVideoToVideoRequestKling4Ratio? Ratio { get; set; }
 
         /// <summary>
+        /// The duration of the edited video in seconds.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("duration")]
+        public int? Duration { get; set; }
+
+        /// <summary>
+        /// Optional first, middle, and last frames guiding the edit. Middle or last frames can be provided without a first frame.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("promptImage")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.AnyOfJsonConverter<string?, global::System.Collections.Generic.IList<object>>))]
+        public global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<object>>? PromptImage { get; set; }
+
+        /// <summary>
         /// Images of characters, objects or styles to use in the video. Up to 10 images in total, frames included.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("references")]
         public global::System.Collections.Generic.IList<global::Runway.CreateVideoToVideoRequestKling4Reference>? References { get; set; }
+
+        /// <summary>
+        /// Up to 4 videos whose style, motion or camera work should guide the output, together at most 30 seconds long.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("referenceVideos")]
+        public global::System.Collections.Generic.IList<object>? ReferenceVideos { get; set; }
 
         /// <summary>
         ///
@@ -61,10 +80,19 @@ namespace Runway
         /// A text prompt describing how to edit the video.
         /// </param>
         /// <param name="ratio">
-        /// Output quality tier. The video keeps the input media framing.
+        /// The target output size. Use a pixel ratio such as `1280:720` or `auto_720p` / `auto_1080p` for adaptive framing.
+        /// </param>
+        /// <param name="duration">
+        /// The duration of the edited video in seconds.
+        /// </param>
+        /// <param name="promptImage">
+        /// Optional first, middle, and last frames guiding the edit. Middle or last frames can be provided without a first frame.
         /// </param>
         /// <param name="references">
         /// Images of characters, objects or styles to use in the video. Up to 10 images in total, frames included.
+        /// </param>
+        /// <param name="referenceVideos">
+        /// Up to 4 videos whose style, motion or camera work should guide the output, together at most 30 seconds long.
         /// </param>
         /// <param name="model"></param>
 #if NET7_0_OR_GREATER
@@ -74,13 +102,19 @@ namespace Runway
             string videoUri,
             string promptText,
             global::Runway.CreateVideoToVideoRequestKling4Ratio? ratio,
+            int? duration,
+            global::Runway.AnyOf<string?, global::System.Collections.Generic.IList<object>>? promptImage,
             global::System.Collections.Generic.IList<global::Runway.CreateVideoToVideoRequestKling4Reference>? references,
+            global::System.Collections.Generic.IList<object>? referenceVideos,
             string model = "kling_4")
         {
             this.VideoUri = videoUri;
             this.PromptText = promptText ?? throw new global::System.ArgumentNullException(nameof(promptText));
             this.Ratio = ratio;
+            this.Duration = duration;
+            this.PromptImage = promptImage;
             this.References = references;
+            this.ReferenceVideos = referenceVideos;
             this.Model = model;
         }
 

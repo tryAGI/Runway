@@ -12,15 +12,15 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateAvatarsResponseAvatarProcessingVoiceDiscriminatorType? Type { get; }
+        public global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceDiscriminatorType? Type { get; }
 
         /// <summary>
         /// A preset voice from the Runway API.
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Runway.CreateAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponse? RunwayLivePreset { get; init; }
+        public global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceRunwayLivePresetVoiceResponse? RunwayLivePreset { get; init; }
 #else
-        public global::Runway.CreateAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponse? RunwayLivePreset { get; }
+        public global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceRunwayLivePresetVoiceResponse? RunwayLivePreset { get; }
 #endif
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace Runway
 #if NET6_0_OR_GREATER
             [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
 #endif
-            out global::Runway.CreateAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponse? value)
+            out global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceRunwayLivePresetVoiceResponse? value)
         {
             value = RunwayLivePreset;
             return IsRunwayLivePreset;
@@ -47,7 +47,7 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponse PickRunwayLivePreset() => RunwayLivePreset is { } value
+        public global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceRunwayLivePresetVoiceResponse PickRunwayLivePreset() => RunwayLivePreset is { } value
             ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'RunwayLivePreset' but the value was {ToString()}.");
 
@@ -55,9 +55,9 @@ namespace Runway
         /// A custom voice created via the Voices API.
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Runway.CreateAvatarsResponseAvatarProcessingVoiceCustomVoiceResponse? Custom { get; init; }
+        public global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceCustomVoiceResponse? Custom { get; init; }
 #else
-        public global::Runway.CreateAvatarsResponseAvatarProcessingVoiceCustomVoiceResponse? Custom { get; }
+        public global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceCustomVoiceResponse? Custom { get; }
 #endif
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace Runway
 #if NET6_0_OR_GREATER
             [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
 #endif
-            out global::Runway.CreateAvatarsResponseAvatarProcessingVoiceCustomVoiceResponse? value)
+            out global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceCustomVoiceResponse? value)
         {
             value = Custom;
             return IsCustom;
@@ -84,23 +84,23 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateAvatarsResponseAvatarProcessingVoiceCustomVoiceResponse PickCustom() => Custom is { } value
+        public global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceCustomVoiceResponse PickCustom() => Custom is { } value
             ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Custom' but the value was {ToString()}.");
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator Voice8(global::Runway.CreateAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponse value) => new Voice8((global::Runway.CreateAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponse?)value);
+        public static implicit operator Voice8(global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceRunwayLivePresetVoiceResponse value) => new Voice8((global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceRunwayLivePresetVoiceResponse?)value);
 
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator global::Runway.CreateAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponse?(Voice8 @this) => @this.RunwayLivePreset;
+        public static implicit operator global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceRunwayLivePresetVoiceResponse?(Voice8 @this) => @this.RunwayLivePreset;
 
         /// <summary>
         ///
         /// </summary>
-        public Voice8(global::Runway.CreateAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponse? value)
+        public Voice8(global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceRunwayLivePresetVoiceResponse? value)
         {
             RunwayLivePreset = value;
         }
@@ -108,22 +108,22 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public static Voice8 FromRunwayLivePreset(global::Runway.CreateAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponse? value) => new Voice8(value);
+        public static Voice8 FromRunwayLivePreset(global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceRunwayLivePresetVoiceResponse? value) => new Voice8(value);
 
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator Voice8(global::Runway.CreateAvatarsResponseAvatarProcessingVoiceCustomVoiceResponse value) => new Voice8((global::Runway.CreateAvatarsResponseAvatarProcessingVoiceCustomVoiceResponse?)value);
+        public static implicit operator Voice8(global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceCustomVoiceResponse value) => new Voice8((global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceCustomVoiceResponse?)value);
 
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator global::Runway.CreateAvatarsResponseAvatarProcessingVoiceCustomVoiceResponse?(Voice8 @this) => @this.Custom;
+        public static implicit operator global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceCustomVoiceResponse?(Voice8 @this) => @this.Custom;
 
         /// <summary>
         ///
         /// </summary>
-        public Voice8(global::Runway.CreateAvatarsResponseAvatarProcessingVoiceCustomVoiceResponse? value)
+        public Voice8(global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceCustomVoiceResponse? value)
         {
             Custom = value;
         }
@@ -131,15 +131,15 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public static Voice8 FromCustom(global::Runway.CreateAvatarsResponseAvatarProcessingVoiceCustomVoiceResponse? value) => new Voice8(value);
+        public static Voice8 FromCustom(global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceCustomVoiceResponse? value) => new Voice8(value);
 
         /// <summary>
         ///
         /// </summary>
         public Voice8(
-            global::Runway.CreateAvatarsResponseAvatarProcessingVoiceDiscriminatorType? type,
-            global::Runway.CreateAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponse? runwayLivePreset,
-            global::Runway.CreateAvatarsResponseAvatarProcessingVoiceCustomVoiceResponse? custom
+            global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceDiscriminatorType? type,
+            global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceRunwayLivePresetVoiceResponse? runwayLivePreset,
+            global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceCustomVoiceResponse? custom
             )
         {
             Type = type;
@@ -176,8 +176,8 @@ namespace Runway
         ///
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Runway.CreateAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponse, TResult>? runwayLivePreset = null,
-            global::System.Func<global::Runway.CreateAvatarsResponseAvatarProcessingVoiceCustomVoiceResponse, TResult>? custom = null,
+            global::System.Func<global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceRunwayLivePresetVoiceResponse, TResult>? runwayLivePreset = null,
+            global::System.Func<global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceCustomVoiceResponse, TResult>? custom = null,
             bool validate = true)
         {
             if (validate)
@@ -201,9 +201,9 @@ namespace Runway
         ///
         /// </summary>
         public void Match(
-            global::System.Action<global::Runway.CreateAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponse>? runwayLivePreset = null,
+            global::System.Action<global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceRunwayLivePresetVoiceResponse>? runwayLivePreset = null,
 
-            global::System.Action<global::Runway.CreateAvatarsResponseAvatarProcessingVoiceCustomVoiceResponse>? custom = null,
+            global::System.Action<global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceCustomVoiceResponse>? custom = null,
             bool validate = true)
         {
             if (validate)
@@ -225,8 +225,8 @@ namespace Runway
         ///
         /// </summary>
         public void Switch(
-            global::System.Action<global::Runway.CreateAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponse>? runwayLivePreset = null,
-            global::System.Action<global::Runway.CreateAvatarsResponseAvatarProcessingVoiceCustomVoiceResponse>? custom = null,
+            global::System.Action<global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceRunwayLivePresetVoiceResponse>? runwayLivePreset = null,
+            global::System.Action<global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceCustomVoiceResponse>? custom = null,
             bool validate = true)
         {
             if (validate)
@@ -252,9 +252,9 @@ namespace Runway
             var fields = new object?[]
             {
                 RunwayLivePreset,
-                typeof(global::Runway.CreateAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponse),
+                typeof(global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceRunwayLivePresetVoiceResponse),
                 Custom,
-                typeof(global::Runway.CreateAvatarsResponseAvatarProcessingVoiceCustomVoiceResponse),
+                typeof(global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceCustomVoiceResponse),
             };
             const int offset = unchecked((int)2166136261);
             const int prime = 16777619;
@@ -271,8 +271,8 @@ namespace Runway
         public bool Equals(Voice8 other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponse?>.Default.Equals(RunwayLivePreset, other.RunwayLivePreset) &&
-                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateAvatarsResponseAvatarProcessingVoiceCustomVoiceResponse?>.Default.Equals(Custom, other.Custom)
+                global::System.Collections.Generic.EqualityComparer<global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceRunwayLivePresetVoiceResponse?>.Default.Equals(RunwayLivePreset, other.RunwayLivePreset) &&
+                global::System.Collections.Generic.EqualityComparer<global::Runway.GetAvatarsResponseDataItemAvatarProcessingVoiceCustomVoiceResponse?>.Default.Equals(Custom, other.Custom)
                 ;
         }
 

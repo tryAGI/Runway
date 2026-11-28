@@ -25,8 +25,8 @@ namespace Runway
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Runway.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Runway.GetOrganizationWebappAuditLogsResponse> GetOrganizationWebappAuditLogsAsync(
-            int limit,
             string? cursor = default,
+            int? limit = default,
             global::System.Guid? organizationId = default,
             string? workspaceIds = default,
             string? actions = default,
@@ -57,8 +57,8 @@ namespace Runway
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Runway.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Runway.AutoSDKHttpResponse<global::Runway.GetOrganizationWebappAuditLogsResponse>> GetOrganizationWebappAuditLogsAsResponseAsync(
-            int limit,
             string? cursor = default,
+            int? limit = default,
             global::System.Guid? organizationId = default,
             string? workspaceIds = default,
             string? actions = default,

@@ -13,11 +13,10 @@ internal static partial class VoicesGetVoicesCommandApiCommand
         Description = @"Cursor from a previous response for fetching the next page of results.",
     };
 
-    private static Option<int> Limit { get; } = new(
+    private static Option<int?> Limit { get; } = new(
         name: @"--limit")
     {
         Description = @"The maximum number of items to return per page.",
-        Required = true,
     };
 
     private static Option<string> XRunwayVersion { get; } = new(
@@ -62,7 +61,7 @@ List custom voices for the authenticated organization with cursor-based paginati
             await CliRuntime.RunAsync(async () =>
             {
                         var cursor = parseResult.GetValue(Cursor);
-                        var limit = parseResult.GetRequiredValue(Limit);
+                        var limit = parseResult.GetValue(Limit);
                         var xRunwayVersion = parseResult.GetRequiredValue(XRunwayVersion);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 

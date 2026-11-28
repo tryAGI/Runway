@@ -15,7 +15,7 @@ namespace Runway
         public double? SchemaVersion { get; set; }
 
         /// <summary>
-        /// When mode is allow_new_except, ids are excluded; when allowlist_only, ids are the only allowed values. Each id must be a known public video or image model name (unknown ids are rejected on create/update).
+        /// When mode is allow_new_except, ids are excluded; when allowlist_only, ids are the only allowed values. Each id must be a known public video, image, audio, or mesh model name (unknown ids are rejected on create/update).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("models")]
         public global::Runway.PatchRoutersRequestSettingsModels? Models { get; set; }
@@ -52,7 +52,7 @@ namespace Runway
         /// Settings JSON schema version. Omit on write to use the current version; responses and stored snapshots always include it.
         /// </param>
         /// <param name="models">
-        /// When mode is allow_new_except, ids are excluded; when allowlist_only, ids are the only allowed values. Each id must be a known public video or image model name (unknown ids are rejected on create/update).
+        /// When mode is allow_new_except, ids are excluded; when allowlist_only, ids are the only allowed values. Each id must be a known public video, image, audio, or mesh model name (unknown ids are rejected on create/update).
         /// </param>
         /// <param name="maxCreditsPerGeneration">
         /// Per-modality credit caps to change. Set a modality to null to remove its cap, or set maxCreditsPerGeneration to null to remove every cap.

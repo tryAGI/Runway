@@ -28,8 +28,8 @@ namespace Runway
         /// }
         /// </remarks>
         global::System.Threading.Tasks.Task<global::Runway.GetRoutersResponse> GetRoutersAsync(
-            int limit,
             string? cursor = default,
+            int? limit = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
@@ -57,8 +57,8 @@ namespace Runway
         /// }
         /// </remarks>
         global::System.Threading.Tasks.Task<global::Runway.AutoSDKHttpResponse<global::Runway.GetRoutersResponse>> GetRoutersAsResponseAsync(
-            int limit,
             string? cursor = default,
+            int? limit = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);

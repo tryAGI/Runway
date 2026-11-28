@@ -4,24 +4,24 @@
 namespace Runway
 {
     /// <summary>
-    /// How the selected model resolves the voice: the requested preset or reference-audio clone, the model default for voiceless speech, or none for general audio.
+    /// How the selected model resolves the voice: the requested preset or reference-audio clone, the model default for voiceless speech, or none for general audio and music.
     /// </summary>
     public enum CreateGenerateAudioResponseRoutingResolvedInputVoice
     {
         /// <summary>
-        /// the requested preset or reference-audio clone, the model default for voiceless speech, or none for general audio.
+        /// the requested preset or reference-audio clone, the model default for voiceless speech, or none for general audio and music.
         /// </summary>
         Default,
         /// <summary>
-        /// the requested preset or reference-audio clone, the model default for voiceless speech, or none for general audio.
+        /// the requested preset or reference-audio clone, the model default for voiceless speech, or none for general audio and music.
         /// </summary>
         None,
         /// <summary>
-        /// the requested preset or reference-audio clone, the model default for voiceless speech, or none for general audio.
+        /// the requested preset or reference-audio clone, the model default for voiceless speech, or none for general audio and music.
         /// </summary>
         Preset,
         /// <summary>
-        /// the requested preset or reference-audio clone, the model default for voiceless speech, or none for general audio.
+        /// the requested preset or reference-audio clone, the model default for voiceless speech, or none for general audio and music.
         /// </summary>
         ReferenceAudio,
     }

@@ -8,6 +8,9 @@ namespace Runway
         /// Text/Image to Image<br/>
         /// This endpoint will start a new task to generate images from text and/or image(s)
         /// </summary>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -22,9 +25,10 @@ namespace Runway
         /// const client = new RunwayML();<br/>
         /// const task = await client.textToImage<br/>
         ///   .create({<br/>
-        ///     model: 'gen4_image',<br/>
+        ///     model: 'gpt_image_2_6_sunburst',<br/>
         ///     promptText: 'A serene landscape with mountains',<br/>
-        ///     ratio: '1360:768',<br/>
+        ///     ratio: '1920:1088',<br/>
+        ///     reasoningEffort: 'high',<br/>
         ///   })<br/>
         ///   .waitForTaskOutput();<br/>
         /// console.log(task);
@@ -32,6 +36,7 @@ namespace Runway
         global::System.Threading.Tasks.Task<global::Runway.CreateTextToImageResponse> CreateTextToImageAsync(
 
             global::Runway.CreateTextToImageRequest request,
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
@@ -39,6 +44,9 @@ namespace Runway
         /// Text/Image to Image<br/>
         /// This endpoint will start a new task to generate images from text and/or image(s)
         /// </summary>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -53,9 +61,10 @@ namespace Runway
         /// const client = new RunwayML();<br/>
         /// const task = await client.textToImage<br/>
         ///   .create({<br/>
-        ///     model: 'gen4_image',<br/>
+        ///     model: 'gpt_image_2_6_sunburst',<br/>
         ///     promptText: 'A serene landscape with mountains',<br/>
-        ///     ratio: '1360:768',<br/>
+        ///     ratio: '1920:1088',<br/>
+        ///     reasoningEffort: 'high',<br/>
         ///   })<br/>
         ///   .waitForTaskOutput();<br/>
         /// console.log(task);
@@ -63,6 +72,7 @@ namespace Runway
         global::System.Threading.Tasks.Task<global::Runway.AutoSDKHttpResponse<global::Runway.CreateTextToImageResponse>> CreateTextToImageAsResponseAsync(
 
             global::Runway.CreateTextToImageRequest request,
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
@@ -70,6 +80,9 @@ namespace Runway
         /// Text/Image to Image<br/>
         /// This endpoint will start a new task to generate images from text and/or image(s)
         /// </summary>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -77,6 +90,7 @@ namespace Runway
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Runway.CreateTextToImageResponse> CreateTextToImageAsync(
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);

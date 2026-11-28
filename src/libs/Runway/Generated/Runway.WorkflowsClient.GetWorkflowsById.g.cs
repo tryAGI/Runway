@@ -64,7 +64,7 @@ namespace Runway
         /// );<br/>
         /// console.log(workflow);
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Runway.GetWorkflowsResponse> GetWorkflowsByIdAsync(
+        public async global::System.Threading.Tasks.Task<global::Runway.GetWorkflowsResponse2> GetWorkflowsByIdAsync(
             global::System.Guid id,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
@@ -100,7 +100,7 @@ namespace Runway
         /// );<br/>
         /// console.log(workflow);
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Runway.AutoSDKHttpResponse<global::Runway.GetWorkflowsResponse>> GetWorkflowsByIdAsResponseAsync(
+        public async global::System.Threading.Tasks.Task<global::Runway.AutoSDKHttpResponse<global::Runway.GetWorkflowsResponse2>> GetWorkflowsByIdAsResponseAsync(
             global::System.Guid id,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
@@ -367,19 +367,19 @@ namespace Runway
                             {
                                 string? __content_404 = null;
                                 global::System.Exception? __exception_404 = null;
-                                global::Runway.GetWorkflowsResponse2? __value_404 = null;
+                                global::Runway.GetWorkflowsResponse3? __value_404 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_404 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_404 = global::Runway.GetWorkflowsResponse2.FromJson(__content_404, JsonSerializerContext);
+                                        __value_404 = __content_404 is not { Length: > 0 } ? null : global::Runway.GetWorkflowsResponse3.FromJson(__content_404, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_404 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_404 = global::Runway.GetWorkflowsResponse2.FromJson(__content_404, JsonSerializerContext);
+                                        __value_404 = __content_404 is not { Length: > 0 } ? null : global::Runway.GetWorkflowsResponse3.FromJson(__content_404, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -388,9 +388,9 @@ namespace Runway
                                 }
 
 
-                                throw global::Runway.ApiException<global::Runway.GetWorkflowsResponse2>.Create(
+                                throw global::Runway.ApiException<global::Runway.GetWorkflowsResponse3>.Create(
                                     statusCode: __response.StatusCode,
-                                    message: __content_404 ?? __response.ReasonPhrase ?? string.Empty,
+                                    message: __content_404 is { Length: > 0 } ? __content_404 : __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_404,
                                     responseBody: __content_404,
                                     responseObject: __value_404,
@@ -421,9 +421,9 @@ namespace Runway
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    var __value = global::Runway.GetWorkflowsResponse.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::Runway.GetWorkflowsResponse2.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
-                                    return new global::Runway.AutoSDKHttpResponse<global::Runway.GetWorkflowsResponse>(
+                                    return new global::Runway.AutoSDKHttpResponse<global::Runway.GetWorkflowsResponse2>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Runway.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -433,7 +433,7 @@ namespace Runway
                                 {
                                     throw global::Runway.ApiException.Create(
                                         statusCode: __response.StatusCode,
-                                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
+                                        message: __content is { Length: > 0 } ? __content : __response.ReasonPhrase ?? string.Empty,
                                         innerException: __ex,
                                         responseBody: __content,
                                         responseHeaders: global::System.Linq.Enumerable.ToDictionary(
@@ -453,9 +453,9 @@ namespace Runway
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    var __value = await global::Runway.GetWorkflowsResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::Runway.GetWorkflowsResponse2.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
-                                    return new global::Runway.AutoSDKHttpResponse<global::Runway.GetWorkflowsResponse>(
+                                    return new global::Runway.AutoSDKHttpResponse<global::Runway.GetWorkflowsResponse2>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Runway.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -478,7 +478,7 @@ namespace Runway
 
                                     throw global::Runway.ApiException.Create(
                                         statusCode: __response.StatusCode,
-                                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
+                                        message: __content is { Length: > 0 } ? __content : __response.ReasonPhrase ?? string.Empty,
                                         innerException: __ex,
                                         responseBody: __content,
                                         responseHeaders: global::System.Linq.Enumerable.ToDictionary(

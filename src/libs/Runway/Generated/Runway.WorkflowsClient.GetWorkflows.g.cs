@@ -59,7 +59,7 @@ namespace Runway
         /// const { data: workflows } = await client.workflows.list();<br/>
         /// console.log(workflows);
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Runway.GetWorkflowsResponse3> GetWorkflowsAsync(
+        public async global::System.Threading.Tasks.Task<global::Runway.GetWorkflowsResponse> GetWorkflowsAsync(
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -90,7 +90,7 @@ namespace Runway
         /// const { data: workflows } = await client.workflows.list();<br/>
         /// console.log(workflows);
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Runway.AutoSDKHttpResponse<global::Runway.GetWorkflowsResponse3>> GetWorkflowsAsResponseAsync(
+        public async global::System.Threading.Tasks.Task<global::Runway.AutoSDKHttpResponse<global::Runway.GetWorkflowsResponse>> GetWorkflowsAsResponseAsync(
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -371,9 +371,9 @@ namespace Runway
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    var __value = global::Runway.GetWorkflowsResponse3.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::Runway.GetWorkflowsResponse.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
-                                    return new global::Runway.AutoSDKHttpResponse<global::Runway.GetWorkflowsResponse3>(
+                                    return new global::Runway.AutoSDKHttpResponse<global::Runway.GetWorkflowsResponse>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Runway.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -383,7 +383,7 @@ namespace Runway
                                 {
                                     throw global::Runway.ApiException.Create(
                                         statusCode: __response.StatusCode,
-                                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
+                                        message: __content is { Length: > 0 } ? __content : __response.ReasonPhrase ?? string.Empty,
                                         innerException: __ex,
                                         responseBody: __content,
                                         responseHeaders: global::System.Linq.Enumerable.ToDictionary(
@@ -403,9 +403,9 @@ namespace Runway
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    var __value = await global::Runway.GetWorkflowsResponse3.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::Runway.GetWorkflowsResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
-                                    return new global::Runway.AutoSDKHttpResponse<global::Runway.GetWorkflowsResponse3>(
+                                    return new global::Runway.AutoSDKHttpResponse<global::Runway.GetWorkflowsResponse>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Runway.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -428,7 +428,7 @@ namespace Runway
 
                                     throw global::Runway.ApiException.Create(
                                         statusCode: __response.StatusCode,
-                                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
+                                        message: __content is { Length: > 0 } ? __content : __response.ReasonPhrase ?? string.Empty,
                                         innerException: __ex,
                                         responseBody: __content,
                                         responseHeaders: global::System.Linq.Enumerable.ToDictionary(

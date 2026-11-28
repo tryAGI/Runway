@@ -26,8 +26,8 @@ namespace Runway
         /// Optional voice override for TTS. If not provided, the avatar's configured voice is used.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("voice")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.Voice3JsonConverter))]
-        public global::Runway.Voice3? Voice { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.Voice2JsonConverter))]
+        public global::Runway.Voice2? Voice { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -50,7 +50,7 @@ namespace Runway
 #endif
         public CreateAvatarVideosRequestSpeechTextInput(
             string text,
-            global::Runway.Voice3? voice,
+            global::Runway.Voice2? voice,
             string type = "text")
         {
             this.Type = type;

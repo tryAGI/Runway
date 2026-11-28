@@ -8,6 +8,9 @@ namespace Runway
         /// Create a voice<br/>
         /// Create a custom voice from a text description, or clone a voice from an audio sample.
         /// </summary>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -33,6 +36,7 @@ namespace Runway
         global::System.Threading.Tasks.Task<global::Runway.CreateVoicesResponse> CreateVoicesAsync(
 
             global::Runway.CreateVoicesRequest request,
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
@@ -40,6 +44,9 @@ namespace Runway
         /// Create a voice<br/>
         /// Create a custom voice from a text description, or clone a voice from an audio sample.
         /// </summary>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -65,6 +72,7 @@ namespace Runway
         global::System.Threading.Tasks.Task<global::Runway.AutoSDKHttpResponse<global::Runway.CreateVoicesResponse>> CreateVoicesAsResponseAsync(
 
             global::Runway.CreateVoicesRequest request,
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
@@ -72,6 +80,9 @@ namespace Runway
         /// Create a voice<br/>
         /// Create a custom voice from a text description, or clone a voice from an audio sample.
         /// </summary>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -88,6 +99,7 @@ namespace Runway
         global::System.Threading.Tasks.Task<global::Runway.CreateVoicesResponse> CreateVoicesAsync(
             string name,
             global::Runway.From from,
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             string? description = default,
             global::Runway.AutoSDKRequestOptions? requestOptions = default,

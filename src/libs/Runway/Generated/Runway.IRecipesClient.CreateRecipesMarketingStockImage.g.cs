@@ -8,6 +8,9 @@ namespace Runway
         /// Create a marketing stock image<br/>
         /// Generate a polished marketing stock image from a text brief and optional brand logo image.
         /// </summary>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -29,6 +32,7 @@ namespace Runway
         global::System.Threading.Tasks.Task<global::Runway.CreateRecipesMarketingStockImageResponse> CreateRecipesMarketingStockImageAsync(
 
             global::Runway.CreateRecipesMarketingStockImageRequest request,
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
@@ -36,6 +40,9 @@ namespace Runway
         /// Create a marketing stock image<br/>
         /// Generate a polished marketing stock image from a text brief and optional brand logo image.
         /// </summary>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -57,6 +64,7 @@ namespace Runway
         global::System.Threading.Tasks.Task<global::Runway.AutoSDKHttpResponse<global::Runway.CreateRecipesMarketingStockImageResponse>> CreateRecipesMarketingStockImageAsResponseAsync(
 
             global::Runway.CreateRecipesMarketingStockImageRequest request,
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
@@ -64,6 +72,9 @@ namespace Runway
         /// Create a marketing stock image<br/>
         /// Generate a polished marketing stock image from a text brief and optional brand logo image.
         /// </summary>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -90,6 +101,7 @@ namespace Runway
         global::System.Threading.Tasks.Task<global::Runway.CreateRecipesMarketingStockImageResponse> CreateRecipesMarketingStockImageAsync(
             global::Runway.CreateRecipesMarketingStockImageRequestVersion version,
             string prompt,
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.CreateRecipesMarketingStockImageRequestReferenceImage? referenceImage = default,
             int? outputCount = default,

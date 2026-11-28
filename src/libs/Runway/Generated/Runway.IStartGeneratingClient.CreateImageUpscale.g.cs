@@ -8,6 +8,9 @@ namespace Runway
         /// Image upscale<br/>
         /// Upscale an image with Magnific precision upscaling. Each input dimension must be between 300px and 8000px. Output width and height are the input dimensions multiplied by `scaleFactor` (default 2). Output width times height cannot exceed 25,300,000 pixels (~25.3 million).
         /// </summary>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -32,6 +35,7 @@ namespace Runway
         global::System.Threading.Tasks.Task<global::Runway.CreateImageUpscaleResponse> CreateImageUpscaleAsync(
 
             global::Runway.CreateImageUpscaleRequest request,
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
@@ -39,6 +43,9 @@ namespace Runway
         /// Image upscale<br/>
         /// Upscale an image with Magnific precision upscaling. Each input dimension must be between 300px and 8000px. Output width and height are the input dimensions multiplied by `scaleFactor` (default 2). Output width times height cannot exceed 25,300,000 pixels (~25.3 million).
         /// </summary>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -63,6 +70,7 @@ namespace Runway
         global::System.Threading.Tasks.Task<global::Runway.AutoSDKHttpResponse<global::Runway.CreateImageUpscaleResponse>> CreateImageUpscaleAsResponseAsync(
 
             global::Runway.CreateImageUpscaleRequest request,
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
@@ -70,6 +78,9 @@ namespace Runway
         /// Image upscale<br/>
         /// Upscale an image with Magnific precision upscaling. Each input dimension must be between 300px and 8000px. Output width and height are the input dimensions multiplied by `scaleFactor` (default 2). Output width times height cannot exceed 25,300,000 pixels (~25.3 million).
         /// </summary>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -77,6 +88,7 @@ namespace Runway
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Runway.CreateImageUpscaleResponse> CreateImageUpscaleAsync(
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);

@@ -4,8 +4,7 @@
 namespace Runway
 {
     /// <summary>
-    /// Rendering quality. Higher qualities consume more credits. Defaults to `high`.<br/>
-    /// Default Value: high
+    /// Rendering quality. Higher qualities consume more credits. Defaults to `high`.
     /// </summary>
     public enum CreateTextToImageRequestGptImage26FlareQuality
     {

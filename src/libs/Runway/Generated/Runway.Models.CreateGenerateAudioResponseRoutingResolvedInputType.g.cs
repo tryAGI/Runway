@@ -15,6 +15,10 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
+        Music,
+        /// <summary>
+        ///
+        /// </summary>
         Speech,
     }
 
@@ -31,6 +35,7 @@ namespace Runway
             return value switch
             {
                 CreateGenerateAudioResponseRoutingResolvedInputType.Audio => "audio",
+                CreateGenerateAudioResponseRoutingResolvedInputType.Music => "music",
                 CreateGenerateAudioResponseRoutingResolvedInputType.Speech => "speech",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
@@ -43,6 +48,7 @@ namespace Runway
             return value switch
             {
                 "audio" => CreateGenerateAudioResponseRoutingResolvedInputType.Audio,
+                "music" => CreateGenerateAudioResponseRoutingResolvedInputType.Music,
                 "speech" => CreateGenerateAudioResponseRoutingResolvedInputType.Speech,
                 _ => null,
             };

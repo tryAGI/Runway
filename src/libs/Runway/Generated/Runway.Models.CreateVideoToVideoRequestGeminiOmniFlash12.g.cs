@@ -9,7 +9,7 @@ namespace Runway
     public sealed partial class CreateVideoToVideoRequestGeminiOmniFlash12
     {
         /// <summary>
-        /// The input video to use as a reference, extend, or edit. Reference and edited videos may be up to 10 seconds and extended videos up to 30 seconds.<br/>
+        /// The input video to use as a reference, extend, or edit.<br/>
         /// Example: https://example.com/video.mp4
         /// </summary>
         /// <example>https://example.com/video.mp4</example>
@@ -31,6 +31,13 @@ namespace Runway
         [global::System.Text.Json.Serialization.JsonPropertyName("mode")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestGeminiOmniFlash12ModeJsonConverter))]
         public global::Runway.CreateVideoToVideoRequestGeminiOmniFlash12Mode? Mode { get; set; }
+
+        /// <summary>
+        /// The output resolution when editing or extending a video. In reference mode, use ratio instead.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("resolution")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestGeminiOmniFlash12ResolutionJsonConverter))]
+        public global::Runway.CreateVideoToVideoRequestGeminiOmniFlash12Resolution? Resolution { get; set; }
 
         /// <summary>
         /// The resolution and aspect ratio of the output video.
@@ -69,7 +76,7 @@ namespace Runway
         /// Initializes a new instance of the <see cref="CreateVideoToVideoRequestGeminiOmniFlash12" /> class.
         /// </summary>
         /// <param name="videoUri">
-        /// The input video to use as a reference, extend, or edit. Reference and edited videos may be up to 10 seconds and extended videos up to 30 seconds.<br/>
+        /// The input video to use as a reference, extend, or edit.<br/>
         /// Example: https://example.com/video.mp4
         /// </param>
         /// <param name="promptText">
@@ -78,6 +85,9 @@ namespace Runway
         /// <param name="mode">
         /// How the input video is used. `reference` generates a new video guided by the input, `extend` continues it, and `edit` transforms it according to the prompt.<br/>
         /// Default Value: reference
+        /// </param>
+        /// <param name="resolution">
+        /// The output resolution when editing or extending a video. In reference mode, use ratio instead.
         /// </param>
         /// <param name="ratio">
         /// The resolution and aspect ratio of the output video.
@@ -96,6 +106,7 @@ namespace Runway
             string videoUri,
             string promptText,
             global::Runway.CreateVideoToVideoRequestGeminiOmniFlash12Mode? mode,
+            global::Runway.CreateVideoToVideoRequestGeminiOmniFlash12Resolution? resolution,
             global::Runway.CreateVideoToVideoRequestGeminiOmniFlash12Ratio? ratio,
             global::Runway.AnyOf<string, int?>? duration,
             global::System.Collections.Generic.IList<global::Runway.CreateVideoToVideoRequestGeminiOmniFlash12Reference>? references,
@@ -104,6 +115,7 @@ namespace Runway
             this.VideoUri = videoUri;
             this.PromptText = promptText ?? throw new global::System.ArgumentNullException(nameof(promptText));
             this.Mode = mode;
+            this.Resolution = resolution;
             this.Ratio = ratio;
             this.Duration = duration;
             this.References = references;

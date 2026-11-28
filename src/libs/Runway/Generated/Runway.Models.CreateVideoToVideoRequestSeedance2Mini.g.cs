@@ -18,7 +18,7 @@ namespace Runway
         public required string PromptVideo { get; set; }
 
         /// <summary>
-        /// An optional text prompt up to 3500 characters describing what should appear in the output.
+        /// An optional text prompt up to 10000 characters describing what should appear in the output.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("promptText")]
         public string? PromptText { get; set; }
@@ -35,6 +35,14 @@ namespace Runway
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("seed")]
         public int? Seed { get; set; }
+
+        /// <summary>
+        /// Bitrate of the output video. `high` keeps more detail with fewer compression artifacts, at a larger file size. Defaults to `standard`.<br/>
+        /// Default Value: standard
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("bitrate")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.CreateVideoToVideoRequestSeedance2MiniBitrateJsonConverter))]
+        public global::Runway.CreateVideoToVideoRequestSeedance2MiniBitrate? Bitrate { get; set; }
 
         /// <summary>
         /// Seconds of video to generate, or `auto` to let the model choose. `auto` is billed at the variant maximum up front; unused credits are refunded after the generation finishes.
@@ -89,7 +97,7 @@ namespace Runway
         /// Example: https://example.com/video.mp4
         /// </param>
         /// <param name="promptText">
-        /// An optional text prompt up to 3500 characters describing what should appear in the output.
+        /// An optional text prompt up to 10000 characters describing what should appear in the output.
         /// </param>
         /// <param name="audio">
         /// Whether to generate audio for the video.<br/>
@@ -97,6 +105,10 @@ namespace Runway
         /// </param>
         /// <param name="seed">
         /// If unspecified, a random number is chosen. Varying the seed integer is a way to get different results for the same other request parameters. Using the same seed integer for an identical request will produce similar results.
+        /// </param>
+        /// <param name="bitrate">
+        /// Bitrate of the output video. `high` keeps more detail with fewer compression artifacts, at a larger file size. Defaults to `standard`.<br/>
+        /// Default Value: standard
         /// </param>
         /// <param name="duration">
         /// Seconds of video to generate, or `auto` to let the model choose. `auto` is billed at the variant maximum up front; unused credits are refunded after the generation finishes.
@@ -122,6 +134,7 @@ namespace Runway
             string? promptText,
             bool? audio,
             int? seed,
+            global::Runway.CreateVideoToVideoRequestSeedance2MiniBitrate? bitrate,
             global::Runway.AnyOf<int?, string>? duration,
             global::Runway.CreateVideoToVideoRequestSeedance2MiniRatio? ratio,
             global::System.Collections.Generic.IList<global::Runway.CreateVideoToVideoRequestSeedance2MiniReference>? references,
@@ -133,6 +146,7 @@ namespace Runway
             this.PromptText = promptText;
             this.Audio = audio;
             this.Seed = seed;
+            this.Bitrate = bitrate;
             this.Duration = duration;
             this.Ratio = ratio;
             this.References = references;

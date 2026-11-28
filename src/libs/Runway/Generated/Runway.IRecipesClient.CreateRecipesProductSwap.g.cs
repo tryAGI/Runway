@@ -8,6 +8,9 @@ namespace Runway
         /// Swap a product in a reference video<br/>
         /// Replace the product in a reference video with a new product, preserving camera motion, lighting, and scene composition.
         /// </summary>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -34,6 +37,7 @@ namespace Runway
         global::System.Threading.Tasks.Task<global::Runway.CreateRecipesProductSwapResponse> CreateRecipesProductSwapAsync(
 
             global::Runway.CreateRecipesProductSwapRequest request,
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
@@ -41,6 +45,9 @@ namespace Runway
         /// Swap a product in a reference video<br/>
         /// Replace the product in a reference video with a new product, preserving camera motion, lighting, and scene composition.
         /// </summary>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -67,6 +74,7 @@ namespace Runway
         global::System.Threading.Tasks.Task<global::Runway.AutoSDKHttpResponse<global::Runway.CreateRecipesProductSwapResponse>> CreateRecipesProductSwapAsResponseAsync(
 
             global::Runway.CreateRecipesProductSwapRequest request,
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
@@ -74,6 +82,9 @@ namespace Runway
         /// Swap a product in a reference video<br/>
         /// Replace the product in a reference video with a new product, preserving camera motion, lighting, and scene composition.
         /// </summary>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -107,6 +118,7 @@ namespace Runway
             global::Runway.CreateRecipesProductSwapRequestReferenceVideo referenceVideo,
             global::Runway.CreateRecipesProductSwapRequestOriginalProductImage originalProductImage,
             global::System.Collections.Generic.IList<global::Runway.CreateRecipesProductSwapRequestNewProductImage> newProductImages,
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             int? duration = default,
             global::Runway.CreateRecipesProductSwapRequestResolution? resolution = default,

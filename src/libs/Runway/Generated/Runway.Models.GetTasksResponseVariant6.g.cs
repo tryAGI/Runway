@@ -37,6 +37,12 @@ namespace Runway
         public required global::System.Collections.Generic.IList<string> Output { get; set; }
 
         /// <summary>
+        /// Layer details for successful Seedream layer decomposition tasks. Each URI matches the output URL at the same index.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("layers")]
+        public global::System.Collections.Generic.IList<global::Runway.GetTasksResponseVariant6Layer>? Layers { get; set; }
+
+        /// <summary>
         /// Final cost in credits for a terminal task. Fully refunded tasks report 0; tasks that later returned unused prepaid credits report what remains charged.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("cost")]
@@ -64,6 +70,9 @@ namespace Runway
         /// <param name="cost">
         /// Final cost in credits for a terminal task. Fully refunded tasks report 0; tasks that later returned unused prepaid credits report what remains charged.
         /// </param>
+        /// <param name="layers">
+        /// Layer details for successful Seedream layer decomposition tasks. Each URI matches the output URL at the same index.
+        /// </param>
         /// <param name="status"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -73,12 +82,14 @@ namespace Runway
             global::System.DateTime createdAt,
             global::System.Collections.Generic.IList<string> output,
             global::Runway.GetTasksResponseVariant6Cost cost,
+            global::System.Collections.Generic.IList<global::Runway.GetTasksResponseVariant6Layer>? layers,
             string status = "SUCCEEDED")
         {
             this.Id = id;
             this.CreatedAt = createdAt;
             this.Status = status;
             this.Output = output ?? throw new global::System.ArgumentNullException(nameof(output));
+            this.Layers = layers;
             this.Cost = cost ?? throw new global::System.ArgumentNullException(nameof(cost));
         }
 

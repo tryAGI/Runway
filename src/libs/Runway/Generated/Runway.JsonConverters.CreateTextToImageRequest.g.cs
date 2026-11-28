@@ -161,12 +161,19 @@ namespace Runway.JsonConverters
                                throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.CreateTextToImageRequestRecraftV41Vector)}");
                 recraftV41Vector = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
-            global::Runway.CreateTextToImageRequestGemini25Flash? gemini25Flash = default;
-            if (discriminator?.Model == global::Runway.CreateTextToImageRequestDiscriminatorModel.Gemini25Flash)
+            global::Runway.CreateTextToImageRequestIdeogramVector? ideogramVector = default;
+            if (discriminator?.Model == global::Runway.CreateTextToImageRequestDiscriminatorModel.IdeogramVector)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateTextToImageRequestGemini25Flash), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateTextToImageRequestGemini25Flash> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.CreateTextToImageRequestGemini25Flash)}");
-                gemini25Flash = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateTextToImageRequestIdeogramVector), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateTextToImageRequestIdeogramVector> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.CreateTextToImageRequestIdeogramVector)}");
+                ideogramVector = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+            }
+            global::Runway.CreateTextToImageRequestGptImage26Sunburst? gptImage26Sunburst = default;
+            if (discriminator?.Model == global::Runway.CreateTextToImageRequestDiscriminatorModel.GptImage26Sunburst)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateTextToImageRequestGptImage26Sunburst), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateTextToImageRequestGptImage26Sunburst> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.CreateTextToImageRequestGptImage26Sunburst)}");
+                gptImage26Sunburst = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
             global::Runway.CreateTextToImageRequestGptImage26Flare? gptImage26Flare = default;
             if (discriminator?.Model == global::Runway.CreateTextToImageRequestDiscriminatorModel.GptImage26Flare)
@@ -175,12 +182,40 @@ namespace Runway.JsonConverters
                                throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.CreateTextToImageRequestGptImage26Flare)}");
                 gptImage26Flare = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
-            global::Runway.CreateTextToImageRequestGptImage26Sunburst? gptImage26Sunburst = default;
-            if (discriminator?.Model == global::Runway.CreateTextToImageRequestDiscriminatorModel.GptImage26Sunburst)
+            global::Runway.CreateTextToImageRequestSeedream5ProLayers? seedream5ProLayers = default;
+            if (discriminator?.Model == global::Runway.CreateTextToImageRequestDiscriminatorModel.Seedream5ProLayers)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateTextToImageRequestGptImage26Sunburst), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateTextToImageRequestGptImage26Sunburst> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.CreateTextToImageRequestGptImage26Sunburst)}");
-                gptImage26Sunburst = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateTextToImageRequestSeedream5ProLayers), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateTextToImageRequestSeedream5ProLayers> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.CreateTextToImageRequestSeedream5ProLayers)}");
+                seedream5ProLayers = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+            }
+            global::Runway.CreateTextToImageRequestSeedream55? seedream55 = default;
+            if (discriminator?.Model == global::Runway.CreateTextToImageRequestDiscriminatorModel.Seedream55)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateTextToImageRequestSeedream55), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateTextToImageRequestSeedream55> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.CreateTextToImageRequestSeedream55)}");
+                seedream55 = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+            }
+            global::Runway.CreateTextToImageRequestSeedream55Layers? seedream55Layers = default;
+            if (discriminator?.Model == global::Runway.CreateTextToImageRequestDiscriminatorModel.Seedream55Layers)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateTextToImageRequestSeedream55Layers), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateTextToImageRequestSeedream55Layers> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.CreateTextToImageRequestSeedream55Layers)}");
+                seedream55Layers = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+            }
+            global::Runway.CreateTextToImageRequestMinimaxH3Image? minimaxH3Image = default;
+            if (discriminator?.Model == global::Runway.CreateTextToImageRequestDiscriminatorModel.MinimaxH3Image)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateTextToImageRequestMinimaxH3Image), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateTextToImageRequestMinimaxH3Image> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.CreateTextToImageRequestMinimaxH3Image)}");
+                minimaxH3Image = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+            }
+            global::Runway.CreateTextToImageRequestGemini25Flash? gemini25Flash = default;
+            if (discriminator?.Model == global::Runway.CreateTextToImageRequestDiscriminatorModel.Gemini25Flash)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateTextToImageRequestGemini25Flash), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateTextToImageRequestGemini25Flash> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.CreateTextToImageRequestGemini25Flash)}");
+                gemini25Flash = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
 
             var __value = new global::Runway.CreateTextToImageRequest(
@@ -225,11 +260,21 @@ namespace Runway.JsonConverters
 
                 recraftV41Vector,
 
-                gemini25Flash,
+                ideogramVector,
+
+                gptImage26Sunburst,
 
                 gptImage26Flare,
 
-                gptImage26Sunburst
+                seedream5ProLayers,
+
+                seedream55,
+
+                seedream55Layers,
+
+                minimaxH3Image,
+
+                gemini25Flash
                 );
 
             return __value;
@@ -364,11 +409,17 @@ namespace Runway.JsonConverters
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateTextToImageRequestRecraftV41Vector).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickRecraftV41Vector(), typeInfo);
             }
-            else if (value.IsGemini25Flash)
+            else if (value.IsIdeogramVector)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateTextToImageRequestGemini25Flash), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateTextToImageRequestGemini25Flash?> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateTextToImageRequestGemini25Flash).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickGemini25Flash(), typeInfo);
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateTextToImageRequestIdeogramVector), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateTextToImageRequestIdeogramVector?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateTextToImageRequestIdeogramVector).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickIdeogramVector(), typeInfo);
+            }
+            else if (value.IsGptImage26Sunburst)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateTextToImageRequestGptImage26Sunburst), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateTextToImageRequestGptImage26Sunburst?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateTextToImageRequestGptImage26Sunburst).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickGptImage26Sunburst(), typeInfo);
             }
             else if (value.IsGptImage26Flare)
             {
@@ -376,11 +427,35 @@ namespace Runway.JsonConverters
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateTextToImageRequestGptImage26Flare).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickGptImage26Flare(), typeInfo);
             }
-            else if (value.IsGptImage26Sunburst)
+            else if (value.IsSeedream5ProLayers)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateTextToImageRequestGptImage26Sunburst), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateTextToImageRequestGptImage26Sunburst?> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateTextToImageRequestGptImage26Sunburst).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickGptImage26Sunburst(), typeInfo);
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateTextToImageRequestSeedream5ProLayers), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateTextToImageRequestSeedream5ProLayers?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateTextToImageRequestSeedream5ProLayers).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickSeedream5ProLayers(), typeInfo);
+            }
+            else if (value.IsSeedream55)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateTextToImageRequestSeedream55), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateTextToImageRequestSeedream55?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateTextToImageRequestSeedream55).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickSeedream55(), typeInfo);
+            }
+            else if (value.IsSeedream55Layers)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateTextToImageRequestSeedream55Layers), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateTextToImageRequestSeedream55Layers?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateTextToImageRequestSeedream55Layers).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickSeedream55Layers(), typeInfo);
+            }
+            else if (value.IsMinimaxH3Image)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateTextToImageRequestMinimaxH3Image), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateTextToImageRequestMinimaxH3Image?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateTextToImageRequestMinimaxH3Image).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickMinimaxH3Image(), typeInfo);
+            }
+            else if (value.IsGemini25Flash)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateTextToImageRequestGemini25Flash), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateTextToImageRequestGemini25Flash?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateTextToImageRequestGemini25Flash).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickGemini25Flash(), typeInfo);
             }
         }
     }

@@ -27,6 +27,26 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
+        AdCampaignSetupCancelled,
+        /// <summary>
+        ///
+        /// </summary>
+        AdCampaignSetupConfirmed,
+        /// <summary>
+        ///
+        /// </summary>
+        AdCampaignSetupDiscarded,
+        /// <summary>
+        ///
+        /// </summary>
+        AdCampaignSetupDrafted,
+        /// <summary>
+        ///
+        /// </summary>
+        AdCampaignSetupRetried,
+        /// <summary>
+        ///
+        /// </summary>
         AdConnectionAuthorizationStarted,
         /// <summary>
         ///
@@ -75,7 +95,31 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
+        AdStatusChanged,
+        /// <summary>
+        ///
+        /// </summary>
         AdWorkspaceOnboardingUpdated,
+        /// <summary>
+        ///
+        /// </summary>
+        AgentArtifactCommentCreated,
+        /// <summary>
+        ///
+        /// </summary>
+        AgentArtifactCreated,
+        /// <summary>
+        ///
+        /// </summary>
+        AgentArtifactSessionAttached,
+        /// <summary>
+        ///
+        /// </summary>
+        AgentArtifactSessionDetached,
+        /// <summary>
+        ///
+        /// </summary>
+        AgentArtifactVersionSaved,
         /// <summary>
         ///
         /// </summary>
@@ -128,6 +172,66 @@ namespace Runway
         ///
         /// </summary>
         AppStudioAiRunOpened,
+        /// <summary>
+        ///
+        /// </summary>
+        AppStudioAppCoOwnerChanged,
+        /// <summary>
+        ///
+        /// </summary>
+        AppStudioAppCreated,
+        /// <summary>
+        ///
+        /// </summary>
+        AppStudioAppDeleted,
+        /// <summary>
+        ///
+        /// </summary>
+        AppStudioAppPublished,
+        /// <summary>
+        ///
+        /// </summary>
+        AppStudioAppRenamed,
+        /// <summary>
+        ///
+        /// </summary>
+        AppStudioAppRunwayAccessGranted,
+        /// <summary>
+        ///
+        /// </summary>
+        AppStudioAppRunwayAccessRevoked,
+        /// <summary>
+        ///
+        /// </summary>
+        AppStudioAppSecretChanged,
+        /// <summary>
+        ///
+        /// </summary>
+        AppStudioAppVisibilityChanged,
+        /// <summary>
+        ///
+        /// </summary>
+        AppStudioConnectorAppGranted,
+        /// <summary>
+        ///
+        /// </summary>
+        AppStudioConnectorAppRevoked,
+        /// <summary>
+        ///
+        /// </summary>
+        AppStudioConnectorConnected,
+        /// <summary>
+        ///
+        /// </summary>
+        AppStudioConnectorDisconnected,
+        /// <summary>
+        ///
+        /// </summary>
+        AppStudioConnectorPolicyChanged,
+        /// <summary>
+        ///
+        /// </summary>
+        AppStudioConnectorToolCalled,
         /// <summary>
         ///
         /// </summary>
@@ -307,6 +411,10 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
+        PromotionCreditsGranted,
+        /// <summary>
+        ///
+        /// </summary>
         SSOConfigCreated,
         /// <summary>
         ///
@@ -328,6 +436,10 @@ namespace Runway
         ///
         /// </summary>
         SeatsTransferred,
+        /// <summary>
+        ///
+        /// </summary>
+        SessionMadePrivateByAdmin,
         /// <summary>
         ///
         /// </summary>
@@ -462,6 +574,11 @@ namespace Runway
                 GetOrganizationWebappAuditLogsResponseDataItemAction.AccountLinkDeleted => "AccountLinkDeleted",
                 GetOrganizationWebappAuditLogsResponseDataItemAction.AdAccountSelectionUpdated => "AdAccountSelectionUpdated",
                 GetOrganizationWebappAuditLogsResponseDataItemAction.AdAccountSyncRequested => "AdAccountSyncRequested",
+                GetOrganizationWebappAuditLogsResponseDataItemAction.AdCampaignSetupCancelled => "AdCampaignSetupCancelled",
+                GetOrganizationWebappAuditLogsResponseDataItemAction.AdCampaignSetupConfirmed => "AdCampaignSetupConfirmed",
+                GetOrganizationWebappAuditLogsResponseDataItemAction.AdCampaignSetupDiscarded => "AdCampaignSetupDiscarded",
+                GetOrganizationWebappAuditLogsResponseDataItemAction.AdCampaignSetupDrafted => "AdCampaignSetupDrafted",
+                GetOrganizationWebappAuditLogsResponseDataItemAction.AdCampaignSetupRetried => "AdCampaignSetupRetried",
                 GetOrganizationWebappAuditLogsResponseDataItemAction.AdConnectionAuthorizationStarted => "AdConnectionAuthorizationStarted",
                 GetOrganizationWebappAuditLogsResponseDataItemAction.AdConnectionConnected => "AdConnectionConnected",
                 GetOrganizationWebappAuditLogsResponseDataItemAction.AdConnectionDisconnected => "AdConnectionDisconnected",
@@ -474,7 +591,13 @@ namespace Runway
                 GetOrganizationWebappAuditLogsResponseDataItemAction.AdPublishBatchCancelled => "AdPublishBatchCancelled",
                 GetOrganizationWebappAuditLogsResponseDataItemAction.AdPublishBatchQueued => "AdPublishBatchQueued",
                 GetOrganizationWebappAuditLogsResponseDataItemAction.AdPublishBatchRetried => "AdPublishBatchRetried",
+                GetOrganizationWebappAuditLogsResponseDataItemAction.AdStatusChanged => "AdStatusChanged",
                 GetOrganizationWebappAuditLogsResponseDataItemAction.AdWorkspaceOnboardingUpdated => "AdWorkspaceOnboardingUpdated",
+                GetOrganizationWebappAuditLogsResponseDataItemAction.AgentArtifactCommentCreated => "AgentArtifactCommentCreated",
+                GetOrganizationWebappAuditLogsResponseDataItemAction.AgentArtifactCreated => "AgentArtifactCreated",
+                GetOrganizationWebappAuditLogsResponseDataItemAction.AgentArtifactSessionAttached => "AgentArtifactSessionAttached",
+                GetOrganizationWebappAuditLogsResponseDataItemAction.AgentArtifactSessionDetached => "AgentArtifactSessionDetached",
+                GetOrganizationWebappAuditLogsResponseDataItemAction.AgentArtifactVersionSaved => "AgentArtifactVersionSaved",
                 GetOrganizationWebappAuditLogsResponseDataItemAction.AgentConnectorAssetExported => "AgentConnectorAssetExported",
                 GetOrganizationWebappAuditLogsResponseDataItemAction.AgentConnectorConnected => "AgentConnectorConnected",
                 GetOrganizationWebappAuditLogsResponseDataItemAction.AgentConnectorDisconnected => "AgentConnectorDisconnected",
@@ -488,6 +611,21 @@ namespace Runway
                 GetOrganizationWebappAuditLogsResponseDataItemAction.AgentSessionShared => "AgentSessionShared",
                 GetOrganizationWebappAuditLogsResponseDataItemAction.AgentSessionUnshared => "AgentSessionUnshared",
                 GetOrganizationWebappAuditLogsResponseDataItemAction.AppStudioAiRunOpened => "AppStudioAiRunOpened",
+                GetOrganizationWebappAuditLogsResponseDataItemAction.AppStudioAppCoOwnerChanged => "AppStudioAppCoOwnerChanged",
+                GetOrganizationWebappAuditLogsResponseDataItemAction.AppStudioAppCreated => "AppStudioAppCreated",
+                GetOrganizationWebappAuditLogsResponseDataItemAction.AppStudioAppDeleted => "AppStudioAppDeleted",
+                GetOrganizationWebappAuditLogsResponseDataItemAction.AppStudioAppPublished => "AppStudioAppPublished",
+                GetOrganizationWebappAuditLogsResponseDataItemAction.AppStudioAppRenamed => "AppStudioAppRenamed",
+                GetOrganizationWebappAuditLogsResponseDataItemAction.AppStudioAppRunwayAccessGranted => "AppStudioAppRunwayAccessGranted",
+                GetOrganizationWebappAuditLogsResponseDataItemAction.AppStudioAppRunwayAccessRevoked => "AppStudioAppRunwayAccessRevoked",
+                GetOrganizationWebappAuditLogsResponseDataItemAction.AppStudioAppSecretChanged => "AppStudioAppSecretChanged",
+                GetOrganizationWebappAuditLogsResponseDataItemAction.AppStudioAppVisibilityChanged => "AppStudioAppVisibilityChanged",
+                GetOrganizationWebappAuditLogsResponseDataItemAction.AppStudioConnectorAppGranted => "AppStudioConnectorAppGranted",
+                GetOrganizationWebappAuditLogsResponseDataItemAction.AppStudioConnectorAppRevoked => "AppStudioConnectorAppRevoked",
+                GetOrganizationWebappAuditLogsResponseDataItemAction.AppStudioConnectorConnected => "AppStudioConnectorConnected",
+                GetOrganizationWebappAuditLogsResponseDataItemAction.AppStudioConnectorDisconnected => "AppStudioConnectorDisconnected",
+                GetOrganizationWebappAuditLogsResponseDataItemAction.AppStudioConnectorPolicyChanged => "AppStudioConnectorPolicyChanged",
+                GetOrganizationWebappAuditLogsResponseDataItemAction.AppStudioConnectorToolCalled => "AppStudioConnectorToolCalled",
                 GetOrganizationWebappAuditLogsResponseDataItemAction.AssetCreated => "AssetCreated",
                 GetOrganizationWebappAuditLogsResponseDataItemAction.AssetDeleted => "AssetDeleted",
                 GetOrganizationWebappAuditLogsResponseDataItemAction.AssetDownloaded => "AssetDownloaded",
@@ -532,12 +670,14 @@ namespace Runway
                 GetOrganizationWebappAuditLogsResponseDataItemAction.PermissionGranted => "PermissionGranted",
                 GetOrganizationWebappAuditLogsResponseDataItemAction.PermissionRevoked => "PermissionRevoked",
                 GetOrganizationWebappAuditLogsResponseDataItemAction.PermissionUpdated => "PermissionUpdated",
+                GetOrganizationWebappAuditLogsResponseDataItemAction.PromotionCreditsGranted => "PromotionCreditsGranted",
                 GetOrganizationWebappAuditLogsResponseDataItemAction.SSOConfigCreated => "SSOConfigCreated",
                 GetOrganizationWebappAuditLogsResponseDataItemAction.SSODomainRegistrationCloned => "SSODomainRegistrationCloned",
                 GetOrganizationWebappAuditLogsResponseDataItemAction.SSOLogin => "SSOLogin",
                 GetOrganizationWebappAuditLogsResponseDataItemAction.SSOUserAutoAddedToTeam => "SSOUserAutoAddedToTeam",
                 GetOrganizationWebappAuditLogsResponseDataItemAction.SSOUserProvisioned => "SSOUserProvisioned",
                 GetOrganizationWebappAuditLogsResponseDataItemAction.SeatsTransferred => "SeatsTransferred",
+                GetOrganizationWebappAuditLogsResponseDataItemAction.SessionMadePrivateByAdmin => "SessionMadePrivateByAdmin",
                 GetOrganizationWebappAuditLogsResponseDataItemAction.SessionShared => "SessionShared",
                 GetOrganizationWebappAuditLogsResponseDataItemAction.SessionUnshared => "SessionUnshared",
                 GetOrganizationWebappAuditLogsResponseDataItemAction.StudioSessionOpened => "StudioSessionOpened",
@@ -581,6 +721,11 @@ namespace Runway
                 "AccountLinkDeleted" => GetOrganizationWebappAuditLogsResponseDataItemAction.AccountLinkDeleted,
                 "AdAccountSelectionUpdated" => GetOrganizationWebappAuditLogsResponseDataItemAction.AdAccountSelectionUpdated,
                 "AdAccountSyncRequested" => GetOrganizationWebappAuditLogsResponseDataItemAction.AdAccountSyncRequested,
+                "AdCampaignSetupCancelled" => GetOrganizationWebappAuditLogsResponseDataItemAction.AdCampaignSetupCancelled,
+                "AdCampaignSetupConfirmed" => GetOrganizationWebappAuditLogsResponseDataItemAction.AdCampaignSetupConfirmed,
+                "AdCampaignSetupDiscarded" => GetOrganizationWebappAuditLogsResponseDataItemAction.AdCampaignSetupDiscarded,
+                "AdCampaignSetupDrafted" => GetOrganizationWebappAuditLogsResponseDataItemAction.AdCampaignSetupDrafted,
+                "AdCampaignSetupRetried" => GetOrganizationWebappAuditLogsResponseDataItemAction.AdCampaignSetupRetried,
                 "AdConnectionAuthorizationStarted" => GetOrganizationWebappAuditLogsResponseDataItemAction.AdConnectionAuthorizationStarted,
                 "AdConnectionConnected" => GetOrganizationWebappAuditLogsResponseDataItemAction.AdConnectionConnected,
                 "AdConnectionDisconnected" => GetOrganizationWebappAuditLogsResponseDataItemAction.AdConnectionDisconnected,
@@ -593,7 +738,13 @@ namespace Runway
                 "AdPublishBatchCancelled" => GetOrganizationWebappAuditLogsResponseDataItemAction.AdPublishBatchCancelled,
                 "AdPublishBatchQueued" => GetOrganizationWebappAuditLogsResponseDataItemAction.AdPublishBatchQueued,
                 "AdPublishBatchRetried" => GetOrganizationWebappAuditLogsResponseDataItemAction.AdPublishBatchRetried,
+                "AdStatusChanged" => GetOrganizationWebappAuditLogsResponseDataItemAction.AdStatusChanged,
                 "AdWorkspaceOnboardingUpdated" => GetOrganizationWebappAuditLogsResponseDataItemAction.AdWorkspaceOnboardingUpdated,
+                "AgentArtifactCommentCreated" => GetOrganizationWebappAuditLogsResponseDataItemAction.AgentArtifactCommentCreated,
+                "AgentArtifactCreated" => GetOrganizationWebappAuditLogsResponseDataItemAction.AgentArtifactCreated,
+                "AgentArtifactSessionAttached" => GetOrganizationWebappAuditLogsResponseDataItemAction.AgentArtifactSessionAttached,
+                "AgentArtifactSessionDetached" => GetOrganizationWebappAuditLogsResponseDataItemAction.AgentArtifactSessionDetached,
+                "AgentArtifactVersionSaved" => GetOrganizationWebappAuditLogsResponseDataItemAction.AgentArtifactVersionSaved,
                 "AgentConnectorAssetExported" => GetOrganizationWebappAuditLogsResponseDataItemAction.AgentConnectorAssetExported,
                 "AgentConnectorConnected" => GetOrganizationWebappAuditLogsResponseDataItemAction.AgentConnectorConnected,
                 "AgentConnectorDisconnected" => GetOrganizationWebappAuditLogsResponseDataItemAction.AgentConnectorDisconnected,
@@ -607,6 +758,21 @@ namespace Runway
                 "AgentSessionShared" => GetOrganizationWebappAuditLogsResponseDataItemAction.AgentSessionShared,
                 "AgentSessionUnshared" => GetOrganizationWebappAuditLogsResponseDataItemAction.AgentSessionUnshared,
                 "AppStudioAiRunOpened" => GetOrganizationWebappAuditLogsResponseDataItemAction.AppStudioAiRunOpened,
+                "AppStudioAppCoOwnerChanged" => GetOrganizationWebappAuditLogsResponseDataItemAction.AppStudioAppCoOwnerChanged,
+                "AppStudioAppCreated" => GetOrganizationWebappAuditLogsResponseDataItemAction.AppStudioAppCreated,
+                "AppStudioAppDeleted" => GetOrganizationWebappAuditLogsResponseDataItemAction.AppStudioAppDeleted,
+                "AppStudioAppPublished" => GetOrganizationWebappAuditLogsResponseDataItemAction.AppStudioAppPublished,
+                "AppStudioAppRenamed" => GetOrganizationWebappAuditLogsResponseDataItemAction.AppStudioAppRenamed,
+                "AppStudioAppRunwayAccessGranted" => GetOrganizationWebappAuditLogsResponseDataItemAction.AppStudioAppRunwayAccessGranted,
+                "AppStudioAppRunwayAccessRevoked" => GetOrganizationWebappAuditLogsResponseDataItemAction.AppStudioAppRunwayAccessRevoked,
+                "AppStudioAppSecretChanged" => GetOrganizationWebappAuditLogsResponseDataItemAction.AppStudioAppSecretChanged,
+                "AppStudioAppVisibilityChanged" => GetOrganizationWebappAuditLogsResponseDataItemAction.AppStudioAppVisibilityChanged,
+                "AppStudioConnectorAppGranted" => GetOrganizationWebappAuditLogsResponseDataItemAction.AppStudioConnectorAppGranted,
+                "AppStudioConnectorAppRevoked" => GetOrganizationWebappAuditLogsResponseDataItemAction.AppStudioConnectorAppRevoked,
+                "AppStudioConnectorConnected" => GetOrganizationWebappAuditLogsResponseDataItemAction.AppStudioConnectorConnected,
+                "AppStudioConnectorDisconnected" => GetOrganizationWebappAuditLogsResponseDataItemAction.AppStudioConnectorDisconnected,
+                "AppStudioConnectorPolicyChanged" => GetOrganizationWebappAuditLogsResponseDataItemAction.AppStudioConnectorPolicyChanged,
+                "AppStudioConnectorToolCalled" => GetOrganizationWebappAuditLogsResponseDataItemAction.AppStudioConnectorToolCalled,
                 "AssetCreated" => GetOrganizationWebappAuditLogsResponseDataItemAction.AssetCreated,
                 "AssetDeleted" => GetOrganizationWebappAuditLogsResponseDataItemAction.AssetDeleted,
                 "AssetDownloaded" => GetOrganizationWebappAuditLogsResponseDataItemAction.AssetDownloaded,
@@ -651,12 +817,14 @@ namespace Runway
                 "PermissionGranted" => GetOrganizationWebappAuditLogsResponseDataItemAction.PermissionGranted,
                 "PermissionRevoked" => GetOrganizationWebappAuditLogsResponseDataItemAction.PermissionRevoked,
                 "PermissionUpdated" => GetOrganizationWebappAuditLogsResponseDataItemAction.PermissionUpdated,
+                "PromotionCreditsGranted" => GetOrganizationWebappAuditLogsResponseDataItemAction.PromotionCreditsGranted,
                 "SSOConfigCreated" => GetOrganizationWebappAuditLogsResponseDataItemAction.SSOConfigCreated,
                 "SSODomainRegistrationCloned" => GetOrganizationWebappAuditLogsResponseDataItemAction.SSODomainRegistrationCloned,
                 "SSOLogin" => GetOrganizationWebappAuditLogsResponseDataItemAction.SSOLogin,
                 "SSOUserAutoAddedToTeam" => GetOrganizationWebappAuditLogsResponseDataItemAction.SSOUserAutoAddedToTeam,
                 "SSOUserProvisioned" => GetOrganizationWebappAuditLogsResponseDataItemAction.SSOUserProvisioned,
                 "SeatsTransferred" => GetOrganizationWebappAuditLogsResponseDataItemAction.SeatsTransferred,
+                "SessionMadePrivateByAdmin" => GetOrganizationWebappAuditLogsResponseDataItemAction.SessionMadePrivateByAdmin,
                 "SessionShared" => GetOrganizationWebappAuditLogsResponseDataItemAction.SessionShared,
                 "SessionUnshared" => GetOrganizationWebappAuditLogsResponseDataItemAction.SessionUnshared,
                 "StudioSessionOpened" => GetOrganizationWebappAuditLogsResponseDataItemAction.StudioSessionOpened,

@@ -13,6 +13,14 @@ internal static partial class VoicesCreateVoicesCommandApiCommand
         Description = @"A name for the voice.",
     };
 
+    private static Option<string?> XRunwayTags { get; } = new(
+        name: @"--x-runway-tags")
+    {
+        Description = @"Comma-separated tags to attribute this generation's credit usage to, so you can filter and break down usage with `POST /v1/organization/usage`. Each tag is a plain label (`campaign-q4`) or a `key:value` pair (`team:growth`), split at the first colon. Tags are case-insensitive and stored lowercase. Up to 10 tags, each up to 64 characters of letters, numbers, and `_ - . / :`. An invalid tag rejects the request with a 400. Workflow runs pass their tags on to every generation they start.
+
+**Tags appear in usage reports. Do not put end-user PII (like names or emails) in them.**",
+    };
+
     private static Option<string> XRunwayVersion { get; } = new(
         name: @"--x-runway-version")
     {
@@ -92,6 +100,7 @@ internal static partial class VoicesCreateVoicesCommandApiCommand
         var command = new Command(commandName ?? @"create-voices", @"Create a voice
 Create a custom voice from a text description, or clone a voice from an audio sample.");
                         command.Arguments.Add(NameOption);
+                        command.Options.Add(XRunwayTags);
                         command.Options.Add(XRunwayVersion);
                         command.Options.Add(DescriptionOption);
                         command.Options.Add(From);
@@ -123,6 +132,7 @@ Create a custom voice from a text description, or clone a voice from an audio sa
                             global::Runway.SourceGenerationContext.Default,
                             cancellationToken).ConfigureAwait(false);
                         var name = parseResult.GetRequiredValue(NameOption);
+                        var xRunwayTags = parseResult.GetValue(XRunwayTags);
                         var xRunwayVersion = parseResult.GetRequiredValue(XRunwayVersion);
                         var description = CliRuntime.WasSpecified(parseResult, DescriptionOption) ? parseResult.GetValue(DescriptionOption) : (__requestBase is { } __DescriptionBaseValue ? __DescriptionBaseValue.Description : default);
                         var from = parseResult.GetRequiredValue(From);          var wait = parseResult.GetValue(Wait);
@@ -134,6 +144,7 @@ Create a custom voice from a text description, or clone a voice from an audio sa
                                 {
                                 var createResponse = await client.Voices.CreateVoicesAsync(
                                     name: name,
+                                    xRunwayTags: xRunwayTags,
                                     xRunwayVersion: xRunwayVersion,
                                     description: description,
                                     from: from,
@@ -164,6 +175,7 @@ Create a custom voice from a text description, or clone a voice from an audio sa
 
                                 var response = await client.Voices.CreateVoicesAsync(
                                     name: name,
+                                    xRunwayTags: xRunwayTags,
                                     xRunwayVersion: xRunwayVersion,
                                     description: description,
                                     from: from,

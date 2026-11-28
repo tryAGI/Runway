@@ -27,6 +27,12 @@ namespace Runway
         public int? Audio { get; set; }
 
         /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("mesh")]
+        public int? Mesh { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -38,17 +44,20 @@ namespace Runway
         /// <param name="video"></param>
         /// <param name="image"></param>
         /// <param name="audio"></param>
+        /// <param name="mesh"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public GetRoutersResponseSettingsMaxCreditsPerGeneration(
             int? video,
             int? image,
-            int? audio)
+            int? audio,
+            int? mesh)
         {
             this.Video = video;
             this.Image = image;
             this.Audio = audio;
+            this.Mesh = mesh;
         }
 
         /// <summary>

@@ -4,7 +4,7 @@
 namespace Runway
 {
     /// <summary>
-    /// Background treatment. Defaults to `auto`, which lets the model pick. Use `transparent` to generate a PNG with an alpha-channel background.
+    /// Background treatment. Defaults to `auto`, which lets the model pick. Use `transparent` for an alpha-channel background, which `jpeg` output does not support.
     /// </summary>
     public enum CreateTextToImageRequestGptImage26SunburstBackground
     {

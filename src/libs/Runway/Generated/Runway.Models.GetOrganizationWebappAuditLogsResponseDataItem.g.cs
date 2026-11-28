@@ -64,6 +64,13 @@ namespace Runway
         public required string WorkspaceName { get; set; }
 
         /// <summary>
+        /// Action-specific details.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("metadata")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::Runway.GetOrganizationWebappAuditLogsResponseDataItemMetadata Metadata { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -90,6 +97,9 @@ namespace Runway
         /// <param name="workspaceName">
         /// Name of the owning workspace.
         /// </param>
+        /// <param name="metadata">
+        /// Action-specific details.
+        /// </param>
         /// <param name="actorUsername">
         /// Username of the user who performed the action.
         /// </param>
@@ -106,6 +116,7 @@ namespace Runway
             bool actorDeleted,
             int workspaceId,
             string workspaceName,
+            global::Runway.GetOrganizationWebappAuditLogsResponseDataItemMetadata metadata,
             string? actorUsername,
             string? actorEmail)
         {
@@ -117,6 +128,7 @@ namespace Runway
             this.ActorDeleted = actorDeleted;
             this.WorkspaceId = workspaceId;
             this.WorkspaceName = workspaceName ?? throw new global::System.ArgumentNullException(nameof(workspaceName));
+            this.Metadata = metadata ?? throw new global::System.ArgumentNullException(nameof(metadata));
         }
 
         /// <summary>

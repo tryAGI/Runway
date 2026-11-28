@@ -47,6 +47,14 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
+        Hailuo3Highspeed,
+        /// <summary>
+        ///
+        /// </summary>
+        Hailuo3Lite,
+        /// <summary>
+        ///
+        /// </summary>
         Happyhorse10,
         /// <summary>
         ///
@@ -95,6 +103,10 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
+        Seedance25Flash,
+        /// <summary>
+        ///
+        /// </summary>
         Seedance2Fast,
         /// <summary>
         ///
@@ -139,6 +151,8 @@ namespace Runway
                 CreateImageToVideoRequestDiscriminatorModel.GrokImagine15Lite => "grok_imagine_1_5_lite",
                 CreateImageToVideoRequestDiscriminatorModel.H3Max => "h3_max",
                 CreateImageToVideoRequestDiscriminatorModel.Hailuo3 => "hailuo3",
+                CreateImageToVideoRequestDiscriminatorModel.Hailuo3Highspeed => "hailuo3_highspeed",
+                CreateImageToVideoRequestDiscriminatorModel.Hailuo3Lite => "hailuo3_lite",
                 CreateImageToVideoRequestDiscriminatorModel.Happyhorse10 => "happyhorse_1_0",
                 CreateImageToVideoRequestDiscriminatorModel.Kling25TurboPro => "kling2.5_turbo_pro",
                 CreateImageToVideoRequestDiscriminatorModel.Kling304k => "kling3.0_4k",
@@ -151,6 +165,7 @@ namespace Runway
                 CreateImageToVideoRequestDiscriminatorModel.Kling4Flash => "kling_4_flash",
                 CreateImageToVideoRequestDiscriminatorModel.Seedance2 => "seedance2",
                 CreateImageToVideoRequestDiscriminatorModel.Seedance25 => "seedance2_5",
+                CreateImageToVideoRequestDiscriminatorModel.Seedance25Flash => "seedance2_5_flash",
                 CreateImageToVideoRequestDiscriminatorModel.Seedance2Fast => "seedance2_fast",
                 CreateImageToVideoRequestDiscriminatorModel.Seedance2Mini => "seedance2_mini",
                 CreateImageToVideoRequestDiscriminatorModel.Veo31 => "veo3.1",
@@ -176,6 +191,8 @@ namespace Runway
                 "grok_imagine_1_5_lite" => CreateImageToVideoRequestDiscriminatorModel.GrokImagine15Lite,
                 "h3_max" => CreateImageToVideoRequestDiscriminatorModel.H3Max,
                 "hailuo3" => CreateImageToVideoRequestDiscriminatorModel.Hailuo3,
+                "hailuo3_highspeed" => CreateImageToVideoRequestDiscriminatorModel.Hailuo3Highspeed,
+                "hailuo3_lite" => CreateImageToVideoRequestDiscriminatorModel.Hailuo3Lite,
                 "happyhorse_1_0" => CreateImageToVideoRequestDiscriminatorModel.Happyhorse10,
                 "kling2.5_turbo_pro" => CreateImageToVideoRequestDiscriminatorModel.Kling25TurboPro,
                 "kling3.0_4k" => CreateImageToVideoRequestDiscriminatorModel.Kling304k,
@@ -188,6 +205,7 @@ namespace Runway
                 "kling_4_flash" => CreateImageToVideoRequestDiscriminatorModel.Kling4Flash,
                 "seedance2" => CreateImageToVideoRequestDiscriminatorModel.Seedance2,
                 "seedance2_5" => CreateImageToVideoRequestDiscriminatorModel.Seedance25,
+                "seedance2_5_flash" => CreateImageToVideoRequestDiscriminatorModel.Seedance25Flash,
                 "seedance2_fast" => CreateImageToVideoRequestDiscriminatorModel.Seedance2Fast,
                 "seedance2_mini" => CreateImageToVideoRequestDiscriminatorModel.Seedance2Mini,
                 "veo3.1" => CreateImageToVideoRequestDiscriminatorModel.Veo31,
