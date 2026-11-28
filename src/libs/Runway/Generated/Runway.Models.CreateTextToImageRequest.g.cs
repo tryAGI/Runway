@@ -758,38 +758,75 @@ namespace Runway
         ///
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Runway.CreateTextToImageRequestGemini25Flash? Gemini25Flash { get; init; }
+        public global::Runway.CreateTextToImageRequestIdeogramVector? IdeogramVector { get; init; }
 #else
-        public global::Runway.CreateTextToImageRequestGemini25Flash? Gemini25Flash { get; }
+        public global::Runway.CreateTextToImageRequestIdeogramVector? IdeogramVector { get; }
 #endif
 
         /// <summary>
         ///
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Gemini25Flash))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(IdeogramVector))]
 #endif
-        public bool IsGemini25Flash => Gemini25Flash != null;
+        public bool IsIdeogramVector => IdeogramVector != null;
 
         /// <summary>
         ///
         /// </summary>
-        public bool TryPickGemini25Flash(
+        public bool TryPickIdeogramVector(
 #if NET6_0_OR_GREATER
             [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
 #endif
-            out global::Runway.CreateTextToImageRequestGemini25Flash? value)
+            out global::Runway.CreateTextToImageRequestIdeogramVector? value)
         {
-            value = Gemini25Flash;
-            return IsGemini25Flash;
+            value = IdeogramVector;
+            return IsIdeogramVector;
         }
 
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateTextToImageRequestGemini25Flash PickGemini25Flash() => Gemini25Flash is { } value
+        public global::Runway.CreateTextToImageRequestIdeogramVector PickIdeogramVector() => IdeogramVector is { } value
             ? value
-            : throw new global::System.InvalidOperationException($"Expected union variant 'Gemini25Flash' but the value was {ToString()}.");
+            : throw new global::System.InvalidOperationException($"Expected union variant 'IdeogramVector' but the value was {ToString()}.");
+
+        /// <summary>
+        ///
+        /// </summary>
+#if NET6_0_OR_GREATER
+        public global::Runway.CreateTextToImageRequestGptImage26Sunburst? GptImage26Sunburst { get; init; }
+#else
+        public global::Runway.CreateTextToImageRequestGptImage26Sunburst? GptImage26Sunburst { get; }
+#endif
+
+        /// <summary>
+        ///
+        /// </summary>
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(GptImage26Sunburst))]
+#endif
+        public bool IsGptImage26Sunburst => GptImage26Sunburst != null;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public bool TryPickGptImage26Sunburst(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Runway.CreateTextToImageRequestGptImage26Sunburst? value)
+        {
+            value = GptImage26Sunburst;
+            return IsGptImage26Sunburst;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Runway.CreateTextToImageRequestGptImage26Sunburst PickGptImage26Sunburst() => GptImage26Sunburst is { } value
+            ? value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'GptImage26Sunburst' but the value was {ToString()}.");
 
         /// <summary>
         ///
@@ -832,38 +869,186 @@ namespace Runway
         ///
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Runway.CreateTextToImageRequestGptImage26Sunburst? GptImage26Sunburst { get; init; }
+        public global::Runway.CreateTextToImageRequestSeedream5ProLayers? Seedream5ProLayers { get; init; }
 #else
-        public global::Runway.CreateTextToImageRequestGptImage26Sunburst? GptImage26Sunburst { get; }
+        public global::Runway.CreateTextToImageRequestSeedream5ProLayers? Seedream5ProLayers { get; }
 #endif
 
         /// <summary>
         ///
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(GptImage26Sunburst))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Seedream5ProLayers))]
 #endif
-        public bool IsGptImage26Sunburst => GptImage26Sunburst != null;
+        public bool IsSeedream5ProLayers => Seedream5ProLayers != null;
 
         /// <summary>
         ///
         /// </summary>
-        public bool TryPickGptImage26Sunburst(
+        public bool TryPickSeedream5ProLayers(
 #if NET6_0_OR_GREATER
             [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
 #endif
-            out global::Runway.CreateTextToImageRequestGptImage26Sunburst? value)
+            out global::Runway.CreateTextToImageRequestSeedream5ProLayers? value)
         {
-            value = GptImage26Sunburst;
-            return IsGptImage26Sunburst;
+            value = Seedream5ProLayers;
+            return IsSeedream5ProLayers;
         }
 
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateTextToImageRequestGptImage26Sunburst PickGptImage26Sunburst() => GptImage26Sunburst is { } value
+        public global::Runway.CreateTextToImageRequestSeedream5ProLayers PickSeedream5ProLayers() => Seedream5ProLayers is { } value
             ? value
-            : throw new global::System.InvalidOperationException($"Expected union variant 'GptImage26Sunburst' but the value was {ToString()}.");
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Seedream5ProLayers' but the value was {ToString()}.");
+
+        /// <summary>
+        ///
+        /// </summary>
+#if NET6_0_OR_GREATER
+        public global::Runway.CreateTextToImageRequestSeedream55? Seedream55 { get; init; }
+#else
+        public global::Runway.CreateTextToImageRequestSeedream55? Seedream55 { get; }
+#endif
+
+        /// <summary>
+        ///
+        /// </summary>
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Seedream55))]
+#endif
+        public bool IsSeedream55 => Seedream55 != null;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public bool TryPickSeedream55(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Runway.CreateTextToImageRequestSeedream55? value)
+        {
+            value = Seedream55;
+            return IsSeedream55;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Runway.CreateTextToImageRequestSeedream55 PickSeedream55() => Seedream55 is { } value
+            ? value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Seedream55' but the value was {ToString()}.");
+
+        /// <summary>
+        ///
+        /// </summary>
+#if NET6_0_OR_GREATER
+        public global::Runway.CreateTextToImageRequestSeedream55Layers? Seedream55Layers { get; init; }
+#else
+        public global::Runway.CreateTextToImageRequestSeedream55Layers? Seedream55Layers { get; }
+#endif
+
+        /// <summary>
+        ///
+        /// </summary>
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Seedream55Layers))]
+#endif
+        public bool IsSeedream55Layers => Seedream55Layers != null;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public bool TryPickSeedream55Layers(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Runway.CreateTextToImageRequestSeedream55Layers? value)
+        {
+            value = Seedream55Layers;
+            return IsSeedream55Layers;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Runway.CreateTextToImageRequestSeedream55Layers PickSeedream55Layers() => Seedream55Layers is { } value
+            ? value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Seedream55Layers' but the value was {ToString()}.");
+
+        /// <summary>
+        ///
+        /// </summary>
+#if NET6_0_OR_GREATER
+        public global::Runway.CreateTextToImageRequestMinimaxH3Image? MinimaxH3Image { get; init; }
+#else
+        public global::Runway.CreateTextToImageRequestMinimaxH3Image? MinimaxH3Image { get; }
+#endif
+
+        /// <summary>
+        ///
+        /// </summary>
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(MinimaxH3Image))]
+#endif
+        public bool IsMinimaxH3Image => MinimaxH3Image != null;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public bool TryPickMinimaxH3Image(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Runway.CreateTextToImageRequestMinimaxH3Image? value)
+        {
+            value = MinimaxH3Image;
+            return IsMinimaxH3Image;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Runway.CreateTextToImageRequestMinimaxH3Image PickMinimaxH3Image() => MinimaxH3Image is { } value
+            ? value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'MinimaxH3Image' but the value was {ToString()}.");
+
+        /// <summary>
+        ///
+        /// </summary>
+#if NET6_0_OR_GREATER
+        public global::Runway.CreateTextToImageRequestGemini25Flash? Gemini25Flash { get; init; }
+#else
+        public global::Runway.CreateTextToImageRequestGemini25Flash? Gemini25Flash { get; }
+#endif
+
+        /// <summary>
+        ///
+        /// </summary>
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Gemini25Flash))]
+#endif
+        public bool IsGemini25Flash => Gemini25Flash != null;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public bool TryPickGemini25Flash(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Runway.CreateTextToImageRequestGemini25Flash? value)
+        {
+            value = Gemini25Flash;
+            return IsGemini25Flash;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Runway.CreateTextToImageRequestGemini25Flash PickGemini25Flash() => Gemini25Flash is { } value
+            ? value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Gemini25Flash' but the value was {ToString()}.");
         /// <summary>
         ///
         /// </summary>
@@ -1327,48 +1512,25 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator CreateTextToImageRequest(global::Runway.CreateTextToImageRequestGemini25Flash value) => new CreateTextToImageRequest((global::Runway.CreateTextToImageRequestGemini25Flash?)value);
+        public static implicit operator CreateTextToImageRequest(global::Runway.CreateTextToImageRequestIdeogramVector value) => new CreateTextToImageRequest((global::Runway.CreateTextToImageRequestIdeogramVector?)value);
 
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator global::Runway.CreateTextToImageRequestGemini25Flash?(CreateTextToImageRequest @this) => @this.Gemini25Flash;
+        public static implicit operator global::Runway.CreateTextToImageRequestIdeogramVector?(CreateTextToImageRequest @this) => @this.IdeogramVector;
 
         /// <summary>
         ///
         /// </summary>
-        public CreateTextToImageRequest(global::Runway.CreateTextToImageRequestGemini25Flash? value)
+        public CreateTextToImageRequest(global::Runway.CreateTextToImageRequestIdeogramVector? value)
         {
-            Gemini25Flash = value;
+            IdeogramVector = value;
         }
 
         /// <summary>
         ///
         /// </summary>
-        public static CreateTextToImageRequest FromGemini25Flash(global::Runway.CreateTextToImageRequestGemini25Flash? value) => new CreateTextToImageRequest(value);
-
-        /// <summary>
-        ///
-        /// </summary>
-        public static implicit operator CreateTextToImageRequest(global::Runway.CreateTextToImageRequestGptImage26Flare value) => new CreateTextToImageRequest((global::Runway.CreateTextToImageRequestGptImage26Flare?)value);
-
-        /// <summary>
-        ///
-        /// </summary>
-        public static implicit operator global::Runway.CreateTextToImageRequestGptImage26Flare?(CreateTextToImageRequest @this) => @this.GptImage26Flare;
-
-        /// <summary>
-        ///
-        /// </summary>
-        public CreateTextToImageRequest(global::Runway.CreateTextToImageRequestGptImage26Flare? value)
-        {
-            GptImage26Flare = value;
-        }
-
-        /// <summary>
-        ///
-        /// </summary>
-        public static CreateTextToImageRequest FromGptImage26Flare(global::Runway.CreateTextToImageRequestGptImage26Flare? value) => new CreateTextToImageRequest(value);
+        public static CreateTextToImageRequest FromIdeogramVector(global::Runway.CreateTextToImageRequestIdeogramVector? value) => new CreateTextToImageRequest(value);
 
         /// <summary>
         ///
@@ -1396,6 +1558,144 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
+        public static implicit operator CreateTextToImageRequest(global::Runway.CreateTextToImageRequestGptImage26Flare value) => new CreateTextToImageRequest((global::Runway.CreateTextToImageRequestGptImage26Flare?)value);
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static implicit operator global::Runway.CreateTextToImageRequestGptImage26Flare?(CreateTextToImageRequest @this) => @this.GptImage26Flare;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public CreateTextToImageRequest(global::Runway.CreateTextToImageRequestGptImage26Flare? value)
+        {
+            GptImage26Flare = value;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static CreateTextToImageRequest FromGptImage26Flare(global::Runway.CreateTextToImageRequestGptImage26Flare? value) => new CreateTextToImageRequest(value);
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static implicit operator CreateTextToImageRequest(global::Runway.CreateTextToImageRequestSeedream5ProLayers value) => new CreateTextToImageRequest((global::Runway.CreateTextToImageRequestSeedream5ProLayers?)value);
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static implicit operator global::Runway.CreateTextToImageRequestSeedream5ProLayers?(CreateTextToImageRequest @this) => @this.Seedream5ProLayers;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public CreateTextToImageRequest(global::Runway.CreateTextToImageRequestSeedream5ProLayers? value)
+        {
+            Seedream5ProLayers = value;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static CreateTextToImageRequest FromSeedream5ProLayers(global::Runway.CreateTextToImageRequestSeedream5ProLayers? value) => new CreateTextToImageRequest(value);
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static implicit operator CreateTextToImageRequest(global::Runway.CreateTextToImageRequestSeedream55 value) => new CreateTextToImageRequest((global::Runway.CreateTextToImageRequestSeedream55?)value);
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static implicit operator global::Runway.CreateTextToImageRequestSeedream55?(CreateTextToImageRequest @this) => @this.Seedream55;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public CreateTextToImageRequest(global::Runway.CreateTextToImageRequestSeedream55? value)
+        {
+            Seedream55 = value;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static CreateTextToImageRequest FromSeedream55(global::Runway.CreateTextToImageRequestSeedream55? value) => new CreateTextToImageRequest(value);
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static implicit operator CreateTextToImageRequest(global::Runway.CreateTextToImageRequestSeedream55Layers value) => new CreateTextToImageRequest((global::Runway.CreateTextToImageRequestSeedream55Layers?)value);
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static implicit operator global::Runway.CreateTextToImageRequestSeedream55Layers?(CreateTextToImageRequest @this) => @this.Seedream55Layers;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public CreateTextToImageRequest(global::Runway.CreateTextToImageRequestSeedream55Layers? value)
+        {
+            Seedream55Layers = value;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static CreateTextToImageRequest FromSeedream55Layers(global::Runway.CreateTextToImageRequestSeedream55Layers? value) => new CreateTextToImageRequest(value);
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static implicit operator CreateTextToImageRequest(global::Runway.CreateTextToImageRequestMinimaxH3Image value) => new CreateTextToImageRequest((global::Runway.CreateTextToImageRequestMinimaxH3Image?)value);
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static implicit operator global::Runway.CreateTextToImageRequestMinimaxH3Image?(CreateTextToImageRequest @this) => @this.MinimaxH3Image;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public CreateTextToImageRequest(global::Runway.CreateTextToImageRequestMinimaxH3Image? value)
+        {
+            MinimaxH3Image = value;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static CreateTextToImageRequest FromMinimaxH3Image(global::Runway.CreateTextToImageRequestMinimaxH3Image? value) => new CreateTextToImageRequest(value);
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static implicit operator CreateTextToImageRequest(global::Runway.CreateTextToImageRequestGemini25Flash value) => new CreateTextToImageRequest((global::Runway.CreateTextToImageRequestGemini25Flash?)value);
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static implicit operator global::Runway.CreateTextToImageRequestGemini25Flash?(CreateTextToImageRequest @this) => @this.Gemini25Flash;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public CreateTextToImageRequest(global::Runway.CreateTextToImageRequestGemini25Flash? value)
+        {
+            Gemini25Flash = value;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static CreateTextToImageRequest FromGemini25Flash(global::Runway.CreateTextToImageRequestGemini25Flash? value) => new CreateTextToImageRequest(value);
+
+        /// <summary>
+        ///
+        /// </summary>
         public CreateTextToImageRequest(
             global::Runway.CreateTextToImageRequestDiscriminatorModel? model,
             global::Runway.CreateTextToImageRequestGen4ImageTurbo? gen4ImageTurbo,
@@ -1418,9 +1718,14 @@ namespace Runway
             global::Runway.CreateTextToImageRequestNanoBanana21? nanoBanana21,
             global::Runway.CreateTextToImageRequestRecraftV41Flash? recraftV41Flash,
             global::Runway.CreateTextToImageRequestRecraftV41Vector? recraftV41Vector,
-            global::Runway.CreateTextToImageRequestGemini25Flash? gemini25Flash,
+            global::Runway.CreateTextToImageRequestIdeogramVector? ideogramVector,
+            global::Runway.CreateTextToImageRequestGptImage26Sunburst? gptImage26Sunburst,
             global::Runway.CreateTextToImageRequestGptImage26Flare? gptImage26Flare,
-            global::Runway.CreateTextToImageRequestGptImage26Sunburst? gptImage26Sunburst
+            global::Runway.CreateTextToImageRequestSeedream5ProLayers? seedream5ProLayers,
+            global::Runway.CreateTextToImageRequestSeedream55? seedream55,
+            global::Runway.CreateTextToImageRequestSeedream55Layers? seedream55Layers,
+            global::Runway.CreateTextToImageRequestMinimaxH3Image? minimaxH3Image,
+            global::Runway.CreateTextToImageRequestGemini25Flash? gemini25Flash
             )
         {
             Model = model;
@@ -1445,18 +1750,28 @@ namespace Runway
             NanoBanana21 = nanoBanana21;
             RecraftV41Flash = recraftV41Flash;
             RecraftV41Vector = recraftV41Vector;
-            Gemini25Flash = gemini25Flash;
-            GptImage26Flare = gptImage26Flare;
+            IdeogramVector = ideogramVector;
             GptImage26Sunburst = gptImage26Sunburst;
+            GptImage26Flare = gptImage26Flare;
+            Seedream5ProLayers = seedream5ProLayers;
+            Seedream55 = seedream55;
+            Seedream55Layers = seedream55Layers;
+            MinimaxH3Image = minimaxH3Image;
+            Gemini25Flash = gemini25Flash;
         }
 
         /// <summary>
         ///
         /// </summary>
         public object? Object =>
-            GptImage26Sunburst as object ??
-            GptImage26Flare as object ??
             Gemini25Flash as object ??
+            MinimaxH3Image as object ??
+            Seedream55Layers as object ??
+            Seedream55 as object ??
+            Seedream5ProLayers as object ??
+            GptImage26Flare as object ??
+            GptImage26Sunburst as object ??
+            IdeogramVector as object ??
             RecraftV41Vector as object ??
             RecraftV41Flash as object ??
             NanoBanana21 as object ??
@@ -1503,9 +1818,14 @@ namespace Runway
             NanoBanana21?.ToString() ??
             RecraftV41Flash?.ToString() ??
             RecraftV41Vector?.ToString() ??
-            Gemini25Flash?.ToString() ??
+            IdeogramVector?.ToString() ??
+            GptImage26Sunburst?.ToString() ??
             GptImage26Flare?.ToString() ??
-            GptImage26Sunburst?.ToString()
+            Seedream5ProLayers?.ToString() ??
+            Seedream55?.ToString() ??
+            Seedream55Layers?.ToString() ??
+            MinimaxH3Image?.ToString() ??
+            Gemini25Flash?.ToString()
             ;
 
         /// <summary>
@@ -1513,7 +1833,7 @@ namespace Runway
         /// </summary>
         public bool Validate()
         {
-            return IsGen4ImageTurbo && !IsGen4Image && !IsGptImage2 && !IsGeminiImage31Flash && !IsMuseImage && !IsSeedream5Pro && !IsSeedream5Lite && !IsGrokImagineImage2 && !IsGeminiImage31FlashLite && !IsGeminiImage3Pro && !IsGptImage25Flare && !IsGptImage25Sunburst && !IsBriaFibo15 && !IsBriaFiboEdit15 && !IsIdeogram40 && !IsIdeogram45 && !IsSeedream5Flash && !IsNanoBanana21 && !IsRecraftV41Flash && !IsRecraftV41Vector && !IsGemini25Flash && !IsGptImage26Flare && !IsGptImage26Sunburst || !IsGen4ImageTurbo && IsGen4Image && !IsGptImage2 && !IsGeminiImage31Flash && !IsMuseImage && !IsSeedream5Pro && !IsSeedream5Lite && !IsGrokImagineImage2 && !IsGeminiImage31FlashLite && !IsGeminiImage3Pro && !IsGptImage25Flare && !IsGptImage25Sunburst && !IsBriaFibo15 && !IsBriaFiboEdit15 && !IsIdeogram40 && !IsIdeogram45 && !IsSeedream5Flash && !IsNanoBanana21 && !IsRecraftV41Flash && !IsRecraftV41Vector && !IsGemini25Flash && !IsGptImage26Flare && !IsGptImage26Sunburst || !IsGen4ImageTurbo && !IsGen4Image && IsGptImage2 && !IsGeminiImage31Flash && !IsMuseImage && !IsSeedream5Pro && !IsSeedream5Lite && !IsGrokImagineImage2 && !IsGeminiImage31FlashLite && !IsGeminiImage3Pro && !IsGptImage25Flare && !IsGptImage25Sunburst && !IsBriaFibo15 && !IsBriaFiboEdit15 && !IsIdeogram40 && !IsIdeogram45 && !IsSeedream5Flash && !IsNanoBanana21 && !IsRecraftV41Flash && !IsRecraftV41Vector && !IsGemini25Flash && !IsGptImage26Flare && !IsGptImage26Sunburst || !IsGen4ImageTurbo && !IsGen4Image && !IsGptImage2 && IsGeminiImage31Flash && !IsMuseImage && !IsSeedream5Pro && !IsSeedream5Lite && !IsGrokImagineImage2 && !IsGeminiImage31FlashLite && !IsGeminiImage3Pro && !IsGptImage25Flare && !IsGptImage25Sunburst && !IsBriaFibo15 && !IsBriaFiboEdit15 && !IsIdeogram40 && !IsIdeogram45 && !IsSeedream5Flash && !IsNanoBanana21 && !IsRecraftV41Flash && !IsRecraftV41Vector && !IsGemini25Flash && !IsGptImage26Flare && !IsGptImage26Sunburst || !IsGen4ImageTurbo && !IsGen4Image && !IsGptImage2 && !IsGeminiImage31Flash && IsMuseImage && !IsSeedream5Pro && !IsSeedream5Lite && !IsGrokImagineImage2 && !IsGeminiImage31FlashLite && !IsGeminiImage3Pro && !IsGptImage25Flare && !IsGptImage25Sunburst && !IsBriaFibo15 && !IsBriaFiboEdit15 && !IsIdeogram40 && !IsIdeogram45 && !IsSeedream5Flash && !IsNanoBanana21 && !IsRecraftV41Flash && !IsRecraftV41Vector && !IsGemini25Flash && !IsGptImage26Flare && !IsGptImage26Sunburst || !IsGen4ImageTurbo && !IsGen4Image && !IsGptImage2 && !IsGeminiImage31Flash && !IsMuseImage && IsSeedream5Pro && !IsSeedream5Lite && !IsGrokImagineImage2 && !IsGeminiImage31FlashLite && !IsGeminiImage3Pro && !IsGptImage25Flare && !IsGptImage25Sunburst && !IsBriaFibo15 && !IsBriaFiboEdit15 && !IsIdeogram40 && !IsIdeogram45 && !IsSeedream5Flash && !IsNanoBanana21 && !IsRecraftV41Flash && !IsRecraftV41Vector && !IsGemini25Flash && !IsGptImage26Flare && !IsGptImage26Sunburst || !IsGen4ImageTurbo && !IsGen4Image && !IsGptImage2 && !IsGeminiImage31Flash && !IsMuseImage && !IsSeedream5Pro && IsSeedream5Lite && !IsGrokImagineImage2 && !IsGeminiImage31FlashLite && !IsGeminiImage3Pro && !IsGptImage25Flare && !IsGptImage25Sunburst && !IsBriaFibo15 && !IsBriaFiboEdit15 && !IsIdeogram40 && !IsIdeogram45 && !IsSeedream5Flash && !IsNanoBanana21 && !IsRecraftV41Flash && !IsRecraftV41Vector && !IsGemini25Flash && !IsGptImage26Flare && !IsGptImage26Sunburst || !IsGen4ImageTurbo && !IsGen4Image && !IsGptImage2 && !IsGeminiImage31Flash && !IsMuseImage && !IsSeedream5Pro && !IsSeedream5Lite && IsGrokImagineImage2 && !IsGeminiImage31FlashLite && !IsGeminiImage3Pro && !IsGptImage25Flare && !IsGptImage25Sunburst && !IsBriaFibo15 && !IsBriaFiboEdit15 && !IsIdeogram40 && !IsIdeogram45 && !IsSeedream5Flash && !IsNanoBanana21 && !IsRecraftV41Flash && !IsRecraftV41Vector && !IsGemini25Flash && !IsGptImage26Flare && !IsGptImage26Sunburst || !IsGen4ImageTurbo && !IsGen4Image && !IsGptImage2 && !IsGeminiImage31Flash && !IsMuseImage && !IsSeedream5Pro && !IsSeedream5Lite && !IsGrokImagineImage2 && IsGeminiImage31FlashLite && !IsGeminiImage3Pro && !IsGptImage25Flare && !IsGptImage25Sunburst && !IsBriaFibo15 && !IsBriaFiboEdit15 && !IsIdeogram40 && !IsIdeogram45 && !IsSeedream5Flash && !IsNanoBanana21 && !IsRecraftV41Flash && !IsRecraftV41Vector && !IsGemini25Flash && !IsGptImage26Flare && !IsGptImage26Sunburst || !IsGen4ImageTurbo && !IsGen4Image && !IsGptImage2 && !IsGeminiImage31Flash && !IsMuseImage && !IsSeedream5Pro && !IsSeedream5Lite && !IsGrokImagineImage2 && !IsGeminiImage31FlashLite && IsGeminiImage3Pro && !IsGptImage25Flare && !IsGptImage25Sunburst && !IsBriaFibo15 && !IsBriaFiboEdit15 && !IsIdeogram40 && !IsIdeogram45 && !IsSeedream5Flash && !IsNanoBanana21 && !IsRecraftV41Flash && !IsRecraftV41Vector && !IsGemini25Flash && !IsGptImage26Flare && !IsGptImage26Sunburst || !IsGen4ImageTurbo && !IsGen4Image && !IsGptImage2 && !IsGeminiImage31Flash && !IsMuseImage && !IsSeedream5Pro && !IsSeedream5Lite && !IsGrokImagineImage2 && !IsGeminiImage31FlashLite && !IsGeminiImage3Pro && IsGptImage25Flare && !IsGptImage25Sunburst && !IsBriaFibo15 && !IsBriaFiboEdit15 && !IsIdeogram40 && !IsIdeogram45 && !IsSeedream5Flash && !IsNanoBanana21 && !IsRecraftV41Flash && !IsRecraftV41Vector && !IsGemini25Flash && !IsGptImage26Flare && !IsGptImage26Sunburst || !IsGen4ImageTurbo && !IsGen4Image && !IsGptImage2 && !IsGeminiImage31Flash && !IsMuseImage && !IsSeedream5Pro && !IsSeedream5Lite && !IsGrokImagineImage2 && !IsGeminiImage31FlashLite && !IsGeminiImage3Pro && !IsGptImage25Flare && IsGptImage25Sunburst && !IsBriaFibo15 && !IsBriaFiboEdit15 && !IsIdeogram40 && !IsIdeogram45 && !IsSeedream5Flash && !IsNanoBanana21 && !IsRecraftV41Flash && !IsRecraftV41Vector && !IsGemini25Flash && !IsGptImage26Flare && !IsGptImage26Sunburst || !IsGen4ImageTurbo && !IsGen4Image && !IsGptImage2 && !IsGeminiImage31Flash && !IsMuseImage && !IsSeedream5Pro && !IsSeedream5Lite && !IsGrokImagineImage2 && !IsGeminiImage31FlashLite && !IsGeminiImage3Pro && !IsGptImage25Flare && !IsGptImage25Sunburst && IsBriaFibo15 && !IsBriaFiboEdit15 && !IsIdeogram40 && !IsIdeogram45 && !IsSeedream5Flash && !IsNanoBanana21 && !IsRecraftV41Flash && !IsRecraftV41Vector && !IsGemini25Flash && !IsGptImage26Flare && !IsGptImage26Sunburst || !IsGen4ImageTurbo && !IsGen4Image && !IsGptImage2 && !IsGeminiImage31Flash && !IsMuseImage && !IsSeedream5Pro && !IsSeedream5Lite && !IsGrokImagineImage2 && !IsGeminiImage31FlashLite && !IsGeminiImage3Pro && !IsGptImage25Flare && !IsGptImage25Sunburst && !IsBriaFibo15 && IsBriaFiboEdit15 && !IsIdeogram40 && !IsIdeogram45 && !IsSeedream5Flash && !IsNanoBanana21 && !IsRecraftV41Flash && !IsRecraftV41Vector && !IsGemini25Flash && !IsGptImage26Flare && !IsGptImage26Sunburst || !IsGen4ImageTurbo && !IsGen4Image && !IsGptImage2 && !IsGeminiImage31Flash && !IsMuseImage && !IsSeedream5Pro && !IsSeedream5Lite && !IsGrokImagineImage2 && !IsGeminiImage31FlashLite && !IsGeminiImage3Pro && !IsGptImage25Flare && !IsGptImage25Sunburst && !IsBriaFibo15 && !IsBriaFiboEdit15 && IsIdeogram40 && !IsIdeogram45 && !IsSeedream5Flash && !IsNanoBanana21 && !IsRecraftV41Flash && !IsRecraftV41Vector && !IsGemini25Flash && !IsGptImage26Flare && !IsGptImage26Sunburst || !IsGen4ImageTurbo && !IsGen4Image && !IsGptImage2 && !IsGeminiImage31Flash && !IsMuseImage && !IsSeedream5Pro && !IsSeedream5Lite && !IsGrokImagineImage2 && !IsGeminiImage31FlashLite && !IsGeminiImage3Pro && !IsGptImage25Flare && !IsGptImage25Sunburst && !IsBriaFibo15 && !IsBriaFiboEdit15 && !IsIdeogram40 && IsIdeogram45 && !IsSeedream5Flash && !IsNanoBanana21 && !IsRecraftV41Flash && !IsRecraftV41Vector && !IsGemini25Flash && !IsGptImage26Flare && !IsGptImage26Sunburst || !IsGen4ImageTurbo && !IsGen4Image && !IsGptImage2 && !IsGeminiImage31Flash && !IsMuseImage && !IsSeedream5Pro && !IsSeedream5Lite && !IsGrokImagineImage2 && !IsGeminiImage31FlashLite && !IsGeminiImage3Pro && !IsGptImage25Flare && !IsGptImage25Sunburst && !IsBriaFibo15 && !IsBriaFiboEdit15 && !IsIdeogram40 && !IsIdeogram45 && IsSeedream5Flash && !IsNanoBanana21 && !IsRecraftV41Flash && !IsRecraftV41Vector && !IsGemini25Flash && !IsGptImage26Flare && !IsGptImage26Sunburst || !IsGen4ImageTurbo && !IsGen4Image && !IsGptImage2 && !IsGeminiImage31Flash && !IsMuseImage && !IsSeedream5Pro && !IsSeedream5Lite && !IsGrokImagineImage2 && !IsGeminiImage31FlashLite && !IsGeminiImage3Pro && !IsGptImage25Flare && !IsGptImage25Sunburst && !IsBriaFibo15 && !IsBriaFiboEdit15 && !IsIdeogram40 && !IsIdeogram45 && !IsSeedream5Flash && IsNanoBanana21 && !IsRecraftV41Flash && !IsRecraftV41Vector && !IsGemini25Flash && !IsGptImage26Flare && !IsGptImage26Sunburst || !IsGen4ImageTurbo && !IsGen4Image && !IsGptImage2 && !IsGeminiImage31Flash && !IsMuseImage && !IsSeedream5Pro && !IsSeedream5Lite && !IsGrokImagineImage2 && !IsGeminiImage31FlashLite && !IsGeminiImage3Pro && !IsGptImage25Flare && !IsGptImage25Sunburst && !IsBriaFibo15 && !IsBriaFiboEdit15 && !IsIdeogram40 && !IsIdeogram45 && !IsSeedream5Flash && !IsNanoBanana21 && IsRecraftV41Flash && !IsRecraftV41Vector && !IsGemini25Flash && !IsGptImage26Flare && !IsGptImage26Sunburst || !IsGen4ImageTurbo && !IsGen4Image && !IsGptImage2 && !IsGeminiImage31Flash && !IsMuseImage && !IsSeedream5Pro && !IsSeedream5Lite && !IsGrokImagineImage2 && !IsGeminiImage31FlashLite && !IsGeminiImage3Pro && !IsGptImage25Flare && !IsGptImage25Sunburst && !IsBriaFibo15 && !IsBriaFiboEdit15 && !IsIdeogram40 && !IsIdeogram45 && !IsSeedream5Flash && !IsNanoBanana21 && !IsRecraftV41Flash && IsRecraftV41Vector && !IsGemini25Flash && !IsGptImage26Flare && !IsGptImage26Sunburst || !IsGen4ImageTurbo && !IsGen4Image && !IsGptImage2 && !IsGeminiImage31Flash && !IsMuseImage && !IsSeedream5Pro && !IsSeedream5Lite && !IsGrokImagineImage2 && !IsGeminiImage31FlashLite && !IsGeminiImage3Pro && !IsGptImage25Flare && !IsGptImage25Sunburst && !IsBriaFibo15 && !IsBriaFiboEdit15 && !IsIdeogram40 && !IsIdeogram45 && !IsSeedream5Flash && !IsNanoBanana21 && !IsRecraftV41Flash && !IsRecraftV41Vector && IsGemini25Flash && !IsGptImage26Flare && !IsGptImage26Sunburst || !IsGen4ImageTurbo && !IsGen4Image && !IsGptImage2 && !IsGeminiImage31Flash && !IsMuseImage && !IsSeedream5Pro && !IsSeedream5Lite && !IsGrokImagineImage2 && !IsGeminiImage31FlashLite && !IsGeminiImage3Pro && !IsGptImage25Flare && !IsGptImage25Sunburst && !IsBriaFibo15 && !IsBriaFiboEdit15 && !IsIdeogram40 && !IsIdeogram45 && !IsSeedream5Flash && !IsNanoBanana21 && !IsRecraftV41Flash && !IsRecraftV41Vector && !IsGemini25Flash && IsGptImage26Flare && !IsGptImage26Sunburst || !IsGen4ImageTurbo && !IsGen4Image && !IsGptImage2 && !IsGeminiImage31Flash && !IsMuseImage && !IsSeedream5Pro && !IsSeedream5Lite && !IsGrokImagineImage2 && !IsGeminiImage31FlashLite && !IsGeminiImage3Pro && !IsGptImage25Flare && !IsGptImage25Sunburst && !IsBriaFibo15 && !IsBriaFiboEdit15 && !IsIdeogram40 && !IsIdeogram45 && !IsSeedream5Flash && !IsNanoBanana21 && !IsRecraftV41Flash && !IsRecraftV41Vector && !IsGemini25Flash && !IsGptImage26Flare && IsGptImage26Sunburst;
+            return IsGen4ImageTurbo && !IsGen4Image && !IsGptImage2 && !IsGeminiImage31Flash && !IsMuseImage && !IsSeedream5Pro && !IsSeedream5Lite && !IsGrokImagineImage2 && !IsGeminiImage31FlashLite && !IsGeminiImage3Pro && !IsGptImage25Flare && !IsGptImage25Sunburst && !IsBriaFibo15 && !IsBriaFiboEdit15 && !IsIdeogram40 && !IsIdeogram45 && !IsSeedream5Flash && !IsNanoBanana21 && !IsRecraftV41Flash && !IsRecraftV41Vector && !IsIdeogramVector && !IsGptImage26Sunburst && !IsGptImage26Flare && !IsSeedream5ProLayers && !IsSeedream55 && !IsSeedream55Layers && !IsMinimaxH3Image && !IsGemini25Flash || !IsGen4ImageTurbo && IsGen4Image && !IsGptImage2 && !IsGeminiImage31Flash && !IsMuseImage && !IsSeedream5Pro && !IsSeedream5Lite && !IsGrokImagineImage2 && !IsGeminiImage31FlashLite && !IsGeminiImage3Pro && !IsGptImage25Flare && !IsGptImage25Sunburst && !IsBriaFibo15 && !IsBriaFiboEdit15 && !IsIdeogram40 && !IsIdeogram45 && !IsSeedream5Flash && !IsNanoBanana21 && !IsRecraftV41Flash && !IsRecraftV41Vector && !IsIdeogramVector && !IsGptImage26Sunburst && !IsGptImage26Flare && !IsSeedream5ProLayers && !IsSeedream55 && !IsSeedream55Layers && !IsMinimaxH3Image && !IsGemini25Flash || !IsGen4ImageTurbo && !IsGen4Image && IsGptImage2 && !IsGeminiImage31Flash && !IsMuseImage && !IsSeedream5Pro && !IsSeedream5Lite && !IsGrokImagineImage2 && !IsGeminiImage31FlashLite && !IsGeminiImage3Pro && !IsGptImage25Flare && !IsGptImage25Sunburst && !IsBriaFibo15 && !IsBriaFiboEdit15 && !IsIdeogram40 && !IsIdeogram45 && !IsSeedream5Flash && !IsNanoBanana21 && !IsRecraftV41Flash && !IsRecraftV41Vector && !IsIdeogramVector && !IsGptImage26Sunburst && !IsGptImage26Flare && !IsSeedream5ProLayers && !IsSeedream55 && !IsSeedream55Layers && !IsMinimaxH3Image && !IsGemini25Flash || !IsGen4ImageTurbo && !IsGen4Image && !IsGptImage2 && IsGeminiImage31Flash && !IsMuseImage && !IsSeedream5Pro && !IsSeedream5Lite && !IsGrokImagineImage2 && !IsGeminiImage31FlashLite && !IsGeminiImage3Pro && !IsGptImage25Flare && !IsGptImage25Sunburst && !IsBriaFibo15 && !IsBriaFiboEdit15 && !IsIdeogram40 && !IsIdeogram45 && !IsSeedream5Flash && !IsNanoBanana21 && !IsRecraftV41Flash && !IsRecraftV41Vector && !IsIdeogramVector && !IsGptImage26Sunburst && !IsGptImage26Flare && !IsSeedream5ProLayers && !IsSeedream55 && !IsSeedream55Layers && !IsMinimaxH3Image && !IsGemini25Flash || !IsGen4ImageTurbo && !IsGen4Image && !IsGptImage2 && !IsGeminiImage31Flash && IsMuseImage && !IsSeedream5Pro && !IsSeedream5Lite && !IsGrokImagineImage2 && !IsGeminiImage31FlashLite && !IsGeminiImage3Pro && !IsGptImage25Flare && !IsGptImage25Sunburst && !IsBriaFibo15 && !IsBriaFiboEdit15 && !IsIdeogram40 && !IsIdeogram45 && !IsSeedream5Flash && !IsNanoBanana21 && !IsRecraftV41Flash && !IsRecraftV41Vector && !IsIdeogramVector && !IsGptImage26Sunburst && !IsGptImage26Flare && !IsSeedream5ProLayers && !IsSeedream55 && !IsSeedream55Layers && !IsMinimaxH3Image && !IsGemini25Flash || !IsGen4ImageTurbo && !IsGen4Image && !IsGptImage2 && !IsGeminiImage31Flash && !IsMuseImage && IsSeedream5Pro && !IsSeedream5Lite && !IsGrokImagineImage2 && !IsGeminiImage31FlashLite && !IsGeminiImage3Pro && !IsGptImage25Flare && !IsGptImage25Sunburst && !IsBriaFibo15 && !IsBriaFiboEdit15 && !IsIdeogram40 && !IsIdeogram45 && !IsSeedream5Flash && !IsNanoBanana21 && !IsRecraftV41Flash && !IsRecraftV41Vector && !IsIdeogramVector && !IsGptImage26Sunburst && !IsGptImage26Flare && !IsSeedream5ProLayers && !IsSeedream55 && !IsSeedream55Layers && !IsMinimaxH3Image && !IsGemini25Flash || !IsGen4ImageTurbo && !IsGen4Image && !IsGptImage2 && !IsGeminiImage31Flash && !IsMuseImage && !IsSeedream5Pro && IsSeedream5Lite && !IsGrokImagineImage2 && !IsGeminiImage31FlashLite && !IsGeminiImage3Pro && !IsGptImage25Flare && !IsGptImage25Sunburst && !IsBriaFibo15 && !IsBriaFiboEdit15 && !IsIdeogram40 && !IsIdeogram45 && !IsSeedream5Flash && !IsNanoBanana21 && !IsRecraftV41Flash && !IsRecraftV41Vector && !IsIdeogramVector && !IsGptImage26Sunburst && !IsGptImage26Flare && !IsSeedream5ProLayers && !IsSeedream55 && !IsSeedream55Layers && !IsMinimaxH3Image && !IsGemini25Flash || !IsGen4ImageTurbo && !IsGen4Image && !IsGptImage2 && !IsGeminiImage31Flash && !IsMuseImage && !IsSeedream5Pro && !IsSeedream5Lite && IsGrokImagineImage2 && !IsGeminiImage31FlashLite && !IsGeminiImage3Pro && !IsGptImage25Flare && !IsGptImage25Sunburst && !IsBriaFibo15 && !IsBriaFiboEdit15 && !IsIdeogram40 && !IsIdeogram45 && !IsSeedream5Flash && !IsNanoBanana21 && !IsRecraftV41Flash && !IsRecraftV41Vector && !IsIdeogramVector && !IsGptImage26Sunburst && !IsGptImage26Flare && !IsSeedream5ProLayers && !IsSeedream55 && !IsSeedream55Layers && !IsMinimaxH3Image && !IsGemini25Flash || !IsGen4ImageTurbo && !IsGen4Image && !IsGptImage2 && !IsGeminiImage31Flash && !IsMuseImage && !IsSeedream5Pro && !IsSeedream5Lite && !IsGrokImagineImage2 && IsGeminiImage31FlashLite && !IsGeminiImage3Pro && !IsGptImage25Flare && !IsGptImage25Sunburst && !IsBriaFibo15 && !IsBriaFiboEdit15 && !IsIdeogram40 && !IsIdeogram45 && !IsSeedream5Flash && !IsNanoBanana21 && !IsRecraftV41Flash && !IsRecraftV41Vector && !IsIdeogramVector && !IsGptImage26Sunburst && !IsGptImage26Flare && !IsSeedream5ProLayers && !IsSeedream55 && !IsSeedream55Layers && !IsMinimaxH3Image && !IsGemini25Flash || !IsGen4ImageTurbo && !IsGen4Image && !IsGptImage2 && !IsGeminiImage31Flash && !IsMuseImage && !IsSeedream5Pro && !IsSeedream5Lite && !IsGrokImagineImage2 && !IsGeminiImage31FlashLite && IsGeminiImage3Pro && !IsGptImage25Flare && !IsGptImage25Sunburst && !IsBriaFibo15 && !IsBriaFiboEdit15 && !IsIdeogram40 && !IsIdeogram45 && !IsSeedream5Flash && !IsNanoBanana21 && !IsRecraftV41Flash && !IsRecraftV41Vector && !IsIdeogramVector && !IsGptImage26Sunburst && !IsGptImage26Flare && !IsSeedream5ProLayers && !IsSeedream55 && !IsSeedream55Layers && !IsMinimaxH3Image && !IsGemini25Flash || !IsGen4ImageTurbo && !IsGen4Image && !IsGptImage2 && !IsGeminiImage31Flash && !IsMuseImage && !IsSeedream5Pro && !IsSeedream5Lite && !IsGrokImagineImage2 && !IsGeminiImage31FlashLite && !IsGeminiImage3Pro && IsGptImage25Flare && !IsGptImage25Sunburst && !IsBriaFibo15 && !IsBriaFiboEdit15 && !IsIdeogram40 && !IsIdeogram45 && !IsSeedream5Flash && !IsNanoBanana21 && !IsRecraftV41Flash && !IsRecraftV41Vector && !IsIdeogramVector && !IsGptImage26Sunburst && !IsGptImage26Flare && !IsSeedream5ProLayers && !IsSeedream55 && !IsSeedream55Layers && !IsMinimaxH3Image && !IsGemini25Flash || !IsGen4ImageTurbo && !IsGen4Image && !IsGptImage2 && !IsGeminiImage31Flash && !IsMuseImage && !IsSeedream5Pro && !IsSeedream5Lite && !IsGrokImagineImage2 && !IsGeminiImage31FlashLite && !IsGeminiImage3Pro && !IsGptImage25Flare && IsGptImage25Sunburst && !IsBriaFibo15 && !IsBriaFiboEdit15 && !IsIdeogram40 && !IsIdeogram45 && !IsSeedream5Flash && !IsNanoBanana21 && !IsRecraftV41Flash && !IsRecraftV41Vector && !IsIdeogramVector && !IsGptImage26Sunburst && !IsGptImage26Flare && !IsSeedream5ProLayers && !IsSeedream55 && !IsSeedream55Layers && !IsMinimaxH3Image && !IsGemini25Flash || !IsGen4ImageTurbo && !IsGen4Image && !IsGptImage2 && !IsGeminiImage31Flash && !IsMuseImage && !IsSeedream5Pro && !IsSeedream5Lite && !IsGrokImagineImage2 && !IsGeminiImage31FlashLite && !IsGeminiImage3Pro && !IsGptImage25Flare && !IsGptImage25Sunburst && IsBriaFibo15 && !IsBriaFiboEdit15 && !IsIdeogram40 && !IsIdeogram45 && !IsSeedream5Flash && !IsNanoBanana21 && !IsRecraftV41Flash && !IsRecraftV41Vector && !IsIdeogramVector && !IsGptImage26Sunburst && !IsGptImage26Flare && !IsSeedream5ProLayers && !IsSeedream55 && !IsSeedream55Layers && !IsMinimaxH3Image && !IsGemini25Flash || !IsGen4ImageTurbo && !IsGen4Image && !IsGptImage2 && !IsGeminiImage31Flash && !IsMuseImage && !IsSeedream5Pro && !IsSeedream5Lite && !IsGrokImagineImage2 && !IsGeminiImage31FlashLite && !IsGeminiImage3Pro && !IsGptImage25Flare && !IsGptImage25Sunburst && !IsBriaFibo15 && IsBriaFiboEdit15 && !IsIdeogram40 && !IsIdeogram45 && !IsSeedream5Flash && !IsNanoBanana21 && !IsRecraftV41Flash && !IsRecraftV41Vector && !IsIdeogramVector && !IsGptImage26Sunburst && !IsGptImage26Flare && !IsSeedream5ProLayers && !IsSeedream55 && !IsSeedream55Layers && !IsMinimaxH3Image && !IsGemini25Flash || !IsGen4ImageTurbo && !IsGen4Image && !IsGptImage2 && !IsGeminiImage31Flash && !IsMuseImage && !IsSeedream5Pro && !IsSeedream5Lite && !IsGrokImagineImage2 && !IsGeminiImage31FlashLite && !IsGeminiImage3Pro && !IsGptImage25Flare && !IsGptImage25Sunburst && !IsBriaFibo15 && !IsBriaFiboEdit15 && IsIdeogram40 && !IsIdeogram45 && !IsSeedream5Flash && !IsNanoBanana21 && !IsRecraftV41Flash && !IsRecraftV41Vector && !IsIdeogramVector && !IsGptImage26Sunburst && !IsGptImage26Flare && !IsSeedream5ProLayers && !IsSeedream55 && !IsSeedream55Layers && !IsMinimaxH3Image && !IsGemini25Flash || !IsGen4ImageTurbo && !IsGen4Image && !IsGptImage2 && !IsGeminiImage31Flash && !IsMuseImage && !IsSeedream5Pro && !IsSeedream5Lite && !IsGrokImagineImage2 && !IsGeminiImage31FlashLite && !IsGeminiImage3Pro && !IsGptImage25Flare && !IsGptImage25Sunburst && !IsBriaFibo15 && !IsBriaFiboEdit15 && !IsIdeogram40 && IsIdeogram45 && !IsSeedream5Flash && !IsNanoBanana21 && !IsRecraftV41Flash && !IsRecraftV41Vector && !IsIdeogramVector && !IsGptImage26Sunburst && !IsGptImage26Flare && !IsSeedream5ProLayers && !IsSeedream55 && !IsSeedream55Layers && !IsMinimaxH3Image && !IsGemini25Flash || !IsGen4ImageTurbo && !IsGen4Image && !IsGptImage2 && !IsGeminiImage31Flash && !IsMuseImage && !IsSeedream5Pro && !IsSeedream5Lite && !IsGrokImagineImage2 && !IsGeminiImage31FlashLite && !IsGeminiImage3Pro && !IsGptImage25Flare && !IsGptImage25Sunburst && !IsBriaFibo15 && !IsBriaFiboEdit15 && !IsIdeogram40 && !IsIdeogram45 && IsSeedream5Flash && !IsNanoBanana21 && !IsRecraftV41Flash && !IsRecraftV41Vector && !IsIdeogramVector && !IsGptImage26Sunburst && !IsGptImage26Flare && !IsSeedream5ProLayers && !IsSeedream55 && !IsSeedream55Layers && !IsMinimaxH3Image && !IsGemini25Flash || !IsGen4ImageTurbo && !IsGen4Image && !IsGptImage2 && !IsGeminiImage31Flash && !IsMuseImage && !IsSeedream5Pro && !IsSeedream5Lite && !IsGrokImagineImage2 && !IsGeminiImage31FlashLite && !IsGeminiImage3Pro && !IsGptImage25Flare && !IsGptImage25Sunburst && !IsBriaFibo15 && !IsBriaFiboEdit15 && !IsIdeogram40 && !IsIdeogram45 && !IsSeedream5Flash && IsNanoBanana21 && !IsRecraftV41Flash && !IsRecraftV41Vector && !IsIdeogramVector && !IsGptImage26Sunburst && !IsGptImage26Flare && !IsSeedream5ProLayers && !IsSeedream55 && !IsSeedream55Layers && !IsMinimaxH3Image && !IsGemini25Flash || !IsGen4ImageTurbo && !IsGen4Image && !IsGptImage2 && !IsGeminiImage31Flash && !IsMuseImage && !IsSeedream5Pro && !IsSeedream5Lite && !IsGrokImagineImage2 && !IsGeminiImage31FlashLite && !IsGeminiImage3Pro && !IsGptImage25Flare && !IsGptImage25Sunburst && !IsBriaFibo15 && !IsBriaFiboEdit15 && !IsIdeogram40 && !IsIdeogram45 && !IsSeedream5Flash && !IsNanoBanana21 && IsRecraftV41Flash && !IsRecraftV41Vector && !IsIdeogramVector && !IsGptImage26Sunburst && !IsGptImage26Flare && !IsSeedream5ProLayers && !IsSeedream55 && !IsSeedream55Layers && !IsMinimaxH3Image && !IsGemini25Flash || !IsGen4ImageTurbo && !IsGen4Image && !IsGptImage2 && !IsGeminiImage31Flash && !IsMuseImage && !IsSeedream5Pro && !IsSeedream5Lite && !IsGrokImagineImage2 && !IsGeminiImage31FlashLite && !IsGeminiImage3Pro && !IsGptImage25Flare && !IsGptImage25Sunburst && !IsBriaFibo15 && !IsBriaFiboEdit15 && !IsIdeogram40 && !IsIdeogram45 && !IsSeedream5Flash && !IsNanoBanana21 && !IsRecraftV41Flash && IsRecraftV41Vector && !IsIdeogramVector && !IsGptImage26Sunburst && !IsGptImage26Flare && !IsSeedream5ProLayers && !IsSeedream55 && !IsSeedream55Layers && !IsMinimaxH3Image && !IsGemini25Flash || !IsGen4ImageTurbo && !IsGen4Image && !IsGptImage2 && !IsGeminiImage31Flash && !IsMuseImage && !IsSeedream5Pro && !IsSeedream5Lite && !IsGrokImagineImage2 && !IsGeminiImage31FlashLite && !IsGeminiImage3Pro && !IsGptImage25Flare && !IsGptImage25Sunburst && !IsBriaFibo15 && !IsBriaFiboEdit15 && !IsIdeogram40 && !IsIdeogram45 && !IsSeedream5Flash && !IsNanoBanana21 && !IsRecraftV41Flash && !IsRecraftV41Vector && IsIdeogramVector && !IsGptImage26Sunburst && !IsGptImage26Flare && !IsSeedream5ProLayers && !IsSeedream55 && !IsSeedream55Layers && !IsMinimaxH3Image && !IsGemini25Flash || !IsGen4ImageTurbo && !IsGen4Image && !IsGptImage2 && !IsGeminiImage31Flash && !IsMuseImage && !IsSeedream5Pro && !IsSeedream5Lite && !IsGrokImagineImage2 && !IsGeminiImage31FlashLite && !IsGeminiImage3Pro && !IsGptImage25Flare && !IsGptImage25Sunburst && !IsBriaFibo15 && !IsBriaFiboEdit15 && !IsIdeogram40 && !IsIdeogram45 && !IsSeedream5Flash && !IsNanoBanana21 && !IsRecraftV41Flash && !IsRecraftV41Vector && !IsIdeogramVector && IsGptImage26Sunburst && !IsGptImage26Flare && !IsSeedream5ProLayers && !IsSeedream55 && !IsSeedream55Layers && !IsMinimaxH3Image && !IsGemini25Flash || !IsGen4ImageTurbo && !IsGen4Image && !IsGptImage2 && !IsGeminiImage31Flash && !IsMuseImage && !IsSeedream5Pro && !IsSeedream5Lite && !IsGrokImagineImage2 && !IsGeminiImage31FlashLite && !IsGeminiImage3Pro && !IsGptImage25Flare && !IsGptImage25Sunburst && !IsBriaFibo15 && !IsBriaFiboEdit15 && !IsIdeogram40 && !IsIdeogram45 && !IsSeedream5Flash && !IsNanoBanana21 && !IsRecraftV41Flash && !IsRecraftV41Vector && !IsIdeogramVector && !IsGptImage26Sunburst && IsGptImage26Flare && !IsSeedream5ProLayers && !IsSeedream55 && !IsSeedream55Layers && !IsMinimaxH3Image && !IsGemini25Flash || !IsGen4ImageTurbo && !IsGen4Image && !IsGptImage2 && !IsGeminiImage31Flash && !IsMuseImage && !IsSeedream5Pro && !IsSeedream5Lite && !IsGrokImagineImage2 && !IsGeminiImage31FlashLite && !IsGeminiImage3Pro && !IsGptImage25Flare && !IsGptImage25Sunburst && !IsBriaFibo15 && !IsBriaFiboEdit15 && !IsIdeogram40 && !IsIdeogram45 && !IsSeedream5Flash && !IsNanoBanana21 && !IsRecraftV41Flash && !IsRecraftV41Vector && !IsIdeogramVector && !IsGptImage26Sunburst && !IsGptImage26Flare && IsSeedream5ProLayers && !IsSeedream55 && !IsSeedream55Layers && !IsMinimaxH3Image && !IsGemini25Flash || !IsGen4ImageTurbo && !IsGen4Image && !IsGptImage2 && !IsGeminiImage31Flash && !IsMuseImage && !IsSeedream5Pro && !IsSeedream5Lite && !IsGrokImagineImage2 && !IsGeminiImage31FlashLite && !IsGeminiImage3Pro && !IsGptImage25Flare && !IsGptImage25Sunburst && !IsBriaFibo15 && !IsBriaFiboEdit15 && !IsIdeogram40 && !IsIdeogram45 && !IsSeedream5Flash && !IsNanoBanana21 && !IsRecraftV41Flash && !IsRecraftV41Vector && !IsIdeogramVector && !IsGptImage26Sunburst && !IsGptImage26Flare && !IsSeedream5ProLayers && IsSeedream55 && !IsSeedream55Layers && !IsMinimaxH3Image && !IsGemini25Flash || !IsGen4ImageTurbo && !IsGen4Image && !IsGptImage2 && !IsGeminiImage31Flash && !IsMuseImage && !IsSeedream5Pro && !IsSeedream5Lite && !IsGrokImagineImage2 && !IsGeminiImage31FlashLite && !IsGeminiImage3Pro && !IsGptImage25Flare && !IsGptImage25Sunburst && !IsBriaFibo15 && !IsBriaFiboEdit15 && !IsIdeogram40 && !IsIdeogram45 && !IsSeedream5Flash && !IsNanoBanana21 && !IsRecraftV41Flash && !IsRecraftV41Vector && !IsIdeogramVector && !IsGptImage26Sunburst && !IsGptImage26Flare && !IsSeedream5ProLayers && !IsSeedream55 && IsSeedream55Layers && !IsMinimaxH3Image && !IsGemini25Flash || !IsGen4ImageTurbo && !IsGen4Image && !IsGptImage2 && !IsGeminiImage31Flash && !IsMuseImage && !IsSeedream5Pro && !IsSeedream5Lite && !IsGrokImagineImage2 && !IsGeminiImage31FlashLite && !IsGeminiImage3Pro && !IsGptImage25Flare && !IsGptImage25Sunburst && !IsBriaFibo15 && !IsBriaFiboEdit15 && !IsIdeogram40 && !IsIdeogram45 && !IsSeedream5Flash && !IsNanoBanana21 && !IsRecraftV41Flash && !IsRecraftV41Vector && !IsIdeogramVector && !IsGptImage26Sunburst && !IsGptImage26Flare && !IsSeedream5ProLayers && !IsSeedream55 && !IsSeedream55Layers && IsMinimaxH3Image && !IsGemini25Flash || !IsGen4ImageTurbo && !IsGen4Image && !IsGptImage2 && !IsGeminiImage31Flash && !IsMuseImage && !IsSeedream5Pro && !IsSeedream5Lite && !IsGrokImagineImage2 && !IsGeminiImage31FlashLite && !IsGeminiImage3Pro && !IsGptImage25Flare && !IsGptImage25Sunburst && !IsBriaFibo15 && !IsBriaFiboEdit15 && !IsIdeogram40 && !IsIdeogram45 && !IsSeedream5Flash && !IsNanoBanana21 && !IsRecraftV41Flash && !IsRecraftV41Vector && !IsIdeogramVector && !IsGptImage26Sunburst && !IsGptImage26Flare && !IsSeedream5ProLayers && !IsSeedream55 && !IsSeedream55Layers && !IsMinimaxH3Image && IsGemini25Flash;
         }
 
         /// <summary>
@@ -1540,9 +1860,14 @@ namespace Runway
             global::System.Func<global::Runway.CreateTextToImageRequestNanoBanana21, TResult>? nanoBanana21 = null,
             global::System.Func<global::Runway.CreateTextToImageRequestRecraftV41Flash, TResult>? recraftV41Flash = null,
             global::System.Func<global::Runway.CreateTextToImageRequestRecraftV41Vector, TResult>? recraftV41Vector = null,
-            global::System.Func<global::Runway.CreateTextToImageRequestGemini25Flash, TResult>? gemini25Flash = null,
-            global::System.Func<global::Runway.CreateTextToImageRequestGptImage26Flare, TResult>? gptImage26Flare = null,
+            global::System.Func<global::Runway.CreateTextToImageRequestIdeogramVector, TResult>? ideogramVector = null,
             global::System.Func<global::Runway.CreateTextToImageRequestGptImage26Sunburst, TResult>? gptImage26Sunburst = null,
+            global::System.Func<global::Runway.CreateTextToImageRequestGptImage26Flare, TResult>? gptImage26Flare = null,
+            global::System.Func<global::Runway.CreateTextToImageRequestSeedream5ProLayers, TResult>? seedream5ProLayers = null,
+            global::System.Func<global::Runway.CreateTextToImageRequestSeedream55, TResult>? seedream55 = null,
+            global::System.Func<global::Runway.CreateTextToImageRequestSeedream55Layers, TResult>? seedream55Layers = null,
+            global::System.Func<global::Runway.CreateTextToImageRequestMinimaxH3Image, TResult>? minimaxH3Image = null,
+            global::System.Func<global::Runway.CreateTextToImageRequestGemini25Flash, TResult>? gemini25Flash = null,
             bool validate = true)
         {
             if (validate)
@@ -1630,17 +1955,37 @@ namespace Runway
             {
                 return recraftV41Vector(__value19);
             }
-            else if (Gemini25Flash is { } __value20 && gemini25Flash != null)
+            else if (IdeogramVector is { } __value20 && ideogramVector != null)
             {
-                return gemini25Flash(__value20);
+                return ideogramVector(__value20);
             }
-            else if (GptImage26Flare is { } __value21 && gptImage26Flare != null)
+            else if (GptImage26Sunburst is { } __value21 && gptImage26Sunburst != null)
             {
-                return gptImage26Flare(__value21);
+                return gptImage26Sunburst(__value21);
             }
-            else if (GptImage26Sunburst is { } __value22 && gptImage26Sunburst != null)
+            else if (GptImage26Flare is { } __value22 && gptImage26Flare != null)
             {
-                return gptImage26Sunburst(__value22);
+                return gptImage26Flare(__value22);
+            }
+            else if (Seedream5ProLayers is { } __value23 && seedream5ProLayers != null)
+            {
+                return seedream5ProLayers(__value23);
+            }
+            else if (Seedream55 is { } __value24 && seedream55 != null)
+            {
+                return seedream55(__value24);
+            }
+            else if (Seedream55Layers is { } __value25 && seedream55Layers != null)
+            {
+                return seedream55Layers(__value25);
+            }
+            else if (MinimaxH3Image is { } __value26 && minimaxH3Image != null)
+            {
+                return minimaxH3Image(__value26);
+            }
+            else if (Gemini25Flash is { } __value27 && gemini25Flash != null)
+            {
+                return gemini25Flash(__value27);
             }
 
             return default(TResult);
@@ -1690,11 +2035,21 @@ namespace Runway
 
             global::System.Action<global::Runway.CreateTextToImageRequestRecraftV41Vector>? recraftV41Vector = null,
 
-            global::System.Action<global::Runway.CreateTextToImageRequestGemini25Flash>? gemini25Flash = null,
+            global::System.Action<global::Runway.CreateTextToImageRequestIdeogramVector>? ideogramVector = null,
+
+            global::System.Action<global::Runway.CreateTextToImageRequestGptImage26Sunburst>? gptImage26Sunburst = null,
 
             global::System.Action<global::Runway.CreateTextToImageRequestGptImage26Flare>? gptImage26Flare = null,
 
-            global::System.Action<global::Runway.CreateTextToImageRequestGptImage26Sunburst>? gptImage26Sunburst = null,
+            global::System.Action<global::Runway.CreateTextToImageRequestSeedream5ProLayers>? seedream5ProLayers = null,
+
+            global::System.Action<global::Runway.CreateTextToImageRequestSeedream55>? seedream55 = null,
+
+            global::System.Action<global::Runway.CreateTextToImageRequestSeedream55Layers>? seedream55Layers = null,
+
+            global::System.Action<global::Runway.CreateTextToImageRequestMinimaxH3Image>? minimaxH3Image = null,
+
+            global::System.Action<global::Runway.CreateTextToImageRequestGemini25Flash>? gemini25Flash = null,
             bool validate = true)
         {
             if (validate)
@@ -1782,17 +2137,37 @@ namespace Runway
             {
                 recraftV41Vector?.Invoke(__value19);
             }
-            else if (Gemini25Flash is { } __value20)
+            else if (IdeogramVector is { } __value20)
             {
-                gemini25Flash?.Invoke(__value20);
+                ideogramVector?.Invoke(__value20);
             }
-            else if (GptImage26Flare is { } __value21)
+            else if (GptImage26Sunburst is { } __value21)
             {
-                gptImage26Flare?.Invoke(__value21);
+                gptImage26Sunburst?.Invoke(__value21);
             }
-            else if (GptImage26Sunburst is { } __value22)
+            else if (GptImage26Flare is { } __value22)
             {
-                gptImage26Sunburst?.Invoke(__value22);
+                gptImage26Flare?.Invoke(__value22);
+            }
+            else if (Seedream5ProLayers is { } __value23)
+            {
+                seedream5ProLayers?.Invoke(__value23);
+            }
+            else if (Seedream55 is { } __value24)
+            {
+                seedream55?.Invoke(__value24);
+            }
+            else if (Seedream55Layers is { } __value25)
+            {
+                seedream55Layers?.Invoke(__value25);
+            }
+            else if (MinimaxH3Image is { } __value26)
+            {
+                minimaxH3Image?.Invoke(__value26);
+            }
+            else if (Gemini25Flash is { } __value27)
+            {
+                gemini25Flash?.Invoke(__value27);
             }
         }
 
@@ -1820,9 +2195,14 @@ namespace Runway
             global::System.Action<global::Runway.CreateTextToImageRequestNanoBanana21>? nanoBanana21 = null,
             global::System.Action<global::Runway.CreateTextToImageRequestRecraftV41Flash>? recraftV41Flash = null,
             global::System.Action<global::Runway.CreateTextToImageRequestRecraftV41Vector>? recraftV41Vector = null,
-            global::System.Action<global::Runway.CreateTextToImageRequestGemini25Flash>? gemini25Flash = null,
-            global::System.Action<global::Runway.CreateTextToImageRequestGptImage26Flare>? gptImage26Flare = null,
+            global::System.Action<global::Runway.CreateTextToImageRequestIdeogramVector>? ideogramVector = null,
             global::System.Action<global::Runway.CreateTextToImageRequestGptImage26Sunburst>? gptImage26Sunburst = null,
+            global::System.Action<global::Runway.CreateTextToImageRequestGptImage26Flare>? gptImage26Flare = null,
+            global::System.Action<global::Runway.CreateTextToImageRequestSeedream5ProLayers>? seedream5ProLayers = null,
+            global::System.Action<global::Runway.CreateTextToImageRequestSeedream55>? seedream55 = null,
+            global::System.Action<global::Runway.CreateTextToImageRequestSeedream55Layers>? seedream55Layers = null,
+            global::System.Action<global::Runway.CreateTextToImageRequestMinimaxH3Image>? minimaxH3Image = null,
+            global::System.Action<global::Runway.CreateTextToImageRequestGemini25Flash>? gemini25Flash = null,
             bool validate = true)
         {
             if (validate)
@@ -1910,17 +2290,37 @@ namespace Runway
             {
                 recraftV41Vector?.Invoke(__value19);
             }
-            else if (Gemini25Flash is { } __value20)
+            else if (IdeogramVector is { } __value20)
             {
-                gemini25Flash?.Invoke(__value20);
+                ideogramVector?.Invoke(__value20);
             }
-            else if (GptImage26Flare is { } __value21)
+            else if (GptImage26Sunburst is { } __value21)
             {
-                gptImage26Flare?.Invoke(__value21);
+                gptImage26Sunburst?.Invoke(__value21);
             }
-            else if (GptImage26Sunburst is { } __value22)
+            else if (GptImage26Flare is { } __value22)
             {
-                gptImage26Sunburst?.Invoke(__value22);
+                gptImage26Flare?.Invoke(__value22);
+            }
+            else if (Seedream5ProLayers is { } __value23)
+            {
+                seedream5ProLayers?.Invoke(__value23);
+            }
+            else if (Seedream55 is { } __value24)
+            {
+                seedream55?.Invoke(__value24);
+            }
+            else if (Seedream55Layers is { } __value25)
+            {
+                seedream55Layers?.Invoke(__value25);
+            }
+            else if (MinimaxH3Image is { } __value26)
+            {
+                minimaxH3Image?.Invoke(__value26);
+            }
+            else if (Gemini25Flash is { } __value27)
+            {
+                gemini25Flash?.Invoke(__value27);
             }
         }
 
@@ -1971,12 +2371,22 @@ namespace Runway
                 typeof(global::Runway.CreateTextToImageRequestRecraftV41Flash),
                 RecraftV41Vector,
                 typeof(global::Runway.CreateTextToImageRequestRecraftV41Vector),
-                Gemini25Flash,
-                typeof(global::Runway.CreateTextToImageRequestGemini25Flash),
-                GptImage26Flare,
-                typeof(global::Runway.CreateTextToImageRequestGptImage26Flare),
+                IdeogramVector,
+                typeof(global::Runway.CreateTextToImageRequestIdeogramVector),
                 GptImage26Sunburst,
                 typeof(global::Runway.CreateTextToImageRequestGptImage26Sunburst),
+                GptImage26Flare,
+                typeof(global::Runway.CreateTextToImageRequestGptImage26Flare),
+                Seedream5ProLayers,
+                typeof(global::Runway.CreateTextToImageRequestSeedream5ProLayers),
+                Seedream55,
+                typeof(global::Runway.CreateTextToImageRequestSeedream55),
+                Seedream55Layers,
+                typeof(global::Runway.CreateTextToImageRequestSeedream55Layers),
+                MinimaxH3Image,
+                typeof(global::Runway.CreateTextToImageRequestMinimaxH3Image),
+                Gemini25Flash,
+                typeof(global::Runway.CreateTextToImageRequestGemini25Flash),
             };
             const int offset = unchecked((int)2166136261);
             const int prime = 16777619;
@@ -2013,9 +2423,14 @@ namespace Runway
                 global::System.Collections.Generic.EqualityComparer<global::Runway.CreateTextToImageRequestNanoBanana21?>.Default.Equals(NanoBanana21, other.NanoBanana21) &&
                 global::System.Collections.Generic.EqualityComparer<global::Runway.CreateTextToImageRequestRecraftV41Flash?>.Default.Equals(RecraftV41Flash, other.RecraftV41Flash) &&
                 global::System.Collections.Generic.EqualityComparer<global::Runway.CreateTextToImageRequestRecraftV41Vector?>.Default.Equals(RecraftV41Vector, other.RecraftV41Vector) &&
-                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateTextToImageRequestGemini25Flash?>.Default.Equals(Gemini25Flash, other.Gemini25Flash) &&
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateTextToImageRequestIdeogramVector?>.Default.Equals(IdeogramVector, other.IdeogramVector) &&
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateTextToImageRequestGptImage26Sunburst?>.Default.Equals(GptImage26Sunburst, other.GptImage26Sunburst) &&
                 global::System.Collections.Generic.EqualityComparer<global::Runway.CreateTextToImageRequestGptImage26Flare?>.Default.Equals(GptImage26Flare, other.GptImage26Flare) &&
-                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateTextToImageRequestGptImage26Sunburst?>.Default.Equals(GptImage26Sunburst, other.GptImage26Sunburst)
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateTextToImageRequestSeedream5ProLayers?>.Default.Equals(Seedream5ProLayers, other.Seedream5ProLayers) &&
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateTextToImageRequestSeedream55?>.Default.Equals(Seedream55, other.Seedream55) &&
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateTextToImageRequestSeedream55Layers?>.Default.Equals(Seedream55Layers, other.Seedream55Layers) &&
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateTextToImageRequestMinimaxH3Image?>.Default.Equals(MinimaxH3Image, other.MinimaxH3Image) &&
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateTextToImageRequestGemini25Flash?>.Default.Equals(Gemini25Flash, other.Gemini25Flash)
                 ;
         }
 

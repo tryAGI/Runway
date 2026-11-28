@@ -17,29 +17,29 @@ namespace Runway.JsonConverters
 
 
             var readerCopy = reader;
-            var discriminatorTypeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetAvatarsResponseDataItemDiscriminator), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetAvatarsResponseDataItemDiscriminator> ??
-                            throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.GetAvatarsResponseDataItemDiscriminator)}");
+            var discriminatorTypeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetVoicesResponseDataItemDiscriminator), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetVoicesResponseDataItemDiscriminator> ??
+                            throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.GetVoicesResponseDataItemDiscriminator)}");
             var discriminator = global::System.Text.Json.JsonSerializer.Deserialize(ref readerCopy, discriminatorTypeInfo);
 
-            global::Runway.GetAvatarsResponseDataItemAvatarProcessing? processing = default;
-            if (discriminator?.Status == global::Runway.GetAvatarsResponseDataItemDiscriminatorStatus.Processing)
+            global::Runway.GetVoicesResponseDataItemVoiceProcessing? processing = default;
+            if (discriminator?.Status == global::Runway.GetVoicesResponseDataItemDiscriminatorStatus.Processing)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetAvatarsResponseDataItemAvatarProcessing), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetAvatarsResponseDataItemAvatarProcessing> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.GetAvatarsResponseDataItemAvatarProcessing)}");
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetVoicesResponseDataItemVoiceProcessing), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetVoicesResponseDataItemVoiceProcessing> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.GetVoicesResponseDataItemVoiceProcessing)}");
                 processing = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
-            global::Runway.GetAvatarsResponseDataItemAvatarReady? ready = default;
-            if (discriminator?.Status == global::Runway.GetAvatarsResponseDataItemDiscriminatorStatus.Ready)
+            global::Runway.GetVoicesResponseDataItemVoiceReady? ready = default;
+            if (discriminator?.Status == global::Runway.GetVoicesResponseDataItemDiscriminatorStatus.Ready)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetAvatarsResponseDataItemAvatarReady), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetAvatarsResponseDataItemAvatarReady> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.GetAvatarsResponseDataItemAvatarReady)}");
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetVoicesResponseDataItemVoiceReady), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetVoicesResponseDataItemVoiceReady> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.GetVoicesResponseDataItemVoiceReady)}");
                 ready = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
-            global::Runway.GetAvatarsResponseDataItemAvatarFailed? failed = default;
-            if (discriminator?.Status == global::Runway.GetAvatarsResponseDataItemDiscriminatorStatus.Failed)
+            global::Runway.GetVoicesResponseDataItemVoiceFailed? failed = default;
+            if (discriminator?.Status == global::Runway.GetVoicesResponseDataItemDiscriminatorStatus.Failed)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetAvatarsResponseDataItemAvatarFailed), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetAvatarsResponseDataItemAvatarFailed> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.GetAvatarsResponseDataItemAvatarFailed)}");
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetVoicesResponseDataItemVoiceFailed), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetVoicesResponseDataItemVoiceFailed> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.GetVoicesResponseDataItemVoiceFailed)}");
                 failed = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
 
@@ -66,20 +66,20 @@ namespace Runway.JsonConverters
 
             if (value.IsProcessing)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetAvatarsResponseDataItemAvatarProcessing), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetAvatarsResponseDataItemAvatarProcessing?> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.GetAvatarsResponseDataItemAvatarProcessing).Name}");
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetVoicesResponseDataItemVoiceProcessing), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetVoicesResponseDataItemVoiceProcessing?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.GetVoicesResponseDataItemVoiceProcessing).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickProcessing(), typeInfo);
             }
             else if (value.IsReady)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetAvatarsResponseDataItemAvatarReady), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetAvatarsResponseDataItemAvatarReady?> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.GetAvatarsResponseDataItemAvatarReady).Name}");
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetVoicesResponseDataItemVoiceReady), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetVoicesResponseDataItemVoiceReady?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.GetVoicesResponseDataItemVoiceReady).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickReady(), typeInfo);
             }
             else if (value.IsFailed)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetAvatarsResponseDataItemAvatarFailed), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetAvatarsResponseDataItemAvatarFailed?> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.GetAvatarsResponseDataItemAvatarFailed).Name}");
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.GetVoicesResponseDataItemVoiceFailed), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.GetVoicesResponseDataItemVoiceFailed?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.GetVoicesResponseDataItemVoiceFailed).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickFailed(), typeInfo);
             }
         }

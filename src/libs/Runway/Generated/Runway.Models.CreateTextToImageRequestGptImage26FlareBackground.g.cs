@@ -4,7 +4,7 @@
 namespace Runway
 {
     /// <summary>
-    /// Background treatment. Defaults to `auto`, which lets the model pick.
+    /// Background treatment. Defaults to `auto`, which lets the model pick. Use `transparent` for an alpha-channel background, which `jpeg` output does not support.
     /// </summary>
     public enum CreateTextToImageRequestGptImage26FlareBackground
     {
@@ -16,6 +16,10 @@ namespace Runway
         ///
         /// </summary>
         Opaque,
+        /// <summary>
+        ///
+        /// </summary>
+        Transparent,
     }
 
     /// <summary>
@@ -32,6 +36,7 @@ namespace Runway
             {
                 CreateTextToImageRequestGptImage26FlareBackground.Auto => "auto",
                 CreateTextToImageRequestGptImage26FlareBackground.Opaque => "opaque",
+                CreateTextToImageRequestGptImage26FlareBackground.Transparent => "transparent",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -44,6 +49,7 @@ namespace Runway
             {
                 "auto" => CreateTextToImageRequestGptImage26FlareBackground.Auto,
                 "opaque" => CreateTextToImageRequestGptImage26FlareBackground.Opaque,
+                "transparent" => CreateTextToImageRequestGptImage26FlareBackground.Transparent,
                 _ => null,
             };
         }

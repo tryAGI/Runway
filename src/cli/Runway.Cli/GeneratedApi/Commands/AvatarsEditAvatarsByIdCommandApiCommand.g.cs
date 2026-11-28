@@ -44,7 +44,7 @@ internal static partial class AvatarsEditAvatarsByIdCommandApiCommand
         Description = @"Optional opening message that the avatar will say when a session starts. Set to null to clear.",
     };
 
-    private static Option<global::Runway.Voice2?> Voice { get; } = new(
+    private static Option<global::Runway.Voice7?> Voice { get; } = new(
         name: @"--voice")
     {
         Description = @"The voice configuration for the avatar.",

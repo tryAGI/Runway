@@ -44,8 +44,8 @@ namespace Runway
         /// </summary>
         /// <example>{"type":"runway-live-preset","presetId":"adrian"}</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("voice")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.Voice2JsonConverter))]
-        public global::Runway.Voice2? Voice { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.Voice7JsonConverter))]
+        public global::Runway.Voice7? Voice { get; set; }
 
         /// <summary>
         /// List of knowledge document IDs to attach to this avatar. Replaces all current attachments. Documents provide additional context during conversations.
@@ -104,7 +104,7 @@ namespace Runway
             string? referenceImage,
             string? personality,
             string? startScript,
-            global::Runway.Voice2? voice,
+            global::Runway.Voice7? voice,
             global::System.Collections.Generic.IList<global::System.Guid>? documentIds,
             global::Runway.PatchAvatarsRequestImageProcessing? imageProcessing)
         {

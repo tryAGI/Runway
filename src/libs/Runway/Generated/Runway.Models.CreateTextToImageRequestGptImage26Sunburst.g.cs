@@ -9,6 +9,26 @@ namespace Runway
     public sealed partial class CreateTextToImageRequestGptImage26Sunburst
     {
         /// <summary>
+        /// Output format. Defaults to PNG. JPEG and WebP produce smaller files; JPEG cannot have a transparent background. GIF and SVG cannot use reference images; GIF requires ratio auto.<br/>
+        /// Default Value: png
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("outputFormat")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.CreateTextToImageRequestGptImage26SunburstOutputFormatJsonConverter))]
+        public global::Runway.CreateTextToImageRequestGptImage26SunburstOutputFormat? OutputFormat { get; set; }
+
+        /// <summary>
+        /// Number of animation frames. Only supported for GIF output.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("frameCount")]
+        public int? FrameCount { get; set; }
+
+        /// <summary>
+        /// Duration of each animation frame in milliseconds. Only supported for GIF output.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("frameDurationMs")]
+        public int? FrameDurationMs { get; set; }
+
+        /// <summary>
         /// A non-empty string describing the desired image.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("promptText")]
@@ -24,15 +44,21 @@ namespace Runway
         public required global::Runway.CreateTextToImageRequestGptImage26SunburstRatio Ratio { get; set; }
 
         /// <summary>
-        /// Rendering quality. Higher qualities consume more credits. Defaults to `high`.<br/>
-        /// Default Value: high
+        /// Rendering quality. Higher qualities consume more credits. Defaults to `high`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("quality")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.CreateTextToImageRequestGptImage26SunburstQualityJsonConverter))]
         public global::Runway.CreateTextToImageRequestGptImage26SunburstQuality? Quality { get; set; }
 
         /// <summary>
-        /// Background treatment. Defaults to `auto`, which lets the model pick. Use `transparent` to generate a PNG with an alpha-channel background.
+        /// How much reasoning to use before rendering. Defaults to `high`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("reasoningEffort")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.CreateTextToImageRequestGptImage26SunburstReasoningEffortJsonConverter))]
+        public global::Runway.CreateTextToImageRequestGptImage26SunburstReasoningEffort? ReasoningEffort { get; set; }
+
+        /// <summary>
+        /// Background treatment. Defaults to `auto`, which lets the model pick. Use `transparent` for an alpha-channel background, which `jpeg` output does not support.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("background")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.CreateTextToImageRequestGptImage26SunburstBackgroundJsonConverter))]
@@ -58,14 +84,6 @@ namespace Runway
         public string Model { get; set; } = "gpt_image_2_6_sunburst";
 
         /// <summary>
-        /// How much reasoning the model spends on the image. Defaults to `high`.<br/>
-        /// Default Value: high
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("reasoningEffort")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.CreateTextToImageRequestGptImage26SunburstReasoningEffortJsonConverter))]
-        public global::Runway.CreateTextToImageRequestGptImage26SunburstReasoningEffort? ReasoningEffort { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -80,22 +98,30 @@ namespace Runway
         /// <param name="ratio">
         /// The resolution of the output image, expressed as `&lt;width&gt;:&lt;height&gt;`. Use `auto` to let the model choose.
         /// </param>
+        /// <param name="outputFormat">
+        /// Output format. Defaults to PNG. JPEG and WebP produce smaller files; JPEG cannot have a transparent background. GIF and SVG cannot use reference images; GIF requires ratio auto.<br/>
+        /// Default Value: png
+        /// </param>
+        /// <param name="frameCount">
+        /// Number of animation frames. Only supported for GIF output.
+        /// </param>
+        /// <param name="frameDurationMs">
+        /// Duration of each animation frame in milliseconds. Only supported for GIF output.
+        /// </param>
         /// <param name="quality">
-        /// Rendering quality. Higher qualities consume more credits. Defaults to `high`.<br/>
-        /// Default Value: high
+        /// Rendering quality. Higher qualities consume more credits. Defaults to `high`.
+        /// </param>
+        /// <param name="reasoningEffort">
+        /// How much reasoning to use before rendering. Defaults to `high`.
         /// </param>
         /// <param name="background">
-        /// Background treatment. Defaults to `auto`, which lets the model pick. Use `transparent` to generate a PNG with an alpha-channel background.
+        /// Background treatment. Defaults to `auto`, which lets the model pick. Use `transparent` for an alpha-channel background, which `jpeg` output does not support.
         /// </param>
         /// <param name="referenceImages">
         /// An array of up to 16 images to be used as references for the generated image output. No two images may share the same tag. Each reference image adds 1 credit per generated image.
         /// </param>
         /// <param name="outputCount">
         /// The number of images to generate (1-10). Increasing this number will affect the number of credits consumed by the generation.
-        /// </param>
-        /// <param name="reasoningEffort">
-        /// How much reasoning the model spends on the image. Defaults to `high`.<br/>
-        /// Default Value: high
         /// </param>
         /// <param name="model"></param>
 #if NET7_0_OR_GREATER
@@ -104,21 +130,27 @@ namespace Runway
         public CreateTextToImageRequestGptImage26Sunburst(
             string promptText,
             global::Runway.CreateTextToImageRequestGptImage26SunburstRatio ratio,
+            global::Runway.CreateTextToImageRequestGptImage26SunburstOutputFormat? outputFormat,
+            int? frameCount,
+            int? frameDurationMs,
             global::Runway.CreateTextToImageRequestGptImage26SunburstQuality? quality,
+            global::Runway.CreateTextToImageRequestGptImage26SunburstReasoningEffort? reasoningEffort,
             global::Runway.CreateTextToImageRequestGptImage26SunburstBackground? background,
             global::System.Collections.Generic.IList<global::Runway.CreateTextToImageRequestGptImage26SunburstReferenceImage>? referenceImages,
             int? outputCount,
-            global::Runway.CreateTextToImageRequestGptImage26SunburstReasoningEffort? reasoningEffort,
             string model = "gpt_image_2_6_sunburst")
         {
+            this.OutputFormat = outputFormat;
+            this.FrameCount = frameCount;
+            this.FrameDurationMs = frameDurationMs;
             this.PromptText = promptText ?? throw new global::System.ArgumentNullException(nameof(promptText));
             this.Ratio = ratio;
             this.Quality = quality;
+            this.ReasoningEffort = reasoningEffort;
             this.Background = background;
             this.ReferenceImages = referenceImages;
             this.OutputCount = outputCount;
             this.Model = model;
-            this.ReasoningEffort = reasoningEffort;
         }
 
         /// <summary>

@@ -39,6 +39,10 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
+        ElevenMusicV25,
+        /// <summary>
+        ///
+        /// </summary>
         ElevenScribeV2,
         /// <summary>
         ///
@@ -71,6 +75,14 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
+        Gemini38FlashLiteTts,
+        /// <summary>
+        ///
+        /// </summary>
+        Gemini38FlashTts,
+        /// <summary>
+        ///
+        /// </summary>
         GeminiImage31Flash,
         /// <summary>
         ///
@@ -88,6 +100,10 @@ namespace Runway
         ///
         /// </summary>
         GeminiOmniFlash11,
+        /// <summary>
+        ///
+        /// </summary>
+        GeminiOmniFlash12,
         /// <summary>
         ///
         /// </summary>
@@ -127,6 +143,14 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
+        GptImage26Flare,
+        /// <summary>
+        ///
+        /// </summary>
+        GptImage26Sunburst,
+        /// <summary>
+        ///
+        /// </summary>
         GrokImagine15,
         /// <summary>
         ///
@@ -159,6 +183,14 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
+        Hailuo3Highspeed,
+        /// <summary>
+        ///
+        /// </summary>
+        Hailuo3Lite,
+        /// <summary>
+        ///
+        /// </summary>
         Happyhorse10,
         /// <summary>
         ///
@@ -168,6 +200,10 @@ namespace Runway
         ///
         /// </summary>
         Ideogram45,
+        /// <summary>
+        ///
+        /// </summary>
+        IdeogramVector,
         /// <summary>
         ///
         /// </summary>
@@ -203,6 +239,10 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
+        Kling4Flash,
+        /// <summary>
+        ///
+        /// </summary>
         MagnificPrecisionUpscalerV2,
         /// <summary>
         ///
@@ -212,6 +252,10 @@ namespace Runway
         ///
         /// </summary>
         MarketingStockImage,
+        /// <summary>
+        ///
+        /// </summary>
+        MinimaxH3Image,
         /// <summary>
         ///
         /// </summary>
@@ -271,11 +315,23 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
+        Seedance25Flash,
+        /// <summary>
+        ///
+        /// </summary>
         Seedance2Fast,
         /// <summary>
         ///
         /// </summary>
         Seedance2Mini,
+        /// <summary>
+        ///
+        /// </summary>
+        Seedream55,
+        /// <summary>
+        ///
+        /// </summary>
+        Seedream55Layers,
         /// <summary>
         ///
         /// </summary>
@@ -288,6 +344,10 @@ namespace Runway
         ///
         /// </summary>
         Seedream5Pro,
+        /// <summary>
+        ///
+        /// </summary>
+        Seedream5ProLayers,
         /// <summary>
         ///
         /// </summary>
@@ -333,6 +393,7 @@ namespace Runway
                 CreateOrganizationUsageResponseModel.BriaFiboEdit15 => "bria_fibo_edit_1_5",
                 CreateOrganizationUsageResponseModel.ElevenMultilingualStsV2 => "eleven_multilingual_sts_v2",
                 CreateOrganizationUsageResponseModel.ElevenMultilingualV2 => "eleven_multilingual_v2",
+                CreateOrganizationUsageResponseModel.ElevenMusicV25 => "eleven_music_v2_5",
                 CreateOrganizationUsageResponseModel.ElevenScribeV2 => "eleven_scribe_v2",
                 CreateOrganizationUsageResponseModel.ElevenTextToSoundV2 => "eleven_text_to_sound_v2",
                 CreateOrganizationUsageResponseModel.ElevenV3 => "eleven_v3",
@@ -341,11 +402,14 @@ namespace Runway
                 CreateOrganizationUsageResponseModel.ElevenVoiceIsolation => "eleven_voice_isolation",
                 CreateOrganizationUsageResponseModel.EnhanceFrameRate => "enhance_frame_rate",
                 CreateOrganizationUsageResponseModel.Gemini25Flash => "gemini_2.5_flash",
+                CreateOrganizationUsageResponseModel.Gemini38FlashLiteTts => "gemini_3.8_flash_lite_tts",
+                CreateOrganizationUsageResponseModel.Gemini38FlashTts => "gemini_3.8_flash_tts",
                 CreateOrganizationUsageResponseModel.GeminiImage31Flash => "gemini_image3.1_flash",
                 CreateOrganizationUsageResponseModel.GeminiImage31FlashLite => "gemini_image3.1_flash_lite",
                 CreateOrganizationUsageResponseModel.GeminiImage3Pro => "gemini_image3_pro",
                 CreateOrganizationUsageResponseModel.GeminiOmniFlash => "gemini_omni_flash",
                 CreateOrganizationUsageResponseModel.GeminiOmniFlash11 => "gemini_omni_flash_1.1",
+                CreateOrganizationUsageResponseModel.GeminiOmniFlash12 => "gemini_omni_flash_1.2",
                 CreateOrganizationUsageResponseModel.Gen3aTurbo => "gen3a_turbo",
                 CreateOrganizationUsageResponseModel.Gen45 => "gen4.5",
                 CreateOrganizationUsageResponseModel.Gen4Aleph => "gen4_aleph",
@@ -355,6 +419,8 @@ namespace Runway
                 CreateOrganizationUsageResponseModel.GptImage2 => "gpt_image_2",
                 CreateOrganizationUsageResponseModel.GptImage25Flare => "gpt_image_2_5_flare",
                 CreateOrganizationUsageResponseModel.GptImage25Sunburst => "gpt_image_2_5_sunburst",
+                CreateOrganizationUsageResponseModel.GptImage26Flare => "gpt_image_2_6_flare",
+                CreateOrganizationUsageResponseModel.GptImage26Sunburst => "gpt_image_2_6_sunburst",
                 CreateOrganizationUsageResponseModel.GrokImagine15 => "grok_imagine_1_5",
                 CreateOrganizationUsageResponseModel.GrokImagine15Lite => "grok_imagine_1_5_lite",
                 CreateOrganizationUsageResponseModel.GrokImagineImage2 => "grok_imagine_image_2",
@@ -363,9 +429,12 @@ namespace Runway
                 CreateOrganizationUsageResponseModel.Gwm1Avatars => "gwm1_avatars",
                 CreateOrganizationUsageResponseModel.H3Max => "h3_max",
                 CreateOrganizationUsageResponseModel.Hailuo3 => "hailuo3",
+                CreateOrganizationUsageResponseModel.Hailuo3Highspeed => "hailuo3_highspeed",
+                CreateOrganizationUsageResponseModel.Hailuo3Lite => "hailuo3_lite",
                 CreateOrganizationUsageResponseModel.Happyhorse10 => "happyhorse_1_0",
                 CreateOrganizationUsageResponseModel.Ideogram40 => "ideogram_4_0",
                 CreateOrganizationUsageResponseModel.Ideogram45 => "ideogram_4_5",
+                CreateOrganizationUsageResponseModel.IdeogramVector => "ideogram_vector",
                 CreateOrganizationUsageResponseModel.Kling25TurboPro => "kling2.5_turbo_pro",
                 CreateOrganizationUsageResponseModel.Kling304k => "kling3.0_4k",
                 CreateOrganizationUsageResponseModel.Kling30Pro => "kling3.0_pro",
@@ -374,9 +443,11 @@ namespace Runway
                 CreateOrganizationUsageResponseModel.KlingO3Pro => "klingO3_pro",
                 CreateOrganizationUsageResponseModel.KlingO3Standard => "klingO3_standard",
                 CreateOrganizationUsageResponseModel.Kling4 => "kling_4",
+                CreateOrganizationUsageResponseModel.Kling4Flash => "kling_4_flash",
                 CreateOrganizationUsageResponseModel.MagnificPrecisionUpscalerV2 => "magnific_precision_upscaler_v2",
                 CreateOrganizationUsageResponseModel.MagnificVideoUpscalerCreative => "magnific_video_upscaler_creative",
                 CreateOrganizationUsageResponseModel.MarketingStockImage => "marketing_stock_image",
+                CreateOrganizationUsageResponseModel.MinimaxH3Image => "minimax_h3_image",
                 CreateOrganizationUsageResponseModel.MireloSfx20 => "mirelo_sfx_2_0",
                 CreateOrganizationUsageResponseModel.MultiShotVideo => "multi_shot_video",
                 CreateOrganizationUsageResponseModel.MuseImage => "muse_image",
@@ -391,11 +462,15 @@ namespace Runway
                 CreateOrganizationUsageResponseModel.SeedAudio => "seed_audio",
                 CreateOrganizationUsageResponseModel.Seedance2 => "seedance2",
                 CreateOrganizationUsageResponseModel.Seedance25 => "seedance2_5",
+                CreateOrganizationUsageResponseModel.Seedance25Flash => "seedance2_5_flash",
                 CreateOrganizationUsageResponseModel.Seedance2Fast => "seedance2_fast",
                 CreateOrganizationUsageResponseModel.Seedance2Mini => "seedance2_mini",
+                CreateOrganizationUsageResponseModel.Seedream55 => "seedream5.5",
+                CreateOrganizationUsageResponseModel.Seedream55Layers => "seedream5.5_layers",
                 CreateOrganizationUsageResponseModel.Seedream5Flash => "seedream5_flash",
                 CreateOrganizationUsageResponseModel.Seedream5Lite => "seedream5_lite",
                 CreateOrganizationUsageResponseModel.Seedream5Pro => "seedream5_pro",
+                CreateOrganizationUsageResponseModel.Seedream5ProLayers => "seedream5_pro_layers",
                 CreateOrganizationUsageResponseModel.Veo3 => "veo3",
                 CreateOrganizationUsageResponseModel.Veo31 => "veo3.1",
                 CreateOrganizationUsageResponseModel.Veo31Fast => "veo3.1_fast",
@@ -419,6 +494,7 @@ namespace Runway
                 "bria_fibo_edit_1_5" => CreateOrganizationUsageResponseModel.BriaFiboEdit15,
                 "eleven_multilingual_sts_v2" => CreateOrganizationUsageResponseModel.ElevenMultilingualStsV2,
                 "eleven_multilingual_v2" => CreateOrganizationUsageResponseModel.ElevenMultilingualV2,
+                "eleven_music_v2_5" => CreateOrganizationUsageResponseModel.ElevenMusicV25,
                 "eleven_scribe_v2" => CreateOrganizationUsageResponseModel.ElevenScribeV2,
                 "eleven_text_to_sound_v2" => CreateOrganizationUsageResponseModel.ElevenTextToSoundV2,
                 "eleven_v3" => CreateOrganizationUsageResponseModel.ElevenV3,
@@ -427,11 +503,14 @@ namespace Runway
                 "eleven_voice_isolation" => CreateOrganizationUsageResponseModel.ElevenVoiceIsolation,
                 "enhance_frame_rate" => CreateOrganizationUsageResponseModel.EnhanceFrameRate,
                 "gemini_2.5_flash" => CreateOrganizationUsageResponseModel.Gemini25Flash,
+                "gemini_3.8_flash_lite_tts" => CreateOrganizationUsageResponseModel.Gemini38FlashLiteTts,
+                "gemini_3.8_flash_tts" => CreateOrganizationUsageResponseModel.Gemini38FlashTts,
                 "gemini_image3.1_flash" => CreateOrganizationUsageResponseModel.GeminiImage31Flash,
                 "gemini_image3.1_flash_lite" => CreateOrganizationUsageResponseModel.GeminiImage31FlashLite,
                 "gemini_image3_pro" => CreateOrganizationUsageResponseModel.GeminiImage3Pro,
                 "gemini_omni_flash" => CreateOrganizationUsageResponseModel.GeminiOmniFlash,
                 "gemini_omni_flash_1.1" => CreateOrganizationUsageResponseModel.GeminiOmniFlash11,
+                "gemini_omni_flash_1.2" => CreateOrganizationUsageResponseModel.GeminiOmniFlash12,
                 "gen3a_turbo" => CreateOrganizationUsageResponseModel.Gen3aTurbo,
                 "gen4.5" => CreateOrganizationUsageResponseModel.Gen45,
                 "gen4_aleph" => CreateOrganizationUsageResponseModel.Gen4Aleph,
@@ -441,6 +520,8 @@ namespace Runway
                 "gpt_image_2" => CreateOrganizationUsageResponseModel.GptImage2,
                 "gpt_image_2_5_flare" => CreateOrganizationUsageResponseModel.GptImage25Flare,
                 "gpt_image_2_5_sunburst" => CreateOrganizationUsageResponseModel.GptImage25Sunburst,
+                "gpt_image_2_6_flare" => CreateOrganizationUsageResponseModel.GptImage26Flare,
+                "gpt_image_2_6_sunburst" => CreateOrganizationUsageResponseModel.GptImage26Sunburst,
                 "grok_imagine_1_5" => CreateOrganizationUsageResponseModel.GrokImagine15,
                 "grok_imagine_1_5_lite" => CreateOrganizationUsageResponseModel.GrokImagine15Lite,
                 "grok_imagine_image_2" => CreateOrganizationUsageResponseModel.GrokImagineImage2,
@@ -449,9 +530,12 @@ namespace Runway
                 "gwm1_avatars" => CreateOrganizationUsageResponseModel.Gwm1Avatars,
                 "h3_max" => CreateOrganizationUsageResponseModel.H3Max,
                 "hailuo3" => CreateOrganizationUsageResponseModel.Hailuo3,
+                "hailuo3_highspeed" => CreateOrganizationUsageResponseModel.Hailuo3Highspeed,
+                "hailuo3_lite" => CreateOrganizationUsageResponseModel.Hailuo3Lite,
                 "happyhorse_1_0" => CreateOrganizationUsageResponseModel.Happyhorse10,
                 "ideogram_4_0" => CreateOrganizationUsageResponseModel.Ideogram40,
                 "ideogram_4_5" => CreateOrganizationUsageResponseModel.Ideogram45,
+                "ideogram_vector" => CreateOrganizationUsageResponseModel.IdeogramVector,
                 "kling2.5_turbo_pro" => CreateOrganizationUsageResponseModel.Kling25TurboPro,
                 "kling3.0_4k" => CreateOrganizationUsageResponseModel.Kling304k,
                 "kling3.0_pro" => CreateOrganizationUsageResponseModel.Kling30Pro,
@@ -460,9 +544,11 @@ namespace Runway
                 "klingO3_pro" => CreateOrganizationUsageResponseModel.KlingO3Pro,
                 "klingO3_standard" => CreateOrganizationUsageResponseModel.KlingO3Standard,
                 "kling_4" => CreateOrganizationUsageResponseModel.Kling4,
+                "kling_4_flash" => CreateOrganizationUsageResponseModel.Kling4Flash,
                 "magnific_precision_upscaler_v2" => CreateOrganizationUsageResponseModel.MagnificPrecisionUpscalerV2,
                 "magnific_video_upscaler_creative" => CreateOrganizationUsageResponseModel.MagnificVideoUpscalerCreative,
                 "marketing_stock_image" => CreateOrganizationUsageResponseModel.MarketingStockImage,
+                "minimax_h3_image" => CreateOrganizationUsageResponseModel.MinimaxH3Image,
                 "mirelo_sfx_2_0" => CreateOrganizationUsageResponseModel.MireloSfx20,
                 "multi_shot_video" => CreateOrganizationUsageResponseModel.MultiShotVideo,
                 "muse_image" => CreateOrganizationUsageResponseModel.MuseImage,
@@ -477,11 +563,15 @@ namespace Runway
                 "seed_audio" => CreateOrganizationUsageResponseModel.SeedAudio,
                 "seedance2" => CreateOrganizationUsageResponseModel.Seedance2,
                 "seedance2_5" => CreateOrganizationUsageResponseModel.Seedance25,
+                "seedance2_5_flash" => CreateOrganizationUsageResponseModel.Seedance25Flash,
                 "seedance2_fast" => CreateOrganizationUsageResponseModel.Seedance2Fast,
                 "seedance2_mini" => CreateOrganizationUsageResponseModel.Seedance2Mini,
+                "seedream5.5" => CreateOrganizationUsageResponseModel.Seedream55,
+                "seedream5.5_layers" => CreateOrganizationUsageResponseModel.Seedream55Layers,
                 "seedream5_flash" => CreateOrganizationUsageResponseModel.Seedream5Flash,
                 "seedream5_lite" => CreateOrganizationUsageResponseModel.Seedream5Lite,
                 "seedream5_pro" => CreateOrganizationUsageResponseModel.Seedream5Pro,
+                "seedream5_pro_layers" => CreateOrganizationUsageResponseModel.Seedream5ProLayers,
                 "veo3" => CreateOrganizationUsageResponseModel.Veo3,
                 "veo3.1" => CreateOrganizationUsageResponseModel.Veo31,
                 "veo3.1_fast" => CreateOrganizationUsageResponseModel.Veo31Fast,

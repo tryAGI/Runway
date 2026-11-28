@@ -29,6 +29,12 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("Added member")]
+        public string? Added_member { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("Target member")]
         public string? Target_member { get; set; }
 
@@ -37,6 +43,30 @@ namespace Runway
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("Member email")]
         public string? Member_email { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("Accepted by")]
+        public string? Accepted_by { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("New email")]
+        public string? New_email { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("Previous email")]
+        public string? Previous_email { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("Requested via")]
+        public global::System.Collections.Generic.IList<string>? Requested_via { get; set; }
 
         /// <summary>
         ///
@@ -65,6 +95,12 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("Method")]
+        public string? Method { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("Platform")]
         public string? Platform { get; set; }
 
@@ -89,6 +125,12 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("Promotion")]
+        public string? Promotion { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("New User")]
         public bool? New_User { get; set; }
 
@@ -97,6 +139,12 @@ namespace Runway
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("Group name")]
         public string? Group_name { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("Project ID")]
+        public string? Project_ID { get; set; }
 
         /// <summary>
         ///
@@ -121,6 +169,60 @@ namespace Runway
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("Asset name")]
         public string? Asset_name { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("Asset type")]
+        public string? Asset_type { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("Filename")]
+        public string? Filename { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("Downloaded by owner")]
+        public bool? Downloaded_by_owner { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("Anonymous")]
+        public bool? Anonymous { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("Watermarked")]
+        public bool? Watermarked { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("Updated fields")]
+        public global::System.Collections.Generic.IList<string>? Updated_fields { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("Source application")]
+        public string? Source_application { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("Source")]
+        public string? Source { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("Task ID")]
+        public string? Task_ID { get; set; }
 
         /// <summary>
         ///
@@ -179,6 +281,30 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("Connector")]
+        public string? Connector { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("Tool")]
+        public string? Tool { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("Read or write")]
+        public string? Read_or_write { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("Result")]
+        public string? Result { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("Outcome")]
         public string? Outcome { get; set; }
 
@@ -215,8 +341,44 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("From workspace ID")]
+        public double? From_workspace_ID { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("To workspace ID")]
+        public double? To_workspace_ID { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("Email domain")]
         public string? Email_domain { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("Automatic")]
+        public bool? Automatic { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("Join policy")]
+        public string? Join_policy { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("Enabled")]
+        public bool? Enabled { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("Link type")]
+        public string? Link_type { get; set; }
 
         /// <summary>
         ///
@@ -277,6 +439,12 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("Shared in project")]
+        public string? Shared_in_project { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("Shared with projects")]
         public global::System.Collections.Generic.IList<string>? Shared_with_projects { get; set; }
 
@@ -331,6 +499,36 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("Credits used")]
+        public double? Credits_used { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("Spend cap (USD cents)")]
+        public double? Spend_cap_USD_cents { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("Recharge amount (USD cents)")]
+        public double? Recharge_amount_USD_cents { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("Recharge below (credits)")]
+        public double? Recharge_below_Credits { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("Cancels at period end")]
+        public bool? Cancels_at_period_end { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("API account")]
         public string? API_account { get; set; }
 
@@ -367,6 +565,18 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("Asset ID")]
+        public string? Asset_ID { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("Source version asset ID")]
+        public string? Source_version_asset_ID { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("Root asset ID")]
         public string? Root_asset_ID { get; set; }
 
@@ -393,6 +603,12 @@ namespace Runway
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("Selected")]
         public bool? Selected { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("Result metric ID")]
+        public string? Result_metric_ID { get; set; }
 
         /// <summary>
         ///
@@ -499,6 +715,54 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("Ads created as")]
+        public string? Ads_created_as { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("Ad level")]
+        public string? Ad_level { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("Status before")]
+        public string? Status_before { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("Status after")]
+        public string? Status_after { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("Platform object ID")]
+        public string? Platform_object_ID { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("Campaign setup ID")]
+        public string? Campaign_setup_ID { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("Campaign setup type")]
+        public string? Campaign_setup_type { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("Campaign setup version")]
+        public double? Campaign_setup_version { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("App Studio app")]
         public string? App_Studio_app { get; set; }
 
@@ -507,6 +771,36 @@ namespace Runway
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("App Studio session")]
         public string? App_Studio_session { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("App Studio app ID")]
+        public string? App_Studio_app_ID { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("Secret name")]
+        public string? Secret_name { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("App Studio deploy")]
+        public string? App_Studio_deploy { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("Files moved")]
+        public double? Files_moved { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("Previously shared in project")]
+        public string? Previously_shared_in_project { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -520,22 +814,39 @@ namespace Runway
         /// <param name="workspace"></param>
         /// <param name="invited_member"></param>
         /// <param name="removed_member"></param>
+        /// <param name="added_member"></param>
         /// <param name="target_member"></param>
         /// <param name="member_email"></param>
+        /// <param name="accepted_by"></param>
+        /// <param name="new_email"></param>
+        /// <param name="previous_email"></param>
+        /// <param name="requested_via"></param>
         /// <param name="previous_role"></param>
         /// <param name="new_role"></param>
         /// <param name="role"></param>
         /// <param name="login_method"></param>
+        /// <param name="method"></param>
         /// <param name="platform"></param>
         /// <param name="application"></param>
         /// <param name="plan"></param>
         /// <param name="amount"></param>
+        /// <param name="promotion"></param>
         /// <param name="new_User"></param>
         /// <param name="group_name"></param>
+        /// <param name="project_ID"></param>
         /// <param name="language_model_or_provider"></param>
         /// <param name="model"></param>
         /// <param name="operation"></param>
         /// <param name="asset_name"></param>
+        /// <param name="asset_type"></param>
+        /// <param name="filename"></param>
+        /// <param name="downloaded_by_owner"></param>
+        /// <param name="anonymous"></param>
+        /// <param name="watermarked"></param>
+        /// <param name="updated_fields"></param>
+        /// <param name="source_application"></param>
+        /// <param name="source"></param>
+        /// <param name="task_ID"></param>
         /// <param name="comment_ID"></param>
         /// <param name="comment_target_type"></param>
         /// <param name="comment_target_ID"></param>
@@ -545,13 +856,23 @@ namespace Runway
         /// <param name="new_text"></param>
         /// <param name="agent_tagged"></param>
         /// <param name="agent_session_ID"></param>
+        /// <param name="connector"></param>
+        /// <param name="tool"></param>
+        /// <param name="read_or_write"></param>
+        /// <param name="result"></param>
         /// <param name="outcome"></param>
         /// <param name="error_code"></param>
         /// <param name="reason"></param>
         /// <param name="tag_name"></param>
         /// <param name="tag_color"></param>
         /// <param name="workspace_ID"></param>
+        /// <param name="from_workspace_ID"></param>
+        /// <param name="to_workspace_ID"></param>
         /// <param name="email_domain"></param>
+        /// <param name="automatic"></param>
+        /// <param name="join_policy"></param>
+        /// <param name="enabled"></param>
+        /// <param name="link_type"></param>
         /// <param name="workspace_name"></param>
         /// <param name="workspace_picture"></param>
         /// <param name="workspace_description"></param>
@@ -561,6 +882,7 @@ namespace Runway
         /// <param name="previous_value"></param>
         /// <param name="new_value"></param>
         /// <param name="shared_with_workspace"></param>
+        /// <param name="shared_in_project"></param>
         /// <param name="shared_with_projects"></param>
         /// <param name="brand_kit_ID"></param>
         /// <param name="source_category_ID"></param>
@@ -570,17 +892,25 @@ namespace Runway
         /// <param name="spend_cap_change"></param>
         /// <param name="previous_project_credit_cap"></param>
         /// <param name="project_credit_cap"></param>
+        /// <param name="credits_used"></param>
+        /// <param name="spend_cap_USD_cents"></param>
+        /// <param name="recharge_amount_USD_cents"></param>
+        /// <param name="recharge_below_Credits"></param>
+        /// <param name="cancels_at_period_end"></param>
         /// <param name="aPI_account"></param>
         /// <param name="aPI_project_ID"></param>
         /// <param name="organization"></param>
         /// <param name="aWS_license"></param>
         /// <param name="direction"></param>
         /// <param name="amount_received"></param>
+        /// <param name="asset_ID"></param>
+        /// <param name="source_version_asset_ID"></param>
         /// <param name="root_asset_ID"></param>
         /// <param name="media_included"></param>
         /// <param name="via_public_API"></param>
         /// <param name="provider"></param>
         /// <param name="selected"></param>
+        /// <param name="result_metric_ID"></param>
         /// <param name="ad_account_ID"></param>
         /// <param name="ad_sync_run_ID"></param>
         /// <param name="ad_sync_start_date"></param>
@@ -598,8 +928,21 @@ namespace Runway
         /// <param name="creatives_queued"></param>
         /// <param name="creatives_cancelled"></param>
         /// <param name="creatives_retried"></param>
+        /// <param name="ads_created_as"></param>
+        /// <param name="ad_level"></param>
+        /// <param name="status_before"></param>
+        /// <param name="status_after"></param>
+        /// <param name="platform_object_ID"></param>
+        /// <param name="campaign_setup_ID"></param>
+        /// <param name="campaign_setup_type"></param>
+        /// <param name="campaign_setup_version"></param>
         /// <param name="app_Studio_app"></param>
         /// <param name="app_Studio_session"></param>
+        /// <param name="app_Studio_app_ID"></param>
+        /// <param name="secret_name"></param>
+        /// <param name="app_Studio_deploy"></param>
+        /// <param name="files_moved"></param>
+        /// <param name="previously_shared_in_project"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -607,22 +950,39 @@ namespace Runway
             string? workspace,
             string? invited_member,
             string? removed_member,
+            string? added_member,
             string? target_member,
             string? member_email,
+            string? accepted_by,
+            string? new_email,
+            string? previous_email,
+            global::System.Collections.Generic.IList<string>? requested_via,
             string? previous_role,
             string? new_role,
             string? role,
             string? login_method,
+            string? method,
             string? platform,
             string? application,
             string? plan,
             double? amount,
+            string? promotion,
             bool? new_User,
             string? group_name,
+            string? project_ID,
             string? language_model_or_provider,
             string? model,
             string? operation,
             string? asset_name,
+            string? asset_type,
+            string? filename,
+            bool? downloaded_by_owner,
+            bool? anonymous,
+            bool? watermarked,
+            global::System.Collections.Generic.IList<string>? updated_fields,
+            string? source_application,
+            string? source,
+            string? task_ID,
             string? comment_ID,
             string? comment_target_type,
             string? comment_target_ID,
@@ -632,13 +992,23 @@ namespace Runway
             string? new_text,
             bool? agent_tagged,
             string? agent_session_ID,
+            string? connector,
+            string? tool,
+            string? read_or_write,
+            string? result,
             string? outcome,
             string? error_code,
             string? reason,
             string? tag_name,
             string? tag_color,
             double? workspace_ID,
+            double? from_workspace_ID,
+            double? to_workspace_ID,
             string? email_domain,
+            bool? automatic,
+            string? join_policy,
+            bool? enabled,
+            string? link_type,
             string? workspace_name,
             string? workspace_picture,
             string? workspace_description,
@@ -648,6 +1018,7 @@ namespace Runway
             global::Runway.AnyOf<string, double?, bool?, global::System.Collections.Generic.Dictionary<string, bool>>? previous_value,
             global::Runway.AnyOf<string, double?, bool?, global::System.Collections.Generic.Dictionary<string, bool>>? new_value,
             bool? shared_with_workspace,
+            string? shared_in_project,
             global::System.Collections.Generic.IList<string>? shared_with_projects,
             string? brand_kit_ID,
             string? source_category_ID,
@@ -657,17 +1028,25 @@ namespace Runway
             double? spend_cap_change,
             double? previous_project_credit_cap,
             double? project_credit_cap,
+            double? credits_used,
+            double? spend_cap_USD_cents,
+            double? recharge_amount_USD_cents,
+            double? recharge_below_Credits,
+            bool? cancels_at_period_end,
             string? aPI_account,
             string? aPI_project_ID,
             string? organization,
             string? aWS_license,
             string? direction,
             double? amount_received,
+            string? asset_ID,
+            string? source_version_asset_ID,
             string? root_asset_ID,
             bool? media_included,
             bool? via_public_API,
             string? provider,
             bool? selected,
+            string? result_metric_ID,
             string? ad_account_ID,
             string? ad_sync_run_ID,
             string? ad_sync_start_date,
@@ -685,28 +1064,58 @@ namespace Runway
             double? creatives_queued,
             double? creatives_cancelled,
             double? creatives_retried,
+            string? ads_created_as,
+            string? ad_level,
+            string? status_before,
+            string? status_after,
+            string? platform_object_ID,
+            string? campaign_setup_ID,
+            string? campaign_setup_type,
+            double? campaign_setup_version,
             string? app_Studio_app,
-            string? app_Studio_session)
+            string? app_Studio_session,
+            string? app_Studio_app_ID,
+            string? secret_name,
+            string? app_Studio_deploy,
+            double? files_moved,
+            string? previously_shared_in_project)
         {
             this.Workspace = workspace;
             this.Invited_member = invited_member;
             this.Removed_member = removed_member;
+            this.Added_member = added_member;
             this.Target_member = target_member;
             this.Member_email = member_email;
+            this.Accepted_by = accepted_by;
+            this.New_email = new_email;
+            this.Previous_email = previous_email;
+            this.Requested_via = requested_via;
             this.Previous_role = previous_role;
             this.New_role = new_role;
             this.Role = role;
             this.Login_method = login_method;
+            this.Method = method;
             this.Platform = platform;
             this.Application = application;
             this.Plan = plan;
             this.Amount = amount;
+            this.Promotion = promotion;
             this.New_User = new_User;
             this.Group_name = group_name;
+            this.Project_ID = project_ID;
             this.Language_model_or_provider = language_model_or_provider;
             this.Model = model;
             this.Operation = operation;
             this.Asset_name = asset_name;
+            this.Asset_type = asset_type;
+            this.Filename = filename;
+            this.Downloaded_by_owner = downloaded_by_owner;
+            this.Anonymous = anonymous;
+            this.Watermarked = watermarked;
+            this.Updated_fields = updated_fields;
+            this.Source_application = source_application;
+            this.Source = source;
+            this.Task_ID = task_ID;
             this.Comment_ID = comment_ID;
             this.Comment_target_type = comment_target_type;
             this.Comment_target_ID = comment_target_ID;
@@ -716,13 +1125,23 @@ namespace Runway
             this.New_text = new_text;
             this.Agent_tagged = agent_tagged;
             this.Agent_session_ID = agent_session_ID;
+            this.Connector = connector;
+            this.Tool = tool;
+            this.Read_or_write = read_or_write;
+            this.Result = result;
             this.Outcome = outcome;
             this.Error_code = error_code;
             this.Reason = reason;
             this.Tag_name = tag_name;
             this.Tag_color = tag_color;
             this.Workspace_ID = workspace_ID;
+            this.From_workspace_ID = from_workspace_ID;
+            this.To_workspace_ID = to_workspace_ID;
             this.Email_domain = email_domain;
+            this.Automatic = automatic;
+            this.Join_policy = join_policy;
+            this.Enabled = enabled;
+            this.Link_type = link_type;
             this.Workspace_name = workspace_name;
             this.Workspace_picture = workspace_picture;
             this.Workspace_description = workspace_description;
@@ -732,6 +1151,7 @@ namespace Runway
             this.Previous_value = previous_value;
             this.New_value = new_value;
             this.Shared_with_workspace = shared_with_workspace;
+            this.Shared_in_project = shared_in_project;
             this.Shared_with_projects = shared_with_projects;
             this.Brand_kit_ID = brand_kit_ID;
             this.Source_category_ID = source_category_ID;
@@ -741,17 +1161,25 @@ namespace Runway
             this.Spend_cap_change = spend_cap_change;
             this.Previous_project_credit_cap = previous_project_credit_cap;
             this.Project_credit_cap = project_credit_cap;
+            this.Credits_used = credits_used;
+            this.Spend_cap_USD_cents = spend_cap_USD_cents;
+            this.Recharge_amount_USD_cents = recharge_amount_USD_cents;
+            this.Recharge_below_Credits = recharge_below_Credits;
+            this.Cancels_at_period_end = cancels_at_period_end;
             this.API_account = aPI_account;
             this.API_project_ID = aPI_project_ID;
             this.Organization = organization;
             this.AWS_license = aWS_license;
             this.Direction = direction;
             this.Amount_received = amount_received;
+            this.Asset_ID = asset_ID;
+            this.Source_version_asset_ID = source_version_asset_ID;
             this.Root_asset_ID = root_asset_ID;
             this.Media_included = media_included;
             this.Via_public_API = via_public_API;
             this.Provider = provider;
             this.Selected = selected;
+            this.Result_metric_ID = result_metric_ID;
             this.Ad_account_ID = ad_account_ID;
             this.Ad_sync_run_ID = ad_sync_run_ID;
             this.Ad_sync_start_date = ad_sync_start_date;
@@ -769,8 +1197,21 @@ namespace Runway
             this.Creatives_queued = creatives_queued;
             this.Creatives_cancelled = creatives_cancelled;
             this.Creatives_retried = creatives_retried;
+            this.Ads_created_as = ads_created_as;
+            this.Ad_level = ad_level;
+            this.Status_before = status_before;
+            this.Status_after = status_after;
+            this.Platform_object_ID = platform_object_ID;
+            this.Campaign_setup_ID = campaign_setup_ID;
+            this.Campaign_setup_type = campaign_setup_type;
+            this.Campaign_setup_version = campaign_setup_version;
             this.App_Studio_app = app_Studio_app;
             this.App_Studio_session = app_Studio_session;
+            this.App_Studio_app_ID = app_Studio_app_ID;
+            this.Secret_name = secret_name;
+            this.App_Studio_deploy = app_Studio_deploy;
+            this.Files_moved = files_moved;
+            this.Previously_shared_in_project = previously_shared_in_project;
         }
 
         /// <summary>

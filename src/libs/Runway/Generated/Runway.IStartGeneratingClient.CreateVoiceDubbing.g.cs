@@ -8,6 +8,9 @@ namespace Runway
         /// Voice dubbing<br/>
         /// This endpoint will start a new task to dub audio content to a target language.
         /// </summary>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -32,6 +35,7 @@ namespace Runway
         global::System.Threading.Tasks.Task<global::Runway.CreateVoiceDubbingResponse> CreateVoiceDubbingAsync(
 
             global::Runway.CreateVoiceDubbingRequest request,
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
@@ -39,6 +43,9 @@ namespace Runway
         /// Voice dubbing<br/>
         /// This endpoint will start a new task to dub audio content to a target language.
         /// </summary>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -63,6 +70,7 @@ namespace Runway
         global::System.Threading.Tasks.Task<global::Runway.AutoSDKHttpResponse<global::Runway.CreateVoiceDubbingResponse>> CreateVoiceDubbingAsResponseAsync(
 
             global::Runway.CreateVoiceDubbingRequest request,
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
@@ -70,6 +78,9 @@ namespace Runway
         /// Voice dubbing<br/>
         /// This endpoint will start a new task to dub audio content to a target language.
         /// </summary>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -77,6 +88,7 @@ namespace Runway
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Runway.CreateVoiceDubbingResponse> CreateVoiceDubbingAsync(
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);

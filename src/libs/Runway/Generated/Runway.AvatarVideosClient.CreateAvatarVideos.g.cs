@@ -27,11 +27,13 @@ namespace Runway
             };
         partial void PrepareCreateAvatarVideosArguments(
             global::System.Net.Http.HttpClient httpClient,
+            ref string? xRunwayTags,
             ref string xRunwayVersion,
             global::Runway.CreateAvatarVideosRequest request);
         partial void PrepareCreateAvatarVideosRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
+            string? xRunwayTags,
             string xRunwayVersion,
             global::Runway.CreateAvatarVideosRequest request);
         partial void ProcessCreateAvatarVideosResponse(
@@ -47,6 +49,9 @@ namespace Runway
         /// Generate avatar video from audio or text<br/>
         /// Start an asynchronous task to generate a video of an avatar speaking. Provide `speech` with `type: "audio"` (audio file) or `type: "text"` (text script for TTS). Poll `GET /v1/tasks/:id` to check progress and retrieve the output video URL once complete.
         /// </summary>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -78,6 +83,7 @@ namespace Runway
         public async global::System.Threading.Tasks.Task<global::Runway.CreateAvatarVideosResponse> CreateAvatarVideosAsync(
 
             global::Runway.CreateAvatarVideosRequest request,
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -85,6 +91,7 @@ namespace Runway
             var __response = await CreateAvatarVideosAsResponseAsync(
 
                 request: request,
+                xRunwayTags: xRunwayTags,
                 xRunwayVersion: xRunwayVersion,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
@@ -96,6 +103,9 @@ namespace Runway
         /// Generate avatar video from audio or text<br/>
         /// Start an asynchronous task to generate a video of an avatar speaking. Provide `speech` with `type: "audio"` (audio file) or `type: "text"` (text script for TTS). Poll `GET /v1/tasks/:id` to check progress and retrieve the output video URL once complete.
         /// </summary>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -127,6 +137,7 @@ namespace Runway
         public async global::System.Threading.Tasks.Task<global::Runway.AutoSDKHttpResponse<global::Runway.CreateAvatarVideosResponse>> CreateAvatarVideosAsResponseAsync(
 
             global::Runway.CreateAvatarVideosRequest request,
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -137,6 +148,7 @@ namespace Runway
                 client: HttpClient);
             PrepareCreateAvatarVideosArguments(
                 httpClient: HttpClient,
+                xRunwayTags: ref xRunwayTags,
                 xRunwayVersion: ref xRunwayVersion,
                 request: request);
 
@@ -197,6 +209,10 @@ namespace Runway
             }
 
                 __httpRequest.Headers.TryAddWithoutValidation("X-Runway-Version", xRunwayVersion.ToString());
+            if (xRunwayTags != default)
+            {
+                __httpRequest.Headers.TryAddWithoutValidation("X-Runway-Tags", xRunwayTags.ToString());
+            }
 
                             var __httpRequestContentBody = request.ToJson(JsonSerializerContext);
                             var __httpRequestContent = new global::System.Net.Http.StringContent(
@@ -215,6 +231,7 @@ namespace Runway
                 PrepareCreateAvatarVideosRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
+                    xRunwayTags: xRunwayTags,
                     xRunwayVersion: xRunwayVersion,
                     request: request);
 
@@ -429,7 +446,7 @@ namespace Runway
                                 {
                                     throw global::Runway.ApiException.Create(
                                         statusCode: __response.StatusCode,
-                                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
+                                        message: __content is { Length: > 0 } ? __content : __response.ReasonPhrase ?? string.Empty,
                                         innerException: __ex,
                                         responseBody: __content,
                                         responseHeaders: global::System.Linq.Enumerable.ToDictionary(
@@ -474,7 +491,7 @@ namespace Runway
 
                                     throw global::Runway.ApiException.Create(
                                         statusCode: __response.StatusCode,
-                                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
+                                        message: __content is { Length: > 0 } ? __content : __response.ReasonPhrase ?? string.Empty,
                                         innerException: __ex,
                                         responseBody: __content,
                                         responseHeaders: global::System.Linq.Enumerable.ToDictionary(
@@ -495,6 +512,9 @@ namespace Runway
         /// Generate avatar video from audio or text<br/>
         /// Start an asynchronous task to generate a video of an avatar speaking. Provide `speech` with `type: "audio"` (audio file) or `type: "text"` (text script for TTS). Poll `GET /v1/tasks/:id` to check progress and retrieve the output video URL once complete.
         /// </summary>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -513,6 +533,7 @@ namespace Runway
         public async global::System.Threading.Tasks.Task<global::Runway.CreateAvatarVideosResponse> CreateAvatarVideosAsync(
             global::Runway.Avatar avatar,
             global::Runway.Speech speech,
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             string model = "gwm1_avatars",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
@@ -526,6 +547,7 @@ namespace Runway
             };
 
             return await CreateAvatarVideosAsync(
+                xRunwayTags: xRunwayTags,
                 xRunwayVersion: xRunwayVersion,
                 request: __request,
                 requestOptions: requestOptions,

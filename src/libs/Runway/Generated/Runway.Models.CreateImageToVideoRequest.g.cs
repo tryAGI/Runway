@@ -943,6 +943,43 @@ namespace Runway
         ///
         /// </summary>
 #if NET6_0_OR_GREATER
+        public global::Runway.CreateImageToVideoRequestGeminiOmniFlash12? GeminiOmniFlash12 { get; init; }
+#else
+        public global::Runway.CreateImageToVideoRequestGeminiOmniFlash12? GeminiOmniFlash12 { get; }
+#endif
+
+        /// <summary>
+        ///
+        /// </summary>
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(GeminiOmniFlash12))]
+#endif
+        public bool IsGeminiOmniFlash12 => GeminiOmniFlash12 != null;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public bool TryPickGeminiOmniFlash12(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Runway.CreateImageToVideoRequestGeminiOmniFlash12? value)
+        {
+            value = GeminiOmniFlash12;
+            return IsGeminiOmniFlash12;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Runway.CreateImageToVideoRequestGeminiOmniFlash12 PickGeminiOmniFlash12() => GeminiOmniFlash12 is { } value
+            ? value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'GeminiOmniFlash12' but the value was {ToString()}.");
+
+        /// <summary>
+        ///
+        /// </summary>
+#if NET6_0_OR_GREATER
         public global::Runway.CreateImageToVideoRequestKling4Flash? Kling4Flash { get; init; }
 #else
         public global::Runway.CreateImageToVideoRequestKling4Flash? Kling4Flash { get; }
@@ -980,38 +1017,112 @@ namespace Runway
         ///
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Runway.CreateImageToVideoRequestGeminiOmniFlash12? GeminiOmniFlash12 { get; init; }
+        public global::Runway.CreateImageToVideoRequestHailuo3Highspeed? Hailuo3Highspeed { get; init; }
 #else
-        public global::Runway.CreateImageToVideoRequestGeminiOmniFlash12? GeminiOmniFlash12 { get; }
+        public global::Runway.CreateImageToVideoRequestHailuo3Highspeed? Hailuo3Highspeed { get; }
 #endif
 
         /// <summary>
         ///
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(GeminiOmniFlash12))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Hailuo3Highspeed))]
 #endif
-        public bool IsGeminiOmniFlash12 => GeminiOmniFlash12 != null;
+        public bool IsHailuo3Highspeed => Hailuo3Highspeed != null;
 
         /// <summary>
         ///
         /// </summary>
-        public bool TryPickGeminiOmniFlash12(
+        public bool TryPickHailuo3Highspeed(
 #if NET6_0_OR_GREATER
             [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
 #endif
-            out global::Runway.CreateImageToVideoRequestGeminiOmniFlash12? value)
+            out global::Runway.CreateImageToVideoRequestHailuo3Highspeed? value)
         {
-            value = GeminiOmniFlash12;
-            return IsGeminiOmniFlash12;
+            value = Hailuo3Highspeed;
+            return IsHailuo3Highspeed;
         }
 
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.CreateImageToVideoRequestGeminiOmniFlash12 PickGeminiOmniFlash12() => GeminiOmniFlash12 is { } value
+        public global::Runway.CreateImageToVideoRequestHailuo3Highspeed PickHailuo3Highspeed() => Hailuo3Highspeed is { } value
             ? value
-            : throw new global::System.InvalidOperationException($"Expected union variant 'GeminiOmniFlash12' but the value was {ToString()}.");
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Hailuo3Highspeed' but the value was {ToString()}.");
+
+        /// <summary>
+        ///
+        /// </summary>
+#if NET6_0_OR_GREATER
+        public global::Runway.CreateImageToVideoRequestHailuo3Lite? Hailuo3Lite { get; init; }
+#else
+        public global::Runway.CreateImageToVideoRequestHailuo3Lite? Hailuo3Lite { get; }
+#endif
+
+        /// <summary>
+        ///
+        /// </summary>
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Hailuo3Lite))]
+#endif
+        public bool IsHailuo3Lite => Hailuo3Lite != null;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public bool TryPickHailuo3Lite(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Runway.CreateImageToVideoRequestHailuo3Lite? value)
+        {
+            value = Hailuo3Lite;
+            return IsHailuo3Lite;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Runway.CreateImageToVideoRequestHailuo3Lite PickHailuo3Lite() => Hailuo3Lite is { } value
+            ? value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Hailuo3Lite' but the value was {ToString()}.");
+
+        /// <summary>
+        ///
+        /// </summary>
+#if NET6_0_OR_GREATER
+        public global::Runway.CreateImageToVideoRequestSeedance25Flash? Seedance25Flash { get; init; }
+#else
+        public global::Runway.CreateImageToVideoRequestSeedance25Flash? Seedance25Flash { get; }
+#endif
+
+        /// <summary>
+        ///
+        /// </summary>
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Seedance25Flash))]
+#endif
+        public bool IsSeedance25Flash => Seedance25Flash != null;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public bool TryPickSeedance25Flash(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Runway.CreateImageToVideoRequestSeedance25Flash? value)
+        {
+            value = Seedance25Flash;
+            return IsSeedance25Flash;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Runway.CreateImageToVideoRequestSeedance25Flash PickSeedance25Flash() => Seedance25Flash is { } value
+            ? value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Seedance25Flash' but the value was {ToString()}.");
         /// <summary>
         ///
         /// </summary>
@@ -1590,6 +1701,29 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
+        public static implicit operator CreateImageToVideoRequest(global::Runway.CreateImageToVideoRequestGeminiOmniFlash12 value) => new CreateImageToVideoRequest((global::Runway.CreateImageToVideoRequestGeminiOmniFlash12?)value);
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static implicit operator global::Runway.CreateImageToVideoRequestGeminiOmniFlash12?(CreateImageToVideoRequest @this) => @this.GeminiOmniFlash12;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public CreateImageToVideoRequest(global::Runway.CreateImageToVideoRequestGeminiOmniFlash12? value)
+        {
+            GeminiOmniFlash12 = value;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static CreateImageToVideoRequest FromGeminiOmniFlash12(global::Runway.CreateImageToVideoRequestGeminiOmniFlash12? value) => new CreateImageToVideoRequest(value);
+
+        /// <summary>
+        ///
+        /// </summary>
         public static implicit operator CreateImageToVideoRequest(global::Runway.CreateImageToVideoRequestKling4Flash value) => new CreateImageToVideoRequest((global::Runway.CreateImageToVideoRequestKling4Flash?)value);
 
         /// <summary>
@@ -1613,25 +1747,71 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator CreateImageToVideoRequest(global::Runway.CreateImageToVideoRequestGeminiOmniFlash12 value) => new CreateImageToVideoRequest((global::Runway.CreateImageToVideoRequestGeminiOmniFlash12?)value);
+        public static implicit operator CreateImageToVideoRequest(global::Runway.CreateImageToVideoRequestHailuo3Highspeed value) => new CreateImageToVideoRequest((global::Runway.CreateImageToVideoRequestHailuo3Highspeed?)value);
 
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator global::Runway.CreateImageToVideoRequestGeminiOmniFlash12?(CreateImageToVideoRequest @this) => @this.GeminiOmniFlash12;
+        public static implicit operator global::Runway.CreateImageToVideoRequestHailuo3Highspeed?(CreateImageToVideoRequest @this) => @this.Hailuo3Highspeed;
 
         /// <summary>
         ///
         /// </summary>
-        public CreateImageToVideoRequest(global::Runway.CreateImageToVideoRequestGeminiOmniFlash12? value)
+        public CreateImageToVideoRequest(global::Runway.CreateImageToVideoRequestHailuo3Highspeed? value)
         {
-            GeminiOmniFlash12 = value;
+            Hailuo3Highspeed = value;
         }
 
         /// <summary>
         ///
         /// </summary>
-        public static CreateImageToVideoRequest FromGeminiOmniFlash12(global::Runway.CreateImageToVideoRequestGeminiOmniFlash12? value) => new CreateImageToVideoRequest(value);
+        public static CreateImageToVideoRequest FromHailuo3Highspeed(global::Runway.CreateImageToVideoRequestHailuo3Highspeed? value) => new CreateImageToVideoRequest(value);
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static implicit operator CreateImageToVideoRequest(global::Runway.CreateImageToVideoRequestHailuo3Lite value) => new CreateImageToVideoRequest((global::Runway.CreateImageToVideoRequestHailuo3Lite?)value);
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static implicit operator global::Runway.CreateImageToVideoRequestHailuo3Lite?(CreateImageToVideoRequest @this) => @this.Hailuo3Lite;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public CreateImageToVideoRequest(global::Runway.CreateImageToVideoRequestHailuo3Lite? value)
+        {
+            Hailuo3Lite = value;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static CreateImageToVideoRequest FromHailuo3Lite(global::Runway.CreateImageToVideoRequestHailuo3Lite? value) => new CreateImageToVideoRequest(value);
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static implicit operator CreateImageToVideoRequest(global::Runway.CreateImageToVideoRequestSeedance25Flash value) => new CreateImageToVideoRequest((global::Runway.CreateImageToVideoRequestSeedance25Flash?)value);
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static implicit operator global::Runway.CreateImageToVideoRequestSeedance25Flash?(CreateImageToVideoRequest @this) => @this.Seedance25Flash;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public CreateImageToVideoRequest(global::Runway.CreateImageToVideoRequestSeedance25Flash? value)
+        {
+            Seedance25Flash = value;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static CreateImageToVideoRequest FromSeedance25Flash(global::Runway.CreateImageToVideoRequestSeedance25Flash? value) => new CreateImageToVideoRequest(value);
 
         /// <summary>
         ///
@@ -1663,8 +1843,11 @@ namespace Runway
             global::Runway.CreateImageToVideoRequestSeedance25? seedance25,
             global::Runway.CreateImageToVideoRequestGrokImagine15Lite? grokImagine15Lite,
             global::Runway.CreateImageToVideoRequestKling4? kling4,
+            global::Runway.CreateImageToVideoRequestGeminiOmniFlash12? geminiOmniFlash12,
             global::Runway.CreateImageToVideoRequestKling4Flash? kling4Flash,
-            global::Runway.CreateImageToVideoRequestGeminiOmniFlash12? geminiOmniFlash12
+            global::Runway.CreateImageToVideoRequestHailuo3Highspeed? hailuo3Highspeed,
+            global::Runway.CreateImageToVideoRequestHailuo3Lite? hailuo3Lite,
+            global::Runway.CreateImageToVideoRequestSeedance25Flash? seedance25Flash
             )
         {
             Model = model;
@@ -1694,16 +1877,22 @@ namespace Runway
             Seedance25 = seedance25;
             GrokImagine15Lite = grokImagine15Lite;
             Kling4 = kling4;
-            Kling4Flash = kling4Flash;
             GeminiOmniFlash12 = geminiOmniFlash12;
+            Kling4Flash = kling4Flash;
+            Hailuo3Highspeed = hailuo3Highspeed;
+            Hailuo3Lite = hailuo3Lite;
+            Seedance25Flash = seedance25Flash;
         }
 
         /// <summary>
         ///
         /// </summary>
         public object? Object =>
-            GeminiOmniFlash12 as object ??
+            Seedance25Flash as object ??
+            Hailuo3Lite as object ??
+            Hailuo3Highspeed as object ??
             Kling4Flash as object ??
+            GeminiOmniFlash12 as object ??
             Kling4 as object ??
             GrokImagine15Lite as object ??
             Seedance25 as object ??
@@ -1760,8 +1949,11 @@ namespace Runway
             Seedance25?.ToString() ??
             GrokImagine15Lite?.ToString() ??
             Kling4?.ToString() ??
+            GeminiOmniFlash12?.ToString() ??
             Kling4Flash?.ToString() ??
-            GeminiOmniFlash12?.ToString()
+            Hailuo3Highspeed?.ToString() ??
+            Hailuo3Lite?.ToString() ??
+            Seedance25Flash?.ToString()
             ;
 
         /// <summary>
@@ -1769,7 +1961,7 @@ namespace Runway
         /// </summary>
         public bool Validate()
         {
-            return IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsKlingO34k && !IsHailuo3 && !IsKling304k && !IsHappyhorse10 && !IsKling25TurboPro && !IsKling30Pro && !IsKling30Standard && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGrokImagine15 && !IsWan3 && !IsGeminiOmniFlash11 && !IsWan3Prime && !IsH3Max && !IsSeedance25 && !IsGrokImagine15Lite && !IsKling4 && !IsKling4Flash && !IsGeminiOmniFlash12 || !IsGen45 && IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsKlingO34k && !IsHailuo3 && !IsKling304k && !IsHappyhorse10 && !IsKling25TurboPro && !IsKling30Pro && !IsKling30Standard && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGrokImagine15 && !IsWan3 && !IsGeminiOmniFlash11 && !IsWan3Prime && !IsH3Max && !IsSeedance25 && !IsGrokImagine15Lite && !IsKling4 && !IsKling4Flash && !IsGeminiOmniFlash12 || !IsGen45 && !IsGen4Turbo && IsVeo31 && !IsVeo31Fast && !IsKlingO34k && !IsHailuo3 && !IsKling304k && !IsHappyhorse10 && !IsKling25TurboPro && !IsKling30Pro && !IsKling30Standard && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGrokImagine15 && !IsWan3 && !IsGeminiOmniFlash11 && !IsWan3Prime && !IsH3Max && !IsSeedance25 && !IsGrokImagine15Lite && !IsKling4 && !IsKling4Flash && !IsGeminiOmniFlash12 || !IsGen45 && !IsGen4Turbo && !IsVeo31 && IsVeo31Fast && !IsKlingO34k && !IsHailuo3 && !IsKling304k && !IsHappyhorse10 && !IsKling25TurboPro && !IsKling30Pro && !IsKling30Standard && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGrokImagine15 && !IsWan3 && !IsGeminiOmniFlash11 && !IsWan3Prime && !IsH3Max && !IsSeedance25 && !IsGrokImagine15Lite && !IsKling4 && !IsKling4Flash && !IsGeminiOmniFlash12 || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && IsKlingO34k && !IsHailuo3 && !IsKling304k && !IsHappyhorse10 && !IsKling25TurboPro && !IsKling30Pro && !IsKling30Standard && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGrokImagine15 && !IsWan3 && !IsGeminiOmniFlash11 && !IsWan3Prime && !IsH3Max && !IsSeedance25 && !IsGrokImagine15Lite && !IsKling4 && !IsKling4Flash && !IsGeminiOmniFlash12 || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsKlingO34k && IsHailuo3 && !IsKling304k && !IsHappyhorse10 && !IsKling25TurboPro && !IsKling30Pro && !IsKling30Standard && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGrokImagine15 && !IsWan3 && !IsGeminiOmniFlash11 && !IsWan3Prime && !IsH3Max && !IsSeedance25 && !IsGrokImagine15Lite && !IsKling4 && !IsKling4Flash && !IsGeminiOmniFlash12 || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsKlingO34k && !IsHailuo3 && IsKling304k && !IsHappyhorse10 && !IsKling25TurboPro && !IsKling30Pro && !IsKling30Standard && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGrokImagine15 && !IsWan3 && !IsGeminiOmniFlash11 && !IsWan3Prime && !IsH3Max && !IsSeedance25 && !IsGrokImagine15Lite && !IsKling4 && !IsKling4Flash && !IsGeminiOmniFlash12 || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsKlingO34k && !IsHailuo3 && !IsKling304k && IsHappyhorse10 && !IsKling25TurboPro && !IsKling30Pro && !IsKling30Standard && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGrokImagine15 && !IsWan3 && !IsGeminiOmniFlash11 && !IsWan3Prime && !IsH3Max && !IsSeedance25 && !IsGrokImagine15Lite && !IsKling4 && !IsKling4Flash && !IsGeminiOmniFlash12 || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsKlingO34k && !IsHailuo3 && !IsKling304k && !IsHappyhorse10 && IsKling25TurboPro && !IsKling30Pro && !IsKling30Standard && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGrokImagine15 && !IsWan3 && !IsGeminiOmniFlash11 && !IsWan3Prime && !IsH3Max && !IsSeedance25 && !IsGrokImagine15Lite && !IsKling4 && !IsKling4Flash && !IsGeminiOmniFlash12 || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsKlingO34k && !IsHailuo3 && !IsKling304k && !IsHappyhorse10 && !IsKling25TurboPro && IsKling30Pro && !IsKling30Standard && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGrokImagine15 && !IsWan3 && !IsGeminiOmniFlash11 && !IsWan3Prime && !IsH3Max && !IsSeedance25 && !IsGrokImagine15Lite && !IsKling4 && !IsKling4Flash && !IsGeminiOmniFlash12 || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsKlingO34k && !IsHailuo3 && !IsKling304k && !IsHappyhorse10 && !IsKling25TurboPro && !IsKling30Pro && IsKling30Standard && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGrokImagine15 && !IsWan3 && !IsGeminiOmniFlash11 && !IsWan3Prime && !IsH3Max && !IsSeedance25 && !IsGrokImagine15Lite && !IsKling4 && !IsKling4Flash && !IsGeminiOmniFlash12 || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsKlingO34k && !IsHailuo3 && !IsKling304k && !IsHappyhorse10 && !IsKling25TurboPro && !IsKling30Pro && !IsKling30Standard && IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGrokImagine15 && !IsWan3 && !IsGeminiOmniFlash11 && !IsWan3Prime && !IsH3Max && !IsSeedance25 && !IsGrokImagine15Lite && !IsKling4 && !IsKling4Flash && !IsGeminiOmniFlash12 || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsKlingO34k && !IsHailuo3 && !IsKling304k && !IsHappyhorse10 && !IsKling25TurboPro && !IsKling30Pro && !IsKling30Standard && !IsKlingO3Pro && IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGrokImagine15 && !IsWan3 && !IsGeminiOmniFlash11 && !IsWan3Prime && !IsH3Max && !IsSeedance25 && !IsGrokImagine15Lite && !IsKling4 && !IsKling4Flash && !IsGeminiOmniFlash12 || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsKlingO34k && !IsHailuo3 && !IsKling304k && !IsHappyhorse10 && !IsKling25TurboPro && !IsKling30Pro && !IsKling30Standard && !IsKlingO3Pro && !IsKlingO3Standard && IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGrokImagine15 && !IsWan3 && !IsGeminiOmniFlash11 && !IsWan3Prime && !IsH3Max && !IsSeedance25 && !IsGrokImagine15Lite && !IsKling4 && !IsKling4Flash && !IsGeminiOmniFlash12 || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsKlingO34k && !IsHailuo3 && !IsKling304k && !IsHappyhorse10 && !IsKling25TurboPro && !IsKling30Pro && !IsKling30Standard && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGrokImagine15 && !IsWan3 && !IsGeminiOmniFlash11 && !IsWan3Prime && !IsH3Max && !IsSeedance25 && !IsGrokImagine15Lite && !IsKling4 && !IsKling4Flash && !IsGeminiOmniFlash12 || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsKlingO34k && !IsHailuo3 && !IsKling304k && !IsHappyhorse10 && !IsKling25TurboPro && !IsKling30Pro && !IsKling30Standard && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && IsSeedance2Mini && !IsGeminiOmniFlash && !IsGrokImagine15 && !IsWan3 && !IsGeminiOmniFlash11 && !IsWan3Prime && !IsH3Max && !IsSeedance25 && !IsGrokImagine15Lite && !IsKling4 && !IsKling4Flash && !IsGeminiOmniFlash12 || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsKlingO34k && !IsHailuo3 && !IsKling304k && !IsHappyhorse10 && !IsKling25TurboPro && !IsKling30Pro && !IsKling30Standard && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && IsGeminiOmniFlash && !IsGrokImagine15 && !IsWan3 && !IsGeminiOmniFlash11 && !IsWan3Prime && !IsH3Max && !IsSeedance25 && !IsGrokImagine15Lite && !IsKling4 && !IsKling4Flash && !IsGeminiOmniFlash12 || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsKlingO34k && !IsHailuo3 && !IsKling304k && !IsHappyhorse10 && !IsKling25TurboPro && !IsKling30Pro && !IsKling30Standard && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && IsGrokImagine15 && !IsWan3 && !IsGeminiOmniFlash11 && !IsWan3Prime && !IsH3Max && !IsSeedance25 && !IsGrokImagine15Lite && !IsKling4 && !IsKling4Flash && !IsGeminiOmniFlash12 || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsKlingO34k && !IsHailuo3 && !IsKling304k && !IsHappyhorse10 && !IsKling25TurboPro && !IsKling30Pro && !IsKling30Standard && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGrokImagine15 && IsWan3 && !IsGeminiOmniFlash11 && !IsWan3Prime && !IsH3Max && !IsSeedance25 && !IsGrokImagine15Lite && !IsKling4 && !IsKling4Flash && !IsGeminiOmniFlash12 || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsKlingO34k && !IsHailuo3 && !IsKling304k && !IsHappyhorse10 && !IsKling25TurboPro && !IsKling30Pro && !IsKling30Standard && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGrokImagine15 && !IsWan3 && IsGeminiOmniFlash11 && !IsWan3Prime && !IsH3Max && !IsSeedance25 && !IsGrokImagine15Lite && !IsKling4 && !IsKling4Flash && !IsGeminiOmniFlash12 || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsKlingO34k && !IsHailuo3 && !IsKling304k && !IsHappyhorse10 && !IsKling25TurboPro && !IsKling30Pro && !IsKling30Standard && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGrokImagine15 && !IsWan3 && !IsGeminiOmniFlash11 && IsWan3Prime && !IsH3Max && !IsSeedance25 && !IsGrokImagine15Lite && !IsKling4 && !IsKling4Flash && !IsGeminiOmniFlash12 || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsKlingO34k && !IsHailuo3 && !IsKling304k && !IsHappyhorse10 && !IsKling25TurboPro && !IsKling30Pro && !IsKling30Standard && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGrokImagine15 && !IsWan3 && !IsGeminiOmniFlash11 && !IsWan3Prime && IsH3Max && !IsSeedance25 && !IsGrokImagine15Lite && !IsKling4 && !IsKling4Flash && !IsGeminiOmniFlash12 || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsKlingO34k && !IsHailuo3 && !IsKling304k && !IsHappyhorse10 && !IsKling25TurboPro && !IsKling30Pro && !IsKling30Standard && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGrokImagine15 && !IsWan3 && !IsGeminiOmniFlash11 && !IsWan3Prime && !IsH3Max && IsSeedance25 && !IsGrokImagine15Lite && !IsKling4 && !IsKling4Flash && !IsGeminiOmniFlash12 || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsKlingO34k && !IsHailuo3 && !IsKling304k && !IsHappyhorse10 && !IsKling25TurboPro && !IsKling30Pro && !IsKling30Standard && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGrokImagine15 && !IsWan3 && !IsGeminiOmniFlash11 && !IsWan3Prime && !IsH3Max && !IsSeedance25 && IsGrokImagine15Lite && !IsKling4 && !IsKling4Flash && !IsGeminiOmniFlash12 || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsKlingO34k && !IsHailuo3 && !IsKling304k && !IsHappyhorse10 && !IsKling25TurboPro && !IsKling30Pro && !IsKling30Standard && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGrokImagine15 && !IsWan3 && !IsGeminiOmniFlash11 && !IsWan3Prime && !IsH3Max && !IsSeedance25 && !IsGrokImagine15Lite && IsKling4 && !IsKling4Flash && !IsGeminiOmniFlash12 || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsKlingO34k && !IsHailuo3 && !IsKling304k && !IsHappyhorse10 && !IsKling25TurboPro && !IsKling30Pro && !IsKling30Standard && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGrokImagine15 && !IsWan3 && !IsGeminiOmniFlash11 && !IsWan3Prime && !IsH3Max && !IsSeedance25 && !IsGrokImagine15Lite && !IsKling4 && IsKling4Flash && !IsGeminiOmniFlash12 || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsKlingO34k && !IsHailuo3 && !IsKling304k && !IsHappyhorse10 && !IsKling25TurboPro && !IsKling30Pro && !IsKling30Standard && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGrokImagine15 && !IsWan3 && !IsGeminiOmniFlash11 && !IsWan3Prime && !IsH3Max && !IsSeedance25 && !IsGrokImagine15Lite && !IsKling4 && !IsKling4Flash && IsGeminiOmniFlash12;
+            return IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsKlingO34k && !IsHailuo3 && !IsKling304k && !IsHappyhorse10 && !IsKling25TurboPro && !IsKling30Pro && !IsKling30Standard && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGrokImagine15 && !IsWan3 && !IsGeminiOmniFlash11 && !IsWan3Prime && !IsH3Max && !IsSeedance25 && !IsGrokImagine15Lite && !IsKling4 && !IsGeminiOmniFlash12 && !IsKling4Flash && !IsHailuo3Highspeed && !IsHailuo3Lite && !IsSeedance25Flash || !IsGen45 && IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsKlingO34k && !IsHailuo3 && !IsKling304k && !IsHappyhorse10 && !IsKling25TurboPro && !IsKling30Pro && !IsKling30Standard && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGrokImagine15 && !IsWan3 && !IsGeminiOmniFlash11 && !IsWan3Prime && !IsH3Max && !IsSeedance25 && !IsGrokImagine15Lite && !IsKling4 && !IsGeminiOmniFlash12 && !IsKling4Flash && !IsHailuo3Highspeed && !IsHailuo3Lite && !IsSeedance25Flash || !IsGen45 && !IsGen4Turbo && IsVeo31 && !IsVeo31Fast && !IsKlingO34k && !IsHailuo3 && !IsKling304k && !IsHappyhorse10 && !IsKling25TurboPro && !IsKling30Pro && !IsKling30Standard && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGrokImagine15 && !IsWan3 && !IsGeminiOmniFlash11 && !IsWan3Prime && !IsH3Max && !IsSeedance25 && !IsGrokImagine15Lite && !IsKling4 && !IsGeminiOmniFlash12 && !IsKling4Flash && !IsHailuo3Highspeed && !IsHailuo3Lite && !IsSeedance25Flash || !IsGen45 && !IsGen4Turbo && !IsVeo31 && IsVeo31Fast && !IsKlingO34k && !IsHailuo3 && !IsKling304k && !IsHappyhorse10 && !IsKling25TurboPro && !IsKling30Pro && !IsKling30Standard && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGrokImagine15 && !IsWan3 && !IsGeminiOmniFlash11 && !IsWan3Prime && !IsH3Max && !IsSeedance25 && !IsGrokImagine15Lite && !IsKling4 && !IsGeminiOmniFlash12 && !IsKling4Flash && !IsHailuo3Highspeed && !IsHailuo3Lite && !IsSeedance25Flash || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && IsKlingO34k && !IsHailuo3 && !IsKling304k && !IsHappyhorse10 && !IsKling25TurboPro && !IsKling30Pro && !IsKling30Standard && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGrokImagine15 && !IsWan3 && !IsGeminiOmniFlash11 && !IsWan3Prime && !IsH3Max && !IsSeedance25 && !IsGrokImagine15Lite && !IsKling4 && !IsGeminiOmniFlash12 && !IsKling4Flash && !IsHailuo3Highspeed && !IsHailuo3Lite && !IsSeedance25Flash || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsKlingO34k && IsHailuo3 && !IsKling304k && !IsHappyhorse10 && !IsKling25TurboPro && !IsKling30Pro && !IsKling30Standard && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGrokImagine15 && !IsWan3 && !IsGeminiOmniFlash11 && !IsWan3Prime && !IsH3Max && !IsSeedance25 && !IsGrokImagine15Lite && !IsKling4 && !IsGeminiOmniFlash12 && !IsKling4Flash && !IsHailuo3Highspeed && !IsHailuo3Lite && !IsSeedance25Flash || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsKlingO34k && !IsHailuo3 && IsKling304k && !IsHappyhorse10 && !IsKling25TurboPro && !IsKling30Pro && !IsKling30Standard && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGrokImagine15 && !IsWan3 && !IsGeminiOmniFlash11 && !IsWan3Prime && !IsH3Max && !IsSeedance25 && !IsGrokImagine15Lite && !IsKling4 && !IsGeminiOmniFlash12 && !IsKling4Flash && !IsHailuo3Highspeed && !IsHailuo3Lite && !IsSeedance25Flash || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsKlingO34k && !IsHailuo3 && !IsKling304k && IsHappyhorse10 && !IsKling25TurboPro && !IsKling30Pro && !IsKling30Standard && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGrokImagine15 && !IsWan3 && !IsGeminiOmniFlash11 && !IsWan3Prime && !IsH3Max && !IsSeedance25 && !IsGrokImagine15Lite && !IsKling4 && !IsGeminiOmniFlash12 && !IsKling4Flash && !IsHailuo3Highspeed && !IsHailuo3Lite && !IsSeedance25Flash || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsKlingO34k && !IsHailuo3 && !IsKling304k && !IsHappyhorse10 && IsKling25TurboPro && !IsKling30Pro && !IsKling30Standard && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGrokImagine15 && !IsWan3 && !IsGeminiOmniFlash11 && !IsWan3Prime && !IsH3Max && !IsSeedance25 && !IsGrokImagine15Lite && !IsKling4 && !IsGeminiOmniFlash12 && !IsKling4Flash && !IsHailuo3Highspeed && !IsHailuo3Lite && !IsSeedance25Flash || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsKlingO34k && !IsHailuo3 && !IsKling304k && !IsHappyhorse10 && !IsKling25TurboPro && IsKling30Pro && !IsKling30Standard && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGrokImagine15 && !IsWan3 && !IsGeminiOmniFlash11 && !IsWan3Prime && !IsH3Max && !IsSeedance25 && !IsGrokImagine15Lite && !IsKling4 && !IsGeminiOmniFlash12 && !IsKling4Flash && !IsHailuo3Highspeed && !IsHailuo3Lite && !IsSeedance25Flash || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsKlingO34k && !IsHailuo3 && !IsKling304k && !IsHappyhorse10 && !IsKling25TurboPro && !IsKling30Pro && IsKling30Standard && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGrokImagine15 && !IsWan3 && !IsGeminiOmniFlash11 && !IsWan3Prime && !IsH3Max && !IsSeedance25 && !IsGrokImagine15Lite && !IsKling4 && !IsGeminiOmniFlash12 && !IsKling4Flash && !IsHailuo3Highspeed && !IsHailuo3Lite && !IsSeedance25Flash || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsKlingO34k && !IsHailuo3 && !IsKling304k && !IsHappyhorse10 && !IsKling25TurboPro && !IsKling30Pro && !IsKling30Standard && IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGrokImagine15 && !IsWan3 && !IsGeminiOmniFlash11 && !IsWan3Prime && !IsH3Max && !IsSeedance25 && !IsGrokImagine15Lite && !IsKling4 && !IsGeminiOmniFlash12 && !IsKling4Flash && !IsHailuo3Highspeed && !IsHailuo3Lite && !IsSeedance25Flash || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsKlingO34k && !IsHailuo3 && !IsKling304k && !IsHappyhorse10 && !IsKling25TurboPro && !IsKling30Pro && !IsKling30Standard && !IsKlingO3Pro && IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGrokImagine15 && !IsWan3 && !IsGeminiOmniFlash11 && !IsWan3Prime && !IsH3Max && !IsSeedance25 && !IsGrokImagine15Lite && !IsKling4 && !IsGeminiOmniFlash12 && !IsKling4Flash && !IsHailuo3Highspeed && !IsHailuo3Lite && !IsSeedance25Flash || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsKlingO34k && !IsHailuo3 && !IsKling304k && !IsHappyhorse10 && !IsKling25TurboPro && !IsKling30Pro && !IsKling30Standard && !IsKlingO3Pro && !IsKlingO3Standard && IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGrokImagine15 && !IsWan3 && !IsGeminiOmniFlash11 && !IsWan3Prime && !IsH3Max && !IsSeedance25 && !IsGrokImagine15Lite && !IsKling4 && !IsGeminiOmniFlash12 && !IsKling4Flash && !IsHailuo3Highspeed && !IsHailuo3Lite && !IsSeedance25Flash || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsKlingO34k && !IsHailuo3 && !IsKling304k && !IsHappyhorse10 && !IsKling25TurboPro && !IsKling30Pro && !IsKling30Standard && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGrokImagine15 && !IsWan3 && !IsGeminiOmniFlash11 && !IsWan3Prime && !IsH3Max && !IsSeedance25 && !IsGrokImagine15Lite && !IsKling4 && !IsGeminiOmniFlash12 && !IsKling4Flash && !IsHailuo3Highspeed && !IsHailuo3Lite && !IsSeedance25Flash || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsKlingO34k && !IsHailuo3 && !IsKling304k && !IsHappyhorse10 && !IsKling25TurboPro && !IsKling30Pro && !IsKling30Standard && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && IsSeedance2Mini && !IsGeminiOmniFlash && !IsGrokImagine15 && !IsWan3 && !IsGeminiOmniFlash11 && !IsWan3Prime && !IsH3Max && !IsSeedance25 && !IsGrokImagine15Lite && !IsKling4 && !IsGeminiOmniFlash12 && !IsKling4Flash && !IsHailuo3Highspeed && !IsHailuo3Lite && !IsSeedance25Flash || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsKlingO34k && !IsHailuo3 && !IsKling304k && !IsHappyhorse10 && !IsKling25TurboPro && !IsKling30Pro && !IsKling30Standard && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && IsGeminiOmniFlash && !IsGrokImagine15 && !IsWan3 && !IsGeminiOmniFlash11 && !IsWan3Prime && !IsH3Max && !IsSeedance25 && !IsGrokImagine15Lite && !IsKling4 && !IsGeminiOmniFlash12 && !IsKling4Flash && !IsHailuo3Highspeed && !IsHailuo3Lite && !IsSeedance25Flash || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsKlingO34k && !IsHailuo3 && !IsKling304k && !IsHappyhorse10 && !IsKling25TurboPro && !IsKling30Pro && !IsKling30Standard && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && IsGrokImagine15 && !IsWan3 && !IsGeminiOmniFlash11 && !IsWan3Prime && !IsH3Max && !IsSeedance25 && !IsGrokImagine15Lite && !IsKling4 && !IsGeminiOmniFlash12 && !IsKling4Flash && !IsHailuo3Highspeed && !IsHailuo3Lite && !IsSeedance25Flash || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsKlingO34k && !IsHailuo3 && !IsKling304k && !IsHappyhorse10 && !IsKling25TurboPro && !IsKling30Pro && !IsKling30Standard && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGrokImagine15 && IsWan3 && !IsGeminiOmniFlash11 && !IsWan3Prime && !IsH3Max && !IsSeedance25 && !IsGrokImagine15Lite && !IsKling4 && !IsGeminiOmniFlash12 && !IsKling4Flash && !IsHailuo3Highspeed && !IsHailuo3Lite && !IsSeedance25Flash || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsKlingO34k && !IsHailuo3 && !IsKling304k && !IsHappyhorse10 && !IsKling25TurboPro && !IsKling30Pro && !IsKling30Standard && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGrokImagine15 && !IsWan3 && IsGeminiOmniFlash11 && !IsWan3Prime && !IsH3Max && !IsSeedance25 && !IsGrokImagine15Lite && !IsKling4 && !IsGeminiOmniFlash12 && !IsKling4Flash && !IsHailuo3Highspeed && !IsHailuo3Lite && !IsSeedance25Flash || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsKlingO34k && !IsHailuo3 && !IsKling304k && !IsHappyhorse10 && !IsKling25TurboPro && !IsKling30Pro && !IsKling30Standard && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGrokImagine15 && !IsWan3 && !IsGeminiOmniFlash11 && IsWan3Prime && !IsH3Max && !IsSeedance25 && !IsGrokImagine15Lite && !IsKling4 && !IsGeminiOmniFlash12 && !IsKling4Flash && !IsHailuo3Highspeed && !IsHailuo3Lite && !IsSeedance25Flash || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsKlingO34k && !IsHailuo3 && !IsKling304k && !IsHappyhorse10 && !IsKling25TurboPro && !IsKling30Pro && !IsKling30Standard && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGrokImagine15 && !IsWan3 && !IsGeminiOmniFlash11 && !IsWan3Prime && IsH3Max && !IsSeedance25 && !IsGrokImagine15Lite && !IsKling4 && !IsGeminiOmniFlash12 && !IsKling4Flash && !IsHailuo3Highspeed && !IsHailuo3Lite && !IsSeedance25Flash || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsKlingO34k && !IsHailuo3 && !IsKling304k && !IsHappyhorse10 && !IsKling25TurboPro && !IsKling30Pro && !IsKling30Standard && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGrokImagine15 && !IsWan3 && !IsGeminiOmniFlash11 && !IsWan3Prime && !IsH3Max && IsSeedance25 && !IsGrokImagine15Lite && !IsKling4 && !IsGeminiOmniFlash12 && !IsKling4Flash && !IsHailuo3Highspeed && !IsHailuo3Lite && !IsSeedance25Flash || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsKlingO34k && !IsHailuo3 && !IsKling304k && !IsHappyhorse10 && !IsKling25TurboPro && !IsKling30Pro && !IsKling30Standard && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGrokImagine15 && !IsWan3 && !IsGeminiOmniFlash11 && !IsWan3Prime && !IsH3Max && !IsSeedance25 && IsGrokImagine15Lite && !IsKling4 && !IsGeminiOmniFlash12 && !IsKling4Flash && !IsHailuo3Highspeed && !IsHailuo3Lite && !IsSeedance25Flash || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsKlingO34k && !IsHailuo3 && !IsKling304k && !IsHappyhorse10 && !IsKling25TurboPro && !IsKling30Pro && !IsKling30Standard && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGrokImagine15 && !IsWan3 && !IsGeminiOmniFlash11 && !IsWan3Prime && !IsH3Max && !IsSeedance25 && !IsGrokImagine15Lite && IsKling4 && !IsGeminiOmniFlash12 && !IsKling4Flash && !IsHailuo3Highspeed && !IsHailuo3Lite && !IsSeedance25Flash || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsKlingO34k && !IsHailuo3 && !IsKling304k && !IsHappyhorse10 && !IsKling25TurboPro && !IsKling30Pro && !IsKling30Standard && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGrokImagine15 && !IsWan3 && !IsGeminiOmniFlash11 && !IsWan3Prime && !IsH3Max && !IsSeedance25 && !IsGrokImagine15Lite && !IsKling4 && IsGeminiOmniFlash12 && !IsKling4Flash && !IsHailuo3Highspeed && !IsHailuo3Lite && !IsSeedance25Flash || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsKlingO34k && !IsHailuo3 && !IsKling304k && !IsHappyhorse10 && !IsKling25TurboPro && !IsKling30Pro && !IsKling30Standard && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGrokImagine15 && !IsWan3 && !IsGeminiOmniFlash11 && !IsWan3Prime && !IsH3Max && !IsSeedance25 && !IsGrokImagine15Lite && !IsKling4 && !IsGeminiOmniFlash12 && IsKling4Flash && !IsHailuo3Highspeed && !IsHailuo3Lite && !IsSeedance25Flash || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsKlingO34k && !IsHailuo3 && !IsKling304k && !IsHappyhorse10 && !IsKling25TurboPro && !IsKling30Pro && !IsKling30Standard && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGrokImagine15 && !IsWan3 && !IsGeminiOmniFlash11 && !IsWan3Prime && !IsH3Max && !IsSeedance25 && !IsGrokImagine15Lite && !IsKling4 && !IsGeminiOmniFlash12 && !IsKling4Flash && IsHailuo3Highspeed && !IsHailuo3Lite && !IsSeedance25Flash || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsKlingO34k && !IsHailuo3 && !IsKling304k && !IsHappyhorse10 && !IsKling25TurboPro && !IsKling30Pro && !IsKling30Standard && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGrokImagine15 && !IsWan3 && !IsGeminiOmniFlash11 && !IsWan3Prime && !IsH3Max && !IsSeedance25 && !IsGrokImagine15Lite && !IsKling4 && !IsGeminiOmniFlash12 && !IsKling4Flash && !IsHailuo3Highspeed && IsHailuo3Lite && !IsSeedance25Flash || !IsGen45 && !IsGen4Turbo && !IsVeo31 && !IsVeo31Fast && !IsKlingO34k && !IsHailuo3 && !IsKling304k && !IsHappyhorse10 && !IsKling25TurboPro && !IsKling30Pro && !IsKling30Standard && !IsKlingO3Pro && !IsKlingO3Standard && !IsSeedance2 && !IsSeedance2Fast && !IsSeedance2Mini && !IsGeminiOmniFlash && !IsGrokImagine15 && !IsWan3 && !IsGeminiOmniFlash11 && !IsWan3Prime && !IsH3Max && !IsSeedance25 && !IsGrokImagine15Lite && !IsKling4 && !IsGeminiOmniFlash12 && !IsKling4Flash && !IsHailuo3Highspeed && !IsHailuo3Lite && IsSeedance25Flash;
         }
 
         /// <summary>
@@ -1801,8 +1993,11 @@ namespace Runway
             global::System.Func<global::Runway.CreateImageToVideoRequestSeedance25, TResult>? seedance25 = null,
             global::System.Func<global::Runway.CreateImageToVideoRequestGrokImagine15Lite, TResult>? grokImagine15Lite = null,
             global::System.Func<global::Runway.CreateImageToVideoRequestKling4, TResult>? kling4 = null,
-            global::System.Func<global::Runway.CreateImageToVideoRequestKling4Flash, TResult>? kling4Flash = null,
             global::System.Func<global::Runway.CreateImageToVideoRequestGeminiOmniFlash12, TResult>? geminiOmniFlash12 = null,
+            global::System.Func<global::Runway.CreateImageToVideoRequestKling4Flash, TResult>? kling4Flash = null,
+            global::System.Func<global::Runway.CreateImageToVideoRequestHailuo3Highspeed, TResult>? hailuo3Highspeed = null,
+            global::System.Func<global::Runway.CreateImageToVideoRequestHailuo3Lite, TResult>? hailuo3Lite = null,
+            global::System.Func<global::Runway.CreateImageToVideoRequestSeedance25Flash, TResult>? seedance25Flash = null,
             bool validate = true)
         {
             if (validate)
@@ -1910,13 +2105,25 @@ namespace Runway
             {
                 return kling4(__value24);
             }
-            else if (Kling4Flash is { } __value25 && kling4Flash != null)
+            else if (GeminiOmniFlash12 is { } __value25 && geminiOmniFlash12 != null)
             {
-                return kling4Flash(__value25);
+                return geminiOmniFlash12(__value25);
             }
-            else if (GeminiOmniFlash12 is { } __value26 && geminiOmniFlash12 != null)
+            else if (Kling4Flash is { } __value26 && kling4Flash != null)
             {
-                return geminiOmniFlash12(__value26);
+                return kling4Flash(__value26);
+            }
+            else if (Hailuo3Highspeed is { } __value27 && hailuo3Highspeed != null)
+            {
+                return hailuo3Highspeed(__value27);
+            }
+            else if (Hailuo3Lite is { } __value28 && hailuo3Lite != null)
+            {
+                return hailuo3Lite(__value28);
+            }
+            else if (Seedance25Flash is { } __value29 && seedance25Flash != null)
+            {
+                return seedance25Flash(__value29);
             }
 
             return default(TResult);
@@ -1976,9 +2183,15 @@ namespace Runway
 
             global::System.Action<global::Runway.CreateImageToVideoRequestKling4>? kling4 = null,
 
+            global::System.Action<global::Runway.CreateImageToVideoRequestGeminiOmniFlash12>? geminiOmniFlash12 = null,
+
             global::System.Action<global::Runway.CreateImageToVideoRequestKling4Flash>? kling4Flash = null,
 
-            global::System.Action<global::Runway.CreateImageToVideoRequestGeminiOmniFlash12>? geminiOmniFlash12 = null,
+            global::System.Action<global::Runway.CreateImageToVideoRequestHailuo3Highspeed>? hailuo3Highspeed = null,
+
+            global::System.Action<global::Runway.CreateImageToVideoRequestHailuo3Lite>? hailuo3Lite = null,
+
+            global::System.Action<global::Runway.CreateImageToVideoRequestSeedance25Flash>? seedance25Flash = null,
             bool validate = true)
         {
             if (validate)
@@ -2086,13 +2299,25 @@ namespace Runway
             {
                 kling4?.Invoke(__value24);
             }
-            else if (Kling4Flash is { } __value25)
+            else if (GeminiOmniFlash12 is { } __value25)
             {
-                kling4Flash?.Invoke(__value25);
+                geminiOmniFlash12?.Invoke(__value25);
             }
-            else if (GeminiOmniFlash12 is { } __value26)
+            else if (Kling4Flash is { } __value26)
             {
-                geminiOmniFlash12?.Invoke(__value26);
+                kling4Flash?.Invoke(__value26);
+            }
+            else if (Hailuo3Highspeed is { } __value27)
+            {
+                hailuo3Highspeed?.Invoke(__value27);
+            }
+            else if (Hailuo3Lite is { } __value28)
+            {
+                hailuo3Lite?.Invoke(__value28);
+            }
+            else if (Seedance25Flash is { } __value29)
+            {
+                seedance25Flash?.Invoke(__value29);
             }
         }
 
@@ -2125,8 +2350,11 @@ namespace Runway
             global::System.Action<global::Runway.CreateImageToVideoRequestSeedance25>? seedance25 = null,
             global::System.Action<global::Runway.CreateImageToVideoRequestGrokImagine15Lite>? grokImagine15Lite = null,
             global::System.Action<global::Runway.CreateImageToVideoRequestKling4>? kling4 = null,
-            global::System.Action<global::Runway.CreateImageToVideoRequestKling4Flash>? kling4Flash = null,
             global::System.Action<global::Runway.CreateImageToVideoRequestGeminiOmniFlash12>? geminiOmniFlash12 = null,
+            global::System.Action<global::Runway.CreateImageToVideoRequestKling4Flash>? kling4Flash = null,
+            global::System.Action<global::Runway.CreateImageToVideoRequestHailuo3Highspeed>? hailuo3Highspeed = null,
+            global::System.Action<global::Runway.CreateImageToVideoRequestHailuo3Lite>? hailuo3Lite = null,
+            global::System.Action<global::Runway.CreateImageToVideoRequestSeedance25Flash>? seedance25Flash = null,
             bool validate = true)
         {
             if (validate)
@@ -2234,13 +2462,25 @@ namespace Runway
             {
                 kling4?.Invoke(__value24);
             }
-            else if (Kling4Flash is { } __value25)
+            else if (GeminiOmniFlash12 is { } __value25)
             {
-                kling4Flash?.Invoke(__value25);
+                geminiOmniFlash12?.Invoke(__value25);
             }
-            else if (GeminiOmniFlash12 is { } __value26)
+            else if (Kling4Flash is { } __value26)
             {
-                geminiOmniFlash12?.Invoke(__value26);
+                kling4Flash?.Invoke(__value26);
+            }
+            else if (Hailuo3Highspeed is { } __value27)
+            {
+                hailuo3Highspeed?.Invoke(__value27);
+            }
+            else if (Hailuo3Lite is { } __value28)
+            {
+                hailuo3Lite?.Invoke(__value28);
+            }
+            else if (Seedance25Flash is { } __value29)
+            {
+                seedance25Flash?.Invoke(__value29);
             }
         }
 
@@ -2301,10 +2541,16 @@ namespace Runway
                 typeof(global::Runway.CreateImageToVideoRequestGrokImagine15Lite),
                 Kling4,
                 typeof(global::Runway.CreateImageToVideoRequestKling4),
-                Kling4Flash,
-                typeof(global::Runway.CreateImageToVideoRequestKling4Flash),
                 GeminiOmniFlash12,
                 typeof(global::Runway.CreateImageToVideoRequestGeminiOmniFlash12),
+                Kling4Flash,
+                typeof(global::Runway.CreateImageToVideoRequestKling4Flash),
+                Hailuo3Highspeed,
+                typeof(global::Runway.CreateImageToVideoRequestHailuo3Highspeed),
+                Hailuo3Lite,
+                typeof(global::Runway.CreateImageToVideoRequestHailuo3Lite),
+                Seedance25Flash,
+                typeof(global::Runway.CreateImageToVideoRequestSeedance25Flash),
             };
             const int offset = unchecked((int)2166136261);
             const int prime = 16777619;
@@ -2346,8 +2592,11 @@ namespace Runway
                 global::System.Collections.Generic.EqualityComparer<global::Runway.CreateImageToVideoRequestSeedance25?>.Default.Equals(Seedance25, other.Seedance25) &&
                 global::System.Collections.Generic.EqualityComparer<global::Runway.CreateImageToVideoRequestGrokImagine15Lite?>.Default.Equals(GrokImagine15Lite, other.GrokImagine15Lite) &&
                 global::System.Collections.Generic.EqualityComparer<global::Runway.CreateImageToVideoRequestKling4?>.Default.Equals(Kling4, other.Kling4) &&
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateImageToVideoRequestGeminiOmniFlash12?>.Default.Equals(GeminiOmniFlash12, other.GeminiOmniFlash12) &&
                 global::System.Collections.Generic.EqualityComparer<global::Runway.CreateImageToVideoRequestKling4Flash?>.Default.Equals(Kling4Flash, other.Kling4Flash) &&
-                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateImageToVideoRequestGeminiOmniFlash12?>.Default.Equals(GeminiOmniFlash12, other.GeminiOmniFlash12)
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateImageToVideoRequestHailuo3Highspeed?>.Default.Equals(Hailuo3Highspeed, other.Hailuo3Highspeed) &&
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateImageToVideoRequestHailuo3Lite?>.Default.Equals(Hailuo3Lite, other.Hailuo3Lite) &&
+                global::System.Collections.Generic.EqualityComparer<global::Runway.CreateImageToVideoRequestSeedance25Flash?>.Default.Equals(Seedance25Flash, other.Seedance25Flash)
                 ;
         }
 

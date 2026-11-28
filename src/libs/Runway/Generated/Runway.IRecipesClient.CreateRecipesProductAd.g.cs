@@ -8,6 +8,9 @@ namespace Runway
         /// Create a product ad video<br/>
         /// Generate a cinematic product ad from product images, optional style references, product info, and creative direction.
         /// </summary>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -34,6 +37,7 @@ namespace Runway
         global::System.Threading.Tasks.Task<global::Runway.CreateRecipesProductAdResponse> CreateRecipesProductAdAsync(
 
             global::Runway.CreateRecipesProductAdRequest request,
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
@@ -41,6 +45,9 @@ namespace Runway
         /// Create a product ad video<br/>
         /// Generate a cinematic product ad from product images, optional style references, product info, and creative direction.
         /// </summary>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -67,6 +74,7 @@ namespace Runway
         global::System.Threading.Tasks.Task<global::Runway.AutoSDKHttpResponse<global::Runway.CreateRecipesProductAdResponse>> CreateRecipesProductAdAsResponseAsync(
 
             global::Runway.CreateRecipesProductAdRequest request,
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
@@ -74,6 +82,9 @@ namespace Runway
         /// Create a product ad video<br/>
         /// Generate a cinematic product ad from product images, optional style references, product info, and creative direction.
         /// </summary>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -108,6 +119,7 @@ namespace Runway
         global::System.Threading.Tasks.Task<global::Runway.CreateRecipesProductAdResponse> CreateRecipesProductAdAsync(
             global::Runway.CreateRecipesProductAdRequestVersion version,
             global::System.Collections.Generic.IList<global::Runway.CreateRecipesProductAdRequestProductImage> productImages,
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             global::System.Collections.Generic.IList<global::Runway.CreateRecipesProductAdRequestStyleImage>? styleImages = default,
             string? productInfo = default,

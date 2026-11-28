@@ -21,8 +21,8 @@ namespace Runway
         /// <exception cref="global::Runway.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Runway.GetRoutersRequestsResponse> GetRoutersByIdRequestsAsync(
             global::System.Guid id,
-            int limit,
             string? cursor = default,
+            int? limit = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
@@ -43,8 +43,8 @@ namespace Runway
         /// <exception cref="global::Runway.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Runway.AutoSDKHttpResponse<global::Runway.GetRoutersRequestsResponse>> GetRoutersByIdRequestsAsResponseAsync(
             global::System.Guid id,
-            int limit,
             string? cursor = default,
+            int? limit = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);

@@ -8,6 +8,9 @@ namespace Runway
         /// Localize an ad image<br/>
         /// Localize an existing ad image for a target language, preserving visual creative while adapting on-screen messaging.
         /// </summary>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -29,6 +32,7 @@ namespace Runway
         global::System.Threading.Tasks.Task<global::Runway.CreateRecipesAdLocalizationResponse> CreateRecipesAdLocalizationAsync(
 
             global::Runway.CreateRecipesAdLocalizationRequest request,
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
@@ -36,6 +40,9 @@ namespace Runway
         /// Localize an ad image<br/>
         /// Localize an existing ad image for a target language, preserving visual creative while adapting on-screen messaging.
         /// </summary>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -57,6 +64,7 @@ namespace Runway
         global::System.Threading.Tasks.Task<global::Runway.AutoSDKHttpResponse<global::Runway.CreateRecipesAdLocalizationResponse>> CreateRecipesAdLocalizationAsResponseAsync(
 
             global::Runway.CreateRecipesAdLocalizationRequest request,
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
@@ -64,6 +72,9 @@ namespace Runway
         /// Localize an ad image<br/>
         /// Localize an existing ad image for a target language, preserving visual creative while adapting on-screen messaging.
         /// </summary>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -83,6 +94,7 @@ namespace Runway
             global::Runway.CreateRecipesAdLocalizationRequestVersion version,
             global::Runway.CreateRecipesAdLocalizationRequestReferenceImage referenceImage,
             global::Runway.CreateRecipesAdLocalizationRequestTargetLanguage targetLanguage,
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);

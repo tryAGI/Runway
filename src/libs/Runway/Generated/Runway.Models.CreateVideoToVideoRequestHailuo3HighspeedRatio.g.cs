@@ -1,0 +1,81 @@
+
+#nullable enable
+
+namespace Runway
+{
+    /// <summary>
+    ///
+    /// </summary>
+    public enum CreateVideoToVideoRequestHailuo3HighspeedRatio
+    {
+        /// <summary>
+        ///
+        /// </summary>
+        x16_9,
+        /// <summary>
+        ///
+        /// </summary>
+        x1_1,
+        /// <summary>
+        ///
+        /// </summary>
+        x21_9,
+        /// <summary>
+        ///
+        /// </summary>
+        x3_4,
+        /// <summary>
+        ///
+        /// </summary>
+        x4_3,
+        /// <summary>
+        ///
+        /// </summary>
+        x9_16,
+        /// <summary>
+        ///
+        /// </summary>
+        Adaptive,
+    }
+
+    /// <summary>
+    /// Enum extensions to do fast conversions without the reflection.
+    /// </summary>
+    public static class CreateVideoToVideoRequestHailuo3HighspeedRatioExtensions
+    {
+        /// <summary>
+        /// Converts an enum to a string.
+        /// </summary>
+        public static string ToValueString(this CreateVideoToVideoRequestHailuo3HighspeedRatio value)
+        {
+            return value switch
+            {
+                CreateVideoToVideoRequestHailuo3HighspeedRatio.x16_9 => "16:9",
+                CreateVideoToVideoRequestHailuo3HighspeedRatio.x1_1 => "1:1",
+                CreateVideoToVideoRequestHailuo3HighspeedRatio.x21_9 => "21:9",
+                CreateVideoToVideoRequestHailuo3HighspeedRatio.x3_4 => "3:4",
+                CreateVideoToVideoRequestHailuo3HighspeedRatio.x4_3 => "4:3",
+                CreateVideoToVideoRequestHailuo3HighspeedRatio.x9_16 => "9:16",
+                CreateVideoToVideoRequestHailuo3HighspeedRatio.Adaptive => "adaptive",
+                _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
+            };
+        }
+        /// <summary>
+        /// Converts an string to a enum.
+        /// </summary>
+        public static CreateVideoToVideoRequestHailuo3HighspeedRatio? ToEnum(string value)
+        {
+            return value switch
+            {
+                "16:9" => CreateVideoToVideoRequestHailuo3HighspeedRatio.x16_9,
+                "1:1" => CreateVideoToVideoRequestHailuo3HighspeedRatio.x1_1,
+                "21:9" => CreateVideoToVideoRequestHailuo3HighspeedRatio.x21_9,
+                "3:4" => CreateVideoToVideoRequestHailuo3HighspeedRatio.x3_4,
+                "4:3" => CreateVideoToVideoRequestHailuo3HighspeedRatio.x4_3,
+                "9:16" => CreateVideoToVideoRequestHailuo3HighspeedRatio.x9_16,
+                "adaptive" => CreateVideoToVideoRequestHailuo3HighspeedRatio.Adaptive,
+                _ => null,
+            };
+        }
+    }
+}

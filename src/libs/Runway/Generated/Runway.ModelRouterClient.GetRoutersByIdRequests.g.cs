@@ -29,14 +29,14 @@ namespace Runway
             global::System.Net.Http.HttpClient httpClient,
             ref global::System.Guid id,
             ref string? cursor,
-            ref int limit,
+            ref int? limit,
             ref string xRunwayVersion);
         partial void PrepareGetRoutersByIdRequestsRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             global::System.Guid id,
             string? cursor,
-            int limit,
+            int? limit,
             string xRunwayVersion);
         partial void ProcessGetRoutersByIdRequestsResponse(
             global::System.Net.Http.HttpClient httpClient,
@@ -64,16 +64,16 @@ namespace Runway
         /// <exception cref="global::Runway.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Runway.GetRoutersRequestsResponse> GetRoutersByIdRequestsAsync(
             global::System.Guid id,
-            int limit,
             string? cursor = default,
+            int? limit = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __response = await GetRoutersByIdRequestsAsResponseAsync(
                 id: id,
-                limit: limit,
                 cursor: cursor,
+                limit: limit,
                 xRunwayVersion: xRunwayVersion,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
@@ -98,8 +98,8 @@ namespace Runway
         /// <exception cref="global::Runway.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Runway.AutoSDKHttpResponse<global::Runway.GetRoutersRequestsResponse>> GetRoutersByIdRequestsAsResponseAsync(
             global::System.Guid id,
-            int limit,
             string? cursor = default,
+            int? limit = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -141,7 +141,7 @@ namespace Runway
                                 baseUri: HttpClient.BaseAddress);
                             __pathBuilder
                                 .AddOptionalParameter("cursor", cursor)
-                                .AddRequiredParameter("limit", limit.ToString() ?? throw new global::System.InvalidOperationException("A required query parameter returned null from ToString()."))
+                                .AddOptionalParameter("limit", limit?.ToString())
                                 ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Runway.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -402,7 +402,7 @@ namespace Runway
                                 {
                                     throw global::Runway.ApiException.Create(
                                         statusCode: __response.StatusCode,
-                                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
+                                        message: __content is { Length: > 0 } ? __content : __response.ReasonPhrase ?? string.Empty,
                                         innerException: __ex,
                                         responseBody: __content,
                                         responseHeaders: global::System.Linq.Enumerable.ToDictionary(
@@ -447,7 +447,7 @@ namespace Runway
 
                                     throw global::Runway.ApiException.Create(
                                         statusCode: __response.StatusCode,
-                                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
+                                        message: __content is { Length: > 0 } ? __content : __response.ReasonPhrase ?? string.Empty,
                                         innerException: __ex,
                                         responseBody: __content,
                                         responseHeaders: global::System.Linq.Enumerable.ToDictionary(

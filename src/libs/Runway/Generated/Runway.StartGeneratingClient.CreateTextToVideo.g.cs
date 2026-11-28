@@ -27,11 +27,13 @@ namespace Runway
             };
         partial void PrepareCreateTextToVideoArguments(
             global::System.Net.Http.HttpClient httpClient,
+            ref string? xRunwayTags,
             ref string xRunwayVersion,
             global::Runway.CreateTextToVideoRequest request);
         partial void PrepareCreateTextToVideoRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
+            string? xRunwayTags,
             string xRunwayVersion,
             global::Runway.CreateTextToVideoRequest request);
         partial void ProcessCreateTextToVideoResponse(
@@ -47,6 +49,9 @@ namespace Runway
         /// Text to video<br/>
         /// This endpoint will start a new task to generate a video from a text prompt.
         /// </summary>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -72,6 +77,7 @@ namespace Runway
         public async global::System.Threading.Tasks.Task<global::Runway.CreateTextToVideoResponse> CreateTextToVideoAsync(
 
             global::Runway.CreateTextToVideoRequest request,
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -79,6 +85,7 @@ namespace Runway
             var __response = await CreateTextToVideoAsResponseAsync(
 
                 request: request,
+                xRunwayTags: xRunwayTags,
                 xRunwayVersion: xRunwayVersion,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
@@ -90,6 +97,9 @@ namespace Runway
         /// Text to video<br/>
         /// This endpoint will start a new task to generate a video from a text prompt.
         /// </summary>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -115,6 +125,7 @@ namespace Runway
         public async global::System.Threading.Tasks.Task<global::Runway.AutoSDKHttpResponse<global::Runway.CreateTextToVideoResponse>> CreateTextToVideoAsResponseAsync(
 
             global::Runway.CreateTextToVideoRequest request,
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -123,6 +134,7 @@ namespace Runway
                 client: HttpClient);
             PrepareCreateTextToVideoArguments(
                 httpClient: HttpClient,
+                xRunwayTags: ref xRunwayTags,
                 xRunwayVersion: ref xRunwayVersion,
                 request: request);
 
@@ -183,6 +195,10 @@ namespace Runway
             }
 
                 __httpRequest.Headers.TryAddWithoutValidation("X-Runway-Version", xRunwayVersion.ToString());
+            if (xRunwayTags != default)
+            {
+                __httpRequest.Headers.TryAddWithoutValidation("X-Runway-Tags", xRunwayTags.ToString());
+            }
 
                             var __httpRequestContentBody = request.ToJson(JsonSerializerContext);
                             var __httpRequestContent = new global::System.Net.Http.StringContent(
@@ -201,6 +217,7 @@ namespace Runway
                 PrepareCreateTextToVideoRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
+                    xRunwayTags: xRunwayTags,
                     xRunwayVersion: xRunwayVersion,
                     request: request);
 
@@ -392,13 +409,13 @@ namespace Runway
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_400 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_400 = global::Runway.CreateTextToVideoResponse2.FromJson(__content_400, JsonSerializerContext);
+                                        __value_400 = __content_400 is not { Length: > 0 } ? null : global::Runway.CreateTextToVideoResponse2.FromJson(__content_400, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_400 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_400 = global::Runway.CreateTextToVideoResponse2.FromJson(__content_400, JsonSerializerContext);
+                                        __value_400 = __content_400 is not { Length: > 0 } ? null : global::Runway.CreateTextToVideoResponse2.FromJson(__content_400, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -409,7 +426,7 @@ namespace Runway
 
                                 throw global::Runway.ApiException<global::Runway.CreateTextToVideoResponse2>.Create(
                                     statusCode: __response.StatusCode,
-                                    message: __content_400 ?? __response.ReasonPhrase ?? string.Empty,
+                                    message: __content_400 is { Length: > 0 } ? __content_400 : __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_400,
                                     responseBody: __content_400,
                                     responseObject: __value_400,
@@ -429,13 +446,13 @@ namespace Runway
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_429 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_429 = global::Runway.CreateTextToVideoResponse3.FromJson(__content_429, JsonSerializerContext);
+                                        __value_429 = __content_429 is not { Length: > 0 } ? null : global::Runway.CreateTextToVideoResponse3.FromJson(__content_429, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_429 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_429 = global::Runway.CreateTextToVideoResponse3.FromJson(__content_429, JsonSerializerContext);
+                                        __value_429 = __content_429 is not { Length: > 0 } ? null : global::Runway.CreateTextToVideoResponse3.FromJson(__content_429, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -446,7 +463,7 @@ namespace Runway
 
                                 throw global::Runway.ApiException<global::Runway.CreateTextToVideoResponse3>.Create(
                                     statusCode: __response.StatusCode,
-                                    message: __content_429 ?? __response.ReasonPhrase ?? string.Empty,
+                                    message: __content_429 is { Length: > 0 } ? __content_429 : __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_429,
                                     responseBody: __content_429,
                                     responseObject: __value_429,
@@ -489,7 +506,7 @@ namespace Runway
                                 {
                                     throw global::Runway.ApiException.Create(
                                         statusCode: __response.StatusCode,
-                                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
+                                        message: __content is { Length: > 0 } ? __content : __response.ReasonPhrase ?? string.Empty,
                                         innerException: __ex,
                                         responseBody: __content,
                                         responseHeaders: global::System.Linq.Enumerable.ToDictionary(
@@ -534,7 +551,7 @@ namespace Runway
 
                                     throw global::Runway.ApiException.Create(
                                         statusCode: __response.StatusCode,
-                                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
+                                        message: __content is { Length: > 0 } ? __content : __response.ReasonPhrase ?? string.Empty,
                                         innerException: __ex,
                                         responseBody: __content,
                                         responseHeaders: global::System.Linq.Enumerable.ToDictionary(
@@ -555,6 +572,9 @@ namespace Runway
         /// Text to video<br/>
         /// This endpoint will start a new task to generate a video from a text prompt.
         /// </summary>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -562,6 +582,7 @@ namespace Runway
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Runway.CreateTextToVideoResponse> CreateTextToVideoAsync(
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -571,6 +592,7 @@ namespace Runway
             };
 
             return await CreateTextToVideoAsync(
+                xRunwayTags: xRunwayTags,
                 xRunwayVersion: xRunwayVersion,
                 request: __request,
                 requestOptions: requestOptions,

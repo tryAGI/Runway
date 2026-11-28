@@ -1,0 +1,303 @@
+#pragma warning disable CS0618 // Type or member is obsolete
+
+#nullable enable
+
+namespace Runway
+{
+    /// <summary>
+    /// The voice configured for this avatar.
+    /// </summary>
+    public readonly partial struct Voice17 : global::System.IEquatable<Voice17>
+    {
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Runway.PatchAvatarsResponseAvatarProcessingVoiceDiscriminatorType? Type { get; }
+
+        /// <summary>
+        /// A preset voice from the Runway API.
+        /// </summary>
+#if NET6_0_OR_GREATER
+        public global::Runway.PatchAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponse? RunwayLivePreset { get; init; }
+#else
+        public global::Runway.PatchAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponse? RunwayLivePreset { get; }
+#endif
+
+        /// <summary>
+        ///
+        /// </summary>
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(RunwayLivePreset))]
+#endif
+        public bool IsRunwayLivePreset => RunwayLivePreset != null;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public bool TryPickRunwayLivePreset(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Runway.PatchAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponse? value)
+        {
+            value = RunwayLivePreset;
+            return IsRunwayLivePreset;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Runway.PatchAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponse PickRunwayLivePreset() => RunwayLivePreset is { } value
+            ? value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'RunwayLivePreset' but the value was {ToString()}.");
+
+        /// <summary>
+        /// A custom voice created via the Voices API.
+        /// </summary>
+#if NET6_0_OR_GREATER
+        public global::Runway.PatchAvatarsResponseAvatarProcessingVoiceCustomVoiceResponse? Custom { get; init; }
+#else
+        public global::Runway.PatchAvatarsResponseAvatarProcessingVoiceCustomVoiceResponse? Custom { get; }
+#endif
+
+        /// <summary>
+        ///
+        /// </summary>
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Custom))]
+#endif
+        public bool IsCustom => Custom != null;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public bool TryPickCustom(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Runway.PatchAvatarsResponseAvatarProcessingVoiceCustomVoiceResponse? value)
+        {
+            value = Custom;
+            return IsCustom;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Runway.PatchAvatarsResponseAvatarProcessingVoiceCustomVoiceResponse PickCustom() => Custom is { } value
+            ? value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Custom' but the value was {ToString()}.");
+        /// <summary>
+        ///
+        /// </summary>
+        public static implicit operator Voice17(global::Runway.PatchAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponse value) => new Voice17((global::Runway.PatchAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponse?)value);
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static implicit operator global::Runway.PatchAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponse?(Voice17 @this) => @this.RunwayLivePreset;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public Voice17(global::Runway.PatchAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponse? value)
+        {
+            RunwayLivePreset = value;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static Voice17 FromRunwayLivePreset(global::Runway.PatchAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponse? value) => new Voice17(value);
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static implicit operator Voice17(global::Runway.PatchAvatarsResponseAvatarProcessingVoiceCustomVoiceResponse value) => new Voice17((global::Runway.PatchAvatarsResponseAvatarProcessingVoiceCustomVoiceResponse?)value);
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static implicit operator global::Runway.PatchAvatarsResponseAvatarProcessingVoiceCustomVoiceResponse?(Voice17 @this) => @this.Custom;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public Voice17(global::Runway.PatchAvatarsResponseAvatarProcessingVoiceCustomVoiceResponse? value)
+        {
+            Custom = value;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static Voice17 FromCustom(global::Runway.PatchAvatarsResponseAvatarProcessingVoiceCustomVoiceResponse? value) => new Voice17(value);
+
+        /// <summary>
+        ///
+        /// </summary>
+        public Voice17(
+            global::Runway.PatchAvatarsResponseAvatarProcessingVoiceDiscriminatorType? type,
+            global::Runway.PatchAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponse? runwayLivePreset,
+            global::Runway.PatchAvatarsResponseAvatarProcessingVoiceCustomVoiceResponse? custom
+            )
+        {
+            Type = type;
+
+            RunwayLivePreset = runwayLivePreset;
+            Custom = custom;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public object? Object =>
+            Custom as object ??
+            RunwayLivePreset as object
+            ;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public override string? ToString() =>
+            RunwayLivePreset?.ToString() ??
+            Custom?.ToString()
+            ;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public bool Validate()
+        {
+            return IsRunwayLivePreset && !IsCustom || !IsRunwayLivePreset && IsCustom;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public TResult? Match<TResult>(
+            global::System.Func<global::Runway.PatchAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponse, TResult>? runwayLivePreset = null,
+            global::System.Func<global::Runway.PatchAvatarsResponseAvatarProcessingVoiceCustomVoiceResponse, TResult>? custom = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (RunwayLivePreset is { } __value0 && runwayLivePreset != null)
+            {
+                return runwayLivePreset(__value0);
+            }
+            else if (Custom is { } __value1 && custom != null)
+            {
+                return custom(__value1);
+            }
+
+            return default(TResult);
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public void Match(
+            global::System.Action<global::Runway.PatchAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponse>? runwayLivePreset = null,
+
+            global::System.Action<global::Runway.PatchAvatarsResponseAvatarProcessingVoiceCustomVoiceResponse>? custom = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (RunwayLivePreset is { } __value0)
+            {
+                runwayLivePreset?.Invoke(__value0);
+            }
+            else if (Custom is { } __value1)
+            {
+                custom?.Invoke(__value1);
+            }
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::Runway.PatchAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponse>? runwayLivePreset = null,
+            global::System.Action<global::Runway.PatchAvatarsResponseAvatarProcessingVoiceCustomVoiceResponse>? custom = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (RunwayLivePreset is { } __value0)
+            {
+                runwayLivePreset?.Invoke(__value0);
+            }
+            else if (Custom is { } __value1)
+            {
+                custom?.Invoke(__value1);
+            }
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public override int GetHashCode()
+        {
+            var fields = new object?[]
+            {
+                RunwayLivePreset,
+                typeof(global::Runway.PatchAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponse),
+                Custom,
+                typeof(global::Runway.PatchAvatarsResponseAvatarProcessingVoiceCustomVoiceResponse),
+            };
+            const int offset = unchecked((int)2166136261);
+            const int prime = 16777619;
+            static int HashCodeAggregator(int hashCode, object? value) => value == null
+                ? (hashCode ^ 0) * prime
+                : (hashCode ^ value.GetHashCode()) * prime;
+
+            return global::System.Linq.Enumerable.Aggregate(fields, offset, HashCodeAggregator);
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public bool Equals(Voice17 other)
+        {
+            return
+                global::System.Collections.Generic.EqualityComparer<global::Runway.PatchAvatarsResponseAvatarProcessingVoiceRunwayLivePresetVoiceResponse?>.Default.Equals(RunwayLivePreset, other.RunwayLivePreset) &&
+                global::System.Collections.Generic.EqualityComparer<global::Runway.PatchAvatarsResponseAvatarProcessingVoiceCustomVoiceResponse?>.Default.Equals(Custom, other.Custom)
+                ;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static bool operator ==(Voice17 obj1, Voice17 obj2)
+        {
+            return global::System.Collections.Generic.EqualityComparer<Voice17>.Default.Equals(obj1, obj2);
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static bool operator !=(Voice17 obj1, Voice17 obj2)
+        {
+            return !(obj1 == obj2);
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public override bool Equals(object? obj)
+        {
+            return obj is Voice17 o && Equals(o);
+        }
+    }
+}

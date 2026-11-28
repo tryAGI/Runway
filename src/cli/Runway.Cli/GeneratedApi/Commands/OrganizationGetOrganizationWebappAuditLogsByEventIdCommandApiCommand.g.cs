@@ -16,7 +16,7 @@ internal static partial class OrganizationGetOrganizationWebappAuditLogsByEventI
     private static Option<global::System.Guid?> OrganizationId { get; } = new(
         name: @"--organization-id")
     {
-        Description = @"Organization to report on. Optional when this API project is linked to a single organization; required when it is linked to more than one.",
+        Description = @"Organization to report on. Optional when this API project is linked to a single organization; required when it is linked to more than one. If it is missing then, the 400 response lists the IDs and names of the linked organizations in `details.organizations`.",
     };
 
     private static Option<string> XRunwayVersion { get; } = new(

@@ -17,7 +17,7 @@ namespace Runway
         public required global::Runway.CreateGenerateAudioResponseRoutingResolvedInputType Type { get; set; }
 
         /// <summary>
-        /// How the selected model resolves the voice: the requested preset or reference-audio clone, the model default for voiceless speech, or none for general audio.
+        /// How the selected model resolves the voice: the requested preset or reference-audio clone, the model default for voiceless speech, or none for general audio and music.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("voice")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Runway.JsonConverters.CreateGenerateAudioResponseRoutingResolvedInputVoiceJsonConverter))]
@@ -37,7 +37,7 @@ namespace Runway
         /// The prompt mode the router routed for.
         /// </param>
         /// <param name="voice">
-        /// How the selected model resolves the voice: the requested preset or reference-audio clone, the model default for voiceless speech, or none for general audio.
+        /// How the selected model resolves the voice: the requested preset or reference-audio clone, the model default for voiceless speech, or none for general audio and music.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

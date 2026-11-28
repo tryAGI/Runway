@@ -28,7 +28,7 @@ namespace Runway
         partial void PrepareGetAvatarConversationsArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string? cursor,
-            ref int limit,
+            ref int? limit,
             ref global::System.Guid? avatar,
             ref global::System.DateTime? startDate,
             ref global::System.DateTime? endDate,
@@ -37,7 +37,7 @@ namespace Runway
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string? cursor,
-            int limit,
+            int? limit,
             global::System.Guid? avatar,
             global::System.DateTime? startDate,
             global::System.DateTime? endDate,
@@ -78,8 +78,8 @@ namespace Runway
         /// }
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Runway.GetAvatarConversationsResponse> GetAvatarConversationsAsync(
-            int limit,
             string? cursor = default,
+            int? limit = default,
             global::System.Guid? avatar = default,
             global::System.DateTime? startDate = default,
             global::System.DateTime? endDate = default,
@@ -88,8 +88,8 @@ namespace Runway
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __response = await GetAvatarConversationsAsResponseAsync(
-                limit: limit,
                 cursor: cursor,
+                limit: limit,
                 avatar: avatar,
                 startDate: startDate,
                 endDate: endDate,
@@ -127,8 +127,8 @@ namespace Runway
         /// }
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Runway.AutoSDKHttpResponse<global::Runway.GetAvatarConversationsResponse>> GetAvatarConversationsAsResponseAsync(
-            int limit,
             string? cursor = default,
+            int? limit = default,
             global::System.Guid? avatar = default,
             global::System.DateTime? startDate = default,
             global::System.DateTime? endDate = default,
@@ -175,7 +175,7 @@ namespace Runway
                                 baseUri: HttpClient.BaseAddress);
                             __pathBuilder
                                 .AddOptionalParameter("cursor", cursor)
-                                .AddRequiredParameter("limit", limit.ToString() ?? throw new global::System.InvalidOperationException("A required query parameter returned null from ToString()."))
+                                .AddOptionalParameter("limit", limit?.ToString())
                                 .AddOptionalParameter("avatar", avatar?.ToString())
                                 .AddOptionalParameter("startDate", startDate?.ToString("yyyy-MM-ddTHH:mm:ssZ"))
                                 .AddOptionalParameter("endDate", endDate?.ToString("yyyy-MM-ddTHH:mm:ssZ"))
@@ -441,7 +441,7 @@ namespace Runway
                                 {
                                     throw global::Runway.ApiException.Create(
                                         statusCode: __response.StatusCode,
-                                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
+                                        message: __content is { Length: > 0 } ? __content : __response.ReasonPhrase ?? string.Empty,
                                         innerException: __ex,
                                         responseBody: __content,
                                         responseHeaders: global::System.Linq.Enumerable.ToDictionary(
@@ -486,7 +486,7 @@ namespace Runway
 
                                     throw global::Runway.ApiException.Create(
                                         statusCode: __response.StatusCode,
-                                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
+                                        message: __content is { Length: > 0 } ? __content : __response.ReasonPhrase ?? string.Empty,
                                         innerException: __ex,
                                         responseBody: __content,
                                         responseHeaders: global::System.Linq.Enumerable.ToDictionary(

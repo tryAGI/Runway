@@ -8,6 +8,9 @@ namespace Runway
         /// Routed video generation<br/>
         /// Start a video generation task using a saved Model Router config instead of naming a model.
         /// </summary>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -18,6 +21,7 @@ namespace Runway
         global::System.Threading.Tasks.Task<global::Runway.CreateGenerateVideoResponse2> CreateGenerateVideoAsync(
 
             global::Runway.CreateGenerateVideoRequest request,
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
@@ -25,6 +29,9 @@ namespace Runway
         /// Routed video generation<br/>
         /// Start a video generation task using a saved Model Router config instead of naming a model.
         /// </summary>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -35,6 +42,7 @@ namespace Runway
         global::System.Threading.Tasks.Task<global::Runway.AutoSDKHttpResponse<global::Runway.CreateGenerateVideoResponse2>> CreateGenerateVideoAsResponseAsync(
 
             global::Runway.CreateGenerateVideoRequest request,
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
@@ -42,6 +50,9 @@ namespace Runway
         /// Routed video generation<br/>
         /// Start a video generation task using a saved Model Router config instead of naming a model.
         /// </summary>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -57,6 +68,7 @@ namespace Runway
         global::System.Threading.Tasks.Task<global::Runway.CreateGenerateVideoResponse2> CreateGenerateVideoAsync(
             string configId,
             global::Runway.CreateGenerateVideoRequestInput input,
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);

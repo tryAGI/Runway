@@ -196,6 +196,13 @@ namespace Runway.JsonConverters
                                throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.CreateImageToVideoRequestKling4)}");
                 kling4 = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
+            global::Runway.CreateImageToVideoRequestGeminiOmniFlash12? geminiOmniFlash12 = default;
+            if (discriminator?.Model == global::Runway.CreateImageToVideoRequestDiscriminatorModel.GeminiOmniFlash12)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateImageToVideoRequestGeminiOmniFlash12), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateImageToVideoRequestGeminiOmniFlash12> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.CreateImageToVideoRequestGeminiOmniFlash12)}");
+                geminiOmniFlash12 = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+            }
             global::Runway.CreateImageToVideoRequestKling4Flash? kling4Flash = default;
             if (discriminator?.Model == global::Runway.CreateImageToVideoRequestDiscriminatorModel.Kling4Flash)
             {
@@ -203,12 +210,26 @@ namespace Runway.JsonConverters
                                throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.CreateImageToVideoRequestKling4Flash)}");
                 kling4Flash = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
-            global::Runway.CreateImageToVideoRequestGeminiOmniFlash12? geminiOmniFlash12 = default;
-            if (discriminator?.Model == global::Runway.CreateImageToVideoRequestDiscriminatorModel.GeminiOmniFlash12)
+            global::Runway.CreateImageToVideoRequestHailuo3Highspeed? hailuo3Highspeed = default;
+            if (discriminator?.Model == global::Runway.CreateImageToVideoRequestDiscriminatorModel.Hailuo3Highspeed)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateImageToVideoRequestGeminiOmniFlash12), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateImageToVideoRequestGeminiOmniFlash12> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.CreateImageToVideoRequestGeminiOmniFlash12)}");
-                geminiOmniFlash12 = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateImageToVideoRequestHailuo3Highspeed), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateImageToVideoRequestHailuo3Highspeed> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.CreateImageToVideoRequestHailuo3Highspeed)}");
+                hailuo3Highspeed = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+            }
+            global::Runway.CreateImageToVideoRequestHailuo3Lite? hailuo3Lite = default;
+            if (discriminator?.Model == global::Runway.CreateImageToVideoRequestDiscriminatorModel.Hailuo3Lite)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateImageToVideoRequestHailuo3Lite), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateImageToVideoRequestHailuo3Lite> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.CreateImageToVideoRequestHailuo3Lite)}");
+                hailuo3Lite = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+            }
+            global::Runway.CreateImageToVideoRequestSeedance25Flash? seedance25Flash = default;
+            if (discriminator?.Model == global::Runway.CreateImageToVideoRequestDiscriminatorModel.Seedance25Flash)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateImageToVideoRequestSeedance25Flash), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateImageToVideoRequestSeedance25Flash> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Runway.CreateImageToVideoRequestSeedance25Flash)}");
+                seedance25Flash = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
 
             var __value = new global::Runway.CreateImageToVideoRequest(
@@ -263,9 +284,15 @@ namespace Runway.JsonConverters
 
                 kling4,
 
+                geminiOmniFlash12,
+
                 kling4Flash,
 
-                geminiOmniFlash12
+                hailuo3Highspeed,
+
+                hailuo3Lite,
+
+                seedance25Flash
                 );
 
             return __value;
@@ -430,17 +457,35 @@ namespace Runway.JsonConverters
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateImageToVideoRequestKling4).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickKling4(), typeInfo);
             }
+            else if (value.IsGeminiOmniFlash12)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateImageToVideoRequestGeminiOmniFlash12), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateImageToVideoRequestGeminiOmniFlash12?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateImageToVideoRequestGeminiOmniFlash12).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickGeminiOmniFlash12(), typeInfo);
+            }
             else if (value.IsKling4Flash)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateImageToVideoRequestKling4Flash), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateImageToVideoRequestKling4Flash?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateImageToVideoRequestKling4Flash).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickKling4Flash(), typeInfo);
             }
-            else if (value.IsGeminiOmniFlash12)
+            else if (value.IsHailuo3Highspeed)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateImageToVideoRequestGeminiOmniFlash12), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateImageToVideoRequestGeminiOmniFlash12?> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateImageToVideoRequestGeminiOmniFlash12).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickGeminiOmniFlash12(), typeInfo);
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateImageToVideoRequestHailuo3Highspeed), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateImageToVideoRequestHailuo3Highspeed?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateImageToVideoRequestHailuo3Highspeed).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickHailuo3Highspeed(), typeInfo);
+            }
+            else if (value.IsHailuo3Lite)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateImageToVideoRequestHailuo3Lite), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateImageToVideoRequestHailuo3Lite?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateImageToVideoRequestHailuo3Lite).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickHailuo3Lite(), typeInfo);
+            }
+            else if (value.IsSeedance25Flash)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Runway.CreateImageToVideoRequestSeedance25Flash), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Runway.CreateImageToVideoRequestSeedance25Flash?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Runway.CreateImageToVideoRequestSeedance25Flash).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickSeedance25Flash(), typeInfo);
             }
         }
     }

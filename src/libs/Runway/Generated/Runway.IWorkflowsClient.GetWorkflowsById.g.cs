@@ -25,7 +25,7 @@ namespace Runway
         /// );<br/>
         /// console.log(workflow);
         /// </remarks>
-        global::System.Threading.Tasks.Task<global::Runway.GetWorkflowsResponse> GetWorkflowsByIdAsync(
+        global::System.Threading.Tasks.Task<global::Runway.GetWorkflowsResponse2> GetWorkflowsByIdAsync(
             global::System.Guid id,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
@@ -51,7 +51,7 @@ namespace Runway
         /// );<br/>
         /// console.log(workflow);
         /// </remarks>
-        global::System.Threading.Tasks.Task<global::Runway.AutoSDKHttpResponse<global::Runway.GetWorkflowsResponse>> GetWorkflowsByIdAsResponseAsync(
+        global::System.Threading.Tasks.Task<global::Runway.AutoSDKHttpResponse<global::Runway.GetWorkflowsResponse2>> GetWorkflowsByIdAsResponseAsync(
             global::System.Guid id,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,

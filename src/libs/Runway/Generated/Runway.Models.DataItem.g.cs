@@ -12,15 +12,15 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarsResponseDataItemDiscriminatorStatus? Status { get; }
+        public global::Runway.GetVoicesResponseDataItemDiscriminatorStatus? Status { get; }
 
         /// <summary>
-        /// An avatar that is still being processed.
+        /// A voice that is still being processed.
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Runway.GetAvatarsResponseDataItemAvatarProcessing? Processing { get; init; }
+        public global::Runway.GetVoicesResponseDataItemVoiceProcessing? Processing { get; init; }
 #else
-        public global::Runway.GetAvatarsResponseDataItemAvatarProcessing? Processing { get; }
+        public global::Runway.GetVoicesResponseDataItemVoiceProcessing? Processing { get; }
 #endif
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace Runway
 #if NET6_0_OR_GREATER
             [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
 #endif
-            out global::Runway.GetAvatarsResponseDataItemAvatarProcessing? value)
+            out global::Runway.GetVoicesResponseDataItemVoiceProcessing? value)
         {
             value = Processing;
             return IsProcessing;
@@ -47,17 +47,17 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarsResponseDataItemAvatarProcessing PickProcessing() => Processing is { } value
+        public global::Runway.GetVoicesResponseDataItemVoiceProcessing PickProcessing() => Processing is { } value
             ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Processing' but the value was {ToString()}.");
 
         /// <summary>
-        /// An avatar that is ready for use in sessions.
+        /// A voice that is ready for use.
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Runway.GetAvatarsResponseDataItemAvatarReady? Ready { get; init; }
+        public global::Runway.GetVoicesResponseDataItemVoiceReady? Ready { get; init; }
 #else
-        public global::Runway.GetAvatarsResponseDataItemAvatarReady? Ready { get; }
+        public global::Runway.GetVoicesResponseDataItemVoiceReady? Ready { get; }
 #endif
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace Runway
 #if NET6_0_OR_GREATER
             [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
 #endif
-            out global::Runway.GetAvatarsResponseDataItemAvatarReady? value)
+            out global::Runway.GetVoicesResponseDataItemVoiceReady? value)
         {
             value = Ready;
             return IsReady;
@@ -84,17 +84,17 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarsResponseDataItemAvatarReady PickReady() => Ready is { } value
+        public global::Runway.GetVoicesResponseDataItemVoiceReady PickReady() => Ready is { } value
             ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Ready' but the value was {ToString()}.");
 
         /// <summary>
-        /// An avatar that failed to finish processing.
+        /// A voice that failed to finish processing.
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Runway.GetAvatarsResponseDataItemAvatarFailed? Failed { get; init; }
+        public global::Runway.GetVoicesResponseDataItemVoiceFailed? Failed { get; init; }
 #else
-        public global::Runway.GetAvatarsResponseDataItemAvatarFailed? Failed { get; }
+        public global::Runway.GetVoicesResponseDataItemVoiceFailed? Failed { get; }
 #endif
 
         /// <summary>
@@ -112,7 +112,7 @@ namespace Runway
 #if NET6_0_OR_GREATER
             [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
 #endif
-            out global::Runway.GetAvatarsResponseDataItemAvatarFailed? value)
+            out global::Runway.GetVoicesResponseDataItemVoiceFailed? value)
         {
             value = Failed;
             return IsFailed;
@@ -121,23 +121,23 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public global::Runway.GetAvatarsResponseDataItemAvatarFailed PickFailed() => Failed is { } value
+        public global::Runway.GetVoicesResponseDataItemVoiceFailed PickFailed() => Failed is { } value
             ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Failed' but the value was {ToString()}.");
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator DataItem(global::Runway.GetAvatarsResponseDataItemAvatarProcessing value) => new DataItem((global::Runway.GetAvatarsResponseDataItemAvatarProcessing?)value);
+        public static implicit operator DataItem(global::Runway.GetVoicesResponseDataItemVoiceProcessing value) => new DataItem((global::Runway.GetVoicesResponseDataItemVoiceProcessing?)value);
 
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator global::Runway.GetAvatarsResponseDataItemAvatarProcessing?(DataItem @this) => @this.Processing;
+        public static implicit operator global::Runway.GetVoicesResponseDataItemVoiceProcessing?(DataItem @this) => @this.Processing;
 
         /// <summary>
         ///
         /// </summary>
-        public DataItem(global::Runway.GetAvatarsResponseDataItemAvatarProcessing? value)
+        public DataItem(global::Runway.GetVoicesResponseDataItemVoiceProcessing? value)
         {
             Processing = value;
         }
@@ -145,22 +145,22 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public static DataItem FromProcessing(global::Runway.GetAvatarsResponseDataItemAvatarProcessing? value) => new DataItem(value);
+        public static DataItem FromProcessing(global::Runway.GetVoicesResponseDataItemVoiceProcessing? value) => new DataItem(value);
 
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator DataItem(global::Runway.GetAvatarsResponseDataItemAvatarReady value) => new DataItem((global::Runway.GetAvatarsResponseDataItemAvatarReady?)value);
+        public static implicit operator DataItem(global::Runway.GetVoicesResponseDataItemVoiceReady value) => new DataItem((global::Runway.GetVoicesResponseDataItemVoiceReady?)value);
 
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator global::Runway.GetAvatarsResponseDataItemAvatarReady?(DataItem @this) => @this.Ready;
+        public static implicit operator global::Runway.GetVoicesResponseDataItemVoiceReady?(DataItem @this) => @this.Ready;
 
         /// <summary>
         ///
         /// </summary>
-        public DataItem(global::Runway.GetAvatarsResponseDataItemAvatarReady? value)
+        public DataItem(global::Runway.GetVoicesResponseDataItemVoiceReady? value)
         {
             Ready = value;
         }
@@ -168,22 +168,22 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public static DataItem FromReady(global::Runway.GetAvatarsResponseDataItemAvatarReady? value) => new DataItem(value);
+        public static DataItem FromReady(global::Runway.GetVoicesResponseDataItemVoiceReady? value) => new DataItem(value);
 
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator DataItem(global::Runway.GetAvatarsResponseDataItemAvatarFailed value) => new DataItem((global::Runway.GetAvatarsResponseDataItemAvatarFailed?)value);
+        public static implicit operator DataItem(global::Runway.GetVoicesResponseDataItemVoiceFailed value) => new DataItem((global::Runway.GetVoicesResponseDataItemVoiceFailed?)value);
 
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator global::Runway.GetAvatarsResponseDataItemAvatarFailed?(DataItem @this) => @this.Failed;
+        public static implicit operator global::Runway.GetVoicesResponseDataItemVoiceFailed?(DataItem @this) => @this.Failed;
 
         /// <summary>
         ///
         /// </summary>
-        public DataItem(global::Runway.GetAvatarsResponseDataItemAvatarFailed? value)
+        public DataItem(global::Runway.GetVoicesResponseDataItemVoiceFailed? value)
         {
             Failed = value;
         }
@@ -191,16 +191,16 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
-        public static DataItem FromFailed(global::Runway.GetAvatarsResponseDataItemAvatarFailed? value) => new DataItem(value);
+        public static DataItem FromFailed(global::Runway.GetVoicesResponseDataItemVoiceFailed? value) => new DataItem(value);
 
         /// <summary>
         ///
         /// </summary>
         public DataItem(
-            global::Runway.GetAvatarsResponseDataItemDiscriminatorStatus? status,
-            global::Runway.GetAvatarsResponseDataItemAvatarProcessing? processing,
-            global::Runway.GetAvatarsResponseDataItemAvatarReady? ready,
-            global::Runway.GetAvatarsResponseDataItemAvatarFailed? failed
+            global::Runway.GetVoicesResponseDataItemDiscriminatorStatus? status,
+            global::Runway.GetVoicesResponseDataItemVoiceProcessing? processing,
+            global::Runway.GetVoicesResponseDataItemVoiceReady? ready,
+            global::Runway.GetVoicesResponseDataItemVoiceFailed? failed
             )
         {
             Status = status;
@@ -240,9 +240,9 @@ namespace Runway
         ///
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Runway.GetAvatarsResponseDataItemAvatarProcessing, TResult>? processing = null,
-            global::System.Func<global::Runway.GetAvatarsResponseDataItemAvatarReady, TResult>? ready = null,
-            global::System.Func<global::Runway.GetAvatarsResponseDataItemAvatarFailed, TResult>? failed = null,
+            global::System.Func<global::Runway.GetVoicesResponseDataItemVoiceProcessing, TResult>? processing = null,
+            global::System.Func<global::Runway.GetVoicesResponseDataItemVoiceReady, TResult>? ready = null,
+            global::System.Func<global::Runway.GetVoicesResponseDataItemVoiceFailed, TResult>? failed = null,
             bool validate = true)
         {
             if (validate)
@@ -270,11 +270,11 @@ namespace Runway
         ///
         /// </summary>
         public void Match(
-            global::System.Action<global::Runway.GetAvatarsResponseDataItemAvatarProcessing>? processing = null,
+            global::System.Action<global::Runway.GetVoicesResponseDataItemVoiceProcessing>? processing = null,
 
-            global::System.Action<global::Runway.GetAvatarsResponseDataItemAvatarReady>? ready = null,
+            global::System.Action<global::Runway.GetVoicesResponseDataItemVoiceReady>? ready = null,
 
-            global::System.Action<global::Runway.GetAvatarsResponseDataItemAvatarFailed>? failed = null,
+            global::System.Action<global::Runway.GetVoicesResponseDataItemVoiceFailed>? failed = null,
             bool validate = true)
         {
             if (validate)
@@ -300,9 +300,9 @@ namespace Runway
         ///
         /// </summary>
         public void Switch(
-            global::System.Action<global::Runway.GetAvatarsResponseDataItemAvatarProcessing>? processing = null,
-            global::System.Action<global::Runway.GetAvatarsResponseDataItemAvatarReady>? ready = null,
-            global::System.Action<global::Runway.GetAvatarsResponseDataItemAvatarFailed>? failed = null,
+            global::System.Action<global::Runway.GetVoicesResponseDataItemVoiceProcessing>? processing = null,
+            global::System.Action<global::Runway.GetVoicesResponseDataItemVoiceReady>? ready = null,
+            global::System.Action<global::Runway.GetVoicesResponseDataItemVoiceFailed>? failed = null,
             bool validate = true)
         {
             if (validate)
@@ -332,11 +332,11 @@ namespace Runway
             var fields = new object?[]
             {
                 Processing,
-                typeof(global::Runway.GetAvatarsResponseDataItemAvatarProcessing),
+                typeof(global::Runway.GetVoicesResponseDataItemVoiceProcessing),
                 Ready,
-                typeof(global::Runway.GetAvatarsResponseDataItemAvatarReady),
+                typeof(global::Runway.GetVoicesResponseDataItemVoiceReady),
                 Failed,
-                typeof(global::Runway.GetAvatarsResponseDataItemAvatarFailed),
+                typeof(global::Runway.GetVoicesResponseDataItemVoiceFailed),
             };
             const int offset = unchecked((int)2166136261);
             const int prime = 16777619;
@@ -353,9 +353,9 @@ namespace Runway
         public bool Equals(DataItem other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::Runway.GetAvatarsResponseDataItemAvatarProcessing?>.Default.Equals(Processing, other.Processing) &&
-                global::System.Collections.Generic.EqualityComparer<global::Runway.GetAvatarsResponseDataItemAvatarReady?>.Default.Equals(Ready, other.Ready) &&
-                global::System.Collections.Generic.EqualityComparer<global::Runway.GetAvatarsResponseDataItemAvatarFailed?>.Default.Equals(Failed, other.Failed)
+                global::System.Collections.Generic.EqualityComparer<global::Runway.GetVoicesResponseDataItemVoiceProcessing?>.Default.Equals(Processing, other.Processing) &&
+                global::System.Collections.Generic.EqualityComparer<global::Runway.GetVoicesResponseDataItemVoiceReady?>.Default.Equals(Ready, other.Ready) &&
+                global::System.Collections.Generic.EqualityComparer<global::Runway.GetVoicesResponseDataItemVoiceFailed?>.Default.Equals(Failed, other.Failed)
                 ;
         }
 

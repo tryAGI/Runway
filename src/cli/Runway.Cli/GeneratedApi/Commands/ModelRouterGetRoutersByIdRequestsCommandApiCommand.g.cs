@@ -19,11 +19,10 @@ internal static partial class ModelRouterGetRoutersByIdRequestsCommandApiCommand
         Description = @"Cursor from a previous response for fetching the next page of results.",
     };
 
-    private static Option<int> Limit { get; } = new(
+    private static Option<int?> Limit { get; } = new(
         name: @"--limit")
     {
         Description = @"The maximum number of items to return per page.",
-        Required = true,
     };
 
     private static Option<string> XRunwayVersion { get; } = new(
@@ -70,7 +69,7 @@ Paginated routing history for live Model Router requests (successful routes and 
             {
                         var id = parseResult.GetRequiredValue(Id);
                         var cursor = parseResult.GetValue(Cursor);
-                        var limit = parseResult.GetRequiredValue(Limit);
+                        var limit = parseResult.GetValue(Limit);
                         var xRunwayVersion = parseResult.GetRequiredValue(XRunwayVersion);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 

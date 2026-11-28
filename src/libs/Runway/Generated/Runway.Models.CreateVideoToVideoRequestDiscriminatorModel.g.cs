@@ -31,6 +31,14 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
+        Hailuo3Highspeed,
+        /// <summary>
+        ///
+        /// </summary>
+        Hailuo3Lite,
+        /// <summary>
+        ///
+        /// </summary>
         KlingO34k,
         /// <summary>
         ///
@@ -59,6 +67,10 @@ namespace Runway
         /// <summary>
         ///
         /// </summary>
+        Seedance25Flash,
+        /// <summary>
+        ///
+        /// </summary>
         Seedance2Fast,
         /// <summary>
         ///
@@ -83,6 +95,8 @@ namespace Runway
                 CreateVideoToVideoRequestDiscriminatorModel.GeminiOmniFlash11 => "gemini_omni_flash_1.1",
                 CreateVideoToVideoRequestDiscriminatorModel.GeminiOmniFlash12 => "gemini_omni_flash_1.2",
                 CreateVideoToVideoRequestDiscriminatorModel.Hailuo3 => "hailuo3",
+                CreateVideoToVideoRequestDiscriminatorModel.Hailuo3Highspeed => "hailuo3_highspeed",
+                CreateVideoToVideoRequestDiscriminatorModel.Hailuo3Lite => "hailuo3_lite",
                 CreateVideoToVideoRequestDiscriminatorModel.KlingO34k => "klingO3_4k",
                 CreateVideoToVideoRequestDiscriminatorModel.KlingO3Pro => "klingO3_pro",
                 CreateVideoToVideoRequestDiscriminatorModel.KlingO3Standard => "klingO3_standard",
@@ -90,6 +104,7 @@ namespace Runway
                 CreateVideoToVideoRequestDiscriminatorModel.Kling4Flash => "kling_4_flash",
                 CreateVideoToVideoRequestDiscriminatorModel.Seedance2 => "seedance2",
                 CreateVideoToVideoRequestDiscriminatorModel.Seedance25 => "seedance2_5",
+                CreateVideoToVideoRequestDiscriminatorModel.Seedance25Flash => "seedance2_5_flash",
                 CreateVideoToVideoRequestDiscriminatorModel.Seedance2Fast => "seedance2_fast",
                 CreateVideoToVideoRequestDiscriminatorModel.Seedance2Mini => "seedance2_mini",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
@@ -107,6 +122,8 @@ namespace Runway
                 "gemini_omni_flash_1.1" => CreateVideoToVideoRequestDiscriminatorModel.GeminiOmniFlash11,
                 "gemini_omni_flash_1.2" => CreateVideoToVideoRequestDiscriminatorModel.GeminiOmniFlash12,
                 "hailuo3" => CreateVideoToVideoRequestDiscriminatorModel.Hailuo3,
+                "hailuo3_highspeed" => CreateVideoToVideoRequestDiscriminatorModel.Hailuo3Highspeed,
+                "hailuo3_lite" => CreateVideoToVideoRequestDiscriminatorModel.Hailuo3Lite,
                 "klingO3_4k" => CreateVideoToVideoRequestDiscriminatorModel.KlingO34k,
                 "klingO3_pro" => CreateVideoToVideoRequestDiscriminatorModel.KlingO3Pro,
                 "klingO3_standard" => CreateVideoToVideoRequestDiscriminatorModel.KlingO3Standard,
@@ -114,6 +131,7 @@ namespace Runway
                 "kling_4_flash" => CreateVideoToVideoRequestDiscriminatorModel.Kling4Flash,
                 "seedance2" => CreateVideoToVideoRequestDiscriminatorModel.Seedance2,
                 "seedance2_5" => CreateVideoToVideoRequestDiscriminatorModel.Seedance25,
+                "seedance2_5_flash" => CreateVideoToVideoRequestDiscriminatorModel.Seedance25Flash,
                 "seedance2_fast" => CreateVideoToVideoRequestDiscriminatorModel.Seedance2Fast,
                 "seedance2_mini" => CreateVideoToVideoRequestDiscriminatorModel.Seedance2Mini,
                 _ => null,

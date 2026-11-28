@@ -6,8 +6,11 @@ namespace Runway
     {
         /// <summary>
         /// Text to speech<br/>
-        /// This endpoint will start a new task to generate speech from text.
+        /// This endpoint will start a new task to generate speech from text. ElevenLabs models accept preset voices or custom voices created via the Voices API. Seed Audio accepts a reference audio clip.
         /// </summary>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -37,13 +40,17 @@ namespace Runway
         global::System.Threading.Tasks.Task<global::Runway.CreateTextToSpeechResponse> CreateTextToSpeechAsync(
 
             global::Runway.CreateTextToSpeechRequest request,
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Text to speech<br/>
-        /// This endpoint will start a new task to generate speech from text.
+        /// This endpoint will start a new task to generate speech from text. ElevenLabs models accept preset voices or custom voices created via the Voices API. Seed Audio accepts a reference audio clip.
         /// </summary>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -73,13 +80,17 @@ namespace Runway
         global::System.Threading.Tasks.Task<global::Runway.AutoSDKHttpResponse<global::Runway.CreateTextToSpeechResponse>> CreateTextToSpeechAsResponseAsync(
 
             global::Runway.CreateTextToSpeechRequest request,
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Text to speech<br/>
-        /// This endpoint will start a new task to generate speech from text.
+        /// This endpoint will start a new task to generate speech from text. ElevenLabs models accept preset voices or custom voices created via the Voices API. Seed Audio accepts a reference audio clip.
         /// </summary>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -87,6 +98,7 @@ namespace Runway
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Runway.CreateTextToSpeechResponse> CreateTextToSpeechAsync(
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);

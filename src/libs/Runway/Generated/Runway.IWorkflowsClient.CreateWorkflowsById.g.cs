@@ -9,6 +9,9 @@ namespace Runway
         /// Start a new task to execute a published workflow. You can optionally provide custom input values via `nodeOutputs` to override the defaults defined in the workflow graph.
         /// </summary>
         /// <param name="id"></param>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -41,6 +44,7 @@ namespace Runway
             global::System.Guid id,
 
             global::Runway.CreateWorkflowsRequest request,
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
@@ -49,6 +53,9 @@ namespace Runway
         /// Start a new task to execute a published workflow. You can optionally provide custom input values via `nodeOutputs` to override the defaults defined in the workflow graph.
         /// </summary>
         /// <param name="id"></param>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -81,6 +88,7 @@ namespace Runway
             global::System.Guid id,
 
             global::Runway.CreateWorkflowsRequest request,
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
@@ -89,6 +97,9 @@ namespace Runway
         /// Start a new task to execute a published workflow. You can optionally provide custom input values via `nodeOutputs` to override the defaults defined in the workflow graph.
         /// </summary>
         /// <param name="id"></param>
+        /// <param name="xRunwayTags">
+        /// Example: team:growth,env:prod,campaign-q4
+        /// </param>
         /// <param name="xRunwayVersion">
         /// Default Value: 2024-11-06
         /// </param>
@@ -100,6 +111,7 @@ namespace Runway
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Runway.CreateWorkflowsResponse> CreateWorkflowsByIdAsync(
             global::System.Guid id,
+            string? xRunwayTags = default,
             string xRunwayVersion = "2024-11-06",
             global::System.Collections.Generic.Dictionary<string, object>? nodeOutputs = default,
             global::Runway.AutoSDKRequestOptions? requestOptions = default,
